@@ -1,0 +1,30 @@
+# 02 Lexical Elements - Spec Extract
+
+Source: ArkTS static language specification, chapter 02 Lexical Elements.
+
+## Scope
+
+This file is reserved for translated or extracted normative text for this topic.
+
+## Subtopics
+
+- 2.1_Use_of_Unicode_Characters
+- 2.2_Lexical_Input_Elements
+- 2.3_White_Spaces
+- 2.4_Line_Separators
+- 2.5_Tokens
+- 2.6_Identifiers
+- 2.7_Keywords
+- 2.8_Operators_and_Punctuators
+- 2.9_Literals
+- 2.9.1_Numeric_Literals
+- 2.9.2_Integer_Literals
+- 2.9.3_Floating_Point_Literals
+- 2.9.4_Bigint_Literals
+- 2.9.5_Boolean_Literals
+- 2.9.6_String_Literals
+- 2.9.7_Multiline_String_Literal
+- 2.9.8_Undefined_Literal
+- 2.9.9_Null_Literal
+- 2.10_Comments
+- 2.11_Semicolons

@@ -1,0 +1,52 @@
+# 18 Annotations Test Design Mindmap
+
+- Annotations
+  - compile-pass
+  - compile-fail
+  - runtime
+  - boundary
+  - negative diagnostics
+  - interoperability with related chapters
+
+## Subtopics
+
+- 18.1_Declaring_Annotations
+  - normal cases
+  - edge cases
+  - error cases
+- 18.1.1_Types_of_Annotation_Fields
+  - normal cases
+  - edge cases
+  - error cases
+- 18.2_Using_Annotations
+  - normal cases
+  - edge cases
+  - error cases
+- 18.2.1_Using_Single_Field_Annotations
+  - normal cases
+  - edge cases
+  - error cases
+- 18.3_Exporting_and_Importing_Annotations
+  - normal cases
+  - edge cases
+  - error cases
+- 18.4_Ambient_Annotations
+  - normal cases
+  - edge cases
+  - error cases
+- 18.5_Standard_Annotations
+  - normal cases
+  - edge cases
+  - error cases
+- 18.5.1_Retention_Annotation
+  - normal cases
+  - edge cases
+  - error cases
+- 18.5.2_Target_Annotation
+  - normal cases
+  - edge cases
+  - error cases
+- 18.6_Runtime_Access_to_Annotations
+  - normal cases
+  - edge cases
+  - error cases

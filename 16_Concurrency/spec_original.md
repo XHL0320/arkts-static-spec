@@ -1,0 +1,38 @@
+# 16 Concurrency - Spec Extract
+
+Source: ArkTS static language specification, chapter 16 Concurrency.
+
+## Scope
+
+This file is reserved for translated or extracted normative text for this topic.
+
+## Subtopics
+
+- 16.1_Execution_model
+- 16.2_Overview_of_concurrency_features
+- 16.3_Asynchronous_execution
+- 16.3.1_Asynchronous_Functions
+- 16.3.2_Asynchronous_Lambdas
+- 16.3.3_Asynchronous_Methods
+- 16.3.4_await_expression
+- 16.3.5_Promise_class
+- 16.4_Parallel_Execution
+- 16.4.1_Parallel_execution_API
+- 16.4.2_launch_API
+- 16.4.3_EAWorker_API
+- 16.4.4_Taskpool_API
+- 16.5_Synchronization
+- 16.5.1_Asynchronous_lock
+- 16.5.2_Asynchronous_mutex
+- 16.5.3_Asynchronous_read_write_lock
+- 16.5.4_Asynchronous_condition_variable
+- 16.5.5_Atomic_operations
+- 16.5.6_Additional_entities_and_other_notes
+- 16.6_API_details_and_restrictions
+- 16.6.1_launch_API_details_and_restrictions
+- 16.6.2_Using_the_asynchronous_API
+- 16.6.3_Promise_class_API
+- 16.6.4_Unhandled_Rejected_Promises
+- 16.6.5_Error_handling_policy
+- 16.7_Runtime_implementation_details
+- 16.7.1_Scheduling_rules

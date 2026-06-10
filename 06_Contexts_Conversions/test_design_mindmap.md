@@ -1,0 +1,56 @@
+# 06 Contexts and Conversions Test Design Mindmap
+
+- Contexts and Conversions
+  - compile-pass
+  - compile-fail
+  - runtime
+  - boundary
+  - negative diagnostics
+  - interoperability with related chapters
+
+## Subtopics
+
+- 6.1_Assignment_like_Contexts
+  - normal cases
+  - edge cases
+  - error cases
+- 6.2_String_Operator_Contexts
+  - normal cases
+  - edge cases
+  - error cases
+- 6.3_Numeric_Operator_Contexts
+  - normal cases
+  - edge cases
+  - error cases
+- 6.3.1_Numeric_Conversions_for_Relational_and_Equality_Operands
+  - normal cases
+  - edge cases
+  - error cases
+- 6.3.2_char_Conversions_for_Relational_and_Equality_Operands
+  - normal cases
+  - edge cases
+  - error cases
+- 6.4_Implicit_Conversions
+  - normal cases
+  - edge cases
+  - error cases
+- 6.4.1_Widening_Numeric_Conversions
+  - normal cases
+  - edge cases
+  - error cases
+- 6.4.2_Widening_Numeric_to_a_Union_Type
+  - normal cases
+  - edge cases
+  - error cases
+- 6.4.3_Enumeration_to_Numeric_Type_Conversion
+  - normal cases
+  - edge cases
+  - error cases
+- 6.4.4_Enumeration_to_string_Type_Conversion
+  - normal cases
+  - edge cases
+  - error cases
+- 6.5_Numeric_Casting_Conversions
+  - normal cases
+  - edge cases
+  - error cases

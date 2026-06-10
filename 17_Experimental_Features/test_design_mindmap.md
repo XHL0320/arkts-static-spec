@@ -1,0 +1,172 @@
+# 17 Experimental Features Test Design Mindmap
+
+- Experimental Features
+  - compile-pass
+  - compile-fail
+  - runtime
+  - boundary
+  - negative diagnostics
+  - interoperability with related chapters
+
+## Subtopics
+
+- 17.1_Type_char
+  - normal cases
+  - edge cases
+  - error cases
+- 17.1.1_char_Literals
+  - normal cases
+  - edge cases
+  - error cases
+- 17.1.2_char_Operations
+  - normal cases
+  - edge cases
+  - error cases
+- 17.2_Fixed_Size_Array_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 17.2.1_Fixed_Size_Array_Creation
+  - normal cases
+  - edge cases
+  - error cases
+- 17.3_Value_Array_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 17.4_Resizable_Array_Creation_Expressions
+  - normal cases
+  - edge cases
+  - error cases
+- 17.4.1_Runtime_Evaluation_of_Array_Creation_Expressions
+  - normal cases
+  - edge cases
+  - error cases
+- 17.5_Indexable_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 17.6_Iterable_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 17.7_Callable_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 17.7.1_Callable_Types_with_invoke_Method
+  - normal cases
+  - edge cases
+  - error cases
+- 17.7.2_Callable_Types_with_instantiate_Method
+  - normal cases
+  - edge cases
+  - error cases
+- 17.8_Statements
+  - normal cases
+  - edge cases
+  - error cases
+- 17.8.1_For_of_Explicit_Type_Annotation
+  - normal cases
+  - edge cases
+  - error cases
+- 17.9_Explicit_Overload_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 17.9.1_Explicit_Function_Overload
+  - normal cases
+  - edge cases
+  - error cases
+- 17.9.2_Explicit_Class_Method_Overload
+  - normal cases
+  - edge cases
+  - error cases
+- 17.9.3_Explicit_Interface_Method_Overload
+  - normal cases
+  - edge cases
+  - error cases
+- 17.9.4_Explicit_Overload_Name_Same_As_Method_Name
+  - normal cases
+  - edge cases
+  - error cases
+- 17.9.5_Explicit_Constructor_Overload
+  - normal cases
+  - edge cases
+  - error cases
+- 17.10_Native_Functions_and_Methods
+  - normal cases
+  - edge cases
+  - error cases
+- 17.10.1_Native_Functions
+  - normal cases
+  - edge cases
+  - error cases
+- 17.10.2_Native_Methods
+  - normal cases
+  - edge cases
+  - error cases
+- 17.10.3_Native_Constructors
+  - normal cases
+  - edge cases
+  - error cases
+- 17.11_Classes_Experimental
+  - normal cases
+  - edge cases
+  - error cases
+- 17.11.1_Final_Classes
+  - normal cases
+  - edge cases
+  - error cases
+- 17.11.2_Final_Methods
+  - normal cases
+  - edge cases
+  - error cases
+- 17.11.3_Named_Constructors
+  - normal cases
+  - edge cases
+  - error cases
+- 17.12_Default_Interface_Method_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 17.13_Adding_Functionality_to_Existing_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 17.13.1_Functions_with_Receiver
+  - normal cases
+  - edge cases
+  - error cases
+- 17.13.2_Receiver_Type
+  - normal cases
+  - edge cases
+  - error cases
+- 17.13.3_Function_Types_with_Receiver
+  - normal cases
+  - edge cases
+  - error cases
+- 17.13.4_Lambda_Expressions_with_Receiver
+  - normal cases
+  - edge cases
+  - error cases
+- 17.13.5_Implicit_this_in_Lambda_with_Receiver_Body
+  - normal cases
+  - edge cases
+  - error cases
+- 17.14_Trailing_Lambdas
+  - normal cases
+  - edge cases
+  - error cases
+- 17.15_Accessor_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 17.16_Pattern_Matching
+  - normal cases
+  - edge cases
+  - error cases
+- 17.16.1_Destructuring_Assignment
+  - normal cases
+  - edge cases
+  - error cases

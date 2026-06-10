@@ -1,0 +1,31 @@
+# 13 Namespaces and Modules - Spec Extract
+
+Source: ArkTS static language specification, chapter 13 Namespaces and Modules.
+
+## Scope
+
+This file is reserved for translated or extracted normative text for this topic.
+
+## Subtopics
+
+- 13.1_Module_Declarations
+- 13.2_Module_Header
+- 13.3_Namespace_Declarations
+- 13.4_Import_Directives
+- 13.4.1_Bind_All_with_Qualified_Access
+- 13.4.2_Default_Import_Binding
+- 13.4.3_Selective_Binding
+- 13.4.4_Import_Type_Directive
+- 13.4.5_Import_Path
+- 13.4.6_Several_Bindings_for_One_Import_Path
+- 13.5_Top_Level_Declarations
+- 13.6_Exported_Declarations
+- 13.7_Export_Directives
+- 13.7.1_Selective_Export_Directive
+- 13.7.2_Single_Export_Directive
+- 13.7.3_Export_Type_Directive
+- 13.7.4_Re_Export_Directive
+- 13.8_Top_Level_Statements
+- 13.9_Multifile_Module
+- 13.10_Standard_Library_Usage
+- 13.11_Program_Entry_Point

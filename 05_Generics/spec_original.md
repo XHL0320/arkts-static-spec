@@ -1,0 +1,19 @@
+# 05 Generics - Spec Extract
+
+Source: ArkTS static language specification, chapter 05 Generics.
+
+## Scope
+
+This file is reserved for translated or extracted normative text for this topic.
+
+## Subtopics
+
+- 5.1_Type_Parameters
+- 5.1.1_Type_Parameter_Constraint
+- 5.1.2_Type_Parameter_Default
+- 5.1.3_Type_Parameter_Variance
+- 5.1.4_Wildcard_Type
+- 5.2_Generic_Instantiations
+- 5.2.1_Type_Arguments
+- 5.2.2_Explicit_Generic_Instantiations
+- 5.2.3_Implicit_Generic_Instantiations

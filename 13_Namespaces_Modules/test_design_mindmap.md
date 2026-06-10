@@ -1,0 +1,96 @@
+# 13 Namespaces and Modules Test Design Mindmap
+
+- Namespaces and Modules
+  - compile-pass
+  - compile-fail
+  - runtime
+  - boundary
+  - negative diagnostics
+  - interoperability with related chapters
+
+## Subtopics
+
+- 13.1_Module_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 13.2_Module_Header
+  - normal cases
+  - edge cases
+  - error cases
+- 13.3_Namespace_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 13.4_Import_Directives
+  - normal cases
+  - edge cases
+  - error cases
+- 13.4.1_Bind_All_with_Qualified_Access
+  - normal cases
+  - edge cases
+  - error cases
+- 13.4.2_Default_Import_Binding
+  - normal cases
+  - edge cases
+  - error cases
+- 13.4.3_Selective_Binding
+  - normal cases
+  - edge cases
+  - error cases
+- 13.4.4_Import_Type_Directive
+  - normal cases
+  - edge cases
+  - error cases
+- 13.4.5_Import_Path
+  - normal cases
+  - edge cases
+  - error cases
+- 13.4.6_Several_Bindings_for_One_Import_Path
+  - normal cases
+  - edge cases
+  - error cases
+- 13.5_Top_Level_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 13.6_Exported_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 13.7_Export_Directives
+  - normal cases
+  - edge cases
+  - error cases
+- 13.7.1_Selective_Export_Directive
+  - normal cases
+  - edge cases
+  - error cases
+- 13.7.2_Single_Export_Directive
+  - normal cases
+  - edge cases
+  - error cases
+- 13.7.3_Export_Type_Directive
+  - normal cases
+  - edge cases
+  - error cases
+- 13.7.4_Re_Export_Directive
+  - normal cases
+  - edge cases
+  - error cases
+- 13.8_Top_Level_Statements
+  - normal cases
+  - edge cases
+  - error cases
+- 13.9_Multifile_Module
+  - normal cases
+  - edge cases
+  - error cases
+- 13.10_Standard_Library_Usage
+  - normal cases
+  - edge cases
+  - error cases
+- 13.11_Program_Entry_Point
+  - normal cases
+  - edge cases
+  - error cases

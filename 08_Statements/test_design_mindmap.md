@@ -1,0 +1,84 @@
+# 08 Statements Test Design Mindmap
+
+- Statements
+  - compile-pass
+  - compile-fail
+  - runtime
+  - boundary
+  - negative diagnostics
+  - interoperability with related chapters
+
+## Subtopics
+
+- 8.1_Normal_and_Abrupt_Statement_Execution
+  - normal cases
+  - edge cases
+  - error cases
+- 8.2_Expression_Statements
+  - normal cases
+  - edge cases
+  - error cases
+- 8.3_Block
+  - normal cases
+  - edge cases
+  - error cases
+- 8.4_Constant_or_Variable_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 8.5_if_Statements
+  - normal cases
+  - edge cases
+  - error cases
+- 8.6_Loop_Statements
+  - normal cases
+  - edge cases
+  - error cases
+- 8.7_while_Statements_and_do_Statements
+  - normal cases
+  - edge cases
+  - error cases
+- 8.8_for_Statements
+  - normal cases
+  - edge cases
+  - error cases
+- 8.9_for_of_Statements
+  - normal cases
+  - edge cases
+  - error cases
+- 8.10_break_Statements
+  - normal cases
+  - edge cases
+  - error cases
+- 8.11_continue_Statements
+  - normal cases
+  - edge cases
+  - error cases
+- 8.12_return_Statements
+  - normal cases
+  - edge cases
+  - error cases
+- 8.13_switch_Statements
+  - normal cases
+  - edge cases
+  - error cases
+- 8.14_throw_Statements
+  - normal cases
+  - edge cases
+  - error cases
+- 8.15_try_Statements
+  - normal cases
+  - edge cases
+  - error cases
+- 8.15.1_catch_Clause
+  - normal cases
+  - edge cases
+  - error cases
+- 8.15.2_finally_Clause
+  - normal cases
+  - edge cases
+  - error cases
+- 8.15.3_try_Statement_Execution
+  - normal cases
+  - edge cases
+  - error cases

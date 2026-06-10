@@ -1,0 +1,60 @@
+# 14 Ambient Declarations Test Design Mindmap
+
+- Ambient Declarations
+  - compile-pass
+  - compile-fail
+  - runtime
+  - boundary
+  - negative diagnostics
+  - interoperability with related chapters
+
+## Subtopics
+
+- 14.1_Ambient_Constant_or_Variable_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 14.2_Ambient_Function_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 14.3_Ambient_Overload_Function_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 14.4_Ambient_Class_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 14.4.1_Ambient_Indexer
+  - normal cases
+  - edge cases
+  - error cases
+- 14.4.2_Ambient_Call_Signature
+  - normal cases
+  - edge cases
+  - error cases
+- 14.4.3_Ambient_Iterable
+  - normal cases
+  - edge cases
+  - error cases
+- 14.5_Ambient_Interface_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 14.6_Ambient_Enumeration_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 14.7_Ambient_Namespace_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 14.7.1_Implementing_Ambient_Namespace_Declaration
+  - normal cases
+  - edge cases
+  - error cases
+- 14.8_Ambient_Accessor_Declarations
+  - normal cases
+  - edge cases
+  - error cases

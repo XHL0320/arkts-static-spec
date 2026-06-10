@@ -1,0 +1,92 @@
+# 02 Lexical Elements Test Design Mindmap
+
+- Lexical Elements
+  - compile-pass
+  - compile-fail
+  - runtime
+  - boundary
+  - negative diagnostics
+  - interoperability with related chapters
+
+## Subtopics
+
+- 2.1_Use_of_Unicode_Characters
+  - normal cases
+  - edge cases
+  - error cases
+- 2.2_Lexical_Input_Elements
+  - normal cases
+  - edge cases
+  - error cases
+- 2.3_White_Spaces
+  - normal cases
+  - edge cases
+  - error cases
+- 2.4_Line_Separators
+  - normal cases
+  - edge cases
+  - error cases
+- 2.5_Tokens
+  - normal cases
+  - edge cases
+  - error cases
+- 2.6_Identifiers
+  - normal cases
+  - edge cases
+  - error cases
+- 2.7_Keywords
+  - normal cases
+  - edge cases
+  - error cases
+- 2.8_Operators_and_Punctuators
+  - normal cases
+  - edge cases
+  - error cases
+- 2.9_Literals
+  - normal cases
+  - edge cases
+  - error cases
+- 2.9.1_Numeric_Literals
+  - normal cases
+  - edge cases
+  - error cases
+- 2.9.2_Integer_Literals
+  - normal cases
+  - edge cases
+  - error cases
+- 2.9.3_Floating_Point_Literals
+  - normal cases
+  - edge cases
+  - error cases
+- 2.9.4_Bigint_Literals
+  - normal cases
+  - edge cases
+  - error cases
+- 2.9.5_Boolean_Literals
+  - normal cases
+  - edge cases
+  - error cases
+- 2.9.6_String_Literals
+  - normal cases
+  - edge cases
+  - error cases
+- 2.9.7_Multiline_String_Literal
+  - normal cases
+  - edge cases
+  - error cases
+- 2.9.8_Undefined_Literal
+  - normal cases
+  - edge cases
+  - error cases
+- 2.9.9_Null_Literal
+  - normal cases
+  - edge cases
+  - error cases
+- 2.10_Comments
+  - normal cases
+  - edge cases
+  - error cases
+- 2.11_Semicolons
+  - normal cases
+  - edge cases
+  - error cases

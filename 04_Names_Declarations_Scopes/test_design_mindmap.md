@@ -1,0 +1,96 @@
+# 04 Names, Declarations and Scopes Test Design Mindmap
+
+- Names, Declarations and Scopes
+  - compile-pass
+  - compile-fail
+  - runtime
+  - boundary
+  - negative diagnostics
+  - interoperability with related chapters
+
+## Subtopics
+
+- 4.1_Names
+  - normal cases
+  - edge cases
+  - error cases
+- 4.2_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 4.2.1_Declaration_Distinguishable_by_Signatures
+  - normal cases
+  - edge cases
+  - error cases
+- 4.3_Scopes
+  - normal cases
+  - edge cases
+  - error cases
+- 4.4_Accessible
+  - normal cases
+  - edge cases
+  - error cases
+- 4.5_Type_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 4.5.1_Type_Alias_Declaration
+  - normal cases
+  - edge cases
+  - error cases
+- 4.6_Variable_and_Constant_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 4.6.1_Variable_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 4.6.2_Constant_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 4.6.3_Validity_of_Initializer
+  - normal cases
+  - edge cases
+  - error cases
+- 4.6.4_Assignability_with_Initializer
+  - normal cases
+  - edge cases
+  - error cases
+- 4.6.5_Type_Inference_from_Initializer
+  - normal cases
+  - edge cases
+  - error cases
+- 4.7_Function_Declarations
+  - normal cases
+  - edge cases
+  - error cases
+- 4.7.1_Signatures
+  - normal cases
+  - edge cases
+  - error cases
+- 4.7.2_Parameter_List
+  - normal cases
+  - edge cases
+  - error cases
+- 4.7.3_Readonly_Parameters
+  - normal cases
+  - edge cases
+  - error cases
+- 4.7.4_Optional_Parameters
+  - normal cases
+  - edge cases
+  - error cases
+- 4.7.5_Rest_Parameter
+  - normal cases
+  - edge cases
+  - error cases
+- 4.7.6_Shadowing_by_Parameter
+  - normal cases
+  - edge cases
+  - error cases
+- 4.7.7_Return_Type
+  - normal cases
+  - edge cases
+  - error cases

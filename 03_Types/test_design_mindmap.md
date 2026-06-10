@@ -1,0 +1,188 @@
+# 03 Types Test Design Mindmap
+
+- Types
+  - compile-pass
+  - compile-fail
+  - runtime
+  - boundary
+  - negative diagnostics
+  - interoperability with related chapters
+
+## Subtopics
+
+- 3.1_Predefined_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.2_User_Defined_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.3_Using_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.4_Named_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.5_Type_References
+  - normal cases
+  - edge cases
+  - error cases
+- 3.6_Value_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.6.1_Numeric_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.6.2_Integer_Types_and_Operations
+  - normal cases
+  - edge cases
+  - error cases
+- 3.6.3_Floating_Point_Types_and_Operations
+  - normal cases
+  - edge cases
+  - error cases
+- 3.6.4_Type_boolean
+  - normal cases
+  - edge cases
+  - error cases
+- 3.7_Reference_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.8_Type_Any
+  - normal cases
+  - edge cases
+  - error cases
+- 3.9_Type_Object
+  - normal cases
+  - edge cases
+  - error cases
+- 3.10_Type_never
+  - normal cases
+  - edge cases
+  - error cases
+- 3.11_Type_void_or_undefined
+  - normal cases
+  - edge cases
+  - error cases
+- 3.12_Type_null
+  - normal cases
+  - edge cases
+  - error cases
+- 3.13_Type_string
+  - normal cases
+  - edge cases
+  - error cases
+- 3.14_Type_bigint
+  - normal cases
+  - edge cases
+  - error cases
+- 3.15_Literal_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.15.1_String_Literal_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.16_Array_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.16.1_Resizable_Array_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.16.2_Readonly_Array_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.17_Tuple_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.17.1_Readonly_Tuple_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.17.2_Type_Tuple
+  - normal cases
+  - edge cases
+  - error cases
+- 3.18_Function_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.18.1_Type_Function
+  - normal cases
+  - edge cases
+  - error cases
+- 3.19_Union_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.19.1_Union_Types_Normalization
+  - normal cases
+  - edge cases
+  - error cases
+- 3.19.2_Access_to_Common_Union_Members
+  - normal cases
+  - edge cases
+  - error cases
+- 3.19.3_Keyof_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.20_Nullish_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.21_Utility_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.21.1_Awaited_Utility_Type
+  - normal cases
+  - edge cases
+  - error cases
+- 3.21.2_NonNullable_Utility_Type
+  - normal cases
+  - edge cases
+  - error cases
+- 3.21.3_Partial_Utility_Type
+  - normal cases
+  - edge cases
+  - error cases
+- 3.21.4_Required_Utility_Type
+  - normal cases
+  - edge cases
+  - error cases
+- 3.21.5_Readonly_Utility_Type
+  - normal cases
+  - edge cases
+  - error cases
+- 3.21.6_Record_Utility_Type
+  - normal cases
+  - edge cases
+  - error cases
+- 3.21.7_ReturnType_Utility_Type
+  - normal cases
+  - edge cases
+  - error cases
+- 3.21.8_Utility_Type_Private_Fields
+  - normal cases
+  - edge cases
+  - error cases
+- 3.21.9_Nesting_Utility_Types
+  - normal cases
+  - edge cases
+  - error cases
+- 3.22_Default_Values_for_Types
+  - normal cases
+  - edge cases
+  - error cases

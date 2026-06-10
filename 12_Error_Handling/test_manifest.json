@@ -1,0 +1,20 @@
+{
+    "chapter":  "12",
+    "topic":  "Error Handling",
+    "directory":  "12_Error_Handling",
+    "spec_source":  "ArkTS static language specification",
+    "subtopics":  [
+                      "12.1_Errors"
+                  ],
+    "case_roots":  [
+                       "ets_cases"
+                   ],
+    "categories":  [
+                       "compile-pass",
+                       "compile-fail",
+                       "runtime"
+                   ],
+    "cases":  [
+
+              ]
+}
