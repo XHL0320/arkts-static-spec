@@ -1,0 +1,1 @@
+/** * @id LEX_02_04_002_PASS_CR_SEPARATOR * @expect compile-pass * @section 2.4 * @design Carriage return character (U+000D, CR) 作为行分隔符 * @note 正向用例：CR (Mac OS 9 风格) 作为行分隔 */function testCr(): void {  let a: int = 1  let b: int = 2  let c: int = a + b}
