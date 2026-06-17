@@ -1,7 +1,7 @@
-# 3.6.3 Floating-Point Types and Operations - ArkTS vs Java vs Swift
+# 3.6.3 Floating-Point Types and Operations - ArkTS vs Java vs Swift（v2）
 
-**生成日期：** 2026-06-11
-**测试基础：** 20 个用例（10 PASS + 2 FAIL + 8 runtime）
+**生成日期：** 2026-06-11（v2 - 新增浮点除零完整对比）
+**测试基础：** 30 个用例（含 10 个浮点除零用例 021~030）
 
 ---
 
@@ -13,17 +13,15 @@
 |------|-------|------|-------|
 | 32 位 | float | float | Float |
 | 64 位 | double / number | double | Double |
-| 80 位/扩展 | ❌ | ❌ | ❌（一般无） |
 
 ### 1.2 浮点运算符
 
 | 运算符 | ArkTS | Java | Swift |
 |------|-------|------|-------|
 | `<` `<=` `>` `>=` `==` `!=` | ✅ | ✅ | ✅ |
-| `+` `-` `*` `/` `%` | ✅ | ✅（`%` 不严格 IEEE） | ✅（`%` 整数 only，浮点用 truncatingRemainder） |
-| `**` 幂 | ✅ → double | ❌（用 Math.pow）| ❌（用 pow()） |
+| `+` `-` `*` `/` `%` | ✅ | ✅ | ✅（% 用 truncatingRemainder）|
+| `**` 幂 | ✅ → double | ❌ | ❌ |
 | `++` `--` | ✅ | ✅ | ❌ |
-| 移位/按位（应用浮点） | ❌（必须先 toInt） | ❌ | ❌ |
 | 三元 `?:` | ✅ | ✅ | ✅ |
 
 ### 1.3 IEEE 754 行为
@@ -35,140 +33,175 @@
 | 1/0 = +Inf | ✅ | ✅ | ✅ |
 | 浮点除零异常 | ❌ 不抛 | ❌ 不抛 | ❌ 不抛 |
 | gradual underflow | ✅ | ✅ | ✅ |
-| round-to-nearest（默认）| ✅ | ✅ | ✅ |
-| round-toward-zero（→int）| ✅ | ✅ | ✅ |
-
-### 1.4 浮点 → 整数转换
-
-| 维度 | ArkTS | Java | Swift |
-|------|-------|------|-------|
-| 转换语法 | `.toInt()` 方法 | `(int) d` 强制转换 | `Int(d)` 构造器 |
-| 隐式 narrowing | ❌ | ❌ | ❌ |
-| 截断行为 | round-toward-zero | round-toward-zero | round-toward-zero |
-
-### 1.5 浮点 ↔ boolean 隔离
-
-| 维度 | ArkTS | Java | Swift |
-|------|-------|------|-------|
-| 浮点 → boolean | ❌ | ❌ | ❌ |
-| boolean → 浮点 | ❌ | ❌ | ❌ |
 
 ---
 
-## 二、用例对照
+## 二、浮点除零完整对比 ⭐ 新增
 
-### 用例 ①：NaN 性质 (TYP_03_06_03_013)
+### 2.1 完整 10 场景对比表
 
+| # | 场景 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 1 | `let c = 5.0 / 0.0` | ✅ `Infinity` | ✅ `Infinity` | ✅ `inf` |
+| 2 | `let c = -5.0 / 0.0` | ✅ `-Infinity` | ✅ `-Infinity` | ✅ `-inf` |
+| 3 | `let c = 0.0 / 0.0` | ✅ `NaN` | ✅ `NaN` | ✅ `nan` |
+| 4 | `let a = 0.0; 5.0/a`（let 变量）| ✅ `Infinity` | ✅ `Infinity` | ✅ `inf` |
+| 5 | 函数内 `const a = 0.0; 5.0/a` | ✅ `Infinity` | ✅ `Infinity` | ✅ `inf` |
+| 6 | 模块级 `const a = 0.0; 5.0/a` | ✅ `Infinity` | ✅ `Infinity` | ✅ `inf` |
+| 7 | `5.0 / (1.0 - 1.0)`（常量表达式）| ✅ `Infinity` | ✅ `Infinity` | ✅ `inf` |
+| 8 | `5.0 % 0.0` 取模 | ✅ `NaN` | ✅ `NaN` | ✅ `nan` |
+| 9 | `let c: float = 5.0f / 0.0f` | ✅ `Infinity` | ✅ `Infinity` | ✅ `inf` |
+| 10 | `let c: double = 10 / 0.0` 混合类型 | ✅ `Infinity` | ✅ `Infinity` | ✅ `inf` |
+
+### 2.2 **三语言完全一致** ⭐
+
+**核心结论：浮点除零在 ArkTS/Java/Swift 三语言中行为完全一致**，全部遵循 IEEE 754：
+- 不抛异常
+- 不做编译期检测
+- 返回 ±Infinity 或 NaN
+
+### 2.3 内部 vs 整数除零对比
+
+| 同语言内部 | 整数除零 | 浮点除零 |
+|----------|---------|---------|
+| Java | ArithmeticException | IEEE 754 |
+| ArkTS | 字面量编译错误 / 运行时 ArithmeticError | IEEE 754 |
+| Swift | 编译错误 / 运行时陷阱 | IEEE 754 |
+
+**关键：** 浮点是三语言对外行为唯一完全一致的部分
+
+---
+
+## 三、用例 1:1 对照（浮点除零）
+
+### 用例 ①：浮点字面量除零 (TYP_03_06_03_021)
+
+**ArkTS：**
 ```typescript
-// ArkTS（实测通过）
-let nan: double = 0.0 / 0.0
-if (nan == nan) throw ...   // NaN != NaN
-let r = nan + 1.0           // NaN + 1 = NaN
+let c: double = 5.0 / 0.0
+// ✅ 编译通过，结果 +Infinity
 ```
 
 **Java：**
 ```java
-double nan = 0.0 / 0.0;
-boolean b = nan == nan;     // false
-double r = nan + 1.0;       // NaN
+double c = 5.0 / 0.0;
+// ✅ 编译通过，结果 Infinity
 ```
 
 **Swift：**
 ```swift
-let nan = 0.0 / 0.0
-let b = nan == nan          // false
-let r = nan + 1.0           // NaN
+let c = 5.0 / 0.0
+// ✅ 编译通过（可能 warning），结果 inf
 ```
 
-**结论：** 三语言完全一致（IEEE 754 标准）
+### 用例 ②：浮点模块级 const 除零 (TYP_03_06_03_026)
 
-### 用例 ②：浮点除零 (TYP_03_06_03_019)
-
+**ArkTS：**
 ```typescript
-// ArkTS：浮点 5.0 / 0.0 = +Inf（不抛异常）
-let r: double = 5.0 / 0.0
+const moduleZero: double = 0.0
+function main(): void {
+  let c: double = 5.0 / moduleZero   // ✅ Infinity
+}
 ```
 
-**Java：** 同样 `5.0 / 0.0 = Infinity`，不抛异常
-**Swift：** 同样 `5.0 / 0.0 = inf`
+**Java：**
+```java
+static final double MODULE_ZERO = 0.0;
+double c = 5.0 / MODULE_ZERO;   // ✅ Infinity
+```
 
-⚠️ 与整数除零行为完全不同（整数会抛 ArithmeticError）
+**Swift：**
+```swift
+let moduleZero = 0.0
+let c = 5.0 / moduleZero   // ✅ inf
+```
 
-### 用例 ③：浮点 → 整数 (TYP_03_06_03_009)
+**关键：** 浮点不像整数那样 ArkTS 行为不一致，浮点三语言全部一致
 
+### 用例 ③：浮点取模零 (TYP_03_06_03_028)
+
+**ArkTS：**
 ```typescript
-// ArkTS：弃用 as，必须 toInt()
-let i: int = 3.7.toInt()    // 3 (round-toward-zero)
+let c: double = 5.0 % 0.0   // ✅ NaN
 ```
 
-**Java：** `int i = (int) 3.7;` → 3
-**Swift：** `let i = Int(3.7)` → 3
-
-### 用例 ④：`**` 幂运算 → double (TYP_03_06_03_005)
-
-```typescript
-// ArkTS（独有 **）
-let r: double = 2.0f ** 10.0   // float ** double → double
+**Java：**
+```java
+double c = 5.0 % 0.0;        // ✅ NaN
 ```
 
-**Java：** 无 `**` 运算符，用 `Math.pow(2, 10)`
-**Swift：** 无 `**`，用 `pow(2, 10)` 或 `pow(2.0, 10.0)`
-
-### 用例 ⑤：类型推升 (TYP_03_06_03_018)
-
-```typescript
-// ArkTS
-let f: float = 1.0f
-let d: double = 1.0
-let r: double = f + d   // double + float → double
+**Swift：**
+```swift
+let c = 5.0.truncatingRemainder(dividingBy: 0.0)   // ✅ nan
 ```
-
-**Java：** 同 ArkTS
-**Swift：** ❌ `f + d` 编译失败，必须 `Double(f) + d`
 
 ---
 
-## 三、综合评分
+## 四、整数 vs 浮点除零 同语言对比
+
+### 4.1 ArkTS 内部对比
+
+| 场景 | 整数 | 浮点 |
+|------|------|------|
+| 字面量 `T / 0` | ❌ 编译错误 | ✅ 通过 → Inf |
+| `% 0` | ❌ 编译错误 | ✅ 通过 → NaN |
+| 函数内 const = 0 | ❌ 编译错误 | ✅ 通过 → Inf |
+| 模块级 const = 0 | ⚠️ 通过（bug） | ✅ 通过 → Inf |
+| 运行时除零 | 抛 ArithmeticError | 返回 Inf/NaN |
+
+### 4.2 Java 内部对比
+
+| 场景 | 整数 | 浮点 |
+|------|------|------|
+| 任意场景字面量 / 0 | ✅ 通过，运行时抛 | ✅ 通过 → Inf/NaN |
+| 一致性 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+
+### 4.3 Swift 内部对比
+
+| 场景 | 整数 | 浮点 |
+|------|------|------|
+| 字面量 / 0 | ❌ 编译错误 | ⚠️ warning |
+| 运行时除零 | 陷阱 | 返回 inf/nan |
+
+---
+
+## 五、综合评分
 
 | 维度 | ArkTS | Java | Swift |
 |------|-------|------|-------|
 | IEEE 754 合规 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 | 运算符完整度 | ⭐⭐⭐⭐⭐（含 **） | ⭐⭐⭐⭐ | ⭐⭐⭐ |
-| 类型推升合理性 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐（必须显式） |
-| 浮点 → 整数 | ⭐⭐⭐（强制方法）| ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| boolean 隔离 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| 类型推升合理性 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ |
+| **浮点除零设计** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| 与整数除零一致性 | ⭐⭐⭐（差异大）| ⭐⭐⭐⭐（差异适中）| ⭐⭐⭐⭐（差异适中）|
 
 ---
 
-## 四、核心结论
+## 六、核心结论
 
 | 角度 | 结论 |
 |------|------|
-| IEEE 754 行为 | 三者一致 |
-| 运算符 | ArkTS 含 `**`（独有）|
-| 类型推升 | ArkTS = Java（自动），Swift 必须显式 |
-| 浮点 → 整数 | ArkTS 必须方法调用，Java/Swift 有简洁语法 |
-| `**` → double | ArkTS 独特，避免精度问题 |
+| **浮点除零行为** | ArkTS = Java = Swift（完全一致）|
+| **与 spec 一致** | ✅ ArkTS spec §15.17.2 明确"永不抛错"|
+| **与整数除零差异** | 三语言内部均存在差异（IEEE 754 vs 整数异常）|
 
 ### 关键启示
 
-1. **IEEE 754 行为**三语言完全一致（NaN/Infinity/underflow）
-2. **`**` 运算符** 是 ArkTS 浮点章节独有，结果总是 double
-3. **类型推升**与 Java 一致，比 Swift 宽松
-4. **数值转换** 沿用 3.6.2 的设计：必须方法调用
+1. **浮点除零是 ArkTS 设计中最稳定的部分**：与 Java/Swift 完全一致
+2. **IEEE 754 是真正的"通用语言"**：三语言对外行为完全一致
+3. **整数与浮点行为差异**是设计选择，不是 bug
+4. **ArkTS 浮点设计无任何问题**
 
-### ArkTS 设计建议
+### ArkTS 浮点除零设计建议
 
-1. ✅ IEEE 754 合规
-2. ✅ `**` 返回 double（避免精度损失）
-3. ⚠️ 复用 3.6.2 建议：考虑提供 `as` 兼容写法
+✅ **保持现状**，浮点除零设计完美合规。
 
 ---
 
-## 五、对应规范
+## 七、对应规范
 
 | 语言 | 规范 |
 |------|------|
-| ArkTS | ArkTS Static Spec §3.6.3 |
-| Java | JLS SE21 §4.2.3 / 4.2.4 |
+| ArkTS | ArkTS Static Spec §3.6.3, §15.17.2 |
+| Java | JLS SE21 §4.2.3, §4.2.4, §15.17.2 |
 | Swift | The Swift Programming Language: Floating-Point Types |
