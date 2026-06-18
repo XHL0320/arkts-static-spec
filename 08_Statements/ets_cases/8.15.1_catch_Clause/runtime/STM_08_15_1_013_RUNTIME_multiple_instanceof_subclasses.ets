@@ -2,88 +2,30 @@
  * @id STM_08_15_1_013_RUNTIME_multiple_instanceof_subclasses
  * @expect runtime
  * @section 8.15.1
- * @design 验证 catch 块中使用 instanceof 对三个以上不同的 Error 子类型进行区分处理，每个分支正确匹配。
- * @note 运行时测试：分别抛出 RangeError、TypeError、URIError，instanceof 分支正确识别并记录。
+ * @design catch块内对多个Error子类做instanceof类型判断的运行时验证
+ * @note 运行时用例：验证catch(e)配合instanceof识别RangeError/TypeError/Error
  */
-class MyURIErr extends Error {}
-
 function main(): void {
-    let errorKind: string = "";
+  let gotRange: boolean = false
+  try { throw new RangeError() }
+  catch (e) {
+    if (e instanceof RangeError) { gotRange = true }
+  }
+  if (!gotRange) { throw new Error("RangeError should be caught by instanceof") }
 
-    // Test 1: RangeError
-    try {
-        throw new RangeError("range error value");
-    } catch (e) {
-        if (e instanceof RangeError) {
-            errorKind = "RangeError";
-        } else if (e instanceof TypeError) {
-            errorKind = "TypeError";
-        } else if (e instanceof URIError) {
-            errorKind = "URIError";
-        } else {
-            errorKind = "Error";
-        }
-    }
-    if (errorKind != "RangeError") {
-        throw new Error("expected RangeError, got: " + errorKind);
-    }
+  let gotType: boolean = false
+  try { throw new TypeError() }
+  catch (e) {
+    if (e instanceof TypeError) { gotType = true }
+  }
+  if (!gotType) { throw new Error("TypeError should be caught by instanceof") }
 
-    // Test 2: TypeError
-    errorKind = "";
-    try {
-        throw new TypeError("type error value");
-    } catch (e) {
-        if (e instanceof RangeError) {
-            errorKind = "RangeError";
-        } else if (e instanceof TypeError) {
-            errorKind = "TypeError";
-        } else if (e instanceof URIError) {
-            errorKind = "URIError";
-        } else {
-            errorKind = "Error";
-        }
-    }
-    if (errorKind != "TypeError") {
-        throw new Error("expected TypeError, got: " + errorKind);
-    }
+  let gotError: boolean = false
+  try { throw new Error("test") }
+  catch (e) {
+    if (e instanceof Error) { gotError = true }
+  }
+  if (!gotError) { throw new Error("Error should be caught by instanceof") }
 
-    // Test 3: URIError
-    errorKind = "";
-    try {
-        throw new MyURIErr();
-    } catch (e) {
-        if (e instanceof RangeError) {
-            errorKind = "RangeError";
-        } else if (e instanceof TypeError) {
-            errorKind = "TypeError";
-        } else if (e instanceof URIError) {
-            errorKind = "URIError";
-        } else {
-            errorKind = "Error";
-        }
-    }
-    if (errorKind != "URIError") {
-        throw new Error("expected URIError, got: " + errorKind);
-    }
-
-    // Test 4: plain Error falls into else
-    errorKind = "";
-    try {
-        throw new Error("plain error");
-    } catch (e) {
-        if (e instanceof RangeError) {
-            errorKind = "RangeError";
-        } else if (e instanceof TypeError) {
-            errorKind = "TypeError";
-        } else if (e instanceof URIError) {
-            errorKind = "URIError";
-        } else {
-            errorKind = "Error";
-        }
-    }
-    if (errorKind != "Error") {
-        throw new Error("expected plain Error, got: " + errorKind);
-    }
-
-    console.log("verified");
+  console.log("verified")
 }

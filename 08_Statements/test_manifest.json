@@ -153,6 +153,30 @@
       "description": "块作用域遮蔽运行时行为：内层遮蔽外层，离开后恢复"
     },
     {
+      "id": "STM_08_04_018_PASS_let_union_type",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "compile-pass",
+      "description": "let带复杂联合类型注解声明：string|number, int|null, string|int|boolean等"
+    },
+    {
+      "id": "STM_08_04_019_FAIL_const_top_level_no_init",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "compile-fail",
+      "description": "const在模块顶层声明缺少初始化器产生编译错误"
+    },
+    {
+      "id": "STM_08_04_020_FAIL_duplicate_let_block",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "compile-fail",
+      "description": "同一块作用域内重复let声明同名变量产生编译错误"
+    },
+    {
+      "id": "STM_08_04_021_RUNTIME_const_not_reassignable",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "runtime",
+      "description": "const声明的常量在运行时保持初始值不变，包括表达式计算初始值"
+    },
+    {
       "id": "STM_08_05_001_PASS_BASIC_IF",
       "section": "8.5",
       "category": "compile-pass",

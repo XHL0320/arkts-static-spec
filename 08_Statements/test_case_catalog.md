@@ -2,7 +2,7 @@
 
 **规范来源：** `/home/nnd/projects/arkts/docs/STATEMENTS.md` (585 行)
 **测试编译器：** es2panda + ark VM
-**最后执行：** 2026-06-18 | 190/190 通过
+**最后执行：** 2026-06-18 | 194/194 通过
 
 ---
 
@@ -13,7 +13,7 @@
 | 8.1 Normal and Abrupt Statement Execution | 4 | 3 | 2 | 9 |
 | 8.2 Expression Statements | 5 | 3 | 3 | 11 |
 | 8.3 Block | 5 | 3 | 2 | 10 |
-| 8.4 Constant or Variable Declarations | 5 | 3 | 3 | 11 |
+| 8.4 Constant or Variable Declarations | 6 | 5 | 4 | 15 |
 | 8.5 if Statements | 8 | 0 | 2 | 10 |
 | 8.6 Loop Statements | 5 | 3 | 3 | 11 |
 | 8.7 while and do Statements | 8 | 0 | 3 | 11 |
@@ -93,6 +93,10 @@
 | STM_08_04_008 | compile-fail | STM_08_04_008_FAIL_duplicate_let_same_scope.ets | 同作用域重复 let |
 | STM_08_04_009 | runtime | STM_08_04_009_RUNTIME_let_const_values.ets | let/const 值验证 |
 | STM_08_04_010 | runtime | STM_08_04_010_RUNTIME_block_scope_shadow.ets | 块作用域遮蔽运行时 |
+| STM_08_04_018 | compile-pass | STM_08_04_018_PASS_let_union_type.ets | let 带复杂联合类型注解 |
+| STM_08_04_019 | compile-fail | STM_08_04_019_FAIL_const_top_level_no_init.ets | const 顶层无初始化器 |
+| STM_08_04_020 | compile-fail | STM_08_04_020_FAIL_duplicate_let_block.ets | 块作用域重复 let |
+| STM_08_04_021 | runtime | STM_08_04_021_RUNTIME_const_not_reassignable.ets | const 运行时不可变性验证 |
 
 ### 8.5 if 语句
 

@@ -8,9 +8,9 @@
 function testConstComplexInitializer(): void {
     const a: int = 1 + 2 * 3;
     const b: number = 1.5 + 2.5;
-    const c: int = 1 ? 100 : 0;
+    const c: int = true ? 100 : 0;
     const d: string = "Hello" + " " + "World";
-    const e: boolean = 1 && 0;
+    const e: boolean = true && false;
     const f: int = 10;
     const g: int = f + 5;
     const h: string[] = ["a", "b", "c"];
