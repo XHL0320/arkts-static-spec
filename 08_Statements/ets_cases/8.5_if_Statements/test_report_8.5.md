@@ -1,6 +1,6 @@
 # 8.5 if 语句 - 测试执行报告
 
-**测试日期：** 2026-06-18
+**测试日期：** 2026-06-19
 **编译器：** es2panda (ArkTS Static Compiler)
 **运行时：** ark VM
 **boot files：** arkstdlib.abc + etsstdlib.abc
@@ -11,12 +11,12 @@
 
 ## 总体统计
 
-| 分类 | 总数 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 16 | 16 | 0 | 100% |
-| compile-fail | 2 | 2 | 0 | 100% |
-| runtime（真实执行） | 8 | 8 | 0 | 100% |
-| **总计** | **26** | **26** | **0** | **100%** |
+| 分类 | 总数 | 通过 |
+|------|------|------|
+| compile-pass | 16 | 16 |
+| compile-fail | 2 | 2 |
+| runtime | 8 | 8 |
+| **总计** | **26** | **26** |
 
 **修复记录：** 前期 compile-fail 组原有 3 个用例（006-008）因 ArkTS 实现 Extended Conditional Expressions 而意外通过编译，已重命名为 PASS_*_EXTENDED 并移至 compile-pass。当前 compile-fail 组为 2 个新增语法错误用例（缺括号、空条件），均正确被 es2panda 拒绝。
 

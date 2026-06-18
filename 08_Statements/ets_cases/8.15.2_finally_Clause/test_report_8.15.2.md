@@ -1,6 +1,6 @@
 # 8.15.2 finally 子句 - 测试执行报告
 
-**测试日期：** 2026-06-18
+**测试日期：** 2026-06-19
 **编译器：** es2panda (ArkTS Static Compiler)
 **运行时：** ark VM
 **boot files：** arkstdlib.abc + etsstdlib.abc

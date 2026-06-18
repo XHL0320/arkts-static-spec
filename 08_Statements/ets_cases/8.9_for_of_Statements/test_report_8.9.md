@@ -1,6 +1,6 @@
 # 8.9 for-of 语句 - 测试执行报告
 
-**测试日期：** 2026-06-18
+**测试日期：** 2026-06-19
 **编译器：** es2panda
 **运行时：** ark VM
 **boot files：** arkstdlib.abc + etsstdlib.abc

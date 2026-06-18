@@ -1,11 +1,12 @@
 # 8.12 return 语句 - 测试执行报告
 
-**测试日期：** 2026-06-18
+**测试日期：** 2026-06-19
 **编译器：** es2panda
 **运行时：** ark VM
 **boot files：** arkstdlib.abc + etsstdlib.abc
 **运行环境：** Linux (native)
 **运行脚本：** `08_Statements/run_statements_cases_wsl.sh`
+**对应规范：** ArkTS Static Spec §8.12 return 语句
 
 ---
 
@@ -17,6 +18,8 @@
 | compile-fail | 6 | 6 | 0 | 100% |
 | runtime（真实执行） | 8 | 8 | 0 | 100% |
 | **总计** | **24** | **24** | **0** | **100%** |
+
+**一次通过率：100%**（首次执行无任何用例失败）
 
 ---
 
@@ -33,6 +36,12 @@
 ### runtime（8/8 — ark VM 真实执行 + assert）
 
 验证 return 表达式产生正确值（009）、return 导致提前退出控制流（010）、条件多路径 return 行为正确（011）、lambda 中 return 的返回值（012）、子类可赋值给基类返回类型的运行时行为（013）、联合返回类型的运行时行为（014）、多控制流路径中的 return（018）、嵌套 if-else 中的 return（019），均通过 throw-on-mismatch 断言。
+
+---
+
+## 执行过程异常
+
+**首次运行无失败用例，无需修复。**
 
 ---
 

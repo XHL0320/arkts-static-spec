@@ -1,6 +1,6 @@
 # 8.13 switch 语句 - 测试执行报告
 
-**测试日期：** 2026-06-18
+**测试日期：** 2026-06-19
 **编译器：** es2panda (ArkTS Static Compiler)
 **运行时：** ark VM
 **boot files：** arkstdlib.abc + etsstdlib.abc
@@ -11,20 +11,22 @@
 
 ## 总体统计
 
-| 分类 | 总数 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 11 | 11 | 0 | 100% |
-| compile-fail | 4 | 4 | 0 | 100% |
-| runtime（真实执行） | 10 | 10 | 0 | 100% |
-| **总计** | **25** | **25** | **0** | **100%** |
+| 分类 | 总数 | 通过 |
+|------|------|------|
+| compile-pass | 12 | 12 |
+| compile-fail | 4 | 4 |
+| runtime | 10 | 10 |
+| **总计** | **26** | **26** |
 
-> 注：本批次在初版 11 个用例（5 compile-pass / 3 compile-fail / 3 runtime）基础上扩展至 25 个，新增覆盖了 char switch、boolean 扩展匹配、对象实例 switch、enum switch、null case 匹配、深层 fall-through、重复 case 值语义等场景，所有新增用例均一次通过。
+🎯 一次通过率 100%
+
+> 注：本批次在初版 11 个用例（5 compile-pass / 3 compile-fail / 3 runtime）基础上扩展至 26 个，新增覆盖了 char switch、boolean 扩展匹配、对象实例 switch、enum switch、null case 匹配、深层 fall-through、重复 case 值语义等场景，所有新增用例均一次通过。
 
 ---
 
 ## 详细执行结果
 
-### compile-pass（11/11 通过）
+### compile-pass（12/12 通过）
 验证 int、string、boolean、char 类型 switch 表达式的基本语法与 case 匹配、fall-through 连续 case 语义、带标签的 break 跳出外层嵌套 switch/loop、对象实例 switch、以及 char case 用于 int switch 表达式的兼容性。
 
 ### compile-fail（4/4 通过）

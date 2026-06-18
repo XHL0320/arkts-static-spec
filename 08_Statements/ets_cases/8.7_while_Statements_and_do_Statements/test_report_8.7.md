@@ -1,6 +1,6 @@
 # 8.7 while 与 do 语句 - 测试执行报告
 
-**测试日期：** 2026-06-18
+**测试日期：** 2026-06-19
 **编译器：** es2panda (ArkTS Static Compiler)
 **运行时：** ark VM
 **boot files：** arkstdlib.abc + etsstdlib.abc
@@ -13,18 +13,18 @@
 
 | 分类 | 总数 | 通过 | 失败 | 通过率 |
 |------|------|------|------|--------|
-| compile-pass | 15 | 15 | 0 | 100% |
+| compile-pass | 16 | 16 | 0 | 100% |
 | compile-fail | 2 | 2 | 0 | 100% |
 | runtime（真实执行） | 7 | 7 | 0 | 100% |
-| **总计** | **24** | **24** | **0** | **100%** |
+| **总计** | **25** | **25** | **0** | **100%** |
 
-**修复记录：** 新增2个 compile-fail（语法错误：while 缺少括号、do 缺少 while 关键字），compile-pass 扩展至15个（新增 break/continue/try-catch/complex-logical/bigint/enum），runtime 扩展至7个（新增 break/continue/do-while at-least-once/while zero-iterations）。
+**修复记录：** 新增2个 compile-fail（语法错误：while 缺少括号、do 缺少 while 关键字），compile-pass 扩展至16个（新增 break/continue/try-catch/complex-logical/bigint/enum），runtime 扩展至7个（新增 break/continue/do-while at-least-once/while zero-iterations）。
 
 ---
 
 ## 详细执行结果
 
-### compile-pass（15/15 通过）
+### compile-pass（16/16 通过）
 验证 while 与 do-while 语句的编译期行为：boolean 条件（literal、variable、logical-expression）、空循环体（空 block/空语句）、嵌套循环（while/do-while 交叉嵌套）、Extended Conditional Expressions 允许的非 boolean 条件（number、string、non-bool、bigint、enum）、break 在嵌套 if 中、continue、循环体含 try-catch。
 
 ### compile-fail（2/2 通过）

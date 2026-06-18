@@ -178,27 +178,27 @@ SECTIONS="8.3_Block" bash run_statements_cases_wsl.sh
 
 | 子章节 | 用例总数 | 通过 | 失败 | 未解决异常 | 最近执行 |
 |-------|---------|------|------|-----------|---------|
-| 8.1 Normal and Abrupt Statement Execution | 9 | 9 | 0 | 0 | 2026-06-18 |
-| 8.2 Expression Statements | 11 | 11 | 0 | 0 | 2026-06-18 |
-| 8.3 Block | 10 | 10 | 0 | STM-I1 | 2026-06-18 |
-| 8.4 Constant or Variable Declarations | 12 | 12 | 0 | 0 | 2026-06-18 |
-| 8.5 if Statements | 13 | 13 | 0 | 0 | 2026-06-18 |
-| 8.6 Loop Statements | 12 | 12 | 0 | STM-I2 | 2026-06-18 |
-| 8.7 while and do Statements | 13 | 13 | 0 | 0 | 2026-06-18 |
-| 8.8 for Statements | 12 | 12 | 0 | 0 | 2026-06-18 |
-| 8.9 for-of Statements | 13 | 13 | 0 | 0 | 2026-06-18 |
-| 8.10 break Statements | 12 | 12 | 0 | 0 | 2026-06-18 |
-| 8.11 continue Statements | 12 | 12 | 0 | 0 | 2026-06-18 |
-| 8.12 return Statements | 12 | 12 | 0 | 0 | 2026-06-18 |
-| 8.13 switch Statements | 13 | 13 | 0 | 0 | 2026-06-18 |
-| 8.14 throw Statements | 9 | 9 | 0 | 0 | 2026-06-18 |
-| 8.15 try Statements | 12 | 12 | 0 | 0 | 2026-06-18 |
-| 8.15.1 catch Clause | 11 | 11 | 0 | 0 | 2026-06-18 |
-| 8.15.2 finally Clause | 11 | 11 | 0 | 0 | 2026-06-18 |
-| 8.15.3 try Statement Execution | 11 | 11 | 0 | 0 | 2026-06-18 |
-| **总计** | **206** | **206** | **0** | **2** | — |
+| 8.1 Normal and Abrupt Statement Execution | 14 | 14 | 0 | 0 | 2026-06-19 |
+| 8.2 Expression Statements | 17 | 17 | 0 | 0 | 2026-06-19 |
+| 8.3 Block | 15 | 15 | 0 | STM-I1 | 2026-06-19 |
+| 8.4 Constant or Variable Declarations | 23 | 23 | 0 | 0 | 2026-06-19 |
+| 8.5 if Statements | 26 | 26 | 0 | 0 | 2026-06-19 |
+| 8.6 Loop Statements | 20 | 20 | 0 | STM-I2 | 2026-06-19 |
+| 8.7 while and do Statements | 25 | 25 | 0 | 0 | 2026-06-19 |
+| 8.8 for Statements | 22 | 22 | 0 | 0 | 2026-06-19 |
+| 8.9 for-of Statements | 23 | 23 | 0 | 0 | 2026-06-19 |
+| 8.10 break Statements | 19 | 19 | 0 | 0 | 2026-06-19 |
+| 8.11 continue Statements | 18 | 18 | 0 | 0 | 2026-06-19 |
+| 8.12 return Statements | 24 | 24 | 0 | 0 | 2026-06-19 |
+| 8.13 switch Statements | 26 | 26 | 0 | 0 | 2026-06-19 |
+| 8.14 throw Statements | 19 | 19 | 0 | 0 | 2026-06-19 |
+| 8.15 try Statements | 22 | 22 | 0 | 0 | 2026-06-19 |
+| 8.15.1 catch Clause | 17 | 17 | 0 | 0 | 2026-06-19 |
+| 8.15.2 finally Clause | 18 | 18 | 0 | 0 | 2026-06-19 |
+| 8.15.3 try Statement Execution | 15 | 15 | 0 | 0 | 2026-06-19 |
+| **总计** | **363** | **363** | **0** | **2** | — |
 
-**累计 206 个测试用例，全部编译运行通过，2 个未解决异常（spec-implementation mismatch）。**
+**累计 363 个测试用例，全部编译运行通过，2 个未解决异常（spec-implementation mismatch）。**
 
 ---
 
