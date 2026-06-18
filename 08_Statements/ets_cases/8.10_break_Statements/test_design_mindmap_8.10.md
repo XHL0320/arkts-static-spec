@@ -1,57 +1,111 @@
 # 8.10 break 语句 测试设计思维导图
 
-## 1. 规格定义
-- 语法: breakStatement: 'break' identifier?
-- 不带标签: 跳出最内层 while / do / for / for-of / switch
-- 带标签: 跳出包含该标签的封闭语句
-- 编译时错误:
-  - break 出现在 loopStatement 或 switchStatement 外部
-  - break 标签不匹配任何封闭语句的标签
+## 一、规格说明
 
-## 2. 测试策略总览
-### 2.1 编译通过 (compile-pass)
-- 基本场景: 各种循环结构中使用 break
-- 标签场景: 带标签的 break 跳出外层循环
-- switch 场景: break 防止 fallthrough
+**语法**: `breakStatement: 'break' identifier?`
 
-### 2.2 编译失败 (compile-fail)
-- break 出现在循环/switch 外部 (if 块, 函数体中)
-- break 标签不存在于任何封闭语句
-- break 标签指向非循环/switch 标签
+**语义**:
+- **不带标签**: 跳出最内层的 `while` / `do` / `for` / `for-of` / `switch` 语句
+- **带标签**: 跳出包含该标签的封闭语句（必须是 loopStatement 或 switchStatement）
+- **编译时错误**:
+  - `break` 出现在 loopStatement 或 switchStatement 外部
+  - `break` 的标签不匹配任何封闭语句的标签
+  - `break` 的标签指向非循环/非 switch 的标记语句
 
-### 2.3 运行时 (runtime)
-- 验证 break 跳出 while 循环
-- 验证带标签的 break 跳出外层循环 (跳过内层剩余迭代)
-- 验证 break 在 switch 中防止 fallthrough
+**规范引用**: STATEMENTS.md -- "If a break statement is used outside a loopStatement or a switchStatement, then a compile-time error occurs."
 
-## 3. 详细测试点
-### 3.1 无标签 break (pass)
-- while 循环中的 break
-- for 循环中的 break
-- for-of 循环中的 break
-- do-while 循环中的 break
-- switch 语句中的 break
+## 二、核心规则
 
-### 3.2 带标签 break (pass)
-- 嵌套循环中使用 break 跳转到外层标签
-- 标签位于外层 while/do/for/for-of/switch
+### 无标签 break 的合法上下文
+| 上下文 | 示例 |
+|--------|------|
+| while 循环 | `while (cond) { if (x) break; }` |
+| do-while 循环 | `do { if (x) break; } while (cond);` |
+| for 循环 | `for (let i = 0; i < n; i++) { if (x) break; }` |
+| for-of 循环 | `for (let v of arr) { if (x) break; }` |
+| switch 语句 | `switch (x) { case 1: ... break; }` |
+| 深层嵌套（3层+） | 最内层 `for` 中的 break 只跳出最内层 |
 
-### 3.3 边界 / 异常 (fail)
-- if 块中直接使用 break (无外围循环/switch)
-- 函数体顶层使用 break
-- break 标签名称不存在
-- break 标签指向非循环/switch 语句 (如 if, block)
+### 带标签 break 的合法上下文
+| 场景 | 示例 |
+|------|------|
+| 2层嵌套，跳出外层 | `outer: while (...) { while (...) { break outer; } }` |
+| 3层嵌套，跳出中间层 | `outer: for (...) { mid: for (...) { for (...) { break mid; } } }` |
+| 3层嵌套，跳出最外层 | `outer: for (...) { for (...) { for (...) { break outer; } } }` |
 
-### 3.4 运行时行为验证 (runtime)
-- break 跳出后循环变量/计数器的值
-- 带标签 break 跳过内层剩余迭代
-- switch 每个 case 后 break 防止 fallthrough
+### 编译时错误规则
+| 错误场景 | 描述 |
+|----------|------|
+| break 在循环/switch 外部 | 顶层 break、if/else 深层嵌套中的 break（无外围循环） |
+| break 标签不存在 | 标签名不匹配任何封闭语句的标签 |
+| break 标签指向非循环/switch | 标签贴在块语句 `{}` 上而非循环/switch 上 |
 
-## 4. 文件命名规范
-- 模板: STM_08_10_<NNN>_<TYPE>_<DESC>.ets
-- TYPE 取值: PASS, FAIL, RUNTIME
-- NNN: 三位数字序号, 全局连续
+## 三、测试点覆盖
+
+### compile-pass（7个文件）
+
+| 编号 | 测试点 | 描述 |
+|------|--------|------|
+| 001 | while 无标签 break | `while` 循环中使用无标签 `break`，跳出最内层 while |
+| 002 | 嵌套循环带标签 break | 2层嵌套（`while` in `while`）中使用 `break outer`，跳出外层标记的循环 |
+| 003 | for 无标签 break | `for` 循环中使用无标签 `break`，跳出 for 循环 |
+| 004 | for-of 无标签 break | `for-of` 循环中使用无标签 `break`，跳出 for-of 循环 |
+| 005 | switch 中 break | `switch` 语句中使用 `break` 跳出 case 块，防止 fallthrough |
+| 006 | 3层嵌套无标签 break | 三层嵌套 `for` 循环中使用无标签 `break`，验证编译通过（只跳出最内层） |
+| 007 | 3层嵌套带标签 break | 三层嵌套 `for` 循环中使用 `break mid`，跳出中间层标记的循环 |
+
+### compile-fail（6个文件）
+
+| 编号 | 测试点 | 描述 |
+|------|--------|------|
+| 006 | break 在循环/switch 外部 (if块) | `if (true) { break; }` -- break 不在任何循环/switch 内，产生编译错误 |
+| 007 | break 标签不存在 | `while` 中 `break nonexistent_label;` -- 标签不匹配任何封闭语句 |
+| 008 | break 标签指向非循环语句 | `lab: { break lab; }` -- 标签贴在块语句上而非循环/switch |
+| 009 | break 在顶层 | 文件顶层直接写 `break` -- 无函数包裹，不在任何循环/switch 内 |
+| 010 | 3层嵌套中 break 标签不存在（深层） | `outer: for (...) { for (...) { for (...) { break not_exist; } } }` -- 标签在深层嵌套中也不存在 |
+| 011 | 深层嵌套 if/else 中 break | 三层 `if` 嵌套中的 `break`，无外围循环/switch，产生编译错误 |
+
+### runtime（6个文件）
+
+| 编号 | 测试点 | 描述 |
+|------|--------|------|
+| 009 | while 中 break 运行时行为 | 验证 `while` 中 `break` 在 `i==3` 时立即退出，`count` 和 `i` 值正确 |
+| 010 | 带标签 break 跳出外层循环运行时 | 验证 `break outer` 跳出 `outer` 循环后，外层 `i=0`、内层 `j=2` 不变 |
+| 011 | switch 中 break 防止 fallthrough 运行时 | 验证 `switch` 中 `break` 正确跳出，`result` 只为匹配的 case 值 |
+| 012 | 3层嵌套无标签 break 运行时 | 验证无标签 `break` 只跳出最内层，外层（3次）和中层（9次）完整执行，内层体执行9次 |
+| 013 | 3层嵌套带标签 break 跳出最外层运行时 | 验证 `break outer` 在 `i==1&&j==0&&k==0` 时直接跳出最外层，外层仅执行2次 |
+| 014 | 3层嵌套带标签 break 跳出中间层运行时 | 验证 `break mid` 在 `j==2` 时跳出中层，外层执行3次完整，内层体总共33次 |
+
+## 四、边界值与异常场景
+
+### 边界值
+- 空循环体中使用 break
+- 深层嵌套（3层以上）中的无标签 break（只跳出最内层）
+- 深层嵌套（3层以上）中的带标签 break（可跳出任意外层）
+- break 后紧跟 return 语句
+- 循环嵌套 switch，从 switch 中 break 不会跳出外层循环
+- 标签贴在最外层、中层、内层的不同场景
+
+### 异常场景
+- break 出现在顶层（无任何函数包裹）
+- break 在深层 if/else 嵌套中（无外围循环/switch）
+- break 标签名拼写错误/不存在（包括深层嵌套场景）
+- break 标签指向非循环的非 switch 标记块
+- break 标签指向的封闭语句类型错误（if 标签、block 标签）
+
+## 五、编号规划
+- compile-pass: 001 ~ 007
+- compile-fail: 006 ~ 011
+- runtime: 009 ~ 014
+
+（PASS/FAIL/RUNTIME 各自独立编号，存储在对应子目录 `compile-pass/`、`compile-fail/`、`runtime/` 中。）
+
+## 六、文件命名规范
+- 模板: `STM_08_10_<NNN>_<TYPE>_<DESC>.ets`
+- TYPE 取值: `PASS`, `FAIL`, `RUNTIME`
+- NNN: 三位数字序号，每种类型内连续
 - 注释块格式:
+  ```
   /**
    * @id STM_08_10_NNN_TYPE_DESC
    * @expect compile-pass|compile-fail|runtime
@@ -59,18 +113,4 @@
    * @design <中文描述>
    * @note <英文说明>
    */
-
-## 5. 文件清单
-| # | 文件名 | 类型 | 描述 |
-|---|--------|------|------|
-| 001 | STM_08_10_001_PASS_break_basic_while.ets | pass | while循环中使用break |
-| 002 | STM_08_10_002_PASS_break_labelled.ets | pass | 嵌套循环中带标签break |
-| 003 | STM_08_10_003_PASS_break_for_loop.ets | pass | for循环中使用break |
-| 004 | STM_08_10_004_PASS_break_for_of.ets | pass | for-of循环中使用break |
-| 005 | STM_08_10_005_PASS_break_switch.ets | pass | switch语句中使用break |
-| 006 | STM_08_10_006_FAIL_break_outside_loop.ets | fail | break在循环/switch外部 |
-| 007 | STM_08_10_007_FAIL_break_label_not_found.ets | fail | break标签不存在 |
-| 008 | STM_08_10_008_FAIL_break_label_non_loop.ets | fail | break标签指向非循环语句 |
-| 009 | STM_08_10_009_RUNTIME_break_while_control.ets | runtime | break跳出while验证 |
-| 010 | STM_08_10_010_RUNTIME_break_labelled_outer.ets | runtime | 标签break跳出外层循环 |
-| 011 | STM_08_10_011_RUNTIME_break_switch_control.ets | runtime | switch中break防止fallthrough |
+  ```

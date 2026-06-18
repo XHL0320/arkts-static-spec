@@ -13,27 +13,25 @@
 
 | 分类 | 总数 | 通过 | 失败 | 通过率 |
 |------|------|------|------|--------|
-| compile-pass | 8 | 8 | 0 | 100% |
-| compile-fail | 0 | 0 | 0 | 100% |
-| runtime（真实执行） | 3 | 3 | 0 | 100% |
-| **总计** | **11** | **11** | **0** | **100%** |
+| compile-pass | 15 | 15 | 0 | 100% |
+| compile-fail | 2 | 2 | 0 | 100% |
+| runtime（真实执行） | 7 | 7 | 0 | 100% |
+| **总计** | **24** | **24** | **0** | **100%** |
 
-
-**首次执行记录：** 原有3个compile-fail因Extended Conditional Expressions误判，已移至compile-pass
-
+**修复记录：** 新增2个 compile-fail（语法错误：while 缺少括号、do 缺少 while 关键字），compile-pass 扩展至15个（新增 break/continue/try-catch/complex-logical/bigint/enum），runtime 扩展至7个（新增 break/continue/do-while at-least-once/while zero-iterations）。
 
 ---
 
 ## 详细执行结果
 
-### compile-pass（8/8 通过）
-验证 while 与 do-while 语句的基本语法编译：boolean 条件、空循环体（空 block/空语句）、嵌套循环（while/do-while 交叉嵌套）。原有3个 compile-fail 用例（number/string/non-bool 条件）因 ArkTS Extended Conditional Expressions 允许非 boolean 类型作为条件而编译通过，已修正分类并移至 compile-pass。
+### compile-pass（15/15 通过）
+验证 while 与 do-while 语句的编译期行为：boolean 条件（literal、variable、logical-expression）、空循环体（空 block/空语句）、嵌套循环（while/do-while 交叉嵌套）、Extended Conditional Expressions 允许的非 boolean 条件（number、string、non-bool、bigint、enum）、break 在嵌套 if 中、continue、循环体含 try-catch。
 
-### compile-fail（0/0 通过）
-当前无 compile-fail 用例。原设计的非 boolean 条件错误检测用例因 Extended Conditional Expressions 特性不再适用。
+### compile-fail（2/2 通过）
+验证语法层面非法构造在编译期正确拒绝：while 条件缺少括号（`while true {}`）产生 Syntax error、do 块缺少 while 关键字（`do {}` 无 `while (...)` 子句）产生语法错误。
 
-### runtime（3/3 — ark VM 真实执行 + assert）
-验证 while 与 do-while 运行时语义：`while (false)` 循环体不执行、`do { } while (false)` 循环体至少执行一次、相同 false 条件下 while 迭代 0 次 vs do-while 迭代 1 次的行为差异。
+### runtime（7/7 — ark VM 真实执行 + assert）
+验证 while 与 do-while 运行时语义：`while (false)` 循环体执行 0 次、`do { } while (false)` 循环体至少执行 1 次、相同 false 条件下 while 迭代 0 次 vs do-while 迭代 1 次的行为差异、do-while 体内 continue 跳转到条件判断、while 内嵌套 if 使用 break 提前退出、do-while 体内 break 在首次迭代即退出验证 at-least-once 语义、while 条件初始 false 下多场景 0 次迭代验证。
 
 ---
 

@@ -13,26 +13,45 @@
 
 | 分类 | 总数 | 通过 | 失败 | 通过率 |
 |------|------|------|------|--------|
-| compile-pass | 4 | 4 | 0 | 100% |
+| compile-pass | 6 | 6 | 0 | 100% |
 | compile-fail | 3 | 3 | 0 | 100% |
-| runtime（真实执行） | 2 | 2 | 0 | 100% |
-| **总计** | **9** | **9** | **0** | **100%** |
+| runtime（真实执行） | 5 | 5 | 0 | 100% |
+| **总计** | **14** | **14** | **0** | **100%** |
 
 ---
 
 ## 详细执行结果
 
-### compile-pass（4/4 通过）
+### compile-pass（6/6 通过）
 
-验证赋值语句、表达式语句、块语句、if-else、for/while/do-while 循环、空语句等正常完成的编译通过，以及 break/continue/return 跳转语句、try-catch-finally 异常处理、嵌套控制流（labeled break/continue、循环内嵌 try-catch）的正确编译。
+- 001 正常完成：8 种语句类型（赋值、表达式、块、if-else、for、while、do-while、空语句）编译通过
+- 002 try-catch-finally 突然完成处理：catch 捕获异常、finally 总是执行
+- 003 break/continue/return 跳转：循环/switch 内 break、循环内 continue、函数 return
+- 004 嵌套控制流：labeled break/continue、循环内嵌 try-catch、if 内 try 内 if 混合完成
+- 012 多异常完成源共存：return/throw/break/continue 在同一函数体内各自合法上下文共存
+- 013 return 在嵌套结构中的异常完成：if-else 内、循环内、try 块内、嵌套 if 内、switch 内 return
 
 ### compile-fail（3/3 通过）
 
-验证 `throw 42`（非 Error 类型抛出）、break 和 continue 在循环/switch 外部使用（if 块内）均产生编译错误，确认 es2panda 正确拒绝违反 ArkTS 语句完成语义的代码。
+- 005 throw 非 Error 类型（`throw 42`）在编译期被正确拒绝
+- 006 break 在循环/switch 外部（if 块内）在编译期被正确拒绝
+- 007 continue 在循环外部（if 块内）在编译期被正确拒绝
 
-### runtime（2/2 — ark VM 真实执行 + assert）
+### runtime（5/5 — ark VM 真实执行 + assert）
 
-验证正常完成的语句按预期顺序执行并产生正确结果（顺序赋值 a=1→a+2→a*3=9、if-else 分支、for 累加、while 计数、空语句后继续执行），以及 throw 触发异常完成后被 try-catch 捕获、嵌套 try-catch 和 finally 在异常后正确执行的运行时行为。
+- 008 正常完成执行流：顺序赋值 a=1→a+2→a*3=9、if-else 分支、for 累加、while 计数、空语句后继续执行
+- 009 突然完成 try-catch：throw 触发异常完成后被 try-catch 捕获，嵌套 try-catch 和 finally 正确执行
+- 010 return 异常完成：return 从函数内多层嵌套控制结构（if-else、循环、try-catch）中正确退出，verify 返回值
+- 011 finally 总是执行：正常路径和异常抛出路径下 finally 块均被正确执行，覆盖 3 个场景
+- 014 多异常完成路径：同一函数内 return/throw/break 多条路径共存，运行时第一个命中的 abrupt 语句决定实际完成方式
+
+---
+
+## 修复记录
+
+| 用例 | 异常 | 修复 |
+|------|------|------|
+| -- | 无异常 | -- |
 
 ---
 
