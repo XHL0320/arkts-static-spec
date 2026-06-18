@@ -7,7 +7,7 @@
  */
 function testIntCaseOnStringSwitch(): void {
     let s: string = "hello";
-    switch (s) {
+    if (s == null) { } else { switch (s!) {
         case 42:
             break;
         default:
