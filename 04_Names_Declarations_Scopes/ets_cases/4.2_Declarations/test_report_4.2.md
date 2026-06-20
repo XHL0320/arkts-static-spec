@@ -5,9 +5,9 @@
 | 分类 | 总数 | 通过 | 失败 | 通过率 |
 |------|------|------|------|--------|
 | compile-pass | 4 | 4 | 0 | 100% |
-| compile-fail | 7 | 7 | 0 | 100% |
+| compile-fail | 8 | 8 | 0 | 100% |
 | runtime（真实执行） | 1 | 1 | 0 | 100% |
-| **总计** | **12** | **12** | **0** | **100%** |
+| **总计** | **13** | **13** | **0** | **100%** |
 
 ## 详细执行结果
 
@@ -29,6 +29,7 @@
 | 5 | NAM_04_02_014_FAIL_OVERLOAD_EQUIVALENT | 重载等价签名 | PASS |
 | 6 | NAM_04_02_015_FAIL_OVERLOAD_TYPE_ERASURE | 类型擦除等价 | PASS |
 | 7 | NAM_04_02_016_FAIL_AMBIGUOUS_IMPORT | 导入冲突 | PASS |
+| 8 | NAM_04_02_017_FAIL_IMPORT_DUPLICATE | 导入重复 (declare+let 同名) | PASS |
 
 ### runtime
 | # | 用例 ID | 验证内容 | 断言数 | 结果 |
@@ -42,4 +43,5 @@
 - **运行时：** ark VM
 - **运行命令：** `SECTIONS="4.2_Declarations" bash run_names_cases_wsl.sh`
 - **异常修复：** NAM_04_02_016 原为 `function foo() {}` 无冲突场景，改为 `declare function foo(); function foo() {}` 实现真正的 ambient 冲突检测
+- **补充日期：** 2026-06-20（新增 compile-fail ×1：NAM_04_02_017 导入重复检测）
 - **已知局限：** spec 4.2.1 行225 "import 同名函数与本地声明冲突" 需要跨文件编译上下文，当前单文件编译框架无法测试，暂不覆盖
