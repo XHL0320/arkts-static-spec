@@ -1,6 +1,49 @@
-# 04 Names, Declarations and Scopes Issue Report
+# 04 Names Declarations Scopes Issue Report
 
-No confirmed implementation issues recorded yet.
+记录 04 Names Declarations Scopes 章节下所有子章节执行用例时**实际结果与预期不符且当前未解决**的异常。
 
-| ID | Case | Symptom | Expected | Actual | Status |
-|---|---|---|---|---|---|
+---
+
+## 当前未解决异常
+
+无。无确认的规范-实现 GAP。
+
+---
+
+## 章节最新执行统计
+
+| 子章节 | 用例总数 | 通过 | 失败 | 最近执行 |
+|-------|:-------:|:----:|:----:|---------|
+| 4.1 Names | 15 | 15 | 0 | 2026-06-20 |
+| 4.2 Declarations | 13 | 13 | 0 | 2026-06-19 |
+| 4.3 Scopes | 15 | 15 | 0 | 2026-06-19 |
+| 4.4 Accessible | 12 | 12 | 0 | 2026-06-20 |
+| 4.5 Type Declarations | 23 | 23 | 0 | 2026-06-19 |
+| 4.6 Variable/Constant | 25 | 25 | 0 | 2026-06-19 |
+| 4.7 Function Declarations | 29 | 29 | 0 | 2026-06-20 |
+
+**累计 132 个测试用例，132 通过，0 失败 ✅**
+
+---
+
+## 注
+
+### 已知基础设施限制（已全部修复）
+
+以下失败此前为测试框架环境限制，现已在该环境中验证通过：
+
+| 用例 | 原失败原因 | 状态 |
+|------|---------|:----:|
+| NAM_04_01_020 | runtime entrypoint 找不到类 | ✅ 已修复 |
+| NAM_04_07_027 | runtime ETSGLOBAL 入口问题 | ✅ 已修复 |
+
+### 历史已解决
+
+| 问题 | 修复 |
+|------|------|
+| NAM_04_02_017 空文件 | 已补充 `declare function + let` 同名冲突测试代码 |
+
+### Spec 文档问题（非执行异常，记录于 `analysis_report.md`）
+
+- Spec 未完整列举所有保留名（如 `int`、`Box`、`string`）
+- `int` 作为隐式推断类型未被正式定义

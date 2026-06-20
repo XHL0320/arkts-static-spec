@@ -1,28 +1,9 @@
 {
-    "chapter":  "05",
-    "topic":  "Generics",
-    "directory":  "05_Generics",
-    "spec_source":  "ArkTS static language specification",
-    "subtopics":  [
-                      "5.1_Type_Parameters",
-                      "5.1.1_Type_Parameter_Constraint",
-                      "5.1.2_Type_Parameter_Default",
-                      "5.1.3_Type_Parameter_Variance",
-                      "5.1.4_Wildcard_Type",
-                      "5.2_Generic_Instantiations",
-                      "5.2.1_Type_Arguments",
-                      "5.2.2_Explicit_Generic_Instantiations",
-                      "5.2.3_Implicit_Generic_Instantiations"
-                  ],
-    "case_roots":  [
-                       "ets_cases"
-                   ],
-    "categories":  [
-                       "compile-pass",
-                       "compile-fail",
-                       "runtime"
-                   ],
-    "cases":  [
-
-              ]
+  "chapter": "05_Generics",
+  "prefix": "GEN_",
+  "sections": [
+    "5.1_Type_Parameters",
+    "5.2_Variance_Wildcard",
+    "5.3_Generic_Instantiations"
+  ]
 }
