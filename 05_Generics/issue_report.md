@@ -82,10 +82,10 @@ SECTIONS="5.2_Variance_Wildcard" bash run_generics_cases_wsl.sh
 | 子章节 | 用例总数 | 通过 | 失败/GAP | 最近执行 |
 |-------|---------|:----:|:--------:|---------|
 | 5.1 Type Parameters | 29 | 29 | 0 | 2026-06-18 |
-| 5.2 Variance and Wildcard | 22 | 20 | 2 GAP | 2026-06-20 |
+| 5.2 Variance and Wildcard | 23 | 21 | 2 GAP | 2026-06-20 |
 | 5.3 Generic Instantiations | 21 | 21 | 0 | 2026-06-18 |
 
-**累计 72 个测试用例，70 通过，2 GAP**
+**累计 73 个测试用例，71 通过，2 GAP**
 
 ---
 

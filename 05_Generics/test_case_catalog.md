@@ -44,6 +44,7 @@
 | GEN_05_02_004 | Invariant — any position | PASS | `GEN_05_02_004_PASS_INVARIANT_ANY_POS.ets` |
 | GEN_05_02_005 | Variance interleave | PASS | `GEN_05_02_005_PASS_VARIANCE_INTERLEAVE.ets` |
 | GEN_05_02_006 | out in constructor | PASS | `GEN_05_02_006_PASS_OUT_CONSTRUCTOR.ets` |
+| GEN_05_02_026 | Type alias variance（设计问题）| PASS | `GEN_05_02_026_PASS_TYPE_ALIAS_VARIANCE.ets` |
 | GEN_05_02_010 | out in in-position | FAIL | `GEN_05_02_010_FAIL_OUT_IN_IN_POSITION.ets` |
 | GEN_05_02_011 | out in field | FAIL | `GEN_05_02_011_FAIL_OUT_IN_FIELD.ets` |
 | GEN_05_02_012 | in in out-position return | FAIL | `GEN_05_02_012_FAIL_IN_IN_OUT_POSITION_RETURN.ets` |

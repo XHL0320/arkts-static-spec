@@ -3,10 +3,10 @@
 ## 总体统计
 | 分类 | 总数 | 通过 | 失败 | 通过率 |
 |------|------|------|------|--------|
-| compile-pass | 6 | 6 | 0 | 100% |
+| compile-pass | 7 | 7 | 0 | 100% |
 | compile-fail | 15 | 13 | 2 | 86.7%（2 GAP）|
 | runtime | 1 | 1 | 0 | 100% |
-| **总计** | **22** | **20** | **2** | **90.9%（2 GAP）** |
+| **总计** | **23** | **21** | **2** | **91.3%（2 GAP）** |
 
 ## 详细执行结果
 
@@ -19,6 +19,7 @@
 | 4 | GEN_05_02_004_PASS_INVARIANT_ANY_POS | 不变体任意位置 | PASS |
 | 5 | GEN_05_02_005_PASS_VARIANCE_INTERLEAVE | 变体交错 | PASS |
 | 6 | GEN_05_02_006_PASS_OUT_CONSTRUCTOR | out 构造函数参数 | PASS |
+| 7 | GEN_05_02_026_PASS_TYPE_ALIAS_VARIANCE | 类型别名 variance（设计问题） | PASS |
 
 ### compile-fail
 | # | 用例 ID | 测试内容 | 结果 |
