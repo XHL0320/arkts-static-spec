@@ -228,7 +228,70 @@ struct Square: Shape {
 
 ---
 
-## 四、综合评分
+## 四、用例 1:1 对照（三环境实测结果）
+
+| # | 用例 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 001 | class 实例化与字段访问 | ✅ compile-pass + runtime | ✅ 编译通过 + 运行通过 | ✅ 编译通过 + 运行通过 |
+| 002 | interface 实现 + 多态 | ✅ compile-pass + runtime | ✅ 编译通过 + 运行通过 | ✅ protocol 实现 + 运行通过 |
+| 003 | enum 声明与 values() | ✅ compile-pass + runtime | ✅ 编译通过 + 运行通过 | ✅ CaseIterable + 运行通过 |
+| 004 | enum fromValue/getName | ✅ runtime | ✅ runtime（valueOf/name） | ⚠️ runtime（需 rawValue 枚举） |
+| 005 | 元组创建与索引 | ✅ compile-pass + runtime | ❌ 无原生 tuple | ✅ runtime（tuple 一等公民） |
+| 006 | 联合类型声明与赋值 | ✅ compile-pass | ❌ 无原生 union | ❌ 无原生 union |
+| 007 | 泛型类实例化 | ✅ compile-pass + runtime | ⚠️ 需装箱（Integer） | ✅ runtime（真泛型） |
+| 008 | 函数类型赋值 | ✅ compile-pass + runtime | ⚠️ Function 接口 | ✅ runtime |
+| 009 | 字面量类型（string）| ✅ compile-pass | ❌ 不支持 | ❌ 不支持 |
+| 010 | 字面量类型（number/boolean）| ✅ compile-fail | ❌ 不支持 | ❌ 不支持 |
+| 011 | type alias 给联合类型命名 | ✅ compile-pass | ❌ 无 type alias | ❌ 无联合类型 |
+| 012 | class 继承与多态（runtime） | ✅ runtime | ✅ runtime | ✅ runtime |
+| 013 | interface 默认方法 | ✅ compile-pass（实验特性） | ✅ default 方法 | ✅ protocol extension |
+| 014 | enum 混合初始化器类型（compile-fail） | ✅ compile-fail | ⚠️ 编译警告（enum 可混合） | ✅ compile-fail |
+| 015 | 元组越界访问（runtime） | ✅ runtime（RangeError） | N/A | ✅ runtime（trap） |
+| 016 | 联合类型 instanceof 收窄（runtime） | ✅ runtime | ⚠️ instanceof（受限） | ✅ runtime（is + if let） |
+| 017 | 泛型擦除（runtime instanceof 检查） | ✅ runtime | ✅ runtime（擦除） | ✅ runtime（真泛型保留） |
+| 018 | FixedArray 与 Array 互赋（compile-fail） | ✅ compile-fail | N/A | N/A |
+| 019 | 泛型默认参数 `<T = int>` | ✅ compile-pass | ❌ 不支持 | ❌ 不支持 |
+| 020 | type alias 递归引用（compile-fail） | ✅ compile-fail | N/A | ✅ compile-fail |
+| 021 | enum string 基类型 | ✅ compile-pass + runtime | ✅ runtime | ✅ runtime（RawValue String） |
+| 022 | 枚举 values() 返回类型 | ⚠️ FixedArray（不便） | ✅ E[]（Array） | ✅ [E]（Array） |
+| 023 | 联合类型 null 收窄（runtime） | ✅ runtime | ⚠️ null 检查（无收窄） | ✅ runtime（Optional unwrap） |
+| 024 | 元组元素修改（runtime） | ✅ runtime | N/A | ✅ runtime |
+| 025 | 接口可选属性实现（runtime） | ✅ runtime | ✅ runtime | ✅ runtime |
+| 026 | 联合类型函数参数（runtime） | ✅ runtime | ⚠️ Object 多态 | ⚠️ Any 多态 |
+| 027 | 接口方法多态（runtime） | ✅ runtime | ✅ runtime | ✅ runtime |
+| 028 | type alias 透明替换（runtime） | ✅ runtime | N/A | ✅ runtime |
+| 029 | 泛型类 get/set 方法（runtime） | ✅ runtime | ✅ runtime | ✅ runtime |
+| 030 | stdlib Box 命名冲突（compile-fail） | ✅ compile-fail | ✅ 无冲突 | ✅ 无冲突 |
+
+### 关键差异详解
+
+#### 006: 联合类型 ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `let u: int \| string = 42; u = "hello";` | ✅ 原生支持 |
+| Java | `Object u = 42; u = "hello";` | ⚠️ 类型信息丢失 |
+| Swift | `var u: Any = 42; u = "hello";` | ⚠️ 类型信息丢失 |
+
+#### 022: enum values() 返回类型 ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `EColor.values()` 返回 `FixedArray<EColor>` | ⚠️ 无 push/pop 等 Array 方法 |
+| Java | `Color.values()` 返回 `Color[]` | ✅ 标准 Array |
+| Swift | `Color.allCases` 返回 `[Color]` | ✅ 标准 Array |
+
+#### 030: stdlib Box 命名冲突 ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `class Box<T> {}` | ❌ compile-fail（与 stdlib 冲突） |
+| Java | `class Box<T> {}` | ✅ 无冲突 |
+| Swift | `struct Box<T> {}` | ✅ 无冲突 |
+
+---
+
+## 五、综合评分
 
 | 维度 | ArkTS | Java | Swift |
 |------|-------|------|-------|

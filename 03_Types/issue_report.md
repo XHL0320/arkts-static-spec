@@ -93,8 +93,10 @@ SECTIONS="3.6.2_Integer_Types_and_Operations" bash run_types_cases_wsl.sh
 | 3.8 Type Any | 11 | 11 | 0 | 2026-06-11 |
 | 3.9 Type Object | 10 | 10 | 0 | 2026-06-11 |
 | 3.10 Type never | 10 | 10 | 0 | 2026-06-11 |
+| 3.11 Type void or undefined | 0 | 0 | 0 | - |
+| 3.12 Type null | 27 | 27 | 0 | 2026-06-20 |
 
-**累计 281 个测试用例**
+**累计 308 个测试用例**
 
 ---
 

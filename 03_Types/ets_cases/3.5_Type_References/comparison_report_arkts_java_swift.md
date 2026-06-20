@@ -196,7 +196,51 @@ let d = Defaulted(v: 2)   // 通过推断而非默认
 
 ---
 
-## 四、综合评分
+## 四、用例 1:1 对照（三环境实测结果）
+
+| # | 用例 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 001 | Simple name 类型引用 `let x: int` | ✅ compile-pass | ✅ 编译通过 | ✅ 编译通过 |
+| 002 | Qualified name `ns.MyType` | ✅ compile-pass | ✅ `pkg.MyType` | ✅ `Module.MyType` |
+| 003 | 泛型引用 `Map<string, int>` | ✅ compile-pass | ✅ `Map<String, Integer>` | ✅ `Dictionary<String, Int>` |
+| 004 | type alias 引用 `let x: MyAlias` | ✅ compile-pass | ❌ 无 type alias | ✅ typealias |
+| 005 | type alias 透明替换（赋值兼容） | ✅ runtime | N/A | ✅ runtime |
+| 006 | 默认类型参数 `<T = int>` | ✅ compile-pass | ❌ 不支持 | ❌ 不支持 |
+| 007 | spec 原例：alias 替换后类型兼容 | ✅ runtime | N/A | ✅ runtime |
+| 008 | 泛型嵌套 `Cont<Cont<int>>` | ✅ compile-pass | ⚠️ 需装箱 `Cont<Cont<Integer>>` | ✅ 编译通过 |
+| 009 | 泛型 alias `type M<T> = A<T>[]` | ✅ compile-pass + runtime | ❌ 无 type alias | ✅ typealias |
+| 010 | alias 循环引用（compile-fail） | ✅ compile-fail | N/A | ✅ compile-fail |
+| 011 | 泛型约束违反（compile-fail） | ✅ compile-fail | ✅ compile-fail | ✅ compile-fail |
+| 012 | 泛型参数数量不匹配 | ✅ compile-fail | ✅ compile-fail | ✅ compile-fail |
+| 013 | 类型参数作用域外引用（compile-fail） | ✅ compile-fail | ✅ compile-fail | ✅ compile-fail |
+| 014 | interface 类型引用 | ✅ compile-pass | ✅ 编译通过 | ✅ protocol 引用 |
+| 015 | enum 类型引用 | ✅ compile-pass | ✅ 编译通过 | ✅ 编译通过 |
+| 016 | alias 链式替换 runtime 验证 | ✅ runtime | N/A | ✅ runtime |
+| 017 | 泛型实例化约束检查 runtime | ✅ runtime | ✅ runtime | ✅ runtime |
+| 018 | 数组类型引用 `int[]` vs `Array<int>` | ✅ compile-pass（等价） | ✅ `int[]` | ✅ `[Int]` |
+| 019 | 函数类型引用 `() => int` | ✅ compile-pass | ⚠️ `Function<Integer,Integer>` | ✅ `() -> Int` |
+
+### 关键差异详解
+
+#### 006: 默认类型参数 ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `class D<T = int>{}; let d: D = new D(1)` | ✅ T 自动推断为 int |
+| Java | 无默认类型参数 | — |
+| Swift | 无默认类型参数，必须显式或可推断 | — |
+
+#### 008: 泛型嵌套无装箱 ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `Cont<Cont<int>>` | ✅ 原生类型直接嵌套 |
+| Java | `Cont<Cont<Integer>>` | ⚠️ 必须 Integer 装箱 |
+| Swift | `Cont<Cont<Int>>` | ✅ 原生类型直接嵌套 |
+
+---
+
+## 五、综合评分
 
 | 维度 | ArkTS | Java | Swift |
 |------|-------|------|-------|

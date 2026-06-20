@@ -165,6 +165,55 @@ let c = 5.0.truncatingRemainder(dividingBy: 0.0)   // ✅ nan
 
 ---
 
+## 四、用例 1:1 对照（三环境实测结果）
+
+| # | 用例 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 001 | float 字面量赋值 | ✅ compile-pass + runtime | ✅ 编译通过 + 运行通过 | ✅ 编译通过 + 运行通过 |
+| 002 | double 字面量赋值 | ✅ compile-pass + runtime | ✅ 编译通过 + 运行通过 | ✅ 编译通过 + 运行通过 |
+| 003 | widening int→float | ✅ compile-pass + runtime | ✅ 编译通过 + 运行通过 | ❌ 必须显式 Float(i) |
+| 004 | widening int→double | ✅ compile-pass + runtime | ✅ 编译通过 + 运行通过 | ❌ 必须显式 Double(i) |
+| 005 | narrowing double→int（显式转换） | ✅ runtime（.toInt()） | ✅ runtime（(int)d） | ✅ runtime（Int(d)） |
+| 006 | 浮点正零 `+0.0` | ✅ runtime | ✅ runtime | ✅ runtime |
+| 007 | 浮点负零 `-0.0` | ✅ runtime | ✅ runtime | ✅ runtime |
+| 008 | `5.0 / 0.0` = Infinity | ✅ runtime | ✅ runtime | ✅ runtime |
+| 009 | `-5.0 / 0.0` = -Infinity | ✅ runtime | ✅ runtime | ✅ runtime |
+| 010 | `0.0 / 0.0` = NaN | ✅ runtime | ✅ runtime | ✅ runtime |
+| 011 | `NaN == NaN` = false | ✅ runtime | ✅ runtime | ✅ runtime |
+| 012 | `5.0 % 0.0` = NaN | ✅ runtime | ✅ runtime | ✅ runtime |
+| 013 | 浮点除零无编译错误 | ✅ compile-pass | ✅ compile-pass | ⚠️ 可能 warning |
+| 014 | 模块级 const 浮点除零 | ✅ runtime（Infinity） | ✅ runtime（Infinity） | ✅ runtime（inf） |
+| 015 | `1e10f` float 后缀 | ✅ compile-pass | ✅ `1e10f` | ❌ Swift 无 float 后缀 |
+| 016 | `number` 是 `double` 别名 | ✅ compile-pass | N/A | N/A |
+| 017 | 浮点比较精度 | ✅ runtime | ✅ runtime | ✅ runtime |
+| 018 | `new float()` 构造返回 0.0 | ✅ runtime | ❌ 不支持 | ✅ runtime（Float()） |
+| 019 | float 加法精度损失 | ✅ runtime | ✅ runtime | ✅ runtime |
+| 020 | double 与 float 混合运算 | ✅ runtime（提升为 double） | ✅ runtime（提升为 double） | ❌ 必须显式转换 |
+
+### 关键差异详解
+
+#### 008-012: 浮点除零行为（三语言完全一致）⭐
+
+| 运算 | ArkTS | Java | Swift |
+|------|-------|------|-------|
+| `5.0 / 0.0` | Infinity | Infinity | inf |
+| `-5.0 / 0.0` | -Infinity | -Infinity | -inf |
+| `0.0 / 0.0` | NaN | NaN | nan |
+| `5.0 % 0.0` | NaN | NaN | nan |
+| `NaN == NaN` | false | false | false |
+
+**关键结论：浮点除零是三语言行为最一致的区域。**
+
+#### 003-004: widening 隐式转换 ⭐
+
+| 语言 | `int → float` | `int → double` |
+|------|-------------|--------------|
+| ArkTS | ✅ 隐式 | ✅ 隐式 |
+| Java | ✅ 隐式 | ✅ 隐式 |
+| Swift | ❌ 必须显式 | ❌ 必须显式 |
+
+---
+
 ## 五、综合评分
 
 | 维度 | ArkTS | Java | Swift |
