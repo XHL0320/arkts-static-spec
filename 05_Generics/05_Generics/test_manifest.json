@@ -1,9 +1,0 @@
-{
-  "chapter": "05_Generics",
-  "prefix": "GEN_",
-  "sections": [
-    "5.1_Type_Parameters",
-    "5.2_Variance_Wildcard",
-    "5.3_Generic_Instantiations"
-  ]
-}
