@@ -229,7 +229,60 @@ s.area()
 
 ---
 
-## 四、综合评分
+## 四、用例 1:1 对照（三环境实测结果）
+
+| # | 用例 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 001 | class 命名类型声明 | ✅ compile-pass | ✅ 编译通过 | ✅ 编译通过 |
+| 002 | interface 命名类型 | ✅ compile-pass | ✅ 编译通过 | ✅ 编译通过 |
+| 003 | enum 命名类型 | ✅ compile-pass | ✅ 编译通过 | ✅ 编译通过 |
+| 004 | type alias 给匿名类型命名 | ✅ compile-pass | ❌ 无 type alias | ✅ typealias |
+| 005 | type alias 透明等价 | ✅ compile-pass + runtime | ❌ 无对应 | ✅ 编译通过 + 运行通过 |
+| 006 | 泛型类实例化 `<T>` | ✅ compile-pass | ✅ 编译通过 | ✅ 编译通过 |
+| 007 | 泛型类实例化无类型参数 | ✅ compile-fail | ⚠️ 编译警告（raw type） | ✅ compile-fail |
+| 008 | type alias + class 同名冲突 | ✅ compile-fail | ❌ 无 alias 冲突 | ✅ compile-fail |
+| 009 | 内置数组不是命名类型 | ✅ compile-pass（spec 明确排除）| N/A（数组是类型） | N/A |
+| 010 | 泛型默认参数 `<T = int>` | ✅ compile-pass | ❌ 不支持 | ❌ 不支持 |
+| 011 | 泛型约束违反 | ✅ compile-fail | ✅ compile-fail | ✅ compile-fail |
+| 012 | interface 多态分发（runtime） | ✅ runtime | ✅ runtime | ✅ runtime |
+| 013 | 类型参数作用域外使用（compile-fail） | ✅ compile-fail | ✅ compile-fail | ✅ compile-fail |
+| 014 | type alias 循环引用（compile-fail） | ✅ compile-fail | N/A | ✅ compile-fail |
+| 015 | 泛型类型参数数量不匹配 | ✅ compile-fail | ✅ compile-fail | ✅ compile-fail |
+| 016 | 命名类型赋值兼容性（runtime） | ✅ runtime | ✅ runtime | ✅ runtime |
+| 017 | type alias 链式替换（runtime） | ✅ runtime | N/A | ✅ runtime |
+| 018 | enum 作为命名类型赋值 | ✅ runtime | ✅ runtime | ✅ runtime |
+| 019 | type alias 给联合类型命名 | ✅ compile-pass | ❌ 无联合类型 | ❌ 无联合类型 |
+| 020 | interface + class 多态（runtime） | ✅ runtime | ✅ runtime | ✅ runtime |
+
+### 关键差异详解
+
+#### 004: type alias ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `type NamedArray = int[]; let a: NamedArray = [1,2];` | ✅ 透明等价 |
+| Java | 无 type alias，必须用具体类 | — |
+| Swift | `typealias NamedArray = [Int]; var a: NamedArray = [1,2]` | ✅ 透明等价 |
+
+#### 007: 泛型实例化无类型参数 ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `class G<T>{}; let c: G = new G()` | ❌ compile-fail |
+| Java | `class G<T>{}; G c = new G()` | ⚠️ 编译警告（raw type） |
+| Swift | `struct G<T>{}; let c: G = G()` | ❌ compile-fail |
+
+#### 010: 泛型默认参数 ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `class D<T = int>{}; let d = new D()` | ✅ T 默认 int |
+| Java | 无默认类型参数 | — |
+| Swift | 无默认类型参数 | — |
+
+---
+
+## 五、综合评分
 
 | 维度 | ArkTS | Java | Swift |
 |------|-------|------|-------|

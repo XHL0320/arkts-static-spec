@@ -33,7 +33,47 @@
 
 ---
 
-## 二、核心结论
+## 二、用例 1:1 对照（三环境实测结果）
+
+| # | 用例 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 001 | boolean 字面量 true/false | ✅ compile-pass + runtime | ✅ 编译通过 + 运行通过 | ✅ 编译通过 + 运行通过 |
+| 002 | boolean 赋值与比较 | ✅ runtime | ✅ runtime | ✅ runtime |
+| 003 | `!` 逻辑非 | ✅ runtime | ✅ runtime | ✅ runtime |
+| 004 | `&& \|\|` 短路逻辑 | ✅ runtime | ✅ runtime | ✅ runtime |
+| 005 | `& \|^` 按位布尔运算 | ✅ runtime | ✅ runtime | ❌ 不支持（仅 && \|\|） |
+| 006 | boolean → int 隐式转换 | ✅ compile-fail | ✅ compile-fail | ✅ compile-fail |
+| 007 | int → boolean 隐式转换 | ✅ compile-fail | ✅ compile-fail | ✅ compile-fail |
+| 008 | `new boolean()` 构造 | ✅ runtime（返回 false） | ❌ 不支持 | ✅ runtime（Bool() → false） |
+| 009 | boolean 作为 Object 子类型 | ✅ compile-pass + runtime | ⚠️ 需装箱 Boolean | ⚠️ Bool 是 struct 非 AnyObject |
+| 010 | boolean 在 if 条件 | ✅ runtime | ✅ runtime | ✅ runtime |
+| 011 | boolean 三元运算 | ✅ runtime | ✅ runtime | ✅ runtime |
+| 012 | boolean 与字符串拼接 `"val: " + true` | ✅ runtime（→ "true"） | ✅ runtime | ⚠️ 需 `"\(b)"` 语法 |
+| 013 | boolean 在联合类型 `boolean \| int` | ✅ compile-pass | ❌ 无联合类型 | ❌ 无联合类型 |
+| 014 | boolean 字段默认值 | ✅ runtime（false） | ⚠️ 无默认值 | ✅ runtime（false） |
+| 015 | boolean instanceof 检查 | ✅ runtime | ⚠️ 仅 Boolean 包装 | ✅ runtime（is Bool） |
+
+### 关键差异详解
+
+#### 005: 按位布尔运算 ⭐
+
+| 语言 | `true & false` | `true \| true` | `true ^ false` |
+|------|-------------|-------------|-------------|
+| ArkTS | ✅ false | ✅ true | ✅ true |
+| Java | ✅ false | ✅ true | ✅ true |
+| Swift | ❌ 不支持 | ❌ 不支持 | ❌ 不支持 |
+
+#### 009: boolean 作为 Object 子类型 ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `let o: Object = true;` | ✅ boolean 是 Object 子类型 |
+| Java | `Object o = Boolean.valueOf(true);` | ⚠️ 需要装箱 |
+| Swift | `var o: AnyObject = true as AnyObject` | ⚠️ Bool 是 struct，需桥接 |
+
+---
+
+## 三、核心结论
 
 | 维度 | ArkTS | Java | Swift |
 |------|-------|------|-------|

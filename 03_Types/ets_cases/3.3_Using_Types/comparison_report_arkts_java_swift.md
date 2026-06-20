@@ -183,7 +183,44 @@ var b: [Int] = a   // 同样透明
 
 ---
 
-## 四、综合评分
+## 四、用例 1:1 对照（三环境实测结果）
+
+| # | 用例 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 001 | 命名类型引用 `let x: number` | ✅ compile-pass | ✅ `int x;` | ✅ `var x: Int` |
+| 002 | 数组就地类型 `let a: int[]` | ✅ compile-pass | ✅ `int[] a;` | ✅ `var a: [Int]` |
+| 003 | 元组就地类型 `let t: [int, string]` | ✅ compile-pass | ❌ 无原生 tuple | ✅ `var t: (Int, String)` |
+| 004 | 联合类型就地 `let u: int \| string` | ✅ compile-pass | ❌ 无原生 union | ❌ 无原生 union |
+| 005 | 函数类型就地 `let f: () => int` | ✅ compile-pass | ⚠️ `Function<Integer,Integer>` 接口 | ✅ `var f: () -> Int` |
+| 006 | string[] \| undefined 优先级 | ✅ compile-pass（union 优先级最低）| N/A | ⚠️ `[String]?` 等价 |
+| 007 | (string \| undefined)[] 元素可空 | ✅ compile-pass | N/A | ✅ `[String?]` |
+| 008 | () => string \| undefined 返回值可空 | ✅ compile-pass | N/A | ✅ `() -> String?` |
+| 009 | (() => string) \| undefined 函数可空 | ✅ compile-pass | N/A | ✅ `(() -> String)?` |
+| 010 | keyof 类型 `let k: keyof C = "name"` | ✅ compile-pass | ❌ 无对应 | ❌ 无对应 |
+| 011 | 注解+括号 `@anno() (A \| B)` | ✅ compile-pass | N/A（注解语法不同） | N/A |
+| 012 | 注解无括号 `@anno (A \| B)` | ✅ compile-fail | N/A | N/A |
+| 013 | type alias 透明性 | ✅ compile-pass | ❌ 无 type alias | ✅ typealias |
+| 014 | readonly 修饰类型 | ✅ compile-pass | ❌ 无对应（final 不同） | ✅ let/var |
+
+### 关键差异详解
+
+#### 006-009: union 优先级 ⭐
+
+| 语言 | `string[] \| undefined` | `(string \| undefined)[]` | `() => string \| undefined` | `(() => string) \| undefined` |
+|------|------------------------|--------------------------|----------------------------|------------------------------|
+| ArkTS | ✅ 整体可空 | ✅ 元素可空 | ✅ 返回值可空 | ✅ 函数可空 |
+| Swift | ✅ `[String]?` | ✅ `[String?]` | ✅ `() -> String?` | ✅ `(() -> String)?` |
+| Java | ❌ 无原生 union | ❌ | ❌ | ❌ |
+
+#### 010: keyof ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `let k: keyof C = "name"` | ✅ 编译通过，类型为字符串字面量联合 |
+| Java | N/A | 完全无对应，需反射 |
+| Swift | N/A | 完全无对应，需反射 |
+
+## 五、综合评分
 
 | 维度 | ArkTS | Java | Swift |
 |------|-------|------|-------|

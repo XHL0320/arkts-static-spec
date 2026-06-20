@@ -173,6 +173,59 @@ let c = 10 / a          // ❌ 编译错误
 
 ---
 
+## 四、用例 1:1 对照（三环境实测结果）
+
+| # | 用例 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 001 | widening byte→short→int→long | ✅ compile-pass + runtime | ✅ 自动 widening | ❌ 必须显式 Int64(x) |
+| 002 | widening int→float→double | ✅ compile-pass + runtime | ✅ 自动 widening | ❌ 必须显式转换 |
+| 003 | narrowing long→int（compile-fail） | ✅ compile-fail | ✅ compile-fail | ✅ compile-fail |
+| 004 | 整数字面量除零 | ✅ compile-fail | ⚠️ compile-pass（运行时抛异常） | ✅ compile-fail |
+| 005 | 函数内 const 除零 | ✅ compile-fail | ⚠️ compile-pass（运行时抛异常） | ✅ compile-fail |
+| 006 | **模块级 const 除零** ⭐ | ⚠️ **compile-pass（实现 bug）** | ⚠️ compile-pass（运行时抛异常） | ✅ compile-fail |
+| 007 | `10 / (1-1)` 常量表达式除零 | ✅ compile-fail | ⚠️ compile-pass | ✅ compile-fail |
+| 008 | `10 % 0` 取模 | ✅ compile-fail | ⚠️ compile-pass | ✅ compile-fail |
+| 009 | 运行时整数除零异常 | ✅ runtime（ArithmeticError 可 catch） | ✅ runtime（ArithmeticException 可 catch） | ❌ fatalError 不可恢复 |
+| 010 | 整数溢出回绕 `max+1` | ✅ runtime（静默回绕） | ✅ runtime（静默回绕） | ❌ runtime（默认崩溃） |
+| 011 | 整数溢出回绕 `min-1` | ✅ runtime（静默回绕） | ✅ runtime（静默回绕） | ❌ runtime（默认崩溃） |
+| 012 | 位移运算 `<< >> >>>` | ✅ runtime | ✅ runtime | ✅ runtime（`<< >>`，无 `>>>`） |
+| 013 | 按位运算 `& \| ^` | ✅ runtime | ✅ runtime | ✅ runtime |
+| 014 | `**` 幂运算返回 bigint | ✅ runtime | ❌ 无原生（BigInteger.pow） | ❌ 无原生 |
+| 015 | char→int widening（compile-fail）| ✅ compile-fail | ⚠️ compile-pass（Java 允许） | N/A |
+| 016 | 整数与浮点混合运算 | ✅ runtime（int→double 隐式） | ✅ runtime（隐式提升） | ❌ 必须显式转换 |
+| 017 | `new int()` 构造返回 0 | ✅ runtime | ❌ 不支持 | ✅ runtime（Int()） |
+| 018 | char 关系运算 `c < b` | ✅ compile-pass + runtime | ✅ 编译通过 + 运行通过 | ✅ 编译通过 + 运行通过 |
+| 019 | 0x7FFF_FFFF（max int 字面量）| ✅ compile-pass | ✅ 编译通过 | ✅ 编译通过 |
+| 020 | 数值类型 instanceof 检查 | ✅ runtime | ⚠️ 只有包装类型 | ✅ runtime（type check） |
+
+### 关键差异详解
+
+#### 006: 模块级 const 除零 ⭐ 关键发现
+
+| 语言 | 代码 | 编译 | 运行 |
+|------|------|------|------|
+| ArkTS | `const MODULE_ZERO: int = 0; let c = 10 / MODULE_ZERO;` | ⚠️ 通过（bug） | ArithmeticError |
+| Java | `static final int MODULE_ZERO = 0; int c = 10 / MODULE_ZERO;` | 通过 | ArithmeticException |
+| Swift | `let moduleZero = 0; let c = 10 / moduleZero;` | ❌ 编译错误 | — |
+
+#### 009-010: 整数除零与溢出行为 ⭐
+
+| 语言 | 整数除零 | 整数溢出 max+1 | 可恢复性 |
+|------|---------|---------------|---------|
+| ArkTS | ArithmeticError | 静默回绕 | ✅ try-catch |
+| Java | ArithmeticException | 静默回绕 | ✅ try-catch |
+| Swift | fatal error | 默认崩溃 | ❌ 不可恢复 |
+
+#### 015: char→int widening ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `let n: int = c'a';` | ❌ compile-fail（char 独立类型） |
+| Java | `int n = 'a';` | ✅ compile-pass（widening: n = 97） |
+| Swift | N/A（Character 是引用类型，不与 Int 互转） | — |
+
+---
+
 ## 五、综合评分（v2 含除零完整对比）
 
 | 维度 | ArkTS | Java | Swift |

@@ -197,7 +197,60 @@ let i2: Int32 = Int32(l)   // ✅
 
 ---
 
-## 四、综合评分
+## 四、用例 1:1 对照（三环境实测结果）
+
+| # | 用例 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 001 | widening byte→short→int→long | ✅ compile-pass + runtime | ✅ 编译通过 + 运行通过 | ❌ 必须显式转换 |
+| 002 | widening int→float→double | ✅ compile-pass + runtime | ✅ 编译通过 + 运行通过 | ❌ 必须显式转换 |
+| 003 | narrowing long→int（compile-fail） | ✅ compile-fail | ✅ compile-fail | ✅ compile-fail |
+| 004 | bigint 字面量 | ✅ compile-pass + runtime | ⚠️ BigInteger 方法调用 | ❌ 无原生 |
+| 005 | BigInt() 构造 | ✅ runtime | ⚠️ new BigInteger() | ❌ 第三方库 |
+| 006 | 数值作为 Object 子类型 | ✅ compile-pass + runtime | ⚠️ 需装箱（自动） | ⚠️ 需桥接 |
+| 007 | `new int()` 返回 0 | ✅ runtime | ❌ 不支持 | ✅ runtime（Int() → 0） |
+| 008 | `new double()` 返回 0.0 | ✅ runtime | ❌ 不支持 | ✅ runtime（Double() → 0.0） |
+| 009 | `number` 是 `double` 别名 | ✅ compile-pass | N/A | N/A |
+| 010 | bigint 与数值层次隔离 | ✅ compile-fail（不能隐式转换） | ⚠️ BigInteger 与 int 不互转 | N/A |
+| 011 | 字面量边界 max(int) | ✅ compile-pass + runtime | ✅ 编译通过 + 运行通过 | ✅ 编译通过 + 运行通过 |
+| 012 | narrowing 显式转换 `.toInt()` | ✅ runtime | ✅ runtime（(int)d） | ✅ runtime（Int32(d)） |
+| 013 | 数值 instanceof 检查 | ✅ runtime | ⚠️ 仅包装类型 | ✅ runtime（type check） |
+| 014 | int → string 拼接 | ✅ runtime | ✅ runtime | ⚠️ 需 String(i) |
+| 015 | bigint 算术运算 | ✅ runtime | ⚠️ 方法调用 | ❌ 无原生 |
+| 016 | char 类型独立（非 int）| ✅ compile-pass + runtime | ⚠️ char 是整数类型 | ✅ Character 是引用类型 |
+| 017 | 混合运算类型推升 | ✅ compile-pass + runtime | ✅ runtime | ❌ 必须显式 |
+| 018 | `new number()` 返回 0 | ✅ runtime | N/A | N/A |
+| 019 | float 后缀 `3.14f` | ✅ compile-pass | ✅ `3.14f` | ❌ 无 float 后缀 |
+| 020 | 数值在数组中赋值给 Object[] | ✅ runtime | ⚠️ 需装箱 | ⚠️ 需 [Any] |
+
+### 关键差异详解
+
+#### 001-002: widening 隐式转换 ⭐
+
+| 语言 | `byte → long` | `int → double` |
+|------|-------------|--------------|
+| ArkTS | ✅ 隐式 | ✅ 隐式 |
+| Java | ✅ 隐式 | ✅ 隐式 |
+| Swift | ❌ 必须 Int64(x) | ❌ 必须 Double(x) |
+
+#### 007-008: new T() 构造 ⭐
+
+| 语言 | `new int()` | `new double()` |
+|------|-----------|-------------|
+| ArkTS | ✅ 返回 0 | ✅ 返回 0.0 |
+| Java | ❌ 不支持 | ❌ 不支持 |
+| Swift | ✅ Int() → 0 | ✅ Double() → 0.0 |
+
+#### 010: bigint 与数值层次隔离 ⭐
+
+| 语言 | `let i: int = big` | `let big: bigint = i` |
+|------|-------------------|---------------------|
+| ArkTS | ❌ compile-fail | ❌ compile-fail |
+| Java | ❌ compile-fail | ❌ compile-fail |
+| Swift | N/A | N/A |
+
+---
+
+## 五、综合评分
 
 | 维度 | ArkTS | Java | Swift |
 |------|-------|------|-------|

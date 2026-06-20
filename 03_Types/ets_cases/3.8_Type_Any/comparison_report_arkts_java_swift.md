@@ -61,7 +61,47 @@ b.field     // ⚠️ 实测通过（与 spec §3.8 不一致）
 | 类型安全 | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 | Spec 一致性 | ⭐⭐⭐（字段访问差异）| ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 
-## 五、对应规范
+## 五、用例 1:1 对照（三环境实测结果）
+
+| # | 用例 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 001 | Any 持有 int | ✅ compile-pass + runtime | ✅ Object + 自动装箱 | ✅ Any |
+| 002 | Any 持有 string | ✅ compile-pass + runtime | ✅ Object | ✅ Any |
+| 003 | Any 持有 null | ✅ compile-pass + runtime | ✅ Object = null | ⚠️ 需 Any? |
+| 004 | Any 持有 undefined | ✅ compile-pass + runtime | N/A | N/A |
+| 005 | Any 调用方法（toString 等）| ❌ compile-fail（spec 一致） | ✅ Object.toString() | ❌ 必须 as? 转型 |
+| 006 | Any 访问字段（spec 说无字段） | ⚠️ 实测通过（与 spec 不一致） | ✅ Object 无自定义字段 | ❌ 必须 as? 转型 |
+| 007 | Any 赋值给具体类型（cast） | ✅ compile-pass（as cast） | ✅ (String) obj | ✅ as? String |
+| 008 | Any instanceof 检查 | ✅ runtime | ✅ instanceof | ✅ is |
+| 009 | Any 赋值给 Object（compile-fail） | ✅ compile-fail | N/A（Any ≡ Object） | N/A |
+
+### 关键差异详解
+
+#### 003: Any 持有 null ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `let a: Any = null;` | ✅ 编译通过，null 是 Any 子类型 |
+| Java | `Object a = null;` | ✅ 编译通过，null 赋给任何引用 |
+| Swift | `var a: Any? = nil;` | ⚠️ 必须 Any?，Any 不能存 nil |
+
+#### 005: Any 调用方法 ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `let a: Any = "hello"; a.length;` | ❌ compile-fail（Any 无方法） |
+| Java | `Object a = "hello"; a.length();` | ❌ compile-fail（Object 无 length） |
+| Swift | `var a: Any = "hello"; (a as? String)?.count` | ✅ 必须 as? 转型 |
+
+#### 006: Any 访问字段 ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `let a: Any = obj; a.field;` | ⚠️ 实测通过，但 spec §3.8 说 Any 无字段 |
+| Java | N/A | — |
+| Swift | N/A | — |
+
+## 六、对应规范
 
 | 语言 | 规范 |
 |------|------|

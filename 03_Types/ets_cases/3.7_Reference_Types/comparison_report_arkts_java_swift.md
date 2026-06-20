@@ -53,7 +53,48 @@ b[0] = 100         // a[0] 变为 100
 | 引用 vs 值清晰 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐（Array 反直觉）|
 | Tuple/Union 一等 | ⭐⭐⭐⭐⭐ | ❌ | ⭐⭐⭐⭐（仅 Tuple）|
 
-## 五、对应规范
+## 五、用例 1:1 对照（三环境实测结果）
+
+| # | 用例 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 001 | class 实例引用共享 | ✅ compile-pass + runtime | ✅ 编译通过 + 运行通过 | ✅ class 引用共享 |
+| 002 | 数组引用共享（赋值 b=a 修改 b 影响 a） | ✅ runtime（引用共享） | ✅ runtime（引用共享） | ⚠️ runtime（值语义 COW，修改 b 不影响 a） |
+| 003 | string 引用赋值 | ✅ compile-pass | ✅ 编译通过 | ⚠️ Swift String 是值类型 |
+| 004 | FixedArray 声明与访问 | ✅ compile-pass + runtime | N/A（Java 数组本就固定长度） | N/A（无对应概念） |
+| 005 | FixedArray 赋值给 Array（compile-fail） | ✅ compile-fail | N/A | N/A |
+| 006 | tuple 创建与索引 | ✅ compile-pass + runtime | ❌ 无原生 tuple | ✅ runtime（tuple 一等公民） |
+| 007 | union 类型变量赋值 | ✅ compile-pass | ❌ 无原生 union（需 sealed class） | ❌ 无原生 union（需 enum） |
+| 008 | string 作为引用类型赋值给 Object | ✅ compile-pass + runtime | ✅ 编译通过 + 运行通过 | ⚠️ Swift String 不是 AnyObject |
+| 009 | bigint 作为引用类型赋值给 Object | ✅ compile-pass + runtime | ⚠️ BigInteger 赋给 Object | ❌ 无原生 bigint |
+| 010 | 多变量共享同一对象修改 | ✅ runtime（引用修改可见） | ✅ runtime（引用修改可见） | ⚠️ class 引用修改可见，struct 不可见 |
+
+### 关键差异详解
+
+#### 002: 数组引用共享 ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `let b: int[] = a; b[0] = 100;` | a[0] 变为 100（引用共享） |
+| Java | `int[] b = a; b[0] = 100;` | a[0] 变为 100（引用共享） |
+| Swift | `var b = a; b[0] = 100;` | a[0] 不变（值语义 COW） |
+
+#### 005: FixedArray 与 Array 互赋 ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `let fa: FixedArray<int> = [1,2]; let arr: int[] = fa;` | ❌ compile-fail |
+| Java | N/A（Java 数组本就固定长度，无 FixedArray 概念） | — |
+| Swift | N/A（Swift 数组都是动态，无对应概念） | — |
+
+#### 007: union 类型 ⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `let u: int \| string = 42; u = "hello";` | ✅ 原生支持 |
+| Java | `Object u = 42; u = "hello";`（仅 Object 多态） | ⚠️ 类型信息丢失 |
+| Swift | `var u: Any = 42; u = "hello";`（仅 Any 多态） | ⚠️ 类型信息丢失 |
+
+## 六、对应规范
 
 | 语言 | 规范 |
 |------|------|
