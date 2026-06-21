@@ -1,6 +1,7 @@
 {
   "chapter": "04_Names_Declarations_Scopes",
   "prefix": "NAM_",
+  "total_cases": 183,
   "sections": [
     "4.1_Names",
     "4.2_Declarations",
@@ -23,5 +24,27 @@
     "4.7.5_Rest_Parameter",
     "4.7.6_Shadowing_by_Parameter",
     "4.7.7_Return_Type"
-  ]
+  ],
+  "section_stats": {
+    "4.1_Names": {"pass": 7, "fail": 5, "runtime": 3, "total": 15},
+    "4.2_Declarations": {"pass": 4, "fail": 8, "runtime": 1, "total": 13},
+    "4.2.1_Declaration_Distinguishable_by_Signatures": {"pass": 1, "fail": 1, "runtime": 1, "total": 3},
+    "4.3_Scopes": {"pass": 11, "fail": 5, "runtime": 2, "total": 18},
+    "4.4_Accessible": {"pass": 6, "fail": 6, "runtime": 2, "total": 14},
+    "4.5_Type_Declarations": {"pass": 7, "fail": 12, "runtime": 1, "total": 20},
+    "4.5.1_Type_Alias_Declaration": {"pass": 7, "fail": 1, "runtime": 3, "total": 11},
+    "4.6.1_Variable_Declarations": {"pass": 5, "fail": 3, "runtime": 1, "total": 9},
+    "4.6.2_Constant_Declarations": {"pass": 3, "fail": 3, "runtime": 1, "total": 7},
+    "4.6.3_Validity_of_Initializer": {"pass": 1, "fail": 2, "runtime": 1, "total": 4},
+    "4.6.4_Assignability_with_Initializer": {"pass": 1, "fail": 1, "runtime": 1, "total": 3},
+    "4.6.5_Type_Inference_from_Initializer": {"pass": 5, "fail": 2, "runtime": 2, "total": 9},
+    "4.7_Function_Declarations": {"pass": 2, "fail": 2, "runtime": 1, "total": 5},
+    "4.7.1_Signatures": {"pass": 3, "fail": 1, "runtime": 1, "total": 5},
+    "4.7.2_Parameter_List": {"pass": 1, "fail": 1, "runtime": 1, "total": 3},
+    "4.7.3_Readonly_Parameters": {"pass": 1, "fail": 2, "runtime": 2, "total": 5},
+    "4.7.4_Optional_Parameters": {"pass": 2, "fail": 1, "runtime": 2, "total": 5},
+    "4.7.5_Rest_Parameter": {"pass": 4, "fail": 6, "runtime": 5, "total": 15},
+    "4.7.6_Shadowing_by_Parameter": {"pass": 2, "fail": 1, "runtime": 2, "total": 5},
+    "4.7.7_Return_Type": {"pass": 8, "fail": 5, "runtime": 1, "total": 14}
+  }
 }

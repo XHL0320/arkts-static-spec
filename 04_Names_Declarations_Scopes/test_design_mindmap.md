@@ -1,4 +1,4 @@
-# 04 Names, Declarations & Scopes — Test Design Mindmap
+# 04 Names Declarations Scopes - Test Design Mindmap
 
 ```mermaid
 mindmap
@@ -79,13 +79,19 @@ mindmap
         Generic without argument
         Indirect circular
         Generic self-reference
+        Generic wo arg def FAIL
+        Param circular union depend FAIL
     4.5.1_Type_Alias_Declaration
       Array alias
       Function type alias
       Union alias
       Short name alias
+      Generic func alias
+      Union recursive
+      Recursive nested
       Empty alias FAIL
       Alias runtime use
+      Vector example runtime
     4.6_Variable_Constant_Declarations
       (container — tests in sub-sections)
     4.6.1_Variable_Declarations
@@ -102,10 +108,12 @@ mindmap
       Multiple constants
       Const no init FAIL
       Ambiguous const FAIL
+      Const no type no init FAIL
       Const ops runtime
     4.6.3_Validity_of_Initializer
       Init reference previous OK
       Init reference forward FAIL
+      Var init ref forward const FAIL
       Init ref previous runtime
     4.6.4_Assignability_with_Initializer
       Assignable init PASS
@@ -115,9 +123,11 @@ mindmap
       Let literal promotion
       Const literal retain
       Ternary infer let/const
+      Ternary inference
       Object literal infer FAIL
       Const object literal FAIL
       Type inference runtime
+      Ternary inference runtime
     4.7_Function_Declarations
       Full declaration
       Native functions
@@ -139,34 +149,49 @@ mindmap
       Readonly param assign FAIL
       Readonly tuple assign FAIL
       Readonly param runtime
+      Readonly array tuple runtime
     4.7.4_Optional_Parameters
       Optional with default
       Optional with ?
       Optional before required FAIL
       Optional default runtime
+      Qmark comparison runtime
     4.7.5_Rest_Parameter
       Rest array
       Rest tuple
       Rest generic
+      Opt tuple rest ok
       Rest followed by param FAIL
       Rest not array FAIL
       Rest tuple wrong count FAIL
       Opt tuple rest missing FAIL
+      Tuple rest wrong count 1 FAIL
+      Tuple rest wrong type FAIL
       Spread call runtime
       Rest array runtime
+      Rest new array runtime
+      Tuple rest ok runtime
+      Spread tuple runtime
     4.7.6_Shadowing_by_Parameter
       Param shadowing PASS
+      Class method shadow PASS
       Local shadows param FAIL
       Param shadowing runtime
+      Shadow global runtime
     4.7.7_Return_Type
       Return inferred body
       Return union void
       Return void
       Return undefined
       Return inferred
+      Arrow return undefined
+      Arrow return void
+      Arrow return inferred
       Return missing FAIL
       Return never missing FAIL
       Return implicit undefined FAIL
+      Arrow return missing FAIL
+      Arrow return never FAIL
       Func return runtime
 ```
 

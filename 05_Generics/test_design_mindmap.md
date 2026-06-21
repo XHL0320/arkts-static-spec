@@ -1,4 +1,4 @@
-# 05 Generics — Test Design Mindmap
+# 05 Generics - Test Design Mindmap
 
 ```mermaid
 mindmap
@@ -25,6 +25,7 @@ mindmap
         Literal union constraint
         keyof constraint
         Dependent param
+        Derived class constraint
       Constraint Violations
         Not satisfied
         Union not satisfied
@@ -43,6 +44,7 @@ mindmap
         Default ref forward FAIL
       Runtime
         Default type arg
+        Func explicit default
     5.1.3_Type_Parameter_Variance
       Covariant out
         out in return position
@@ -118,4 +120,3 @@ mindmap
       Runtime
         Implicit instantiation
 ```
-

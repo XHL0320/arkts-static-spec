@@ -9,4 +9,5 @@ function getValue<T extends Object>(x: T): T { return x; }
 function main(): void {
     let r: number = getValue<number>(42);
     if (r != 42) throw new Error("assertion failed: " + r);
+    console.log("verified");
 }

@@ -1,15 +1,63 @@
 {
   "chapter": "05_Generics",
   "prefix": "GEN_",
+  "total_cases": 80,
   "sections": [
-    "5.1_Type_Parameters",
-    "5.1.1_Type_Parameter_Constraint",
-    "5.1.2_Type_Parameter_Default",
-    "5.1.3_Type_Parameter_Variance",
-    "5.1.4_Wildcard_Type",
-    "5.2_Generic_Instantiations",
-    "5.2.1_Type_Arguments",
-    "5.2.2_Explicit_Generic_Instantiations",
-    "5.2.3_Implicit_Generic_Instantiations"
+    {
+      "name": "5.1_Type_Parameters",
+      "pass": 5,
+      "fail": 4,
+      "runtime": 2,
+      "total": 11
+    },
+    {
+      "name": "5.1.1_Type_Parameter_Constraint",
+      "pass": 6,
+      "fail": 5,
+      "runtime": 1,
+      "total": 12
+    },
+    {
+      "name": "5.1.2_Type_Parameter_Default",
+      "pass": 4,
+      "fail": 2,
+      "runtime": 2,
+      "total": 8
+    },
+    {
+      "name": "5.1.3_Type_Parameter_Variance",
+      "pass": 7,
+      "fail": 8,
+      "runtime": 1,
+      "total": 16
+    },
+    {
+      "name": "5.1.4_Wildcard_Type",
+      "pass": 1,
+      "fail": 8,
+      "runtime": 1,
+      "total": 10
+    },
+    {
+      "name": "5.2.1_Type_Arguments",
+      "pass": 5,
+      "fail": 1,
+      "runtime": 1,
+      "total": 7
+    },
+    {
+      "name": "5.2.2_Explicit_Generic_Instantiations",
+      "pass": 5,
+      "fail": 3,
+      "runtime": 1,
+      "total": 9
+    },
+    {
+      "name": "5.2.3_Implicit_Generic_Instantiations",
+      "pass": 3,
+      "fail": 3,
+      "runtime": 1,
+      "total": 7
+    }
   ]
 }

@@ -1,4 +1,4 @@
-# 04 Names, Declarations & Scopes — Test Case Catalog
+# 04 Names Declarations Scopes - Test Case Catalog
 
 ## 4.1 Names (15 cases)
 
@@ -109,6 +109,8 @@
 | NAM_04_05_022 | Generic self ref | FAIL | `4.5_Type_Declarations/compile-fail/NAM_04_05_022_FAIL_GENERIC_SELF_REF.ets` |
 | NAM_04_05_023 | Indirect circular alias | FAIL | `4.5_Type_Declarations/compile-fail/NAM_04_05_023_FAIL_INDIRECT_CIRCULAR_ALIAS.ets` |
 | NAM_04_05_024 | Union generic self ref | FAIL | `4.5_Type_Declarations/compile-fail/NAM_04_05_024_FAIL_UNION_GENERIC_SELF_REF.ets` |
+| NAM_04_05_026 | Generic wo arg def | FAIL | `4.5_Type_Declarations/compile-fail/NAM_04_05_026_FAIL_GENERIC_WO_ARG_DEF.ets` |
+| NAM_04_05_027 | Param circular union depend | FAIL | `4.5_Type_Declarations/compile-fail/NAM_04_05_027_FAIL_PARAM_CIRCULAR_UNION_DEPEND.ets` |
 | NAM_04_05_025 | Type alias use | RUNTIME | `4.5_Type_Declarations/runtime/NAM_04_05_025_RUNTIME_TYPE_ALIAS_USE.ets` |
 
 ## 4.5.1 Type Alias Declaration (7 cases)
@@ -119,9 +121,13 @@
 | NAM_04_05_01_002 | Type alias func | PASS | `4.5.1_Type_Alias_Declaration/compile-pass/NAM_04_05_01_002_PASS_TYPE_ALIAS_FUNC.ets` |
 | NAM_04_05_01_003 | Type alias union | PASS | `4.5.1_Type_Alias_Declaration/compile-pass/NAM_04_05_01_003_PASS_TYPE_ALIAS_UNION.ets` |
 | NAM_04_05_01_004 | Type alias short name | PASS | `4.5.1_Type_Alias_Declaration/compile-pass/NAM_04_05_01_004_PASS_TYPE_ALIAS_SHORT_NAME.ets` |
+| NAM_04_05_01_005 | Generic func alias | PASS | `4.5.1_Type_Alias_Declaration/compile-pass/NAM_04_05_01_005_PASS_GENERIC_FUNC_ALIAS.ets` |
+| NAM_04_05_01_006 | Union recursive | PASS | `4.5.1_Type_Alias_Declaration/compile-pass/NAM_04_05_01_006_PASS_UNION_RECURSIVE.ets` |
+| NAM_04_05_01_007 | Recursive nested | PASS | `4.5.1_Type_Alias_Declaration/compile-pass/NAM_04_05_01_007_PASS_RECURSIVE_NESTED.ets` |
 | NAM_04_05_01_001 | Empty alias | FAIL | `4.5.1_Type_Alias_Declaration/compile-fail/NAM_04_05_01_001_FAIL_EMPTY_ALIAS.ets` |
 | NAM_04_05_01_001 | Type alias use | RUNTIME | `4.5.1_Type_Alias_Declaration/runtime/NAM_04_05_01_001_RUNTIME_TYPE_ALIAS_USE.ets` |
 | NAM_04_05_01_002 | Alias func type | RUNTIME | `4.5.1_Type_Alias_Declaration/runtime/NAM_04_05_01_002_RUNTIME_ALIAS_FUNC_TYPE.ets` |
+| NAM_04_05_01_003 | Vector example | RUNTIME | `4.5.1_Type_Alias_Declaration/runtime/NAM_04_05_01_003_RUNTIME_VECTOR_EXAMPLE.ets` |
 
 ## 4.6.1 Variable Declarations (9 cases)
 
@@ -146,6 +152,7 @@
 | NAM_04_06_02_003 | Const multi | PASS | `4.6.2_Constant_Declarations/compile-pass/NAM_04_06_02_003_PASS_CONST_MULTI.ets` |
 | NAM_04_06_02_001 | Const no init | FAIL | `4.6.2_Constant_Declarations/compile-fail/NAM_04_06_02_001_FAIL_CONST_NO_INIT.ets` |
 | NAM_04_06_02_002 | Const ambiguous no init | FAIL | `4.6.2_Constant_Declarations/compile-fail/NAM_04_06_02_002_FAIL_CONST_AMBIGUOUS_NO_INIT.ets` |
+| NAM_04_06_02_002 | Const no type no init | FAIL | `4.6.2_Constant_Declarations/compile-fail/NAM_04_06_02_002_FAIL_CONST_NO_TYPE_NO_INIT.ets` |
 | NAM_04_06_02_001 | Const ops runtime | RUNTIME | `4.6.2_Constant_Declarations/runtime/NAM_04_06_02_001_RUNTIME_CONST_OPS.ets` |
 
 ## 4.6.3 Validity of Initializer (3 cases)
@@ -154,6 +161,7 @@
 |---|--------|:--:|------|
 | NAM_04_06_03_001 | Init ref previous | PASS | `4.6.3_Validity_of_Initializer/compile-pass/NAM_04_06_03_001_PASS_INIT_REF_PREVIOUS.ets` |
 | NAM_04_06_03_001 | Init ref forward | FAIL | `4.6.3_Validity_of_Initializer/compile-fail/NAM_04_06_03_001_FAIL_INIT_REF_FORWARD.ets` |
+| NAM_04_06_03_002 | Var init ref forward const | FAIL | `4.6.3_Validity_of_Initializer/compile-fail/NAM_04_06_03_002_FAIL_VAR_INIT_REF_FORWARD_CONST.ets` |
 | NAM_04_06_03_001 | Init ref previous runtime | RUNTIME | `4.6.3_Validity_of_Initializer/runtime/NAM_04_06_03_001_RUNTIME_INIT_REF_PREVIOUS.ets` |
 
 ## 4.6.4 Assignability with Initializer (3 cases)
@@ -172,9 +180,11 @@
 | NAM_04_06_05_002 | Const literal retain | PASS | `4.6.5_Type_Inference_from_Initializer/compile-pass/NAM_04_06_05_002_PASS_CONST_LITERAL_RETAIN.ets` |
 | NAM_04_06_05_003 | Ternary infer let | PASS | `4.6.5_Type_Inference_from_Initializer/compile-pass/NAM_04_06_05_003_PASS_TERNARY_INFER_LET.ets` |
 | NAM_04_06_05_004 | Ternary infer const | PASS | `4.6.5_Type_Inference_from_Initializer/compile-pass/NAM_04_06_05_004_PASS_TERNARY_INFER_CONST.ets` |
+| NAM_04_06_05_005 | Ternary inference | PASS | `4.6.5_Type_Inference_from_Initializer/compile-pass/NAM_04_06_05_005_PASS_TERNARY_INFERENCE.ets` |
 | NAM_04_06_05_001 | Object literal infer | FAIL | `4.6.5_Type_Inference_from_Initializer/compile-fail/NAM_04_06_05_001_FAIL_OBJECT_LITERAL_INFER.ets` |
 | NAM_04_06_05_002 | Const object literal infer | FAIL | `4.6.5_Type_Inference_from_Initializer/compile-fail/NAM_04_06_05_002_FAIL_CONST_OBJECT_LITERAL_INFER.ets` |
 | NAM_04_06_05_001 | Type inference runtime | RUNTIME | `4.6.5_Type_Inference_from_Initializer/runtime/NAM_04_06_05_001_RUNTIME_TYPE_INFERENCE.ets` |
+| NAM_04_06_05_002 | Ternary inference runtime | RUNTIME | `4.6.5_Type_Inference_from_Initializer/runtime/NAM_04_06_05_002_RUNTIME_TERNARY_INFERENCE.ets` |
 
 ## 4.7 Function Declarations (5 cases)
 
@@ -212,6 +222,7 @@
 | NAM_04_07_03_001 | Readonly param assign | FAIL | `4.7.3_Readonly_Parameters/compile-fail/NAM_04_07_03_001_FAIL_READONLY_ASSIGN.ets` |
 | NAM_04_07_03_002 | Readonly tuple assign | FAIL | `4.7.3_Readonly_Parameters/compile-fail/NAM_04_07_03_002_FAIL_READONLY_TUPLE_ASSIGN.ets` |
 | NAM_04_07_03_001 | Readonly param runtime | RUNTIME | `4.7.3_Readonly_Parameters/runtime/NAM_04_07_03_001_RUNTIME_READONLY_PARAM.ets` |
+| NAM_04_07_03_002 | Readonly array tuple runtime | RUNTIME | `4.7.3_Readonly_Parameters/runtime/NAM_04_07_03_002_RUNTIME_READONLY_ARRAY_TUPLE.ets` |
 
 ## 4.7.4 Optional Parameters (4 cases)
 
@@ -221,6 +232,7 @@
 | NAM_04_07_04_002 | Optional qmark | PASS | `4.7.4_Optional_Parameters/compile-pass/NAM_04_07_04_002_PASS_OPTIONAL_QMARK.ets` |
 | NAM_04_07_04_001 | Optional before required | FAIL | `4.7.4_Optional_Parameters/compile-fail/NAM_04_07_04_001_FAIL_OPTIONAL_BEFORE_REQUIRED.ets` |
 | NAM_04_07_04_001 | Optional default runtime | RUNTIME | `4.7.4_Optional_Parameters/runtime/NAM_04_07_04_001_RUNTIME_OPTIONAL_DEFAULT.ets` |
+| NAM_04_07_04_002 | Qmark comparison runtime | RUNTIME | `4.7.4_Optional_Parameters/runtime/NAM_04_07_04_002_RUNTIME_QMARK_COMPARISON.ets` |
 
 ## 4.7.5 Rest Parameter (9 cases)
 
@@ -229,20 +241,28 @@
 | NAM_04_07_05_001 | Rest array | PASS | `4.7.5_Rest_Parameter/compile-pass/NAM_04_07_05_001_PASS_REST_ARRAY.ets` |
 | NAM_04_07_05_002 | Rest tuple | PASS | `4.7.5_Rest_Parameter/compile-pass/NAM_04_07_05_002_PASS_REST_TUPLE.ets` |
 | NAM_04_07_05_003 | Rest generic | PASS | `4.7.5_Rest_Parameter/compile-pass/NAM_04_07_05_003_PASS_REST_GENERIC.ets` |
+| NAM_04_07_05_004 | Opt tuple rest ok | PASS | `4.7.5_Rest_Parameter/compile-pass/NAM_04_07_05_004_PASS_OPT_TUPLE_REST_OK.ets` |
 | NAM_04_07_05_001 | Rest followed by param | FAIL | `4.7.5_Rest_Parameter/compile-fail/NAM_04_07_05_001_FAIL_REST_FOLLOWED_BY_PARAM.ets` |
 | NAM_04_07_05_002 | Rest not array | FAIL | `4.7.5_Rest_Parameter/compile-fail/NAM_04_07_05_002_FAIL_REST_NOT_ARRAY.ets` |
 | NAM_04_07_05_003 | Rest tuple wrong count | FAIL | `4.7.5_Rest_Parameter/compile-fail/NAM_04_07_05_003_FAIL_REST_TUPLE_WRONG_COUNT.ets` |
 | NAM_04_07_05_004 | Opt tuple rest missing | FAIL | `4.7.5_Rest_Parameter/compile-fail/NAM_04_07_05_004_FAIL_OPT_TUPLE_REST_MISSING.ets` |
+| NAM_04_07_05_005 | Tuple rest wrong count 1 | FAIL | `4.7.5_Rest_Parameter/compile-fail/NAM_04_07_05_005_FAIL_TUPLE_REST_WRONG_COUNT_1.ets` |
+| NAM_04_07_05_006 | Tuple rest wrong type | FAIL | `4.7.5_Rest_Parameter/compile-fail/NAM_04_07_05_006_FAIL_TUPLE_REST_WRONG_TYPE.ets` |
 | NAM_04_07_05_001 | Spread call runtime | RUNTIME | `4.7.5_Rest_Parameter/runtime/NAM_04_07_05_001_RUNTIME_SPREAD_CALL.ets` |
 | NAM_04_07_05_002 | Rest array runtime | RUNTIME | `4.7.5_Rest_Parameter/runtime/NAM_04_07_05_002_RUNTIME_REST_ARRAY.ets` |
+| NAM_04_07_05_003 | Rest new array runtime | RUNTIME | `4.7.5_Rest_Parameter/runtime/NAM_04_07_05_003_RUNTIME_REST_NEW_ARRAY.ets` |
+| NAM_04_07_05_004 | Tuple rest ok runtime | RUNTIME | `4.7.5_Rest_Parameter/runtime/NAM_04_07_05_004_RUNTIME_TUPLE_REST_OK.ets` |
+| NAM_04_07_05_005 | Spread tuple runtime | RUNTIME | `4.7.5_Rest_Parameter/runtime/NAM_04_07_05_005_RUNTIME_SPREAD_TUPLE.ets` |
 
 ## 4.7.6 Shadowing by Parameter (3 cases)
 
 | ID | 子主题 | 类型 | 文件 |
 |---|--------|:--:|------|
 | NAM_04_07_06_001 | Param shadowing | PASS | `4.7.6_Shadowing_by_Parameter/compile-pass/NAM_04_07_06_001_PASS_PARAM_SHADOWING.ets` |
+| NAM_04_07_06_002 | Class method shadow | PASS | `4.7.6_Shadowing_by_Parameter/compile-pass/NAM_04_07_06_002_PASS_CLASS_METHOD_SHADOW.ets` |
 | NAM_04_07_06_001 | Local shadows param | FAIL | `4.7.6_Shadowing_by_Parameter/compile-fail/NAM_04_07_06_001_FAIL_LOCAL_SHADOWS_PARAM.ets` |
 | NAM_04_07_06_001 | Param shadowing runtime | RUNTIME | `4.7.6_Shadowing_by_Parameter/runtime/NAM_04_07_06_001_RUNTIME_PARAM_SHADOWING.ets` |
+| NAM_04_07_06_002 | Shadow global runtime | RUNTIME | `4.7.6_Shadowing_by_Parameter/runtime/NAM_04_07_06_002_RUNTIME_SHADOW_GLOBAL.ets` |
 
 ## 4.7.7 Return Type (9 cases)
 
@@ -253,7 +273,12 @@
 | NAM_04_07_07_003 | Return void | PASS | `4.7.7_Return_Type/compile-pass/NAM_04_07_07_003_PASS_RETURN_VOID.ets` |
 | NAM_04_07_07_004 | Return undefined | PASS | `4.7.7_Return_Type/compile-pass/NAM_04_07_07_004_PASS_RETURN_UNDEFINED.ets` |
 | NAM_04_07_07_005 | Return inferred | PASS | `4.7.7_Return_Type/compile-pass/NAM_04_07_07_005_PASS_RETURN_INFERRED.ets` |
+| NAM_04_07_07_006 | Arrow return undefined | PASS | `4.7.7_Return_Type/compile-pass/NAM_04_07_07_006_PASS_ARROW_RETURN_UNDEFINED.ets` |
+| NAM_04_07_07_007 | Arrow return void | PASS | `4.7.7_Return_Type/compile-pass/NAM_04_07_07_007_PASS_ARROW_RETURN_VOID.ets` |
+| NAM_04_07_07_008 | Arrow return inferred | PASS | `4.7.7_Return_Type/compile-pass/NAM_04_07_07_008_PASS_ARROW_RETURN_INFERRED.ets` |
 | NAM_04_07_07_001 | Return missing | FAIL | `4.7.7_Return_Type/compile-fail/NAM_04_07_07_001_FAIL_RETURN_MISSING.ets` |
 | NAM_04_07_07_002 | Return never missing | FAIL | `4.7.7_Return_Type/compile-fail/NAM_04_07_07_002_FAIL_RETURN_NEVER_MISSING.ets` |
 | NAM_04_07_07_003 | Return implicit undefined | FAIL | `4.7.7_Return_Type/compile-fail/NAM_04_07_07_003_FAIL_RETURN_IMPLICIT_UNDEFINED.ets` |
+| NAM_04_07_07_004 | Arrow return missing | FAIL | `4.7.7_Return_Type/compile-fail/NAM_04_07_07_004_FAIL_ARROW_RETURN_MISSING.ets` |
+| NAM_04_07_07_005 | Arrow return never | FAIL | `4.7.7_Return_Type/compile-fail/NAM_04_07_07_005_FAIL_ARROW_RETURN_NEVER.ets` |
 | NAM_04_07_07_001 | Func return runtime | RUNTIME | `4.7.7_Return_Type/runtime/NAM_04_07_07_001_RUNTIME_FUNC_RETURN.ets` |
