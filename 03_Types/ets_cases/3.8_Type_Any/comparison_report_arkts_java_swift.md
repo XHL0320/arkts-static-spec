@@ -93,13 +93,15 @@ b.field     // ⚠️ 实测通过（与 spec §3.8 不一致）
 | Java | `Object a = "hello"; a.length();` | ❌ compile-fail（Object 无 length） |
 | Swift | `var a: Any = "hello"; (a as? String)?.count` | ✅ 必须 as? 转型 |
 
-#### 006: Any 访问字段 ⭐
+#### 006: Any 访问字段 ⭐⭐ SPEC 不一致
 
 | 语言 | 代码 | 行为 |
 |------|------|------|
-| ArkTS | `let a: Any = obj; a.field;` | ⚠️ 实测通过，但 spec §3.8 说 Any 无字段 |
-| Java | N/A | — |
-| Swift | N/A | — |
+| ArkTS | `let a: Any = new WithField(); a.field` | ⚠️ 编译通过（Spec §3.8 说 Any 无字段，应报 compile-time error） |
+| Java | `Object obj = new WithField(); obj.field` | ❌ compile-fail: cannot find symbol |
+| Swift | `let a: Any = WithField(); a.field` | ❌ compile-fail: value of type 'Any' has no member 'field' |
+
+**分析：** ArkTS Spec §3.8 明确声明 "Type Any has no methods or fields"，但实现允许字段访问。Java 和 Swift 均正确拒绝顶层类型上的字段访问。此问题已记录为 D-3.08-01（D 类 SPEC 不一致），用例已恢复为 FAIL 并标注 ⚠️ SPEC 不一致。
 
 ## 六、对应规范
 

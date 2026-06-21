@@ -134,6 +134,24 @@ function main(): void {
 - ❌ stdlib 已含 `Box` 等常见类名
 - ❌ 不支持数字/布尔字面量类型（仅支持字符串字面量）
 
+**Spec 与实现不一致记录规则（v4.3 新增）：**
+- 当 `compile-fail` 用例实际编译通过时（即 spec 要求报错但实现允许通过），**不得改为 PASS**
+- 必须保留原始 FAIL 用例，并在注释中标注 `⚠️ SPEC 不一致`
+- 注释模板：
+  ```typescript
+  /**
+   * @id TYP_03_XX_YYY_FAIL_XXX
+   * @expect compile-fail
+   * @section 3.X
+   * @design <spec 规则描述>
+   * @note 反向用例：spec 要求报错，但 ArkTS 实际编译通过
+   *       ⚠️ SPEC 不一致：spec 要求 <具体规则>，实现允许通过
+   *       分类：D 类（Spec 与实现不一致）
+   */
+  ```
+- 同时在 `design_issues_report_3.X.md` 和 `issue_report.md` 中记录该不一致
+- 不得删除或重命名该 FAIL 用例为 PASS
+
 ---
 
 ### Step 3：WSL 真实执行验证 ⭐【必选】
@@ -264,7 +282,7 @@ ark --load-runtimes=ets \
 
 **参考模板：** `3.12_Type_null/comparison_report_arkts_java_swift.md`
 
-**实测代码归档到：** `ets_cases/cross_lang_verify/<章节>_<主题>/`
+**实测代码归档到：** `<子章节>/cross_lang_verify/`
 
 **对比的语言规范来源：**
 | 语言 | 规范 |
@@ -297,15 +315,38 @@ ark --load-runtimes=ets \
 
 **作用：** **只记录当前未解决的执行异常**。一旦异常通过修改用例或编译器更新而消除，立即从此文件移除。
 
-**初始状态（无未解决异常时）：**
+**格式要求（v4.3 更新）：** 采用简洁表格 + 异常详情格式，与 `test_report_3.X.md` 风格一致：
+
 ```markdown
 # 03 Types Issue Report
 
-No confirmed implementation issues recorded yet.
+只记录**当前未解决的执行异常**。一旦异常通过修改用例或编译器更新而消除，立即从此文件移除。
 
 | ID | Case | Symptom | Expected | Actual | Status |
-|---|---|---|---|---|---|
+|---|------|--------|---------|--------|--------|
+| <ID> | <用例ID> | <异常描述> | <预期行为> | <实际行为> | <分类> |
+
+### 异常详情
+
+**<ID>** ⭐⭐⭐ <严重性> — <简要标题>
+
+- **问题描述：** <详细描述>
+- **复现用例 ID：** <用例ID>
+- **跨语言对比：**
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `<代码>` | <结果> |
+| Java | `<代码>` | <结果> |
+| Swift | `<代码>` | <结果> |
+
+- **建议：** <修复方案>
 ```
+
+**关键规则：**
+1. **追加而非覆盖**：新增异常追加到表格末尾，不得删除已有条目
+2. **已有条目保留**：即使之前章节的异常尚未解决，也要保留原有内容
+3. **已解决条目移除**：当异常通过修改用例或编译器更新消除后，从表格中删除该行
 
 ---
 
@@ -324,16 +365,16 @@ No confirmed implementation issues recorded yet.
    │      ├── A 类: ArkTS 合理设计 → 修改用例适配
    │      ├── B 类: ArkTS 设计问题 → 修改用例 + 记入 design_issues_report
    │      ├── C 类: 编译器实现 bug → 临时绕过 + 记入 issue_report.md
-   │      └── D 类: Spec 与实现不一致 → 修改用例 + 记入 design_issues 标记 SPEC
+   │      └── D 类: Spec 与实现不一致 → 保留原始 FAIL 用例（标注⚠️SPEC不一致） + 记入 design_issues + 记入 issue_report
    │
    ├─→ 3. 处理决策
    │      ├── 可修复（A/B/D）→ 修改用例使其通过
    │      └── 不可修复（C）→ 在 issue_report.md 追加记录
    │
    └─→ 4. 同步更新报告
-          ├── design_issues_report_3.X.md（B/D 类必填）
-          ├── comparison_report_arkts_java_swift.md（B 类的设计洞察）
-          └── issue_report.md（仅 C 类未解决问题）
+           ├── design_issues_report_3.X.md（B/D 类必填）
+           ├── comparison_report_arkts_java_swift.md（B 类的设计洞察）
+           └── issue_report.md（C 类和 D 类未解决问题，追加不覆盖）
 ```
 
 ### 异常类型枚举
@@ -376,6 +417,9 @@ ARKTS_STATIC_TEST/
 │       │   ├── test_report_3.1.md
 │       │   ├── design_issues_report_3.1.md
 │       │   ├── comparison_report_arkts_java_swift.md
+│       │   ├── cross_lang_verify/                  # 跨语言验证
+│       │   │   ├── TYP_03_01_Type_xxx.java
+│       │   │   └── TYP_03_01_Type_xxx.swift
 │       │   ├── compile-pass/
 │       │   │   └── TYP_03_01_001_PASS_xxx.ets
 │       │   ├── compile-fail/
@@ -500,6 +544,8 @@ ARKTS_STATIC_TEST/
 | v3 | runtime 用例真实执行，含 assert |
 | v4 | 增加跨语言对比作为异常处理必填项；issue_report.md 只记录未解决异常 |
 | v4.1 | 文档化为 TESTING_PROCESS_GUIDE.md，可分享 |
+| v4.2 | 规范跨语言对比报告格式：不单独创建 README.md，所有内容合并到 comparison_report_arkts_java_swift.md；跨语言验证文件归档到 `<子章节>/cross_lang_verify/`；拆分 3.1~3.9 合并文件到各自子目录 |
+| v4.3 | Spec 与实现不一致处理规则：FAIL 用例不得改为 PASS，必须保留并标注⚠️SPEC不一致；issue_report.md 追加不覆盖；D 类异常同时记入 issue_report.md 和 design_issues_report |
 
 ---
 

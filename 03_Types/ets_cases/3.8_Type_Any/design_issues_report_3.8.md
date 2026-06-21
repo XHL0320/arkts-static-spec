@@ -6,7 +6,7 @@
 
 ### 问题 S：Any 上字段访问 spec 与实现不一致 ⭐⭐ MEDIUM
 
-**用例：** TYP_03_08_007（实测发现）
+**用例：** TYP_03_08_007_FAIL_ANY_FIELD_ACCESS（已恢复为 FAIL 并标注 ⚠️ SPEC 不一致）
 
 **spec §3.8 原文：** "Type Any has no methods or fields."
 

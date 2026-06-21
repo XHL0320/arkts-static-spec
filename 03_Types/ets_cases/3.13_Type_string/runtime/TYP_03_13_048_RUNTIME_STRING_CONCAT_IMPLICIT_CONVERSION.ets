@@ -7,7 +7,7 @@
  */
 function main(): void {
   let i: int = 42
-  let l: long = 1000000000L
+  let l: long = 1000000000
   let f: float = 3.14f
   let d: double = 2.718
   let b1: boolean = true
