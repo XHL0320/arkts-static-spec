@@ -1,4 +1,4 @@
-# 10 Interfaces — 测试设计脑图
+# 10 Interfaces - Test Design Mindmap
 
 ```mermaid
 mindmap
@@ -9,7 +9,12 @@ mindmap
         Generic Interface
         Interface With Extends
         Multiple Members
-    10.2_Superinterfaces
+        Interface Default Method
+      compile-fail
+        Interface Instantiation
+      runtime
+        Interface Polymorphism
+    10.2_Superinterfaces_Subinterfaces
       compile-pass
         Single Extends
         Multiple Extends
@@ -19,6 +24,8 @@ mindmap
         Extends Cycle
         Self Extends
         Bad Type Args
+      runtime
+        Multi-Level Extends Runtime
     10.3_Interface_Members
       compile-pass
         Property And Method
@@ -27,19 +34,39 @@ mindmap
       compile-fail
         Duplicate Member
         Object Method Clash Return (ISS-10-02 GAP)
+      runtime
+        Method Member Runtime
     10.4_Interface_Properties
+      compile-pass
+        Interface Property
+      compile-fail
+        Getter Only Assign
+        Setter Only Read
+      runtime
+        Interface Property Runtime
+    10.4.1_Required_Interface_Properties
       compile-pass
         Required Readonly
         Required ReadWrite
         Getter Setter
         Getter Only
         Setter Only
+        Field Accessor Equivalence (§10.4.1)
+      compile-fail
+        Required Not Implemented
+      runtime
+        Required Property Runtime
+    10.4.2_Optional_Interface_Properties
+      compile-pass
         Optional Property
         Optional Undefined
+        Optional Property Equivalence (§10.4)
       compile-fail
-        Getter Only Assign
-        Setter Only Read
-    10.5_Interface_Methods
+        Optional Not Assigned
+      runtime
+        Optional Property Runtime
+        Optional Property Default Setter (§10.4.2)
+    10.5_Interface_Method_Declarations
       compile-pass
         Abstract Method
         Method With Params
@@ -51,15 +78,18 @@ mindmap
         Missing Implementation
         Method Signature Mismatch
       runtime
-        Interface Impl
-        Interface Property
+        Interface Impl Runtime
+        Interface Property Runtime
     10.6_Interface_Inheritance
       compile-pass
         Inheritance Chain
         Diamond Inheritance
         Interface Type Var
         Class Extends Implements
+        Property Inheritance (§10.6)
       compile-fail
         Inherited Getter Only Write
         Inherited Setter Only Read
+      runtime
+        Inheritance Chain Runtime
 ```
