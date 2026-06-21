@@ -11,6 +11,9 @@
 | D-3.14-01 | TYP_03_14_014_FAIL_BIGINT_GT_INT | bigint > int 关系运算应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
 | D-3.14-02 | TYP_03_14_016_FAIL_BIGINT_LT_DOUBLE | bigint < double 关系运算应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
 | D-3.08-01 | TYP_03_08_007_FAIL_ANY_FIELD_ACCESS | Any 字段访问应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
+| D-3.19-01 | TYP_03_19_008_FAIL_UNION_DIFF_FIELD_TYPE | 联合类型同名字段不同类型应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
+| D-3.19-02 | TYP_03_19_02_002_FAIL_DIFF_FIELD_TYPE | 联合类型同名字段不同类型应报错(3.19.2) | compile-time error | 编译通过 | D类-Spec不一致 |
+| D-3.19-03 | TYP_03_19_03_002_FAIL_KEYOF_NON_CLASS | keyof 非类/接口类型应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
 
 ### 异常详情
 
@@ -23,8 +26,9 @@
 
 **D-3.18-01** MEDIUM — 联合类型中函数类型不加括号不报错
 
-- Spec 3.18：`A compile-time error occurs if type is a function type not enclosed in parentheses`
+- Spec 3.18/3.19：`A compile-time error occurs if type is a function type not enclosed in parentheses`
 - 实际：`string | (x: int) => int` 不加括号也编译通过
+- 影响章节：3.18（TYP_03_18_012）和 3.19（TYP_03_19_006）
 - 分类：D 类（Spec 与实现不一致）
 
 **D-3.18-02 / D-3.18-03** LOW — Function 类型允许直接调用
@@ -65,8 +69,24 @@
 
 - 严重性：MEDIUM，分类：D 类（Spec 与实现不一致）
 
-- Spec 3.14：同上，bigint 与其他类型的混合关系运算应非法
-- 实际：`bigint < double` 编译通过（Spec 要求 compile-time error）
-- 复现用例 ID：TYP_03_14_016_FAIL_BIGINT_LT_DOUBLE
-- ⚠️ SPEC 不一致：原 FAIL 用例被误改为 PASS，已恢复为 FAIL 并标注
+**D-3.19-01** MEDIUM — 联合类型同名字段不同类型不报错
+
+- Spec 3.19.2：`console.log(u.s)` where `u: A | B` 且 `s` 类型不同应产生 compile-time error
+- 实际：`u.s` 编译通过（Spec 要求 compile-time error）
+- 复现用例 ID：TYP_03_19_008_FAIL_UNION_DIFF_FIELD_TYPE, TYP_03_19_02_002_FAIL_DIFF_FIELD_TYPE
+- 跨语言对比：
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `(u: A \| B).s` (s: string vs s: number) | ✅ 编译通过（与 Spec 矛盾） |
+| Java | 不同类型字段需要显式 cast | ❌ 编译错误 |
+| Swift | 不同类型属性需要条件解包 | ❌ 编译错误 |
+
 - 严重性：MEDIUM，分类：D 类（Spec 与实现不一致）
+
+**D-3.19-03** LOW — keyof 非类/接口类型不报错
+
+- Spec 3.19.3：`A compile-time error occurs if typeReference is neither a class nor an interface type`
+- 实际：`keyof number` 编译通过（Spec 要求 compile-time error）
+- 复现用例 ID：TYP_03_19_03_002_FAIL_KEYOF_NON_CLASS
+- 严重性：LOW，分类：D 类（Spec 与实现不一致）
