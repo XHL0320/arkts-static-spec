@@ -5,8 +5,8 @@
 |------|------|------|------|--------|
 | compile-pass | 14 | 14 | 0 | 100% |
 | compile-fail | 11 | 11 | 0 | 100% |
-| runtime | 4 | 3 | 1 | 75%（1 pre-existing） |
-| **总计** | **29** | **28** | **1** | **96.6%** |
+| runtime | 4 | 4 | 0 | 100% |
+| **总计** | **29** | **29** | **0** | **100%** |
 
 ## 详细执行结果
 
@@ -48,7 +48,7 @@
 |---|---------|---------|--------|------|
 | 1 | NAM_04_07_025_RUNTIME_FUNC_CALL | 函数调用运行时 | 1 | PASS |
 | 2 | NAM_04_07_026_RUNTIME_OPTIONAL_DEFAULT | 可选参数默认值运行时 | 3 | PASS |
-| 3 | NAM_04_07_027_RUNTIME_REST_ARRAY | rest参数运行时 | 3 | FAIL ⚠️ (pre-existing: Cannot find class ETSGLOBAL) |
+| 3 | NAM_04_07_027_RUNTIME_REST_ARRAY | rest参数运行时 | 3 | PASS |
 | 4 | NAM_04_07_028_RUNTIME_FUNC_RETURN | 函数返回类型运行时 | 1 | PASS |
 
 ## 执行过程
@@ -56,5 +56,5 @@
 - **环境：** WSL2 (Linux 5.15.153.1)
 - **异常修复：** 无
 - **补充日期：** 2026-06-19（新增 compile-fail ×1：非void空函数体；已验证 PENDING 用例 023/024 全部通过）
-- **已知问题：** NAM_04_07_027_RUNTIME_REST_ARRAY 运行时失败（Cannot find class ETSGLOBAL），为预存运行时环境问题，非编译错误覆盖问题
+- **最新执行：** 2026-06-20 NAM_04_07_027 运行时环境修复，全部通过 ✅
 - **Gap 分析：** NAM_04_07_029 为类型5探针（空块 `{}` 是否被 IR 优化为 return undefined 绕过检查），编译器正确报错

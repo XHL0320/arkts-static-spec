@@ -6,7 +6,9 @@
     "10.2_Superinterfaces_Subinterfaces",
     "10.3_Interface_Members",
     "10.4_Interface_Properties",
-    "10.5_Interface_Methods",
+    "10.4.1_Required_Interface_Properties",
+    "10.4.2_Optional_Interface_Properties",
+    "10.5_Interface_Method_Declarations",
     "10.6_Interface_Inheritance"
   ]
 }

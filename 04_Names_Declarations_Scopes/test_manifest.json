@@ -4,10 +4,24 @@
   "sections": [
     "4.1_Names",
     "4.2_Declarations",
+    "4.2.1_Declaration_Distinguishable_by_Signatures",
     "4.3_Scopes",
     "4.4_Accessible",
     "4.5_Type_Declarations",
+    "4.5.1_Type_Alias_Declaration",
     "4.6_Variable_Constant_Declarations",
-    "4.7_Function_Declarations"
+    "4.6.1_Variable_Declarations",
+    "4.6.2_Constant_Declarations",
+    "4.6.3_Validity_of_Initializer",
+    "4.6.4_Assignability_with_Initializer",
+    "4.6.5_Type_Inference_from_Initializer",
+    "4.7_Function_Declarations",
+    "4.7.1_Signatures",
+    "4.7.2_Parameter_List",
+    "4.7.3_Readonly_Parameters",
+    "4.7.4_Optional_Parameters",
+    "4.7.5_Rest_Parameter",
+    "4.7.6_Shadowing_by_Parameter",
+    "4.7.7_Return_Type"
   ]
 }

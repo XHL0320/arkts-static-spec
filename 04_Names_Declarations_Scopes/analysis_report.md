@@ -4,13 +4,26 @@
 
 | 子章节 | 覆盖范围 | 用例数 | 结论 |
 |--------|---------|--------|------|
-| 4.1 Names | 简单名/限定名/标识符规则 | 15 | compilier 行为与 spec 完全一致 |
-| 4.2 Declarations | 声明可区分性/重载签名/预定义类型冲突 | 12 | compilier 行为与 spec 完全一致 |
-| 4.3 Scopes | 模块/类/块作用域/覆盖/类型参数作用域 | 13 | compilier 行为与 spec 完全一致 |
-| 4.4 Accessible | 类型/函数/变量/模块名可访问性 | 4 | compilier 行为与 spec 完全一致 |
-| 4.5 Type Declarations | 类型别名/递归别名约束/泛型别名 | 19 | compilier 行为与 spec 完全一致 |
-| 4.6 Variable/Constant | 变量/常量声明/类型推断/初始化合法性 | 22 | compilier 行为与 spec 完全一致 |
-| 4.7 Function Declarations | 函数签名/可选参数/rest参数/返回类型 | 26 | compilier 行为与 spec 完全一致 |
+| 4.1 Names | 简单名/限定名/标识符规则 | 15 | compiler 行为与 spec 完全一致 |
+| 4.2 Declarations | 声明可区分性/重载签名/预定义类型冲突 | 13 | compiler 行为与 spec 完全一致 |
+| 4.2.1 Declaration Distinguishable by Signatures | 类方法重载/签名可区分性 | 3 | compiler 行为与 spec 完全一致 |
+| 4.3 Scopes | 模块/类/块作用域/覆盖/类型参数作用域 | 18 | compiler 行为与 spec 完全一致 |
+| 4.4 Accessible | 类型/函数/变量/模块名可访问性 | 14 | compiler 行为与 spec 完全一致 |
+| 4.5 Type Declarations | 递归类别名/泛型别名约束 | 18 | compiler 行为与 spec 完全一致 |
+| 4.5.1 Type Alias Declaration | 数组/函数/联合类别名声明 | 7 | compiler 行为与 spec 完全一致 |
+| 4.6.1 Variable Declarations | 变量声明/类型注解/多变量 | 9 | compiler 行为与 spec 完全一致 |
+| 4.6.2 Constant Declarations | 常量声明/类型注解/init 检查 | 6 | compiler 行为与 spec 完全一致 |
+| 4.6.3 Validity of Initializer | 前向引用/后向引用 | 3 | compiler 行为与 spec 完全一致 |
+| 4.6.4 Assignability with Initializer | 初始化赋值兼容性 | 3 | compiler 行为与 spec 完全一致 |
+| 4.6.5 Type Inference from Initializer | 字面量提升/三元推断/字面量保留 | 7 | compiler 行为与 spec 完全一致 |
+| 4.7 Function Declarations | 顶层函数/native 函数声明 | 5 | compiler 行为与 spec 完全一致 |
+| 4.7.1 Signatures | 函数签名/泛型/无参 | 5 | compiler 行为与 spec 完全一致 |
+| 4.7.2 Parameter List | 必需参数/可选参数位置 | 3 | compiler 行为与 spec 完全一致 |
+| 4.7.3 Readonly Parameters | 只读参数读/赋值限制 | 4 | compiler 行为与 spec 完全一致 |
+| 4.7.4 Optional Parameters | 可选参数默认值/?语法 | 4 | compiler 行为与 spec 完全一致 |
+| 4.7.5 Rest Parameter | rest 数组/元组/泛型 | 9 | compiler 行为与 spec 完全一致 |
+| 4.7.6 Shadowing by Parameter | 参数覆盖/局部同名限制 | 3 | compiler 行为与 spec 完全一致 |
+| 4.7.7 Return Type | void/undefined/never 返回类型 | 9 | compiler 行为与 spec 完全一致 |
 
 ## 🔴 关键发现
 

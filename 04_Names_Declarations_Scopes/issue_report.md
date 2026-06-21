@@ -14,15 +14,28 @@
 
 | 子章节 | 用例总数 | 通过 | 失败 | 最近执行 |
 |-------|:-------:|:----:|:----:|---------|
-| 4.1 Names | 15 | 15 | 0 | 2026-06-20 |
-| 4.2 Declarations | 13 | 13 | 0 | 2026-06-19 |
-| 4.3 Scopes | 15 | 15 | 0 | 2026-06-19 |
-| 4.4 Accessible | 12 | 12 | 0 | 2026-06-20 |
-| 4.5 Type Declarations | 23 | 23 | 0 | 2026-06-19 |
-| 4.6 Variable/Constant | 25 | 25 | 0 | 2026-06-19 |
-| 4.7 Function Declarations | 29 | 29 | 0 | 2026-06-20 |
+| 4.1 Names | 15 | 15 | 0 | 2026-06-21 |
+| 4.2 Declarations | 13 | 13 | 0 | 2026-06-21 |
+| 4.2.1 Declaration Distinguishable by Signatures | 3 | 3 | 0 | 2026-06-21 |
+| 4.3 Scopes | 18 | 18 | 0 | 2026-06-21 |
+| 4.4 Accessible | 14 | 14 | 0 | 2026-06-21 |
+| 4.5 Type Declarations | 18 | 18 | 0 | 2026-06-21 |
+| 4.5.1 Type Alias Declaration | 7 | 7 | 0 | 2026-06-21 |
+| 4.6.1 Variable Declarations | 9 | 9 | 0 | 2026-06-21 |
+| 4.6.2 Constant Declarations | 6 | 6 | 0 | 2026-06-21 |
+| 4.6.3 Validity of Initializer | 3 | 3 | 0 | 2026-06-21 |
+| 4.6.4 Assignability with Initializer | 3 | 3 | 0 | 2026-06-21 |
+| 4.6.5 Type Inference from Initializer | 7 | 7 | 0 | 2026-06-21 |
+| 4.7 Function Declarations | 5 | 5 | 0 | 2026-06-21 |
+| 4.7.1 Signatures | 5 | 5 | 0 | 2026-06-21 |
+| 4.7.2 Parameter List | 3 | 3 | 0 | 2026-06-21 |
+| 4.7.3 Readonly Parameters | 4 | 4 | 0 | 2026-06-21 |
+| 4.7.4 Optional Parameters | 4 | 4 | 0 | 2026-06-21 |
+| 4.7.5 Rest Parameter | 9 | 9 | 0 | 2026-06-21 |
+| 4.7.6 Shadowing by Parameter | 3 | 3 | 0 | 2026-06-21 |
+| 4.7.7 Return Type | 9 | 9 | 0 | 2026-06-21 |
 
-**累计 132 个测试用例，132 通过，0 失败 ✅**
+**累计 158 个测试用例，158 通过，0 失败 ✅**
 
 ---
 

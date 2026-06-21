@@ -6,41 +6,32 @@
 
 ## 当前未解决异常
 
-### ISS-10-01/02：接口中与 Object 公有方法同名的声明未被拒绝 ⭐⭐ MEDIUM
+### ISS-10-02：接口中与 Object 方法 `toString(): string` 返回值冲突未被拒绝 ⭐⭐ MEDIUM
 
-**用例：** ITF_10_03_011_PASS_OBJECT_METHOD_CLASH、ITF_10_03_012_FAIL_OBJECT_METHOD_CLASH_RETURN
+**用例：** `ITF_10_03_012_FAIL_OBJECT_METHOD_CLASH_RETURN_GAP.ets`
 **章节：** 10.3 Interface Members
 **异常性质：** 编译器实现 bug（C 类）
+**当前状态：** 待 ArkTS 团队修复
 
-规范 §10.3 要求接口中与 Object 公有方法（如 `toString`）同名的声明应报编译错误。编译器未拒绝参数形式或返回值冲突的声明。
+规范 §10.3 要求接口中与 Object 公有方法同名的声明应报编译错误。编译器未拒绝返回值冲突的声明。
 
-```typescript
-interface I {
-  toString(p: number): void;  // ⚠️ GAP：应与 Object.toString 冲突
-}
-```
+### ISS-10-01：接口中与 Object 方法 `toString(p: number): void` 参数形式冲突
 
-**🔴 跨语言对比：**
-
-| 行为 | ArkTS 规范 | ArkTS 编译器 | Java | Swift |
-|------|:---------:|:-----------:|:----:|:-----:|
-| 接口中声明 Object 方法 | ❌ 编译错误 | ✅ **通过（GAP）** | ❌ 编译错误 | N/A（无 Object 基类）|
-
-**影响：** 使用者在接口中可能意外声明与 Object 方法签名冲突的方法，编译器无法及时发现。
-
-**建议修复方案：** 编译器应检查接口成员是否与 Object 的公有方法（toString/equals/hashCode 等）冲突。
+**说明：** 编译器未拒绝不同签名的 Object 方法冲突，用例 `ITF_10_03_011_PASS_OBJECT_METHOD_CLASH.ets` 保留为 compile-pass 追踪。
 
 ---
 
 ## 章节最新执行统计
 
-| 子章节 | 用例总数 | 通过 | 失败/GAP | 最近执行 |
-|-------|:-------:|:----:|:--------:|---------|
-| 10.1 Interface Declarations | 4 | 4 | 0 | 2026-06-18 |
-| 10.2 Superinterfaces | 7 | 7 | 0 | 2026-06-18 |
-| 10.3 Interface Members | 5 | 3 | 2 GAP | 2026-06-18 |
-| 10.4 Interface Properties | 9 | 9 | 0 | 2026-06-18 |
-| 10.5 Interface Methods | 10 | 10 | 0 | 2026-06-18 |
-| 10.6 Interface Inheritance | 6 | 6 | 0 | 2026-06-18 |
+| 子章节 | 用例总数 | 通过 | 失败 | 最近执行 |
+|-------|:-------:|:----:|:----:|---------|
+| 10.1 Interface Declarations | 7 | 7 | 0 | 2026-06-21 |
+| 10.2 Superinterfaces & Subinterfaces | 8 | 8 | 0 | 2026-06-21 |
+| 10.3 Interface Members | 6 | 6 | 0 | 2026-06-21 |
+| 10.4 Interface Properties | 4 | 4 | 0 | 2026-06-21 |
+| 10.4.1 Required Interface Properties | 7 | 7 | 0 | 2026-06-21 |
+| 10.4.2 Optional Interface Properties | 4 | 4 | 0 | 2026-06-21 |
+| 10.5 Interface Method Declarations | 10 | 10 | 0 | 2026-06-21 |
+| 10.6 Interface Inheritance | 7 | 7 | 0 | 2026-06-21 |
 
-**累计 41 个测试用例，39 通过，2 GAP（编译器侧未修复）**
+**累计 53 个测试用例，52 通过，1 GAP（ISS-10-02），0 意外失败**

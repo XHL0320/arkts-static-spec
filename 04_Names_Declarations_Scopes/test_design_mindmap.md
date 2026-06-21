@@ -33,6 +33,10 @@ mindmap
         Type erasure
         Ambiguous import
         Duplicate import
+    4.2.1_Declaration_Distinguishable_by_Signatures
+      Class method overload
+      Indistinguishable signature FAIL
+      Distinguishable dispatch runtime
     4.3_Scopes
       Module Scope
         Top-level declarations
@@ -62,12 +66,6 @@ mindmap
         If-block leak
         Loop variable leak
     4.5_Type_Declarations
-      Type Aliases
-        Array alias
-        Function type alias
-        Union alias
-        Short name alias
-        Generic alias
       Recursive Types
         Recursive array element OK
         Recursive type argument OK
@@ -81,54 +79,94 @@ mindmap
         Generic without argument
         Indirect circular
         Generic self-reference
+    4.5.1_Type_Alias_Declaration
+      Array alias
+      Function type alias
+      Union alias
+      Short name alias
+      Empty alias FAIL
+      Alias runtime use
     4.6_Variable_Constant_Declarations
-      Variable Declarations
-        With type annotation
-        Type inferred
-        Multiple declarations
-        Lambda inference
-        Ternary inference
-        Null/undefined inference
-      Constant Declarations
-        With type annotation
-        Type inferred
-        Multiple constants
-        Literal type promotion
-      Initialization
-        Init reference previous OK
-        Init reference forward FAIL
-        Init not assignable FAIL
-      Invalid Cases
-        Var no type no init
-        Ambiguous var with init
-        Const no init
-        Object literal inference
+      (container — tests in sub-sections)
+    4.6.1_Variable_Declarations
+      With type annotation
+      Type inferred
+      Multiple declarations
+      Lambda inference
+      Null/undefined inference
+      Var no type no init FAIL
+      Ambiguous var FAIL
+    4.6.2_Constant_Declarations
+      With type annotation
+      Type inferred
+      Multiple constants
+      Const no init FAIL
+      Ambiguous const FAIL
+      Const ops runtime
+    4.6.3_Validity_of_Initializer
+      Init reference previous OK
+      Init reference forward FAIL
+      Init ref previous runtime
+    4.6.4_Assignability_with_Initializer
+      Assignable init PASS
+      Init not assignable FAIL
+      Assignable init runtime
+    4.6.5_Type_Inference_from_Initializer
+      Let literal promotion
+      Const literal retain
+      Ternary infer let/const
+      Object literal infer FAIL
+      Const object literal FAIL
+      Type inference runtime
     4.7_Function_Declarations
-      Function Signatures
-        Full declaration
-        Signature only
-        No params
-        Return void
-        Return undefined
-        Return inferred
-      Parameters
-        Readonly param read OK
-        Optional with default
-        Optional with ?
-        Rest array
-        Rest tuple
-        Rest generic
-        Param shadowing
-      Invalid Parameters
-        Optional before required
-        Readonly param assign
-        Rest followed by param
-        Rest not array
-      Return Rules
-        Return missing FAIL
-        Return never missing
-        Implicit undefined
-      Native Functions
-        Native declaration
-        Native with body FAIL
+      Full declaration
+      Native functions
+      Native with body FAIL
+      Func not top level FAIL
+      Func call runtime
+    4.7.1_Signatures
+      Generic func
+      Func signature
+      No params
+      Return type mismatch FAIL
+      Func signature runtime
+    4.7.2_Parameter_List
+      Required params PASS
+      Optional before required FAIL
+      Required params runtime
+    4.7.3_Readonly_Parameters
+      Readonly param read OK
+      Readonly param assign FAIL
+      Readonly tuple assign FAIL
+      Readonly param runtime
+    4.7.4_Optional_Parameters
+      Optional with default
+      Optional with ?
+      Optional before required FAIL
+      Optional default runtime
+    4.7.5_Rest_Parameter
+      Rest array
+      Rest tuple
+      Rest generic
+      Rest followed by param FAIL
+      Rest not array FAIL
+      Rest tuple wrong count FAIL
+      Opt tuple rest missing FAIL
+      Spread call runtime
+      Rest array runtime
+    4.7.6_Shadowing_by_Parameter
+      Param shadowing PASS
+      Local shadows param FAIL
+      Param shadowing runtime
+    4.7.7_Return_Type
+      Return inferred body
+      Return union void
+      Return void
+      Return undefined
+      Return inferred
+      Return missing FAIL
+      Return never missing FAIL
+      Return implicit undefined FAIL
+      Func return runtime
 ```
+

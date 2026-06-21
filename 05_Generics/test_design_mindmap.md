@@ -10,6 +10,15 @@ mindmap
         Generic function
         Generic type alias
         Multiple type params
+      Circular Dependencies
+        Self-circular
+        Mutual circular
+        Mutual union circular
+        Circular with default
+      Runtime
+        Generic class
+        Generic function
+    5.1.1_Type_Parameter_Constraint
       Constraints
         Class constraint
         Union constraint
@@ -22,21 +31,19 @@ mindmap
         Literal constraint
         keyof constraint
         Dependent not satisfied
-      Circular Dependencies
-        Self-circular
-        Mutual circular
-        Mutual union circular
-        Circular with default
+      Runtime
+        Constraint at runtime
+    5.1.2_Type_Parameter_Default
       Default Values
         Type param default
         Multi default
         Func default
         Default equivalence
-        Default after no-default
-        Default ref forward
-      Variance in Generic Methods
-        Generic method variance invalid
-    5.2_Variance_Wildcard
+        Default after no-default FAIL
+        Default ref forward FAIL
+      Runtime
+        Default type arg
+    5.1.3_Type_Parameter_Variance
       Covariant out
         out in return position
         out in readonly position
@@ -55,6 +62,12 @@ mindmap
         in in out-position return
         in in invariant field
         in in callback return
+      GAP (compiler accepts)
+        Callback variance gap
+        Callback return gap
+      Runtime
+        Covariant out runtime
+    5.1.4_Wildcard_Type
       Wildcard Subtyping
         Wildcard not subtype any
         Wildcard not subtype constraint
@@ -65,33 +78,44 @@ mindmap
         Wildcard write invariant
         in wildcard write
         Wildcard invariant assign
+      PASS
+        Wildcard declaration
       Runtime
         instanceof wildcard
-    5.3_Generic_Instantiations
-      Explicit Instantiation
-        Class instantiation
-        Method instantiation
-        Function instantiation
-        Type alias instantiation
-        Partial instantiation
+    5.2.1_Type_Arguments
       Type Arguments
         Number type arg
         Union type arg
         Array type arg
         Tuple type arg
         Func type arg
+      FAIL
+        Invalid type arg
+      Runtime
+        Type arg runtime
+    5.2.2_Explicit_Generic_Instantiations
+      Explicit Instantiation
+        Class instantiation
+        Method instantiation
+        Function instantiation
+        Type alias instantiation
+        Partial instantiation
+      Errors
+        Non-generic with args
+        Arg count mismatch
+        Constraint violation
+      Runtime
+        Explicit instantiation
+    5.2.3_Implicit_Generic_Instantiations
       Implicit Inference
         Func inference
         Multi-param inference
         Method default from class
       Errors
-        Non-generic with args
-        Arg count mismatch
-        Constraint violation
         Cannot infer
         No context infer
         Default order implicit
       Runtime
-        Explicit instantiation
         Implicit instantiation
 ```
+
