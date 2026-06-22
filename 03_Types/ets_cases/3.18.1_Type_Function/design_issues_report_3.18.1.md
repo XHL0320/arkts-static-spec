@@ -1,8 +1,8 @@
-# 3.18.1 Type Function - 设计问题报告
+# 3.18.1 Type Function - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
 **测试用例：** 5
 
-## 一、本章节首次发现的设计问题
+## 一、行为差异与规范一致性概览
 
 ### 问题 1: Function 类型直接调用 — Spec 与实现不一致 ⭐⭐ MEDIUM
 
@@ -34,6 +34,17 @@ Spec 3.18.1 明确声明 "A value of type Function cannot be called directly"，
 
 ---
 
+---
+
+## 报告分类口径
+
+| 分类 | 含义 | 处理方式 |
+|------|------|----------|
+| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
+| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
+| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
+| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+
 ### 问题 2: unsafeCall 参数不匹配 runtime error
 
 **问题描述**：
@@ -47,7 +58,7 @@ Spec 3.18.1 声明 `f.unsafeCall()` 在参数数量不匹配时抛出 runtime er
 
 ---
 
-## 二、验证 spec 一致性
+## 二、已验证的 ArkTS 规范一致行为
 
 | Spec 要点 | 覆盖用例 | 状态 |
 |-----------|----------|------|

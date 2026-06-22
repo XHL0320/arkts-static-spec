@@ -1,4 +1,4 @@
-# 3.9 Type Object - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
+# 3.20 Nullish Types - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 ---
 
 ## 报告分类口径
@@ -11,21 +11,25 @@
 | 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
 
 
-**测试用例：** 10
+## 新发现问题
 
-## 一、行为差异与规范一致性概览
+无。3.20 用例全部通过，spec 与实现一致。
 
-**无新发现的未解决规范/实现不一致问题。** 一次通过率 100%。
+## 设计观察
 
-## 二、已验证的 ArkTS 规范一致行为
+### 观察 A：ArkTS nullish 设计更接近 Swift Optional
 
-- Object 接受所有非 nullish 类型 ✅
-- Object 不接受 null/undefined ✅
-- 装箱透明 ✅
-- toString 继承 ✅
-- instanceof 检查 ✅
+ArkTS 的 `T | undefined/null` 与 Swift 的 `T?` 都是类型系统级可空表达，优于 Java 的裸 null。
 
-## 三、严重性
+### 观察 B：Object 不接受 null/undefined 是重要安全边界
+
+Java `Object o = null` 合法，ArkTS 明确拒绝，这是更安全的设计。
+
+### 观察 C：undefined 性能优于 null
+
+spec 明确推荐 `T | undefined`，并指出 undefined 性能优于 null。
+
+## 严重性
 
 | 严重性 | 数量 |
 |-------|------|

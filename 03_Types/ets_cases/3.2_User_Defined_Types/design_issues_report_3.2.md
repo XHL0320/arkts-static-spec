@@ -1,4 +1,4 @@
-# 3.2 User-Defined Types - ArkTS 设计问题发现报告
+# 3.2 User-Defined Types - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
 **报告日期：** 2026-06-11
 **测试用例数：** 30（11 compile-pass + 11 compile-fail + 8 runtime）
@@ -6,7 +6,18 @@
 
 ---
 
-## 一、新发现的设计问题
+---
+
+## 报告分类口径
+
+| 分类 | 含义 | 处理方式 |
+|------|------|----------|
+| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
+| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
+| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
+| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+
+## 一、行为差异与规范一致性概览
 
 ### 问题 I：不支持数字/布尔字面量类型 ⭐⭐⭐ HIGH
 

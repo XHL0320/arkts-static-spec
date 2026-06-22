@@ -295,21 +295,21 @@ ark --load-runtimes=ets \
 
 ---
 
-### Step 6：设计问题报告 + 异常记录 ⭐【必选】
+### Step 6：行为差异及规范一致性报告 + 异常记录 ⭐【必选】
 
-#### 6.1 设计问题报告（章节级，永久档案）
+#### 6.1 ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告（章节级，永久档案）
 
 **输出：** `<子章节>/design_issues_report_3.X.md`
 
-**作用：** 记录在执行用例过程中发现的 ArkTS 语言设计问题，**不论是否已通过修改用例规避**。
+**作用：** 记录章节中 ArkTS 与 Java/Swift/TS 的行为差异、ArkTS 行为与 spec 的一致性、以及待确认的 spec/stdlib/实现不一致问题。符合 spec 的差异不应默认归类为设计缺陷。
 
 **必含字段：**
-- 问题描述
-- 复现用例 ID
-- 实测错误信息
+- 行为/差异描述
+- 复现用例 ID（如适用）
+- 实测结果或错误信息
 - **跨语言对比表**（必填）
-- 严重性等级（HIGH/MEDIUM/LOW）
-- 改进建议
+- 分类：符合 ArkTS spec 的语言设计差异 / 待确认问题 / Spec 与实现不一致 / 编译器实现问题
+- 对待确认或不一致问题给出后续建议
 
 #### 6.2 当前未解决异常（项目根级，实时状态）
 
@@ -399,7 +399,7 @@ ark --load-runtimes=ets \
 | `<主章节>/issue_report.md` | 主章节 | **当前未解决异常**（实时状态） | ❌ | 用例全通过时回到空白模板 |
 | `<子章节>/test_design_mindmap_3.X.md` | 子章节 | 测试设计思维导图 | ❌ | 不变 |
 | `<子章节>/test_report_3.X.md` | 子章节 | 测试通过率统计 | ❌ | 重新执行时更新 |
-| `<子章节>/design_issues_report_3.X.md` | 子章节 | 设计问题分析（永久档案） | ❌ | 不删除，新发现追加 |
+| `<子章节>/design_issues_report_3.X.md` | 子章节 | ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告（永久档案） | ❌ | 不删除，新发现追加 |
 | `<子章节>/comparison_report_arkts_java_swift.md` | 子章节 | 三环境实测 + 跨语言对比 | ❌ | 不变 |
 | `<子章节>/cross_lang_verify/verification_report.md` | 子章节 | ArkTS/Java/Swift 三环境实测输出 | ❌ | 重新执行时更新 |
 
@@ -538,7 +538,7 @@ ARKTS_STATIC_TEST/
 5. 必须生成 Java/Swift 等价用例并实际运行，结果归档到 cross_lang_verify/verification_report.md
 6. 任何执行异常必须做跨语言对比分析（Java/Swift）
 7. issue_report.md 只在当前有未解决异常时记录
-8. 设计问题记入 design_issues_report_3.X.md（永久档案）
+8. 行为差异及规范一致性分析记入 design_issues_report_3.X.md（永久档案）
 
 参考已完成章节 3.1 和 3.2 作为模板。
 ```
