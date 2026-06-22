@@ -35,6 +35,12 @@ Names（名称）定义了标识符和限定名的语法规则，是语言的基
 |-------|------|-------|
 | `let class: number = 1;` ❌ | `int class = 1;` ❌ | `let \`class\`: Int = 1` ✅ |
 
+## 用例 1:1 对照（三环境实测结果）
+
+| # | 用例 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 008 | 接口类型变量限定名访问实例成员 | ✅ compile-pass | ✅ javac + java | ✅ swiftc + executable |
+
 ## 综合评分
 
 | 维度 | ArkTS | Java | Swift |

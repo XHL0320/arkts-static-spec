@@ -1,7 +1,7 @@
 # 4.4 Accessible - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
 **报告日期：** 2026-06-22  
-**测试用例数：** 14（7 compile-pass + 7 compile-fail）  
+**测试用例数：** 16（7 compile-pass + 7 compile-fail + 2 runtime）  
 **目的：** 通过用例执行（编译期）+ 跨语言对比，识别 ArkTS 可访问性规则的设计问题
 
 ---
@@ -66,6 +66,8 @@
 | 模块级可访问性 | NAM_04_04_004 | ✅ |
 | 类型名用于字段 | NAM_04_04_005 | ✅ |
 | 方法名调用 | NAM_04_04_006 | ✅ |
+| namespace export 限定名访问 | NAM_04_04_007 | ✅ |
+| namespace export 非限定名访问拒绝 | NAM_04_04_016 | ✅ |
 
 ---
 

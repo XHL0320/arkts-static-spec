@@ -10,7 +10,7 @@ Name is a sequence of one or more identifiers used to refer to declared entities
 - 运行时: 运行时通过简单名引用实体
 
 ### 2. Qualified names
-- 正向编译: 模块名.导出成员, 类名.静态成员, 实例.实例成员
+- 正向编译: 模块名.导出成员, 类名.静态成员, 实例.实例成员, 接口类型变量.实例成员
 - 反向编译: 空限定名、非法限定名
 - 运行时: 限定名访问模块/类成员
 

@@ -11,6 +11,7 @@ mindmap
         Module member access
         Class static member
         Instance member access
+        Interface type variable instance member access
         Multiple dot chaining
       Invalid Names
         Empty name
@@ -52,12 +53,15 @@ mindmap
       Type Parameter Scope
         Generic type param scope
         Type param in static context
+      Namespace Scope
+        Nested namespace can access outer namespace variables
     4.4_Accessible
       Accessibility Rules
         Type name accessible
         Function name accessible
         Variable name accessible
         Module name accessible
+        Namespace export qualified access
       Inaccessibility
         Out of block scope
         Out of function scope
@@ -65,7 +69,13 @@ mindmap
         Cross-function access
         If-block leak
         Loop variable leak
+        Namespace export unqualified access FAIL
     4.5_Type_Declarations
+      Type Declaration Kinds
+        Class declaration
+        Interface declaration
+        Enum declaration
+        Const enum unsupported FAIL
       Recursive Types
         Recursive array element OK
         Recursive type argument OK

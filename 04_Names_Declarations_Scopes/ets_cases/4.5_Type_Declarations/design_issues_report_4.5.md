@@ -1,7 +1,7 @@
 # 4.5 Type Declarations - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
 **报告日期：** 2026-06-22  
-**测试用例数：** 20（10 compile-pass + 10 compile-fail）  
+**测试用例数：** 24（10 compile-pass + 13 compile-fail + 1 runtime）  
 **目的：** 通过用例执行（编译期）+ 跨语言对比，识别 ArkTS 类型声明的设计问题
 
 ---
@@ -73,6 +73,10 @@
 | 泛型递归 | NAM_04_05_009 | ✅ |
 | 泛型联合递归 | NAM_04_05_010 | ✅ |
 | 类型别名简单 | NAM_04_05_011 | ✅ |
+| class 声明作为类型声明 | NAM_04_05_012 | ✅ |
+| interface 声明作为类型声明 | NAM_04_05_013 | ✅ |
+| enum 声明作为类型声明 | NAM_04_05_014 | ✅ |
+| const enum 当前实现不支持 | NAM_04_05_028 | ✅ |
 
 ---
 

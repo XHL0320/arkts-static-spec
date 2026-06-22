@@ -1,6 +1,6 @@
 # 04 Names Declarations Scopes - Test Case Catalog
 
-## 4.1 Names (15 cases)
+## 4.1 Names (16 cases)
 
 | ID | 子主题 | 类型 | 文件 |
 |---|--------|:--:|------|
@@ -11,6 +11,7 @@
 | NAM_04_01_005 | Identifier with underscore | PASS | `4.1_Names/compile-pass/NAM_04_01_005_PASS_IDENTIFIER_UNDERSCORE.ets` |
 | NAM_04_01_006 | Identifier with dollar | PASS | `4.1_Names/compile-pass/NAM_04_01_006_PASS_IDENTIFIER_DOLLAR.ets` |
 | NAM_04_01_007 | Multiple dot chaining | PASS | `4.1_Names/compile-pass/NAM_04_01_007_PASS_MULTIPLE_DOTS.ets` |
+| NAM_04_01_008 | Qualified name — interface instance | PASS | `4.1_Names/compile-pass/NAM_04_01_008_PASS_QUALIFIED_NAME_INTERFACE_INSTANCE.ets` |
 | NAM_04_01_010 | Empty name | FAIL | `4.1_Names/compile-fail/NAM_04_01_010_FAIL_EMPTY_NAME.ets` |
 | NAM_04_01_011 | Digit start | FAIL | `4.1_Names/compile-fail/NAM_04_01_011_FAIL_DIGIT_START.ets` |
 | NAM_04_01_012 | Keyword as name | FAIL | `4.1_Names/compile-fail/NAM_04_01_012_FAIL_KEYWORD_AS_NAME.ets` |
@@ -46,7 +47,7 @@
 | NAM_04_02_01_001 | Indistinguishable signature | FAIL | `4.2.1_Declaration_Distinguishable_by_Signatures/compile-fail/NAM_04_02_01_001_FAIL_INDISTINGUISHABLE_SIGNATURE.ets` |
 | NAM_04_02_01_001 | Distinguishable dispatch | RUNTIME | `4.2.1_Declaration_Distinguishable_by_Signatures/runtime/NAM_04_02_01_001_RUNTIME_DISTINGUISHABLE_SIGNATURE.ets` |
 
-## 4.3 Scopes (18 cases)
+## 4.3 Scopes (19 cases)
 
 | ID | 子主题 | 类型 | 文件 |
 |---|--------|:--:|------|
@@ -61,6 +62,7 @@
 | NAM_04_03_016 | Interface scope | PASS | `4.3_Scopes/compile-pass/NAM_04_03_016_PASS_INTERFACE_SCOPE.ets` |
 | NAM_04_03_017 | Func type param scope | PASS | `4.3_Scopes/compile-pass/NAM_04_03_017_PASS_FUNC_TYPE_PARAM_SCOPE.ets` |
 | NAM_04_03_018 | Super access | PASS | `4.3_Scopes/compile-pass/NAM_04_03_018_PASS_SUPER_ACCESS.ets` |
+| NAM_04_03_019 | Namespace scope embedded | PASS | `4.3_Scopes/compile-pass/NAM_04_03_019_PASS_NAMESPACE_SCOPE_EMBEDDED.ets` |
 | NAM_04_03_010 | Before declaration | FAIL | `4.3_Scopes/compile-fail/NAM_04_03_010_FAIL_BEFORE_DECLARATION.ets` |
 | NAM_04_03_011 | Block out of scope | FAIL | `4.3_Scopes/compile-fail/NAM_04_03_011_FAIL_BLOCK_OUT_OF_SCOPE.ets` |
 | NAM_04_03_012 | Instance as static | FAIL | `4.3_Scopes/compile-fail/NAM_04_03_012_FAIL_INSTANCE_AS_STATIC.ets` |
@@ -69,7 +71,7 @@
 | NAM_04_03_020 | Module scope runtime | RUNTIME | `4.3_Scopes/runtime/NAM_04_03_020_RUNTIME_MODULE_SCOPE.ets` |
 | NAM_04_03_021 | Shadowing runtime | RUNTIME | `4.3_Scopes/runtime/NAM_04_03_021_RUNTIME_SHADOWING.ets` |
 
-## 4.4 Accessible (14 cases)
+## 4.4 Accessible (16 cases)
 
 | ID | 子主题 | 类型 | 文件 |
 |---|--------|:--:|------|
@@ -79,16 +81,18 @@
 | NAM_04_04_004 | Module access | PASS | `4.4_Accessible/compile-pass/NAM_04_04_004_PASS_MODULE_ACCESS.ets` |
 | NAM_04_04_005 | Type name for field | PASS | `4.4_Accessible/compile-pass/NAM_04_04_005_PASS_TYPE_NAME_FOR_FIELD.ets` |
 | NAM_04_04_006 | Method name call | PASS | `4.4_Accessible/compile-pass/NAM_04_04_006_PASS_METHOD_NAME_CALL.ets` |
+| NAM_04_04_007 | Namespace export qualified | PASS | `4.4_Accessible/compile-pass/NAM_04_04_007_PASS_NAMESPACE_EXPORT_QUALIFIED.ets` |
 | NAM_04_04_010 | Out of block scope | FAIL | `4.4_Accessible/compile-fail/NAM_04_04_010_FAIL_OUT_OF_BLOCK_SCOPE.ets` |
 | NAM_04_04_011 | Out of func scope | FAIL | `4.4_Accessible/compile-fail/NAM_04_04_011_FAIL_OUT_OF_FUNC_SCOPE.ets` |
 | NAM_04_04_012 | Use before declare | FAIL | `4.4_Accessible/compile-fail/NAM_04_04_012_FAIL_USE_BEFORE_DECLARE.ets` |
 | NAM_04_04_013 | Cross func access | FAIL | `4.4_Accessible/compile-fail/NAM_04_04_013_FAIL_CROSS_FUNC_ACCESS.ets` |
 | NAM_04_04_014 | If block leak | FAIL | `4.4_Accessible/compile-fail/NAM_04_04_014_FAIL_IF_BLOCK_LEAK.ets` |
 | NAM_04_04_015 | Loop var leak | FAIL | `4.4_Accessible/compile-fail/NAM_04_04_015_FAIL_LOOP_VAR_LEAK.ets` |
+| NAM_04_04_016 | Namespace export unqualified | FAIL | `4.4_Accessible/compile-fail/NAM_04_04_016_FAIL_NAMESPACE_EXPORT_UNQUALIFIED.ets` |
 | NAM_04_04_020 | Scope chain | RUNTIME | `4.4_Accessible/runtime/NAM_04_04_020_RUNTIME_SCOPE_CHAIN.ets` |
 | NAM_04_04_021 | Nested shadow | RUNTIME | `4.4_Accessible/runtime/NAM_04_04_021_RUNTIME_NESTED_SHADOW.ets` |
 
-## 4.5 Type Declarations (18 cases)
+## 4.5 Type Declarations (24 cases)
 
 | ID | 子主题 | 类型 | 文件 |
 |---|--------|:--:|------|
@@ -99,6 +103,9 @@
 | NAM_04_05_009 | Generic recursive OK | PASS | `4.5_Type_Declarations/compile-pass/NAM_04_05_009_PASS_GENERIC_RECURSIVE_OK.ets` |
 | NAM_04_05_010 | Generic union recursive | PASS | `4.5_Type_Declarations/compile-pass/NAM_04_05_010_PASS_GENERIC_UNION_RECURSIVE.ets` |
 | NAM_04_05_011 | Type alias simple | PASS | `4.5_Type_Declarations/compile-pass/NAM_04_05_011_PASS_TYPE_ALIAS_SIMPLE.ets` |
+| NAM_04_05_012 | Type declaration class | PASS | `4.5_Type_Declarations/compile-pass/NAM_04_05_012_PASS_TYPE_DECL_CLASS.ets` |
+| NAM_04_05_013 | Type declaration interface | PASS | `4.5_Type_Declarations/compile-pass/NAM_04_05_013_PASS_TYPE_DECL_INTERFACE.ets` |
+| NAM_04_05_014 | Type declaration enum | PASS | `4.5_Type_Declarations/compile-pass/NAM_04_05_014_PASS_TYPE_DECL_ENUM.ets` |
 | NAM_04_05_015 | Direct self ref | FAIL | `4.5_Type_Declarations/compile-fail/NAM_04_05_015_FAIL_DIRECT_SELF_REF.ets` |
 | NAM_04_05_016 | Union self ref | FAIL | `4.5_Type_Declarations/compile-fail/NAM_04_05_016_FAIL_UNION_SELF_REF.ets` |
 | NAM_04_05_017 | Circular type arg | FAIL | `4.5_Type_Declarations/compile-fail/NAM_04_05_017_FAIL_CIRCULAR_TYPE_ARG.ets` |
@@ -111,6 +118,7 @@
 | NAM_04_05_024 | Union generic self ref | FAIL | `4.5_Type_Declarations/compile-fail/NAM_04_05_024_FAIL_UNION_GENERIC_SELF_REF.ets` |
 | NAM_04_05_026 | Generic wo arg def | FAIL | `4.5_Type_Declarations/compile-fail/NAM_04_05_026_FAIL_GENERIC_WO_ARG_DEF.ets` |
 | NAM_04_05_027 | Param circular union depend | FAIL | `4.5_Type_Declarations/compile-fail/NAM_04_05_027_FAIL_PARAM_CIRCULAR_UNION_DEPEND.ets` |
+| NAM_04_05_028 | Const enum unsupported | FAIL | `4.5_Type_Declarations/compile-fail/NAM_04_05_028_FAIL_TYPE_DECL_CONST_ENUM_UNSUPPORTED.ets` |
 | NAM_04_05_025 | Type alias use | RUNTIME | `4.5_Type_Declarations/runtime/NAM_04_05_025_RUNTIME_TYPE_ALIAS_USE.ets` |
 
 ## 4.5.1 Type Alias Declaration (7 cases)

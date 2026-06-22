@@ -1,7 +1,7 @@
 # 4.1 Names - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
 **报告日期：** 2026-06-22  
-**测试用例数：** 15（7 compile-pass + 5 compile-fail + 3 runtime）  
+**测试用例数：** 16（8 compile-pass + 6 compile-fail + 2 runtime）  
 **目的：** 通过用例执行（编译期 + 真实运行时）+ 跨语言对比，识别 ArkTS 命名规则的设计问题
 
 ---
@@ -95,6 +95,7 @@ let string: string = "hello";  // ❌ Semantic error
 | 下划线标识符 | NAM_04_01_005 | ✅ |
 | 美元符号标识符 | NAM_04_01_006 | ✅ |
 | 多层级限定名 | NAM_04_01_007 | ✅ |
+| 接口类型变量限定名访问实例成员 | NAM_04_01_008 | ✅ |
 
 ---
 

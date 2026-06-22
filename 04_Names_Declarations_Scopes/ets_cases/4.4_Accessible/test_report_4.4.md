@@ -3,10 +3,10 @@
 ## 总体统计
 | 分类 | 总数 | 通过 | 失败 | 通过率 |
 |------|------|------|------|--------|
-| compile-pass | 4 | 4 | 0 | 100% |
-| compile-fail | 6 | 6 | 0 | 100% |
+| compile-pass | 7 | 7 | 0 | 100% |
+| compile-fail | 7 | 7 | 0 | 100% |
 | runtime | 2 | 2 | 0 | 100% |
-| **总计** | **12** | **12** | **0** | **100%** |
+| **总计** | **16** | **16** | **0** | **100%** |
 
 ## 详细执行结果
 
@@ -17,6 +17,9 @@
 | 2 | NAM_04_04_002_PASS_FUNC_ACCESSIBLE | 函数名可访问用于调用 | PASS |
 | 3 | NAM_04_04_003_PASS_VAR_ACCESSIBLE | 变量名可访问用于读写 | PASS |
 | 4 | NAM_04_04_004_PASS_MODULE_ACCESS | 模块名可访问 | PASS |
+| 5 | NAM_04_04_005_PASS_TYPE_NAME_FOR_FIELD | 类型名可用于字段声明 | PASS |
+| 6 | NAM_04_04_006_PASS_METHOD_NAME_CALL | 方法名可用于调用 | PASS |
+| 7 | NAM_04_04_007_PASS_NAMESPACE_EXPORT_QUALIFIED | namespace 导出实体限定名访问 | PASS |
 
 ### compile-fail
 | # | 用例 ID | 测试内容 | 结果 |
@@ -27,6 +30,7 @@
 | 4 | NAM_04_04_013_FAIL_CROSS_FUNC_ACCESS | 跨函数作用域访问局部变量 | PASS |
 | 5 | NAM_04_04_014_FAIL_IF_BLOCK_LEAK | if块内变量在块外不可访问 | PASS |
 | 6 | NAM_04_04_015_FAIL_LOOP_VAR_LEAK | 循环块内变量循环外不可访问 | PASS |
+| 7 | NAM_04_04_016_FAIL_NAMESPACE_EXPORT_UNQUALIFIED | namespace 导出实体不能简单名访问 | PASS |
 
 ### runtime
 | # | 用例 ID | 验证内容 | 断言数 | 结果 |
@@ -39,4 +43,5 @@
 - **环境：** WSL2 (Linux 5.15.153.1)
 - **异常修复：** 无
 - **补充日期：** 2026-06-19（新增 compile-fail ×6 + runtime ×2）
+- **补充日期：** 2026-06-22（新增 compile-pass ×1、compile-fail ×1：namespace export 限定名访问规则；ArkTS 验证通过，Java/Swift 标记 N/A 并实测占位通过）
 - **执行命令：** `SECTIONS="4.4_Accessible" bash run_names_cases_wsl.sh`

@@ -1,7 +1,7 @@
 {
   "chapter": "04_Names_Declarations_Scopes",
   "prefix": "NAM_",
-  "total_cases": 183,
+  "total_cases": 191,
   "sections": [
     "4.1_Names",
     "4.2_Declarations",
@@ -26,12 +26,12 @@
     "4.7.7_Return_Type"
   ],
   "section_stats": {
-    "4.1_Names": {"pass": 7, "fail": 5, "runtime": 3, "total": 15},
+    "4.1_Names": {"pass": 8, "fail": 6, "runtime": 2, "total": 16},
     "4.2_Declarations": {"pass": 4, "fail": 8, "runtime": 1, "total": 13},
     "4.2.1_Declaration_Distinguishable_by_Signatures": {"pass": 1, "fail": 1, "runtime": 1, "total": 3},
-    "4.3_Scopes": {"pass": 11, "fail": 5, "runtime": 2, "total": 18},
-    "4.4_Accessible": {"pass": 6, "fail": 6, "runtime": 2, "total": 14},
-    "4.5_Type_Declarations": {"pass": 7, "fail": 12, "runtime": 1, "total": 20},
+    "4.3_Scopes": {"pass": 12, "fail": 5, "runtime": 2, "total": 19},
+    "4.4_Accessible": {"pass": 7, "fail": 7, "runtime": 2, "total": 16},
+    "4.5_Type_Declarations": {"pass": 10, "fail": 13, "runtime": 1, "total": 24},
     "4.5.1_Type_Alias_Declaration": {"pass": 7, "fail": 1, "runtime": 3, "total": 11},
     "4.6.1_Variable_Declarations": {"pass": 5, "fail": 3, "runtime": 1, "total": 9},
     "4.6.2_Constant_Declarations": {"pass": 3, "fail": 3, "runtime": 1, "total": 7},

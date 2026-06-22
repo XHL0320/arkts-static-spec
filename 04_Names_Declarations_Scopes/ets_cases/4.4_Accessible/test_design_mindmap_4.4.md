@@ -13,5 +13,6 @@ An entity is accessible if it belongs to the current scope. Type names, function
 ### 3. Variable name accessibility
 - 正向编译: 作用域内的变量可读写
 
-### 4. Module name accessibility
-- 正向编译: 导入模块可访问
+### 4. Module / namespace name accessibility
+- 正向编译: 导入模块可访问，namespace 导出实体通过限定名可访问
+- 反向编译: namespace 导出实体在外部不能省略 namespace 限定名
