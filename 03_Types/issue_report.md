@@ -15,6 +15,9 @@
 | D-3.19-02 | TYP_03_19_02_002_FAIL_DIFF_FIELD_TYPE | 联合类型同名字段不同类型应报错(3.19.2) | compile-time error | 编译通过 | D类-Spec不一致 |
 | D-3.19-03 | TYP_03_19_03_007_FAIL_KEYOF_NON_CLASS | keyof 非类/接口类型应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
 | D-3.19.1-01 | TYP_03_19_01_012_FAIL_READONLY_WRITE | readonly union 归一化后写入应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
+| D-3.21.3-01 | TYP_03_21_03_006_FAIL_PARTIAL_NON_CLASS | Partial 应用于非 class/interface 应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
+| D-3.21.4-01 | TYP_03_21_04_006_FAIL_REQUIRED_NON_CLASS | Required 应用于非 class/interface 应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
+| D-3.21.5-01 | TYP_03_21_05_004_FAIL_NON_CLASS | Readonly 应用于非 class/interface 应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
 
 ### 异常详情
 
