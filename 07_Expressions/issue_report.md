@@ -1,91 +1,64 @@
-# 07 表达式 - ArkTS与Java/Swift/TS行为差异及规范一致性报告
+# 07 Expressions Issue Report
 
-记录 07 表达式（Expressions）章节 §7.26-§7.36.1 子章节执行用例时发现的**ArkTS与业界静态语言行为差异**及**Spec与实现一致性**情况。
+只记录**当前未解决的执行异常**。一旦异常通过修改用例或编译器更新而消除，立即从此文件移除。
 
----
+| ID | Case | Symptom | Expected | Actual | Status |
+|---|------|--------|---------|--------|--------|
+| C-7.32-01 | EXP_07_32_02_004_PASS_COMPOUND_LOGIC | `&&=` / `||=` 复合赋值不支持 | compile-pass | es2panda 报 Unexpected token | C类-编译器未实现 |
+| D-7.36-01 | EXP_07_36_005, EXP_07_36_006 | 常量表达式中 `++` / `--` 应被拒绝 | compile-time error | 编译通过 | D类-Spec不一致 |
+| D-7.36-02 | EXP_07_36_007 | 常量表达式引用 `let` 应被拒绝 | compile-time error | 编译通过 | D类-Spec不一致 |
+| D-7.33-01 | EXP_07_33_004 | 三元条件表达式接受非 boolean 条件 | compile-time error | 编译通过 | D类-Spec不一致 |
+| D-7.27-01 | EXP_07_27_06_004 | 枚举类型与 int 关系比较应被拒绝 | compile-time error | 编译通过 | D类-Spec不一致 |
+| D-7.35-01 | EXP_07_35_04_002 | Lambda 捕获未初始化变量应被拒绝 | compile-time error | 编译通过 | D类-Spec不一致 |
+| D-7.26-01 | EXP_07_26_014 | nullish 类型参与移位运算应被拒绝 | compile-time error | 编译通过 | D类-Spec不一致 |
 
-## 一、编译器实现待完善（Spec 要求但 es2panda 暂不支持）
+### 异常详情
 
-### EXP-G1：&&= / ||= 复合赋值 es2panda 暂不支持
+**C-7.32-01** ⭐⭐ MEDIUM — `&&=` / `||=` 复合赋值 es2panda 暂不支持
 
-**用例：** EXP_07_32_02_004_PASS_COMPOUND_LOGIC
-**章节：** 7.32.2 Compound Assignment Operators
-**性质：** 编译器实现待完善 — Spec §7.32.2 列出 `&&=` 和 `||=` 为合法复合赋值运算符，但 es2panda 暂不支持该语法
+- Spec §7.32.2 的 assignmentOperator 语法列出 `&&=` 和 `||=`。
+- 实际：`a &&= true` 报 `Unexpected token '&&='`。
+- 当前用例已通过改写为 `a = a && true` 规避，但原语法能力仍未实现。
+- 分类：C 类（编译器未实现 Spec 要求）
 
-**Spec 依据：** arktsspecification.md §7.32.2 列出 `&&=` 和 `||=` 在 assignmentOperator 语法中
+**D-7.36-01** ⭐ LOW — 常量表达式允许 `++` / `--`
 
-**现状：** 已通过改用 `a = a && true` 替代 `a &&= true` 规避
+- Spec §7.36 禁止 `++` / `--` 出现在常量表达式中。
+- 实际：`const BAD: int = count++`、`const BAD: int = --count` 编译通过。
+- Java 对此更宽松，Swift 禁止；ArkTS 应以自身 Spec 为准。
+- 分类：D 类（Spec 与实现不一致）
 
-```typescript
-let a: boolean = true
-a &&= true  // ESY0227: Unexpected token '&&=' (es2panda 暂不支持)
-```
+**D-7.36-02** ⭐ LOW — 常量表达式可引用 `let` 变量
 
----
+- Spec §7.36 要求常量表达式只能引用常量相关构造。
+- 实际：常量表达式引用 `let` 变量编译通过。
+- 建议：编译器补充检查，或 Spec 明确允许只读/可确定值的 `let` 场景。
+- 分类：D 类（Spec 与实现不一致）
 
-## 二、与业界静态语言差异点（ArkTS 有意设计，非缺陷）
+**D-7.33-01** ⭐ LOW — 三元条件接受非 boolean
 
-以下差异点经分析确认是 ArkTS 相对于 Java/Swift/TS 的有意设计选择，或是 Spec 已知的宽松实现策略，**不视为设计缺陷**。
+- Spec §7.33 要求 conditional expression 的 condition 为 boolean。
+- 实际：`int` 条件被接受。
+- Java/Swift 均要求 boolean/Bool。
+- 分类：D 类（Spec 与实现不一致）
 
-### EXP-D1：常量表达式允许 ++/--（与 Java/Swift 行为不同）
+**D-7.27-01** ⭐ LOW — 枚举类型与 int 关系比较未拒绝
 
-**用例：** EXP_07_36_005, EXP_07_36_006
-**章节：** 7.36 Constant Expressions
-**差异：** Spec §7.36 禁止 `++` `--`，但 es2panda 编译通过。Java 同样允许常量表达式使用 `++`（与 ArkTS 一致），Swift 禁止。
+- Spec 对枚举关系比较要求同枚举类型比较。
+- 实际：enum 与 int 可直接进行关系比较。
+- Java/Swift 均禁止 enum 与 int 直接比较。
+- 分类：D 类（Spec 与实现不一致）
 
-| 语言 | 行为 |
-|------|------|
-| ArkTS | `const BAD: int = count++` 编译通过 |
-| Java | 允许（常量表达式支持 ++） |
-| Swift | 编译错误 |
+**D-7.35-01** ⭐ LOW — Lambda 捕获未初始化变量未检查
 
-### EXP-D2：常量表达式可引用 let 变量（与 Swift 不同，与 Java 一致）
+- Spec §7.35.2 要求使用未初始化变量应产生编译错误。
+- 实际：lambda 捕获未初始化变量编译通过。
+- TypeScript 行为更宽松，但 ArkTS 静态语义应按 Spec 检查。
+- 分类：D 类（Spec 与实现不一致）
 
-**用例：** EXP_07_36_007
-**差异：** Spec 要求常量表达式只能引用 `const`，但 es2panda 接受 `let`。Java 允许 final/effectively-final 变量用于常量表达式。
+**D-7.26-01** ⭐ LOW — nullish 类型参与移位运算未拒绝
 
-### EXP-D3：三元条件接受非 boolean（与 Java/Swift 不同）
-
-**用例：** EXP_07_33_004
-**差异：** Spec §7.33 要求 condition 为 boolean，但 es2panda 接受 int。Java/Swift 要求 boolean 条件。
-
-### EXP-D4：枚举类型与 int 关系比较（与 Java/Swift 行为不同）
-
-**用例：** EXP_07_27_06_004
-**差异：** Spec 要求同枚举类型，但 es2panda 接受 enum vs int。Java 禁止枚举与 int 直接比较（需 `.ordinal()`），Swift 禁止。
-
-### EXP-D5：Lambda 捕获未初始化变量（编译器宽松实现）
-
-**用例：** EXP_07_35_04_002
-**差异：** Spec §7.35.2 要求编译错误，但 es2panda 编译通过。TypeScript 同样允许（运行时为 undefined）。
-
-### EXP-D6：nullish 类型用于移位操作数（编译器宽松实现）
-
-**用例：** EXP_07_26_014
-**差异：** Spec 要求数值类型/bigint，但 es2panda 接受 `int|null`。
-
----
-
-## 三、ArkTS 语法确认（非问题，已验证的规范行为）
-
-| 语法点 | 正确写法 | 对应 Java | 对应 Swift |
-|--------|---------|----------|-----------|
-| float 字面量 | `3.14f` | `3.14f` | `Float(3.14)` |
-| char 字面量 | `c'a'` | `'a'` | `"a"` (String) |
-| bigint 构造 | `BigInt("255")` 或 `255n` | `new BigInteger("255")` | 无内置 |
-
----
-
-## 四、章节执行统计
-
-| 指标 | 值 |
-|------|-----|
-| 子章节数 | 30 |
-| 总用例 | 189 |
-| compile-pass | 91 |
-| compile-fail | 49 |
-| runtime | 49 |
-| 通过率 | **100%**（189/189） |
-| 编译器实现待完善 | 1（EXP-G1） |
-| 与业界语言差异点 | 6（EXP-D1~D6） |
-| 执行日期 | 2026-06-22 |
+- Spec §7.26 要求 shift operands 为 numeric/integral/bigint 相关类型。
+- 实际：`int | null` 等 nullish union 可参与移位运算。
+- 建议：补充 nullish union 操作数检查。
+- 分类：D 类（Spec 与实现不一致）
