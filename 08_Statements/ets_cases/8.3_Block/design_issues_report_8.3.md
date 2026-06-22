@@ -1,4 +1,4 @@
-# 8.3 块语句 (Block) - ArkTS 设计问题发现报告
+# 8.3 Block - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
 **报告日期：** 2026-06-18
 **测试用例数：** 15（compile-pass: 6, compile-fail: 4, runtime: 5）
@@ -6,9 +6,9 @@
 
 ---
 
-## 一、新发现的设计问题（基于真实编译运行）
+## 一、与业界静态语言的差异点
 
-### STM-I1：Block 内 type declaration — Spec 措辞与编译器行为不一致 ⭐⭐⭐ HIGH
+### STM-I1：Block 内 type declaration — Spec 措辞与编译器行为不一致
 
 **用例：** STM_08_03_008_FAIL_local_type_alias_in_block（compile-fail，按预期编译失败）；STM_08_03_004_PASS_block_type_declarations（compile-pass，已重写为块变量遮蔽测试）
 
@@ -69,7 +69,7 @@ ArkTS 不允许在块内声明 `function`（STM_08_03_006 测试为 compile-fail
 
 ---
 
-## 二、已验证 ArkTS 行为（与规范一致）
+## 二、符合ArkTS spec的语言设计差异（与规范一致）
 
 | 用例 ID | 行为描述 | 状态 |
 |---------|---------|------|
@@ -95,9 +95,9 @@ ArkTS 不允许在块内声明 `function`（STM_08_03_006 测试为 compile-fail
 
 | 严重性 | 数量 | 问题/用例 |
 |-------|------|----------|
-| ⭐⭐⭐ HIGH | 1 | STM-I1: Block 内 type declaration spec/impl 不一致（STM_08_03_008） |
-| ⭐⭐ MEDIUM | 0 | — |
-| ⭐ LOW | 0 | — |
+| 编译器待完善 | 1 | STM-I1: Block 内 type declaration spec/impl 不一致（STM_08_03_008） |
+| 语言差异 | 0 | — |
+| 设计观察 | 0 | — |
 | 设计观察（非问题） | 2 | A（块内不允许局部 class）、B（块内不允许嵌套函数） |
 
 ---

@@ -1,4 +1,4 @@
-# 8.11 continue 语句 - ArkTS 设计问题发现报告
+# 8.11 continue Statements - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
 **报告日期：** 2026-06-18
 **测试用例数：** 18（compile-pass: 6, compile-fail: 7, runtime: 5）
@@ -6,11 +6,11 @@
 
 ---
 
-## 一、新发现的设计问题（基于真实编译运行）
+## 一、与业界静态语言的差异点
 
 **本章节未发现独立的新设计问题。** 8.11 节全部 18 个用例首次执行 100% 通过（6 compile-pass + 7 compile-fail + 5 runtime），continue 语句的核心语义（无标签跳转、带标签跳转、编译期错误检测、运行时 forUpdate 执行）均与 ArkTS 规范 §8.11 一致。
 
-### 设计观察 A：逗号运算符限制影响 continue 与复合 forUpdate 的交互 ⭐ LOW
+### 设计观察 A：逗号运算符限制影响 continue 与复合 forUpdate 的交互
 
 **来源：** 8.2 Expression Statements（跨章节共享设计观察）
 
@@ -32,7 +32,7 @@
 
 ---
 
-## 二、已验证 ArkTS 行为（与规范一致）
+## 二、符合ArkTS spec的语言设计差异（与规范一致）
 
 ### compile-pass（6/6）
 
@@ -88,13 +88,13 @@
 |--------|------|---------|
 | ⭐ HIGH | 0 | — |
 | ⭐ MEDIUM | 0 | — |
-| ⭐ LOW | 0 | — |
+| 设计观察 | 0 | — |
 | 无问题 | 16 | 除 007/013 外全部用例 |
 | 设计观察（非问题） | 1 | 观察 A（逗号运算符限制影响复合 forUpdate 中的 continue） |
 
 ---
 
-## 四、本章节累积重现的已知问题
+## 四、跨章节差异点
 
 以下为 08 Statements 章节已记录的跨子章节已知问题。其中**逗号运算符限制**对 8.11 产生直接影响（涉及 forUpdate 中 continue 的语义），其余问题与 continue 语句无关。
 

@@ -1,10 +1,10 @@
-# 9.9 Constructor Declaration 设计问题报告
+# 9.9 Constructor Declaration - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
 **生成日期：** 2026-06-19
 
 ---
 
-## 一、新发现的设计问题
+## 一、与业界静态语言的差异点
 
 ### 无新发现
 
@@ -14,7 +14,7 @@
 
 ---
 
-## 二、已验证 ArkTS 行为
+## 二、符合ArkTS spec的语言设计差异
 
 ### 2.1 构造器语法 ✅
 

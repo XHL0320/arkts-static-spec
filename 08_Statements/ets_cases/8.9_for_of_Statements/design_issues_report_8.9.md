@@ -1,4 +1,4 @@
-# 8.9 for-of 语句 - ArkTS 设计问题发现报告
+# 8.9 for of Statements - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
 **报告日期：** 2026-06-18
 **测试用例数：** 23（compile-pass: 10, compile-fail: 6, runtime: 7）
@@ -6,7 +6,7 @@
 
 ---
 
-## 一、新发现的设计问题（基于真实编译运行）
+## 一、与业界静态语言的差异点
 
 **未发现设计问题。** 全部 23 个测试用例首次执行通过（100%），无编译器异常、无运行时错误、无反直觉的语义行为。for-of 语句设计与 Java、Swift 中成熟的模式保持一致，且与 ArkTS 规范第 8.9 节完全一致。
 
@@ -78,7 +78,7 @@ for (elem of arr) {  // arr: Array<int>, int assignable to int: OK
 
 ---
 
-## 二、已验证 ArkTS 行为（与规范一致）
+## 二、符合ArkTS spec的语言设计差异（与规范一致）
 
 全部 23 个测试用例执行结果与规范一致，无任何偏差。
 
@@ -128,7 +128,7 @@ for (elem of arr) {  // arr: Array<int>, int assignable to int: OK
 |--------|------|----------|
 | ⭐ HIGH | 0 | — |
 | ⭐ MEDIUM | 0 | — |
-| ⭐ LOW | 0 | — |
+| 设计观察 | 0 | — |
 | 设计观察（非问题） | 3 | A（const 阻止赋值）、B（外部变量模式）、C（无解构） |
 | 跨节已知问题 | 6 | 全部排除（详见跨节问题排除清单） |
 

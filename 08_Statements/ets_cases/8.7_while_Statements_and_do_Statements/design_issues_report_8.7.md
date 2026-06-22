@@ -1,4 +1,4 @@
-# 8.7 while 语句与 do 语句 - ArkTS 设计问题发现报告
+# 8.7 while Statements and do Statements - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
 **报告日期：** 2026-06-18
 **测试用例数：** 24（15 compile-pass + 2 compile-fail + 7 runtime）
@@ -7,7 +7,7 @@
 
 ---
 
-## 一、新发现的设计问题（基于真实编译运行）
+## 一、与业界静态语言的差异点
 
 **未发现严重设计缺陷。** ArkTS 第 8.7 节 while 与 do-while 语句的实现与规范定义一致。但是，以下设计观察值得关注。
 
@@ -43,7 +43,7 @@ while (Color.Green) { } // enum — compile-pass (非零值为 truthy)
 
 ---
 
-### 观察 B：仅覆盖语法层面的 compile-fail 测试，缺少类型层面的反向用例 ⭐ LOW
+### 观察 B：仅覆盖语法层面的 compile-fail 测试，缺少类型层面的反向用例
 
 **用例：** STM_08_07_009_FAIL, STM_08_07_010_FAIL（compile-fail）
 
@@ -58,7 +58,7 @@ while (Color.Green) { } // enum — compile-pass (非零值为 truthy)
 
 ---
 
-## 二、已验证 ArkTS 行为（与规范一致）
+## 二、符合ArkTS spec的语言设计差异（与规范一致）
 
 | 用例 ID | 行为描述 | 状态 |
 |---------|---------|------|
@@ -109,7 +109,7 @@ while (Color.Green) { } // enum — compile-pass (非零值为 truthy)
 |--------|------|---------|
 | ⭐ HIGH | 0 | — |
 | ⭐ MEDIUM | 0 | — |
-| ⭐ LOW | 1 | 观察 B：缺少类型层面 compile-fail 用例（class/array/object 条件拒绝） |
+| 设计观察 | 1 | 观察 B：缺少类型层面 compile-fail 用例（class/array/object 条件拒绝） |
 | Design Observation（设计观察） | 1 | 观察 A：Extended Conditional Expressions 扩展循环条件类型范围 |
 | 累积已知问题（重现） | 0 | 本节未触发 STM-I1、STM-I2 或其他已知设计问题 |
 

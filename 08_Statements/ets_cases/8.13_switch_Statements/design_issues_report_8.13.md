@@ -1,4 +1,4 @@
-# 8.13 switch 语句 - ArkTS 设计问题发现报告
+# 8.13 switch Statements - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
 **报告日期：** 2026-06-18
 **测试用例数：** 25（compile-pass: 11, compile-fail: 4, runtime: 10）
@@ -7,7 +7,7 @@
 
 ---
 
-## 一、新发现的设计问题（基于真实编译运行）
+## 一、与业界静态语言的差异点
 
 ### 跨章节已知问题适用性检查
 
@@ -24,7 +24,7 @@
 
 ---
 
-### 问题 1：规范 TODO -- 仅含 default 子句的 switchBlock 行为缺陷 ⭐⭐⭐ HIGH
+### 差异点 1：规范 TODO -- 仅含 default 子句的 switchBlock 行为缺陷
 
 **用例：** 无（尚未编写测试用例——spec 标记为 TODO，需运行时修复后验证）
 **类别：** B 类（spec 明确行为，但实现有已知缺陷）
@@ -43,7 +43,7 @@
 
 ---
 
-### 问题 2：规范 TODO -- case 中使用非字面量常量表达式会导致断言错误 ⭐⭐ MEDIUM
+### 差异点 2：规范 TODO -- case 中使用非字面量常量表达式会导致断言错误
 
 **用例：** 无（尚未编写测试用例——spec 标记为 TODO）
 **类别：** C 类（规范行为未明确 + 实现行为异常）
@@ -62,7 +62,7 @@
 
 ---
 
-### 问题 3：char 与 int 在 switch 中可比较——spec/impl 矛盾 ⭐⭐ MEDIUM ⭐ NEW
+### 差异点 3：char 与 int 在 switch 中可比较——spec/impl 矛盾
 
 **用例：** STM_08_13_019_PASS_char_case_on_int_switch（实测 compile-pass）
 **类别：** A 类（spec 描述与实现行为矛盾）
@@ -96,7 +96,7 @@
 
 ---
 
-### 问题 4：null case 类型窄化与直接 new——编译器静态窄化导致 case null 不可达 ⭐⭐ MEDIUM ⭐ NEW
+### 差异点 4：null case 类型窄化与直接 new——编译器静态窄化导致 case null 不可达
 
 **用例：** STM_08_13_012_RUNTIME_null_case_matching, STM_08_13_016_RUNTIME_object_instance_switch（均通过辅助函数规避）
 **类别：** D 类（spec 未明确 + 行为有工程实践影响）
@@ -149,7 +149,7 @@ switch (a) {
 
 ---
 
-### 问题 5：不要求穷尽性（与 Swift 不同）⭐ LOW
+### 差异点 5：不要求穷尽性（与 Swift 不同）⭐ LOW
 
 **用例：** 所有 compile-pass 用例（尤其是 STM_08_13_018_PASS_boolean_switch_extended —— 仅含 `case true` 无 `case false`）
 **类别：** 设计观察（Design Observation），非缺陷
@@ -168,7 +168,7 @@ switch (a) {
 
 ---
 
-### 问题 6：显式允许重复 case 标签 ⭐ LOW
+### 差异点 6：显式允许重复 case 标签
 
 **用例：** STM_08_13_006_PASS_identical_case_values, STM_08_13_013_RUNTIME_identical_case_values
 **类别：** 设计观察（Design Observation），非缺陷
@@ -187,7 +187,7 @@ switch (a) {
 
 ---
 
-### 问题 7：默认穿透（fall-through）语义，无 `fallthrough` 关键字 ⭐ LOW
+### 差异点 7：默认穿透（fall-through）语义，无 `fallthrough` 关键字
 
 **用例：** STM_08_13_002_PASS_fall_through, STM_08_13_010_RUNTIME_fall_through_and_default, STM_08_13_014_RUNTIME_fall_through_deep
 **类别：** 设计观察（Design Observation），非缺陷
@@ -206,7 +206,7 @@ switch (a) {
 
 ---
 
-## 二、已验证 ArkTS 行为（与规范一致）
+## 二、符合ArkTS spec的语言设计差异（与规范一致）
 
 以下行为基于已执行的 25 个测试用例，与 ArkTS 规范（第 8.13 节）预期行为一致：
 
@@ -256,11 +256,11 @@ switch (a) {
 
 | 严重性 | 数量 | 涉及用例 / 问题 |
 |--------|------|----------------|
-| ⭐⭐⭐ HIGH | 1 | 问题 1：仅含 default 的 switchBlock 行为缺陷（spec TODO，待运行时修复） |
-| ⭐⭐ MEDIUM | 3 | 问题 2：非字面量 case 表达式断言错误（spec TODO） |
+| 编译器待完善 | 1 | 问题 1：仅含 default 的 switchBlock 行为缺陷（spec TODO，待运行时修复） |
+| 语言差异 | 3 | 问题 2：非字面量 case 表达式断言错误（spec TODO） |
 |  |  | 问题 3：char 与 int 在 switch 中可比较——spec/impl 矛盾（**新发现**） |
 |  |  | 问题 4：null case 类型窄化与直接 new——编译器窄化导致 case null 不可达（**新发现**） |
-| ⭐ LOW | 3 | 问题 5：不要求穷尽性（设计观察） |
+| 设计观察 | 3 | 问题 5：不要求穷尽性（设计观察） |
 |  |  | 问题 6：显式允许重复 case 标签（设计观察） |
 |  |  | 问题 7：默认穿透语义，无 fallthrough 关键字（设计观察） |
 
@@ -286,9 +286,9 @@ ArkTS 的 switch 语句在整体设计上与 **Java 传统 switch** 最为接近
 | switch 表达式类型范围 | 任意类型 | 受限类型（基本类型+String+枚举） | Equatable 类型 |
 
 **整体评价：** ArkTS switch 语句继承了 TypeScript/JavaScript 的 C 风格语义基础，并在类型安全方面对齐 Java 的方向。但存在以下需要关注的问题：
-- 1 个 ⭐⭐⭐ HIGH 严重性的已知运行时缺陷（仅含 default 的 switch 不执行）
-- 3 个 ⭐⭐ MEDIUM 问题：规范未定义行为（非字面量 case）、spec/impl 矛盾（char vs int）、编译器窄化工程问题（null case + direct new）
-- 3 个 ⭐ LOW 设计观察（穷尽性、重复标签、穿透语义）属于保守的兼容性决策
+- 1 个 严重性的已知运行时缺陷（仅含 default 的 switch 不执行）
+- 3 个 问题：规范未定义行为（非字面量 case）、spec/impl 矛盾（char vs int）、编译器窄化工程问题（null case + direct new）
+- 3 个 设计观察（穷尽性、重复标签、穿透语义）属于保守的兼容性决策
 
 ---
 

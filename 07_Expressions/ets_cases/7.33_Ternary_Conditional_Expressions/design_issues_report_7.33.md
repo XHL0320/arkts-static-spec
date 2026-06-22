@@ -1,4 +1,4 @@
-# 7.33 三元条件表达式 - 设计问题报告
+# 7.33 Ternary Conditional Expressions - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
 **生成日期：** 2026-06-22
 **状态：** 测试用例已生成，待 WSL 环境实际编译运行后补充设计问题分析

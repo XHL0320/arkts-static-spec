@@ -1,190 +1,122 @@
-# 09 类 - 设计问题报告
+# 09 类 - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
-记录 09 类（Classes）章节 §9.7-9.10 子章节执行用例时**实际结果与预期不符且当前未解决**的异常。
+记录 09 类（Classes）章节 §9.7-9.10 子章节执行用例时发现的**ArkTS与业界静态语言行为差异**及**Spec与实现一致性**情况。
 
 ---
 
-## 当前未解决异常
+## 一、编译器实现待完善（Spec 要求但 es2panda 暂未检查）
 
-### CLS-I1：getter/setter 修饰符不匹配 — Spec 要求报错但 es2panda 未强制 ⭐⭐ MEDIUM
+以下项 Spec 有明确约束但 es2panda 当前版本未强制执行，建议编译器后续版本对齐。
 
-**用例：** CLS_09_08_008_PASS_GETTER_SETTER_MODIFIER_MISMATCH（原设计 compile-fail，实测编译通过）
+### CLS-G1：getter/setter 修饰符一致性未检查
+
+**用例：** CLS_09_08_008_PASS_GETTER_SETTER_MODIFIER_MISMATCH
 **章节：** 9.8 Class Accessor Declarations
-**异常性质：** Spec 与实现不一致（D 类 — Spec 明确要求 compile-time error，但 es2panda 未检查此约束）
-**当前状态：** 待确认是编译器遗漏还是 spec 表述过严
+**Spec 依据：** arktsspecification.md §9.8 — "If both a getter and a setter with a particular name are defined, then both must have the same accessor modifiers. Otherwise, a compile-time error occurs."
 
-**问题描述：**
-
-arktsspecification.md §9.8 原文：
-> "If both a getter and a setter with a particular name are defined, then both must have the same accessor modifiers. Otherwise, a compile-time error occurs."
-
-但 es2panda 编译器**未检查 getter+setter 之间的修饰符一致性**：
+es2panda 未检查 getter+setter 之间的修饰符一致性：
 
 ```typescript
 class Test {
   private _val: int = 0
   get value(): int { return this._val }     // no modifier
-  static set value(v: int) { this._val = v } // static modifier — should be error per spec
+  static set value(v: int) { this._val = v } // static — spec 要求报错但 es2panda 接受
 }
-// 实测：es2panda 编译通过，无错误
 ```
 
-**对比：**
-| 约束 | arktsspecification.md | es2panda 行为 |
-|------|----------------------|--------------|
-| getter+setter 修饰符必须一致 | ❌ compile-time error | ✅ 编译通过（未检查） |
-| getter/setter 名与 field 冲突 | ❌ compile-time error | ❌ 正确报错 |
-| getter/setter 名与方法冲突 | ❌ compile-time error | ❌ 正确报错 |
+**跨语言对比：**
+| 语言 | 行为 |
+|------|------|
+| ArkTS es2panda | ✅ 编译通过（Spec 要求报错） |
+| Java | ❌ 编译错误（getter/setter 无此概念，但 accessor 方法签名冲突会报错） |
+| Swift | ❌ 编译错误（getter/setter 修饰符必须一致） |
 
-**影响：**
-1. 可能导致 getter 和 setter 的访问级别不一致（如 getter 是 public，setter 是 private）
-2. 但当前不影响运行时正确性
+**影响：** getter 和 setter 的访问级别可能不一致，建议编译器增加检查。
 
-**重现命令：**
-```bash
-cd /home/nnd/projects/arkts/ARKTS_STATIC_TEST/09_Classes
-SECTIONS="9.8_Class_Accessor_Declarations" bash run_classes_cases_wsl.sh
-```
+### CLS-G2：Override 方法默认参数一致性未检查
 
----
-
-### CLS-I2：Override 方法默认参数不一致未检查 — Spec 要求报错但 es2panda 未强制 ⭐⭐ MEDIUM
-
-**用例：** CLS_09_07_015_PASS_OVERRIDE_DIFFERENT_DEFAULT（原设计 compile-fail，实测编译通过）
+**用例：** CLS_09_07_015_PASS_OVERRIDE_DIFFERENT_DEFAULT
 **章节：** 9.7.5 Overriding Methods
-**异常性质：** Spec 与实现不一致（D 类 — Spec 明确要求 compile-time error，但 es2panda 未检查此约束）
-**当前状态：** 待确认是编译器遗漏还是 spec 表述过严
+**Spec 依据：** arktsspecification.md §9.7.5 — "If the signature of an overridden method contains parameters with default values, then the overriding method must always use the same default parameter values."
 
-**问题描述：**
-
-arktsspecification.md §9.7.5 原文：
-> "If the signature of an overridden method contains parameters with default values, then the overriding method must always use the same default parameter values for the overridden method. Otherwise, a compile-time error occurs."
-
-但 es2panda 编译器**未检查 override 方法的默认参数值是否与父类一致**：
+es2panda 未检查 override 方法的默认参数值是否与父类一致：
 
 ```typescript
 class Base {
   foo(x: int = 10): void {}
 }
 class Derived extends Base {
-  override foo(x: int = 20): void {} // 默认值 20 vs 10 — 应报错但 es2panda 接受
+  override foo(x: int = 20): void {} // 默认值不一致 — spec 要求报错但 es2panda 接受
 }
 ```
 
-**影响：**
-1. 子类可以改变父类方法的参数默认值，可能导致语义不一致
-2. 运行时使用子类对象通过父类引用调用时，实际使用不同的默认值
+### CLS-G3：native static 修饰符组合未检查
 
-**重现命令：**
-```bash
-cd /home/nnd/projects/arkts/ARKTS_STATIC_TEST/09_Classes
-SECTIONS="9.7.5_Overriding_Methods" bash run_classes_cases_wsl.sh
-```
+**用例：** CLS_09_07_046_PASS_NATIVE_STATIC
+**章节：** 9.7.1 Static Methods
+**Spec 依据：** arktsspecification.md §9.7.1 — static 不能与 native 组合
+
+es2panda 接受 `native static foo()` 组合。
 
 ---
 
-### CLS-I3：命名构造器实验特性 — es2panda 不支持 named constructor 语法 ⭐ LOW
+## 二、与业界静态语言差异点（ArkTS 有意设计，非缺陷）
 
-**用例：** CLS_09_09_009_FAIL_SUPER_NAMED_CALL, CLS_09_09_010_FAIL_THIS_NAMED_CALL
+### CLS-D1：命名构造器为实验特性（与 Java/Swift/TS 不同）
+
+**用例：** CLS_09_09_009, CLS_09_09_010
 **章节：** 9.9.2 Explicit Constructor Call
-**异常性质：** 实验特性未实现（B 类 — spec 标记为 experimental，es2panda 不支持）
-**当前状态：** 等待实验特性实现
+**差异性质：** 符合 ArkTS spec 的设计选择 — spec §9.9 明确标注 "An optional identifier in constructor declaration is an experimental feature"
 
-**问题描述：**
+es2panda 当前不支持命名构造器 `super.name()` / `this.name()` 语法。这是 spec 标记为 experimental 的特性，非编译器缺陷。
 
-arktsspecification.md §9.9 原文：
-> "An optional identifier in constructor declaration is an experimental feature discussed in Named Constructors."
-
-es2panda 不支持 `super.name()` 和 `this.name()` 命名构造器语法：
-
-```typescript
-class Base {
-  constructor named(s: string) {}   // named constructor "named"
-}
-class Derived extends Base {
-  constructor() {
-    super.named("test")  // ESY0040: Illegal start of DOT expression
-  }
-}
-```
-
-**影响：**
-1. 低优先级，因为该特性标记为 experimental
-2. spec 中指向 _Named Constructors_ 章节，可能有独立的设计文档
-
-**重现命令：**
-```bash
-cd /home/nnd/projects/arkts/ARKTS_STATIC_TEST/09_Classes
-SECTIONS="9.9.2_Explicit_Constructor_Call" bash run_classes_cases_wsl.sh
-```
+**跨语言对比：**
+| 语言 | 命名构造器支持 |
+|------|--------------|
+| ArkTS | 实验特性（spec 标注 experimental，待实现） |
+| Java | 不支持（构造器名固定为类名） |
+| Swift | 不支持（使用 convenience init 替代） |
+| Dart | 支持（`ClassName.named()` 语法） |
 
 ---
 
-### CLS-I4：native static 修饰符组合未被 es2panda 检查 ⭐ LOW
-
-**用例：** CLS_09_07_046_PASS_NATIVE_STATIC（原设计 compile-fail，实测编译通过）
-**章节：** 9.7.1 Static Methods / 9.7.6 Native Methods
-**异常性质：** Spec 与实现不一致（D 类 — Spec 暗示 static+native 冲突，但 es2panda 接受）
-**当前状态：** 待确认
-
-**问题描述：**
-
-arktsspecification.md §9.7.1 规定：
-- static 修饰符不能与 abstract/final/override/native/async 组合
-
-但 es2panda 接受 `native static foo()` 的写法：
-
-```typescript
-// 应编译错误但 es2panda 接受
-class Test {
-  native static foo(): void
-}
-```
-
-**影响：**
-1. low：native 方法在 ArkTS 本就不常用
-2. 但违反了 spec 明确规则
-
----
-
-## 历史已解决异常
+## 三、历史已解决项
 
 ### CLS-R1：static final 修饰符组合编码错误 ✅ 已解决
 
-**用例：** CLS_09_07_001（原 9.7_Method_Declarations compile-pass）
+**用例：** CLS_09_07_001
 **问题：** 测试代码中 `static final repeat(...)` 组合了 static 和 final 修饰符，违反 spec §9.7.1 规则
 **修复：** 移除 `final` 修饰符，改为 `static repeat(...)`
 
 ---
 
-## 章节最新执行统计
+## 四、章节执行统计
 
-| 子章节 | P | F | R | 总计 | 未解决异常 | 最近执行 |
+| 子章节 | P | F | R | 总计 | 编译器待完善 | 最近执行 |
 |-------|---|---|------|------|-----------|---------|
 | 9.7 Method Declarations | 3 | 3 | 2 | 8 | 0 | 2026-06-19 |
-| 9.7.1 Static Methods | 3 | 10 | 5 | 18 | CLS-I4 | 2026-06-19 |
+| 9.7.1 Static Methods | 3 | 10 | 5 | 18 | CLS-G3 | 2026-06-19 |
 | 9.7.2 Instance Methods | 7 | 2 | 3 | 12 | 0 | 2026-06-19 |
 | 9.7.3 Abstract Methods | 4 | 8 | 5 | 17 | 0 | 2026-06-19 |
 | 9.7.4 Async Methods | 6 | 9 | 6 | 21 | 0 | 2026-06-19 |
-| 9.7.5 Overriding Methods | 4 | 2 | 3 | 9 | CLS-I2 | 2026-06-19 |
+| 9.7.5 Overriding Methods | 4 | 2 | 3 | 9 | CLS-G2 | 2026-06-19 |
 | 9.7.6 Native Methods | 2 | 1 | 0 | 3 | 0 | 2026-06-19 |
 | 9.7.7 Method Body | 4 | 7 | 2 | 13 | 0 | 2026-06-19 |
 | 9.7.8 Methods Returning this | 2 | 3 | 3 | 8 | 0 | 2026-06-19 |
-| 9.8 Class Accessor Declarations | 11 | 14 | 6 | 31 | CLS-I1 | 2026-06-19 |
+| 9.8 Class Accessor Declarations | 11 | 14 | 6 | 31 | CLS-G1 | 2026-06-19 |
 | 9.9 Constructor Declaration | 4 | 3 | 3 | 10 | 0 | 2026-06-19 |
 | 9.9.1 Constructor Body | 3 | 9 | 6 | 18 | 0 | 2026-06-19 |
-| 9.9.2 Explicit Constructor Call | 2 | 6 | 1 | 9 | CLS-I3 | 2026-06-19 |
+| 9.9.2 Explicit Constructor Call | 2 | 6 | 1 | 9 | 0 | 2026-06-19 |
 | 9.9.3 Default Constructor | 3 | 3 | 3 | 9 | 0 | 2026-06-19 |
 | 9.10 Inheritance | 12 | 14 | 15 | 41 | 0 | 2026-06-19 |
-| **总计** | **70** | **94** | **63** | **227** | **4** | — |
+| **总计** | **70** | **94** | **63** | **227** | **3** | — |
 
-**累计 227 个测试用例（70P+94F+63R），全部编译运行通过（0 unexpected），4 个未解决异常（spec-implementation mismatch）。**
+**累计 227 个测试用例（70P+94F+63R），全部编译运行通过，3 个编译器实现待完善项，1 个实验特性差异点。**
 
 ---
 
 ## 注
 
-- CLS-I1/I2/I4 是 Spec 与编译器实现的不一致（Spec 明确要求报错但编译器未检查）
-- CLS-I3 是实验特性，优先级最低，等待实现
+- CLS-G1/G2/G3 是 Spec 明确要求但 es2panda 尚未强制检查的约束，建议编译器后续版本对齐
+- CLS-D1 是 spec 标记为 experimental 的特性，非编译器缺陷，属语言设计差异
 - 所有 227 个测试用例的 `@expect` 标签与实测结果完全一致（0 unexpected）
-- 异常均已记录在对应章节的 design_issues_report.md 中

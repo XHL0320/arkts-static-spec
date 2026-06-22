@@ -1,4 +1,4 @@
-# 8.6 循环语句 - ArkTS 设计问题发现报告
+# 8.6 Loop Statements - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
 **报告日期：** 2026-06-18
 **测试用例数：** 12（compile-pass: 6, compile-fail: 3, runtime: 3）
@@ -6,15 +6,15 @@
 
 ---
 
-## 一、新发现的设计问题（基于真实编译运行）
+## 一、与业界静态语言的差异点
 
-### 问题 STM-I2：Loop label 未被使用 — Spec 要求报错但编译器未强制 ⭐⭐ MEDIUM
+### 差异点 STM-I2：Loop label 未被使用 — Spec 要求报错但编译器未强制
 
 **用例：** STM_08_06_012_PASS_label_declared_not_used（原设计为 compile-fail，实测编译通过）
-**异常性质：** Spec 与实现不一致（D 类 — STATEMENTS.md 明确要求 compile-time error，但 es2panda 未检查此约束）
+**差异性质：** ArkTS Spec 与编译器行为差异（待确认对齐方向 — STATEMENTS.md 明确要求 compile-time error，但 es2panda 未检查此约束）
 **当前状态：** 待确认是编译器遗漏还是 spec 表述过严
 
-**问题描述：**
+**差异描述：**
 
 STATEMENTS.md §8.6 原文：
 > "A compile-time error occurs if the label identifier is **not used** within loopStatement, or is used in lambda expressions within a loop body."
@@ -38,7 +38,7 @@ function test(): void {
 | label 在 lambda 内使用 | compile-time error | 正确报错 |
 | label 完全未使用 | compile-time error | **编译通过（不一致）** |
 
-**对比结论：**
+**跨语言对比：**
 - es2panda 实现了 "label in lambda" 检查但未实现 "label not used" 检查
 - 这是一个编译器实现不完整的问题（编译器遗漏了 spec 中的检查项）
 
@@ -51,7 +51,7 @@ STATEMENTS.md §8.6: "A compile-time error occurs if the label identifier is not
 3. 严重性低于 STM-I1，因为不影响运行时正确性
 4. 从 Java/TypeScript/Swift 迁移的开发者通常不会声明不使用标签，因此实际开发中触发频率低
 
-**建议修复方案：**
+**对齐方案：**
 1. es2panda 增加 "label not used" 的编译期检查
 2. 或 spec 放宽此约束（声明未使用的 label 仅为 warning，非 error）
 
@@ -72,7 +72,7 @@ STATEMENTS.md §8.6: "A compile-time error occurs if the label identifier is not
 
 ---
 
-## 二、已验证 ArkTS 行为（与规范一致）
+## 二、符合ArkTS spec的语言设计差异（与规范一致）
 
 | 用例 ID | 行为描述 | 状态 |
 |---------|---------|------|

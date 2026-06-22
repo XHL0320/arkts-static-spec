@@ -1,10 +1,10 @@
-# 9.8 类访问器声明 - 设计问题报告
+# 9.8 Class Accessor Declarations - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
 **测试用例：** 31
 
-## 一、本章节首次发现的设计问题 ⭐ NEW
+## 一、与业界静态语言的差异点
 
-### 问题 CLS-I1：同名 getter/setter 修饰符不匹配未被编译器拒绝 ⭐⭐ MEDIUM
+### 差异点 CLS-I1：同名 getter/setter 修饰符不匹配未被编译器拒绝
 
 **用例：** CLS_09_08_008（实测发现）
 
@@ -35,7 +35,7 @@ class DataHolder {
 | 实例 `get` + `static set` | ❌ 拒绝 | 待验证 |
 | `get` 含 `abstract` + `set` 不含 | ❌ 拒绝 | 待验证 |
 
-**异常性质：** D 类（Spec 与实现不一致）
+**差异性质：** ArkTS Spec 与编译器行为差异
 
 **影响：** 类型安全降级。当 getter 声明为 `static` 而 setter 为实例方法时，通过类名调用 getter 返回的值与通过实例 setter 写入的值语义上属于不同存储空间（class 级别 vs instance 级别），破坏了 accessor 配对的语义一致性。
 
@@ -45,7 +45,7 @@ class DataHolder {
 
 ---
 
-## 二、本章节验证 spec 一致性
+## 二、符合ArkTS spec的语言设计差异
 
 | 验证点 | 用例 | 状态 |
 |-------|------|------|

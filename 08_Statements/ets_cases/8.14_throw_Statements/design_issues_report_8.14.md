@@ -1,4 +1,4 @@
-# 8.14 throw 语句 - ArkTS 设计问题发现报告
+# 8.14 throw Statements - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
 **报告日期：** 2026-06-18
 **测试用例数：** 19（7 compile-pass + 6 compile-fail + 6 runtime）
@@ -6,9 +6,9 @@
 
 ---
 
-## 一、新发现的设计问题（基于真实编译运行）
+## 一、与业界静态语言的差异点
 
-### 问题 1：Error.code 访问器继承冲突 ⭐ MEDIUM
+### 差异点 1：Error.code 访问器继承冲突 ⭐ MEDIUM
 **用例：** STM_08_14_010（间接相关）
 **实际行为/预期行为：** ArkTS 标准库 `Error` 类（`std.core.Error`）定义了 `get code(): int` 和 `set code(val: int)` 访问器属性，由私有字段 `code_: int` 支持。任何直接或间接继承 `Error` 的用户子类都继承此访问器，且无法用同名字段声明遮蔽它。试图在子类中定义 `public code: int` 或不兼容类型（如 `string`）将与继承的 getter/setter 产生编译时冲突。此约束是标准库设计的结果，但规范 STATEMENTS.md §8.14 并未提及——该节只讨论了 throw 表达式的类型约束（必须可赋值给 `Error`），而未涉及 `Error` 基类本身的成员签名。
 
@@ -62,7 +62,7 @@ set code(val: int) {
 
 ---
 
-## 二、已验证 ArkTS 行为（与规范一致）
+## 二、符合ArkTS spec的语言设计差异（与规范一致）
 
 | 用例 ID | 行为描述 | 状态 |
 |---------|----------|------|
@@ -107,7 +107,7 @@ set code(val: int) {
 |--------|------|----------|
 | ⭐ HIGH | 0 | — |
 | ⭐ MEDIUM | 1 | STM_08_14_010（间接）—— Error.code 访问器继承冲突 |
-| ⭐ LOW | 0 | — |
+| 设计观察 | 0 | — |
 | 设计观察（非问题） | 2 | A、B |
 
 ---
