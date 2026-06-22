@@ -53,10 +53,10 @@
 | 014 | FAIL_SETTER_NO_PARAMETERS | setter 声明时无参数应编译失败 | PASS |
 | 019 | FAIL_OVERRIDE_GETTER_NON_COVARIANT | override getter 返回类型非协变（string->int / int->boolean）应编译失败 | PASS |
 | 020 | FAIL_OVERRIDE_SETTER_NON_CONTRAVARIANT | override setter 参数类型非逆变（double->int / string->boolean）应编译失败 | PASS |
-| 024 | FAIL_GETTER_WITH_PARAMS | getter 不能有参数 -- 补充用例 | PASS |
-| 025 | FAIL_SETTER_RETURN_TYPE | setter 不能有返回类型 -- 补充用例 | PASS |
-| 026 | FAIL_SETTER_NO_PARAMS | setter 必须有参数 -- 补充用例 | PASS |
-| 033 | FAIL_ACCESSOR_NAME_METHOD_CONFLICT | accessor 名与方法名冲突 -- 补充用例 | PASS |
+| 024 | FAIL_GETTER_WITH_PARAMS | getter 不能有参数| PASS |
+| 025 | FAIL_SETTER_RETURN_TYPE | setter 不能有返回类型 | PASS |
+| 026 | FAIL_SETTER_NO_PARAMS | setter 必须有参数  | PASS |
+| 033 | FAIL_ACCESSOR_NAME_METHOD_CONFLICT | accessor 名与方法名冲突  | PASS |
 
 ### runtime（6个，真实执行 + assert）
 

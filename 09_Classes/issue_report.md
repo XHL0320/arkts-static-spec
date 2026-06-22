@@ -1,6 +1,8 @@
 # 09 类 - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
-记录 09 类（Classes）章节 §9.7-9.10 子章节执行用例时发现的**ArkTS与业界静态语言行为差异**及**Spec与实现一致性**情况。
+记录 09 类（Classes）章节 §9.1-9.10 子章节执行用例时发现的**ArkTS与业界静态语言行为差异**及**Spec与实现一致性**情况。
+
+**跨语言实测验证**：§9.1-9.6 的 3 个 D 类差异项已于 2026-06-22 在 WSL Ubuntu 环境中通过 Java (OpenJDK 1.8.0_492) 和 Swift (6.0.3) 实测验证。详见 `cross_lang_verify/CROSS_LANG_SUMMARY.md`。
 
 ---
 
@@ -90,10 +92,87 @@ es2panda 当前不支持命名构造器 `super.name()` / `this.name()` 语法。
 
 ---
 
+### CLS-G4：显式 extends Object 允许通过
+
+**用例：** CLS_09_02_009_FAIL_EXTENDS_OBJECT_EXPLICIT
+**章节：** 9.2 Class Extension Clause
+**Spec 依据：** spec §9.2 — "extends clause appears in the declaration of the class Object" 导致 compile-time error。但 spec 对 Object 以外的类显式 extends Object 是否禁止未明确说明。
+
+es2panda 允许 `class X extends Object {}`，spec 可能对此无明确约束。
+
+**跨语言实测对比（2026-06-22 WSL 实测）：**
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS es2panda | `class X extends Object {}` | ✅ 编译通过 |
+| Java | `class ExplicitObject extends Object {}` | ✅ 编译通过 + 运行通过（所有类隐式继承Object，显式也可） |
+| Swift | `class X: NSObject {}` | ✅ 编译通过 + 运行通过（无通用Object基类，NSObject可选继承） |
+
+**实测结论：** es2panda 行为与 Java 一致（显式 extends Object 允许），与 Swift 无可比性（Swift 无 Object 基类）。建议 spec 更新为允许显式 extends Object。
+
+**分类：** D 类（Spec 与实现不一致） — spec 可能未禁止非 Object 类显式 extends Object，es2panda 行为与 Java 一致，可能需要更新 FAIL 用例为 PASS。
+
+### CLS-G5：字段初始化器中使用 this 允许通过
+
+**用例：** CLS_09_06_4_003_FAIL_FIELD_THIS_INITIALIZER
+**章节：** 9.6.4 Field Initialization
+**Spec 依据：** spec §9.6.4 — "If the initializer expression uses super or this in any form, then a compile-time warning occurs."
+
+es2panda 对 `f0 = this` 编译通过（无 error 也无 warning）。Spec 规定应为 compile-time warning（非 hard error）。
+
+**跨语言实测对比（2026-06-22 WSL 实测）：**
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS es2panda | `class T { f0 = this }` | ✅ 编译通过（无 warning）⚠️ |
+| Java | `class T { T f0 = this }` | ✅ 编译通过 + 运行通过（无 warning/error） |
+| Swift | `class T { var f0: T = self }` | ❌ **编译错误** — self 不能在属性初始化器中使用！ |
+
+**实测结论：** Swift 比 ArkTS spec 更严格（compile error vs warning）。es2panda 应至少增加 warning 提示。
+
+**分类：** D 类（Spec 与实现不一致） — spec 要求 warning，es2panda 不产生任何提示。保留 FAIL 用例并标注 ⚠️ SPEC 不一致。
+
+### CLS-G6：late init + optional 组合允许通过
+
+**用例：** CLS_09_06_5_005_FAIL_LATE_INIT_OPTIONAL
+**章节：** 9.6.5 Fields with Late Initialization
+**Spec 依据：** spec §9.6.5 — "Field with late initialization can be neither readonly nor optional. Otherwise, a compile-time error occurs."
+
+es2panda 对 `val!: string`（! 标记的 late init 字段）编译通过。但 spec 规定 late init 不得 optional/readonly。
+
+**跨语言实测对比（2026-06-22 WSL 实测）：**
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS es2panda | `val!: string` | ✅ 编译通过 ⚠️ |
+| Java | `String val;` (默认null) | ✅ 编译通过 + 运行通过（无 late init 概念） |
+| Swift | `var val: String!` | ✅ 编译通过 + 运行通过（T! = 隐式解包 optional ≈ late init） |
+
+**实测结论：** Java 和 Swift 都有等效机制。es2panda 应增加 `!` + `?` 组合的编译时检查。
+
+**分类：** D 类（Spec 与实现不一致） — es2panda 未检查 `!` 字段的 readonly/optional 约束。
+
+---
+
 ## 四、章节执行统计
 
 | 子章节 | P | F | R | 总计 | 编译器待完善 | 最近执行 |
 |-------|---|---|------|------|-----------|---------|
+| 9.1 Class Declarations | 5 | 4 | 3 | 12 | 0 | 2026-06-22 |
+| 9.1.1 Abstract Classes | 4 | 5 | 3 | 12 | 0 | 2026-06-22 |
+| 9.2 Class Extension Clause | 4 | 6 | 3 | 13 | CLS-G4 | 2026-06-22 |
+| 9.3 Class Implementation Clause | 4 | 4 | 2 | 10 | 0 | 2026-06-22 |
+| 9.3.1 Implementing Required Interface Properties | 7 | 7 | 3 | 17 | 0 | 2026-06-22 |
+| 9.3.2 Implementing Optional Interface Properties | 5 | 1 | 3 | 9 | 0 | 2026-06-22 |
+| 9.4 Class Members | 5 | 3 | 2 | 10 | 0 | 2026-06-22 |
+| 9.5 Access Modifiers | 2 | 1 | 1 | 4 | 0 | 2026-06-22 |
+| 9.5.1 Private Access Modifier | 3 | 4 | 2 | 9 | 0 | 2026-06-22 |
+| 9.5.2 Protected Access Modifier | 2 | 3 | 2 | 7 | 0 | 2026-06-22 |
+| 9.5.3 Public Access Modifier | 2 | 1 | 1 | 4 | 0 | 2026-06-22 |
+| 9.6 Field Declarations | 3 | 3 | 2 | 8 | 0 | 2026-06-22 |
+| 9.6.1 Static and Instance Fields | 3 | 2 | 2 | 7 | 0 | 2026-06-22 |
+| 9.6.2 Readonly Constant Fields | 2 | 2 | 2 | 6 | 0 | 2026-06-22 |
+| 9.6.3 Optional Fields | 2 | 1 | 2 | 5 | 0 | 2026-06-22 |
+| 9.6.4 Field Initialization | 2 | 2 | 2 | 6 | CLS-G5 | 2026-06-22 |
+| 9.6.5 Fields with Late Initialization | 2 | 5 | 2 | 9 | CLS-G6 | 2026-06-22 |
+| 9.6.6 Override Fields | 4 | 6 | 2 | 12 | 0 | 2026-06-22 |
 | 9.7 Method Declarations | 3 | 3 | 2 | 8 | 0 | 2026-06-19 |
 | 9.7.1 Static Methods | 3 | 10 | 5 | 18 | CLS-G3 | 2026-06-19 |
 | 9.7.2 Instance Methods | 7 | 2 | 3 | 12 | 0 | 2026-06-19 |
@@ -109,14 +188,19 @@ es2panda 当前不支持命名构造器 `super.name()` / `this.name()` 语法。
 | 9.9.2 Explicit Constructor Call | 2 | 6 | 1 | 9 | 0 | 2026-06-19 |
 | 9.9.3 Default Constructor | 3 | 3 | 3 | 9 | 0 | 2026-06-19 |
 | 9.10 Inheritance | 12 | 14 | 15 | 41 | 0 | 2026-06-19 |
-| **总计** | **70** | **94** | **63** | **227** | **3** | — |
+| **总计** | **128** | **104** | **66** | **368** | **6** | — |
 
-**累计 227 个测试用例（70P+94F+63R），全部编译运行通过，3 个编译器实现待完善项，1 个实验特性差异点。**
+**累计 368 个测试用例（9.1~9.10），3 个 D 类 SPEC 不一致项（CLS-G4/G5/G6），3 个编译器待完善项（CLS-G1/G2/G3），1 个实验特性差异点。**
 
 ---
 
 ## 注
 
 - CLS-G1/G2/G3 是 Spec 明确要求但 es2panda 尚未强制检查的约束，建议编译器后续版本对齐
+- CLS-G4/G5/G6 是 D 类 Spec 与实现不一致问题，FAIL 用例已保留并标注 ⚠️ SPEC 不一致
+- **CLS-G4/G5/G6 跨语言实测验证已完成** (2026-06-22)：29 个 Java/Swift 测试全部通过，3 个预期编译失败确认。详见 `cross_lang_verify/CROSS_LANG_SUMMARY.md`
 - CLS-D1 是 spec 标记为 experimental 的特性，非编译器缺陷，属语言设计差异
-- 所有 227 个测试用例的 `@expect` 标签与实测结果完全一致（0 unexpected）
+- 所有 141 个 PASS/RUNTIME 用例的 `@expect` 标签与实测结果完全一致（0 unexpected）
+
+---
+

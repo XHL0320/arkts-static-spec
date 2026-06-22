@@ -1,7 +1,259 @@
 # 09 类 - 测试用例目录
 
-**生成日期：** 2026-06-19
-**共计：** 227 个测试用例（70 compile-pass + 94 compile-fail + 63 runtime）
+**生成日期：** 2026-06-22
+**共计：** 368 个测试用例
+
+---
+
+## 9.1 Class Declarations（12 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_01_001_PASS_EMPTY_CLASS | compile-pass | 空类声明 |
+| 002 | CLS_09_01_002_PASS_CLASS_WITH_FIELDS | compile-pass | 含字段的类 |
+| 003 | CLS_09_01_003_PASS_CLASS_WITH_METHODS | compile-pass | 含方法的类 |
+| 004 | CLS_09_01_004_PASS_GENERIC_CLASS | compile-pass | 泛型类声明 |
+| 005 | CLS_09_01_005_PASS_CLASS_WITH_CONSTRUCTOR | compile-pass | 含构造器的类 |
+| 006 | CLS_09_01_006_FAIL_DUPLICATE_CLASS_MODIFIER | compile-fail | 重复类修饰符 |
+| 007 | CLS_09_01_007_FAIL_CLASS_EXTENDS_ITSELF | compile-fail | extends 自身循环 |
+| 008 | CLS_09_01_008_FAIL_CLASS_NAME_KEYWORD | compile-fail | 类名为关键字 |
+| 009 | CLS_09_01_009_FAIL_CLASS_EXTENDS_INTERFACE | compile-fail | extends 接口 |
+| 010 | CLS_09_01_010_RUNTIME_CLASS_INSTANCE | runtime | 实例创建+字段访问 |
+| 011 | CLS_09_01_011_RUNTIME_GENERIC_CLASS_INSTANCE | runtime | 泛型实例化 |
+| 012 | CLS_09_01_012_RUNTIME_CLASS_METHOD_CALL | runtime | 方法调用 |
+
+## 9.1.1 Abstract Classes（12 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_01_013_PASS_ABSTRACT_CLASS_DECL | compile-pass | abstract 类声明 |
+| 002 | CLS_09_01_014_PASS_ABSTRACT_CLASS_CONCRETE_METHOD | compile-pass | abstract 含具体方法 |
+| 003 | CLS_09_01_015_PASS_ABSTRACT_SUBCLASS_EXTENDS_ABSTRACT | compile-pass | 抽象子类继承抽象类 |
+| 004 | CLS_09_01_016_PASS_NON_ABSTRACT_SUBCLASS | compile-pass | 非抽象子类继承抽象类 |
+| 005 | CLS_09_01_017_FAIL_INSTANTIATE_ABSTRACT_CLASS | compile-fail | 实例化抽象类 |
+| 006 | CLS_09_01_018_FAIL_NON_ABSTRACT_WITH_ABSTRACT_METHOD | compile-fail | 非抽象类含抽象方法 |
+| 007 | CLS_09_01_019_FAIL_ABSTRACT_METHOD_FINAL | compile-fail | abstract+final |
+| 008 | CLS_09_01_020_FAIL_ABSTRACT_METHOD_OVERRIDE | compile-fail | abstract+override |
+| 009 | CLS_09_01_021_FAIL_NON_ABSTRACT_MISSING_IMPL | compile-fail | 非抽象子类未实现抽象方法 |
+| 010 | CLS_09_01_022_RUNTIME_ABSTRACT_SUBCLASS_DISPATCH | runtime | 抽象类→子类派发 |
+| 011 | CLS_09_01_023_RUNTIME_ABSTRACT_CONSTRUCTOR_EXEC | runtime | 抽象类构造器执行 |
+| 012 | CLS_09_01_024_RUNTIME_MULTI_LEVEL_ABSTRACT | runtime | 多层抽象继承 |
+
+## 9.2 Class Extension Clause（13 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_02_001_PASS_EXTENDS_CLASS | compile-pass | extends 合法类 |
+| 002 | CLS_09_02_002_PASS_MULTI_LEVEL_EXTENDS | compile-pass | 多层继承 |
+| 003 | CLS_09_02_003_PASS_NO_EXTENDS_IMPLICIT_OBJECT | compile-pass | 默认继承Object |
+| 004 | CLS_09_02_004_PASS_EXTENDS_ACCESSIBLE_CLASS | compile-pass | 继承可访问类 |
+| 005 | CLS_09_02_005_FAIL_EXTENDS_INTERFACE | compile-fail | extends 接口 |
+| 006 | CLS_09_02_006_FAIL_EXTENDS_ENUM | compile-fail | extends 枚举 |
+| 007 | CLS_09_02_007_FAIL_EXTENDS_CYCLE | compile-fail | extends 循环 |
+| 008 | CLS_09_02_008_FAIL_EXTENDS_INACCESSIBLE | compile-fail | extends 不可访问类 |
+| 009 | CLS_09_02_009_FAIL_EXTENDS_OBJECT_EXPLICIT | compile-fail | 显式extends Object ⚠️SPEC不一致 |
+| 010 | CLS_09_02_010_RUNTIME_INHERIT_CHAIN | runtime | 继承链实例化 |
+| 011 | CLS_09_02_011_RUNTIME_INSTANCEOF_OBJECT | runtime | instanceof Object |
+| 012 | CLS_09_02_012_RUNTIME_INHERIT_METHOD_CALL | runtime | 继承方法调用 |
+| 013 | CLS_09_02_013_FAIL_EXTENDS_UNION_TYPE | compile-fail | extends union类型 |
+
+## 9.3 Class Implementation Clause（10 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_03_001_PASS_IMPLEMENTS_SINGLE_INTERFACE | compile-pass | 单接口实现 |
+| 002 | CLS_09_03_002_PASS_IMPLEMENTS_MULTI_INTERFACE | compile-pass | 多接口实现 |
+| 003 | CLS_09_03_003_PASS_IMPLEMENTS_ALL_METHODS | compile-pass | 实现所有接口方法 |
+| 004 | CLS_09_03_004_PASS_REPEATED_INTERFACE_IGNORED | compile-pass | 重复接口被忽略 |
+| 005 | CLS_09_03_005_FAIL_INACCESSIBLE_INTERFACE | compile-fail | 不可访问接口 |
+| 006 | CLS_09_03_006_FAIL_SAME_GENERIC_DIFF_INSTANTIATION | compile-fail | 同泛型不同实例化 |
+| 007 | CLS_09_03_007_FAIL_FIELD_METHOD_NAME_CONFLICT | compile-fail | 字段方法同名冲突 |
+| 008 | CLS_09_03_008_FAIL_NOT_IMPLEMENTED_INTERFACE_METHOD | compile-fail | 未实现接口方法 |
+| 009 | CLS_09_03_009_RUNTIME_INTERFACE_DISPATCH | runtime | 接口方法派发 |
+| 010 | CLS_09_03_010_RUNTIME_MULTI_INTERFACE_CALL | runtime | 多接口调用 |
+
+## 9.3.1 Implementing Required Interface Properties（17 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_03_1_001_PASS_FIELD_IMPL_INTERFACE_PROPERTY | compile-pass | 字段实现接口属性 |
+| 002 | CLS_09_03_1_002_PASS_READONLY_FIELD_IMPL_READONLY | compile-pass | readonly字段实现readonly属性 |
+| 003 | CLS_09_03_1_003_PASS_GETTER_SETTER_IMPL_PROPERTY | compile-pass | getter+setter实现属性 |
+| 004 | CLS_09_03_1_004_PASS_FIELD_IMPL_READONLY_PROPERTY | compile-pass | writeable字段实现readonly属性 |
+| 005 | CLS_09_03_1_005_PASS_GETTER_IMPL_READONLY_PROPERTY | compile-pass | getter实现readonly属性 |
+| 006 | CLS_09_03_1_006_PASS_GETTER_IMPL_INTERFACE_GETTER | compile-pass | getter实现接口getter |
+| 007 | CLS_09_03_1_007_FAIL_READONLY_IMPL_WRITEABLE | compile-fail | readonly字段实现writeable属性 |
+| 008 | CLS_09_03_1_008_FAIL_GETTER_ONLY_IMPL_WRITEABLE | compile-fail | getter-only实现writeable属性 |
+| 009 | CLS_09_03_1_009_FAIL_SETTER_ONLY_IMPL_WRITEABLE | compile-fail | setter-only实现writeable属性 |
+| 010 | CLS_09_03_1_010_FAIL_NO_IMPL_REQUIRED_PROPERTY | compile-fail | 无实现必需属性 |
+| 011 | CLS_09_03_1_011_FAIL_OVERRIDE_FIELD_BY_ACCESSOR | compile-fail | 覆盖超类字段→accessor |
+| 012 | CLS_09_03_1_012_RUNTIME_FIELD_IMPL_PROPERTY | runtime | 字段实现运行时 |
+| 013 | CLS_09_03_1_013_RUNTIME_INTERFACE_REF_ACCESS | runtime | 接口引用隐式getter |
+| 014 | CLS_09_03_1_014_RUNTIME_READONLY_IMPL | runtime | readonly属性运行时 |
+| 015 | CLS_09_03_1_015_FAIL_SETTER_ONLY_IMPL_READONLY | compile-fail | setter-only实现readonly属性 |
+| 016 | CLS_09_03_1_016_FAIL_FIELD_IMPL_DIFF_TYPE_PROPERTY | compile-fail | getter+setter不同类型用field实现 |
+| 017 | CLS_09_03_1_017_PASS_ACCESSOR_IMPL_DIFF_TYPE_PROPERTY | compile-pass | getter+setter不同类型用accessor实现 |
+
+## 9.3.2 Implementing Optional Interface Properties（9 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_03_2_001_PASS_NO_IMPL_OPTIONAL | compile-pass | 不实现可选属性 |
+| 002 | CLS_09_03_2_002_PASS_OPTIONAL_FIELD_IMPL | compile-pass | optional字段实现 |
+| 003 | CLS_09_03_2_003_PASS_ACCESSOR_IMPL_OPTIONAL | compile-pass | accessor实现可选属性 |
+| 004 | CLS_09_03_2_004_FAIL_NON_OPTIONAL_IMPL_OPTIONAL | compile-fail | 非可选字段实现可选属性 |
+| 005 | CLS_09_03_2_005_RUNTIME_OPTIONAL_FIELD_ACCESS | runtime | optional字段运行时 |
+| 006 | CLS_09_03_2_006_RUNTIME_DEFAULT_ACCESSOR_UNDEFINED | runtime | 默认accessor返回undefined |
+| 007 | CLS_09_03_2_007_RUNTIME_OPTIONAL_PROPERTY_SET_ERROR | runtime | 不实现可选属性后set→runtime error |
+| 008 | CLS_09_03_2_008_PASS_GETTER_ONLY_IMPL_OPTIONAL | compile-pass | 只有getter实现可选属性 |
+| 009 | CLS_09_03_2_009_PASS_SETTER_ONLY_IMPL_OPTIONAL | compile-pass | 只有setter实现可选属性 |
+
+## 9.4 Class Members（10 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_04_001_PASS_STATIC_INSTANCE_SAME_NAME | compile-pass | static/instance同名 |
+| 002 | CLS_09_04_002_PASS_CLASS_WITH_ALL_MEMBER_TYPES | compile-pass | 含所有成员类型 |
+| 003 | CLS_09_04_003_PASS_INHERIT_PUBLIC_PROTECTED | compile-pass | 继承public/protected |
+| 004 | CLS_09_04_004_FAIL_FIELD_METHOD_SAME_NAME | compile-fail | 同scope字段方法同名 |
+| 005 | CLS_09_04_005_FAIL_FIELD_FIELD_SAME_NAME | compile-fail | 同scope两字段同名 |
+| 006 | CLS_09_04_006_FAIL_METHOD_METHOD_SAME_NAME | compile-fail | 同scope同签名方法 |
+| 007 | CLS_09_04_007_RUNTIME_STATIC_INSTANCE_DISTINCT | runtime | static/instance区分 |
+| 008 | CLS_09_04_008_RUNTIME_MEMBER_ACCESS | runtime | 成员访问 |
+| 009 | CLS_09_04_009_PASS_STATIC_INIT_BLOCK | compile-pass | 静态初始化块 |
+| 010 | CLS_09_04_010_PASS_METHOD_OVERLOAD | compile-pass | 方法重载 |
+
+## 9.5 Access Modifiers（4 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_05_001_PASS_DEFAULT_PUBLIC | compile-pass | 默认public |
+| 002 | CLS_09_05_002_PASS_ALL_MODIFIER_COMBOS | compile-pass | 三种修饰符 |
+| 003 | CLS_09_05_003_FAIL_PRIVATE_ACCESS_OUTSIDE | compile-fail | 类外访问private |
+| 004 | CLS_09_05_004_RUNTIME_PUBLIC_ACCESS | runtime | public运行时 |
+
+## 9.5.1 Private Access Modifier（9 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_05_1_001_PASS_PRIVATE_ACCESS_IN_CLASS | compile-pass | 类内访问private |
+| 002 | CLS_09_05_1_002_PASS_SUBCLASS_REUSE_PRIVATE_NAME | compile-pass | 子类重用private名称 |
+| 003 | CLS_09_05_1_003_PASS_PRIVATE_CONSTRUCTOR_IN_CLASS | compile-pass | private构造器 |
+| 004 | CLS_09_05_1_004_FAIL_PRIVATE_FIELD_OUTSIDE | compile-fail | 类外访问private字段 |
+| 005 | CLS_09_05_1_005_FAIL_PRIVATE_METHOD_OUTSIDE | compile-fail | 类外访问private方法 |
+| 006 | CLS_09_05_1_006_FAIL_PRIVATE_METHOD_IN_SUBCLASS | compile-fail | 子类访问private方法 |
+| 007 | CLS_09_05_1_007_FAIL_PRIVATE_FIELD_IN_SUBCLASS | compile-fail | 子类访问private字段 |
+| 008 | CLS_09_05_1_008_RUNTIME_PRIVATE_ACCESS_IN_CLASS | runtime | private类内访问 |
+| 009 | CLS_09_05_1_009_RUNTIME_SUBCLASS_REUSE_NAME | runtime | 子类重用名称 |
+
+## 9.5.2 Protected Access Modifier（7 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_05_2_001_PASS_PROTECTED_ACCESS_IN_CLASS | compile-pass | 类内访问protected |
+| 002 | CLS_09_05_2_002_PASS_PROTECTED_ACCESS_IN_SUBCLASS | compile-pass | 子类访问protected |
+| 003 | CLS_09_05_2_003_FAIL_PROTECTED_ACCESS_OUTSIDE | compile-fail | 外部访问protected |
+| 004 | CLS_09_05_2_004_FAIL_PROTECTED_FIELD_OUTSIDE | compile-fail | 外部访问protected字段 |
+| 005 | CLS_09_05_2_005_RUNTIME_PROTECTED_IN_SUBCLASS | runtime | protected子类访问 |
+| 006 | CLS_09_05_2_006_RUNTIME_PROTECTED_METHOD_DISPATCH | runtime | protected方法派发 |
+| 007 | CLS_09_05_2_007_FAIL_PROTECTED_CTOR_INSTANTIATION | compile-fail | protected构造器外部实例化 |
+
+## 9.5.3 Public Access Modifier（4 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_05_3_001_PASS_PUBLIC_ACCESS_EVERYWHERE | compile-pass | public处处可访问 |
+| 002 | CLS_09_05_3_002_PASS_IMPLICIT_PUBLIC | compile-pass | 无修饰符默认public |
+| 003 | CLS_09_05_3_003_RUNTIME_PUBLIC_ACCESS | runtime | public运行时 |
+| 004 | CLS_09_05_3_004_FAIL_PUBLIC_MEMBER_INACCESSIBLE_TYPE | compile-fail | public成员类型不可访问 |
+
+## 9.6 Field Declarations（8 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_06_0001_PASS_FIELD_BASIC | compile-pass | 基本字段声明 |
+| 002 | CLS_09_06_0002_PASS_FIELD_INITIALIZER | compile-pass | 字段初始化器 |
+| 003 | CLS_09_06_0003_PASS_STATIC_INSTANCE_FIELD | compile-pass | static/instance字段 |
+| 004 | CLS_09_06_0004_FAIL_DUPLICATE_FIELD_MODIFIER | compile-fail | 重复字段修饰符 |
+| 005 | CLS_09_06_0005_FAIL_FIELD_METHOD_SAME_NAME | compile-fail | 字段方法同名 |
+| 006 | CLS_09_06_0006_FAIL_FIELD_IMPL_TYPE_MISMATCH | compile-fail | 接口属性类型不匹配 |
+| 007 | CLS_09_06_0007_RUNTIME_FIELD_ACCESS | runtime | 字段访问运行时 |
+| 008 | CLS_09_06_0008_RUNTIME_FIELD_INITIALIZER_EXEC | runtime | 初始化器执行 |
+
+## 9.6.1 Static and Instance Fields（7 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_06_1_001_PASS_STATIC_FIELD_BASIC | compile-pass | static字段基本 |
+| 002 | CLS_09_06_1_002_PASS_INSTANCE_FIELD_BASIC | compile-pass | instance字段基本 |
+| 003 | CLS_09_06_1_003_PASS_STATIC_FIELD_ACCESS_BY_CLASSNAME | compile-pass | 类名访问static |
+| 004 | CLS_09_06_1_004_FAIL_STATIC_FIELD_GENERIC_PARAM | compile-fail | static使用泛型参数 |
+| 005 | CLS_09_06_1_005_FAIL_INSTANCE_ACCESS_STATIC | compile-fail | 实例访问static |
+| 006 | CLS_09_06_1_006_RUNTIME_STATIC_FIELD_SHARED | runtime | static字段共享 |
+| 007 | CLS_09_06_1_007_RUNTIME_INSTANCE_FIELD_PER_OBJ | runtime | instance字段独立 |
+
+## 9.6.2 Readonly Constant Fields（6 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_06_2_001_PASS_READONLY_FIELD | compile-pass | readonly字段 |
+| 002 | CLS_09_06_2_002_PASS_STATIC_READONLY | compile-pass | static readonly |
+| 003 | CLS_09_06_2_003_FAIL_READONLY_REASSIGN | compile-fail | readonly重新赋值 |
+| 004 | CLS_09_06_2_004_FAIL_STATIC_READONLY_REASSIGN | compile-fail | static readonly重新赋值 |
+| 005 | CLS_09_06_2_005_RUNTIME_READONLY_ACCESS | runtime | readonly访问 |
+| 006 | CLS_09_06_2_006_RUNTIME_READONLY_INIT_IN_CTOR | runtime | 构造器初始化readonly |
+
+## 9.6.3 Optional Fields（5 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_06_3_001_PASS_OPTIONAL_FIELD_NO_INIT | compile-pass | optional无初始化器 |
+| 002 | CLS_09_06_3_002_PASS_OPTIONAL_FIELD_WITH_INIT | compile-pass | optional含初始化器 |
+| 003 | CLS_09_06_3_003_FAIL_OPTIONAL_ASSIGN_TO_NONNULLISH | compile-fail | optional赋值给non-nullish |
+| 004 | CLS_09_06_3_004_RUNTIME_OPTIONAL_DEFAULT_UNDEFINED | runtime | optional默认undefined |
+| 005 | CLS_09_06_3_005_RUNTIME_OPTIONAL_WITH_VALUE | runtime | optional赋值后访问 |
+
+## 9.6.4 Field Initialization（6 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_06_4_001_PASS_FIELD_INITIALIZER_EXPR | compile-pass | 字段初始化器表达式 |
+| 002 | CLS_09_06_4_002_PASS_FIELD_DEFAULT_VALUE | compile-pass | 字段默认值 |
+| 003 | CLS_09_06_4_003_FAIL_FIELD_THIS_INITIALIZER | compile-fail | this在初始化器 ⚠️SPEC不一致 |
+| 004 | CLS_09_06_4_004_RUNTIME_FIELD_INIT_ORDER | runtime | 字段初始化顺序 |
+| 005 | CLS_09_06_4_005_RUNTIME_INITIALIZER_EVAL | runtime | 初始化器求值 |
+| 006 | CLS_09_06_4_006_FAIL_SUPER_IN_INITIALIZER | compile-fail | super在初始化器 |
+
+## 9.6.5 Fields with Late Initialization（9 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_06_5_001_PASS_LATE_INIT_FIELD | compile-pass | late init字段 |
+| 002 | CLS_09_06_5_002_PASS_LATE_INIT_ASSIGN_THEN_READ | compile-pass | 初始化后读取 |
+| 003 | CLS_09_06_5_003_FAIL_LATE_INIT_STATIC | compile-fail | static late init |
+| 004 | CLS_09_06_5_004_FAIL_LATE_INIT_READONLY | compile-fail | readonly late init |
+| 005 | CLS_09_06_5_005_FAIL_LATE_INIT_OPTIONAL | compile-fail | optional late init ⚠️SPEC不一致 |
+| 006 | CLS_09_06_5_006_FAIL_LATE_INIT_WITH_INITIALIZER | compile-fail | late init含初始化器 |
+| 007 | CLS_09_06_5_007_RUNTIME_LATE_INIT_ASSIGN_READ | runtime | 初始化后读取运行时 |
+| 008 | CLS_09_06_5_008_RUNTIME_LATE_INIT_UNINIT_ERROR | runtime | 未初始化读取runtime error |
+| 009 | CLS_09_06_5_009_FAIL_LATE_INIT_NULLISH_TYPE | compile-fail | late init为nullish类型 |
+
+## 9.6.6 Override Fields（12 用例）
+
+| # | 文件 | 类型 | 测试目的 |
+|---|------|------|---------|
+| 001 | CLS_09_06_6_001_PASS_OVERRIDE_SAME_TYPE_FIELD | compile-pass | override同类型字段 |
+| 002 | CLS_09_06_6_002_PASS_OVERRIDE_FIELD_INITIALIZER | compile-pass | override字段初始化器 |
+| 003 | CLS_09_06_6_003_PASS_OVERRIDE_FIELD_IN_CTOR | compile-pass | 构造器中初始化override |
+| 004 | CLS_09_06_6_004_FAIL_OVERRIDE_FIELD_TYPE_MISMATCH | compile-fail | override类型不匹配 |
+| 005 | CLS_09_06_6_005_FAIL_OVERRIDE_FIELD_ACCESS_MISMATCH | compile-fail | override修饰符不匹配 |
+| 006 | CLS_09_06_6_006_FAIL_OVERRIDE_STATIC_FIELD | compile-fail | static+override |
+| 007 | CLS_09_06_6_007_FAIL_OVERRIDE_NO_BASE_FIELD | compile-fail | override不存在字段 |
+| 008 | CLS_09_06_6_008_RUNTIME_OVERRIDE_FIELD_VALUE | runtime | override字段值运行时 |
+| 009 | CLS_09_06_6_009_RUNTIME_OVERRIDE_FIELD_INIT_ORDER | runtime | override字段初始化顺序 |
+| 010 | CLS_09_06_6_010_FAIL_OVERRIDE_READONLY_ON_NON_READONLY | compile-fail | override readonly加到非readonly |
+| 011 | CLS_09_06_6_011_FAIL_OVERRIDE_FIELD_COVERS_ACCESSOR | compile-fail | override field覆盖getter/setter |
+| 012 | CLS_09_06_6_012_PASS_GENERIC_OVERRIDE_FIELD_TYPE | compile-pass | 泛型override field类型匹配 |
 
 ---
 

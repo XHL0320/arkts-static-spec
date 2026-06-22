@@ -10,7 +10,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CASE_ROOT="${SCRIPT_DIR}/ets_cases"
 
 # 工具链路径（按 TESTING_PROCESS_GUIDE 标准）
-ARK_HOME="/home/nnd/projects/arkts/arkcompiler/runtime_core/static_core/out"
+ARK_HOME="/home/ubuntu/arkcompiler/runtime_core/static_core/out"
 ES2PANDA="${ARK_HOME}/bin/es2panda"
 ARK="${ARK_HOME}/bin/ark"
 BOOT_PANDA="${ARK_HOME}/pandastdlib/arkstdlib.abc"
