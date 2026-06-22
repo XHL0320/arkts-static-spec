@@ -6,7 +6,8 @@
  * @note 正向用例：验证该特性编译通过的正确用法。
  */
 function testCharCmpVar(): void {
-  let a: char = c"x"; let b: char = c"y"
+  let a: char = c'x'
+  let b: char = c'y'
   let r: boolean = a < b
   console.log(r.toString())
 }
