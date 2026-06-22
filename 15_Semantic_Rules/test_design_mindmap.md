@@ -15,77 +15,61 @@
   - edge cases
   - error cases
 - 15.1.1_Type_of_Standalone_Expression
-  - normal cases
-  - edge cases
-  - error cases
+  - numeric literals (int/long, double/float)
+  - constant expressions
+  - array literals
+  - object literal (compile-fail)
 - 15.1.2_Specifics_of_Assignment_like_Contexts
-  - normal cases
-  - edge cases
-  - error cases
+  - known RHS type
+  - unknown RHS type, infer from LHS
 - 15.1.3_Specifics_of_Variable_Initialization_Context
-  - normal cases
-  - edge cases
-  - error cases
+  - explicit type annotation
+  - type inference from initializer
 - 15.1.4_Specifics_of_Numeric_Operator_Contexts
-  - normal cases
-  - edge cases
-  - error cases
+  - postfix/prefix increment on byte/short (no widening)
+  - numeric operators widening (min int)
 - 15.1.5_Specifics_of_String_Operator_Contexts
-  - normal cases
-  - edge cases
-  - error cases
+  - '+' with string operand (string conversion)
 - 15.1.6_Other_Contexts
-  - normal cases
-  - edge cases
-  - error cases
+  - overriding uses subtyping
 - 15.1.7_Specifics_of_Type_Parameters
-  - normal cases
-  - edge cases
-  - error cases
+  - type parameter provides no inference info in assignment context
+  - compile-time error expected
 - 15.1.8_Semantic_Essentials_Summary
-  - normal cases
-  - edge cases
-  - error cases
+  - terminology verification
 - 15.2_Subtyping
   - normal cases
   - edge cases
   - error cases
-- 15.2.1_Subtyping_for_Non_Generic_Classes_and_Interfaces
-  - normal cases
-  - edge cases
-  - error cases
-- 15.2.2_Subtyping_for_Generic_Classes_and_Interfaces
-  - normal cases
-  - edge cases
-  - error cases
-- 15.2.3_Subtyping_for_Literal_Types
-  - normal cases
-  - edge cases
-  - error cases
-- 15.2.4_Subtyping_for_Tuple_Types
-  - normal cases
-  - edge cases
-  - error cases
-- 15.2.5_Subtyping_for_Union_Types
-  - normal cases
-  - edge cases
-  - error cases
-- 15.2.6_Subtyping_for_Function_Types
-  - normal cases
-  - edge cases
-  - error cases
-- 15.2.7_Subtyping_for_Fixed_Size_Array_Types
-  - normal cases
-  - edge cases
-  - error cases
-- 15.2.8_Subtyping_for_Intersection_Types
-  - normal cases
-  - edge cases
-  - error cases
-- 15.2.9_Subtyping_for_Difference_Types
-  - normal cases
-  - edge cases
-  - error cases
+- 15.2.1_Subtyping_Non_Generic
+  - class extends
+  - interface extends
+  - transitive closure
+  - Object as implicit supertype
+- 15.2.2_Subtyping_Generic
+  - invariance verification
+  - constraint checking
+  - type parameter substitution
+- 15.2.3_Subtyping_Literal_Types
+  - string literal subtype of string
+  - numeric literal subtype of numeric type
+- 15.2.4_Subtyping_Tuple_Types
+  - identical tuple types
+  - different tuple types (no subtyping)
+- 15.2.5_Subtyping_Union_Types
+  - union assignability
+  - each member must be subtype
+- 15.2.6_Subtyping_Function_Types
+  - parameter contravariance
+  - return type covariance
+  - function type assignment compatibility
+- 15.2.7_Subtyping_Fixed_Size_Array_Types
+  - identical FixedArray types
+  - different FixedArray types (no subtyping)
+- 15.2.8_Subtyping_Intersection_Types
+  - S<:T1&T2 when S<:T1 and S<:T2
+- 15.2.9_Subtyping_Difference_Types
+  - S<:T1-T2 when S<:T1 and S not subtype of T2
 - 15.3_Type_Identity
   - normal cases
   - edge cases
@@ -94,10 +78,10 @@
   - normal cases
   - edge cases
   - error cases
-- 15.5_Invariance_Covariance_and_Contravariance
-  - normal cases
-  - edge cases
-  - error cases
+- 15.5_Invariance_Covariance_Contravariance
+  - generic invariance
+  - function covariance/contravariance
+  - array covariance (ArkTS restrictions)
 - 15.6_Compatibility_of_Call_Arguments
   - normal cases
   - edge cases
@@ -107,142 +91,100 @@
   - edge cases
   - error cases
 - 15.7.1_Type_Inference_for_Constant_Expressions
-  - normal cases
-  - edge cases
-  - error cases
+  - constant expression type inference
 - 15.7.2_Return_Type_Inference
-  - normal cases
-  - edge cases
-  - error cases
+  - explicit return type annotation
+  - inference from return statements
+  - no return (infer void)
 - 15.8_Smart_Casts_and_Smart_Types
   - normal cases
   - edge cases
   - error cases
 - 15.8.1_Type_Expression
-  - normal cases
-  - edge cases
-  - error cases
+  - type expression syntax and evaluation
 - 15.8.2_Intersection_Types
-  - normal cases
-  - edge cases
-  - error cases
+  - intersection type computation in smart casts
 - 15.8.3_Difference_Types
-  - normal cases
-  - edge cases
-  - error cases
+  - difference type computation in smart casts
 - 15.8.4_Computing_Smart_Types
-  - normal cases
-  - edge cases
-  - error cases
+  - typeof narrowing
+  - instanceof narrowing
+  - control-flow based narrowing
 - 15.8.5_Control_flow_Graph
-  - normal cases
-  - edge cases
-  - error cases
+  - if/else
+  - switch
+  - loops
 - 15.8.6_Type_Expression_Simplification
-  - normal cases
-  - edge cases
-  - error cases
+  - type expression simplification rules
 - 15.8.7_Smart_Cast_Examples
-  - normal cases
-  - edge cases
-  - error cases
+  - union type smart cast
+  - type narrowing
 - 15.9_Overriding
   - normal cases
   - edge cases
   - error cases
 - 15.9.1_Overriding_in_Classes
-  - normal cases
-  - edge cases
-  - error cases
+  - override keyword required
+  - return type covariance
+  - access modifier cannot be more strict
+  - static methods cannot be overridden
 - 15.9.2_Overriding_in_Interfaces
-  - normal cases
-  - edge cases
-  - error cases
+  - default method override
+  - abstract method implementation
 - 15.9.3_Override_Compatible_Signatures
-  - normal cases
-  - edge cases
-  - error cases
+  - parameter types same
+  - return type covariance
 - 15.10_Overloading
   - normal cases
   - edge cases
   - error cases
 - 15.10.1_Implicit_Function_Overloading
-  - normal cases
-  - edge cases
-  - error cases
+  - function overloading with different params
+  - overload resolution
 - 15.10.2_Implicit_Method_Overloading
-  - normal cases
-  - edge cases
-  - error cases
+  - method overloading in class
 - 15.10.3_Implicit_Constructor_Overloading
-  - normal cases
-  - edge cases
-  - error cases
+  - constructor overloading
 - 15.10.4_Overload_Equivalent_Signatures
-  - normal cases
-  - edge cases
-  - error cases
+  - equivalent signatures (should fail compilation)
 - 15.11_Overload_Resolution
   - normal cases
   - edge cases
-  - error cases
+  - error cases (ambiguous)
 - 15.11.1_Forming_an_Overload_Set
-  - normal cases
-  - edge cases
-  - error cases
+  - overload set formation rules
 - 15.11.2_Overload_Set_for_Functions
-  - normal cases
-  - edge cases
-  - error cases
+  - exact match priority
+  - assignability match
 - 15.11.3_Overload_Set_for_Interface_Methods
-  - normal cases
-  - edge cases
-  - error cases
+  - interface method overload resolution
 - 15.11.4_Overload_Set_for_Class_Static_Methods
-  - normal cases
-  - edge cases
-  - error cases
+  - static method overload resolution
 - 15.11.5_Overload_Set_for_Class_Instance_Methods
-  - normal cases
-  - edge cases
-  - error cases
+  - instance method overload resolution
 - 15.11.6_Overload_Set_for_Constructors
-  - normal cases
-  - edge cases
-  - error cases
+  - constructor overload resolution
 - 15.11.7_Overload_Set_Warning
-  - normal cases
-  - edge cases
-  - error cases
+  - ambiguous call warning
 - 15.11.8_Overload_Set_at_Method_Call
-  - normal cases
-  - edge cases
-  - error cases
+  - overload set selection at method call
 - 15.11.9_Overloading_and_Overriding
-  - normal cases
-  - edge cases
-  - error cases
-- 15.11.10_Dynamic_resolution_of_method_calls
-  - normal cases
-  - edge cases
-  - error cases
+  - interaction between overloading and overriding
+- 15.11.10_Dynamic_Resolution_of_Method_Calls
+  - virtual method dispatch
 - 15.12_Type_Erasure
   - normal cases
-  - edge cases
-  - error cases
+  - error cases (ESE461884)
+  - known compiler GAPs
 - 15.13_Static_Initialization
-  - normal cases
-  - edge cases
-  - error cases
+  - runtime order
+  - thread safety
 - 15.13.1_Static_Initialization_Safety
-  - normal cases
-  - edge cases
-  - error cases
+  - concurrent static initialization safety
 - 15.14_Compatibility_Features
-  - normal cases
-  - edge cases
-  - error cases
+  - deprecated extended semantics
+  - conditional expressions
 - 15.14.1_Extended_Conditional_Expressions
-  - normal cases
-  - edge cases
-  - error cases
+  - ternary conditional expressions
+  - conditional-and/or
+  - logical complement

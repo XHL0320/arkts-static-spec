@@ -1,69 +1,82 @@
-# 15 Semantic Rules - Spec Extract
+# 15 Semantic Rules - Spec Original (Reference)
 
-Source: ArkTS static language specification, chapter 15 Semantic Rules.
+> 本文件为规范原文参考摘录，便于测试用例设计时对照。
+> 完整规范请参考 `doc/15Semantic Rules.md`。
 
-## Scope
+---
 
-This file is reserved for translated or extracted normative text for this topic.
+## 15.1 Semantic Essentials
 
-## Subtopics
+### 15.1.1 Type of Standalone Expression
 
-- 15.1_Semantic_Essentials
-- 15.1.1_Type_of_Standalone_Expression
-- 15.1.2_Specifics_of_Assignment_like_Contexts
-- 15.1.3_Specifics_of_Variable_Initialization_Context
-- 15.1.4_Specifics_of_Numeric_Operator_Contexts
-- 15.1.5_Specifics_of_String_Operator_Contexts
-- 15.1.6_Other_Contexts
-- 15.1.7_Specifics_of_Type_Parameters
-- 15.1.8_Semantic_Essentials_Summary
-- 15.2_Subtyping
-- 15.2.1_Subtyping_for_Non_Generic_Classes_and_Interfaces
-- 15.2.2_Subtyping_for_Generic_Classes_and_Interfaces
-- 15.2.3_Subtyping_for_Literal_Types
-- 15.2.4_Subtyping_for_Tuple_Types
-- 15.2.5_Subtyping_for_Union_Types
-- 15.2.6_Subtyping_for_Function_Types
-- 15.2.7_Subtyping_for_Fixed_Size_Array_Types
-- 15.2.8_Subtyping_for_Intersection_Types
-- 15.2.9_Subtyping_for_Difference_Types
-- 15.3_Type_Identity
-- 15.4_Assignability
-- 15.5_Invariance_Covariance_and_Contravariance
-- 15.6_Compatibility_of_Call_Arguments
-- 15.7_Type_Inference
-- 15.7.1_Type_Inference_for_Constant_Expressions
-- 15.7.2_Return_Type_Inference
-- 15.8_Smart_Casts_and_Smart_Types
-- 15.8.1_Type_Expression
-- 15.8.2_Intersection_Types
-- 15.8.3_Difference_Types
-- 15.8.4_Computing_Smart_Types
-- 15.8.5_Control_flow_Graph
-- 15.8.6_Type_Expression_Simplification
-- 15.8.7_Smart_Cast_Examples
-- 15.9_Overriding
-- 15.9.1_Overriding_in_Classes
-- 15.9.2_Overriding_in_Interfaces
-- 15.9.3_Override_Compatible_Signatures
-- 15.10_Overloading
-- 15.10.1_Implicit_Function_Overloading
-- 15.10.2_Implicit_Method_Overloading
-- 15.10.3_Implicit_Constructor_Overloading
-- 15.10.4_Overload_Equivalent_Signatures
-- 15.11_Overload_Resolution
-- 15.11.1_Forming_an_Overload_Set
-- 15.11.2_Overload_Set_for_Functions
-- 15.11.3_Overload_Set_for_Interface_Methods
-- 15.11.4_Overload_Set_for_Class_Static_Methods
-- 15.11.5_Overload_Set_for_Class_Instance_Methods
-- 15.11.6_Overload_Set_for_Constructors
-- 15.11.7_Overload_Set_Warning
-- 15.11.8_Overload_Set_at_Method_Call
-- 15.11.9_Overloading_and_Overriding
-- 15.11.10_Dynamic_resolution_of_method_calls
-- 15.12_Type_Erasure
-- 15.13_Static_Initialization
-- 15.13.1_Static_Initialization_Safety
-- 15.14_Compatibility_Features
-- 15.14.1_Extended_Conditional_Expressions
+Standalone expression is an expression for which there is no target type in the context where the expression is used.
+
+The type of a standalone expression is determined as follows:
+- In case of Numeric Literals, the type is the default type of a literal: int/long for integer literals; double/float for floating-point literals.
+- In case of Constant Expressions, the type is inferred from operand types and operations.
+- In case of an Array Literal, the type is inferred from the elements.
+- Otherwise, a compile-time error occurs. Specifically, a compile-time error occurs if an object literal is used as a standalone expression.
+
+### 15.1.2 Specifics of Assignment-like Contexts
+
+Assignment-like context can be considered as an assignment `x = expr`.
+
+- If the type of a right-hand-side expression is known from the expression itself, then the Assignability check is performed.
+- Otherwise, an attempt is made to apply the type of the left-hand-side expression to the right-hand-side expression.
+
+### 15.1.3 Specifics of Variable Initialization Context
+
+If the variable or a constant declaration has an explicit type annotation, then the same rules as for assignment-like contexts apply.
+Otherwise, there are two cases:
+- The type of the right-hand-side expression is known from the expression itself, then this type becomes the type of the variable.
+- Otherwise, the type of expr is evaluated as type of a standalone expression.
+
+### 15.1.4 Specifics of Numeric Operator Contexts
+
+The postfix and prefix increment and decrement operators evaluate byte and short operands without widening.
+For other numeric operators, the operands are widened to a larger numeric type. The minimum type is int.
+
+### 15.1.5 Specifics of String Operator Contexts
+
+If one operand of the binary operator '+' is of type string, then the string conversion applies to another non-string operand.
+
+### 15.1.7 Specifics of Type Parameters
+
+If the type of a left-hand-side expression in assignment-like context is a type parameter, then it provides no additional information for type inference even where a type parameter constraint is set.
+If the target type of an expression is a type parameter, then the type of the expression is inferred as the type of a standalone expression.
+
+---
+
+## 15.2 Subtyping
+
+Subtype relationship S<:T means any object of type S can be safely used in any context to replace an object of type T.
+
+Each type is its own subtype and supertype (S<:S).
+
+### 15.2.1 Subtyping for Non-Generic Classes and Interfaces
+
+S is a direct subtype of T when T is mentioned in the extends clause of S.
+
+### 15.2.2 Subtyping for Generic Classes and Interfaces
+
+Generic types are invariant: `Array<Derived>` is NOT a subtype of `Array<Base>`.
+
+### 15.2.5 Subtyping for Union Types
+
+U<:T if and only if each member type of U is a subtype of T.
+
+### 15.2.6 Subtyping for Function Types
+
+Function types are contravariant in parameters and covariant in return type.
+
+---
+
+## 15.12 Type Erasure
+
+Type erasure removes type parameter information, replacing type parameters with their bounds or Object.
+
+Types not preserved by type erasure cannot be used as type arguments for FixedArray instantiations (ESE461884).
+
+---
+
+*摘录日期：2026-06-22*
