@@ -1,44 +1,35 @@
 # 3.19.1 Union Types Normalization - 测试执行报告
 
-## 总体统计
+**执行日期：** 2026-06-18
+**章节：** 3.19.1 Union Types Normalization
 
-| 分类 | 总数 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 6 | 待执行 | 待执行 | — |
-| compile-fail | 1 | 待执行 | 待执行 | — |
-| runtime | 1 | 待执行 | 待执行 | — |
-| **总计** | **8** | — | — | — |
+## 统计
 
-## 详细用例清单
+| 分类 | 总数 | 通过 | 失败 |
+|------|------|------|------|
+| compile-pass | 8 | 8 | 0 |
+| compile-fail | 5 | 4 | 1 |
+| runtime | 4 | 4 | 0 |
+| **总计** | **17** | **16** | **1** |
 
-### compile-pass (6 个)
+## 当前未解决异常
 
-| # | 用例 ID | 测试内容 | 预期结果 |
-|---|---------|----------|---------|
-| 1 | TYP_03_19_01_001 | 嵌套联合线性化 | ✅ PASS |
-| 2 | TYP_03_19_01_002 | 类型别名展开 | ✅ PASS |
-| 3 | TYP_03_19_01_003 | 相同类型消除 | ✅ PASS |
-| 4 | TYP_03_19_01_004 | 字符串字面量消除 | ✅ PASS |
-| 5 | TYP_03_19_01_005 | never 类型消除 | ✅ PASS |
-| 6 | TYP_03_19_01_006 | readonly 版本优先 | ✅ PASS |
+| 用例 | 预期 | 实际 | 状态 |
+|------|------|------|------|
+| TYP_03_19_01_012_FAIL_READONLY_WRITE | compile-fail | 编译通过 | 已记入 issue_report.md: D-3.19.1-01 |
 
-### compile-fail (1 个)
+## 说明
 
-| # | 用例 ID | 测试内容 | 预期结果 |
-|---|---------|----------|---------|
-| 1 | TYP_03_19_01_007 | 循环引用报错 | ✅ PASS（编译报错） |
+该失败不是用例写错，而是 ArkTS 实现与 spec §3.19.1 不一致：
 
-### runtime (1 个)
-
-| # | 用例 ID | 验证内容 | 预期结果 |
-|---|---------|----------|---------|
-| 1 | TYP_03_19_030 | 归一化规则运行时验证 | ✅ PASS |
-
----
-
-## 后续运行命令
-
-```bash
-cd /mnt/d/git/ARKTS_STATIC_TEST/03_Types
-SECTIONS="3.19.1_Union_Types_Normalization" bash run_types_cases_wsl.sh
+```typescript
+type U = number[] | readonly number[]
+let arr: number[] = [1.0, 2.0]
+let u: U = arr
+u[0] = 3.0 // spec 预期报错，实际编译通过
 ```
+
+Spec 明确说明：
+`(number[]) | (readonly number[])` 归一化为 `readonly number[]`，readonly version wins。
+
+因此该 FAIL 用例按 v4.3 规则保留，不改 PASS。

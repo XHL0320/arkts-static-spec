@@ -11,7 +11,7 @@ class A3 {
 }
 type KeysOfA = keyof A3
 
-function main(): void {
+function testKeyofBasic(): void {
   let key: KeysOfA = "field"
-  console.log("verified")
+  key = "method"
 }

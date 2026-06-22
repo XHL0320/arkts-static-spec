@@ -1,41 +1,31 @@
 # 3.19.2 Access to Common Union Members - 测试执行报告
 
-## 总体统计
+**执行日期：** 2026-06-18
 
-| 分类 | 总数 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 2 | 待执行 | 待执行 | — |
-| compile-fail | 2 | 待执行 | 待执行 | — |
-| runtime | 1 | 待执行 | 待执行 | — |
-| **总计** | **5** | — | — | — |
+## 统计
 
-## 详细用例清单
+| 分类 | 总数 | 通过 | 失败 |
+|------|------|------|------|
+| compile-pass | 4 | 4 | 0 |
+| compile-fail | 5 | 4 | 1 |
+| runtime | 2 | 2 | 0 |
+| **总计** | **11** | **10** | **1** |
 
-### compile-pass (2 个)
+## 当前未解决异常
 
-| # | 用例 ID | 测试内容 | 预期结果 |
-|---|---------|----------|---------|
-| 1 | TYP_03_19_02_001 | 同名字段同类型、同名方法同签名 | ✅ PASS |
-| 2 | TYP_03_19_02_004 | 重载方法的共同成员 | ✅ PASS |
+| 用例 | 预期 | 实际 | 状态 |
+|------|------|------|------|
+| TYP_03_19_02_005_FAIL_DIFF_FIELD_TYPE | compile-fail | 编译通过 | 已记录 issue_report.md：D-3.19-02 |
 
-### compile-fail (2 个)
+## 说明
 
-| # | 用例 ID | 测试内容 | 预期结果 |
-|---|---------|----------|---------|
-| 1 | TYP_03_19_02_002 | 同名字段不同类型 | ✅ PASS（编译报错） |
-| 2 | TYP_03_19_02_003 | 同名方法不同签名 | ✅ PASS（编译报错） |
+Spec §3.19.2 要求 union 分支中同名字段类型不同应编译错误：
 
-### runtime (1 个)
-
-| # | 用例 ID | 验证内容 | 预期结果 |
-|---|---------|----------|---------|
-| 1 | TYP_03_19_029 | 共同成员运行时验证 | ✅ PASS |
-
----
-
-## 后续运行命令
-
-```bash
-cd /mnt/d/git/ARKTS_STATIC_TEST/03_Types
-SECTIONS="3.19.2_Access_to_Common_Union_Members" bash run_types_cases_wsl.sh
+```typescript
+class A { s: string = "aa" }
+class B { s: number = 3.14 }
+let u: A | B = new A()
+console.log(u.s) // spec 预期 compile-time error
 ```
+
+实测编译通过，因此保留 FAIL 用例并记录为 D 类 Spec/实现不一致。

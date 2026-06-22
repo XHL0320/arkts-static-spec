@@ -13,7 +13,8 @@
 | D-3.08-01 | TYP_03_08_007_FAIL_ANY_FIELD_ACCESS | Any 字段访问应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
 | D-3.19-01 | TYP_03_19_008_FAIL_UNION_DIFF_FIELD_TYPE | 联合类型同名字段不同类型应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
 | D-3.19-02 | TYP_03_19_02_002_FAIL_DIFF_FIELD_TYPE | 联合类型同名字段不同类型应报错(3.19.2) | compile-time error | 编译通过 | D类-Spec不一致 |
-| D-3.19-03 | TYP_03_19_03_002_FAIL_KEYOF_NON_CLASS | keyof 非类/接口类型应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
+| D-3.19-03 | TYP_03_19_03_007_FAIL_KEYOF_NON_CLASS | keyof 非类/接口类型应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
+| D-3.19.1-01 | TYP_03_19_01_012_FAIL_READONLY_WRITE | readonly union 归一化后写入应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
 
 ### 异常详情
 
@@ -90,3 +91,18 @@
 - 实际：`keyof number` 编译通过（Spec 要求 compile-time error）
 - 复现用例 ID：TYP_03_19_03_002_FAIL_KEYOF_NON_CLASS
 - 严重性：LOW，分类：D 类（Spec 与实现不一致）
+
+**D-3.19.1-01** MEDIUM — readonly union 归一化后仍允许写入
+
+- Spec 3.19.1：`(number[]) | (readonly number[])` 应归一化为 `readonly number[]`，readonly version wins
+- 实际：`type U = number[] | readonly number[]; let u: U = arr; u[0] = 3.0` 编译通过
+- 复现用例 ID：TYP_03_19_01_012_FAIL_READONLY_WRITE
+- 跨语言对比：
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `u[0] = 3.0` where `u: number[] \| readonly number[]` | ✅ 编译通过（与 Spec 矛盾） |
+| Java | 无 readonly array 类型 | N/A |
+| Swift | `let ro: [Double]` 不可写 / `Array` 值语义 | ❌ 写入受 mutability 限制 |
+
+- 严重性：MEDIUM，分类：D 类（Spec 与实现不一致）

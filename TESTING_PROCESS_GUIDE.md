@@ -14,7 +14,7 @@
 1. **测试规范本身**：用例验证 ArkTS 实现是否符合 spec，而非业务逻辑
 2. **三类测试覆盖**：compile-pass / compile-fail / runtime 三类各自独立
 3. **真实运行验证**：runtime 用例必须 ark VM 实际执行 + assert 断言
-4. **跨语言对比**：每发现一个异常都对比 Java/Swift 行为
+4. **三环境实测对比**：每个章节必须用 ArkTS / Java / Swift 三个环境实测关键语义，并在异常时对比 Java/Swift 行为
 5. **设计问题挖掘**：用例执行的最终目的是发现 ArkTS 语言设计问题
 
 ---
@@ -229,15 +229,17 @@ ark --load-runtimes=ets \
 
 ---
 
-### Step 5：跨语言对比报告 ⭐【必选】
+### Step 5：三环境实测 + 跨语言对比报告 ⭐【必选】
 
 **输出：** `<子章节>/comparison_report_arkts_java_swift.md`
 
-**强制要求：**
-- Java：必须生成等价 `.java` 用例并用 `javac + java` 实测
-- Swift：必须生成等价 `.swift` 用例并用本地 Swift 5.10 实测
-- 无对应能力的语言标记 `N/A`，但必须说明原因
-- 实测代码归档到 `ets_cases/cross_lang_verify/<章节>_<主题>/`
+**强制要求（不可跳过）：**
+- **ArkTS 实测**：必须运行本章节 ArkTS 用例（`es2panda + ark`），记录 compile-pass / compile-fail / runtime 结果
+- **Java 实测**：必须生成等价 `.java` 用例，并用 `javac + java` 实测；不能仅靠文档推断
+- **Swift 实测**：必须生成等价 `.swift` 用例，并用本地 Swift 5.10 实测；不能仅靠文档推断
+- 无对应能力的语言标记 `N/A`，但必须说明原因，并在实测代码中保留 N/A 标记断言
+- 实测代码必须归档到 `<子章节>/cross_lang_verify/`
+- 每个 `cross_lang_verify/` 下必须包含 `verification_report.md`，记录三环境实测输出
 
 **必含章节：**
 1. 概览（三语言定位）
@@ -398,7 +400,8 @@ ark --load-runtimes=ets \
 | `<子章节>/test_design_mindmap_3.X.md` | 子章节 | 测试设计思维导图 | ❌ | 不变 |
 | `<子章节>/test_report_3.X.md` | 子章节 | 测试通过率统计 | ❌ | 重新执行时更新 |
 | `<子章节>/design_issues_report_3.X.md` | 子章节 | 设计问题分析（永久档案） | ❌ | 不删除，新发现追加 |
-| `<子章节>/comparison_report_arkts_java_swift.md` | 子章节 | 跨语言对比 | ❌ | 不变 |
+| `<子章节>/comparison_report_arkts_java_swift.md` | 子章节 | 三环境实测 + 跨语言对比 | ❌ | 不变 |
+| `<子章节>/cross_lang_verify/verification_report.md` | 子章节 | ArkTS/Java/Swift 三环境实测输出 | ❌ | 重新执行时更新 |
 
 ---
 
@@ -417,9 +420,11 @@ ARKTS_STATIC_TEST/
 │       │   ├── test_report_3.1.md
 │       │   ├── design_issues_report_3.1.md
 │       │   ├── comparison_report_arkts_java_swift.md
-│       │   ├── cross_lang_verify/                  # 跨语言验证
-│       │   │   ├── TYP_03_01_Type_xxx.java
-│       │   │   └── TYP_03_01_Type_xxx.swift
+│       │   ├── cross_lang_verify/                  # 三环境实测验证（必选）
+│       │   │   ├── JavaXxx.java                    # Java 等价用例
+│       │   │   ├── JavaXxx.class                   # Java 编译产物
+│       │   │   ├── SwiftXxx.swift                  # Swift 等价用例
+│       │   │   └── verification_report.md          # 三环境实测输出
 │       │   ├── compile-pass/
 │       │   │   └── TYP_03_01_001_PASS_xxx.ets
 │       │   ├── compile-fail/
@@ -501,6 +506,10 @@ ARKTS_STATIC_TEST/
 | 运行脚本 | `<章节>/run_<topic>_cases_wsl.sh` |
 | 标准命令 | `cd /mnt/d/git/ARKTS_STATIC_TEST/<章节> && SECTIONS="3.X_xxx" bash run_types_cases_wsl.sh` |
 | WSL 工作目录 | `/mnt/d/git/ARKTS_STATIC_TEST` |
+| Java 编译器 | `/usr/bin/javac` (OpenJDK 1.8) |
+| Java 运行时 | `/usr/bin/java` |
+| Swift | `~/swift-5.10/usr/bin/swift` |
+| Swift 编译器 | `~/swift-5.10/usr/bin/swiftc` |
 
 ---
 
@@ -526,9 +535,10 @@ ARKTS_STATIC_TEST/
 2. 注释 5 个 tag 全部填写
 3. runtime 用例必须有 main 函数 + assert 断言
 4. WSL 中真实执行验证（使用 run_types_cases_wsl.sh）
-5. 任何执行异常必须做跨语言对比分析（Java/Swift）
-6. issue_report.md 只在当前有未解决异常时记录
-7. 设计问题记入 design_issues_report_3.X.md（永久档案）
+5. 必须生成 Java/Swift 等价用例并实际运行，结果归档到 cross_lang_verify/verification_report.md
+6. 任何执行异常必须做跨语言对比分析（Java/Swift）
+7. issue_report.md 只在当前有未解决异常时记录
+8. 设计问题记入 design_issues_report_3.X.md（永久档案）
 
 参考已完成章节 3.1 和 3.2 作为模板。
 ```
@@ -546,6 +556,7 @@ ARKTS_STATIC_TEST/
 | v4.1 | 文档化为 TESTING_PROCESS_GUIDE.md，可分享 |
 | v4.2 | 规范跨语言对比报告格式：不单独创建 README.md，所有内容合并到 comparison_report_arkts_java_swift.md；跨语言验证文件归档到 `<子章节>/cross_lang_verify/`；拆分 3.1~3.9 合并文件到各自子目录 |
 | v4.3 | Spec 与实现不一致处理规则：FAIL 用例不得改为 PASS，必须保留并标注⚠️SPEC不一致；issue_report.md 追加不覆盖；D 类异常同时记入 issue_report.md 和 design_issues_report |
+| v4.4 | 三环境实测强制化：每个章节必须有 ArkTS + Java + Swift 实测；Java/Swift 代码归档到 `<子章节>/cross_lang_verify/`；必须生成 `verification_report.md` |
 
 ---
 
