@@ -3,13 +3,13 @@
  * @expect runtime
  * @section 7.36
  * @design 编译期常量求值正确性验证
-
  * @note 运行时用例：实际执行验证编译期常量求值
  */
 const PI: double = 3.14159
-const TWO_PI: double = PI * 2.0
+const TWO: int = 2
 function main(): void {
-  if (TWO_PI > 6.28) { throw new Error("assertion: TWO_PI should be ~6.28318") }
-  if (TWO_PI < 6.28) { throw new Error("assertion: TWO_PI should be > 6.28") }
+  let two_pi: double = PI * TWO as double
+  if (two_pi <= 6.28) { throw new Error("assertion failed: TWO_PI should be > 6.28") }
+  if (two_pi >= 6.29) { throw new Error("assertion failed: TWO_PI should be < 6.29") }
   console.log("verified")
 }

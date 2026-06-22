@@ -6,7 +6,10 @@
  * @note 正向用例：验证该特性编译通过的正确用法。
  */
 function testBigintBitwise(): void {
-  let a: bigint = 0xFFn; let b: bigint = 0x0Fn
-  let andVal: bigint = a & b; let orVal: bigint = a | b; let xorVal: bigint = a ^ b
+  let a: bigint = BigInt("255")
+  let b: bigint = BigInt("15")
+  let andVal: bigint = a & b
+  let orVal: bigint = a | b
+  let xorVal: bigint = a ^ b
   console.log(andVal.toString(), orVal.toString(), xorVal.toString())
 }
