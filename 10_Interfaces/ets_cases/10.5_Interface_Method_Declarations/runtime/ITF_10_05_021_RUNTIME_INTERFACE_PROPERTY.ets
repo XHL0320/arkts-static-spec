@@ -5,8 +5,6 @@
  * @design 接口属性运行时
  * @note 运行时用例：验证类实现接口属性运行时正确
  */
-
-
 interface HasName {
     name: string;
 }
