@@ -1,392 +1,237 @@
-# 07 Expressions Test Design Mindmap
+# 07 表达式 - 测试设计思维导图（章节级）
 
-- Expressions
-  - compile-pass
-  - compile-fail
-  - runtime
-  - boundary
-  - negative diagnostics
-  - interoperability with related chapters
+**生成日期：** 2026-06-22
+**本章目标：** 覆盖 ArkTS §7.26-§7.36.1 全部规范约束
+**测试前缀：** EXP_
 
-## Subtopics
+---
 
-- 7.1_Operators
-  - normal cases
-  - edge cases
-  - error cases
-- 7.1.1_Operator_Precedence
-  - normal cases
-  - edge cases
-  - error cases
-- 7.2_Evaluation_of_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.2.1_Type_of_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.2.2_Normal_and_Abrupt_Completion_of_Expression_Evaluation
-  - normal cases
-  - edge cases
-  - error cases
-- 7.2.3_Order_of_Expression_Evaluation
-  - normal cases
-  - edge cases
-  - error cases
-- 7.2.4_Evaluation_of_Arguments
-  - normal cases
-  - edge cases
-  - error cases
-- 7.2.5_Evaluation_of_Other_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.3_Literal
-  - normal cases
-  - edge cases
-  - error cases
-- 7.4_Named_Reference
-  - normal cases
-  - edge cases
-  - error cases
-- 7.4.1_Function_Reference
-  - normal cases
-  - edge cases
-  - error cases
-- 7.4.2_Method_Reference
-  - normal cases
-  - edge cases
-  - error cases
-- 7.5_Array_Literal
-  - normal cases
-  - edge cases
-  - error cases
-- 7.5.1_Array_Literal_Type_Inference_from_Context
-  - normal cases
-  - edge cases
-  - error cases
-- 7.5.2_Array_Type_Inference_from_Types_of_Elements
-  - normal cases
-  - edge cases
-  - error cases
-- 7.6_Object_Literal
-  - normal cases
-  - edge cases
-  - error cases
-- 7.6.1_Object_Literal_of_Class_Type
-  - normal cases
-  - edge cases
-  - error cases
-- 7.6.2_Object_Literal_of_Interface_Type
-  - normal cases
-  - edge cases
-  - error cases
-- 7.6.3_Object_Literal_of_Record_Type
-  - normal cases
-  - edge cases
-  - error cases
-- 7.6.4_Object_Literal_Evaluation
-  - normal cases
-  - edge cases
-  - error cases
-- 7.7_Spread_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.8_Parenthesized_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.9_this_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.10_Field_Access_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.10.1_Accessing_Static_Fields
-  - normal cases
-  - edge cases
-  - error cases
-- 7.10.2_Accessing_Current_Object_Fields
-  - normal cases
-  - edge cases
-  - error cases
-- 7.10.3_Accessing_Super_Class_Accessors
-  - normal cases
-  - edge cases
-  - error cases
-- 7.11_Method_Call_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.11.1_Selection_of_Type_to_Use
-  - normal cases
-  - edge cases
-  - error cases
-- 7.11.2_Selection_of_Entity_to_Call
-  - normal cases
-  - edge cases
-  - error cases
-- 7.11.3_Checking_Modifiers
-  - normal cases
-  - edge cases
-  - error cases
-- 7.11.4_Type_of_Method_Call_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.12_Function_Call_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.12.1_Call_Arguments
-  - normal cases
-  - edge cases
-  - error cases
-- 7.13_Indexing_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.13.1_Array_Indexing_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.13.2_String_Indexing_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.13.3_Record_Indexing_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.14_Chaining_Operator
-  - normal cases
-  - edge cases
-  - error cases
-- 7.15_New_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.16_instanceof_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.17_Cast_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.17.1_Type_Inference_in_Cast_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.17.2_Runtime_Checking_in_Cast_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.18_typeof_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.19_Ensure_Not_Nullish_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.20_Nullish_Coalescing_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.21_Unary_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.21.1_Postfix_Increment
-  - normal cases
-  - edge cases
-  - error cases
-- 7.21.2_Postfix_Decrement
-  - normal cases
-  - edge cases
-  - error cases
-- 7.21.3_Prefix_Increment
-  - normal cases
-  - edge cases
-  - error cases
-- 7.21.4_Prefix_Decrement
-  - normal cases
-  - edge cases
-  - error cases
-- 7.21.5_Unary_Plus
-  - normal cases
-  - edge cases
-  - error cases
-- 7.21.6_Unary_Minus
-  - normal cases
-  - edge cases
-  - error cases
-- 7.21.7_Bitwise_Complement
-  - normal cases
-  - edge cases
-  - error cases
-- 7.21.8_Logical_Complement
-  - normal cases
-  - edge cases
-  - error cases
-- 7.22_Binary_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.23_Multiplicative_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.23.1_Multiplication
-  - normal cases
-  - edge cases
-  - error cases
-- 7.23.2_Division
-  - normal cases
-  - edge cases
-  - error cases
-- 7.23.3_Remainder
-  - normal cases
-  - edge cases
-  - error cases
-- 7.24_Exponentiation_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.25_Additive_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.25.1_String_Concatenation
-  - normal cases
-  - edge cases
-  - error cases
-- 7.25.2_Additive_Operators_for_Numeric_Types
-  - normal cases
-  - edge cases
-  - error cases
-- 7.26_Shift_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.27_Relational_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.27.1_Numeric_Relational_Operators
-  - normal cases
-  - edge cases
-  - error cases
-- 7.27.2_Bigint_Relational_Operators
-  - normal cases
-  - edge cases
-  - error cases
-- 7.27.3_String_Relational_Operators
-  - normal cases
-  - edge cases
-  - error cases
-- 7.27.4_Boolean_Relational_Operators
-  - normal cases
-  - edge cases
-  - error cases
-- 7.27.5_char_Relational_Operators
-  - normal cases
-  - edge cases
-  - error cases
-- 7.27.6_Enumeration_Relational_Operators
-  - normal cases
-  - edge cases
-  - error cases
-- 7.28_Equality_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.28.1_Numeric_Equality_Operators
-  - normal cases
-  - edge cases
-  - error cases
-- 7.28.2_Function_Type_Equality_Operators
-  - normal cases
-  - edge cases
-  - error cases
-- 7.28.3_Extended_Equality_with_null_or_undefined
-  - normal cases
-  - edge cases
-  - error cases
-- 7.29_Bitwise_and_Logical_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.29.1_Integer_Bitwise_Operators
-  - normal cases
-  - edge cases
-  - error cases
-- 7.29.2_Boolean_Logical_Operators
-  - normal cases
-  - edge cases
-  - error cases
-- 7.30_Conditional_And_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.31_Conditional_Or_Expression
-  - normal cases
-  - edge cases
-  - error cases
-- 7.32_Assignment
-  - normal cases
-  - edge cases
-  - error cases
-- 7.32.1_Simple_Assignment_Operator
-  - normal cases
-  - edge cases
-  - error cases
-- 7.32.2_Compound_Assignment_Operators
-  - normal cases
-  - edge cases
-  - error cases
-- 7.32.3_Left_Hand_Side_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.33_Ternary_Conditional_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.34_String_Interpolation_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.35_Lambda_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.35.1_Lambda_Signature
-  - normal cases
-  - edge cases
-  - error cases
-- 7.35.2_Lambda_Body
-  - normal cases
-  - edge cases
-  - error cases
-- 7.35.3_Lambda_Expression_Type
-  - normal cases
-  - edge cases
-  - error cases
-- 7.35.4_Runtime_Evaluation_of_Lambda_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.36_Constant_Expressions
-  - normal cases
-  - edge cases
-  - error cases
-- 7.36.1_Specifics_of_Constant_Expressions_Evaluation
-  - normal cases
-  - edge cases
-  - error cases
+## 一、测试分类策略
+
+### 1.1 编译期通过（compile-pass）
+- 合法运算符与合法操作数类型组合
+- 类型提升/转换正确行为
+- 运算符优先级与结合性
+- Lambda 合法声明与类型推断
+
+### 1.2 编译期失败（compile-fail）
+- 运算符与操作数类型不兼容
+- bigint 与 numeric 类型混合（禁止的组合）
+- 非法左值（如 readonly、chaining operator 在左值中）
+- Lambda 参数重名、类型无法推断
+
+### 1.3 运行时（runtime）
+- 移位距离掩码（int 5-bit / long 6-bit）
+- IEEE 754 浮点比较（NaN、Infinity）
+- 短路求值（&&、||、?:）
+- Lambda 变量捕获与实例创建
+
+---
+
+## 二、子章节覆盖详情
+
+### §7.26 Shift Expressions
+- ✅ 基本移位（int/long << >> >>>）
+- ✅ byte/short 提升到 int
+- ✅ bigint << >>（非 >>>）
+- ❌ bigint >>> → 编译错误
+- ❌ bigint+numeric 混合 → 编译错误
+- ❌ 非数值类型移位 → 编译错误
+- ✅ 移位距离掩码（int 0x1f / long 0x3f）
+- ✅ 有符号/无符号右移负值行为
+
+### §7.27 Relational Expressions
+- ✅ 基本关系运算（< > <= >=）
+- ✅ 左结合分组
+- ❌ 不兼容类型关系运算 → 编译错误
+- ✅ NaN 比较永远返回 false
+
+### §7.27.1 Numeric Relational Operators
+- ✅ 整数比较（int/long）
+- ✅ IEEE 754 浮点比较
+- ❌ numeric+string/boolean → 编译错误
+- ✅ Infinity 和 -0 vs +0 行为
+
+### §7.27.2 Bigint Relational Operators
+- ✅ bigint vs bigint
+- ✅ bigint vs int（int→bigint）
+- ✅ bigint vs double（bigint→double）
+- ❌ bigint vs string/boolean → 编译错误
+- ✅ 大整数比较正确性
+
+### §7.27.3 String Relational Operators
+- ✅ 字典序比较
+- ❌ string vs number/boolean → 编译错误
+- ✅ 空字符串/Unicode 比较
+
+### §7.27.4 Boolean Relational Operators
+- ✅ 布尔真值表（false < true）
+- ❌ boolean vs int/string → 编译错误
+- ✅ 控制流中的布尔关系
+
+### §7.27.5 char Relational Operators
+- ✅ 字符码元比较
+- ❌ char vs 不兼容类型 → 编译错误
+- ✅ char 排序验证
+
+### §7.27.6 Enumeration Relational Operators
+- ✅ 同枚举类型 int/string 基类型比较
+- ❌ 不同枚举类型比较 → 编译错误
+- ❌ enum vs int → 编译错误
+- ✅ 枚举排序
+
+### §7.28 Equality Expressions
+- ✅ == === != !== 基本用法
+- ✅ 交换律
+- ✅ 编译期常量相等警告
+- ❌ 不同枚举类型相等警告
+- ✅ 联合类型相等
+
+### §7.28.1 Numeric Equality Operators
+- ✅ 整数相等、浮点相等（IEEE 754）
+- ✅ NaN ≠ NaN（== 返回 false）
+- ✅ +0 == -0
+- ❌ bigint == numeric → false（编译通过但结果 false）
+- ❌ 非数值相等 → 编译错误
+
+### §7.28.2 Function Type Equality Operators
+- ✅ 同一函数对象 == 为 true
+- ✅ 不同函数对象 == 为 false
+- ✅ 方法引用含绑定实例比较
+
+### §7.28.3 Extended Equality with null or undefined
+- ✅ null == undefined → true
+- ✅ null === undefined → false
+- ✅ !== 语义差异
+
+### §7.29 Bitwise and Logical Expressions
+- ✅ & ^ | 优先级与结合性
+- ❌ 非数值/非布尔类型 → 编译错误
+
+### §7.29.1 Integer Bitwise Operators
+- ✅ int/long 位运算
+- ✅ bigint 位运算
+- ❌ bigint+numeric 混合 → 编译错误
+- ❌ float/double 截断后位运算
+- ✅ 类型提升规则
+
+### §7.29.2 Boolean Logical Operators
+- ✅ & ^ | 布尔真值表
+- ❌ boolean+numeric → 编译错误
+
+### §7.30 Conditional-And Expression
+- ✅ && 短路求值
+- ✅ 左→右结合、结合律
+- ❌ 非 boolean 操作数 → 编译错误
+- ✅ 副作用跳过验证
+
+### §7.31 Conditional-Or Expression
+- ✅ || 短路求值
+- ✅ 左→右结合、结合律
+- ❌ 非 boolean 操作数 → 编译错误
+- ✅ 副作用跳过验证
+
+### §7.32 Assignment
+- ✅ 右结合赋值链
+- ✅ 各种左值赋值
+
+### §7.32.1 Simple Assignment Operator
+- ✅ 字段/数组/record/变量赋值
+- ❌ 类型不兼容 → 编译错误
+- ❌ readonly 赋值 → 编译错误
+- ✅ 运行时数组越界抛 RangeError
+- ✅ 运行时 FixedArray 类型不匹配抛 ArrayStoreError
+
+### §7.32.2 Compound Assignment Operators
+- ✅ += -= *= /= %= **=
+- ✅ <<= >>= >>>= &= |= ^= &&= ||= ??=
+- ✅ lhs 只计算一次
+- ✅ 数组/record 复合赋值
+
+### §7.32.3 Left-Hand-Side Expressions
+- ✅ 变量、参数（非 this）、字段、setter
+- ✅ 数组元素、record 元素
+- ❌ chaining operator ?. 在左值中 → 编译错误
+- ❌ readonly 实体 → 编译错误
+
+### §7.33 Ternary Conditional Expressions
+- ✅ condition ? whenTrue : whenFalse
+- ✅ 右结合
+- ✅ 编译期已知 condition 时类型推断
+- ✅ 未知时 union 类型
+- ✅ 运行时仅评估一个分支
+
+### §7.34 String Interpolation Expressions
+- ✅ 反引号 + \${expr}
+- ✅ 嵌入表达式隐式转 string
+- ✅ 嵌套多行字符串
+- ❌ 非 string 嵌入表达式（自动转换）
+
+### §7.35 Lambda Expressions
+- ✅ 完整签名+块体
+- ✅ 表达式体（隐式 return）
+- ✅ 最短形式 e => e
+- ✅ 异步 Lambda
+
+### §7.35.1 Lambda Signature
+- ✅ 类型标注参数
+- ✅ 类型推断省略类型
+- ❌ 参数重名 → 编译错误
+- ❌ 类型无法推断 → 编译错误
+
+### §7.35.2 Lambda Body
+- ✅ 单表达式 / 块体
+- ✅ 捕获外部变量和 this
+- ❌ 使用未声明/未初始化的局部变量 → 编译错误
+- ❌ 非 void 无 return → 编译错误
+- ✅ 表达式体 void call 等价
+
+### §7.35.3 Lambda Expression Type
+- ✅ Lambda 类型为函数类型
+- ✅ 返回类型可从体推断
+
+### §7.35.4 Runtime Evaluation of Lambda Expressions
+- ✅ 创建函数类型新实例
+- ✅ 变量捕获（引用非拷贝）
+- ✅ 每次求值创建独立实例
+- ✅ 循环中的捕获语义
+
+### §7.36 Constant Expressions
+- ✅ 编译期求值
+- ✅ 允许的构造：字面量、常量引用、一元/二元/三元/括号
+- ❌ ++/-- 禁止在常量表达式中
+- ❌ 求值异常 → 编译错误
+
+### §7.36.1 Specifics of Constant Expressions Evaluation
+- ✅ double/float 提升规则
+- ✅ 大整数内部类型（任意精度）
+- ✅ 混合常量表达式各子表达式独立求值
+
+---
+
+## 三、已覆盖章节（§7.1-§7.25，已有目录结构）
+
+以下子章节目录已存在但尚未填充测试用例：
+
+| 章节 | 内容 | 状态 |
+|------|------|------|
+| §7.1 | Operators / Operator Precedence | 待填充 |
+| §7.2 | Evaluation of Expressions | 待填充 |
+| §7.3-§7.9 | Literal, Named Reference, Array/Object Literal, Spread, Parenthesized, this | 待填充 |
+| §7.10-§7.14 | Field Access, Method Call, Function Call, Indexing, Chaining | 待填充 |
+| §7.15-§7.20 | New, instanceof, Cast, typeof, Ensure Not Nullish, Nullish Coalescing | 待填充 |
+| §7.21-§7.25 | Unary, Binary, Multiplicative, Exponentiation, Additive | 待填充 |
+
+---
+
+## 四、命名规范
+
+| 元素 | 格式 |
+|------|------|
+| 文件前缀 | EXP_ |
+| 主章节号 | 07 |
+| 子章节号 | XX（26-36，含子节如 27_01） |
+| 编号 | YYY（001 起连续） |
+| 类别 | PASS / FAIL / RUNTIME |
+| 描述 | 大写下划线 |
+| 完整示例 | EXP_07_26_001_PASS_INT_SHIFT_BASIC.ets |
