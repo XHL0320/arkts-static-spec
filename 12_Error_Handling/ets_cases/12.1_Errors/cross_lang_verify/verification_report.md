@@ -1,4 +1,13 @@
-# 12.1 Errors - Java & Swift 实测
+# 12.1 Errors - Cross Language Verification Report
+
+## ArkTS 实测
+
+| 分类 | 总数 | 通过 | 失败 |
+|---|---:|---:|---:|
+| compile-pass | 5 | 5 | 0 |
+| compile-fail | 3 | 3 | 0 |
+| runtime | 4 | 4 | 0 |
+| **总计** | **12** | **12** | **0** |
 
 ## Java 实测
 
