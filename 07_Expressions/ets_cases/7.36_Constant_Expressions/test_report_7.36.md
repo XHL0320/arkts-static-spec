@@ -1,5 +1,7 @@
 # 7.36 常量表达式 - 测试执行报告
 
+> 最后编译验证：2026-06-23，es2panda `--extension=ets`，Linux native
+
 **测试日期：** 2026-06-22
 **编译器：** es2panda (ArkTS Static Compiler)
 **运行时：** ark VM

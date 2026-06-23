@@ -1,5 +1,7 @@
 # 7.34 String Interpolation Expressions - 测试执行报告
 
+> 最后编译验证：2026-06-23，es2panda `--extension=ets`，Linux native
+
 ## 总体统计
 
 | 分类 | 总数 | 通过 | 失败 | 通过率 |

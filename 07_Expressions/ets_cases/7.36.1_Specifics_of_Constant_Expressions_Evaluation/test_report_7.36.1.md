@@ -9,7 +9,7 @@
 | runtime（真实执行） | 3 | 3 | 0 | 100% |
 | **总计** | **6** | **6** | **0** | **100%** |
 
-> 测试环境：WSL (es2panda + ark) | es2panda 版本：ArkCompiler latest | 测试日期：2026-06-23
+> 测试环境：Linux native (es2panda + ark) | es2panda 版本：ArkCompiler latest | 测试日期：2026-06-23
 
 ## 详细执行结果
 
