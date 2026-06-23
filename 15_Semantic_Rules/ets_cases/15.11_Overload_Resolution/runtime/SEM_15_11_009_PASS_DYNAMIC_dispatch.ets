@@ -1,0 +1,53 @@
+/*
+ * @id SEM_15_11_009_PASS_DYNAMIC_dispatch
+ * @expect runtime
+ * @section 15.11.10
+ * @design 规范 15.11.10：实例方法调用的实际方法在运行时根据对象的实际类型确定
+ * @note 测试动态方法分派
+ */
+
+// 测试动态方法分派
+class Base {
+  name: string = "Base"
+  
+  method(): string {
+    return "Base.method()"
+  }
+}
+
+class Derived extends Base {
+  override method(): string {
+    return "Derived.method()"
+  }
+  
+  extraMethod(): string {
+    return "Derived.extraMethod()"
+  }
+}
+
+class Derived2 extends Derived {
+  override method(): string {
+    return "Derived2.method()"
+  }
+}
+
+function test_dynamic_dispatch(): void {
+  // 编译时类型是 Base，运行时类型可能是 Derived 或 Derived2
+  let base: Base = new Base()
+  console.log("1. " + base.method())  // 输出: Base.method()
+  
+  base = new Derived()
+  console.log("2. " + base.method())  // 输出: Derived.method()
+  
+  base = new Derived2()
+  console.log("3. " + base.method())  // 输出: Derived2.method()
+  
+  // 测试多级继承的方法分派
+  let derived: Derived = new Derived2()
+  console.log("4. " + derived.method())  // 输出: Derived2.method()
+  
+  console.log("Dynamic dispatch test passed")
+}
+
+// 运行测试
+test_dynamic_dispatch()
