@@ -20,19 +20,19 @@
 
 | # | 用例 ID | 测试内容 | 结果 |
 |---|---------|----------|------|
-| 1 | SEM_15_13_001_PASS_STATIC_INIT | 静态初始化安全性验证 | ✅ PASS |
+| 1 | SEM_15_13_01_001_PASS_STATIC_INIT | 静态初始化安全性验证 | ✅ PASS |
 
 ### compile-fail (1 个)
 
 | # | 用例 ID | 测试内容 | 结果 |
 |---|---------|----------|------|
-| 1 | SEM_15_13_010_FAIL_STATIC_FORWARD_REF | 静态初始化前向引用拒绝 | ✅ PASS (预期编译失败) |
+| 1 | SEM_15_13_01_100_FAIL_STATIC_FORWARD_REF | 静态初始化前向引用拒绝 | ✅ PASS (预期编译失败) |
 
 ### runtime (1 个)
 
 | # | 用例 ID | 验证内容 | 结果 |
 |---|---------|----------|------|
-| 1 | SEM_15_13_002_RUNTIME_STATIC_INIT | 静态初始化运行时顺序 | ✅ PASS |
+| 1 | SEM_15_13_01_200_RUNTIME_STATIC_INIT | 静态初始化运行时顺序 | ✅ PASS |
 
 ---
 

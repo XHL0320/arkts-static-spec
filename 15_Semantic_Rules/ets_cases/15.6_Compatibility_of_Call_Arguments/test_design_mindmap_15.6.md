@@ -13,14 +13,14 @@
 ### compile-pass（编译通过）
 | 用例 ID | 测试点 | 预期结果 |
 |---------|--------|----------|
-| SEM_15_06_001_PASS_ARG_COMPATIBILITY | 调用参数类型兼容：参数类型与声明类型匹配时通过 | compile-pass |
-| SEM_15_06_002_PASS_SUBTYPE_ARG | 子类型参数兼容：子类型参数可传父类型声明 | compile-pass |
+| SEM_15_06_00_001_PASS_ARG_COMPATIBILITY | 调用参数类型兼容：参数类型与声明类型匹配时通过 | compile-pass |
+| SEM_15_06_00_005_PASS_SUBTYPE_ARG | 子类型参数兼容：子类型参数可传父类型声明 | compile-pass |
 
 ### compile-fail（编译失败）
 | 用例 ID | 测试点 | 预期结果 |
 |---------|--------|----------|
-| SEM_15_06_010_FAIL_ARG_MISMATCH | 调用参数类型不匹配拒绝：string 传 int 声明应报错 | compile-fail |
-| SEM_15_06_011_FAIL_ARG_COUNT | 参数数量不匹配：少传参数应报错 | compile-fail |
+| SEM_15_06_00_102_FAIL_ARG_MISMATCH | 调用参数类型不匹配拒绝：string 传 int 声明应报错 | compile-fail |
+| SEM_15_06_00_104_FAIL_ARG_COUNT | 参数数量不匹配：少传参数应报错 | compile-fail |
 
 ### runtime（运行时）
 | 用例 ID | 测试点 | 预期结果 |

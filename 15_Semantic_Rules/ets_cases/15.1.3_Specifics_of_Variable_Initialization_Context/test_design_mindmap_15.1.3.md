@@ -21,7 +21,7 @@
 - 前缀: `SEM_15_01_XXX`
 - 类型标识: `PASS` (正向), `FAIL` (反向), `RUNTIME` (运行时)
 - 功能描述: 驼峰命名，描述测试点
-- 示例: `SEM_15_01_008_PASS_EXPLICIT_TYPE_INIT.ets`
+- 示例: `SEM_15_01_03_001_PASS_EXPLICIT_TYPE_INIT.ets`
 
 ## Test Design Mindmap
 
@@ -44,20 +44,20 @@
 #### compile-pass
 | ID | Case File | Purpose | Expected |
 |---|---|---|---|
-| SEM_15_01_008 | SEM_15_01_008_PASS_EXPLICIT_TYPE_INIT.ets | 验证有显式类型注解的变量初始化与赋值上下文规则一致 | compile-pass |
-| SEM_15_01_009 | SEM_15_01_009_PASS_INFER_FROM_INITIALIZER.ets | 验证无显式类型注解时从初始化器推断类型 | compile-pass |
-| SEM_15_01_017 | SEM_15_01_017_PASS_CONST_INIT.ets | 验证const声明初始化类型推断 | compile-pass |
-| SEM_15_01_018 | SEM_15_01_018_PASS_EXPR_INIT.ets | 验证初始化器中表达式推断：复杂表达式作为初始化器 | compile-pass |
+| SEM_15_01_008 | SEM_15_01_03_001_PASS_EXPLICIT_TYPE_INIT.ets | 验证有显式类型注解的变量初始化与赋值上下文规则一致 | compile-pass |
+| SEM_15_01_009 | SEM_15_01_03_002_PASS_INFER_FROM_INITIALIZER.ets | 验证无显式类型注解时从初始化器推断类型 | compile-pass |
+| SEM_15_01_017 | SEM_15_01_03_003_PASS_CONST_INIT.ets | 验证const声明初始化类型推断 | compile-pass |
+| SEM_15_01_018 | SEM_15_01_03_004_PASS_EXPR_INIT.ets | 验证初始化器中表达式推断：复杂表达式作为初始化器 | compile-pass |
 
 #### compile-fail
 | ID | Case File | Purpose | Expected |
 |---|---|---|---|
-| SEM_15_01_019 | SEM_15_01_019_FAIL_INIT_TYPE_MISMATCH.ets | 验证初始化器类型不匹配拒绝：显式类型与初始化器类型冲突 | compile-fail |
+| SEM_15_01_019 | SEM_15_01_03_100_FAIL_INIT_TYPE_MISMATCH.ets | 验证初始化器类型不匹配拒绝：显式类型与初始化器类型冲突 | compile-fail |
 
 #### runtime
 | ID | Case File | Purpose | Expected |
 |---|---|---|---|
-| SEM_15_01_020 | SEM_15_01_020_RUNTIME_INIT.ets | 验证变量初始化运行时行为：初始化后变量值正确 | runtime |
+| SEM_15_01_020 | SEM_15_01_03_200_RUNTIME_INIT.ets | 验证变量初始化运行时行为：初始化后变量值正确 | runtime |
 
 ## Cross-Chapter Links
 - 15.1.2 Assignment-like Contexts

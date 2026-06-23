@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_01_06_005
+ * @id SEM_15_01_06_005_PASS_PROPERTY_ACCESS
  * @expect compile-pass
  * @section 15.1.6
  * @design 其他上下文：属性访问表达式推断

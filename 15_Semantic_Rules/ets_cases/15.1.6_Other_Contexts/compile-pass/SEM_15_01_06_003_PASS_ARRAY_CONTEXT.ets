@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_01_06_003
+ * @id SEM_15_01_06_003_PASS_ARRAY_CONTEXT
  * @expect compile-pass
  * @section 15.1.6
  * @design 其他上下文：数组字面量作为独立表达式

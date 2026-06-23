@@ -17,7 +17,7 @@
 | SEM_15_01_06_004 | SEM_15_01_06_004_PASS_FUNC_RETURN_CONTEXT.ets | compile-pass | ✅ |
 | SEM_15_01_06_005 | SEM_15_01_06_005_PASS_PROPERTY_ACCESS.ets | compile-pass | ✅ |
 | SEM_15_01_06_101 | SEM_15_01_06_101.ets | compile-pass | ✅ |
-| SEM_15_01_06_099 | SEM_15_01_06_099_FAIL_MISMATCH.ets | compile-fail | ✅ |
+| SEM_15_01_06_099 | SEM_15_01_06_100_FAIL_MISMATCH.ets | compile-fail | ✅ |
 | SEM_15_01_06_100 | SEM_15_01_06_100.ets | runtime | ✅ |
 
 ## Result Statistics
@@ -43,7 +43,7 @@
 ### compile-fail (1/1 passed)
 | ID | Case File | Expected | Actual | Status |
 |---|---|---|---|---|
-| SEM_15_01_06_099 | SEM_15_01_06_099_FAIL_MISMATCH.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_01_06_099 | SEM_15_01_06_100_FAIL_MISMATCH.ets | compile-fail | compile-fail | ✅ |
 
 ### runtime (1/1 passed)
 | ID | Case File | Expected | Actual | Status |

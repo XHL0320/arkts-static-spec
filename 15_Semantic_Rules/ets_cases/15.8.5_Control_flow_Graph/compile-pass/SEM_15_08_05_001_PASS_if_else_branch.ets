@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_08_05_001
+ * @id SEM_15_08_05_001_PASS_if_else_branch
  * @expect compile-pass
  * @section 15.8.5
  * @design 控制流图：if/else 分支类型

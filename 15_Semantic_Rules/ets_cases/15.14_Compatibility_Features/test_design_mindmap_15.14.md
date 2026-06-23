@@ -24,27 +24,29 @@
 
 ## 测试点覆盖
 
-### compile-fail（0 个）
-无编译期拒绝测试用例。
+### compile-fail（2 个）
+1. SMART_GLOBAL: 全局 Base 成员未缩窄访问 Derived 独有成员（SEM_15_14_023_FAIL）
+2. 类型不兼容赋值（SEM_15_14_099_FAIL）
 
-### compile-pass（0 个）
-无编译期通过测试用例。
+### compile-pass（2 个）
+1. 联合类型缩窄（含/不含 null）（SEM_15_14_023）
+2. 联合类型缩窄 + 方法调用（SEM_15_14_024）
 
-### runtime（17 个）
-1. 空字符串 falsy（SEM_15_14_001_RT_empty_string_false, SEM_15_14_019_RT）
-2. 非空字符串 truthy（SEM_15_14_002_RT_nonempty_string_true）
-3. 0 falsy（SEM_15_14_003_RT_zero_int_false）
-4. 非0数字 truthy（SEM_15_14_004_RT_nonzero_int_true）
-5. NaN falsy（SEM_15_14_005_RT_nan_false）
-6. null falsy（SEM_15_14_006_RT_null_false, SEM_15_14_020_RT）
-7. undefined falsy（SEM_15_14_007_RT_undefined_false）
-8. 对象 truthy（SEM_15_14_008_RT_object_true）
-9. `false || int` 表达式（SEM_15_14_009_RT_false_or_int, SEM_15_14_021_RT）
-10. `true || int` 表达式（SEM_15_14_010_RT_true_or_int）
-11. `0 && string` 表达式（SEM_15_14_011_RT_zero_and_string）
-12. `1 && string` 表达式（SEM_15_14_012_RT_one_and_string）
-13. SMART_GLOBAL 模式：重载声明 base 顶层（SEM_15_14_024_RT_SMART_GLOBAL）
-14. 一般兼容特性测试（SEM_15_14_101）
+### runtime（14 个）
+1. 空字符串 falsy（SEM_15_14_00_200）
+2. 非空字符串 truthy（SEM_15_14_00_201）
+3. 0 falsy（SEM_15_14_00_202）
+4. 非0数字 truthy（SEM_15_14_00_203）
+5. NaN falsy（SEM_15_14_00_204）
+6. null falsy（SEM_15_14_00_205）
+7. undefined falsy（SEM_15_14_00_206）
+8. 对象 truthy（SEM_15_14_00_207）
+9. `false || int` 表达式（SEM_15_14_00_208）
+10. `true || int` 表达式（SEM_15_14_00_209）
+11. `0 && string` 表达式（SEM_15_14_00_210）
+12. `1 && string` 表达式（SEM_15_14_00_211）
+13. SMART_GLOBAL 模式：重载声明 base 顶层（SEM_15_14_00_215）
+14. 兼容特性综合验证（SEM_15_14_00_216）
 
 ## 编号规划
 - runtime: 001-012, 019-021, 024, 101

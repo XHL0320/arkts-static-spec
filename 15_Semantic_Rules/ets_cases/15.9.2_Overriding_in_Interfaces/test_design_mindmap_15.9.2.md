@@ -13,7 +13,7 @@
 
 ### 2.2 文件命名规范
 - 格式：`SEM_15_09_XXX_{CATEGORY}_{DESCRIPTION}.ets`
-- 示例：`SEM_15_09_003_PASS_INTERFACE_IMPL.ets`
+- 示例：`SEM_15_09_02_001_PASS_INTERFACE_IMPL.ets`
 
 ## 3. 测试点分解
 ### 3.1 接口方法实现（compile-pass）
@@ -28,9 +28,9 @@
 ## 4. 覆盖情况
 | 用例编号 | 用例文件 | 类型 | 测试点 | 预期结果 |
 |---------|---------|------|--------|---------|
-| SEM_15_09_003 | SEM_15_09_003_PASS_INTERFACE_IMPL.ets | compile-pass | 接口方法实现 | ✅ compile-pass |
-| SEM_15_09_004 | SEM_15_09_004_FAIL_MISSING_IMPL.ets | compile-fail | 缺少接口方法实现 | ✅ compile-fail |
-| SEM_15_09_009 | SEM_15_09_009_RUNTIME_INTERFACE_OVERRIDE.ets | runtime | 接口覆写运行时 | ✅ runtime |
+| SEM_15_09_003 | SEM_15_09_02_001_PASS_INTERFACE_IMPL.ets | compile-pass | 接口方法实现 | ✅ compile-pass |
+| SEM_15_09_004 | SEM_15_09_02_100_FAIL_MISSING_IMPL.ets | compile-fail | 缺少接口方法实现 | ✅ compile-fail |
+| SEM_15_09_009 | SEM_15_09_02_200_RUNTIME_INTERFACE_OVERRIDE.ets | runtime | 接口覆写运行时 | ✅ runtime |
 
 
 ## 最新设计要点

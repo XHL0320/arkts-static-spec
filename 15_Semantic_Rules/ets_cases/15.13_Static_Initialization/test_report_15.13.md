@@ -28,16 +28,16 @@
 
 | # | 用例 ID | 验证内容 | 结果 |
 |---|---------|----------|------|
-| 1 | SEM_15_13_001_RT_static_field_triggers | 静态字段访问触发初始化 | ✅ PASS |
-| 2 | SEM_15_13_002_RT_static_method_triggers | 静态方法调用触发初始化 | ✅ PASS |
-| 3 | SEM_15_13_003_RT_new_triggers | `new` 触发静态初始化 | ✅ PASS |
-| 4 | SEM_15_13_004_RT_namespace_function_triggers | 命名空间函数触发初始化 | ✅ PASS |
-| 5 | SEM_15_13_005_RT_module_variable_triggers | 模块变量触发初始化 | ✅ PASS |
-| 6 | SEM_15_13_006_RT_static_init_calls_smart_function | 静态初始化调用 smart 函数 | ✅ PASS |
-| 7 | SEM_15_13_013_RT_static_method_trigger | 静态方法触发 | ✅ PASS |
-| 8 | SEM_15_13_014_RT_namespace_member_trigger | 命名空间成员触发 | ✅ PASS |
-| 9 | SEM_15_13_019_RT_SMART_GLOBAL_overload_declared_base_top_level | SMART_GLOBAL: 重载声明 base 顶层 | ✅ PASS |
-| 10 | SEM_15_13_101 | 一般静态初始化测试 | ✅ PASS |
+| 1 | SEM_15_13_00_200_RUNTIME_static_field_triggers | 静态字段访问触发初始化 | ✅ PASS |
+| 2 | SEM_15_13_00_201_RUNTIME_static_method_triggers | 静态方法调用触发初始化 | ✅ PASS |
+| 3 | SEM_15_13_00_202_RUNTIME_new_triggers | `new` 触发静态初始化 | ✅ PASS |
+| 4 | SEM_15_13_00_204_RUNTIME_namespace_function_triggers | 命名空间函数触发初始化 | ✅ PASS |
+| 5 | SEM_15_13_00_206_RUNTIME_module_variable_triggers | 模块变量触发初始化 | ✅ PASS |
+| 6 | SEM_15_13_00_207_RUNTIME_static_init_calls_smart_function | 静态初始化调用 smart 函数 | ✅ PASS |
+| 7 | SEM_15_13_00_208_RUNTIME_static_method_trigger | 静态方法触发 | ✅ PASS |
+| 8 | SEM_15_13_00_209_RUNTIME_namespace_member_trigger | 命名空间成员触发 | ✅ PASS |
+| 9 | SEM_15_13_00_210_RUNTIME_SMART_GLOBAL_overload_declared_base_top_level | SMART_GLOBAL: 重载声明 base 顶层 | ✅ PASS |
+| 10 | SEM_15_13_00_211 | 一般静态初始化测试 | ✅ PASS |
 
 ---
 

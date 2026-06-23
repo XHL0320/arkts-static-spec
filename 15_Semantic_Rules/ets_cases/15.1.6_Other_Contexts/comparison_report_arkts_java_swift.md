@@ -247,7 +247,7 @@ print(result)   // 84
 |------|------|
 | SEM_15_01_06_001 | ✅ |
 | SEM_15_01_06_002_PASS_BOOL_CONTEXT | ✅ |
-| SEM_15_01_06_099_FAIL_MISMATCH | ✅ (compile-fail) |
+| SEM_15_01_06_100_FAIL_MISMATCH | ✅ (compile-fail) |
 | SEM_15_01_06_100 | ✅ |
 
 ### Java 实测结果

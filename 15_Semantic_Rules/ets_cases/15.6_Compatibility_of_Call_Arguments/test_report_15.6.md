@@ -13,14 +13,14 @@
 ### compile-pass（编译通过）
 | 用例 ID | 文件名 | 类别 | 结果 |
 |---------|--------|------|------|
-| SEM_15_06_001_PASS_ARG_COMPATIBILITY | SEM_15_06_001_PASS_ARG_COMPATIBILITY.ets | compile-pass | ✅ |
-| SEM_15_06_002_PASS_SUBTYPE_ARG | SEM_15_06_002_PASS_SUBTYPE_ARG.ets | compile-pass | ✅ |
+| SEM_15_06_00_001_PASS_ARG_COMPATIBILITY | SEM_15_06_00_001_PASS_ARG_COMPATIBILITY.ets | compile-pass | ✅ |
+| SEM_15_06_00_005_PASS_SUBTYPE_ARG | SEM_15_06_00_005_PASS_SUBTYPE_ARG.ets | compile-pass | ✅ |
 
 ### compile-fail（编译失败）
 | 用例 ID | 文件名 | 类别 | 结果 |
 |---------|--------|------|------|
-| SEM_15_06_010_FAIL_ARG_MISMATCH | SEM_15_06_010_FAIL_ARG_MISMATCH.ets | compile-fail | ✅ |
-| SEM_15_06_011_FAIL_ARG_COUNT | SEM_15_06_011_FAIL_ARG_COUNT.ets | compile-fail | ✅ |
+| SEM_15_06_00_102_FAIL_ARG_MISMATCH | SEM_15_06_00_102_FAIL_ARG_MISMATCH.ets | compile-fail | ✅ |
+| SEM_15_06_00_104_FAIL_ARG_COUNT | SEM_15_06_00_104_FAIL_ARG_COUNT.ets | compile-fail | ✅ |
 
 ### runtime（运行时）
 | 用例 ID | 文件名 | 类别 | 结果 |

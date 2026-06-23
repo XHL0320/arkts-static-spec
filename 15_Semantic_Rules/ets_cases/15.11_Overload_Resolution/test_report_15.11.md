@@ -20,49 +20,49 @@
 
 | # | 用例 ID | 测试内容 | 结果 |
 |---|---------|----------|------|
-| 1 | SEM_15_11_015_PASS_unreachable_entity | 不可达实体警告 | ✅ PASS |
-| 2 | SEM_15_11_016_PASS_broad_hides_narrow | broad 隐藏 narrow 警告 | ✅ PASS |
-| 3 | SEM_15_11_023_PASS_broad_hides_narrow | broad 隐藏 narrow 警告（变体） | ✅ PASS |
-| 4 | SEM_15_11_037_PASS_SMART_FUNC_instanceof_narrowing | SMART_FUNC: instanceof narrowing | ✅ PASS |
-| 5 | SEM_15_11_043_PASS_ARCHIVE_null_selects_inherited_generic_method | ARCHIVE: null 选择继承泛型方法 | ✅ PASS |
-| 6 | SEM_15_11_044_PASS_ARCHIVE_undefined_selects_inherited_generic_method | ARCHIVE: undefined 选择继承泛型方法 | ✅ PASS |
-| 7 | SEM_15_11_045_PASS_ARCHIVE_explicit_null_generic_selects_parent | ARCHIVE: 显式 null 泛型选择 parent | ✅ PASS |
-| 8 | SEM_15_11_046_PASS_ARCHIVE_object_selects_child_overload | ARCHIVE: object 选择 child 重载 | ✅ PASS |
-| 9 | SEM_15_11_047_PASS_ARCHIVE_parent_static_type_keeps_parent_generic | ARCHIVE: parent 静态类型保持 parent 泛型 | ✅ PASS |
-| 10 | SEM_15_11_048_PASS_ARCHIVE_parent_static_type_null_keeps_parent_generic | ARCHIVE: parent 静态类型 null 保持 parent 泛型 | ✅ PASS |
-| 11 | SEM_15_11_062_PASS_ARCHIVE_subclass_reorders_explicit_overload | ARCHIVE: subclass 重排序显式重载 | ✅ PASS |
-| 12 | SEM_15_11_063_PASS_ARCHIVE_receiver_function_overload_as_function | ARCHIVE: receiver 函数重载作为函数 | ✅ PASS |
-| 13 | SEM_15_11_064_PASS_ARCHIVE_overload_set_warning_unreachable | ARCHIVE: 重载集警告不可达 | ✅ PASS |
-| 14 | SEM_15_11_065_PASS_ARCHIVE_interface_extends_order | ARCHIVE: 接口继承顺序 | ✅ PASS |
-| 15 | SEM_15_11_066_PASS_ARCHIVE_interface_override_dedup | ARCHIVE: 接口 override 去重 | ✅ PASS |
-| 16 | SEM_15_11_067_PASS_ARCHIVE_class_parent_before_interface | ARCHIVE: 类 parent 优先于接口 | ✅ PASS |
-| 17 | SEM_15_11_068_PASS_ARCHIVE_receiver_instance_method_priority_combined | ARCHIVE: receiver 实例方法优先级组合 | ✅ PASS |
-| 18 | SEM_15_11_069_PASS_ARCHIVE_overload_resolution_then_override_dispatch | ARCHIVE: 重载解析后 override 派发 | ✅ PASS |
-| 19 | SEM_15_11_070_PASS_ARCHIVE_super_static_no_override_dispatch | ARCHIVE: super 静态无 override 派发 | ✅ PASS |
-| 20 | SEM_15_11_071_PASS_ARCHIVE_direct_supertypes_only | ARCHIVE: 仅直接超类型 | ✅ PASS |
-| 21 | SEM_15_11_072_PASS_ARCHIVE_declared_receiver_type_top_level | ARCHIVE: 声明 receiver 类型顶层 | ✅ PASS |
-| 22 | SEM_15_11_073_PASS_ARCHIVE_declared_receiver_type_function_body | ARCHIVE: 声明 receiver 类型函数体内 | ✅ PASS |
+| 1 | SEM_15_11_00_008_PASS_unreachable_entity | 不可达实体警告 | ✅ PASS |
+| 2 | SEM_15_11_00_009_PASS_broad_hides_narrow | broad 隐藏 narrow 警告 | ✅ PASS |
+| 3 | SEM_15_11_00_010_PASS_broad_hides_narrow | broad 隐藏 narrow 警告（变体） | ✅ PASS |
+| 4 | SEM_15_11_00_011_PASS_SMART_FUNC_instanceof_narrowing | SMART_FUNC: instanceof narrowing | ✅ PASS |
+| 5 | SEM_15_11_00_012_PASS_ARCHIVE_null_selects_inherited_generic_method | ARCHIVE: null 选择继承泛型方法 | ✅ PASS |
+| 6 | SEM_15_11_00_013_PASS_ARCHIVE_undefined_selects_inherited_generic_method | ARCHIVE: undefined 选择继承泛型方法 | ✅ PASS |
+| 7 | SEM_15_11_00_014_PASS_ARCHIVE_explicit_null_generic_selects_parent | ARCHIVE: 显式 null 泛型选择 parent | ✅ PASS |
+| 8 | SEM_15_11_00_015_PASS_ARCHIVE_object_selects_child_overload | ARCHIVE: object 选择 child 重载 | ✅ PASS |
+| 9 | SEM_15_11_00_016_PASS_ARCHIVE_parent_static_type_keeps_parent_generic | ARCHIVE: parent 静态类型保持 parent 泛型 | ✅ PASS |
+| 10 | SEM_15_11_00_017_PASS_ARCHIVE_parent_static_type_null_keeps_parent_generic | ARCHIVE: parent 静态类型 null 保持 parent 泛型 | ✅ PASS |
+| 11 | SEM_15_11_00_018_PASS_ARCHIVE_subclass_reorders_explicit_overload | ARCHIVE: subclass 重排序显式重载 | ✅ PASS |
+| 12 | SEM_15_11_00_019_PASS_ARCHIVE_receiver_function_overload_as_function | ARCHIVE: receiver 函数重载作为函数 | ✅ PASS |
+| 13 | SEM_15_11_00_020_PASS_ARCHIVE_overload_set_warning_unreachable | ARCHIVE: 重载集警告不可达 | ✅ PASS |
+| 14 | SEM_15_11_00_021_PASS_ARCHIVE_interface_extends_order | ARCHIVE: 接口继承顺序 | ✅ PASS |
+| 15 | SEM_15_11_00_022_PASS_ARCHIVE_interface_override_dedup | ARCHIVE: 接口 override 去重 | ✅ PASS |
+| 16 | SEM_15_11_00_023_PASS_ARCHIVE_class_parent_before_interface | ARCHIVE: 类 parent 优先于接口 | ✅ PASS |
+| 17 | SEM_15_11_00_024_PASS_ARCHIVE_receiver_instance_method_priority_combined | ARCHIVE: receiver 实例方法优先级组合 | ✅ PASS |
+| 18 | SEM_15_11_00_025_PASS_ARCHIVE_overload_resolution_then_override_dispatch | ARCHIVE: 重载解析后 override 派发 | ✅ PASS |
+| 19 | SEM_15_11_00_026_PASS_ARCHIVE_super_static_no_override_dispatch | ARCHIVE: super 静态无 override 派发 | ✅ PASS |
+| 20 | SEM_15_11_00_027_PASS_ARCHIVE_direct_supertypes_only | ARCHIVE: 仅直接超类型 | ✅ PASS |
+| 21 | SEM_15_11_00_028_PASS_ARCHIVE_declared_receiver_type_top_level | ARCHIVE: 声明 receiver 类型顶层 | ✅ PASS |
+| 22 | SEM_15_11_00_029_PASS_ARCHIVE_declared_receiver_type_function_body | ARCHIVE: 声明 receiver 类型函数体内 | ✅ PASS |
 | 23 | SEM_15_11_100 | 一般重载解析通过 | ✅ PASS |
 
 ### compile-fail (16 个)
 
 | # | 用例 ID | 测试内容 | 结果 |
 |---|---------|----------|------|
-| 1 | SEM_15_11_011_FAIL_no_valid_overload | 无有效重载 | ✅ PASS (预期编译失败) |
-| 2 | SEM_15_11_012_FAIL_missing_required_all | 缺少必需参数 | ✅ PASS (预期编译失败) |
-| 3 | SEM_15_11_013_FAIL_excess_arg_all | 多余参数 | ✅ PASS (预期编译失败) |
-| 4 | SEM_15_11_014_FAIL_not_assignable_all | 参数类型不可赋值 | ✅ PASS (预期编译失败) |
-| 5 | SEM_15_11_019_FAIL_global_not_narrowed_for_overload | 全局变量未 narrowed 用于重载 | ✅ PASS (预期编译失败) |
-| 6 | SEM_15_11_038_FAIL_SMART_GLOBAL_global_base_member_without_narrow | SMART_GLOBAL: 全局 base 成员无 narrow | ✅ PASS (预期编译失败) |
-| 7 | SEM_15_11_041_FAIL_ARCHIVE_object_method_reject_null | ARCHIVE: object 方法拒绝 null | ✅ PASS (预期编译失败) |
-| 8 | SEM_15_11_042_FAIL_ARCHIVE_object_method_reject_undefined | ARCHIVE: object 方法拒绝 undefined | ✅ PASS (预期编译失败) |
-| 9 | SEM_15_11_055_FAIL_ARCHIVE_no_matching_function | ARCHIVE: 无匹配函数 | ✅ PASS (预期编译失败) |
-| 10 | SEM_15_11_056_FAIL_ARCHIVE_return_type_not_used_for_resolution | ARCHIVE: 返回类型不参与重载解析 | ✅ PASS (预期编译失败) |
-| 11 | SEM_15_11_057_FAIL_ARCHIVE_constructor_no_matching | ARCHIVE: 构造函数无匹配 | ✅ PASS (预期编译失败) |
-| 12 | SEM_15_11_058_FAIL_ARCHIVE_union_common_member_overloaded | ARCHIVE: union 公共成员重载 | ✅ PASS (预期编译失败) |
-| 13 | SEM_15_11_059_FAIL_ARCHIVE_receiver_overload_method_call | ARCHIVE: receiver 重载方法调用 | ✅ PASS (预期编译失败) |
-| 14 | SEM_15_11_060_FAIL_ARCHIVE_static_method_not_inherited_for_overload | ARCHIVE: 静态方法不继承用于重载 | ❌ FAIL (预期编译失败，实际编译通过) ⚠️ D-15.11-01 |
-| 15 | SEM_15_11_061_FAIL_ARCHIVE_receiver_same_name_instance_method | ARCHIVE: receiver 同名实例方法 | ✅ PASS (预期编译失败) |
+| 1 | SEM_15_11_00_100_FAIL_no_valid_overload | 无有效重载 | ✅ PASS (预期编译失败) |
+| 2 | SEM_15_11_00_101_FAIL_missing_required_all | 缺少必需参数 | ✅ PASS (预期编译失败) |
+| 3 | SEM_15_11_00_102_FAIL_excess_arg_all | 多余参数 | ✅ PASS (预期编译失败) |
+| 4 | SEM_15_11_00_103_FAIL_not_assignable_all | 参数类型不可赋值 | ✅ PASS (预期编译失败) |
+| 5 | SEM_15_11_00_104_FAIL_global_not_narrowed_for_overload | 全局变量未 narrowed 用于重载 | ✅ PASS (预期编译失败) |
+| 6 | SEM_15_11_00_105_FAIL_SMART_GLOBAL_global_base_member_without_narrow | SMART_GLOBAL: 全局 base 成员无 narrow | ✅ PASS (预期编译失败) |
+| 7 | SEM_15_11_00_106_FAIL_ARCHIVE_object_method_reject_null | ARCHIVE: object 方法拒绝 null | ✅ PASS (预期编译失败) |
+| 8 | SEM_15_11_00_107_FAIL_ARCHIVE_object_method_reject_undefined | ARCHIVE: object 方法拒绝 undefined | ✅ PASS (预期编译失败) |
+| 9 | SEM_15_11_00_108_FAIL_ARCHIVE_no_matching_function | ARCHIVE: 无匹配函数 | ✅ PASS (预期编译失败) |
+| 10 | SEM_15_11_00_109_FAIL_ARCHIVE_return_type_not_used_for_resolution | ARCHIVE: 返回类型不参与重载解析 | ✅ PASS (预期编译失败) |
+| 11 | SEM_15_11_00_110_FAIL_ARCHIVE_constructor_no_matching | ARCHIVE: 构造函数无匹配 | ✅ PASS (预期编译失败) |
+| 12 | SEM_15_11_00_111_FAIL_ARCHIVE_union_common_member_overloaded | ARCHIVE: union 公共成员重载 | ✅ PASS (预期编译失败) |
+| 13 | SEM_15_11_00_112_FAIL_ARCHIVE_receiver_overload_method_call | ARCHIVE: receiver 重载方法调用 | ✅ PASS (预期编译失败) |
+| 14 | SEM_15_11_00_113_FAIL_ARCHIVE_static_method_not_inherited_for_overload | ARCHIVE: 静态方法不继承用于重载 | ❌ FAIL (预期编译失败，实际编译通过) ⚠️ D-15.11-01 |
+| 15 | SEM_15_11_00_114_FAIL_ARCHIVE_receiver_same_name_instance_method | ARCHIVE: receiver 同名实例方法 | ✅ PASS (预期编译失败) |
 | 16 | SEM_15_11_099 | 一般重载拒绝 | ✅ PASS (预期编译失败) |
 
 ### runtime (37 个)

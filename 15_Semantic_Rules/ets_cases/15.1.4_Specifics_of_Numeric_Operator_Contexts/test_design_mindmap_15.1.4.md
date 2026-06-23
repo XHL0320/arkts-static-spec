@@ -20,7 +20,7 @@
 - 前缀: `SEM_15_01_XXX`
 - 类型标识: `PASS` (正向), `FAIL` (反向), `RUNTIME` (运行时)
 - 功能描述: 驼峰命名，描述测试点
-- 示例: `SEM_15_01_010_PASS_NUMERIC_OPERATOR_WIDEN.ets`
+- 示例: `SEM_15_01_04_001_PASS_NUMERIC_OPERATOR_WIDEN.ets`
 
 ## Test Design Mindmap
 
@@ -42,19 +42,19 @@
 #### compile-pass
 | ID | Case File | Purpose | Expected |
 |---|---|---|---|
-| SEM_15_01_010 | SEM_15_01_010_PASS_NUMERIC_OPERATOR_WIDEN.ets | 验证数值运算符操作数拓宽到更大类型（最低int） | compile-pass |
-| SEM_15_01_021 | SEM_15_01_021_PASS_BYTE_SHORT_INC.ets | 验证byte/short自增不自宽 | compile-pass |
-| SEM_15_01_022 | SEM_15_01_022_PASS_MIXED_NUMERIC.ets | 验证混合数值类型运算拓宽：int+long→long | compile-pass |
+| SEM_15_01_010 | SEM_15_01_04_001_PASS_NUMERIC_OPERATOR_WIDEN.ets | 验证数值运算符操作数拓宽到更大类型（最低int） | compile-pass |
+| SEM_15_01_021 | SEM_15_01_04_002_PASS_BYTE_SHORT_INC.ets | 验证byte/short自增不自宽 | compile-pass |
+| SEM_15_01_022 | SEM_15_01_04_003_PASS_MIXED_NUMERIC.ets | 验证混合数值类型运算拓宽：int+long→long | compile-pass |
 
 #### compile-fail
 | ID | Case File | Purpose | Expected |
 |---|---|---|---|
-| SEM_15_01_023 | SEM_15_01_023_FAIL_BOOL_NUMERIC.ets | 验证非数值运算符不可用于数值：boolean+int无效 | compile-fail |
+| SEM_15_01_023 | SEM_15_01_04_100_FAIL_BOOL_NUMERIC.ets | 验证非数值运算符不可用于数值：boolean+int无效 | compile-fail |
 
 #### runtime
 | ID | Case File | Purpose | Expected |
 |---|---|---|---|
-| SEM_15_01_024 | SEM_15_01_024_RUNTIME_NUMERIC_OPS.ets | 验证数值运算符运行时行为：数值运算结果正确 | runtime |
+| SEM_15_01_024 | SEM_15_01_04_200_RUNTIME_NUMERIC_OPS.ets | 验证数值运算符运行时行为：数值运算结果正确 | runtime |
 
 ## Cross-Chapter Links
 - 6.3 Numeric Operator Contexts

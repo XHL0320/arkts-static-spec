@@ -2,7 +2,7 @@
 
 ## 一、编译器实现待完善
 
-### 1.1 SEM_15_08_003_FAIL_TYPEOF_GAP
+### 1.1 SEM_15_08_01_100_FAIL_TYPEOF_GAP
 
 **问题描述**: Spec 要求 `typeof` 收窄，但编译器未实现。
 

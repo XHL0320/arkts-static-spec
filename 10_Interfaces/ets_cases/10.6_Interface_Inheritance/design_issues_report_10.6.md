@@ -76,8 +76,8 @@ let obj: B = { prop: 42 }  // ❌ 编译拒绝（继承链穿透检查）
 | 接口作为类型 | ITF_10_06_003 | ✅ |
 | 类同时 extends + implements | ITF_10_06_004 | ✅ |
 | 属性继承 | ITF_10_06_005 | ✅ |
-| getter-only 写编译拒绝 | ITF_10_06_006 | ✅ |
-| setter-only 读编译拒绝 | ITF_10_06_007 | ✅ |
+| getter-only 写编译拒绝 | ITF_10_06_100 | ✅ |
+| setter-only 读编译拒绝 | ITF_10_06_101 | ✅ |
 
 ---
 

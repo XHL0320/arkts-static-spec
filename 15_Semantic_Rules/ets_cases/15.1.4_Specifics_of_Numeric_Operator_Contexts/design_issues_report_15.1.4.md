@@ -4,21 +4,21 @@
 
 ### 1.1 数值运算符操作数拓宽的完整支持
 - **问题描述**: ArkTS 规范规定数值运算符操作数应拓宽到更大类型（最低 int），但当前编译器可能未完全支持所有拓宽场景
-- **用例**: SEM_15_01_010_PASS_NUMERIC_OPERATOR_WIDEN.ets
+- **用例**: SEM_15_01_04_001_PASS_NUMERIC_OPERATOR_WIDEN.ets
 - **期望行为**: byte+short→int, int+double→double
 - **当前状态**: 待验证
 - **优先级**: 高
 
 ### 1.2 byte/short 自增不自宽的完整支持
 - **问题描述**: ArkTS 规范规定 byte/short 自增不自宽，但当前编译器可能未完全支持此特性
-- **用例**: SEM_15_01_021_PASS_BYTE_SHORT_INC.ets
+- **用例**: SEM_15_01_04_002_PASS_BYTE_SHORT_INC.ets
 - **期望行为**: byte/short 自增后保持原类型
 - **当前状态**: 待验证
 - **优先级**: 中
 
 ### 1.3 混合数值类型运算拓宽的完整支持
 - **问题描述**: ArkTS 规范支持混合数值类型运算拓宽（如 int + long → long），但当前编译器可能未完全支持所有拓宽场景
-- **用例**: SEM_15_01_022_PASS_MIXED_NUMERIC.ets
+- **用例**: SEM_15_01_04_003_PASS_MIXED_NUMERIC.ets
 - **期望行为**: 混合数值类型运算应拓宽到更大类型
 - **当前状态**: 待验证
 - **优先级**: 中

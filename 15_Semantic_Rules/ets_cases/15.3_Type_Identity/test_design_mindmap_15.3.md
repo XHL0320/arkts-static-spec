@@ -15,21 +15,21 @@
 ### compile-pass（编译通过）
 | 用例 ID | 测试点 | 预期结果 |
 |---------|--------|----------|
-| SEM_15_03_001_PASS_TYPE_ALIAS_IDENTITY | 类型别名同一性：type MyInt = int，MyInt 和 int 是同一类型 | compile-pass |
-| SEM_15_03_002_PASS_GENERIC_IDENTITY | 泛型类型实例化同一性：Container<int> 和 Container<int> 是同一类型 | compile-pass |
-| SEM_15_03_005_PASS_UNION_IDENTITY | 联合类型同一性：相同成员的联合类型视为同一类型 | compile-pass |
-| SEM_15_03_006_PASS_FUNCTION_TYPE_IDENTITY | 函数类型同一性：相同签名函数类型视为同一类型 | compile-pass |
+| SEM_15_03_00_002_PASS_TYPE_ALIAS_IDENTITY | 类型别名同一性：type MyInt = int，MyInt 和 int 是同一类型 | compile-pass |
+| SEM_15_03_00_004_PASS_GENERIC_IDENTITY | 泛型类型实例化同一性：Container<int> 和 Container<int> 是同一类型 | compile-pass |
+| SEM_15_03_00_011_PASS_UNION_IDENTITY | 联合类型同一性：相同成员的联合类型视为同一类型 | compile-pass |
+| SEM_15_03_00_013_PASS_FUNCTION_TYPE_IDENTITY | 函数类型同一性：相同签名函数类型视为同一类型 | compile-pass |
 
 ### compile-fail（编译失败）
 | 用例 ID | 测试点 | 预期结果 |
 |---------|--------|----------|
-| SEM_15_03_003_FAIL_DIFF_TYPES_NOT_IDENTICAL | 不同类型不具同一性：int 和 string 不是同一类型 | compile-fail |
-| SEM_15_03_004_FAIL_GENERIC_DIFF_ARGS | 泛型类型不同参数不具同一性：Container<int> 和 Container<string> 不是同一类型 | compile-fail |
+| SEM_15_03_00_100_FAIL_DIFF_TYPES_NOT_IDENTICAL | 不同类型不具同一性：int 和 string 不是同一类型 | compile-fail |
+| SEM_15_03_00_101_FAIL_GENERIC_DIFF_ARGS | 泛型类型不同参数不具同一性：Container<int> 和 Container<string> 不是同一类型 | compile-fail |
 
 ### runtime（运行时）
 | 用例 ID | 测试点 | 预期结果 |
 |---------|--------|----------|
-| SEM_15_03_007_RUNTIME_TYPE_IDENTITY | 类型同一性运行时行为：别名类型与原始类型同一 | runtime |
+| SEM_15_03_00_200_RUNTIME_TYPE_IDENTITY | 类型同一性运行时行为：别名类型与原始类型同一 | runtime |
 
 
 ## 最新设计要点

@@ -16,11 +16,11 @@
 
 | 测试用例 ID | 文件名 | 类型 | 结果 |
 |------------|--------|------|------|
-| SEM_15_08_001_PASS_INSTANCEOF_SMART_CAST | SEM_15_08_001_PASS_INSTANCEOF_SMART_CAST.ets | compile-pass | ✅ 通过 |
-| SEM_15_08_002_PASS_NULL_SMART_CAST | SEM_15_08_002_PASS_NULL_SMART_CAST.ets | compile-pass | ✅ 通过 |
-| SEM_15_08_003_FAIL_TYPEOF_GAP | SEM_15_08_003_FAIL_TYPEOF_GAP.ets | compile-fail | ⚠️ GAP（已知问题） |
-| SEM_15_08_004_FAIL_SMART_CAST_OUTSIDE | SEM_15_08_004_FAIL_SMART_CAST_OUTSIDE.ets | compile-fail | ✅ 通过 |
-| SEM_15_08_01_100 | SEM_15_08_01_100.ets | runtime | ✅ 通过 |
+| SEM_15_08_01_001_PASS_INSTANCEOF_SMART_CAST | SEM_15_08_01_001_PASS_INSTANCEOF_SMART_CAST.ets | compile-pass | ✅ 通过 |
+| SEM_15_08_01_002_PASS_NULL_SMART_CAST | SEM_15_08_01_002_PASS_NULL_SMART_CAST.ets | compile-pass | ✅ 通过 |
+| SEM_15_08_01_100_FAIL_TYPEOF_GAP | SEM_15_08_01_100_FAIL_TYPEOF_GAP.ets | compile-fail | ⚠️ GAP（已知问题） |
+| SEM_15_08_01_101_FAIL_SMART_CAST_OUTSIDE | SEM_15_08_01_101_FAIL_SMART_CAST_OUTSIDE.ets | compile-fail | ✅ 通过 |
+| SEM_15_08_01_200 | SEM_15_08_01_200.ets | runtime | ✅ 通过 |
 
 ## 三、结果统计
 
@@ -35,7 +35,7 @@
 
 ### 4.1 编译通过用例（compile-pass）
 
-#### SEM_15_08_001_PASS_INSTANCEOF_SMART_CAST
+#### SEM_15_08_01_001_PASS_INSTANCEOF_SMART_CAST
 - **测试点**: 验证 instanceof smart cast：instanceof 检查后类型收窄
 - **代码**: 
   ```typescript
@@ -53,7 +53,7 @@
 - **实际**: ✅ 编译通过
 - **结论**: 通过
 
-#### SEM_15_08_002_PASS_NULL_SMART_CAST
+#### SEM_15_08_01_002_PASS_NULL_SMART_CAST
 - **测试点**: 验证 null/undefined smart cast：!= undefined 检查后类型收窄
 - **代码**: 
   ```typescript
@@ -71,7 +71,7 @@
 
 ### 4.2 编译失败用例（compile-fail）
 
-#### SEM_15_08_003_FAIL_TYPEOF_GAP
+#### SEM_15_08_01_100_FAIL_TYPEOF_GAP
 - **测试点**: 验证 typeof smart cast — Spec 要求 typeof 收窄，编译器未实现（已知 GAP）
 - **代码**: 
   ```typescript
@@ -87,7 +87,7 @@
 - **结论**: ⚠️ GAP（已知问题）
 - **跟踪**: ESY145527
 
-#### SEM_15_08_004_FAIL_SMART_CAST_OUTSIDE
+#### SEM_15_08_01_101_FAIL_SMART_CAST_OUTSIDE
 - **测试点**: 验证智能转换作用域限制：在检查块外不能使用智能转换
 - **代码**: 
   ```typescript
@@ -105,7 +105,7 @@
 
 ### 4.3 运行时用例（runtime）
 
-#### SEM_15_08_01_100
+#### SEM_15_08_01_200
 - **测试点**: 类型表达式运行时验证
 - **代码**: 
   ```typescript
@@ -133,11 +133,11 @@
 
 | 测试用例 | 规范一致性 | 备注 |
 |---------|-----------|------|
-| SEM_15_08_001 | ✅ 一致 | - |
-| SEM_15_08_002 | ✅ 一致 | - |
-| SEM_15_08_003 | ⚠️ 不一致 | Spec 要求 typeof 收窄，编译器未实现 |
-| SEM_15_08_004 | ✅ 一致 | - |
-| SEM_15_08_01_100 | ✅ 一致 | - |
+| SEM_15_08_01_001 | ✅ 一致 | - |
+| SEM_15_08_01_002 | ✅ 一致 | - |
+| SEM_15_08_01_100 | ⚠️ 不一致 | Spec 要求 typeof 收窄，编译器未实现 |
+| SEM_15_08_01_101 | ✅ 一致 | - |
+| SEM_15_08_01_200 | ✅ 一致 | - |
 
 ## 测试环境
 - **编译器**：ArkTS static_core (es2panda)

@@ -4,14 +4,14 @@
 
 ### 1.1 类型参数作为返回值类型的完整支持
 - **问题描述**: ArkTS 规范支持类型参数作为返回值类型，但当前编译器可能未完全支持所有场景
-- **用例**: SEM_15_01_030_PASS_TYPE_PARAM_RETURN.ets
+- **用例**: SEM_15_01_07_001_PASS_TYPE_PARAM_RETURN.ets
 - **期望行为**: 泛型函数返回类型参数类型（如 identity<int>(42) 返回 int 类型）
 - **当前状态**: 待验证
 - **优先级**: 高
 
 ### 1.2 类型参数约束的完整支持
 - **问题描述**: ArkTS 规范支持类型参数约束（extends 约束），但当前编译器可能未完全支持所有约束场景
-- **用例**: SEM_15_01_031_PASS_TYPE_PARAM_CONSTRAINT.ets
+- **用例**: SEM_15_01_07_002_PASS_TYPE_PARAM_CONSTRAINT.ets
 - **期望行为**: extends 约束的类型参数可调用约束方法（如 T extends HasName，可访问 .name 属性）
 - **当前状态**: 待验证
 - **优先级**: 高

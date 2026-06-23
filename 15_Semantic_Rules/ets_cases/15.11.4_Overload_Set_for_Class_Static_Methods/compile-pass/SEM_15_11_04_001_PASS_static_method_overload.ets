@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_04_001
+ * @id SEM_15_11_04_001_PASS_static_method_overload
  * @expect compile-pass
  * @section 15.11.4
  * @design 类静态方法重载集

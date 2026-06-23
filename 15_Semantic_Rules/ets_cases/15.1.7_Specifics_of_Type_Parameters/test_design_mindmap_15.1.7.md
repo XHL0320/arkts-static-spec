@@ -18,7 +18,7 @@
 - 前缀: `SEM_15_01_XXX`
 - 类型标识: `PASS` (正向), `FAIL` (反向), `RUNTIME` (运行时)
 - 功能描述: 驼峰命名，描述测试点
-- 示例: `SEM_15_01_030_PASS_TYPE_PARAM_RETURN.ets`
+- 示例: `SEM_15_01_07_001_PASS_TYPE_PARAM_RETURN.ets`
 
 ## Test Design Mindmap
 
@@ -39,8 +39,8 @@
 #### compile-pass
 | ID | Case File | Purpose | Expected |
 |---|---|---|---|
-| SEM_15_01_030 | SEM_15_01_030_PASS_TYPE_PARAM_RETURN.ets | 验证类型参数作为返回值类型：泛型函数返回类型参数类型 | compile-pass |
-| SEM_15_01_031 | SEM_15_01_031_PASS_TYPE_PARAM_CONSTRAINT.ets | 验证类型参数约束：extends约束的类型参数可调用约束方法 | compile-pass |
+| SEM_15_01_030 | SEM_15_01_07_001_PASS_TYPE_PARAM_RETURN.ets | 验证类型参数作为返回值类型：泛型函数返回类型参数类型 | compile-pass |
+| SEM_15_01_031 | SEM_15_01_07_002_PASS_TYPE_PARAM_CONSTRAINT.ets | 验证类型参数约束：extends约束的类型参数可调用约束方法 | compile-pass |
 
 #### compile-fail
 | ID | Case File | Purpose | Expected |
@@ -50,7 +50,7 @@
 #### runtime
 | ID | Case File | Purpose | Expected |
 |---|---|---|---|
-| SEM_15_01_032 | SEM_15_01_032_RUNTIME_TYPE_PARAM.ets | 验证类型参数运行时行为：泛型函数运行时派发正确 | runtime |
+| SEM_15_01_032 | SEM_15_01_07_200_RUNTIME_TYPE_PARAM.ets | 验证类型参数运行时行为：泛型函数运行时派发正确 | runtime |
 
 ## Cross-Chapter Links
 - 5.1 Type Parameters

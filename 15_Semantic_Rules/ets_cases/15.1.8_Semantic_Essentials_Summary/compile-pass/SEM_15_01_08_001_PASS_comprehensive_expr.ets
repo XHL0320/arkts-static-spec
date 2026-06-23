@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_01_08_001
+ * @id SEM_15_01_08_001_PASS_comprehensive_expr
  * @expect compile-pass
  * @section 15.1.8
  * @design 语义基础总结：综合表达式验证

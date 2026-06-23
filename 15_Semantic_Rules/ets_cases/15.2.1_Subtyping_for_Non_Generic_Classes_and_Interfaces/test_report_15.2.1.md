@@ -22,10 +22,10 @@
 
 | 编号 | 用例文件 | 类型 | 测试点 | 预期结果 | 实际结果 |
 |------|---------|------|--------|---------|---------|
-| SEM_15_02_001 | SEM_15_02_001_PASS_CLASS_EXTENDS_SUBTYPE.ets | compile-pass | 类 extends 产生子类型关系 | ✅ compile-pass | ✅ |
-| SEM_15_02_002 | SEM_15_02_002_PASS_INTERFACE_EXTENDS_SUBTYPE.ets | compile-pass | 接口 extends 产生子类型关系 | ✅ compile-pass | ✅ |
-| SEM_15_02_014 | SEM_15_02_014_FAIL_SELF_EXTENDS.ets | compile-fail | 自继承拒绝 | ✅ compile-fail | ✅ |
-| SEM_15_02_015 | SEM_15_02_015_RUNTIME_SUBTYPE.ets | runtime | 运行时多态派发 | ✅ runtime | ✅ |
+| SEM_15_02_001 | SEM_15_02_01_001_PASS_CLASS_EXTENDS_SUBTYPE.ets | compile-pass | 类 extends 产生子类型关系 | ✅ compile-pass | ✅ |
+| SEM_15_02_002 | SEM_15_02_01_002_PASS_INTERFACE_EXTENDS_SUBTYPE.ets | compile-pass | 接口 extends 产生子类型关系 | ✅ compile-pass | ✅ |
+| SEM_15_02_014 | SEM_15_02_01_100_FAIL_SELF_EXTENDS.ets | compile-fail | 自继承拒绝 | ✅ compile-fail | ✅ |
+| SEM_15_02_015 | SEM_15_02_01_200_RUNTIME_SUBTYPE.ets | runtime | 运行时多态派发 | ✅ runtime | ✅ |
 
 ## 3. 测试结果统计
 

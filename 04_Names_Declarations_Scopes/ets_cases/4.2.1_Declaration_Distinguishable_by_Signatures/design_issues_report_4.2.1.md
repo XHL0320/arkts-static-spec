@@ -21,7 +21,7 @@
 
 ### 问题 A-4.2.1：声明可区分性检查严格 ⭐ LOW
 
-**用例：** NAM_04_02_01_001_FAIL_INDISTINGUISHABLE_SIGNATURE
+**用例：** NAM_04_02_01_100_FAIL_indistinguishable_signature
 
 **实际行为：**
 ```typescript

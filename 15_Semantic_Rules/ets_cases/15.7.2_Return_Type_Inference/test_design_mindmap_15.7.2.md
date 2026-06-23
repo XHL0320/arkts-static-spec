@@ -15,9 +15,9 @@
 |------------|------|--------|---------|
 | SEM_15_07_02_001_PASS_RETURN_MATCH | compile-pass | 验证函数返回类型推断：显式返回类型匹配 | ✅ 通过 |
 | SEM_15_07_02_002_PASS_RETURN_COVARIANCE | compile-pass | 验证返回值协变：子类方法可返回子类型 | ✅ 通过 |
-| SEM_15_07_02_010_FAIL_RETURN_MISMATCH | compile-fail | 验证返回类型不匹配拒绝：声明的 int 返回 string 应报错 | ✅ 通过 |
-| SEM_15_07_02_011_FAIL_MISSING_RETURN | compile-fail | 验证缺少 return 语句：非 void 函数缺少 return 应报错 | ✅ 通过 |
-| SEM_15_07_02_012_RUNTIME_RETURN | runtime | 验证返回类型运行时行为 | ✅ 通过 |
+| SEM_15_07_02_100_FAIL_RETURN_MISMATCH | compile-fail | 验证返回类型不匹配拒绝：声明的 int 返回 string 应报错 | ✅ 通过 |
+| SEM_15_07_02_101_FAIL_MISSING_RETURN | compile-fail | 验证缺少 return 语句：非 void 函数缺少 return 应报错 | ✅ 通过 |
+| SEM_15_07_02_200_RUNTIME_RETURN | runtime | 验证返回类型运行时行为 | ✅ 通过 |
 
 ## 三、跨章节关联
 

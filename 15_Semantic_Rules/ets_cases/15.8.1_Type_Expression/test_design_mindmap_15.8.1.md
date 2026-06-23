@@ -13,11 +13,11 @@
 
 | 测试用例 ID | 类型 | 测试点 | 预期结果 |
 |------------|------|--------|---------|
-| SEM_15_08_001_PASS_INSTANCEOF_SMART_CAST | compile-pass | 验证 instanceof smart cast：instanceof 检查后类型收窄 | ✅ 通过 |
-| SEM_15_08_002_PASS_NULL_SMART_CAST | compile-pass | 验证 null/undefined smart cast：!= undefined 检查后类型收窄 | ✅ 通过 |
-| SEM_15_08_003_FAIL_TYPEOF_GAP | compile-fail | 验证 typeof smart cast — Spec 要求 typeof 收窄，编译器未实现（已知 GAP） | ⚠️ GAP |
-| SEM_15_08_004_FAIL_SMART_CAST_OUTSIDE | compile-fail | 验证智能转换作用域限制：在检查块外不能使用智能转换 | ✅ 通过 |
-| SEM_15_08_01_100 | runtime | 类型表达式运行时验证 | ✅ 通过 |
+| SEM_15_08_01_001_PASS_INSTANCEOF_SMART_CAST | compile-pass | 验证 instanceof smart cast：instanceof 检查后类型收窄 | ✅ 通过 |
+| SEM_15_08_01_002_PASS_NULL_SMART_CAST | compile-pass | 验证 null/undefined smart cast：!= undefined 检查后类型收窄 | ✅ 通过 |
+| SEM_15_08_01_100_FAIL_TYPEOF_GAP | compile-fail | 验证 typeof smart cast — Spec 要求 typeof 收窄，编译器未实现（已知 GAP） | ⚠️ GAP |
+| SEM_15_08_01_101_FAIL_SMART_CAST_OUTSIDE | compile-fail | 验证智能转换作用域限制：在检查块外不能使用智能转换 | ✅ 通过 |
+| SEM_15_08_01_200 | runtime | 类型表达式运行时验证 | ✅ 通过 |
 
 ## 三、跨章节关联
 
@@ -29,15 +29,15 @@
 ## 四、测试设计说明
 
 ### 4.1 正向测试用例
-- **SEM_15_08_001**: 验证 `instanceof` 智能转换，`instanceof` 检查后类型从 `Animal` 收窄为 `Dog`
-- **SEM_15_08_002**: 验证 `null`/`undefined` 智能转换，`!= undefined` 检查后类型收窄
+- **SEM_15_08_01_001**: 验证 `instanceof` 智能转换，`instanceof` 检查后类型从 `Animal` 收窄为 `Dog`
+- **SEM_15_08_01_002**: 验证 `null`/`undefined` 智能转换，`!= undefined` 检查后类型收窄
 
 ### 4.2 反向测试用例
-- **SEM_15_08_003**: 验证 `typeof` 智能转换（已知 GAP），Spec 要求 `typeof x === "boolean"` 后 x 应收窄为 `boolean`，但编译器未实现
-- **SEM_15_08_004**: 验证智能转换作用域限制，在检查块外不能使用智能转换
+- **SEM_15_08_01_100**: 验证 `typeof` 智能转换（已知 GAP），Spec 要求 `typeof x === "boolean"` 后 x 应收窄为 `boolean`，但编译器未实现
+- **SEM_15_08_01_101**: 验证智能转换作用域限制，在检查块外不能使用智能转换
 
 ### 4.3 运行时测试用例
-- **SEM_15_08_01_100**: 验证类型表达式运行时行为
+- **SEM_15_08_01_200**: 验证类型表达式运行时行为
 
 
 ## 最新设计要点
@@ -50,15 +50,15 @@
 
 | 规范条目 | 覆盖状态 | 备注 |
 |---------|---------|------|
-| instanceof 类型收窄 | ✅ 已覆盖 | SEM_15_08_001 |
-| null/undefined 类型收窄 | ✅ 已覆盖 | SEM_15_08_002 |
-| typeof 类型收窄 | ⚠️ 已知 GAP | SEM_15_08_003，编译器未实现 |
-| 智能转换作用域 | ✅ 已覆盖 | SEM_15_08_004 |
-| 运行时行为 | ✅ 已覆盖 | SEM_15_08_01_100 |
+| instanceof 类型收窄 | ✅ 已覆盖 | SEM_15_08_01_001 |
+| null/undefined 类型收窄 | ✅ 已覆盖 | SEM_15_08_01_002 |
+| typeof 类型收窄 | ⚠️ 已知 GAP | SEM_15_08_01_100，编译器未实现 |
+| 智能转换作用域 | ✅ 已覆盖 | SEM_15_08_01_101 |
+| 运行时行为 | ✅ 已覆盖 | SEM_15_08_01_200 |
 
 ## 六、已知问题（GAP）
 
-### 6.1 SEM_15_08_003_FAIL_TYPEOF_GAP
+### 6.1 SEM_15_08_01_100_FAIL_TYPEOF_GAP
 
 **问题描述**: Spec 要求 `typeof` 收窄，但编译器未实现。
 

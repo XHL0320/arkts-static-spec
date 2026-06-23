@@ -11,10 +11,10 @@
 ## Case List
 | ID | Case File | Type | Result |
 |---|---|---|---|
-| SEM_15_01_030 | SEM_15_01_030_PASS_TYPE_PARAM_RETURN.ets | compile-pass | ✅ |
-| SEM_15_01_031 | SEM_15_01_031_PASS_TYPE_PARAM_CONSTRAINT.ets | compile-pass | ✅ |
+| SEM_15_01_030 | SEM_15_01_07_001_PASS_TYPE_PARAM_RETURN.ets | compile-pass | ✅ |
+| SEM_15_01_031 | SEM_15_01_07_002_PASS_TYPE_PARAM_CONSTRAINT.ets | compile-pass | ✅ |
 | SEM_15_01_012 | SEM_15_01_012_FAIL_TYPE_PARAM_LHS_INFERENCE.ets | compile-fail | ✅ |
-| SEM_15_01_032 | SEM_15_01_032_RUNTIME_TYPE_PARAM.ets | runtime | ✅ |
+| SEM_15_01_032 | SEM_15_01_07_200_RUNTIME_TYPE_PARAM.ets | runtime | ✅ |
 
 ## Result Statistics
 | Category | Count | Pass | Fail |
@@ -29,8 +29,8 @@
 ### compile-pass (2/2 passed)
 | ID | Case File | Expected | Actual | Status |
 |---|---|---|---|---|
-| SEM_15_01_030 | SEM_15_01_030_PASS_TYPE_PARAM_RETURN.ets | compile-pass | compile-pass | ✅ |
-| SEM_15_01_031 | SEM_15_01_031_PASS_TYPE_PARAM_CONSTRAINT.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_030 | SEM_15_01_07_001_PASS_TYPE_PARAM_RETURN.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_031 | SEM_15_01_07_002_PASS_TYPE_PARAM_CONSTRAINT.ets | compile-pass | compile-pass | ✅ |
 
 ### compile-fail (1/1 passed)
 | ID | Case File | Expected | Actual | Status |
@@ -40,7 +40,7 @@
 ### runtime (1/1 passed)
 | ID | Case File | Expected | Actual | Status |
 |---|---|---|---|---|
-| SEM_15_01_032 | SEM_15_01_032_RUNTIME_TYPE_PARAM.ets | runtime | runtime | ✅ |
+| SEM_15_01_032 | SEM_15_01_07_200_RUNTIME_TYPE_PARAM.ets | runtime | runtime | ✅ |
 
 ## Issues Found
 无

@@ -11,11 +11,11 @@
 ## Case List
 | ID | Case File | Type | Result |
 |---|---|---|---|
-| SEM_15_01_011 | SEM_15_01_011_PASS_STRING_OPERATOR_CONVERSION.ets | compile-pass | ✅ |
-| SEM_15_01_025 | SEM_15_01_025_PASS_STRING_BOOL.ets | compile-pass | ✅ |
-| SEM_15_01_026 | SEM_15_01_026_PASS_STRING_DOUBLE.ets | compile-pass | ✅ |
-| SEM_15_01_027 | SEM_15_01_027_FAIL_STRING_SUB.ets | compile-fail | ✅ |
-| SEM_15_01_028 | SEM_15_01_028_RUNTIME_STRING_CONCAT.ets | runtime | ✅ |
+| SEM_15_01_011 | SEM_15_01_05_001_PASS_STRING_OPERATOR_CONVERSION.ets | compile-pass | ✅ |
+| SEM_15_01_025 | SEM_15_01_05_002_PASS_STRING_BOOL.ets | compile-pass | ✅ |
+| SEM_15_01_026 | SEM_15_01_05_003_PASS_STRING_DOUBLE.ets | compile-pass | ✅ |
+| SEM_15_01_027 | SEM_15_01_05_100_FAIL_STRING_SUB.ets | compile-fail | ✅ |
+| SEM_15_01_028 | SEM_15_01_05_200_RUNTIME_STRING_CONCAT.ets | runtime | ✅ |
 
 ## Result Statistics
 | Category | Count | Pass | Fail |
@@ -30,19 +30,19 @@
 ### compile-pass (3/3 passed)
 | ID | Case File | Expected | Actual | Status |
 |---|---|---|---|---|
-| SEM_15_01_011 | SEM_15_01_011_PASS_STRING_OPERATOR_CONVERSION.ets | compile-pass | compile-pass | ✅ |
-| SEM_15_01_025 | SEM_15_01_025_PASS_STRING_BOOL.ets | compile-pass | compile-pass | ✅ |
-| SEM_15_01_026 | SEM_15_01_026_PASS_STRING_DOUBLE.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_011 | SEM_15_01_05_001_PASS_STRING_OPERATOR_CONVERSION.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_025 | SEM_15_01_05_002_PASS_STRING_BOOL.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_026 | SEM_15_01_05_003_PASS_STRING_DOUBLE.ets | compile-pass | compile-pass | ✅ |
 
 ### compile-fail (1/1 passed)
 | ID | Case File | Expected | Actual | Status |
 |---|---|---|---|---|
-| SEM_15_01_027 | SEM_15_01_027_FAIL_STRING_SUB.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_01_027 | SEM_15_01_05_100_FAIL_STRING_SUB.ets | compile-fail | compile-fail | ✅ |
 
 ### runtime (1/1 passed)
 | ID | Case File | Expected | Actual | Status |
 |---|---|---|---|---|
-| SEM_15_01_028 | SEM_15_01_028_RUNTIME_STRING_CONCAT.ets | runtime | runtime | ✅ |
+| SEM_15_01_028 | SEM_15_01_05_200_RUNTIME_STRING_CONCAT.ets | runtime | runtime | ✅ |
 
 ## Issues Found
 无

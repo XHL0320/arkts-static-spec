@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_08_04_001
+ * @id SEM_15_08_04_001_PASS_null_check_narrow
  * @expect compile-pass
  * @section 15.8.4
  * @design 计算智能类型：null 检查后类型收窄

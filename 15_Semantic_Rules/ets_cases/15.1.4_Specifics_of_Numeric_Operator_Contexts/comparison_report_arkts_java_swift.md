@@ -237,10 +237,10 @@ let b = a &+ 1   // 溢出运算符，结果为 Int.min
 
 | 用例 | 结果 |
 |------|------|
-| SEM_15_01_010_PASS_NUMERIC_OPERATOR_WIDEN | ✅ |
-| SEM_15_01_021_PASS_BYTE_SHORT_INC | ✅ |
-| SEM_15_01_023_FAIL_BOOL_NUMERIC | ✅ (compile-fail) |
-| SEM_15_01_024_RUNTIME_NUMERIC_OPS | ✅ |
+| SEM_15_01_04_001_PASS_NUMERIC_OPERATOR_WIDEN | ✅ |
+| SEM_15_01_04_002_PASS_BYTE_SHORT_INC | ✅ |
+| SEM_15_01_04_100_FAIL_BOOL_NUMERIC | ✅ (compile-fail) |
+| SEM_15_01_04_200_RUNTIME_NUMERIC_OPS | ✅ |
 
 ### Java 实测结果
 

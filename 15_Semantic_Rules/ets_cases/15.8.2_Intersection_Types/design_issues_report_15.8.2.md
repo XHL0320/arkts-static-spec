@@ -2,7 +2,7 @@
 
 ## 一、编译器实现待完善
 
-### 1.1 SEM_15_08_005_FAIL_INTERSECTION_UNSUPPORTED
+### 1.1 SEM_15_08_02_100_FAIL_INTERSECTION_UNSUPPORTED
 
 **问题描述**: Spec §15.8.2 定义了交叉类型（`A & B`），但编译器暂不支持。
 

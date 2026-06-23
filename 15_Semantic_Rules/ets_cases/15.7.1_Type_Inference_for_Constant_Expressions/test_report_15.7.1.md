@@ -16,7 +16,7 @@
 | SEM_15_07_01_001_PASS_CONST_EXPR_TYPE | SEM_15_07_01_001_PASS_CONST_EXPR_TYPE.ets | compile-pass | ✅ 通过 |
 | SEM_15_07_01_002_PASS_BOOL_CONST_EXPR | SEM_15_07_01_002_PASS_BOOL_CONST_EXPR.ets | compile-pass | ✅ 通过 |
 | SEM_15_07_01_003_PASS_CONST_DECL_EXPR | SEM_15_07_01_003_PASS_CONST_DECL_EXPR.ets | compile-pass | ✅ 通过 |
-| SEM_15_07_01_004_FAIL_INVALID_CONST_EXPR | SEM_15_07_01_004_FAIL_INVALID_CONST_EXPR.ets | compile-fail | ✅ 通过 |
+| SEM_15_07_01_100_FAIL_INVALID_CONST_EXPR | SEM_15_07_01_100_FAIL_INVALID_CONST_EXPR.ets | compile-fail | ✅ 通过 |
 | SEM_15_07_01_100 | SEM_15_07_01_100.ets | runtime | ✅ 通过 |
 
 ## 三、结果统计
@@ -55,7 +55,7 @@
 
 ### 4.2 编译失败用例（compile-fail）
 
-#### SEM_15_07_01_004_FAIL_INVALID_CONST_EXPR
+#### SEM_15_07_01_100_FAIL_INVALID_CONST_EXPR
 - **测试点**: 验证非法常量表达式拒绝：字符串与整数相乘无效
 - **代码**: `let x = "str" * 2;`
 - **预期**: 编译报错

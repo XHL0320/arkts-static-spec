@@ -57,7 +57,7 @@
 #### compile-fail
 | ID | Case File | Purpose | Expected |
 |---|---|---|---|
-| SEM_15_01_06_099 | SEM_15_01_06_099_FAIL_MISMATCH.ets | 验证其他上下文类型不匹配拒绝 | compile-fail |
+| SEM_15_01_06_099 | SEM_15_01_06_100_FAIL_MISMATCH.ets | 验证其他上下文类型不匹配拒绝 | compile-fail |
 
 #### runtime
 | ID | Case File | Purpose | Expected |

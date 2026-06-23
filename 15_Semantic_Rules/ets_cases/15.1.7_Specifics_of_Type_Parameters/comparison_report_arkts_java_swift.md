@@ -260,10 +260,10 @@ print(type(of: a))   // A<Int>，类型信息保留
 
 | 用例 | 结果 |
 |------|------|
-| SEM_15_01_030_PASS_TYPE_PARAM_RETURN | ✅ |
-| SEM_15_01_031_PASS_TYPE_PARAM_CONSTRAINT | ✅ |
+| SEM_15_01_07_001_PASS_TYPE_PARAM_RETURN | ✅ |
+| SEM_15_01_07_002_PASS_TYPE_PARAM_CONSTRAINT | ✅ |
 | SEM_15_01_012_FAIL_TYPE_PARAM_LHS_INFERENCE | ✅ (compile-fail) |
-| SEM_15_01_032_RUNTIME_TYPE_PARAM | ✅ |
+| SEM_15_01_07_200_RUNTIME_TYPE_PARAM | ✅ |
 
 ### Java 实测结果
 

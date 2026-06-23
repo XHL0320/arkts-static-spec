@@ -1,7 +1,7 @@
 # 15 Semantic Rules — 测试用例目录
 
 **生成日期：** 2026-06-23
-**共计：** 903 个测试用例
+**共计：** 870 个测试用例
 
 > 此章节按规则类别组织，用例文件名前缀 `SEM_`，存放于各规则子章节的 `compile-pass/` / `compile-fail/` / `runtime/` 目录。
 
@@ -13,94 +13,94 @@
 
 | # | 文件 | 类型 | 测试目的 |
 |---|------|------|---------|
-| 001 | SEM_15_01_01_001_PASS_int_literal | compile-pass | 验证整数字面量类型为 int |
-| 002 | SEM_15_01_01_002_PASS_string_literal | compile-pass | 验证字符串字面量类型为 string |
-| 003 | SEM_15_01_01_003_PASS_bool_literal | compile-pass | 验证布尔字面量类型为 boolean |
-| 004 | SEM_15_01_01_004_PASS_float_literal | compile-pass | 浮点数字面量类型 |
-| 090 | SEM_15_01_01_090_FAIL_unresolved_type | compile-fail | 未解析的类型 |
-| 020 | SEM_15_01_01_020_RUNTIME_standalone | runtime | standalone expression 运行时 |
+| 001 | SEM_15_01_01_001_PASS_INT_LITERAL_TYPE | compile-pass | 验证整数字面量类型为 int |
+| 002 | SEM_15_01_01_002_PASS_FLOAT_LITERAL_TYPE | compile-pass | 验证字符串字面量类型为 string |
+| 003 | SEM_15_01_01_003_PASS_CONST_EXPR_TYPE | compile-pass | 验证布尔字面量类型为 boolean |
+| 004 | SEM_15_01_01_004_PASS_ARRAY_LITERAL_TYPE | compile-pass | 浮点数字面量类型 |
+| 090 | SEM_15_01_01_100_FAIL_OBJECT_LITERAL_STANDALONE | compile-fail | 未解析的类型 |
+| 020 | SEM_15_01_01_200_RUNTIME_STANDALONE | runtime | standalone expression 运行时 |
 
 ### 15.1.2 Specifics of Assignment-like Contexts（7）
 
 | # | 文件 | 类型 | 测试目的 |
 |---|------|------|---------|
-| 001 | SEM_15_01_02_001_PASS_numeric_widening | compile-pass | 赋值上下文数值拓宽 |
-| 002 | SEM_15_01_02_002_PASS_subtype_assignment | compile-pass | 子类型赋值 |
-| 003 | SEM_15_01_02_003_PASS_undefined_assignment | compile-pass | undefined 赋值 |
-| 004 | SEM_15_01_02_004_PASS_boxing_unboxing | compile-pass | 装箱/拆箱 |
-| 090 | SEM_15_01_02_090_FAIL_narrowing_assignment | compile-fail | 赋值窄化拒绝 |
-| 091 | SEM_15_01_02_091_FAIL_type_mismatch | compile-fail | 类型不匹配 |
-| 020 | SEM_15_01_02_020_RUNTIME_assignment | runtime | 赋值上下文运行时 |
+| 001 | SEM_15_01_02_001_PASS_KNOWN_RHS_ASSIGN | compile-pass | 赋值上下文数值拓宽 |
+| 002 | SEM_15_01_02_002_PASS_UNKNOWN_RHS_INFER | compile-pass | 子类型赋值 |
+| 003 | SEM_15_01_02_003_PASS_WIDENING_ASSIGN | compile-pass | undefined 赋值 |
+| 004 | SEM_15_01_02_004_PASS_SUBTYPE_ASSIGN | compile-pass | 装箱/拆箱 |
+| 090 | SEM_15_01_02_100_FAIL_TYPE_MISMATCH | compile-fail | 赋值窄化拒绝 |
+| 091 | SEM_15_01_02_101_FAIL_UNRELATED_ASSIGN | compile-fail | 类型不匹配 |
+| 020 | SEM_15_01_02_200_RUNTIME_ASSIGN_SEMANTICS | runtime | 赋值上下文运行时 |
 
 ### 15.1.3 Specifics of Variable Initialization Context（8）
 
 | # | 文件 | 类型 | 测试目的 |
 |---|------|------|---------|
-| 001 | SEM_15_01_03_001_PASS_init_typed | compile-pass | 带类型初始化 |
-| 002 | SEM_15_01_03_002_PASS_init_inferred | compile-pass | 推断类型初始化 |
-| 003 | SEM_15_01_03_003_PASS_init_undefined | compile-pass | undefined 初始化 |
-| 004 | SEM_15_01_03_004_PASS_init_default | compile-pass | 默认初始化 |
-| 005 | SEM_15_01_03_005_PASS_destructuring_init | compile-pass | 解构初始化 |
-| 006 | SEM_15_01_03_006_PASS_init_with_expression | compile-pass | 表达式初始化 |
-| 090 | SEM_15_01_03_090_FAIL_narrowing_init | compile-fail | 初始化窄化拒绝 |
-| 020 | SEM_15_01_03_020_RUNTIME_init | runtime | 初始化运行时 |
+| 001 | SEM_15_01_03_001_PASS_EXPLICIT_TYPE_INIT | compile-pass | 带类型初始化 |
+| 002 | SEM_15_01_03_002_PASS_INFER_FROM_INITIALIZER | compile-pass | 推断类型初始化 |
+| 003 | SEM_15_01_03_003_PASS_CONST_INIT | compile-pass | undefined 初始化 |
+| 004 | SEM_15_01_03_004_PASS_EXPR_INIT | compile-pass | 默认初始化 |
+| 005 | SEM_15_01_03_005_PASS_infer_from_param | compile-pass | 解构初始化 |
+| 006 | SEM_15_01_03_006_PASS_infer_array_from_literal | compile-pass | 表达式初始化 |
+| 090 | SEM_15_01_03_100_FAIL_INIT_TYPE_MISMATCH | compile-fail | 初始化窄化拒绝 |
+| 020 | SEM_15_01_03_200_RUNTIME_INIT | runtime | 初始化运行时 |
 
 ### 15.1.4 Specifics of Numeric Operator Contexts（5）
 
 | # | 文件 | 类型 | 测试目的 |
 |---|------|------|---------|
-| 001 | SEM_15_01_04_001_PASS_arithmetic | compile-pass | 算术运算 |
-| 002 | SEM_15_01_04_002_PASS_bitwise | compile-pass | 位运算 |
-| 003 | SEM_15_01_04_003_PASS_comparison | compile-pass | 关系运算 |
-| 090 | SEM_15_01_04_090_FAIL_type_mismatch | compile-fail | 类型不匹配 |
-| 020 | SEM_15_01_04_020_RUNTIME_numeric | runtime | 数值运算运行时 |
+| 001 | SEM_15_01_04_001_PASS_NUMERIC_OPERATOR_WIDEN | compile-pass | 算术运算 |
+| 002 | SEM_15_01_04_002_PASS_BYTE_SHORT_INC | compile-pass | 位运算 |
+| 003 | SEM_15_01_04_003_PASS_MIXED_NUMERIC | compile-pass | 关系运算 |
+| 090 | SEM_15_01_04_100_FAIL_BOOL_NUMERIC | compile-fail | 类型不匹配 |
+| 020 | SEM_15_01_04_200_RUNTIME_NUMERIC_OPS | runtime | 数值运算运行时 |
 
 ### 15.1.5 Specifics of String Operator Contexts（5）
 
 | # | 文件 | 类型 | 测试目的 |
 |---|------|------|---------|
-| 001 | SEM_15_01_05_001_PASS_concat | compile-pass | 字符串拼接 |
-| 002 | SEM_15_01_05_002_PASS_template | compile-pass | 模板字符串 |
-| 003 | SEM_15_01_05_003_PASS_comparison | compile-pass | 字符串比较 |
-| 090 | SEM_15_01_05_090_FAIL_wrong_operand | compile-fail | 操作数错误 |
-| 020 | SEM_15_01_05_020_RUNTIME_string | runtime | 字符串运算运行时 |
+| 001 | SEM_15_01_05_001_PASS_STRING_OPERATOR_CONVERSION | compile-pass | 字符串拼接 |
+| 002 | SEM_15_01_05_002_PASS_STRING_BOOL | compile-pass | 模板字符串 |
+| 003 | SEM_15_01_05_003_PASS_STRING_DOUBLE | compile-pass | 字符串比较 |
+| 090 | SEM_15_01_05_100_FAIL_STRING_SUB | compile-fail | 操作数错误 |
+| 020 | SEM_15_01_05_200_RUNTIME_STRING_CONCAT | runtime | 字符串运算运行时 |
 
 ### 15.1.6 Other Contexts（8）
 
 | # | 文件 | 类型 | 测试目的 |
 |---|------|------|---------|
-| 001 | SEM_15_01_06_001_PASS_call_context | compile-pass | 调用上下文 |
-| 002 | SEM_15_01_06_002_PASS_return_context | compile-pass | 返回上下文 |
-| 003 | SEM_15_01_06_003_PASS_conditional | compile-pass | 条件表达式 |
-| 004 | SEM_15_01_06_004_PASS_throw_context | compile-pass | throw 上下文 |
-| 005 | SEM_15_01_06_005_PASS_yield_context | compile-pass | yield 上下文 |
-| 006 | SEM_15_01_06_006_PASS_await_context | compile-pass | await 上下文 |
-| 090 | SEM_15_01_06_090_FAIL_context_mismatch | compile-fail | 上下文不匹配 |
-| 020 | SEM_15_01_06_020_RUNTIME_other | runtime | 其他上下文运行时 |
+| 001 | SEM_15_01_06_001_PASS_string_standalone | compile-pass | 调用上下文 |
+| 002 | SEM_15_01_06_002_PASS_BOOL_CONTEXT | compile-pass | 返回上下文 |
+| 003 | SEM_15_01_06_003_PASS_ARRAY_CONTEXT | compile-pass | 条件表达式 |
+| 004 | SEM_15_01_06_004_PASS_FUNC_RETURN_CONTEXT | compile-pass | throw 上下文 |
+| 005 | SEM_15_01_06_005_PASS_PROPERTY_ACCESS | compile-pass | yield 上下文 |
+| 006 | SEM_15_01_06_006_PASS_bool_string_concat | compile-pass | await 上下文 |
+| 090 | SEM_15_01_06_100_FAIL_MISMATCH | compile-fail | 上下文不匹配 |
+| 020 | SEM_15_01_06_200_RUNTIME_other_contexts | runtime | 其他上下文运行时 |
 
 ### 15.1.7 Specifics of Type Parameters（5）
 
 | # | 文件 | 类型 | 测试目的 |
 |---|------|------|---------|
-| 030 | SEM_15_01_030_PASS_TYPE_PARAM_RETURN | compile-pass | 类型参数作为返回值类型 |
-| 031 | SEM_15_01_031_PASS_TYPE_PARAM_CONSTRAINT | compile-pass | 类型参数约束 |
-| 034 | SEM_15_01_034_FAIL_TYPE_PARAM_LHS_INFERENCE | compile-fail | 类型参数 LHS 不提供推断 |
-| 035 | SEM_15_01_035_FAIL_TYPE_PARAM_CONSTRAINT | compile-fail | 类型参数约束违反 |
-| 032 | SEM_15_01_032_RUNTIME_TYPE_PARAM | runtime | 类型参数运行时 |
+| 030 | SEM_15_01_07_001_PASS_TYPE_PARAM_RETURN | compile-pass | 类型参数作为返回值类型 |
+| 031 | SEM_15_01_07_002_PASS_TYPE_PARAM_CONSTRAINT | compile-pass | 类型参数约束 |
+| 034 | SEM_15_01_07_100_FAIL_TYPE_PARAM_LHS_INFERENCE | compile-fail | 类型参数 LHS 不提供推断 |
+| 035 | SEM_15_01_07_101_FAIL_type_param_ctor_inference | compile-fail | 类型参数约束违反 |
+| 032 | SEM_15_01_07_200_RUNTIME_TYPE_PARAM | runtime | 类型参数运行时 |
 
 ### 15.1.8 Semantic Essentials Summary（3）
 
 | # | 文件 | 类型 | 测试目的 |
 |---|------|------|---------|
-| 001 | SEM_15_01_08_001_PASS_summary | compile-pass | 语义要点汇总正向 |
-| 090 | SEM_15_01_08_090_FAIL_summary | compile-fail | 语义要点汇总反向 |
-| 020 | SEM_15_01_08_020_RUNTIME_summary | runtime | 语义要点汇总运行时 |
+| 001 | SEM_15_01_08_001_PASS_comprehensive_expr | compile-pass | 语义要点汇总正向 |
+| 090 | SEM_15_01_08_100_FAIL_invalid_operation | compile-fail | 语义要点汇总反向 |
+| 020 | SEM_15_01_08_200_RUNTIME_summary | runtime | 语义要点汇总运行时 |
 
 ### 15.1_Semantic_Essentials（父章节，26）
 
 | # | 文件 | 类型 | 测试目的 |
 |---|------|------|---------|
-| 001 | SEM_15_01_001_PASS_semantic_essentials | compile-pass | 语义基础正向 |
+| 001 | SEM_15_01_00_001_PASS_standalone_int_literal | compile-pass | 语义基础正向 |
 | ... | ... | ... | ... |
 
 ---
@@ -193,10 +193,10 @@
 
 ---
 
-## 15.14 Compatibility Features（80 用例）
+## 15.14 Compatibility Features（47 用例）
 
 ### 15.14.1 Extended Conditional Expressions（3）
-### 15.14_Compatibility_Features（父章节，77）
+### 15.14_Compatibility_Features（父章节，44）
 
 ---
 
@@ -217,5 +217,5 @@
 | 15.11 Overload Resolution | 62 | 40 | 49 | 151 |
 | 15.12 Type Erasure | 17 | 15 | 6 | 38 |
 | 15.13 Static Init | 10 | 7 | 13 | 30 |
-| 15.14 Compatibility | 55 | 7 | 18 | 80 |
-| **总计** | **472** | **276** | **155** | **903** |
+| 15.14 Compatibility | 29 | 3 | 15 | 47 |
+| **总计** | **446** | **272** | **152** | **870** |

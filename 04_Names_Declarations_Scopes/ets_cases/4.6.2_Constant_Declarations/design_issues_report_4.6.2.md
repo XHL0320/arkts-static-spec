@@ -21,7 +21,7 @@
 
 ### 问题 A-4.6.2：const 必须初始化 ⭐ LOW
 
-**用例：** NAM_04_06_02_001_FAIL_CONST_NO_INIT
+**用例：** NAM_04_06_02_100_FAIL_const_no_init
 
 **实际行为：**
 ```typescript

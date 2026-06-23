@@ -17,8 +17,8 @@
 | 测试用例 ID | 文件名 | 类型 | 结果 |
 |------------|--------|------|------|
 | SEM_15_08_02_001 | SEM_15_08_02_001.ets | compile-pass | ✅ 通过 |
-| SEM_15_08_005_FAIL_INTERSECTION_UNSUPPORTED | SEM_15_08_005_FAIL_INTERSECTION_UNSUPPORTED.ets | compile-fail | ⚠️ GAP（已知问题） |
-| SEM_15_08_02_100 | SEM_15_08_02_100.ets | runtime | ✅ 通过 |
+| SEM_15_08_02_100_FAIL_INTERSECTION_UNSUPPORTED | SEM_15_08_02_100_FAIL_INTERSECTION_UNSUPPORTED.ets | compile-fail | ⚠️ GAP（已知问题） |
+| SEM_15_08_02_200 | SEM_15_08_02_200.ets | runtime | ✅ 通过 |
 
 ## 三、结果统计
 
@@ -42,7 +42,7 @@
 
 ### 4.2 编译失败用例（compile-fail）
 
-#### SEM_15_08_005_FAIL_INTERSECTION_UNSUPPORTED
+#### SEM_15_08_02_100_FAIL_INTERSECTION_UNSUPPORTED
 - **测试点**: 验证交叉类型 — Spec §15.8.2 定义但编译器暂不支持（已知 GAP）
 - **代码**: 
   ```typescript
@@ -57,7 +57,7 @@
 
 ### 4.3 运行时用例（runtime）
 
-#### SEM_15_08_02_100
+#### SEM_15_08_02_200
 - **测试点**: 类型运行时验证
 - **代码**: `let x: int = 42; if (x != 42) throw new Error("fail");`
 - **预期**: 运行通过，输出 "verified"
@@ -75,8 +75,8 @@
 | 测试用例 | 规范一致性 | 备注 |
 |---------|-----------|------|
 | SEM_15_08_02_001 | ✅ 一致 | - |
-| SEM_15_08_005 | ⚠️ 不一致 | Spec 要求支持交叉类型，编译器未实现 |
-| SEM_15_08_02_100 | ✅ 一致 | - |
+| SEM_15_08_02_100 | ⚠️ 不一致 | Spec 要求支持交叉类型，编译器未实现 |
+| SEM_15_08_02_200 | ✅ 一致 | - |
 
 ## 七、后续行动计划
 

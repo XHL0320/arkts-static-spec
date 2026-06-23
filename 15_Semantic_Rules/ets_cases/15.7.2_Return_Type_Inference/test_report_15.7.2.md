@@ -15,9 +15,9 @@
 |------------|--------|------|------|
 | SEM_15_07_02_001_PASS_RETURN_MATCH | SEM_15_07_02_001_PASS_RETURN_MATCH.ets | compile-pass | ✅ 通过 |
 | SEM_15_07_02_002_PASS_RETURN_COVARIANCE | SEM_15_07_02_002_PASS_RETURN_COVARIANCE.ets | compile-pass | ✅ 通过 |
-| SEM_15_07_02_010_FAIL_RETURN_MISMATCH | SEM_15_07_02_010_FAIL_RETURN_MISMATCH.ets | compile-fail | ✅ 通过 |
-| SEM_15_07_02_011_FAIL_MISSING_RETURN | SEM_15_07_02_011_FAIL_MISSING_RETURN.ets | compile-fail | ✅ 通过 |
-| SEM_15_07_02_012_RUNTIME_RETURN | SEM_15_07_02_012_RUNTIME_RETURN.ets | runtime | ✅ 通过 |
+| SEM_15_07_02_100_FAIL_RETURN_MISMATCH | SEM_15_07_02_100_FAIL_RETURN_MISMATCH.ets | compile-fail | ✅ 通过 |
+| SEM_15_07_02_101_FAIL_MISSING_RETURN | SEM_15_07_02_101_FAIL_MISSING_RETURN.ets | compile-fail | ✅ 通过 |
+| SEM_15_07_02_200_RUNTIME_RETURN | SEM_15_07_02_200_RUNTIME_RETURN.ets | runtime | ✅ 通过 |
 
 ## 三、结果统计
 
@@ -58,14 +58,14 @@
 
 ### 4.2 编译失败用例（compile-fail）
 
-#### SEM_15_07_02_010_FAIL_RETURN_MISMATCH
+#### SEM_15_07_02_100_FAIL_RETURN_MISMATCH
 - **测试点**: 验证返回类型不匹配拒绝：声明的 int 返回 string 应报错
 - **代码**: `function getValue(): int { return "hello"; }`
 - **预期**: 编译报错
 - **实际**: ✅ 编译报错（返回类型不匹配）
 - **结论**: 通过
 
-#### SEM_15_07_02_011_FAIL_MISSING_RETURN
+#### SEM_15_07_02_101_FAIL_MISSING_RETURN
 - **测试点**: 验证缺少 return 语句：非 void 函数缺少 return 应报错
 - **代码**: `function getValue(): int { }`
 - **预期**: 编译报错
@@ -74,7 +74,7 @@
 
 ### 4.3 运行时用例（runtime）
 
-#### SEM_15_07_02_012_RUNTIME_RETURN
+#### SEM_15_07_02_200_RUNTIME_RETURN
 - **测试点**: 验证返回类型运行时行为
 - **代码**: `function add(a: int, b: int): int { return a + b; }` `let r: int = add(20, 22);`
 - **预期**: 运行通过，r = 42

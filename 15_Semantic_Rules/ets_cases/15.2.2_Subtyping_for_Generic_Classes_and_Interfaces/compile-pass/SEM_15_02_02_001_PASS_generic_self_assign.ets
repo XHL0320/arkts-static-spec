@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_02_001
+ * @id SEM_15_02_02_001_PASS_generic_self_assign
  * @expect compile-pass
  * @section 15.2.2
  * @design 泛型类自身子类型：相同类型参数的泛型实例可互相赋值

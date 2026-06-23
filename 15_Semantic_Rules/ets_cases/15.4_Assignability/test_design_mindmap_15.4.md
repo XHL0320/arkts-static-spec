@@ -15,21 +15,21 @@
 ### compile-pass（编译通过）
 | 用例 ID | 测试点 | 预期结果 |
 |---------|--------|----------|
-| SEM_15_04_001_PASS_SUBTYPE_ASSIGNABILITY | 子类型可赋值性：S <: T ⇒ S 可赋值给 T | compile-pass |
-| SEM_15_04_002_PASS_NUMERIC_WIDENING | 数值拓宽可赋值性：int → double | compile-pass |
-| SEM_15_04_003_PASS_UNDEFINED_ASSIGNABILITY | undefined 可赋值性：undefined 可赋值给含 undefined 的联合类型 | compile-pass |
-| SEM_15_04_004_PASS_INTERFACE_ASSIGNABILITY | 接口实现可赋值性：实现类可赋值给接口类型 | compile-pass |
+| SEM_15_04_00_001_PASS_SUBTYPE_ASSIGNABILITY | 子类型可赋值性：S <: T ⇒ S 可赋值给 T | compile-pass |
+| SEM_15_04_00_005_PASS_NUMERIC_WIDENING | 数值拓宽可赋值性：int → double | compile-pass |
+| SEM_15_04_00_006_PASS_UNDEFINED_ASSIGNABILITY | undefined 可赋值性：undefined 可赋值给含 undefined 的联合类型 | compile-pass |
+| SEM_15_04_00_008_PASS_INTERFACE_ASSIGNABILITY | 接口实现可赋值性：实现类可赋值给接口类型 | compile-pass |
 
 ### compile-fail（编译失败）
 | 用例 ID | 测试点 | 预期结果 |
 |---------|--------|----------|
-| SEM_15_04_010_FAIL_TYPE_MISMATCH | 类型不匹配拒绝：string 不可赋值给 int | compile-fail |
-| SEM_15_04_011_FAIL_UNRELATED_TYPES | 不相关类拒绝：无继承关系的类不可互相赋值 | compile-fail |
+| SEM_15_04_00_102_FAIL_TYPE_MISMATCH | 类型不匹配拒绝：string 不可赋值给 int | compile-fail |
+| SEM_15_04_00_104_FAIL_UNRELATED_TYPES | 不相关类拒绝：无继承关系的类不可互相赋值 | compile-fail |
 
 ### runtime（运行时）
 | 用例 ID | 测试点 | 预期结果 |
 |---------|--------|----------|
-| SEM_15_04_020_RUNTIME_ASSIGNABILITY | 可赋值性运行时行为：子类型赋值后方法调用正确 | runtime |
+| SEM_15_04_00_200_RUNTIME_ASSIGNABILITY | 可赋值性运行时行为：子类型赋值后方法调用正确 | runtime |
 
 
 ## 最新设计要点

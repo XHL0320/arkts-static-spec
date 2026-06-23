@@ -21,15 +21,15 @@
 ### compile-pass（编译通过）
 | 用例 ID | 文件名 | 类别 | 结果 |
 |---------|--------|------|------|
-| SEM_15_05_002_PASS_RETURN_COVARIANCE | SEM_15_05_002_PASS_RETURN_COVARIANCE.ets | compile-pass | ✅ |
-| SEM_15_05_003_PASS_PARAM_CONTRAVARIANCE | SEM_15_05_003_PASS_PARAM_CONTRAVARIANCE.ets | compile-pass | ✅ |
+| SEM_15_05_00_004_PASS_RETURN_COVARIANCE | SEM_15_05_00_004_PASS_RETURN_COVARIANCE.ets | compile-pass | ✅ |
+| SEM_15_05_00_006_PASS_PARAM_CONTRAVARIANCE | SEM_15_05_00_006_PASS_PARAM_CONTRAVARIANCE.ets | compile-pass | ✅ |
 
 ### compile-fail（编译失败）
 | 用例 ID | 文件名 | 类别 | 结果 |
 |---------|--------|------|------|
-| SEM_15_05_001_FAIL_GENERIC_INVARIANCE | SEM_15_05_001_FAIL_GENERIC_INVARIANCE.ets | compile-fail | ✅ |
-| SEM_15_05_010_FAIL_COVARIANT_PARAM | SEM_15_05_010_FAIL_COVARIANT_PARAM.ets | compile-fail | ✅ |
-| SEM_15_05_011_FAIL_CONTRAVARIANT_RETURN | SEM_15_05_011_FAIL_CONTRAVARIANT_RETURN.ets | compile-fail | ✅ |
+| SEM_15_05_00_100_FAIL_GENERIC_INVARIANCE | SEM_15_05_00_100_FAIL_GENERIC_INVARIANCE.ets | compile-fail | ✅ |
+| SEM_15_05_00_105_FAIL_COVARIANT_PARAM | SEM_15_05_00_105_FAIL_COVARIANT_PARAM.ets | compile-fail | ✅ |
+| SEM_15_05_00_107_FAIL_CONTRAVARIANT_RETURN | SEM_15_05_00_107_FAIL_CONTRAVARIANT_RETURN.ets | compile-fail | ✅ |
 
 ### runtime（运行时）
 | 用例 ID | 文件名 | 类别 | 结果 |

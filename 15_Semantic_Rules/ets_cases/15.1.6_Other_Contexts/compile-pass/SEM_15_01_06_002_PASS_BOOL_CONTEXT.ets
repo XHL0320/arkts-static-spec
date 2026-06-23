@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_01_06_002
+ * @id SEM_15_01_06_002_PASS_BOOL_CONTEXT
  * @expect compile-pass
  * @section 15.1.6
  * @design 其他上下文：独立布尔表达式推断

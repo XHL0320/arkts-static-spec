@@ -15,8 +15,8 @@
 | 测试用例 ID | 类型 | 测试点 | 预期结果 |
 |------------|------|--------|---------|
 | SEM_15_08_03_001 | compile-pass | 类型自身赋值（简单正向用例） | ✅ 通过 |
-| SEM_15_08_006_FAIL_DIFFERENCE_UNSUPPORTED | compile-fail | 验证差分类型 — Spec §15.8.3 定义但编译器暂不支持（已知 GAP） | ⚠️ GAP |
-| SEM_15_08_03_100 | runtime | 类型运行时验证 | ✅ 通过 |
+| SEM_15_08_03_100_FAIL_DIFFERENCE_UNSUPPORTED | compile-fail | 验证差分类型 — Spec §15.8.3 定义但编译器暂不支持（已知 GAP） | ⚠️ GAP |
+| SEM_15_08_03_200 | runtime | 类型运行时验证 | ✅ 通过 |
 
 ## 三、跨章节关联
 
@@ -30,10 +30,10 @@
 - **SEM_15_08_03_001**: 简单的正向用例，声明 `string` 变量并赋值
 
 ### 4.2 反向测试用例
-- **SEM_15_08_006_FAIL_DIFFERENCE_UNSUPPORTED**: 验证差分类型不支持（已知 GAP），Spec 定义但编译器未实现
+- **SEM_15_08_03_100_FAIL_DIFFERENCE_UNSUPPORTED**: 验证差分类型不支持（已知 GAP），Spec 定义但编译器未实现
 
 ### 4.3 运行时测试用例
-- **SEM_15_08_03_100**: 验证类型运行时行为
+- **SEM_15_08_03_200**: 验证类型运行时行为
 
 
 ## 最新设计要点
@@ -52,7 +52,7 @@
 
 ## 六、已知问题（GAP）
 
-### 6.1 SEM_15_08_006_FAIL_DIFFERENCE_UNSUPPORTED
+### 6.1 SEM_15_08_03_100_FAIL_DIFFERENCE_UNSUPPORTED
 
 **问题描述**: Spec §15.8.3 定义了差分类型（`A & ~B`），但编译器暂不支持。
 

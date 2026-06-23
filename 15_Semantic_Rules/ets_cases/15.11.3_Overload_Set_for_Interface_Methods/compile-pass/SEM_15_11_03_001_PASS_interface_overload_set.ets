@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_03_001
+ * @id SEM_15_11_03_001_PASS_interface_overload_set
  * @expect compile-pass
  * @section 15.11.3
  * @design 接口方法重载集：接口可声明重载方法

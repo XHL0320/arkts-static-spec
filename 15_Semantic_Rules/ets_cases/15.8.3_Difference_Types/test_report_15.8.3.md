@@ -17,8 +17,8 @@
 | 测试用例 ID | 文件名 | 类型 | 结果 |
 |------------|--------|------|------|
 | SEM_15_08_03_001 | SEM_15_08_03_001.ets | compile-pass | ✅ 通过 |
-| SEM_15_08_006_FAIL_DIFFERENCE_UNSUPPORTED | SEM_15_08_006_FAIL_DIFFERENCE_UNSUPPORTED.ets | compile-fail | ⚠️ GAP（已知问题） |
-| SEM_15_08_03_100 | SEM_15_08_03_100.ets | runtime | ✅ 通过 |
+| SEM_15_08_03_100_FAIL_DIFFERENCE_UNSUPPORTED | SEM_15_08_03_100_FAIL_DIFFERENCE_UNSUPPORTED.ets | compile-fail | ⚠️ GAP（已知问题） |
+| SEM_15_08_03_200 | SEM_15_08_03_200.ets | runtime | ✅ 通过 |
 
 ## 三、结果统计
 
@@ -42,7 +42,7 @@
 
 ### 4.2 编译失败用例（compile-fail）
 
-#### SEM_15_08_006_FAIL_DIFFERENCE_UNSUPPORTED
+#### SEM_15_08_03_100_FAIL_DIFFERENCE_UNSUPPORTED
 - **测试点**: 验证差分类型 — Spec §15.8.3 定义但编译器暂不支持（已知 GAP）
 - **代码**: 
   ```typescript
@@ -56,7 +56,7 @@
 
 ### 4.3 运行时用例（runtime）
 
-#### SEM_15_08_03_100
+#### SEM_15_08_03_200
 - **测试点**: 类型运行时验证
 - **代码**: `let x: string = "hi"; if (x != "hi") throw new Error("fail");`
 - **预期**: 运行通过，输出 "verified"
@@ -74,8 +74,8 @@
 | 测试用例 | 规范一致性 | 备注 |
 |---------|-----------|------|
 | SEM_15_08_03_001 | ✅ 一致 | - |
-| SEM_15_08_006 | ⚠️ 不一致 | Spec 要求支持差分类型，编译器未实现 |
-| SEM_15_08_03_100 | ✅ 一致 | - |
+| SEM_15_08_03_100 | ⚠️ 不一致 | Spec 要求支持差分类型，编译器未实现 |
+| SEM_15_08_03_200 | ✅ 一致 | - |
 
 ## 七、后续行动计划
 

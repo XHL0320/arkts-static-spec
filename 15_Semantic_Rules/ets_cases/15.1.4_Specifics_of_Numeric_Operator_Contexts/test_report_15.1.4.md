@@ -11,11 +11,11 @@
 ## Case List
 | ID | Case File | Type | Result |
 |---|---|---|---|
-| SEM_15_01_010 | SEM_15_01_010_PASS_NUMERIC_OPERATOR_WIDEN.ets | compile-pass | ✅ |
-| SEM_15_01_021 | SEM_15_01_021_PASS_BYTE_SHORT_INC.ets | compile-pass | ✅ |
-| SEM_15_01_022 | SEM_15_01_022_PASS_MIXED_NUMERIC.ets | compile-pass | ✅ |
-| SEM_15_01_023 | SEM_15_01_023_FAIL_BOOL_NUMERIC.ets | compile-fail | ✅ |
-| SEM_15_01_024 | SEM_15_01_024_RUNTIME_NUMERIC_OPS.ets | runtime | ✅ |
+| SEM_15_01_010 | SEM_15_01_04_001_PASS_NUMERIC_OPERATOR_WIDEN.ets | compile-pass | ✅ |
+| SEM_15_01_021 | SEM_15_01_04_002_PASS_BYTE_SHORT_INC.ets | compile-pass | ✅ |
+| SEM_15_01_022 | SEM_15_01_04_003_PASS_MIXED_NUMERIC.ets | compile-pass | ✅ |
+| SEM_15_01_023 | SEM_15_01_04_100_FAIL_BOOL_NUMERIC.ets | compile-fail | ✅ |
+| SEM_15_01_024 | SEM_15_01_04_200_RUNTIME_NUMERIC_OPS.ets | runtime | ✅ |
 
 ## Result Statistics
 | Category | Count | Pass | Fail |
@@ -30,19 +30,19 @@
 ### compile-pass (3/3 passed)
 | ID | Case File | Expected | Actual | Status |
 |---|---|---|---|---|
-| SEM_15_01_010 | SEM_15_01_010_PASS_NUMERIC_OPERATOR_WIDEN.ets | compile-pass | compile-pass | ✅ |
-| SEM_15_01_021 | SEM_15_01_021_PASS_BYTE_SHORT_INC.ets | compile-pass | compile-pass | ✅ |
-| SEM_15_01_022 | SEM_15_01_022_PASS_MIXED_NUMERIC.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_010 | SEM_15_01_04_001_PASS_NUMERIC_OPERATOR_WIDEN.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_021 | SEM_15_01_04_002_PASS_BYTE_SHORT_INC.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_022 | SEM_15_01_04_003_PASS_MIXED_NUMERIC.ets | compile-pass | compile-pass | ✅ |
 
 ### compile-fail (1/1 passed)
 | ID | Case File | Expected | Actual | Status |
 |---|---|---|---|---|
-| SEM_15_01_023 | SEM_15_01_023_FAIL_BOOL_NUMERIC.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_01_023 | SEM_15_01_04_100_FAIL_BOOL_NUMERIC.ets | compile-fail | compile-fail | ✅ |
 
 ### runtime (1/1 passed)
 | ID | Case File | Expected | Actual | Status |
 |---|---|---|---|---|
-| SEM_15_01_024 | SEM_15_01_024_RUNTIME_NUMERIC_OPS.ets | runtime | runtime | ✅ |
+| SEM_15_01_024 | SEM_15_01_04_200_RUNTIME_NUMERIC_OPS.ets | runtime | runtime | ✅ |
 
 ## Issues Found
 无

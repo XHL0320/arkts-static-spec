@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_09_001
+ * @id SEM_15_11_09_001_PASS_overload_override_interact
  * @expect compile-pass
  * @section 15.11.9
  * @design 重载与覆写交互：子类同时重载和覆写

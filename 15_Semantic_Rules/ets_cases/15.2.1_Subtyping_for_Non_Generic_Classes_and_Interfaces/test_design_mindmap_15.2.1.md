@@ -32,7 +32,7 @@
 ### 2.2 文件命名规范
 
 - 格式：`SEM_15_02_XXX_PASS/FAIL/RUNTIME_描述.ets`
-- 示例：`SEM_15_02_001_PASS_CLASS_EXTENDS_SUBTYPE.ets`
+- 示例：`SEM_15_02_01_001_PASS_CLASS_EXTENDS_SUBTYPE.ets`
 - 编号规则：`SEM` + `15_02` + `3位序号` + `类型` + `描述`
 
 ## 3. 测试点分解
@@ -92,10 +92,10 @@
 
 | 编号 | 用例文件 | 类型 | 测试点 |
 |------|---------|------|--------|
-| SEM_15_02_001 | SEM_15_02_001_PASS_CLASS_EXTENDS_SUBTYPE.ets | compile-pass | 类 extends 产生子类型关系 |
-| SEM_15_02_002 | SEM_15_02_002_PASS_INTERFACE_EXTENDS_SUBTYPE.ets | compile-pass | 接口 extends 产生子类型关系 |
-| SEM_15_02_014 | SEM_15_02_014_FAIL_SELF_EXTENDS.ets | compile-fail | 自继承拒绝 |
-| SEM_15_02_015 | SEM_15_02_015_RUNTIME_SUBTYPE.ets | runtime | 运行时多态派发 |
+| SEM_15_02_001 | SEM_15_02_01_001_PASS_CLASS_EXTENDS_SUBTYPE.ets | compile-pass | 类 extends 产生子类型关系 |
+| SEM_15_02_002 | SEM_15_02_01_002_PASS_INTERFACE_EXTENDS_SUBTYPE.ets | compile-pass | 接口 extends 产生子类型关系 |
+| SEM_15_02_014 | SEM_15_02_01_100_FAIL_SELF_EXTENDS.ets | compile-fail | 自继承拒绝 |
+| SEM_15_02_015 | SEM_15_02_01_200_RUNTIME_SUBTYPE.ets | runtime | 运行时多态派发 |
 
 ## 6. 交叉引用
 

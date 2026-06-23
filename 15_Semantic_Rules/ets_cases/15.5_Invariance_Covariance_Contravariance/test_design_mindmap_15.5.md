@@ -14,15 +14,15 @@
 ### compile-pass（编译通过）
 | 用例 ID | 测试点 | 预期结果 |
 |---------|--------|----------|
-| SEM_15_05_002_PASS_RETURN_COVARIANCE | 返回值协变：子类覆写方法返回 Dog <: Animal 允许 | compile-pass |
-| SEM_15_05_003_PASS_PARAM_CONTRAVARIANCE | 函数参数逆变：(Animal)→void <: (Dog)→void | compile-pass |
+| SEM_15_05_00_004_PASS_RETURN_COVARIANCE | 返回值协变：子类覆写方法返回 Dog <: Animal 允许 | compile-pass |
+| SEM_15_05_00_006_PASS_PARAM_CONTRAVARIANCE | 函数参数逆变：(Animal)→void <: (Dog)→void | compile-pass |
 
 ### compile-fail（编译失败）
 | 用例 ID | 测试点 | 预期结果 |
 |---------|--------|----------|
-| SEM_15_05_001_FAIL_GENERIC_INVARIANCE | 泛型类型参数不变性：Holder<Derived> 不是 Holder<Base> 的子类型 | compile-fail |
-| SEM_15_05_010_FAIL_COVARIANT_PARAM | 协变位置禁止参数：out 类型参数不可用于参数位置 | compile-fail |
-| SEM_15_05_011_FAIL_CONTRAVARIANT_RETURN | 逆变位置禁止返回值：in 类型参数不可用于返回值位置 | compile-fail |
+| SEM_15_05_00_100_FAIL_GENERIC_INVARIANCE | 泛型类型参数不变性：Holder<Derived> 不是 Holder<Base> 的子类型 | compile-fail |
+| SEM_15_05_00_105_FAIL_COVARIANT_PARAM | 协变位置禁止参数：out 类型参数不可用于参数位置 | compile-fail |
+| SEM_15_05_00_107_FAIL_CONTRAVARIANT_RETURN | 逆变位置禁止返回值：in 类型参数不可用于返回值位置 | compile-fail |
 
 ### runtime（运行时）
 | 用例 ID | 测试点 | 预期结果 |

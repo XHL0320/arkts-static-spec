@@ -21,7 +21,7 @@
 
 ### 问题 A-4.6：`int` 作为隐式推断类型未正式定义 ⭐⭐ MEDIUM
 
-**用例：** NAM_04_06_05_002_FAIL_CONST_OBJECT_LITERAL_INFER
+**用例：** NAM_04_06_05_101_FAIL_const_object_literal_infer
 
 **实际行为：**
 ```typescript

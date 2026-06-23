@@ -8,9 +8,9 @@
 ## 2. 测试用例清单
 | 编号 | 用例文件 | 类型 | 测试点 | 预期结果 | 实际结果 |
 |------|---------|------|--------|---------|---------|
-| SEM_15_09_005 | SEM_15_09_005_PASS_COMPATIBLE_OVERRIDE.ets | compile-pass | 兼容签名覆写 | ✅ compile-pass | ✅ |
-| SEM_15_09_006 | SEM_15_09_006_FAIL_INCOMPATIBLE_OVERRIDE.ets | compile-fail | 不兼容签名覆写 | ✅ compile-fail | ✅ |
-| SEM_15_09_008 | SEM_15_09_008_RUNTIME_COMPATIBLE_OVERRIDE.ets | runtime | 兼容签名覆写运行时 | ✅ runtime | ✅ |
+| SEM_15_09_005 | SEM_15_09_03_001_PASS_COMPATIBLE_OVERRIDE.ets | compile-pass | 兼容签名覆写 | ✅ compile-pass | ✅ |
+| SEM_15_09_006 | SEM_15_09_03_100_FAIL_INCOMPATIBLE_OVERRIDE.ets | compile-fail | 不兼容签名覆写 | ✅ compile-fail | ✅ |
+| SEM_15_09_008 | SEM_15_09_03_200_RUNTIME_COMPATIBLE_OVERRIDE.ets | runtime | 兼容签名覆写运行时 | ✅ runtime | ✅ |
 
 ## 3. 测试结果统计
 | 类型 | 总数 | 通过 | 失败 | 覆盖率 |

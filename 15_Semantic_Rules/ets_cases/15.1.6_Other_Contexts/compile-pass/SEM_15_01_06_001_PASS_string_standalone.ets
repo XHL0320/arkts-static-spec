@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_01_06_001
+ * @id SEM_15_01_06_001_PASS_string_standalone
  * @expect compile-pass
  * @section 15.1.6
  * @design 其他上下文：独立字符串表达式推断

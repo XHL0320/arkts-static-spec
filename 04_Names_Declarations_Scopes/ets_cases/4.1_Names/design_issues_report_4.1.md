@@ -21,7 +21,7 @@
 
 ### 问题 A-4.1：保留名清单不完整 ⭐⭐ MEDIUM
 
-**用例：** NAM_04_01_015_FAIL_TYPE_KEYWORD
+**用例：** NAM_04_01_105_FAIL_type_keyword
 
 **实际行为：**
 ```typescript

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_08_07_001
+ * @id SEM_15_08_07_001_PASS_instanceof_use
  * @expect compile-pass
  * @section 15.8.7
  * @design 智能转换示例：典型 instanceof 使用

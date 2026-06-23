@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_08_03_001
+ * @id SEM_15_08_03_001_PASS_type_self_assign
  * @expect compile-pass
  * @section 15.8.3
  * @design 差分类型自身赋值

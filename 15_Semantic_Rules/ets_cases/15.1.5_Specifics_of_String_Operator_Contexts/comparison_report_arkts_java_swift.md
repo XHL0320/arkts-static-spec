@@ -240,10 +240,10 @@ let msg = "Hello \(name), age \(age)"   // "Hello World, age 42"
 
 | 用例 | 结果 |
 |------|------|
-| SEM_15_01_011_PASS_STRING_OPERATOR_CONVERSION | ✅ |
-| SEM_15_01_025_PASS_STRING_BOOL | ✅ |
-| SEM_15_01_027_FAIL_STRING_SUB | ✅ (compile-fail) |
-| SEM_15_01_028_RUNTIME_STRING_CONCAT | ✅ |
+| SEM_15_01_05_001_PASS_STRING_OPERATOR_CONVERSION | ✅ |
+| SEM_15_01_05_002_PASS_STRING_BOOL | ✅ |
+| SEM_15_01_05_100_FAIL_STRING_SUB | ✅ (compile-fail) |
+| SEM_15_01_05_200_RUNTIME_STRING_CONCAT | ✅ |
 
 ### Java 实测结果
 

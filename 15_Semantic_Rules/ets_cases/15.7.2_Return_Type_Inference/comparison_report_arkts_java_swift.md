@@ -15,9 +15,9 @@
 |------------|-------|------|-------|------------|
 | SEM_15_07_02_001_PASS_RETURN_MATCH | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
 | SEM_15_07_02_002_PASS_RETURN_COVARIANCE | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
-| SEM_15_07_02_010_FAIL_RETURN_MISMATCH | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
-| SEM_15_07_02_011_FAIL_MISSING_RETURN | ✅ 通过 | ⚠️ Java 允许（隐式返回 null） | ✅ 通过 | ✅ 通过 |
-| SEM_15_07_02_012_RUNTIME_RETURN | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
+| SEM_15_07_02_100_FAIL_RETURN_MISMATCH | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
+| SEM_15_07_02_101_FAIL_MISSING_RETURN | ✅ 通过 | ⚠️ Java 允许（隐式返回 null） | ✅ 通过 | ✅ 通过 |
+| SEM_15_07_02_200_RUNTIME_RETURN | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
 
 ## 三、详细代码对照
 

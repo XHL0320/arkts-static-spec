@@ -13,30 +13,30 @@
 ### compile-pass
 | # | 用例 ID | 测试内容 | 结果 |
 |---|---------|---------|------|
-| 1 | NAM_04_04_001_PASS_TYPE_ACCESSIBLE | 类型名可访问用于声明 | PASS |
-| 2 | NAM_04_04_002_PASS_FUNC_ACCESSIBLE | 函数名可访问用于调用 | PASS |
-| 3 | NAM_04_04_003_PASS_VAR_ACCESSIBLE | 变量名可访问用于读写 | PASS |
-| 4 | NAM_04_04_004_PASS_MODULE_ACCESS | 模块名可访问 | PASS |
-| 5 | NAM_04_04_005_PASS_TYPE_NAME_FOR_FIELD | 类型名可用于字段声明 | PASS |
-| 6 | NAM_04_04_006_PASS_METHOD_NAME_CALL | 方法名可用于调用 | PASS |
-| 7 | NAM_04_04_007_PASS_NAMESPACE_EXPORT_QUALIFIED | namespace 导出实体限定名访问 | PASS |
+| 1 | NAM_04_04_001_PASS_type_accessible | 类型名可访问用于声明 | PASS |
+| 2 | NAM_04_04_002_PASS_func_accessible | 函数名可访问用于调用 | PASS |
+| 3 | NAM_04_04_003_PASS_var_accessible | 变量名可访问用于读写 | PASS |
+| 4 | NAM_04_04_004_PASS_module_access | 模块名可访问 | PASS |
+| 5 | NAM_04_04_005_PASS_type_name_for_field | 类型名可用于字段声明 | PASS |
+| 6 | NAM_04_04_006_PASS_method_name_call | 方法名可用于调用 | PASS |
+| 7 | NAM_04_04_007_PASS_namespace_export_qualified | namespace 导出实体限定名访问 | PASS |
 
 ### compile-fail
 | # | 用例 ID | 测试内容 | 结果 |
 |---|---------|---------|------|
-| 1 | NAM_04_04_010_FAIL_OUT_OF_BLOCK_SCOPE | 块作用域外访问块内变量 | PASS |
-| 2 | NAM_04_04_011_FAIL_OUT_OF_FUNC_SCOPE | 函数外引用函数内局部变量 | PASS |
-| 3 | NAM_04_04_012_FAIL_USE_BEFORE_DECLARE | 函数体内声明前引用变量 | PASS |
-| 4 | NAM_04_04_013_FAIL_CROSS_FUNC_ACCESS | 跨函数作用域访问局部变量 | PASS |
-| 5 | NAM_04_04_014_FAIL_IF_BLOCK_LEAK | if块内变量在块外不可访问 | PASS |
-| 6 | NAM_04_04_015_FAIL_LOOP_VAR_LEAK | 循环块内变量循环外不可访问 | PASS |
-| 7 | NAM_04_04_016_FAIL_NAMESPACE_EXPORT_UNQUALIFIED | namespace 导出实体不能简单名访问 | PASS |
+| 1 | NAM_04_04_100_FAIL_out_of_block_scope | 块作用域外访问块内变量 | PASS |
+| 2 | NAM_04_04_101_FAIL_out_of_func_scope | 函数外引用函数内局部变量 | PASS |
+| 3 | NAM_04_04_102_FAIL_use_before_declare | 函数体内声明前引用变量 | PASS |
+| 4 | NAM_04_04_103_FAIL_cross_func_access | 跨函数作用域访问局部变量 | PASS |
+| 5 | NAM_04_04_104_FAIL_if_block_leak | if块内变量在块外不可访问 | PASS |
+| 6 | NAM_04_04_105_FAIL_loop_var_leak | 循环块内变量循环外不可访问 | PASS |
+| 7 | NAM_04_04_106_FAIL_namespace_export_unqualified | namespace 导出实体不能简单名访问 | PASS |
 
 ### runtime
 | # | 用例 ID | 验证内容 | 断言数 | 结果 |
 |---|---------|---------|--------|------|
-| 1 | NAM_04_04_020_RUNTIME_SCOPE_CHAIN | 嵌套作用域链变量查找 | 2 | PASS |
-| 2 | NAM_04_04_021_RUNTIME_NESTED_SHADOW | 内层同名变量遮蔽外层 | 2 | PASS |
+| 1 | NAM_04_04_200_RUNTIME_scope_chain | 嵌套作用域链变量查找 | 2 | PASS |
+| 2 | NAM_04_04_201_RUNTIME_nested_shadow | 内层同名变量遮蔽外层 | 2 | PASS |
 
 ## 执行过程
 - **执行日期：** 2026-06-18（compile-pass）；2026-06-20（全部执行完毕）

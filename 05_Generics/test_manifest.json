@@ -1,6 +1,6 @@
 {
   "chapter": "05_Generics",
-  "prefix": "GEN_",
+  "prefix": "SEM_",
   "total_cases": 80,
   "sections": [
     {

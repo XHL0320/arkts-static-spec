@@ -8,9 +8,9 @@
 ## 2. 测试用例清单
 | 编号 | 用例文件 | 类型 | 测试点 | 预期结果 | 实际结果 |
 |------|---------|------|--------|---------|---------|
-| SEM_15_09_001 | SEM_15_09_001_PASS_CLASS_OVERRIDE.ets | compile-pass | 类方法覆写 | ✅ compile-pass | ✅ |
-| SEM_15_09_002 | SEM_15_09_002_FAIL_OVERRIDE_SIGNATURE.ets | compile-fail | 覆写签名不匹配 | ✅ compile-fail | ✅ |
-| SEM_15_09_007 | SEM_15_09_007_RUNTIME_OVERRIDE.ets | runtime | 类方法覆写运行时 | ✅ runtime | ✅ |
+| SEM_15_09_001 | SEM_15_09_01_001_PASS_CLASS_OVERRIDE.ets | compile-pass | 类方法覆写 | ✅ compile-pass | ✅ |
+| SEM_15_09_002 | SEM_15_09_01_100_FAIL_OVERRIDE_SIGNATURE.ets | compile-fail | 覆写签名不匹配 | ✅ compile-fail | ✅ |
+| SEM_15_09_007 | SEM_15_09_01_200_RUNTIME_OVERRIDE.ets | runtime | 类方法覆写运行时 | ✅ runtime | ✅ |
 
 ## 3. 测试结果统计
 | 类型 | 总数 | 通过 | 失败 | 覆盖率 |

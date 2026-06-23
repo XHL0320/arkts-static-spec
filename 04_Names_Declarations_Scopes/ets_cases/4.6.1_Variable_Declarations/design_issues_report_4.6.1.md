@@ -21,7 +21,7 @@
 
 ### 问题 A-4.6.1：无类型注解且无初始值禁止声明 ⭐ LOW
 
-**用例：** NAM_04_06_01_001_FAIL_VAR_NO_TYPE_NO_INIT
+**用例：** NAM_04_06_01_100_FAIL_var_no_type_no_init
 
 **实际行为：**
 ```typescript

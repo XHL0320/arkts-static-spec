@@ -22,7 +22,7 @@
 - 前缀: `SEM_15_01_XXX`
 - 类型标识: `PASS` (正向), `FAIL` (反向), `RUNTIME` (运行时)
 - 功能描述: 驼峰命名，描述测试点
-- 示例: `SEM_15_01_006_PASS_KNOWN_RHS_ASSIGN.ets`
+- 示例: `SEM_15_01_02_001_PASS_KNOWN_RHS_ASSIGN.ets`
 
 ## Test Design Mindmap
 
@@ -46,21 +46,21 @@
 #### compile-pass
 | ID | Case File | Purpose | Expected |
 |---|---|---|---|
-| SEM_15_01_006 | SEM_15_01_006_PASS_KNOWN_RHS_ASSIGN.ets | 验证赋值上下文中RHS类型已知时的可赋值性检查 | compile-pass |
-| SEM_15_01_007 | SEM_15_01_007_PASS_UNKNOWN_RHS_INFER.ets | 验证赋值上下文中RHS类型未知时从LHS类型推断 | compile-pass |
-| SEM_15_01_012 | SEM_15_01_012_PASS_WIDENING_ASSIGN.ets | 验证赋值上下文中数值拓宽：int→double可赋值 | compile-pass |
-| SEM_15_01_013 | SEM_15_01_013_PASS_SUBTYPE_ASSIGN.ets | 验证赋值上下文中子类型赋值：Dog→Animal可赋值 | compile-pass |
+| SEM_15_01_006 | SEM_15_01_02_001_PASS_KNOWN_RHS_ASSIGN.ets | 验证赋值上下文中RHS类型已知时的可赋值性检查 | compile-pass |
+| SEM_15_01_007 | SEM_15_01_02_002_PASS_UNKNOWN_RHS_INFER.ets | 验证赋值上下文中RHS类型未知时从LHS类型推断 | compile-pass |
+| SEM_15_01_012 | SEM_15_01_02_003_PASS_WIDENING_ASSIGN.ets | 验证赋值上下文中数值拓宽：int→double可赋值 | compile-pass |
+| SEM_15_01_013 | SEM_15_01_02_004_PASS_SUBTYPE_ASSIGN.ets | 验证赋值上下文中子类型赋值：Dog→Animal可赋值 | compile-pass |
 
 #### compile-fail
 | ID | Case File | Purpose | Expected |
 |---|---|---|---|
-| SEM_15_01_014 | SEM_15_01_014_FAIL_TYPE_MISMATCH.ets | 验证赋值上下文中类型不匹配拒绝：string不可赋值给int | compile-fail |
-| SEM_15_01_015 | SEM_15_01_015_FAIL_UNRELATED_ASSIGN.ets | 验证赋值上下文中不相关类拒绝：Dog不可赋值给Cat | compile-fail |
+| SEM_15_01_014 | SEM_15_01_02_100_FAIL_TYPE_MISMATCH.ets | 验证赋值上下文中类型不匹配拒绝：string不可赋值给int | compile-fail |
+| SEM_15_01_015 | SEM_15_01_02_101_FAIL_UNRELATED_ASSIGN.ets | 验证赋值上下文中不相关类拒绝：Dog不可赋值给Cat | compile-fail |
 
 #### runtime
 | ID | Case File | Purpose | Expected |
 |---|---|---|---|
-| SEM_15_01_016 | SEM_15_01_016_RUNTIME_ASSIGN_SEMANTICS.ets | 验证赋值上下文运行时行为：赋值后变量值正确 | runtime |
+| SEM_15_01_016 | SEM_15_01_02_200_RUNTIME_ASSIGN_SEMANTICS.ets | 验证赋值上下文运行时行为：赋值后变量值正确 | runtime |
 
 ## Cross-Chapter Links
 - 15.1.1 Standalone Expression

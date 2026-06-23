@@ -20,22 +20,22 @@
 
 | # | 用例 ID | 测试内容 | 结果 |
 |---|---------|----------|------|
-| 1 | SEM_15_01_001_PASS_INT_LITERAL_TYPE | 整数字面量类型推断为 int | ✅ PASS |
-| 2 | SEM_15_01_002_PASS_FLOAT_LITERAL_TYPE | 浮点字面量类型推断为 double | ✅ PASS |
-| 3 | SEM_15_01_003_PASS_CONST_EXPR_TYPE | 常量表达式类型推断 | ✅ PASS |
-| 4 | SEM_15_01_004_PASS_ARRAY_LITERAL_TYPE | 数组字面量类型推断 | ✅ PASS |
+| 1 | SEM_15_01_01_001_PASS_INT_LITERAL_TYPE | 整数字面量类型推断为 int | ✅ PASS |
+| 2 | SEM_15_01_01_002_PASS_FLOAT_LITERAL_TYPE | 浮点字面量类型推断为 double | ✅ PASS |
+| 3 | SEM_15_01_01_003_PASS_CONST_EXPR_TYPE | 常量表达式类型推断 | ✅ PASS |
+| 4 | SEM_15_01_01_004_PASS_ARRAY_LITERAL_TYPE | 数组字面量类型推断 | ✅ PASS |
 
 ### compile-fail (1 个)
 
 | # | 用例 ID | 测试内容 | 结果 |
 |---|---------|----------|------|
-| 1 | SEM_15_01_005_FAIL_OBJECT_LITERAL_STANDALONE | 对象字面量作为独立表达式应报编译错误 | ✅ PASS |
+| 1 | SEM_15_01_01_100_FAIL_OBJECT_LITERAL_STANDALONE | 对象字面量作为独立表达式应报编译错误 | ✅ PASS |
 
 ### runtime (1 个)
 
 | # | 用例 ID | 验证内容 | 结果 |
 |---|---------|----------|------|
-| 1 | SEM_15_01_033_RUNTIME_STANDALONE | 独立表达式运行时类型行为验证 | ✅ PASS |
+| 1 | SEM_15_01_01_200_RUNTIME_STANDALONE | 独立表达式运行时类型行为验证 | ✅ PASS |
 
 ---
 

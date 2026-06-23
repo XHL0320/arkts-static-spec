@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_01_001
+ * @id SEM_15_11_01_001_PASS_same_name_overload
  * @expect compile-pass
  * @section 15.11.1
  * @design 形成重载集：同名函数构成重载集

@@ -21,7 +21,7 @@
 
 ### 问题 A-4.2：预定义类型冲突检测不完整 ⭐⭐ MEDIUM
 
-**用例：** NAM_04_02_013_FAIL_PREDEFINED_TYPE_CLASH
+**用例：** NAM_04_02_103_FAIL_predefined_type_clash
 
 **实际行为：** 编译器仅检测与 `number`、`String`、`Record`、`Object`、`Array` 的同名冲突，但未检测与 `int`、`Box` 等编译器内部保留名的冲突（直到编译时才报错）。
 

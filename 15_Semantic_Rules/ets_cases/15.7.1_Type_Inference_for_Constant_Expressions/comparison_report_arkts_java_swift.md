@@ -15,7 +15,7 @@
 | SEM_15_07_01_001_PASS_CONST_EXPR_TYPE | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
 | SEM_15_07_01_002_PASS_BOOL_CONST_EXPR | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
 | SEM_15_07_01_003_PASS_CONST_DECL_EXPR | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
-| SEM_15_07_01_004_FAIL_INVALID_CONST_EXPR | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
+| SEM_15_07_01_100_FAIL_INVALID_CONST_EXPR | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
 | SEM_15_07_01_100 | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
 
 ## 三、详细代码对照

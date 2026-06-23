@@ -197,7 +197,7 @@ print("verified")
 
 | 用例 | 结果 |
 |------|------|
-| SEM_15_11_001_PASS_OVERLOAD_RESOLUTION | ✅ compile-pass |
+| SEM_15_11_02_001_PASS_OVERLOAD_RESOLUTION | ✅ compile-pass |
 | SEM_15_11_02_099 | ✅ compile-fail |
 | SEM_15_11_02_100 | ✅ runtime |
 

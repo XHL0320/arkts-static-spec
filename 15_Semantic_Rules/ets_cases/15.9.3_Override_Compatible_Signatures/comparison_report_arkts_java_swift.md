@@ -13,9 +13,9 @@
 ## 3. 测试用例对比
 | 用例编号 | 类型 | ArkTS | Java | Swift | TypeScript |
 |---------|------|-------|------|-------|------------|
-| SEM_15_09_005_PASS_COMPATIBLE_OVERRIDE | compile-pass | ✅ | ✅ | ✅ | ✅ |
-| SEM_15_09_006_FAIL_INCOMPATIBLE_OVERRIDE | compile-fail | ✅ | ✅ | ✅ | ❌ |
-| SEM_15_09_008_RUNTIME_COMPATIBLE_OVERRIDE | runtime | ✅ | ✅ | ✅ | ✅ |
+| SEM_15_09_03_001_PASS_COMPATIBLE_OVERRIDE | compile-pass | ✅ | ✅ | ✅ | ✅ |
+| SEM_15_09_03_100_FAIL_INCOMPATIBLE_OVERRIDE | compile-fail | ✅ | ✅ | ✅ | ❌ |
+| SEM_15_09_03_200_RUNTIME_COMPATIBLE_OVERRIDE | runtime | ✅ | ✅ | ✅ | ✅ |
 
 ## 4. 结论
 ArkTS 在兼容签名覆写方面的行为与 Java、Swift 一致，但比 TypeScript 更严格（TypeScript 使用结构化类型，不检查签名兼容性）。

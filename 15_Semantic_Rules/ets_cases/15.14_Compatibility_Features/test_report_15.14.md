@@ -5,9 +5,9 @@
 | 分类 | 总数 | 通过 | 失败 | 通过率 |
 |------|------|------|------|--------|
 | compile-pass | 4 | 4 | 0 | 100% |
-| compile-fail | 6 | 6 | 0 | 100% |
-| runtime（真实执行） | 17 | 17 | 0 | 100% |
-| **总计** | **27** | **27** | **0** | **100%** |
+| compile-fail | 2 | 2 | 0 | 100% |
+| runtime（真实执行） | 14 | 14 | 0 | 100% |
+| **总计** | **20** | **20** | **0** | **100%** |
 
 > ✅ **执行时间**：2026-06-22
 > ✅ **执行环境**：ArkTS static_core
@@ -16,35 +16,38 @@
 
 ## 详细执行结果
 
-### compile-pass (0 个)
-
-无编译期通过测试用例。
-
-### compile-fail (0 个)
-
-无编译期拒绝测试用例。
-
-### runtime (17 个)
+### compile-pass (2 个)
 
 | # | 用例 ID | 验证内容 | 结果 |
 |---|---------|----------|------|
-| 1 | SEM_15_14_001_RT_empty_string_false | 空字符串 falsy | ✅ PASS |
-| 2 | SEM_15_14_002_RT_nonempty_string_true | 非空字符串 truthy | ✅ PASS |
-| 3 | SEM_15_14_003_RT_zero_int_false | 0 falsy | ✅ PASS |
-| 4 | SEM_15_14_004_RT_nonzero_int_true | 非0数字 truthy | ✅ PASS |
-| 5 | SEM_15_14_005_RT_nan_false | NaN falsy | ✅ PASS |
-| 6 | SEM_15_14_006_RT_null_false | null falsy | ✅ PASS |
-| 7 | SEM_15_14_007_RT_undefined_false | undefined falsy | ✅ PASS |
-| 8 | SEM_15_14_008_RT_object_true | 对象 truthy | ✅ PASS |
-| 9 | SEM_15_14_009_RT_false_or_int | `false \|\| int` 表达式 | ✅ PASS |
-| 10 | SEM_15_14_010_RT_true_or_int | `true \|\| int` 表达式 | ✅ PASS |
-| 11 | SEM_15_14_011_RT_zero_and_string | `0 && string` 表达式 | ✅ PASS |
-| 12 | SEM_15_14_012_RT_one_and_string | `1 && string` 表达式 | ✅ PASS |
-| 13 | SEM_15_14_019_RT_empty_string_false | 空字符串 falsy（变体） | ✅ PASS |
-| 14 | SEM_15_14_020_RT_null_false | null falsy（变体） | ✅ PASS |
-| 15 | SEM_15_14_021_RT_false_or_int | `false \|\| int` 表达式（变体） | ✅ PASS |
-| 16 | SEM_15_14_024_RT_SMART_GLOBAL_overload_declared_base_top_level | SMART_GLOBAL: 重载声明 base 顶层 | ✅ PASS |
-| 17 | SEM_15_14_101 | 一般兼容特性测试 | ✅ PASS |
+| 1 | SEM_15_14_023 | 联合类型缩窄（含/不含 null） | ✅ PASS |
+| 2 | SEM_15_14_024 | 联合类型缩窄 + 方法调用 | ✅ PASS |
+
+### compile-fail (2 个)
+
+| # | 用例 ID | 验证内容 | 结果 |
+|---|---------|----------|------|
+| 1 | SEM_15_14_023_FAIL_SMART_GLOBAL | 全局 Base 成员未缩窄访问 Derived 独有成员 | ✅ PASS |
+| 2 | SEM_15_14_00_101_FAIL_type_mismatch | 类型不兼容赋值 | ✅ PASS |
+
+### runtime (14 个)
+
+| # | 用例 ID | 验证内容 | 结果 |
+|---|---------|----------|------|
+| 1 | SEM_15_14_00_200 | 空字符串 falsy | ✅ PASS |
+| 2 | SEM_15_14_00_201 | 非空字符串 truthy | ✅ PASS |
+| 3 | SEM_15_14_00_202 | 0 falsy | ✅ PASS |
+| 4 | SEM_15_14_00_203 | 非0数字 truthy | ✅ PASS |
+| 5 | SEM_15_14_00_204 | NaN falsy | ✅ PASS |
+| 6 | SEM_15_14_00_205 | null falsy | ✅ PASS |
+| 7 | SEM_15_14_00_206 | undefined falsy | ✅ PASS |
+| 8 | SEM_15_14_00_207 | 对象 truthy | ✅ PASS |
+| 9 | SEM_15_14_00_208 | `false \|\| int` 表达式 | ✅ PASS |
+| 10 | SEM_15_14_00_209 | `true \|\| int` 表达式 | ✅ PASS |
+| 11 | SEM_15_14_00_210 | `0 && string` 表达式 | ✅ PASS |
+| 12 | SEM_15_14_00_211 | `1 && string` 表达式 | ✅ PASS |
+| 13 | SEM_15_14_00_215 | SMART_GLOBAL: 重载声明 base 顶层 | ✅ PASS |
+| 14 | SEM_15_14_00_216 | 兼容特性综合验证 | ✅ PASS |
 
 ---
 

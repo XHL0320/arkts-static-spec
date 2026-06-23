@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_10_04_001
+ * @id SEM_15_10_04_001_PASS_distinguishable_overload
  * @expect compile-pass
  * @section 15.10.4
  * @design 可区分重载通过：不同类型的参数可区分重载

@@ -13,33 +13,33 @@
 ### compile-pass
 | # | 用例 ID | 测试内容 | 结果 |
 |---|---------|---------|------|
-| 1 | NAM_04_03_001_PASS_MODULE_SCOPE | 模块级作用域 | PASS |
-| 2 | NAM_04_03_002_PASS_CLASS_SCOPE_THIS | 类作用域-this访问 | PASS |
-| 3 | NAM_04_03_003_PASS_CLASS_SCOPE_STATIC | 类作用域-静态成员 | PASS |
-| 4 | NAM_04_03_004_PASS_BLOCK_SCOPE | 块作用域 | PASS |
-| 5 | NAM_04_03_005_PASS_SHADOWING | 内层声明覆盖外层 | PASS |
-| 6 | NAM_04_03_006_PASS_TYPE_PARAM_SCOPE | 类型参数作用域 | PASS |
-| 7 | NAM_04_03_007_PASS_NESTED_BLOCK | 嵌套块作用域 | PASS |
-| 8 | NAM_04_03_015_PASS_FUNC_REF_LET_AFTER_DECL | 函数hoisting引用后续let 🔀 | PASS |
-| 9 | NAM_04_03_016_PASS_INTERFACE_SCOPE | 接口作用域 | PASS |
-| 10 | NAM_04_03_017_PASS_FUNC_TYPE_PARAM_SCOPE | 函数类型参数作用域 | PASS |
-| 11 | NAM_04_03_018_PASS_SUPER_ACCESS | super 访问父类成员 | PASS |
-| 12 | NAM_04_03_019_PASS_NAMESPACE_SCOPE_EMBEDDED | namespace 嵌套作用域 | PASS |
+| 1 | NAM_04_03_001_PASS_module_scope | 模块级作用域 | PASS |
+| 2 | NAM_04_03_002_PASS_class_scope_this | 类作用域-this访问 | PASS |
+| 3 | NAM_04_03_003_PASS_class_scope_static | 类作用域-静态成员 | PASS |
+| 4 | NAM_04_03_004_PASS_block_scope | 块作用域 | PASS |
+| 5 | NAM_04_03_005_PASS_shadowing | 内层声明覆盖外层 | PASS |
+| 6 | NAM_04_03_006_PASS_type_param_scope | 类型参数作用域 | PASS |
+| 7 | NAM_04_03_007_PASS_nested_block | 嵌套块作用域 | PASS |
+| 8 | NAM_04_03_008_PASS_func_ref_let_after_decl | 函数hoisting引用后续let 🔀 | PASS |
+| 9 | NAM_04_03_009_PASS_interface_scope | 接口作用域 | PASS |
+| 10 | NAM_04_03_010_PASS_func_type_param_scope | 函数类型参数作用域 | PASS |
+| 11 | NAM_04_03_011_PASS_super_access | super 访问父类成员 | PASS |
+| 12 | NAM_04_03_012_PASS_namespace_scope_embedded | namespace 嵌套作用域 | PASS |
 
 ### compile-fail
 | # | 用例 ID | 测试内容 | 结果 |
 |---|---------|---------|------|
-| 1 | NAM_04_03_010_FAIL_BEFORE_DECLARATION | 声明前引用 | PASS |
-| 2 | NAM_04_03_011_FAIL_BLOCK_OUT_OF_SCOPE | 块外引用 | PASS |
-| 3 | NAM_04_03_012_FAIL_INSTANCE_AS_STATIC | 实例成员通过类名访问 | PASS |
-| 4 | NAM_04_03_013_FAIL_AMBIGUOUS_SCOPE | 不可区分同名声明 | PASS |
-| 🆕 | NAM_04_03_014_FAIL_TYPE_PARAM_IN_STATIC | 静态成员引用类型参数 | PASS |
+| 1 | NAM_04_03_100_FAIL_before_declaration | 声明前引用 | PASS |
+| 2 | NAM_04_03_101_FAIL_block_out_of_scope | 块外引用 | PASS |
+| 3 | NAM_04_03_102_FAIL_instance_as_static | 实例成员通过类名访问 | PASS |
+| 4 | NAM_04_03_103_FAIL_ambiguous_scope | 不可区分同名声明 | PASS |
+| 🆕 | NAM_04_03_104_FAIL_type_param_in_static | 静态成员引用类型参数 | PASS |
 
 ### runtime
 | # | 用例 ID | 验证内容 | 断言数 | 结果 |
 |---|---------|---------|--------|------|
-| 1 | NAM_04_03_020_RUNTIME_MODULE_SCOPE | 模块作用域运行时 | 1 | PASS |
-| 2 | NAM_04_03_021_RUNTIME_SHADOWING | 变量覆盖运行时 | 1 | PASS |
+| 1 | NAM_04_03_200_RUNTIME_module_scope | 模块作用域运行时 | 1 | PASS |
+| 2 | NAM_04_03_201_RUNTIME_shadowing | 变量覆盖运行时 | 1 | PASS |
 
 ## 执行过程
 - **执行日期：** 2026-06-18

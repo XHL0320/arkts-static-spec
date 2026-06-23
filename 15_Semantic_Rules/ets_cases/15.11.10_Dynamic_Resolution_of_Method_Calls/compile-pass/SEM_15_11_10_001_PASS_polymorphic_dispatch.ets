@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_10_001
+ * @id SEM_15_11_10_001_PASS_polymorphic_dispatch
  * @expect compile-pass
  * @section 15.11.10
  * @design 方法调用动态解析：多态派发

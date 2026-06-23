@@ -4,21 +4,21 @@
 
 ### 1.1 字符串运算符转换的完整支持
 - **问题描述**: ArkTS 规范规定二元 '+' 运算符在一侧为 string 时进行字符串转换，但当前编译器可能未完全支持所有转换场景
-- **用例**: SEM_15_01_011_PASS_STRING_OPERATOR_CONVERSION.ets
+- **用例**: SEM_15_01_05_001_PASS_STRING_OPERATOR_CONVERSION.ets
 - **期望行为**: string+int→string, int+string→string, string+字面量→string
 - **当前状态**: 待验证
 - **优先级**: 高
 
 ### 1.2 字符串与各种类型拼接的完整支持
 - **问题描述**: ArkTS 规范支持字符串与布尔值、double 等类型的拼接，但当前编译器可能未完全支持所有拼接场景
-- **用例**: SEM_15_01_025_PASS_STRING_BOOL.ets, SEM_15_01_026_PASS_STRING_DOUBLE.ets
+- **用例**: SEM_15_01_05_002_PASS_STRING_BOOL.ets, SEM_15_01_05_003_PASS_STRING_DOUBLE.ets
 - **期望行为**: string+boolean→string, string+double→string
 - **当前状态**: 待验证
 - **优先级**: 中
 
 ### 1.3 字符串不支持的运算符的完整检查
 - **问题描述**: ArkTS 规范规定二进制运算符 '-' 不可用于字符串，但当前编译器可能未完全检查所有不支持的运算符
-- **用例**: SEM_15_01_027_FAIL_STRING_SUB.ets
+- **用例**: SEM_15_01_05_100_FAIL_STRING_SUB.ets
 - **期望行为**: string-string 应报编译错误
 - **当前状态**: 待验证
 - **优先级**: 中

@@ -21,13 +21,13 @@
 ## 测试点覆盖
 
 ### compile-fail（1 个）
-1. 静态初始化前向引用拒绝（SEM_15_13_010_FAIL_STATIC_FORWARD_REF）
+1. 静态初始化前向引用拒绝（SEM_15_13_01_100_FAIL_STATIC_FORWARD_REF）
 
 ### compile-pass（1 个）
-1. 静态初始化安全性验证（SEM_15_13_001_PASS_STATIC_INIT）
+1. 静态初始化安全性验证（SEM_15_13_01_001_PASS_STATIC_INIT）
 
 ### runtime（1 个）
-1. 静态初始化运行时顺序（SEM_15_13_002_RUNTIME_STATIC_INIT）
+1. 静态初始化运行时顺序（SEM_15_13_01_200_RUNTIME_STATIC_INIT）
 
 ## 编号规划
 - compile-fail: 010

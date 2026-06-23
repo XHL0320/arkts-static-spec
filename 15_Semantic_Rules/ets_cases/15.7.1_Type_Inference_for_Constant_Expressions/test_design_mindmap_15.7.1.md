@@ -16,7 +16,7 @@
 | SEM_15_07_01_001_PASS_CONST_EXPR_TYPE | compile-pass | 验证常量表达式类型推断：算术常量的类型从操作数推断 | ✅ 通过 |
 | SEM_15_07_01_002_PASS_BOOL_CONST_EXPR | compile-pass | 验证布尔常量表达式类型推断：关系运算推断为 boolean | ✅ 通过 |
 | SEM_15_07_01_003_PASS_CONST_DECL_EXPR | compile-pass | 验证 const 声明常量表达式计算：编译期常量可参与表达式 | ✅ 通过 |
-| SEM_15_07_01_004_FAIL_INVALID_CONST_EXPR | compile-fail | 验证非法常量表达式拒绝：字符串与整数相乘无效 | ✅ 通过 |
+| SEM_15_07_01_100_FAIL_INVALID_CONST_EXPR | compile-fail | 验证非法常量表达式拒绝：字符串与整数相乘无效 | ✅ 通过 |
 | SEM_15_07_01_100 | runtime | 常量表达式运行时验证 | ✅ 通过 |
 
 ## 三、跨章节关联

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_08_06_001
+ * @id SEM_15_08_06_001_PASS_union_simplify
  * @expect compile-pass
  * @section 15.8.6
  * @design 类型表达式简化：联合类型简化

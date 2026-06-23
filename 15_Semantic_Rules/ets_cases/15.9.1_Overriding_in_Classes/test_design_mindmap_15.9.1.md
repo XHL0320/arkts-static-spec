@@ -13,7 +13,7 @@
 
 ### 2.2 文件命名规范
 - 格式：`SEM_15_09_XXX_{CATEGORY}_{DESCRIPTION}.ets`
-- 示例：`SEM_15_09_001_PASS_CLASS_OVERRIDE.ets`
+- 示例：`SEM_15_09_01_001_PASS_CLASS_OVERRIDE.ets`
 
 ## 3. 测试点分解
 ### 3.1 类方法覆写（compile-pass）
@@ -28,9 +28,9 @@
 ## 4. 覆盖情况
 | 用例编号 | 用例文件 | 类型 | 测试点 | 预期结果 |
 |---------|---------|------|--------|---------|
-| SEM_15_09_001 | SEM_15_09_001_PASS_CLASS_OVERRIDE.ets | compile-pass | 类方法覆写 | ✅ compile-pass |
-| SEM_15_09_002 | SEM_15_09_002_FAIL_OVERRIDE_SIGNATURE.ets | compile-fail | 覆写签名不匹配 | ✅ compile-fail |
-| SEM_15_09_007 | SEM_15_09_007_RUNTIME_OVERRIDE.ets | runtime | 类方法覆写运行时 | ✅ runtime |
+| SEM_15_09_001 | SEM_15_09_01_001_PASS_CLASS_OVERRIDE.ets | compile-pass | 类方法覆写 | ✅ compile-pass |
+| SEM_15_09_002 | SEM_15_09_01_100_FAIL_OVERRIDE_SIGNATURE.ets | compile-fail | 覆写签名不匹配 | ✅ compile-fail |
+| SEM_15_09_007 | SEM_15_09_01_200_RUNTIME_OVERRIDE.ets | runtime | 类方法覆写运行时 | ✅ runtime |
 
 
 ## 最新设计要点

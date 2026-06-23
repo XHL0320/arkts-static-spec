@@ -21,7 +21,7 @@
 
 ### 问题 A-4.5：递归类型限制策略 ⭐⭐ MEDIUM
 
-**用例：** NAM_04_05_015_FAIL_DIRECT_SELF_REF, NAM_04_05_016_FAIL_UNION_SELF_REF
+**用例：** NAM_04_05_100_FAIL_direct_self_ref, NAM_04_05_101_FAIL_union_self_ref
 
 **实际行为：** ArkTS 禁止直接/间接自引用（如 `type E = E`），但允许部分递归（如 `type A = Array<A>`）。
 

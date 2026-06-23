@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_05_001
+ * @id SEM_15_11_05_001_PASS_instance_overload_set
  * @expect compile-pass
  * @section 15.11.5
  * @design 类实例方法重载集

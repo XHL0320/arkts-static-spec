@@ -21,7 +21,7 @@
 
 ### 问题 A-4.5.1：泛型函数类型别名 ⭐ LOW
 
-**用例：** NAM_04_05_01_005_PASS_GENERIC_FUNC_ALIAS
+**用例：** NAM_04_05_01_005_PASS_generic_func_alias
 
 **Observation:** ArkTS 支持泛型函数类型别名（如 `type Func<T> = (x: T) => T`），而 Java 不支持类型别名。
 

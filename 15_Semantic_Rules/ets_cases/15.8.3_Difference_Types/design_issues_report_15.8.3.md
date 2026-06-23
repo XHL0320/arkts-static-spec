@@ -2,7 +2,7 @@
 
 ## 一、编译器实现待完善
 
-### 1.1 SEM_15_08_006_FAIL_DIFFERENCE_UNSUPPORTED
+### 1.1 SEM_15_08_03_100_FAIL_DIFFERENCE_UNSUPPORTED
 
 **问题描述**: Spec §15.8.3 定义了差分类型（`A & ~B`），但编译器暂不支持。
 

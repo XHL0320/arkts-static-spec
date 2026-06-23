@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_01_06_004
+ * @id SEM_15_01_06_004_PASS_FUNC_RETURN_CONTEXT
  * @expect compile-pass
  * @section 15.1.6
  * @design 其他上下文：未分类表达式中的类型注解变量声明

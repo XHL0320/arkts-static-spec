@@ -10,7 +10,7 @@
 
 ### 差异 A：整数字面量类型推断为 int（与 Java 一致，与 TypeScript 不同）
 
-**用例：** SEM_15_01_001_PASS_INT_LITERAL_TYPE
+**用例：** SEM_15_01_01_001_PASS_INT_LITERAL_TYPE
 
 **ArkTS 实测行为：**
 ```typescript
@@ -36,7 +36,7 @@ let y = 3.14  // y: double
 
 ### 差异 B：对象字面量作为独立表达式被禁止（与 TypeScript 不同）
 
-**用例：** SEM_15_01_005_FAIL_OBJECT_LITERAL_STANDALONE
+**用例：** SEM_15_01_01_100_FAIL_OBJECT_LITERAL_STANDALONE
 
 **ArkTS 实测行为：**
 ```typescript

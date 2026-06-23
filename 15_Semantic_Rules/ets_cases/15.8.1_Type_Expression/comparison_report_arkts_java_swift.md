@@ -13,11 +13,11 @@
 
 | 测试用例 ID | ArkTS | Java | Swift | TypeScript |
 |------------|-------|------|-------|------------|
-| SEM_15_08_001_PASS_INSTANCEOF_SMART_CAST | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
-| SEM_15_08_002_PASS_NULL_SMART_CAST | ✅ 通过 | ❌ 不支持 | ✅ 通过 | ✅ 通过 |
-| SEM_15_08_003_FAIL_TYPEOF_GAP | ⚠️ GAP | ❌ 不支持 | ❌ 不支持 | ✅ 通过 |
-| SEM_15_08_004_FAIL_SMART_CAST_OUTSIDE | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
-| SEM_15_08_01_100 | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
+| SEM_15_08_01_001_PASS_INSTANCEOF_SMART_CAST | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
+| SEM_15_08_01_002_PASS_NULL_SMART_CAST | ✅ 通过 | ❌ 不支持 | ✅ 通过 | ✅ 通过 |
+| SEM_15_08_01_100_FAIL_TYPEOF_GAP | ⚠️ GAP | ❌ 不支持 | ❌ 不支持 | ✅ 通过 |
+| SEM_15_08_01_101_FAIL_SMART_CAST_OUTSIDE | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
+| SEM_15_08_01_200 | ✅ 通过 | ✅ 通过 | ✅ 通过 | ✅ 通过 |
 
 ## 三、详细代码对照
 

@@ -63,12 +63,12 @@ interface I {
 | 行为 | 用例 | 状态 |
 |------|------|------|
 | 接口属性声明 `prop: T` | ITF_10_04_001 | ✅ |
-| 只读属性 `readonly ro: T` | ITF_10_04_002 | ✅ |
-| getter 声明 `get val(): T` | ITF_10_04_003 | ✅ |
-| setter 声明 `set val(v: T): void` | ITF_10_04_004 | ✅ |
-| getter 赋值编译拒绝 | ITF_10_04_005 | ✅ |
-| setter 读取编译拒绝 | ITF_10_04_006 | ✅ |
-| 运行时属性访问 | ITF_10_04_007 | ✅ |
+| 只读属性 `readonly ro: T` | ITF_10_04_100 | ✅ |
+| getter 声明 `get val(): T` | ITF_10_04_101 | ✅ |
+| setter 声明 `set val(v: T): void` | ITF_10_04_200 | ✅ |
+| getter 赋值编译拒绝 | ITF_10_04_100 | ✅ |
+| setter 读取编译拒绝 | ITF_10_04_101 | ✅ |
+| 运行时属性访问 | ITF_10_04_200 | ✅ |
 
 ---
 

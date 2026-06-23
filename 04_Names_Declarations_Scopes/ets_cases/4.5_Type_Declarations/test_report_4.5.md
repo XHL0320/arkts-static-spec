@@ -13,38 +13,38 @@
 ### compile-pass
 | # | 用例 ID | 测试内容 | 结果 |
 |---|---------|---------|------|
-| 1 | NAM_04_05_005_PASS_RECURSIVE_ARRAY_ELEMENT | 递归别名-数组元素类型 | PASS |
-| 2 | NAM_04_05_006_PASS_RECURSIVE_TYPE_ARG | 递归别名-泛型参数 | PASS |
-| 3 | NAM_04_05_007_PASS_GENERIC_ALIAS | 泛型类型别名 | PASS |
-| 4 | NAM_04_05_008_PASS_TYPE_PARAM_DEPEND | 类型参数依赖 | PASS |
-| 5 | NAM_04_05_009_PASS_GENERIC_RECURSIVE_OK | 泛型递归合法 | PASS |
-| 6 | NAM_04_05_010_PASS_GENERIC_UNION_RECURSIVE | 泛型联合递归 | PASS |
-| 7 | NAM_04_05_011_PASS_TYPE_ALIAS_SIMPLE | 简单类型别名赋值兼容 | PASS |
-| 8 | NAM_04_05_012_PASS_TYPE_DECL_CLASS | class 声明作为类型声明 | PASS |
-| 9 | NAM_04_05_013_PASS_TYPE_DECL_INTERFACE | interface 声明作为类型声明 | PASS |
-| 10 | NAM_04_05_014_PASS_TYPE_DECL_ENUM | enum 声明作为类型声明 | PASS |
+| 1 | NAM_04_05_001_PASS_recursive_array_element | 递归别名-数组元素类型 | PASS |
+| 2 | NAM_04_05_002_PASS_recursive_type_arg | 递归别名-泛型参数 | PASS |
+| 3 | NAM_04_05_003_PASS_generic_alias | 泛型类型别名 | PASS |
+| 4 | NAM_04_05_004_PASS_type_param_depend | 类型参数依赖 | PASS |
+| 5 | NAM_04_05_005_PASS_generic_recursive_ok | 泛型递归合法 | PASS |
+| 6 | NAM_04_05_006_PASS_generic_union_recursive | 泛型联合递归 | PASS |
+| 7 | NAM_04_05_007_PASS_type_alias_simple | 简单类型别名赋值兼容 | PASS |
+| 8 | NAM_04_05_008_PASS_type_decl_class | class 声明作为类型声明 | PASS |
+| 9 | NAM_04_05_009_PASS_type_decl_interface | interface 声明作为类型声明 | PASS |
+| 10 | NAM_04_05_010_PASS_type_decl_enum | enum 声明作为类型声明 | PASS |
 
 ### compile-fail
 | # | 用例 ID | 测试内容 | 结果 |
 |---|---------|---------|------|
-| 1 | NAM_04_05_015_FAIL_DIRECT_SELF_REF | 直接自身递归 | PASS |
-| 2 | NAM_04_05_016_FAIL_UNION_SELF_REF | 联合自身递归 | PASS |
-| 3 | NAM_04_05_017_FAIL_CIRCULAR_TYPE_ARG | 循环泛型依赖 | PASS |
-| 4 | NAM_04_05_018_FAIL_PARAM_SELF_DEPEND | 参数自依赖 | PASS |
-| 5 | NAM_04_05_019_FAIL_PARAM_CIRCULAR_DEPEND | 参数循环依赖 | PASS |
-| 6 | NAM_04_05_020_FAIL_GENERIC_WO_ARG | 泛型无类型参数 | PASS |
-| 7 | NAM_04_05_021_FAIL_INDIRECT_CIRCULAR | 间接循环依赖(type A=B; B=A) | PASS |
-| 8 | NAM_04_05_022_FAIL_GENERIC_SELF_REF | 泛型自身引用(type A\<T\> = A\<T\>) | PASS |
-| 🆕 | NAM_04_05_023_FAIL_INDIRECT_CIRCULAR_ALIAS | 间接循环别名 | PASS |
-| 🆕 | NAM_04_05_024_FAIL_UNION_GENERIC_SELF_REF | 泛型联合自身引用 | PASS |
-| 🆕 | NAM_04_05_026_FAIL_GENERIC_WO_ARG_DEF | 泛型别名定义中缺少类型参数 | PASS |
-| 🆕 | NAM_04_05_027_FAIL_PARAM_CIRCULAR_UNION_DEPEND | 参数循环联合依赖 | PASS |
-| 🆕 | NAM_04_05_028_FAIL_TYPE_DECL_CONST_ENUM_UNSUPPORTED | const enum 当前实现不支持 | PASS |
+| 1 | NAM_04_05_100_FAIL_direct_self_ref | 直接自身递归 | PASS |
+| 2 | NAM_04_05_101_FAIL_union_self_ref | 联合自身递归 | PASS |
+| 3 | NAM_04_05_102_FAIL_circular_type_arg | 循环泛型依赖 | PASS |
+| 4 | NAM_04_05_103_FAIL_param_self_depend | 参数自依赖 | PASS |
+| 5 | NAM_04_05_104_FAIL_param_circular_depend | 参数循环依赖 | PASS |
+| 6 | NAM_04_05_105_FAIL_generic_wo_arg | 泛型无类型参数 | PASS |
+| 7 | NAM_04_05_106_FAIL_indirect_circular | 间接循环依赖(type A=B; B=A) | PASS |
+| 8 | NAM_04_05_107_FAIL_generic_self_ref | 泛型自身引用(type A\<T\> = A\<T\>) | PASS |
+| 🆕 | NAM_04_05_108_FAIL_indirect_circular_alias | 间接循环别名 | PASS |
+| 🆕 | NAM_04_05_109_FAIL_union_generic_self_ref | 泛型联合自身引用 | PASS |
+| 🆕 | NAM_04_05_110_FAIL_generic_wo_arg_def | 泛型别名定义中缺少类型参数 | PASS |
+| 🆕 | NAM_04_05_111_FAIL_param_circular_union_depend | 参数循环联合依赖 | PASS |
+| 🆕 | NAM_04_05_112_FAIL_type_decl_const_enum_unsupported | const enum 当前实现不支持 | PASS |
 
 ### runtime
 | # | 用例 ID | 验证内容 | 断言数 | 结果 |
 |---|---------|---------|--------|------|
-| 1 | NAM_04_05_025_RUNTIME_TYPE_ALIAS_USE | 类型别名运行时使用 | 1 | PASS |
+| 1 | NAM_04_05_200_RUNTIME_type_alias_use | 类型别名运行时使用 | 1 | PASS |
 
 ## 执行过程
 - **执行日期：** 2026-06-18

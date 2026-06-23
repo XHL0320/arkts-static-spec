@@ -13,9 +13,9 @@
 ## 3. 测试用例对比
 | 用例编号 | 类型 | ArkTS | Java | Swift | TypeScript |
 |---------|------|-------|------|-------|------------|
-| SEM_15_09_003_PASS_INTERFACE_IMPL | compile-pass | ✅ | ✅ | ✅ | ✅ |
-| SEM_15_09_004_FAIL_MISSING_IMPL | compile-fail | ✅ | ✅ | ✅ | ✅ |
-| SEM_15_09_009_RUNTIME_INTERFACE_OVERRIDE | runtime | ✅ | ✅ | ✅ | ✅ |
+| SEM_15_09_02_001_PASS_INTERFACE_IMPL | compile-pass | ✅ | ✅ | ✅ | ✅ |
+| SEM_15_09_02_100_FAIL_MISSING_IMPL | compile-fail | ✅ | ✅ | ✅ | ✅ |
+| SEM_15_09_02_200_RUNTIME_INTERFACE_OVERRIDE | runtime | ✅ | ✅ | ✅ | ✅ |
 
 ## 4. 结论
 ArkTS 在接口覆写方面的行为与 Java、Swift、TypeScript 一致，符合主流编程语言的设计理念。
