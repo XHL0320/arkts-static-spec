@@ -17,6 +17,26 @@
 | D-15.11-05 | SEM_15_11_031_RT_receiver_declared_base_local_copy_global | 同上—local copy global | runtime 按声明类型 | runtime 按实际类型 | C类-运行时偏差 |
 | D-15.11-06 | SEM_15_11_033_RT_receiver_declared_base_after_side_effect_call | 同上—after side effect call | runtime 按声明类型 | runtime 按实际类型 | C类-运行时偏差 |
 | D-15.11-07 | SEM_15_11_040_RT_SMART_FUNC_overload_declared_base_function | 同上—SMART_FUNC | runtime 按声明类型 | runtime 按实际类型 | C类-运行时偏差 |
+| D-15.2-01 | SEM_15_02_011_PASS_GEN_variance_covariant | 泛型协变赋值被拒绝 | compile-pass | 编译失败 | D类-编译回归 |
+| D-15.2-02 | SEM_15_02_015_PASS_LIT_string_literal_to_string | 字符串字面量→string 赋值被拒绝 | compile-pass | 编译失败 | D类-编译回归 |
+| D-15.2-03 | SEM_15_02_020_PASS_UNION_member_to_union | union→member 赋值被拒绝 | compile-pass | 编译失败 | D类-编译回归 |
+| D-15.2-04 | SEM_15_02_024_PASS_FUNC_parameter_contravariance | 函数参数逆变被拒绝 | compile-pass | 编译失败 | D类-编译回归 |
+| D-15.2-05 | SEM_15_02_08_001_PASS_PLACEHOLDER | 交叉类型占位 compile-pass 编译失败 | compile-pass | 编译失败 | D类-编译回归 |
+| D-15.2-06 | SEM_15_02_297_FAIL_tuple_shorter_to_longer | 元组子类型过宽松 | compile-time error | 编译通过 | D类-过宽松 |
+| D-15.2-07 | SEM_15_02_294_FAIL_two_union_subtype_gap | union 子类型过宽松 | compile-time error | 编译通过 | D类-过宽松 |
+| D-15.2-08 | SEM_15_02_296_FAIL_union_int_to_number | union 子类型过宽松 | compile-time error | 编译通过 | D类-过宽松 |
+| D-15.2-09 | SEM_15_02_299_FAIL_union_larger_to_smaller | union 子类型过宽松 | compile-time error | 编译通过 | D类-过宽松 |
+| D-15.2-10 | SEM_15_02_299_FAIL_fixed_array_wrong_direction | 定长数组子类型过宽松 | compile-time error | 编译通过 | D类-过宽松 |
+| D-15.7-01 | SEM_15_07_02_298_FAIL_unexpressible_smart_return | 返回类型推断过宽松 | compile-time error | 编译通过 | D类-过宽松 |
+| D-15.9-01 | SEM_15_09_002_PASS_CLASS_method_parameter_contravariance | 重写参数逆变被拒绝 | compile-pass | 编译失败 | D类-编译回归 |
+| D-15.9-02 | SEM_15_09_005_PASS_INTERFACE_default_method_override | 接口默认方法重写被拒绝 | compile-pass | 编译失败 | D类-编译回归 |
+| D-15.9-03 | SEM_15_09_007_PASS_INTERFACE_override_compatible | 接口兼容重写被拒绝 | compile-pass | 编译失败 | D类-编译回归 |
+| D-15.9-04 | SEM_15_09_101_FAIL_CLASS_parameter_covariance | 参数协变应报错但通过 | compile-time error | 编译通过 | D类-过宽松 |
+| COM-15.14-01 | SEM_15_14_003_PASS_CONDITIONAL_AND | 条件与扩展语义被拒绝 | compile-pass | 编译失败 | C类-特性未实现 |
+| COM-15.14-02 | SEM_15_14_013_PASS_TYPEOF_truthiness | typeof 真值检查被拒绝 | compile-pass | 编译失败 | C类-特性未实现 |
+| COM-15.14-03 | SEM_15_14_014_PASS_INSTANCEOF_truthiness | instanceof 真值检查被拒绝 | compile-pass | 编译失败 | C类-特性未实现 |
+| COM-15.14-04 | SEM_15_14_022_PASS_COMPREHENSIVE_3 | 综合扩展条件表达式被拒绝 | compile-pass | 编译失败 | C类-特性未实现 |
+| COM-15.14-05~30 | SEM_15_14_023~050_PASS_COMPREHENSIVE_4~31 | 综合扩展条件表达式（批量） | compile-pass | 编译失败 | C类-特性未实现 |
 
 ### 异常详情
 
@@ -70,6 +90,93 @@
 
 ---
 
+**D-15.2-01 ~ D-15.2-05** — 子类型 compile-pass 编译失败回归（新增测试）
+
+5 个新增 compile-pass 用例因编译器拒绝合法代码而失败，涉及泛型协变、字符串字面量子类型、union→member 赋值、函数参数逆变等场景。
+
+| ID | Case | Symptom |
+|---|------|--------|
+| D-15.2-01 | SEM_15_02_011_PASS_GEN_variance_covariant | 泛型协变赋值被拒绝 |
+| D-15.2-02 | SEM_15_02_015_PASS_LIT_string_literal_to_string | 字符串字面量→string 赋值被拒绝 |
+| D-15.2-03 | SEM_15_02_020_PASS_UNION_member_to_union | union member 赋值被拒绝 |
+| D-15.2-04 | SEM_15_02_024_PASS_FUNC_parameter_contravariance | 函数参数逆变被拒绝 |
+| D-15.2-05 | SEM_15_02_08_001_PASS_PLACEHOLDER | 交叉类型占位 compile-pass 编译失败 |
+
+---
+
+**D-15.2-06 ~ D-15.2-10** — 子类型 compile-fail 过宽松（编译器接受非法代码）
+
+5 个 compile-fail 用例被编译器接受，涉及元组/union/定长数组错误方向子类型。
+
+| ID | Case |
+|---|------|
+| D-15.2-06 | SEM_15_02_297_FAIL_tuple_shorter_to_longer |
+| D-15.2-07 | SEM_15_02_294_FAIL_two_union_subtype_gap |
+| D-15.2-08 | SEM_15_02_296_FAIL_union_int_to_number |
+| D-15.2-09 | SEM_15_02_299_FAIL_union_larger_to_smaller |
+| D-15.2-10 | SEM_15_02_299_FAIL_fixed_array_wrong_direction |
+
+---
+
+**D-15.7-01** — 返回类型推断过宽松
+
+`SEM_15_07_02_298_FAIL_unexpressible_smart_return` — 函数推断出不可表达类型应拒绝，但编译通过。
+
+---
+
+**D-15.9-01 ~ D-15.9-04** — 重写 compile-pass 编译失败回归
+
+新增用例因编译器拒绝合法重写而失败。
+
+| ID | Case |
+|---|------|
+| D-15.9-01 | SEM_15_09_002_PASS_CLASS_method_parameter_contravariance |
+| D-15.9-02 | SEM_15_09_005_PASS_INTERFACE_default_method_override |
+| D-15.9-03 | SEM_15_09_007_PASS_INTERFACE_override_compatible |
+| D-15.9-04 | SEM_15_09_101_FAIL_CLASS_parameter_covariance |
+
+---
+
+**COM-15.14-01** — 扩展条件表达式（Extended Conditional Expressions）编译器未实现（集体失败批次）
+
+该批次涉及 **30 个 compile-pass 测试集体编译失败**，对应 Spec 15.14.1 Extended Conditional Expressions。这些测试验证 ArkTS 为兼容 TypeScript 而引入的**真值判断（truthiness）扩展语义**，但编译器当前**未实现该特性**。
+
+**Spec 背景**：15.14 Compatibility Features 定义了一组可选的 TS 兼容特性（Spec 明确标注 *"to be deprecated in one of the future versions of ArkTS"*），核心是允许非 boolean 类型在条件上下文中按 truthy/falsy 规则隐式判定：
+
+| 值 | truthy |
+|---|--------|
+| `0`, `NaN`, `""`, `null`, `undefined`, `false` | falsy ❌ |
+| 非空字符串、非零数字、对象、`true` | truthy ✅ |
+
+受影响语法结构：三元表达式、`&&`/`||`、`if`/`while`/`for`/`do`、逻辑非 `!`。
+
+**失败模式分类**（共 32 个 FAIL，其中 30 个属此批次）：
+
+| 模式 | 用例数 | 示例 |
+|------|--------|------|
+| 条件与/或返回操作数 | 2 | `let r: number\|boolean = 10 && "truthy"` → 编译器要求 boolean 操作数 |
+| 非 boolean 三元条件 | 1 | `let r: string = value ? "truthy" : "falsy"` → 编译器要求 boolean 条件 |
+| typeof/instanceof 真值检查 | 2 | `if (typeof x === "string")` → 编译器拒绝 typeof 表达式 |
+| COMPREHENSIVE 综合测试 | 25 | 覆盖 truthiness + 三元 + `&&`/`||` + 条件语句各种组合 |
+
+**关键用例列表**：
+
+| ID | Case |
+|---|------|
+| COM-15.14-01 | SEM_15_14_003_PASS_CONDITIONAL_AND |
+| COM-15.14-02 | SEM_15_14_013_PASS_TYPEOF_truthiness |
+| COM-15.14-03 | SEM_15_14_014_PASS_INSTANCEOF_truthiness |
+| COM-15.14-04 | SEM_15_14_022_PASS_COMPREHENSIVE_3 |
+| COM-15.14-05~30 | SEM_15_14_023~050_PASS_COMPREHENSIVE_4~31（25 个连续用例） |
+
+- 章节：15.14 Compatibility Features（父章节 `15.14_Compatibility_Features`）
+- 分类：C 类（编译器功能缺失 — 可选兼容特性未实现）
+- 当前状态：编译器拒绝所有扩展条件表达式（要求标准 boolean 条件），测试标记为 FAIL。等待编译器实现 Extended Conditional Expressions 后自动转为 PASS
+- 关联文件：`ets_cases/15.14_Compatibility_Features/compile-pass/` 下 30 个相关用例
+- Spec 原文：`spec_original.md` 第 3160 行起
+
+---
+
 ### 历史已解决异常
 
 | 问题 | 修复/处理 | 日期 |
@@ -86,19 +193,19 @@
 
 | 子章节 | 用例总数 | 通过 | 失败/GAP | 最近执行 |
 |-------|:-------:|:----:|:--------:|---------|
-| 15.1 Semantic Essentials | 70 | 70 | 0 | 2026-06-23 |
-| 15.2 Subtyping | 81 | 77 | 4 | 2026-06-23 |
+| 15.1 Semantic Essentials | 73 | 73 | 0 | 2026-06-23 |
+| 15.2 Subtyping | 133 | 123 | 10 | 2026-06-23 |
 | 15.3 Type Identity | 27 | 27 | 0 | 2026-06-23 |
 | 15.4 Assignability | 30 | 29 | 1 | 2026-06-23 |
 | 15.5 Variance | 24 | 22 | 2 | 2026-06-23 |
 | 15.6 Call Arguments | 34 | 32 | 2 | 2026-06-23 |
-| 15.7 Type Inference | 40 | 38 | 2 | 2026-06-23 |
-| 15.8 Smart Casts | 84 | 64 | 20 | 2026-06-23 |
-| 15.9 Overriding | 44 | 39 | 5 | 2026-06-23 |
-| 15.10 Overloading | 64 | 64 | 0 | 2026-06-23 |
-| 15.11 Overload Resolution | 135 | 127 | 8 | 2026-06-23 |
-| 15.12 Type Erasure | 37 | 36 | 1 | 2026-06-23 |
+| 15.7 Type Inference | 49 | 46 | 3 | 2026-06-23 |
+| 15.8 Smart Casts | 94 | 74 | 20 | 2026-06-23 |
+| 15.9 Overriding | 66 | 59 | 7 | 2026-06-23 |
+| 15.10 Overloading | 74 | 74 | 0 | 2026-06-23 |
+| 15.11 Overload Resolution | 151 | 143 | 8 | 2026-06-23 |
+| 15.12 Type Erasure | 38 | 37 | 1 | 2026-06-23 |
 | 15.13 Static Initialization | 30 | 30 | 0 | 2026-06-23 |
 | 15.14 Compatibility | 80 | 48 | 32 | 2026-06-23 |
 
-**累计 780 个测试用例，703 通过，77 失败（包含已知 GAP + 新增兼容性特性失败批次）**
+**累计 903 个测试用例，817 通过，86 失败（包含已知 GAP + 新增兼容性特性失败批次）**

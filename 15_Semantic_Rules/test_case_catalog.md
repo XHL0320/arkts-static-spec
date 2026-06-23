@@ -1,7 +1,7 @@
 # 15 Semantic Rules — 测试用例目录
 
 **生成日期：** 2026-06-23
-**共计：** 780 个测试用例
+**共计：** 903 个测试用例
 
 > 此章节按规则类别组织，用例文件名前缀 `SEM_`，存放于各规则子章节的 `compile-pass/` / `compile-fail/` / `runtime/` 目录。
 
@@ -204,18 +204,18 @@
 
 | 主章节 | compile-pass | compile-fail | runtime | 合计 |
 |--------|:-----------:|:-----------:|:-------:|:----:|
-| 15.1 Semantic Essentials | 44 | 16 | 10 | 73 |
-| 15.2 Subtyping | 61 | 47 | 14 | 128 |
+| 15.1 Semantic Essentials | 45 | 18 | 10 | 73 |
+| 15.2 Subtyping | 69 | 53 | 11 | 133 |
 | 15.3 Type Identity | 17 | 8 | 2 | 27 |
 | 15.4 Assignability | 17 | 11 | 2 | 30 |
 | 15.5 Invariance/etc | 13 | 9 | 2 | 24 |
 | 15.6 Call Arguments | 15 | 13 | 6 | 34 |
-| 15.7 Type Inference | 16 | 9 | 5 | 30 |
-| 15.8 Smart Casts | 53 | 31 | 12 | 104 |
-| 15.9 Overriding | 32 | 20 | 9 | 66 |
+| 15.7 Type Inference | 26 | 16 | 7 | 49 |
+| 15.8 Smart Casts | 52 | 30 | 12 | 94 |
+| 15.9 Overriding | 37 | 21 | 8 | 66 |
 | 15.10 Overloading | 37 | 28 | 9 | 74 |
-| 15.11 Overload Resolution | 62 | 44 | 39 | 145 |
+| 15.11 Overload Resolution | 62 | 40 | 49 | 151 |
 | 15.12 Type Erasure | 17 | 15 | 6 | 38 |
 | 15.13 Static Init | 10 | 7 | 13 | 30 |
 | 15.14 Compatibility | 55 | 7 | 18 | 80 |
-| **总计** | **419** | **265** | **96** | **780** |
+| **总计** | **472** | **276** | **155** | **903** |
