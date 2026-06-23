@@ -1,55 +1,67 @@
-# 7.32.3 左值表达式 - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
+# 7.32.3 Left Hand Side Expressions — ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
-**报告日期：** 2026-06-23
-**测试用例数：** 30（10 compile-pass + 10 compile-fail + 10 runtime）
-**通过率：** 100%（30/30，0 unexpected）
-**编译器：** es2panda + ark VM (Linux native)
-**Spec 依据：** arktsspecification.md §7.32.3
+## 设计问题及差异清单
 
-## 报告分类口径
+### ID-01: 参数可赋值性差异 ⭐
 
-| 分类 | 含义 | 处理方式 |
-|------|------|----------|
-| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
-| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
-| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
-| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_32_03_002_PASS_PARAMETER_LHS |
+| **实测结果** | ArkTS/Java 参数可直接赋值，Swift 参数默认为 let 常量 |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
 
-## 一、已验证规范一致行为
+**描述**：ArkTS 和 Java 的函数/方法参数可以直接重新赋值，而 Swift 的参数默认为 `let` 常量，不可重新赋值；需使用 `inout` 参数才可修改。
 
-经 es2panda + ark VM 实测，以下行为与 ArkTS spec §7.32.3 一致：
+**跨语言对比**：
 
-| 行为 | 验证方式 | 结果 |
-|------|---------|------|
-| 左值表达式，包括变量名、字段访问、索引访问等可出现在赋值左侧的表达式 | 10 compile-pass + 10 compile-fail + 10 runtime | ✅ 全部通过 |
+| 语言 | `function f(p: int) { p = 99; }` | 行为 |
+|------|------|------|
+| ArkTS | `function f(p: int) { p = 99; }` | ✅ 编译通过，参数可重新赋值 |
+| Java | `static int f(int p) { p = 99; return p; }` | ✅ 编译通过，参数可重新赋值 |
+| Swift | `func f(_ p: Int) -> Int { p = 99 }` | ❌ 编译错误：参数为 let 常量 |
 
-| 分类 | 数量 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 10 | 10 | 0 | 100% |
-| compile-fail | 10 | 10 | 0 | 100% |
-| runtime | 10 | 10 | 0 | 100% |
-| **总计** | **30** | **30** | **0** | **100%** |
+**分类**：符合 ArkTS spec 的语言设计差异
 
-**结论：30 个测试用例全部编译运行通过。本章节 Spec 约束与 es2panda + ark VM 行为一致。**
+---
 
-## 二、跨语言对比摘要
+### ID-02: Record 索引作为左值 ⭐
 
-| 维度 | ArkTS | Java | Swift | TypeScript |
-|------|-------|------|-------|-----------|
-| 编译验证 | ✅ es2panda — 30/30 通过 | ✅ javac | ✅ swiftc | ✅ tsc |
-| 运行时验证 | ✅ ark VM — 10/10 runtime 通过 | ✅ JVM | ✅ Swift runtime | ✅ Node.js |
-| Spec 一致性 | ✅ 与 arktsspecification.md §7.32.3 一致 | ✅ JLS SE21 | ✅ Swift 5.10 | N/A |
-| 语言差异 | ArkTS 静态类型 + nullish 安全 | 传统静态类型 | 严格静态 + Optional | 结构化类型 |
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_32_03_005_PASS_RECORD_INDEX_LHS |
+| **实测结果** | ArkTS/Swift 原生支持，Java 需 put() 方法调用 |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
 
-## 三、分类汇总
+**描述**：ArkTS 的 Record 类型和 Swift 的 Dictionary 类型均支持索引表达式作为左值（`rec['a'] = 100`），而 Java 没有类似的 Record 字面量语法，需通过 `HashMap.put(key, value)` 方法调用间接完成赋值。
 
-| 条目 | 分类 |
-|------|------|
-| — 本章节无差异点 | 已验证规范一致行为 |
+**跨语言对比**：
 
-## 四、关联记录
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `rec['a'] = 100` | ✅ 编译通过，记录索引可作为左值 |
+| Java | `map.put("a", 100)` | ❌ 无左值赋值语法，需方法调用 |
+| Swift | `dict["a"] = 100` | ✅ 编译通过，Dictionary 下标可作为左值 |
 
-- 章节级异常汇总：[issue_report.md](../../issue_report.md)
-- 测试执行报告：[test_report_7.32.3.md](test_report_7.32.3.md)
-- 跨语言对比：[comparison_report_arkts_java_swift.md](comparison_report_arkts_java_swift.md)
-- 测试设计：[test_design_mindmap_7.32.3.md](test_design_mindmap_7.32.3.md)
+**分类**：符合 ArkTS spec 的语言设计差异
+
+---
+
+### ID-03: 可选链 `?.` 不作为左值 ⭐
+
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_32_03_011_FAIL_CHAINING_OP_LHS |
+| **实测结果** | ArkTS/Swift 均禁止可选链表达式作为左值 |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
+
+**描述**：ArkTS 和 Swift 均禁止包含可选链运算符 `?.` 的表达式出现在赋值左侧（编译错误）。Java 无此运算符，用 `if (obj != null) obj.field = x` 替代。
+
+**跨语言对比**：
+
+| 语言 | `obj?.field = x` | 行为 |
+|------|------------------|------|
+| ArkTS | `obj?.field = x` | ✅ 编译错误（禁止作为左值）|
+| Java | N/A | ❌ 无 `?.` 运算符 |
+| Swift | `obj?.field = x` | ✅ 编译错误（禁止作为左值）|
+
+**分类**：符合 ArkTS spec 的语言设计差异

@@ -1,34 +1,54 @@
-# 7.29.2 布尔逻辑运算符 - 测试设计思维导图
+# 7.29.2 Boolean Logical Operators - 测试设计思维导图
 
 ## 概述
-布尔 & ^ | 真值表
 
-## 测试分类策略
+验证 ArkTS 中 boolean 类型 `&`（AND）、`^`（XOR）、`|`（OR）运算符的正确性。
 
-### 编译期通过（compile-pass）
-- 合法运算符与合法操作数类型组合
-- 类型提升/转换的正确行为
-- 运算符优先级与结合性验证
+## 三级测试点设计
 
-### 编译期失败（compile-fail）
-- 运算符与操作数类型不兼容
-- bigint 与 numeric 类型禁止混合的场景
-- 非法左值表达式
+### compile-pass（验证编译通过 + 语义正确）
 
-### 运行时（runtime）
-- 运算结果正确性验证（含 assert 断言）
-- IEEE 754 特殊值行为（NaN、Infinity）
-- 短路求值、变量捕获等动态语义
+| # | 测试点 | 说明 |
+|---|--------|------|
+| 001 | boolean & (AND) 四种真值表组合编译通过 | `true & true`、`true & false`、`false & true`、`false & false` 四种组合均编译通过 |
+| 002 | boolean ^ (XOR) 和 \| (OR) 各四种组合编译通过 | `^` 和 `\|` 各四种真值表组合均编译通过 |
+| 003 | 链式运算和变量运算编译通过 | 变量之间 &/^/\|、链式 `a & b \| c`、带括号 `a & (b \| c)`、复合表达式编译通过 |
+
+### compile-fail
+
+| # | 测试点 | 说明 |
+|---|--------|------|
+| 001 | boolean & 数值类型混合 | `boolean & int`、`boolean & float`、`boolean ^ long` 应产生编译时错误 |
+| 002 | boolean &/^/\| 与 string/bigint 混合 | `boolean \| bigint`、`boolean & string` 应产生编译时错误 |
+
+### runtime（验证实际计算值符合运算符规则）
+
+| # | 测试点 | 预期值 |
+|---|--------|--------|
+| 001 | `&` 完整真值表（4 断言） | `true & true=true`, `true & false=false`, `false & true=false`, `false & false=false` |
+| 002 | `^` 完整真值表（4 断言） | `true ^ true=false`, `true ^ false=true`, `false ^ true=true`, `false ^ false=false` |
+| 003 | `\|` 完整真值表（4 断言） | `true \| true=true`, `true \| false=true`, `false \| true=true`, `false \| false=false` |
+| 004 | 变量与常量组合（6 断言） | 变量 &/^/\| true/false 各 2 组 |
+| 005 | 自身运算（6 断言） | `a & a`, `a ^ a`, `a \| a` 各（true + false） |
+
+## 三语言对比要点
+
+| 特性 | ArkTS | Java | Swift |
+|------|:-----:|:----:|:-----:|
+| boolean & (AND) | `true & false` → `false` | `true & false` → `false` | 用 `&&` 替代（短路） |
+| boolean \| (OR) | `true \| false` → `true` | `true \| false` → `true` | 用 `\|\|` 替代（短路） |
+| boolean ^ (XOR) | `true ^ false` → `true` | `true ^ false` → `true` | 用 `!=` 替代 |
+| 非短路特性 | 非短路 | 非短路 | 仅有短路逻辑运算符 |
+| 混合类型检查 | compile-time error | 编译错误 | 编译错误 |
 
 ## 文件命名规范
-- 前缀：EXP_
-- 格式：EXP_07_XX_YYY_{PASS|FAIL|RUNTIME}_DESCRIPTION.ets
-- 编号：PASS 001~ F 接续 RUNTIME 接续
 
-## 用例统计
-| 分类 | 数量 |
-|------|------|
-| compile-pass | 10 |
-| compile-fail | 10 |
-| runtime | 10 |
-| **总计** | **30** |
+`EXP_07_29_02_YYY_{CATEGORY}_{DESCRIPTION}.ets`
+
+- YYY: 001 起连续编号
+- CATEGORY: PASS / FAIL / RUNTIME
+- DESCRIPTION: 大写+下划线描述
+
+## 注释模板要求
+
+每个文件必须包含 5 个 JSDoc tag：@id, @expect, @section, @design, @note

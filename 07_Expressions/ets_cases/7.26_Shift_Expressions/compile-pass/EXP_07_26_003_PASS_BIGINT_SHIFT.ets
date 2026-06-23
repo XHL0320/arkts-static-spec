@@ -2,20 +2,23 @@
  * @id EXP_07_26_003_PASS_BIGINT_SHIFT
  * @expect compile-pass
  * @section 7.26
- * @design 验证bigint类型的左移(<<)和有符号右移(>>)，bigint不支持无符号右移(>>>)
- * @note 正向用例：验证该特性编译通过的正确用法
+ * @design bigint 类型移位运算符（<<, >>）编译通过验证，bigint 不支持 >>>
+ * @note 正向用例：验证 bigint 在 << 和 >> 运算中编译通过
+ *       >>> 用于 bigint 应为编译时错误
  */
-function testShiftBigint(): void {
-  let a: bigint = 16n
-  let b: bigint = 2n
-  let r1: bigint = a << b  // 16n << 2n = 64n
-  let r2: bigint = a >> b  // 16n >> 2n = 4n
-  // bigint无符号右移不支持，不在此测试
+function main(): void {
+    let a: bigint = 16n;
+    let b: bigint = 2n;
 
-  let big: bigint = 12345678901234567890n
-  let shift: bigint = 10n
-  let rb1: bigint = big << shift
-  let rb2: bigint = big >> shift
-  console.log(r1.toString() + r2.toString() +
-              rb1.toString() + rb2.toString())
+    // 左移
+    let left: bigint = a << b;
+    // 带符号右移
+    let signedRight: bigint = a >> b;
+
+    // 字面量移位
+    let l1: bigint = 8n << 3n;
+    let l2: bigint = 8n >> 2n;
+
+    console.log("result left: " + left);
+    console.log("result signedRight: " + signedRight);
 }

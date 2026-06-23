@@ -1,55 +1,86 @@
-# 7.35.2 Lambda体 - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
+# 7.35.2 Lambda Body — ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
-**报告日期：** 2026-06-23
-**测试用例数：** 30（10 compile-pass + 10 compile-fail + 10 runtime）
-**通过率：** 100%（30/30，0 unexpected）
-**编译器：** es2panda + ark VM (Linux native)
-**Spec 依据：** arktsspecification.md §7.35.2
+## 设计问题及差异清单
 
-## 报告分类口径
+### ID-01: 未初始化局部变量在 lambda 中捕获 ⭐⭐
 
-| 分类 | 含义 | 处理方式 |
-|------|------|----------|
-| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
-| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
-| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
-| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_35_02_009_FAIL_UNINIT_LOCAL_CAPTURE |
+| **实测结果** | 编译通过（期望编译时错误） |
+| **错误信息** | 无错误（D 类 Spec 不一致） |
 
-## 一、已验证规范一致行为
+**描述**：根据 ArkTS spec 规则 6，局部变量在 lambda 体中使用但未在 lambda 中声明且未在之前赋值应产生 compile-time error。但 ArkTS 编译器实际允许该表达式通过，未报错。与 Java 的"variable x might not have been initialized"检测形成对比。
 
-经 es2panda + ark VM 实测，以下行为与 ArkTS spec §7.35.2 一致：
+**跨语言对比**：
 
-| 行为 | 验证方式 | 结果 |
-|------|---------|------|
-| Lambda体：单表达式（隐式return）或块体。捕获外部变量/this（引用非拷贝）。非void无return→compile-time error | 10 compile-pass + 10 compile-fail + 10 runtime | ✅ 全部通过 |
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `let x: int; const f = (): int => x` | ✅ 编译通过（❌ 应 compile-fail） |
+| Java | `int x; Supplier<Integer> f = () -> x` | ✅ compile-error |
+| Swift | `var x: Int; let f = { x }` | ✅ compile-pass（Swift 无此限制） |
 
-| 分类 | 数量 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 10 | 10 | 0 | 100% |
-| compile-fail | 10 | 10 | 0 | 100% |
-| runtime | 10 | 10 | 0 | 100% |
-| **总计** | **30** | **30** | **0** | **100%** |
+**分类**：D 类 — Spec 与实现不一致
 
-**结论：30 个测试用例全部编译运行通过。本章节 Spec 约束与 es2panda + ark VM 行为一致。**
+**建议**：在编译器中添加未初始化变量捕获检测，使 lambda 中使用了未赋值局部变量时能正确报错。与 Java 的 "variable x might not have been initialized" 行为一致。
 
-## 二、跨语言对比摘要
+---
 
-| 维度 | ArkTS | Java | Swift | TypeScript |
-|------|-------|------|-------|-----------|
-| 编译验证 | ✅ es2panda — 30/30 通过 | ✅ javac | ✅ swiftc | ✅ tsc |
-| 运行时验证 | ✅ ark VM — 10/10 runtime 通过 | ✅ JVM | ✅ Swift runtime | ✅ Node.js |
-| Spec 一致性 | ✅ 与 arktsspecification.md §7.35.2 一致 | ✅ JLS SE21 | ✅ Swift 5.10 | N/A |
-| 语言差异 | ArkTS 静态类型 + nullish 安全 | 传统静态类型 | 严格静态 + Optional | 结构化类型 |
+### ID-02: 块体无 return 检测差异 ⭐⭐
 
-## 三、分类汇总
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_35_02_010_FAIL_MISSING_RETURN_BLOCK / EXP_07_35_02_011_FAIL_VOID_STMT_NO_RETURN |
+| **实测结果** | ArkTS compile-error（非 void/never 类型块体无 return 时正确报错） |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
 
-| 条目 | 分类 |
-|------|------|
-| — 本章节无差异点 | 已验证规范一致行为 |
+**描述**：非 void/never 返回类型的 lambda 块体中没有 return 语句时，ArkTS 和 Java 均报编译错误，而 Swift 允许隐式返回（单表达式闭包无需 `return` 关键字）。该差异是语言设计选择。
 
-## 四、关联记录
+**跨语言对比**：
 
-- 章节级异常汇总：[issue_report.md](../../issue_report.md)
-- 测试执行报告：[test_report_7.35.2.md](test_report_7.35.2.md)
-- 跨语言对比：[comparison_report_arkts_java_swift.md](comparison_report_arkts_java_swift.md)
-- 测试设计：[test_design_mindmap_7.35.2.md](test_design_mindmap_7.35.2.md)
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `(): int => { }` | ✅ compile-error（规则 8 检查生效） |
+| Java | `() -> { }` | ✅ compile-error（missing return statement） |
+| Swift | `{ }` | ⚠️ compile-error（空闭包）；但 `{ x in x + 1 }` 隐式返回无需 `return` |
+
+**分类**：符合 ArkTS spec 的语言设计差异
+
+**建议**：当前设计合理，ArkTS 在此处行为与 Java 一致，比 Swift 更严格，有助于防止遗漏 return 语句。
+
+---
+
+### ID-03: Void 调用表达式体简化差异 ⭐
+
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_35_02_006_PASS_VOID_CALL_EXPR_BODY |
+| **实测结果** | ArkTS 对 void 调用表达式体自动简化（等价 `{ expr; }` 而非 `{ return expr; }`） |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
+
+**描述**：Lambda 体为返回类型 void 的调用表达式时，ArkTS Spec 有明确规则：等价于 `{ expression; }` 而非 `{ return expression; }`。Java 和 Swift 无等价概念，因为 void 方法调用在两者中本身就是语句形式。
+
+**跨语言对比**：
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `(): void => logMsg(msg)` | ✅ Spec 明确规则：等价于 `{ logMsg(msg); }` |
+| Java | `msg -> System.out.println(msg)` | ⚠️ 无等价概念。void 方法调用本就是语句 |
+| Swift | `{ msg in print(msg) }` | ⚠️ 无等价概念。Void 函数调用作为 closure body 自动应用隐式返回规则 |
+
+**分类**：符合 ArkTS spec 的语言设计差异
+
+**建议**：ArkTS 有显式规范描述是好的做法，Java/Swift 无对应规则。
+
+---
+
+### 结论
+
+| 分类 | 状态 |
+|:----:|:------|
+| **D 类**（Spec 与实现不一致） | **1 个**：未初始化变量捕获 |
+| **compile-pass** | **8/8** ✅ |
+| **compile-fail** | **2/3** ✅（1 个 D 类不一致） |
+| **runtime** | **1/1** ✅ |
+| **Java** | **11/11** ✅ |
+| **Swift** | **13/13** ✅ |

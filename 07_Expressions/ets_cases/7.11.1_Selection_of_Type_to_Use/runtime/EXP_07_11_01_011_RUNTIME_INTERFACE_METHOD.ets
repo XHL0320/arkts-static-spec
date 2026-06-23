@@ -1,0 +1,31 @@
+/**
+ * @id EXP_07_11_01_011_RUNTIME_INTERFACE_METHOD
+ * @expect runtime
+ * @section 7.11.1
+ * @design 运行时验证 interface 类型表达式的方法调用（多态分发）
+ * @note 运行时用例：验证接口引用调用方法时正确分派到实际实现
+ */
+interface Calculable {
+    compute(): int
+}
+class Add implements Calculable {
+    compute(): int {
+        return 42
+    }
+}
+class Mul implements Calculable {
+    compute(): int {
+        return 100
+    }
+}
+function main(): void {
+    let a: Calculable = new Add()
+    let m: Calculable = new Mul()
+    if (a.compute() != 42) {
+        throw new Error("assertion failed: Add compute")
+    }
+    if (m.compute() != 100) {
+        throw new Error("assertion failed: Mul compute")
+    }
+    console.log("verified")
+}

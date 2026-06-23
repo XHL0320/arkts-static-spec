@@ -1,99 +1,131 @@
-# 7.27.6 枚举关系运算符 - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
+# 7.27.6 Enumeration Relational Operators — ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
-**报告日期：** 2026-06-23
-**测试用例数：** 30（10 compile-pass + 10 compile-fail + 10 runtime）
-**通过率：** 100%（30/30，0 unexpected）
-**编译器：** es2panda + ark VM (Linux native)
-**Spec 依据：** arktsspecification.md §7.27.6
+## 设计问题及差异清单
 
-## 报告分类口径
+### ID-01: int 基类型枚举成员与数值类型关系运算 ⭐
 
-| 分类 | 含义 | 处理方式 |
-|------|------|----------|
-| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
-| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
-| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
-| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_27_06_012_FAIL_ENUM_VS_NUMERIC.ets |
+| **实测结果** | 编译通过（无错误） |
+| **错误信息** | 无错误 |
 
-## 一、Spec 与实现不一致
+**描述**：Spec 要求枚举关系运算必须两个操作数都是相同枚举类型（7.27.6），代码 `Color.Red < 5` 应产生编译时错误，但实际编译通过。编译器实现了枚举到基类型的隐式转换（enum → int），使 `Color.Red < 5` 退化为 `0 < 5` 的 int 比较。
 
-### 问题 D-7.27-01：枚举类型与 int 关系比较未被拒绝
+**跨语言对比**：
 
-**类别：** D 类（Spec 与实现不一致）
-**复现用例：** EXP_07_27_06_004_FAIL_ENUM_INT_RELATIONAL
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `Color.Red < 5` | 编译通过，允许 int 基枚举与 int 比较 |
+| Java | 枚举通过 `compareTo()` 基于 ordinal 比较 | 编译时错误 |
+| Swift | 需显式遵循 Comparable 协议 | 编译时错误 |
 
-#### Spec 规则
+**分类**：D 类（Spec 与实现不一致）
 
-§7.27.6 枚举关系运算符要求操作数为相同的枚举类型：
-> The operands of a relational operator applied to enum types must be of the same enum type, or a compile-time error occurs.
-
-#### 实测行为
-
-```typescript
-enum Color { RED = 1, GREEN = 2, BLUE = 3 }
-function testEnumIntCompare(): void {
-  let c: Color = Color.RED
-  let b: boolean = c > 0  // 实际编译通过
-}
-```
-
-#### 预期
-
-应编译失败，Color 枚举与 int 不是同一枚举类型。
-
-#### 实际
-
-编译通过，es2panda 未拒绝枚举与 int 的关系比较。
-
-#### 跨语言对比
-
-| 语言 | enum vs int 关系比较 |
-|------|---------------------|
-| ArkTS | ✅ 编译通过（与 Spec 矛盾） |
-| Java | ❌ enum 与 int 不可直接比较 |
-| Swift | ❌ enum 与 Int 不可直接比较 |
-
-#### 建议
-
-1. 编译器应检查关系运算符的操作数类型，枚举类型只能与同枚举类型比较
-2. 增加编译器测试覆盖枚举-整型跨类型比较场景
+**建议**：这可能是有意设计（类似 C# 枚举行为），建议更新 Spec 明确此行为。
 
 ---
-## 二、已验证规范一致行为
 
-经 es2panda + ark VM 实测，以下行为与 ArkTS spec §7.27.6 一致：
+### ID-02: string 基类型枚举成员与字符串类型关系运算 ⭐
 
-| 行为 | 验证方式 | 结果 |
-|------|---------|------|
-| 枚举关系运算符，同枚举类型可比较，底层类型为int时按int值比较，string时按字典序 | 10 compile-pass + 10 compile-fail + 10 runtime | ✅ 全部通过 |
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_27_06_013_FAIL_ENUM_VS_STRING.ets |
+| **实测结果** | 编译通过（无错误） |
+| **错误信息** | 无错误 |
 
-| 分类 | 数量 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 10 | 10 | 0 | 100% |
-| compile-fail | 10 | 10 | 0 | 100% |
-| runtime | 10 | 10 | 0 | 100% |
-| **总计** | **30** | **30** | **0** | **100%** |
+**描述**：Spec 要求枚举关系运算必须两个操作数都是相同枚举类型（7.27.6），代码 `StrEnum.A < "world"` 应产生编译时错误，但实际编译通过。编译器实现了枚举到字符串的隐式转换（enum → string），使 `StrEnum.A < "world"` 退化为字符串比较。
 
-**结论：30 个测试用例全部编译运行通过。本章节 Spec 约束与 es2panda + ark VM 行为一致。**
+**跨语言对比**：
 
-## 三、跨语言对比摘要
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `StrEnum.A < "world"` | 编译通过，允许 string 基枚举与 string 比较 |
+| Java | 枚举通过 `compareTo()` 基于 ordinal 比较 | 编译时错误 |
+| Swift | 需显式遵循 Comparable 协议 | 编译时错误 |
 
-| 维度 | ArkTS | Java | Swift | TypeScript |
-|------|-------|------|-------|-----------|
-| 编译验证 | ✅ es2panda — 30/30 通过 | ✅ javac | ✅ swiftc | ✅ tsc |
-| 运行时验证 | ✅ ark VM — 10/10 runtime 通过 | ✅ JVM | ✅ Swift runtime | ✅ Node.js |
-| Spec 一致性 | ✅ 与 arktsspecification.md §7.27.6 一致 | ✅ JLS SE21 | ✅ Swift 5.10 | N/A |
-| 语言差异 | ArkTS 静态类型 + nullish 安全 | 传统静态类型 | 严格静态 + Optional | 结构化类型 |
+**分类**：D 类（Spec 与实现不一致）
 
-## 四、分类汇总
+**建议**：这可能是有意设计（类似 C# 枚举行为），建议更新 Spec 明确此行为。
 
-| 条目 | 分类 |
-|------|------|
-| D-7.27-01：枚举类型与 int 关系比较未被拒绝 | Spec 与实现不一致 |
+**D 类分析**：两个 D 类问题属于同一模式——Spec 要求枚举关系运算必须两个操作数都是相同枚举类型（7.27.6），但实现允许枚举与基类型隐式转换后比较。
 
-## 五、关联记录
+---
 
-- 章节级异常汇总：[issue_report.md](../../issue_report.md)
-- 测试执行报告：[test_report_7.27.6.md](test_report_7.27.6.md)
-- 跨语言对比：[comparison_report_arkts_java_swift.md](comparison_report_arkts_java_swift.md)
-- 测试设计：[test_design_mindmap_7.27.6.md](test_design_mindmap_7.27.6.md)
+### ID-03: 枚举比较机制差异 ⭐
+
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | N/A（设计差异分析） |
+| **实测结果** | ArkTS 是三种语言中唯一原生支持枚举关系运算符的语言 |
+| **错误信息** | N/A |
+
+**描述**：ArkTS 使用 `<`, `<=`, `>`, `>=` 关系运算符直接比较枚举成员。Java 通过 `compareTo()` 方法（基于 ordinal）实现，语法为 `Color.RED.compareTo(Color.BLUE) < 0`。Swift 需显式遵循 Comparable 协议并实现 `<` 操作符。
+
+**跨语言对比**：
+
+| 语言 | 枚举比较方式 | 语法 |
+|------|-------------|------|
+| ArkTS | `<`, `<=`, `>`, `>=` 关系运算符 | `Color.Red < Color.Blue` |
+| Java | `compareTo()` 方法（基于 ordinal） | `Color.RED.compareTo(Color.BLUE) < 0` |
+| Swift | `Comparable` 协议（需自定义 `<`） | `Color.red < Color.blue` |
+
+**分类**：跨语言设计差异
+
+---
+
+### ID-04: Java 枚举序基于 ordinal 而非显式值 ⭐
+
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | N/A（设计差异分析） |
+| **实测结果** | ArkTS 和 Java 在枚举比较基准上存在根本差异 |
+| **错误信息** | N/A |
+
+**描述**：ArkTS 枚举比较基于枚举基类型值（int/long/byte/string），显式赋值影响比较结果。Java 枚举比较基于 ordinal()（声明顺序），显式赋值不影响比较结果。示例：`enum E { A = 100, B = 1 }`，ArkTS 中 `A > B`（100 > 1），Java 中 `E.A.compareTo(E.B)` 返回负值（ordinal 0 < ordinal 1，与值 100/1 无关）。
+
+**跨语言对比**：
+
+| 特性 | ArkTS | Java |
+|------|-------|------|
+| 比较基准 | 枚举基类型值（int/long/byte/string） | ordinal()（声明顺序） |
+| 显式赋值影响 | 影响比较结果 | 不影响（仅影响自定义字段） |
+
+**分类**：跨语言设计差异
+
+---
+
+### ID-05: Swift 枚举需显式遵循 Comparable 协议 ⭐
+
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | N/A（设计差异分析） |
+| **实测结果** | Swift 枚举默认不支持关系运算符 |
+| **错误信息** | N/A |
+
+**描述**：Swift 的枚举默认不支持关系运算符。必须显式为枚举声明 `Comparable` 协议遵循并实现 `<` 操作符（通常在 rawValue 基础上实现）。这与 ArkTS 的自动关系运算符支持不同。
+
+**跨语言对比**：
+
+| 语言 | 枚举关系比较支持 | 是否需要显式声明 |
+|------|-----------------|----------------|
+| ArkTS | 原生支持 `<`, `<=`, `>`, `>=` | 不需要 |
+| Java | 通过 `compareTo()` 基于 ordinal | 不需要 |
+| Swift | 需自定义实现 `<` | 需要显式遵循 Comparable 协议 |
+
+**分类**：跨语言设计差异
+
+---
+
+## 测试结果汇总
+
+| 分类 | 数量 | 状态 |
+|:----:|:----:|:----:|
+| **D 类**（Spec 与实现不一致） | **2** | Spec 要求编译时错误，实现允许隐式转换后比较 |
+| **跨语言设计差异** | **3** | 枚举比较机制、ordinal vs value、协议要求 |
+| **compile-pass** | **5/5** | 全部通过 |
+| **compile-fail（预期）** | **2/4** | 011 和 014 按预期报错 |
+| **compile-fail（意外通过）** | **2/4** | 012 和 013 为 D 类 |
+| **runtime** | **4/4** | 48 断言全部通过 |
+| **Java** | **18/18** | 全部通过 |
+| **Swift** | **36/36** | 全部通过 |

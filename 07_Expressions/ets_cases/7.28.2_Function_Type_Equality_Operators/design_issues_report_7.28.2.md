@@ -1,55 +1,83 @@
-# 7.28.2 函数类型相等运算符 - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
+# 7.28.2 Function Type Equality Operators — ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
-**报告日期：** 2026-06-23
-**测试用例数：** 30（10 compile-pass + 10 compile-fail + 10 runtime）
-**通过率：** 100%（30/30，0 unexpected）
-**编译器：** es2panda + ark VM (Linux native)
-**Spec 依据：** arktsspecification.md §7.28.2
+## 设计问题及差异清单
 
-## 报告分类口径
+本子章节未发现 D 类异常。全部 16 个测试用例通过，规范与实现完全一致。
 
-| 分类 | 含义 | 处理方式 |
-|------|------|----------|
-| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
-| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
-| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
-| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+### ID-01: Swift 不支持函数类型引用比较 ⭐
 
-## 一、已验证规范一致行为
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | N/A（设计差异分析） |
+| **实测结果** | Swift 编译时错误 "cannot check reference equality of functions" |
+| **错误信息** | cannot check reference equality of functions |
 
-经 es2panda + ark VM 实测，以下行为与 ArkTS spec §7.28.2 一致：
+**描述**：测试场景 `foo == foo` 或 `foo == bar` 在 ArkTS 和 Java 中均编译通过，运行时返回 true/false。但在 Swift 中产生编译时错误，因为 Swift 函数是结构化类型（struct-like），不提供引用恒等比较。而 ArkTS 和 Java 中函数/方法引用是引用类型对象。
 
-| 行为 | 验证方式 | 结果 |
-|------|---------|------|
-| 函数类型相等运算符，比较运行时函数对象引用 | 10 compile-pass + 10 compile-fail + 10 runtime | ✅ 全部通过 |
+**跨语言对比**：
 
-| 分类 | 数量 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 10 | 10 | 0 | 100% |
-| compile-fail | 10 | 10 | 0 | 100% |
-| runtime | 10 | 10 | 0 | 100% |
-| **总计** | **30** | **30** | **0** | **100%** |
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `foo == foo` | 编译通过，运行时 true/false |
+| Java | `foo == foo` | 编译通过，引用相等比较 |
+| Swift | `foo == foo` | 编译时错误 |
 
-**结论：30 个测试用例全部编译运行通过。本章节 Spec 约束与 es2panda + ark VM 行为一致。**
+**分类**：跨语言设计差异
 
-## 二、跨语言对比摘要
+---
 
-| 维度 | ArkTS | Java | Swift | TypeScript |
-|------|-------|------|-------|-----------|
-| 编译验证 | ✅ es2panda — 30/30 通过 | ✅ javac | ✅ swiftc | ✅ tsc |
-| 运行时验证 | ✅ ark VM — 10/10 runtime 通过 | ✅ JVM | ✅ Swift runtime | ✅ Node.js |
-| Spec 一致性 | ✅ 与 arktsspecification.md §7.28.2 一致 | ✅ JLS SE21 | ✅ Swift 5.10 | N/A |
-| 语言差异 | ArkTS 静态类型 + nullish 安全 | 传统静态类型 | 严格静态 + Optional | 结构化类型 |
+### ID-02: ===/!== 运算符对函数类型的作用 ⭐
 
-## 三、分类汇总
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | N/A（设计差异分析） |
+| **实测结果** | ArkTS 中 === 与 == 语义相同，Java 无此运算符，Swift 不适用于函数类型 |
+| **错误信息** | N/A |
 
-| 条目 | 分类 |
-|------|------|
-| — 本章节无差异点 | 已验证规范一致行为 |
+**描述**：ArkTS 中 `foo === foo` 与 `foo == foo` 语义相同。Java 无 `===` 运算符。Swift 的 `===` 仅对类实例有效，不适用于函数类型。
 
-## 四、关联记录
+**跨语言对比**：
 
-- 章节级异常汇总：[issue_report.md](../../issue_report.md)
-- 测试执行报告：[test_report_7.28.2.md](test_report_7.28.2.md)
-- 跨语言对比：[comparison_report_arkts_java_swift.md](comparison_report_arkts_java_swift.md)
-- 测试设计：[test_design_mindmap_7.28.2.md](test_design_mindmap_7.28.2.md)
+| 语言 | 函数 ===/!== |
+|------|:-----------:|
+| ArkTS | `foo === foo` 与 `foo == foo` 语义相同 |
+| Java | 无 === 运算符 |
+| Swift | `===` 仅对类实例有效，不适用于函数类型 |
+
+**分类**：跨语言设计差异
+
+---
+
+### ID-03: 实例方法引用的绑定比较 ⭐
+
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | N/A（设计差异分析） |
+| **实测结果** | ArkTS 和 Java 均支持实例方法引用比较 |
+| **错误信息** | N/A |
+
+**描述**：ArkTS 中 `a.method == aa.method` 返回 false（绑定实例不同）。Java 中 `bound1 != bound2` 返回 true（不同方法引用对象）。Swift 不支持实例方法引用比较。
+
+**跨语言对比**：
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `a.method == aa.method` | false（绑定实例不同） |
+| Java | `bound1 != bound2` | true（不同方法引用对象） |
+| Swift | 不支持 | 不支持 |
+
+**分类**：跨语言设计差异
+
+---
+
+## 测试结果汇总
+
+| 分类 | 数量 | 状态 |
+|:----:|:----:|:----:|
+| **D 类**（Spec 与实现不一致） | **0** | 无异常 |
+| **跨语言设计差异** | **3** | 函数比较、===、实例绑定、闭包支持 |
+| **compile-pass** | **9/9** | 全部通过 |
+| **compile-fail（预期）** | **3/3** | 全部按预期报错 |
+| **runtime** | **4/4** | 36 断言全部通过 |
+| **Java** | **6/6** | 全部通过 |
+| **Swift** | **3/3** | 全部通过（类包装器方式） |

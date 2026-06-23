@@ -1,55 +1,64 @@
-# 7.27.4 布尔关系运算符 - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
+# 7.27.4 Boolean Relational Operators — ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
-**报告日期：** 2026-06-23
-**测试用例数：** 30（10 compile-pass + 10 compile-fail + 10 runtime）
-**通过率：** 100%（30/30，0 unexpected）
-**编译器：** es2panda + ark VM (Linux native)
-**Spec 依据：** arktsspecification.md §7.27.4
+## 设计问题及差异清单
 
-## 报告分类口径
+**D 类（Spec 与实现不一致）**：无。所有 15 用例通过，与 Spec 完全一致。
 
-| 分类 | 含义 | 处理方式 |
-|------|------|----------|
-| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
-| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
-| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
-| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+---
 
-## 一、已验证规范一致行为
+### ID-01: 语法形式差异（运算符 vs Boolean.compare() vs 需自定义函数）
 
-经 es2panda + ark VM 实测，以下行为与 ArkTS spec §7.27.4 一致：
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | N/A（跨语言设计差异） |
+| **实测结果** | ArkTS 使用 `<` `<=` `>` `>=` 直接比较 boolean；Java 需 `Boolean.compare()` 返回 int 后手动比较；Swift 的 Bool 不遵循 Comparable 协议，需自定义函数 |
+| **错误信息** | 无错误 |
 
-| 行为 | 验证方式 | 结果 |
-|------|---------|------|
-| boolean关系运算符，false < true，仅支持< > <= >= | 10 compile-pass + 10 compile-fail + 10 runtime | ✅ 全部通过 |
+**描述**：ArkTS 的 `boolean` 类型原生支持四个关系运算符，语法最简洁。Java 需要 `Boolean.compare(a, b)` 返回 int 后再与 0 比较。Swift 的 `Bool` 不遵循 `Comparable` 协议，无法使用 `<` `<=` `>` `>=` 运算符，需手动实现 `!a && b`（小于）等逻辑。
 
-| 分类 | 数量 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 10 | 10 | 0 | 100% |
-| compile-fail | 10 | 10 | 0 | 100% |
-| runtime | 10 | 10 | 0 | 100% |
-| **总计** | **30** | **30** | **0** | **100%** |
+**跨语言对比**：
 
-**结论：30 个测试用例全部编译运行通过。本章节 Spec 约束与 es2panda + ark VM 行为一致。**
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `false < true` | ✅ 关系运算符直接使用，返回 `boolean`，最简洁 |
+| Java | `Boolean.compare(false, true) < 0` | ⚠️ 间接支持，`Boolean.compare()` 返回 `int`，需手动与 0 比较 |
+| Swift | 自定义 `lt(a,b)` / `le(a,b)` 等 | ❌ 不支持，`Bool` 不遵循 `Comparable` 协议，需自定义辅助函数 |
 
-## 二、跨语言对比摘要
+**分类**：跨语言设计差异
 
-| 维度 | ArkTS | Java | Swift | TypeScript |
-|------|-------|------|-------|-----------|
-| 编译验证 | ✅ es2panda — 30/30 通过 | ✅ javac | ✅ swiftc | ✅ tsc |
-| 运行时验证 | ✅ ark VM — 10/10 runtime 通过 | ✅ JVM | ✅ Swift runtime | ✅ Node.js |
-| Spec 一致性 | ✅ 与 arktsspecification.md §7.27.4 一致 | ✅ JLS SE21 | ✅ Swift 5.10 | N/A |
-| 语言差异 | ArkTS 静态类型 + nullish 安全 | 传统静态类型 | 严格静态 + Optional | 结构化类型 |
+**建议**：保持现状。ArkTS 在布尔比较上有相对于 Java 和 Swift 的语法优势。
 
-## 三、分类汇总
+---
 
-| 条目 | 分类 |
-|------|------|
-| — 本章节无差异点 | 已验证规范一致行为 |
+### ID-02: Bool 的 Comparable 遵从性差异
 
-## 四、关联记录
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | N/A（跨语言设计差异） |
+| **实测结果** | ArkTS boolean 原生支持关系运算符；Java 间接通过 Boolean.compare() 支持；Swift Bool 不遵循 Comparable 协议，完全不支持运算符比较 |
+| **错误信息** | 无错误 |
 
-- 章节级异常汇总：[issue_report.md](../../issue_report.md)
-- 测试执行报告：[test_report_7.27.4.md](test_report_7.27.4.md)
-- 跨语言对比：[comparison_report_arkts_java_swift.md](comparison_report_arkts_java_swift.md)
-- 测试设计：[test_design_mindmap_7.27.4.md](test_design_mindmap_7.27.4.md)
+**描述**：ArkTS 的 `boolean` 可直接使用 `<`, `<=`, `>`, `>=`。Java 的 `Boolean.compare(a, b)` 返回 int 表示顺序。Swift 的 `Bool` 不遵循 `Comparable` 协议，需手动实现 `!a && b`（小于）等逻辑。这是 ArkTS 在布尔比较上相对于 Swift 的语法优势。
+
+**跨语言对比**：
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `false < true` | ✅ 原生支持 `<=>` 比较 |
+| Java | `Boolean.compare(a, b)` | ⚠️ 间接支持，返回 `int` 表示顺序 |
+| Swift | N/A | ❌ 不支持，`Bool` 不遵循 `Comparable` 协议 |
+
+**分类**：跨语言设计差异
+
+**建议**：无需修改。ArkTS 在布尔比较上相对于 Swift 有显著语法优势。
+
+---
+
+### 结论
+
+- **0 D 类异常**：实现与 Spec 完全一致。
+- **ArkTS 语法最简洁**：`boolean` 类型原生支持四个关系运算符。
+- **Java 需要 `Boolean.compare()`**：返回 int，需手动与 0 比较。
+- **Swift 不支持 Bool 运算符比较**：需自定义辅助函数，这是 ArkTS 相对 Swift 的显著语法优势。
+
+---

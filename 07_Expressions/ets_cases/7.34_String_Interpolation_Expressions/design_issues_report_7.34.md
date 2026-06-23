@@ -1,55 +1,51 @@
-# 7.34 字符串插值表达式 - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
+# 7.34 String Interpolation Expressions — ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
-**报告日期：** 2026-06-23
-**测试用例数：** 30（10 compile-pass + 10 compile-fail + 10 runtime）
-**通过率：** 100%（30/30，0 unexpected）
-**编译器：** es2panda + ark VM (Linux native)
-**Spec 依据：** arktsspecification.md §7.34
+## 设计问题及差异清单
 
-## 报告分类口径
+当前章节共识别 **0 个 D 类问题**（Spec 与实现不一致）和 **2 个跨语言设计差异**。全部 13 个用例通过。
 
-| 分类 | 含义 | 处理方式 |
-|------|------|----------|
-| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
-| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
-| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
-| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+### ID-01: 原生字符串插值语法支持 ⭐
 
-## 一、已验证规范一致行为
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_34_001~010 |
+| **实测结果** | ArkTS `${expr}` 插值语法、Swift `\(expr)` 插值语法、Java 无原生支持 |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
 
-经 es2panda + ark VM 实测，以下行为与 ArkTS spec §7.34 一致：
+**描述**：语言是否提供原生字符串插值语法。ArkTS 使用反引号 `` ` `` 界定字符串，用 `${}` 嵌入表达式；Swift 使用双引号/三引号界定字符串，用 `\(expr)` 嵌入表达式；Java 无原生字符串插值语法，需使用 `+` 字符串拼接或 `String.format()` / `MessageFormat`。
 
-| 行为 | 验证方式 | 结果 |
-|------|---------|------|
-| 字符串插值，`...${expr}...`形式，expr可为任意类型，自动调用toString() | 10 compile-pass + 10 compile-fail + 10 runtime | ✅ 全部通过 |
+**跨语言对比**：
 
-| 分类 | 数量 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 10 | 10 | 0 | 100% |
-| compile-fail | 10 | 10 | 0 | 100% |
-| runtime | 10 | 10 | 0 | 100% |
-| **总计** | **30** | **30** | **0** | **100%** |
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `` `...${expr}...` `` | 使用反引号界定字符串，`${}` 嵌入表达式 |
+| Java | 无原生语法 | 需使用 `+` 字符串拼接或 `String.format()` / `MessageFormat` |
+| Swift | `"...\(expr)..."` | 使用双引号/三引号界定字符串，`\(expr)` 嵌入表达式 |
 
-**结论：30 个测试用例全部编译运行通过。本章节 Spec 约束与 es2panda + ark VM 行为一致。**
+**分类**：跨语言设计差异
 
-## 二、跨语言对比摘要
+**建议**：保持当前设计，ArkTS 的 `${expr}` 语法与 Swift 功能等价，简洁直观。
 
-| 维度 | ArkTS | Java | Swift | TypeScript |
-|------|-------|------|-------|-----------|
-| 编译验证 | ✅ es2panda — 30/30 通过 | ✅ javac | ✅ swiftc | ✅ tsc |
-| 运行时验证 | ✅ ark VM — 10/10 runtime 通过 | ✅ JVM | ✅ Swift runtime | ✅ Node.js |
-| Spec 一致性 | ✅ 与 arktsspecification.md §7.34 一致 | ✅ JLS SE21 | ✅ Swift 5.10 | N/A |
-| 语言差异 | ArkTS 静态类型 + nullish 安全 | 传统静态类型 | 严格静态 + Optional | 结构化类型 |
+---
 
-## 三、分类汇总
+### ID-02: null/undefined 的隐式字符串转换行为 ⭐
 
-| 条目 | 分类 |
-|------|------|
-| — 本章节无差异点 | 已验证规范一致行为 |
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_34_005_PASS_BOOLEAN_NULL_INTERPOLATION |
+| **实测结果** | ArkTS 中 `undefined` → 输出 "undefined"；`null` → 输出 "null"；Swift 编译错误 |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
 
-## 四、关联记录
+**描述**：嵌入表达式为 null 或 undefined 时的插值结果。ArkTS 中 `undefined` 输出 "undefined"、`null` 输出 "null"，与 JS 行为一致；Java 中 `null` 输出 "null"（`String.valueOf(null)` 返回 "null"）；Swift 中 Optional 类型（`Int?`）不满足 `ExpressibleByStringInterpolation` 协议，需显式解包（`\(n ?? 0)`），否则编译错误。
 
-- 章节级异常汇总：[issue_report.md](../../issue_report.md)
-- 测试执行报告：[test_report_7.34.md](test_report_7.34.md)
-- 跨语言对比：[comparison_report_arkts_java_swift.md](comparison_report_arkts_java_swift.md)
-- 测试设计：[test_design_mindmap_7.34.md](test_design_mindmap_7.34.md)
+**跨语言对比**：
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `` `nil = ${n}` ``（n: int\|undefined） | 运行时输出 "nil = undefined" |
+| Java | `"nil = " + n`（n=null） | 输出 "nil = null" |
+| Swift | `"nil = \(n)"`（n: Int?） | 编译错误：Optional 不满足 StringInterpolationProtocol |
+
+**分类**：跨语言设计差异（ArkTS 隐式转换 vs Swift 严格类型检查）
+
+**建议**：ArkTS 隐式转换为 "undefined"/"null" 字符串的行为与 JavaScript 一致，对开发者友好。建议在 Spec 中明确记录此行为。

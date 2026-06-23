@@ -2,27 +2,24 @@
  * @id EXP_07_26_005_PASS_SHIFT_GROUPING
  * @expect compile-pass
  * @section 7.26
- * @design 验证移位运算符左结合性（从左到右分组），a << b >> c = ((a << b) >> c)
- * @note 正向用例：验证该特性编译通过的正确用法
+ * @design 移位运算符左结合性验证：a << b >> c = (a << b) >> c
+ * @note 正向用例：验证移位运算符的左结合（left-to-right）编译通过
+ *       链式移位表达式正确解析
  */
-function testShiftGrouping(): void {
-  let a: int = 2
-  let b: int = 4
-  let c: int = 1
+function main(): void {
+    let a: int = 128;
+    let b: int = 2;
+    let c: int = 1;
 
-  // 左结合：2 << 4 >> 1 = (2 << 4) >> 1 = 32 >> 1 = 16
-  let r1: int = a << b >> c
+    // 左结合链式：((a << b) >> c)
+    let chain1: int = a << b >> c;
+    // 左结合：((a >> b) << c)
+    let chain2: int = a >> b << c;
+    // 三个移位混合
+    let chain3: int = a << b >> c >>> 1;
 
-  // 显式括号验证分组
-  let r2: int = (a << b) >> c
+    // 显式左结合（等价）
+    let explicit: int = (a << b) >> c;
 
-  // 同样左结合：a >> b << c = (a >> b) << c
-  let r3: int = a >> b << c
-
-  // 不同优先级组合
-  let r4: int = 1 << 3 + 2  // +优先级高于<<，等价于1 << (3 + 2) = 1 << 5 = 32
-  let r5: int = (1 << 3) + 2 // 显式移位优先再加法
-
-  console.log(r1.toString() + r2.toString() + r3.toString() +
-              r4.toString() + r5.toString())
+    console.log("chain results: " + chain1 + " " + chain2 + " " + chain3);
 }

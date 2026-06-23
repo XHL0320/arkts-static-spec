@@ -1,1 +1,5 @@
 08_Statements.zip
+
+# 排除交叉验证相关的内容（视具体类型而定）
+cross_lang_verify/
+

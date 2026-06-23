@@ -1,55 +1,57 @@
-# 7.27.2 Bigint关系运算符 - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
+# 7.27.2 Bigint Relational Operators — ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
-**报告日期：** 2026-06-23
-**测试用例数：** 30（10 compile-pass + 10 compile-fail + 10 runtime）
-**通过率：** 100%（30/30，0 unexpected）
-**编译器：** es2panda + ark VM (Linux native)
-**Spec 依据：** arktsspecification.md §7.27.2
+## 设计问题及差异清单
 
-## 报告分类口径
+**D 类（Spec 与实现不一致）**：无。所有 19 用例通过，与 Spec 完全一致。
 
-| 分类 | 含义 | 处理方式 |
-|------|------|----------|
-| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
-| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
-| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
-| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+**Spec 内部一致性说明**：ArkTS spec 的 `types.md`（Type bigint 章节）有一行一般性表述："Relational operators that use an operand of type bigint along with an operand of another type are illegal." 然而 `expressions.md` 的 7.27.2 小节明确提供了混合 bigint+数值类型关系运算的详细转换规则和示例代码。编译器实际行为遵循 expressions.md 7.27.2 的详细规则，未对混合 bigint+数值类型关系运算报错。这属于 Spec 内部一般性规则与特例之间的不一致，而非实现缺陷。已确认实现正确遵循了更具体的 7.27.2 规则。
 
-## 一、已验证规范一致行为
+---
 
-经 es2panda + ark VM 实测，以下行为与 ArkTS spec §7.27.2 一致：
+### ID-01: 隐式混合类型转换
 
-| 行为 | 验证方式 | 结果 |
-|------|---------|------|
-| bigint关系运算符，操作数为bigint，按数学整数值比较，无精度损失 | 10 compile-pass + 10 compile-fail + 10 runtime | ✅ 全部通过 |
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | N/A（跨语言设计差异） |
+| **实测结果** | ArkTS 允许 bigint 与 int/long/byte/short/double 自动混合比较；Java/Swift 需显式转换 |
+| **错误信息** | 无错误 |
 
-| 分类 | 数量 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 10 | 10 | 0 | 100% |
-| compile-fail | 10 | 10 | 0 | 100% |
-| runtime | 10 | 10 | 0 | 100% |
-| **总计** | **30** | **30** | **0** | **100%** |
+**描述**：ArkTS 7.27.2 是唯一允许 bigint 与数值类型自动混合比较的语言。这简化了混合 bigint/数值运算的代码编写，但可能导致意外的类型转换（如大 bigint 转 double 时的精度损失）。
 
-**结论：30 个测试用例全部编译运行通过。本章节 Spec 约束与 es2panda + ark VM 行为一致。**
+**跨语言对比**：
 
-## 二、跨语言对比摘要
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `2n > 1` | ✅ 自动转换 int→bigint，支持混合类型比较 |
+| Java | `BigInteger.valueOf(2).compareTo(BigInteger.valueOf(1)) > 0` | ❌ 需显式调用方法，不支持运算符语法 |
+| Swift | `Int64(2) > 1` | ❌ 需显式构造 Int64，Swift 无内建 bigint 类型 |
 
-| 维度 | ArkTS | Java | Swift | TypeScript |
-|------|-------|------|-------|-----------|
-| 编译验证 | ✅ es2panda — 30/30 通过 | ✅ javac | ✅ swiftc | ✅ tsc |
-| 运行时验证 | ✅ ark VM — 10/10 runtime 通过 | ✅ JVM | ✅ Swift runtime | ✅ Node.js |
-| Spec 一致性 | ✅ 与 arktsspecification.md §7.27.2 一致 | ✅ JLS SE21 | ✅ Swift 5.10 | N/A |
-| 语言差异 | ArkTS 静态类型 + nullish 安全 | 传统静态类型 | 严格静态 + Optional | 结构化类型 |
+**分类**：跨语言设计差异
 
-## 三、分类汇总
+**建议**：保持现状。bigint 关系运算符实现完全符合 spec 7.27.2 定义，无需修改。
 
-| 条目 | 分类 |
-|------|------|
-| — 本章节无差异点 | 已验证规范一致行为 |
+---
 
-## 四、关联记录
+### ID-02: 任意精度整数支持
 
-- 章节级异常汇总：[issue_report.md](../../issue_report.md)
-- 测试执行报告：[test_report_7.27.2.md](test_report_7.27.2.md)
-- 跨语言对比：[comparison_report_arkts_java_swift.md](comparison_report_arkts_java_swift.md)
-- 测试设计：[test_design_mindmap_7.27.2.md](test_design_mindmap_7.27.2.md)
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | N/A（跨语言设计差异） |
+| **实测结果** | ArkTS 内建 bigint 字面量语法 `2n`；Java 通过 BigInteger 标准库类支持；Swift 标准库无任意精度整数 |
+| **错误信息** | 无错误 |
+
+**描述**：ArkTS 和 Java 都支持任意精度整数，但 ArkTS 将 bigint 作为语言内建类型（有字面量写法和操作符），Java 将其作为标准库类（需方法调用）。Swift 标准库无任意精度整数，限制了其处理大整数场景。
+
+**跨语言对比**：
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `2n` | ✅ 内建 bigint 字面量语法，关系运算符直接使用 |
+| Java | `BigInteger.valueOf(2)` | ✅ 标准库 BigInteger 类，需 compareTo() 方法 |
+| Swift | N/A | ❌ 无内建任意精度整数，仅 Int64 范围（2^63-1） |
+
+**分类**：跨语言设计差异
+
+**建议**：1. 更新 types.md，将 Type bigint 章节中的"禁止混合 relational operators"一般性表述改为"见 7.27.2 详细规则"的引用，解决内部不一致。2. 明确说明 bigint 与 double/float 混合比较的精度损失场景（bigint→double 对大值有精度损失）。
+
+---

@@ -2,24 +2,26 @@
 # 07_Expressions 章节运行脚本
 # 用法：
 #   bash run_expressions_cases_wsl.sh
-#   SECTIONS="7.26_Shift_Expressions" bash run_expressions_cases_wsl.sh
+#   SECTIONS="7.1.1_Operator_Precedence" bash run_expressions_cases_wsl.sh
 
 set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CASE_ROOT="${SCRIPT_DIR}/ets_cases"
 
-# 工具链路径
-ARK_HOME="/home/nnd/projects/arkts/arkcompiler/runtime_core/static_core/out"
-ES2PANDA="${ARK_HOME}/bin/es2panda"
-ARK="${ARK_HOME}/bin/ark"
-BOOT_PANDA="${ARK_HOME}/pandastdlib/arkstdlib.abc"
-BOOT_ETS="${ARK_HOME}/plugins/ets/etsstdlib.abc"
+# 工具链路径（适配 WSL 环境变量，若未设置则使用默认路径）
+DEV_HOME="${DEV_HOME:-/home/cyh/arkcompiler}"
+PANDA_BUILD="${PANDA_BUILD:-${DEV_HOME}/runtime_core/static_core/out}"
+ES2PANDA="${ES2PANDA:-${PANDA_BUILD}/bin/es2panda}"
+ARK="${ARK:-${PANDA_BUILD}/bin/ark}"
+BOOT_PANDA="${BOOT_PANDA:-${PANDA_BUILD}/pandastdlib/arkstdlib.abc}"
+BOOT_ETS="${BOOT_ETS:-${PANDA_BUILD}/plugins/ets/etsstdlib.abc}"
 
 # 验证工具链
 for tool in "$ES2PANDA" "$ARK" "$BOOT_PANDA" "$BOOT_ETS"; do
   if [ ! -e "$tool" ]; then
     echo "ERROR: missing $tool" >&2
+    echo "Please set DEV_HOME or PANDA_BUILD to your ArkCompiler build output directory." >&2
     exit 1
   fi
 done

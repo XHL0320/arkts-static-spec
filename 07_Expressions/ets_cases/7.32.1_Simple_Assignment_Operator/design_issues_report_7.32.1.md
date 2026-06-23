@@ -1,55 +1,93 @@
-# 7.32.1 简单赋值运算符 - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
+# 7.32.1 Simple Assignment Operator — ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
-**报告日期：** 2026-06-23
-**测试用例数：** 30（10 compile-pass + 10 compile-fail + 10 runtime）
-**通过率：** 100%（30/30，0 unexpected）
-**编译器：** es2panda + ark VM (Linux native)
-**Spec 依据：** arktsspecification.md §7.32.1
+## 设计问题及差异清单
 
-## 报告分类口径
+### ID-01: readonly array 赋值保护未实现 ⭐
 
-| 分类 | 含义 | 处理方式 |
-|------|------|----------|
-| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
-| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
-| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
-| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_32_01_008_FAIL_READONLY_ARRAY |
+| **实测结果** | 编译通过（期望编译时错误） |
+| **错误信息** | 无错误 |
 
-## 一、已验证规范一致行为
+**描述**：根据 ArkTS spec 要求，readonly array 不能被赋值为 non-readonly array。但 ArkTS 编译器实际允许 `readonly int[] = int[]` 的赋值通过。
 
-经 es2panda + ark VM 实测，以下行为与 ArkTS spec §7.32.1 一致：
+**跨语言对比**：
 
-| 行为 | 验证方式 | 结果 |
-|------|---------|------|
-| 简单赋值（=），右结合，左侧必须为左值，类型必须兼容 | 10 compile-pass + 10 compile-fail + 10 runtime | ✅ 全部通过 |
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `readonly int[] a = [1,2,3]; let b: int[] = [4,5,6]; a = b;` | ✅ 编译通过（期望错误） |
+| Java | `final int[] a = {1,2,3}; int[] b = {4,5,6}; a = b;` | ❌ 编译错误（final 数组引用不可变） |
+| Swift | `let a = [1,2,3]; var b = [4,5,6]; a = b` | ❌ 编译错误（let 常量不可赋值） |
 
-| 分类 | 数量 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 10 | 10 | 0 | 100% |
-| compile-fail | 10 | 10 | 0 | 100% |
-| runtime | 10 | 10 | 0 | 100% |
-| **总计** | **30** | **30** | **0** | **100%** |
+**分类**：D 类 — Spec 与实现不一致
 
-**结论：30 个测试用例全部编译运行通过。本章节 Spec 约束与 es2panda + ark VM 行为一致。**
+**建议**：ArkTS 编译器应按照 spec 要求，在 readonly array 被赋值为 non-readonly array 时报编译时错误。
 
-## 二、跨语言对比摘要
+---
 
-| 维度 | ArkTS | Java | Swift | TypeScript |
-|------|-------|------|-------|-----------|
-| 编译验证 | ✅ es2panda — 30/30 通过 | ✅ javac | ✅ swiftc | ✅ tsc |
-| 运行时验证 | ✅ ark VM — 10/10 runtime 通过 | ✅ JVM | ✅ Swift runtime | ✅ Node.js |
-| Spec 一致性 | ✅ 与 arktsspecification.md §7.32.1 一致 | ✅ JLS SE21 | ✅ Swift 5.10 | N/A |
-| 语言差异 | ArkTS 静态类型 + nullish 安全 | 传统静态类型 | 严格静态 + Optional | 结构化类型 |
+### ID-02: readonly tuple 赋值保护未实现 ⭐
 
-## 三、分类汇总
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_32_01_009_FAIL_READONLY_TUPLE |
+| **实测结果** | 编译通过（期望编译时错误） |
+| **错误信息** | 无错误 |
 
-| 条目 | 分类 |
-|------|------|
-| — 本章节无差异点 | 已验证规范一致行为 |
+**描述**：根据 ArkTS spec 要求，readonly tuple 不能被赋值为 non-readonly tuple。但 ArkTS 编译器实际允许该赋值通过。
 
-## 四、关联记录
+**跨语言对比**：
 
-- 章节级异常汇总：[issue_report.md](../../issue_report.md)
-- 测试执行报告：[test_report_7.32.1.md](test_report_7.32.1.md)
-- 跨语言对比：[comparison_report_arkts_java_swift.md](comparison_report_arkts_java_swift.md)
-- 测试设计：[test_design_mindmap_7.32.1.md](test_design_mindmap_7.32.1.md)
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `readonly [int, string] t = [1, "a"]; let p: [int, string] = [2, "b"]; t = p;` | ✅ 编译通过（期望错误） |
+| Java | 无原生元组类型 | N/A |
+| Swift | `let t: (Int, String) = (1, "a"); var p: (Int, String) = (2, "b"); t = p` | ❌ 编译错误（let 常量不可赋值） |
+
+**分类**：D 类 — Spec 与实现不一致
+
+**建议**：ArkTS 编译器应按照 spec 要求，在 readonly tuple 被赋值为 non-readonly tuple 时报编译时错误。
+
+---
+
+### ID-03: Swift 不支持链式赋值
+
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_32_01_010_RUNTIME_SEMANTICS（链式赋值部分） |
+| **实测结果** | ArkTS/Java 支持 `a = b = c`，Swift 编译错误 |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
+
+**描述**：Swift 的 `=` 运算符返回 Void，因此不支持 `a = b = c` 链式赋值语法。ArkTS 和 Java 均支持该语法（右结合）。
+
+**跨语言对比**：
+
+| 语言 | `x = y = z = 77` 结果 |
+|------|----------------------|
+| ArkTS | ✅ x=77, y=77, z=77 |
+| Java | ✅ x=77, y=77, z=77 |
+| Swift | ❌ 编译错误（= 返回 Void） |
+
+**分类**：符合 ArkTS spec 的语言设计差异
+
+---
+
+### ID-04: 越界异常类型差异
+
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_32_01_011_RUNTIME_RANGEERROR_NEGATIVE, EXP_07_32_01_012_RUNTIME_RANGEERROR_TOO_LARGE |
+| **实测结果** | 三种语言越界异常类型不同 |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
+
+**描述**：数组越界时，三种语言抛出不同的异常类型，可捕获性也不同。
+
+**跨语言对比**：
+
+| 语言 | 越界异常 | 可捕获性 |
+|------|---------|---------|
+| ArkTS | RangeError | 可捕获（try-catch） |
+| Java | ArrayIndexOutOfBoundsException | 可捕获 |
+| Swift | fatalError | 不可捕获，程序终止 |
+
+**分类**：符合 ArkTS spec 的语言设计差异

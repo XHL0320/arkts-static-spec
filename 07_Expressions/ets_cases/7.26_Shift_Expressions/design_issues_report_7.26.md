@@ -1,98 +1,106 @@
-# 7.26 移位表达式 - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
+# 7.26 Shift Expressions — ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
-**报告日期：** 2026-06-23
-**测试用例数：** 30（10 compile-pass + 10 compile-fail + 10 runtime）
-**通过率：** 100%（30/30，0 unexpected）
-**编译器：** es2panda + ark VM (Linux native)
-**Spec 依据：** arktsspecification.md §7.26
+## 设计问题及差异清单
 
-## 报告分类口径
+### ID-01: 无符号右移 >>> 支持
 
-| 分类 | 含义 | 处理方式 |
-|------|------|----------|
-| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
-| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
-| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
-| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | 多个涉及 `>>>` 移位运算的用例 |
+| **实测结果** | ArkTS 原生支持 `>>>` 对 int/long 的无符号右移 |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
 
-## 一、Spec 与实现不一致
+**描述**：ArkTS 和 Java 都原生支持 `>>>`（无符号右移），这是 C/Java 语言家族的传统能力。Swift 从安全设计出发没有提供 `>>>` 运算符——无符号右移可以通过先将有符号整数转换为无符号类型再右移来实现（`UInt(bitPattern:)`）。
 
-### 问题 D-7.26-01：nullish 类型参与移位运算未被拒绝
+**跨语言对比**：
 
-**类别：** D 类（Spec 与实现不一致）
-**复现用例：** EXP_07_26_014_FAIL_NULLISH_SHIFT
+| 语言 | 支持 `>>>` | 说明 |
+|------|:---------:|------|
+| ArkTS | ✅ | 对 int/long 均支持 |
+| Java | ✅ | 对 int/long 均支持 |
+| Swift | ❌ | 需使用 `UInt(bitPattern:)` 自定义实现 |
 
-#### Spec 规则
+**分类**：符合 ArkTS spec 的语言设计差异
 
-§7.26 移位表达式要求操作数为数值类型或 bigint：
-> The type of each operand of a shift operator must be a numeric type or ``bigint``, or a compile-time error occurs.
-
-#### 实测行为
-
-```typescript
-function testNullishShift(): void {
-  let a: int | null = null
-  let b: int = a << 2  // 实际编译通过
-}
-```
-
-#### 预期
-
-应编译失败，`int | null` 不是规范要求的 numeric type 或 bigint。
-
-#### 实际
-
-编译通过，es2panda 未检查 nullish union 类型作为移位操作数。
-
-#### 跨语言对比
-
-| 语言 | nullish 类型移位 |
-|------|-----------------|
-| ArkTS | ✅ 编译通过（与 Spec 矛盾） |
-| Java | ❌ null 参与运算抛 NPE |
-| Swift | ❌ Optional<Int> 不可直接移位，需解包 |
-
-#### 建议
-
-1. 编译器在移位操作数类型检查中应考虑 nullish union，拒绝 `T | null` / `T | undefined` 等非纯数值类型
-2. 增加编译器测试覆盖 nullish 移位场景
+**建议**：保持现状，ArkTS 移位实现与 Java 完全一致，符合 Java 开发者预期。
 
 ---
-## 二、已验证规范一致行为
 
-经 es2panda + ark VM 实测，以下行为与 ArkTS spec §7.26 一致：
+### ID-02: 整数溢出处理方式
 
-| 行为 | 验证方式 | 结果 |
-|------|---------|------|
-| 移位表达式（<< >> >>>），操作数必须为数值类型或bigint，double/float操作数先截断为long/int，int用5-bit/long用6-bit掩码指定移位距离 | 10 compile-pass + 10 compile-fail + 10 runtime | ✅ 全部通过 |
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | 多个涉及移位溢出的用例 |
+| **实测结果** | ArkTS `INT_MAX << 1` = `-2`（静默截断） |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
 
-| 分类 | 数量 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 10 | 10 | 0 | 100% |
-| compile-fail | 10 | 10 | 0 | 100% |
-| runtime | 10 | 10 | 0 | 100% |
-| **总计** | **30** | **30** | **0** | **100%** |
+**描述**：ArkTS 和 Java 在移位运算中采用静默溢出（二进制补码截断），这是性能优先的设计选择。Swift 默认在溢出时抛出运行时错误，要求开发者显式使用 `&<<` / `&>>` 表示需要溢出行为。这不是实现缺陷，而是安全设计哲学差异。
 
-**结论：30 个测试用例全部编译运行通过。本章节 Spec 约束与 es2panda + ark VM 行为一致。**
+**跨语言对比**：
 
-## 三、跨语言对比摘要
+| 语言 | `INT_MAX << 1` | 行为 |
+|------|:-------------:|------|
+| ArkTS | `2147483647 << 1` | `-2`（静默截断） |
+| Java | `Integer.MAX_VALUE << 1` | `-2`（静默截断） |
+| Swift | `Int32.max << 1` | ❌ 运行时错误 |
+| Swift | `Int32.max &<< 1` | `-2`（需 `&<<`） |
 
-| 维度 | ArkTS | Java | Swift | TypeScript |
-|------|-------|------|-------|-----------|
-| 编译验证 | ✅ es2panda — 30/30 通过 | ✅ javac | ✅ swiftc | ✅ tsc |
-| 运行时验证 | ✅ ark VM — 10/10 runtime 通过 | ✅ JVM | ✅ Swift runtime | ✅ Node.js |
-| Spec 一致性 | ✅ 与 arktsspecification.md §7.26 一致 | ✅ JLS SE21 | ✅ Swift 5.10 | N/A |
-| 语言差异 | ArkTS 静态类型 + nullish 安全 | 传统静态类型 | 严格静态 + Optional | 结构化类型 |
+**分类**：符合 ArkTS spec 的语言设计差异
 
-## 四、分类汇总
+**建议**：保持现状。
 
-| 条目 | 分类 |
-|------|------|
-| D-7.26-01：nullish 类型参与移位运算未被拒绝 | Spec 与实现不一致 |
+---
 
-## 五、关联记录
+### ID-03: bigint 移位支持
 
-- 章节级异常汇总：[issue_report.md](../../issue_report.md)
-- 测试执行报告：[test_report_7.26.md](test_report_7.26.md)
-- 跨语言对比：[comparison_report_arkts_java_swift.md](comparison_report_arkts_java_swift.md)
-- 测试设计：[test_design_mindmap_7.26.md](test_design_mindmap_7.26.md)
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | 多个涉及 bigint 移位的用例 |
+| **实测结果** | ArkTS 支持 bigint 原生 `<<`、`>>` 运算，无距离掩码 |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
+
+**描述**：ArkTS 是唯一支持 bigint 原生移位运算的语言（`<<`, `>>`），且 bigint 移位**没有**距离掩码限制（与 int/long 不同）。这是 ArkTS 大数运算的独特优势。
+
+**跨语言对比**：
+
+| 语言 | bigint 移位 | 说明 |
+|------|:-----------:|------|
+| ArkTS | ✅ `<<`, `>>` | bigint 原生移位，无距离掩码 |
+| Java | N/A | 无 bigint 原始类型 |
+| Swift | N/A | 无 bigint 原始类型 |
+
+**分类**：符合 ArkTS spec 的语言设计差异
+
+**建议**：bigint 的 `<<`、`>>` 支持和 `>>>` 编译时拒绝均已正确实现，建议保持。
+
+---
+
+### ID-04: long 字面量后缀支持
+
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | 涉及 long 类型字面量的用例 |
+| **实测结果** | ArkTS 不支持 `L` 后缀，需 `let v: long = 8`（变量声明） |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
+
+**描述**：ArkTS 不支持 `L` 后缀声明 long 字面量，需通过变量类型声明指定。Java 支持 `8L` 语法，Swift 支持 `8 as Int64`。
+
+**跨语言对比**：
+
+| 语言 | `L` 后缀 | 示例 |
+|------|:---------:|------|
+| ArkTS | ❌ | 需 `let v: long = 8`（变量声明） |
+| Java | ✅ | `long v = 8L` |
+| Swift | ✅ | `let v = 8 as Int64` |
+
+**分类**：符合 ArkTS spec 的语言设计差异
+
+**建议**：Spec 文档中的 `(2L << ~s)` 示例可考虑删除 `L` 后缀（`(2 as long) << ~s`），以符合 ArkTS 语法。
+
+---
+
+### 差异说明
+
+#### 1. 浮点操作数截断
+
+ArkTS 和 Java 在移位运算中都能处理 float/double 操作数（double → long, float → int 后移位）。Swift 不允许浮点数参与移位运算（编译时错误）。

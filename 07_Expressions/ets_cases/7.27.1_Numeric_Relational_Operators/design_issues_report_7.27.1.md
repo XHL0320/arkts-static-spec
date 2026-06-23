@@ -1,55 +1,79 @@
-# 7.27.1 数值关系运算符 - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
+# 7.27.1 Numeric Relational Operators — ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
-**报告日期：** 2026-06-23
-**测试用例数：** 30（10 compile-pass + 10 compile-fail + 10 runtime）
-**通过率：** 100%（30/30，0 unexpected）
-**编译器：** es2panda + ark VM (Linux native)
-**Spec 依据：** arktsspecification.md §7.27.1
+## 设计问题及差异清单
 
-## 报告分类口径
+**D 类（Spec 与实现不一致）**：无。所有 19 用例通过，与 Spec 完全一致。
 
-| 分类 | 含义 | 处理方式 |
-|------|------|----------|
-| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
-| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
-| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
-| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+---
 
-## 一、已验证规范一致行为
+### ID-01: 隐式数值类型提升
 
-经 es2panda + ark VM 实测，以下行为与 ArkTS spec §7.27.1 一致：
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | N/A（跨语言设计差异） |
+| **实测结果** | ArkTS/Java 自动提升 byte/short→int、int→long、int→float、int→double；Swift 要求显式类型转换 |
+| **错误信息** | 无错误 |
 
-| 行为 | 验证方式 | 结果 |
-|------|---------|------|
-| 数值关系运算符（< > <= >=），操作数为byte/short/int/long/float/double/char，数值提升后按IEEE 754比较 | 10 compile-pass + 10 compile-fail + 10 runtime | ✅ 全部通过 |
+**描述**：ArkTS 和 Java 都采用 C 语言家族的隐式数值提升规则（通常称为 "binary numeric promotion"），允许不同类型的数值操作数自动提升为更宽的类型后进行比较。Swift 从类型安全设计出发，要求开发者显式说明类型转换意图，避免了意外精度损失。
 
-| 分类 | 数量 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 10 | 10 | 0 | 100% |
-| compile-fail | 10 | 10 | 0 | 100% |
-| runtime | 10 | 10 | 0 | 100% |
-| **总计** | **30** | **30** | **0** | **100%** |
+**跨语言对比**：
 
-**结论：30 个测试用例全部编译运行通过。本章节 Spec 约束与 es2panda + ark VM 行为一致。**
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `1 < 2.0` | ✅ 自动提升 int→double 后比较 |
+| Java | `1 < 2.0` | ✅ 自动提升 int→double 后比较，与 ArkTS 完全一致的提升链 |
+| Swift | `Double(1) < 2.0` | ❌ 需显式类型转换，不可直接比较不同类型数值 |
 
-## 二、跨语言对比摘要
+**分类**：跨语言设计差异
 
-| 维度 | ArkTS | Java | Swift | TypeScript |
-|------|-------|------|-------|-----------|
-| 编译验证 | ✅ es2panda — 30/30 通过 | ✅ javac | ✅ swiftc | ✅ tsc |
-| 运行时验证 | ✅ ark VM — 10/10 runtime 通过 | ✅ JVM | ✅ Swift runtime | ✅ Node.js |
-| Spec 一致性 | ✅ 与 arktsspecification.md §7.27.1 一致 | ✅ JLS SE21 | ✅ Swift 5.10 | N/A |
-| 语言差异 | ArkTS 静态类型 + nullish 安全 | 传统静态类型 | 严格静态 + Optional | 结构化类型 |
+**建议**：保持现状。ArkTS 数值关系运算符实现与 Java 完全一致，符合 Java 开发者预期。
 
-## 三、分类汇总
+---
 
-| 条目 | 分类 |
-|------|------|
-| — 本章节无差异点 | 已验证规范一致行为 |
+### ID-02: Int 默认位数
 
-## 四、关联记录
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | N/A（跨语言设计差异） |
+| **实测结果** | ArkTS/Java 的 int 为 32 位（INT_MAX = 2147483647），Swift 的 Int 为 64 位（Int.max = 9223372036854775807） |
+| **错误信息** | 无错误 |
 
-- 章节级异常汇总：[issue_report.md](../../issue_report.md)
-- 测试执行报告：[test_report_7.27.1.md](test_report_7.27.1.md)
-- 跨语言对比：[comparison_report_arkts_java_swift.md](comparison_report_arkts_java_swift.md)
-- 测试设计：[test_design_mindmap_7.27.1.md](test_design_mindmap_7.27.1.md)
+**描述**：ArkTS 和 Java 的 `int` 都是 32 位（与最早期的 32 位 CPU 架构兼容），Swift 的 `Int` 始终与平台位数一致（64 位 Apple 平台上为 64 位）。这不是实现缺陷，而是设计传统差异。Swift 开发者可以用 `Int32` 获得与 Java/ArkTS int 一致的行为。
+
+**跨语言对比**：
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `int` 类型字面量 | 32 位，INT_MAX = 2147483647 |
+| Java | `int` 类型 | 32 位，Integer.MAX_VALUE = 2147483647 |
+| Swift | `Int` 类型 | 64 位，Int.max = 9223372036854775807 |
+
+**分类**：跨语言设计差异
+
+**建议**：文档标记 float 字面量，明确说明 `1.5` 是 Double 类型，`1.5f` 才是 Float 类型（与 Java 一致）。
+
+---
+
+### ID-03: NaN 比较编译时警告
+
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | N/A（跨语言设计差异） |
+| **实测结果** | Swift 编译器对 NaN 比较发出 always-false 警告；ArkTS/Java 不产生警告 |
+| **错误信息** | 无错误 |
+
+**描述**：Swift 通过编译时警告帮助开发者发现 `Double.nan` 的比较总是 false 的问题。这是 Swift 额外的静态安全特性，ArkTS 和 Java 不会对此发出警告。
+
+**跨语言对比**：
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `NaN > 0.0` | ❌ 无编译时警告 |
+| Java | `Double.NaN > 0.0` | ❌ 无编译时警告 |
+| Swift | `Double.nan > 0.0` | ✅ 编译器产生 always-false 警告 |
+
+**分类**：跨语言设计差异
+
+**建议**：无 D 类问题需要修复，所有规范行为均已正确实现。
+
+---

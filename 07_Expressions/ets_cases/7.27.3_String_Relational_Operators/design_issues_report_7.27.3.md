@@ -1,55 +1,64 @@
-# 7.27.3 字符串关系运算符 - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
+# 7.27.3 String Relational Operators — ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
-**报告日期：** 2026-06-23
-**测试用例数：** 30（10 compile-pass + 10 compile-fail + 10 runtime）
-**通过率：** 100%（30/30，0 unexpected）
-**编译器：** es2panda + ark VM (Linux native)
-**Spec 依据：** arktsspecification.md §7.27.3
+## 设计问题及差异清单
 
-## 报告分类口径
+**D 类（Spec 与实现不一致）**：无。所有 20 用例通过，与 Spec 完全一致。
 
-| 分类 | 含义 | 处理方式 |
-|------|------|----------|
-| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
-| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
-| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
-| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+---
 
-## 一、已验证规范一致行为
+### ID-01: 语法形式差异（运算符 vs compareTo() 方法）
 
-经 es2panda + ark VM 实测，以下行为与 ArkTS spec §7.27.3 一致：
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | N/A（跨语言设计差异） |
+| **实测结果** | ArkTS 和 Swift 直接使用 `<` `<=` `>` `>=` 运算符比较字符串；Java 需通过 `compareTo()` 方法返回值手动比较 |
+| **错误信息** | 无错误 |
 
-| 行为 | 验证方式 | 结果 |
-|------|---------|------|
-| string关系运算符，按UTF-16码元字典序比较 | 10 compile-pass + 10 compile-fail + 10 runtime | ✅ 全部通过 |
+**描述**：ArkTS 和 Swift 都是运算符直接比较字符串，返回 boolean 类型。Java 的 `String.compareTo()` 返回 int（<0/=0/>0），需手动与 0 比较以得到布尔结果。
 
-| 分类 | 数量 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 10 | 10 | 0 | 100% |
-| compile-fail | 10 | 10 | 0 | 100% |
-| runtime | 10 | 10 | 0 | 100% |
-| **总计** | **30** | **30** | **0** | **100%** |
+**跨语言对比**：
 
-**结论：30 个测试用例全部编译运行通过。本章节 Spec 约束与 es2panda + ark VM 行为一致。**
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `"abc" < "def"` | ✅ 直接使用关系运算符，返回 `boolean` |
+| Java | `"abc".compareTo("def") < 0` | ❌ 需通过 compareTo() 方法返回值手动比较，返回 `int` |
+| Swift | `"abc" < "def"` | ✅ 直接使用关系运算符，返回 `Bool` |
 
-## 二、跨语言对比摘要
+**分类**：跨语言设计差异
 
-| 维度 | ArkTS | Java | Swift | TypeScript |
-|------|-------|------|-------|-----------|
-| 编译验证 | ✅ es2panda — 30/30 通过 | ✅ javac | ✅ swiftc | ✅ tsc |
-| 运行时验证 | ✅ ark VM — 10/10 runtime 通过 | ✅ JVM | ✅ Swift runtime | ✅ Node.js |
-| Spec 一致性 | ✅ 与 arktsspecification.md §7.27.3 一致 | ✅ JLS SE21 | ✅ Swift 5.10 | N/A |
-| 语言差异 | ArkTS 静态类型 + nullish 安全 | 传统静态类型 | 严格静态 + Optional | 结构化类型 |
+**建议**：保持现状。字符串关系运算符实现完全符合规范，无需修改。
 
-## 三、分类汇总
+---
 
-| 条目 | 分类 |
-|------|------|
-| — 本章节无差异点 | 已验证规范一致行为 |
+### ID-02: Unicode 规范化比较差异
 
-## 四、关联记录
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | N/A（跨语言设计差异） |
+| **实测结果** | ArkTS/Java 基于 UTF-16 code unit 比较；Swift 基于 Unicode 规范化等价比较（先规范化再逐字符比较） |
+| **错误信息** | 无错误 |
 
-- 章节级异常汇总：[issue_report.md](../../issue_report.md)
-- 测试执行报告：[test_report_7.27.3.md](test_report_7.27.3.md)
-- 跨语言对比：[comparison_report_arkts_java_swift.md](comparison_report_arkts_java_swift.md)
-- 测试设计：[test_design_mindmap_7.27.3.md](test_design_mindmap_7.27.3.md)
+**描述**：对于纯 ASCII 字符串（数字、英文字母、常见标点），三语言行为完全一致。差异仅出现在带组合字符的 Unicode 字符串中（如 é, ü, ñ 等）。Swift 的 Unicode 规范化比较会将 é 和 e+´ 视为相等，而 ArkTS/Java 基于 UTF-16 code unit 的比较会认为它们不同。
+
+**跨语言对比**：
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `"é" < "f"` | 基于 UTF-16 code unit 比较（推测），与 Java 一致 |
+| Java | `"é".compareTo("f")` | 基于 char 的 Unicode 数值（UTF-16 code unit） |
+| Swift | `"é" < "f"` | 基于 Unicode 规范化等价，é 和 e+´ 视为相等 |
+
+**分类**：跨语言设计差异
+
+**建议**：保持现状。字符串关系运算符实现完全符合规范，无需修改。
+
+---
+
+### 结论
+
+- **0 D 类异常**：实现与 Spec 完全一致。
+- 字符串关系运算符在所有三种语言中行为一致（对于 ASCII 范围）。
+- ArkTS 和 Swift 语法最为接近（都直接支持运算符语法）。
+- Java 需要通过 `compareTo()` 方法间接实现。
+
+---

@@ -1,100 +1,91 @@
-# 7.32.2 复合赋值运算符 - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
+# 7.32.2 Compound Assignment Operators — ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
-**报告日期：** 2026-06-23
-**测试用例数：** 30（10 compile-pass + 10 compile-fail + 10 runtime）
-**通过率：** 100%（30/30，0 unexpected）
-**编译器：** es2panda + ark VM (Linux native)
-**Spec 依据：** arktsspecification.md §7.32.2
+## 设计问题及差异清单
 
-## 报告分类口径
+### ID-01: ??= (Nullish Coalescing Assignment) 编译器不支持 ⭐⭐
 
-| 分类 | 含义 | 处理方式 |
-|------|------|----------|
-| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
-| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
-| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
-| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_32_02_005_FAIL_NULLISH_COALESCING_UNSUPPORTED, EXP_07_32_02_008_FAIL_NULLISH_NONNULLABLE, EXP_07_32_02_011_FAIL_NULLISH_BEHAVIOR_UNSUPPORTED |
+| **实测结果** | 编译报 Syntax error ESY0227（期望编译通过） |
+| **错误信息** | Syntax error ESY0227: Unexpected token '??=' |
 
-## 一、Spec 与实现不一致
+**描述**：Spec 7.32.2 文档中显式声明了 `??=` 运算符的语义："While the nullish-coalescing assignment (??=) only evaluates the right operand, and assigns to the left operand if the left operand is null or undefined." 但编译器完全不识别该运算符，报 Syntax error。
 
-### 问题 C-7.32-01：&&= / ||= 复合赋值不被 es2panda 支持
+**跨语言对比**：
 
-**类别：** D 类（Spec 与实现不一致）
-**复现用例：** EXP_07_32_02_004_PASS_COMPOUND_LOGIC
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `a ??= b` | ❌ ESY0227 Syntax error（Spec 定义但未实现）|
+| Java | `a ??= b` | ❌ 无此运算符 |
+| Swift | `a ??= b` | ❌ 无此运算符（用 `a = a ?? b` 替代）|
 
-#### Spec 规则
+**分类**：D 类 — Spec 与实现不一致
 
-§7.32.2 的 assignmentOperator 语法明确列出 `&&=` 和 `||=` 为合法的复合赋值运算符：
-> ``assignmentOperator``: one of  ``= *= /= %= += -= <<= >>= >>>= &= ^= |= &&= ||= ??=``
-
-#### 实测行为
-
-```typescript
-function testLogicalCompoundAssign(): void {
-  let a: boolean = true
-  a &&= false  // es2panda 报错: Unexpected token '&&='
-}
-```
-
-#### 预期
-
-应按 spec 语法支持 `&&=` / `||=`，编译通过。
-
-#### 实际
-
-es2panda 报 `Unexpected token '&&='`，语法解析阶段即拒绝。
-
-#### 跨语言对比
-
-| 语言 | &&= / \|\|= |
-|------|-----------|
-| ArkTS | ❌ es2panda 不支持（Spec 要求支持） |
-| Java | ❌ 不支持 &&=/\|\|= |
-| Swift | ❌ 不支持 &&=/\|\|= |
-| TypeScript | ✅ 支持 &&=/\|\|= (ES2021) |
-
-#### 建议
-
-1. es2panda 语法解析器补充 `&&=` / `||=` token 识别
-2. 补充语义检查：左侧必须为 boolean 类型
-3. 当前用例已改写为 `a = a && true` 形式规避
+**建议**：该运算符已在 Spec 中明确定义，但编译器完全不识别，应优先实现 `??=` 运算符的支持。
 
 ---
-## 二、已验证规范一致行为
 
-经 es2panda + ark VM 实测，以下行为与 ArkTS spec §7.32.2 一致：
+### ID-02: >>>= （无符号右移赋值）三语言对比
 
-| 行为 | 验证方式 | 结果 |
-|------|---------|------|
-| 复合赋值（+= -= *= /= %= <<= >>= >>>= &= |= ^= &&= ||= ??=），等价于lhs=(lhs op rhs) as T，lhs只求值一次 | 10 compile-pass + 10 compile-fail + 10 runtime | ✅ 全部通过 |
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_32_02_002_PASS_SHIFT_BITWISE_COMPOUND |
+| **实测结果** | ArkTS/Java 支持 `>>>=`，Swift 不支持 |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
 
-| 分类 | 数量 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 10 | 10 | 0 | 100% |
-| compile-fail | 10 | 10 | 0 | 100% |
-| runtime | 10 | 10 | 0 | 100% |
-| **总计** | **30** | **30** | **0** | **100%** |
+**描述**：无符号右移赋值 `>>>=` 在 ArkTS 和 Java 中均受支持，但 Swift 没有无符号右移运算符，因此不支持。
 
-**结论：30 个测试用例全部编译运行通过。本章节 Spec 约束与 es2panda + ark VM 行为一致。**
+**跨语言对比**：
 
-## 三、跨语言对比摘要
+| 语言 | `>>>=` 支持 |
+|------|------------|
+| ArkTS | ✅ |
+| Java | ✅ |
+| Swift | ❌ 不支持 |
 
-| 维度 | ArkTS | Java | Swift | TypeScript |
-|------|-------|------|-------|-----------|
-| 编译验证 | ✅ es2panda — 30/30 通过 | ✅ javac | ✅ swiftc | ✅ tsc |
-| 运行时验证 | ✅ ark VM — 10/10 runtime 通过 | ✅ JVM | ✅ Swift runtime | ✅ Node.js |
-| Spec 一致性 | ✅ 与 arktsspecification.md §7.32.2 一致 | ✅ JLS SE21 | ✅ Swift 5.10 | N/A |
-| 语言差异 | ArkTS 静态类型 + nullish 安全 | 传统静态类型 | 严格静态 + Optional | 结构化类型 |
+**分类**：符合 ArkTS spec 的语言设计差异
 
-## 四、分类汇总
+---
 
-| 条目 | 分类 |
-|------|------|
-| C-7.32-01：&&= / ||= 复合赋值不被 es2panda 支持 | Spec 与实现不一致 |
+### ID-03: Boolean 复合运算差异
 
-## 五、关联记录
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_32_02_002_PASS_SHIFT_BITWISE_COMPOUND |
+| **实测结果** | ArkTS/Java 支持 boolean 的 `&=`、`|=`、`^=`，Swift 仅整数支持 |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
 
-- 章节级异常汇总：[issue_report.md](../../issue_report.md)
-- 测试执行报告：[test_report_7.32.2.md](test_report_7.32.2.md)
-- 跨语言对比：[comparison_report_arkts_java_swift.md](comparison_report_arkts_java_swift.md)
-- 测试设计：[test_design_mindmap_7.32.2.md](test_design_mindmap_7.32.2.md)
+**描述**：ArkTS 和 Java 均支持 boolean 类型的位运算复合赋值 `&=`、`|=`、`^=`，而 Swift 中这些运算符仅对整数有效，Bool 类型需使用 `&&=`、`||=`，且无 `^=` 等价运算符。
+
+**跨语言对比**：
+
+| 语言 | `boolean &=` | `boolean \|=` | `boolean ^=` |
+|------|:-----------:|:------------:|:------------:|
+| ArkTS | ✅ | ✅ | ✅ |
+| Java | ✅ | ✅ | ✅ |
+| Swift | ❌（整数专用） | ❌（整数专用） | ❌ |
+
+**分类**：符合 ArkTS spec 的语言设计差异
+
+---
+
+### ID-04: string += int 隐式转换差异
+
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_32_02_003_PASS_STRING_CONCAT_COMPOUND |
+| **实测结果** | ArkTS/Java 支持 `string += int` 自动转换，Swift 需显式转换 |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
+
+**描述**：字符串拼接复合赋值中，ArkTS 和 Java 会自动将 int/double 等数值类型转换为字符串进行拼接，而 Swift 需要显式调用 `String()` 转换。
+
+**跨语言对比**：
+
+| 语言 | `s += 42` 结果 |
+|------|---------------|
+| ArkTS | ✅ "hello42" |
+| Java | ✅ "hello42" |
+| Swift | ❌ 需 `s += String(42)` |
+
+**分类**：符合 ArkTS spec 的语言设计差异

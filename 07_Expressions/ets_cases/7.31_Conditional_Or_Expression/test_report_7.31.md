@@ -1,51 +1,43 @@
-# 7.31 条件或表达式 - 测试执行报告
-
-**测试日期：** 2026-06-22
-**编译器：** es2panda (ArkTS Static Compiler)
-**运行时：** ark VM
-**状态：** 已在 es2panda + ark VM 编译运行通过（306P+294F+300R=900，100%）
-
----
+# 7.31 Conditional-Or Expression - 测试执行报告
 
 ## 总体统计
 
 | 分类 | 总数 | 通过 | 失败 | 通过率 |
 |------|------|------|------|--------|
-| compile-pass | 10 | 10 | 0 | 100% |
-| compile-fail | 10 | 10 | 0 | 100% |
-| runtime（真实执行） | 10 | 10 | 0 | 100% |
-| **总计** | **30** | **30** | **0** | **100%** |
-
----
+| compile-pass | 3 | 3 | 0 | 100% |
+| compile-fail | 2 | 2 | 0 | 100% |
+| runtime | 1 | 1 | 0 | 100% |
+| **总计** | **6** | **6** | **0** | **100%** |
 
 ## 详细执行结果
 
-### compile-pass（10 用例，✅ 通过）
+### compile-pass
 
 | # | 用例 ID | 测试内容 | 结果 |
-|---|---------|---------|------|
-| | EXP_07_31_001_PASS_COND_OR_BASIC | || 基本短路求值 | ✅ 通过 |
-| | EXP_07_31_002_PASS_COND_OR_CHAIN | || 链式调用（左结合） | ✅ 通过 |
+|:-:|---------|---------|:----:|
+| 1 | EXP_07_31_001_PASS_COND_OR_TRUTH_TABLE.ets | boolean `||` 四种真值表组合 | ✅ |
+| 2 | EXP_07_31_002_PASS_COND_OR_SHORT_CIRCUIT.ets | 短路行为（RHS 函数调用未执行） | ✅ |
+| 3 | EXP_07_31_003_PASS_COND_OR_CHAINED.ets | 链式、结合律、括号、长链 | ✅ |
 
-### compile-fail（10 用例，✅ 通过）
+### compile-fail
 
 | # | 用例 ID | 测试内容 | 结果 |
-|---|---------|---------|------|
-| | EXP_07_31_003_FAIL_COND_OR_NON_BOOL | 非 boolean 操作数 || 应产生编译错误 | ✅ 通过 |
-| | EXP_07_31_004_FAIL_COND_OR_STRING | string 类型 || 应产生编译错误 | ✅ 通过 |
+|:-:|---------|---------|:----:|
+| 4 | EXP_07_31_004_FAIL_COND_OR_NUMERIC_MIXED.ets | boolean `||` int/float/long 混合 + 反向 + 全非 boolean 报错 (11 cases) | ✅ |
+| 5 | EXP_07_31_005_FAIL_COND_OR_STRING_BIGINT_MIXED.ets | boolean `||` string/bigint + 反向 + 全非 boolean 报错 (5 cases) | ✅ |
 
-### runtime（10 用例，✅ 通过）
+### runtime
 
-| # | 用例 ID | 验证内容 | 结果 |
-|---|---------|---------|------|
-| | EXP_07_31_005_RUNTIME_COND_OR_SHORTCIRCUIT | || 短路：左侧 true 不执行右侧 | ✅ 通过 |
-| | EXP_07_31_006_RUNTIME_COND_OR_VS_BITWISE | || 与 | 在 boolean 上结果相同但求值方式不同 | ✅ 通过 |
+| # | 用例 ID | 验证内容 | 断言数 | 结果 |
+|:-:|---------|---------|:------:|:----:|
+| 6 | EXP_07_31_006_RUNTIME_COND_OR_SEMANTICS.ets | 真值表4 + 短路4 + 链式4 + 结合律4 + 变量4 + `|` 一致性4 | 24 | ✅ |
 
----
+## 执行过程异常修复记录
+
+无异常修复。全部 6 个测试用例一次性通过，规范与实现一致。
 
 ## 后续运行命令
 
 ```bash
-cd /home/nnd/projects/arkts/ARKTS_STATIC_TEST/07_Expressions
 SECTIONS="7.31_Conditional_Or_Expression" bash run_expressions_cases_wsl.sh
 ```

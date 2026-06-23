@@ -1,55 +1,84 @@
-# 7.35.3 Lambda表达式类型 - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
+# 7.35.3 Lambda Expression Type — ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
-**报告日期：** 2026-06-23
-**测试用例数：** 30（10 compile-pass + 10 compile-fail + 10 runtime）
-**通过率：** 100%（30/30，0 unexpected）
-**编译器：** es2panda + ark VM (Linux native)
-**Spec 依据：** arktsspecification.md §7.35.3
+## 设计问题及差异清单
 
-## 报告分类口径
+### ID-01: 函数类型语法 ⭐⭐
 
-| 分类 | 含义 | 处理方式 |
-|------|------|----------|
-| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
-| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
-| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
-| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_35_03_001 ~ 007 |
+| **实测结果** | ArkTS 使用 `(int, string) => boolean` 原生函数类型语法；Java 需 `@FunctionalInterface` 接口包装；Swift 使用 `(Int, String) -> Bool` 原生函数类型语法 |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
 
-## 一、已验证规范一致行为
+**描述**：定义函数类型变量的语法。ArkTS 与 Swift 均支持原生函数类型语法，比 Java 的 @FunctionalInterface 接口更简洁直观。
 
-经 es2panda + ark VM 实测，以下行为与 ArkTS spec §7.35.3 一致：
+**跨语言对比**：
 
-| 行为 | 验证方式 | 结果 |
-|------|---------|------|
-| Lambda表达式类型，函数类型（参数类型列表）=> 返回类型，支持泛型函数类型 | 10 compile-pass + 10 compile-fail + 10 runtime | ✅ 全部通过 |
-
-| 分类 | 数量 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 10 | 10 | 0 | 100% |
-| compile-fail | 10 | 10 | 0 | 100% |
-| runtime | 10 | 10 | 0 | 100% |
-| **总计** | **30** | **30** | **0** | **100%** |
-
-**结论：30 个测试用例全部编译运行通过。本章节 Spec 约束与 es2panda + ark VM 行为一致。**
-
-## 二、跨语言对比摘要
-
-| 维度 | ArkTS | Java | Swift | TypeScript |
-|------|-------|------|-------|-----------|
-| 编译验证 | ✅ es2panda — 30/30 通过 | ✅ javac | ✅ swiftc | ✅ tsc |
-| 运行时验证 | ✅ ark VM — 10/10 runtime 通过 | ✅ JVM | ✅ Swift runtime | ✅ Node.js |
-| Spec 一致性 | ✅ 与 arktsspecification.md §7.35.3 一致 | ✅ JLS SE21 | ✅ Swift 5.10 | N/A |
-| 语言差异 | ArkTS 静态类型 + nullish 安全 | 传统静态类型 | 严格静态 + Optional | 结构化类型 |
-
-## 三、分类汇总
-
-| 条目 | 分类 |
+| 语言 | 语法 |
 |------|------|
-| — 本章节无差异点 | 已验证规范一致行为 |
+| ArkTS | `(int, string) => boolean` — 原生函数类型语法 |
+| Java | `BiFunction<Integer,String,Boolean>` — 需函数式接口包装 |
+| Swift | `(Int, String) -> Bool` — 原生函数类型语法 |
 
-## 四、关联记录
+**分类**：跨语言设计差异（ArkTS 与 Swift 相似，都优于 Java）
 
-- 章节级异常汇总：[issue_report.md](../../issue_report.md)
-- 测试执行报告：[test_report_7.35.3.md](test_report_7.35.3.md)
-- 跨语言对比：[comparison_report_arkts_java_swift.md](comparison_report_arkts_java_swift.md)
-- 测试设计：[test_design_mindmap_7.35.3.md](test_design_mindmap_7.35.3.md)
+**建议**：保持现有设计，ArkTS 的函数类型语法与 Swift 高度一致。
+
+---
+
+### ID-02: 无参 lambda 简洁性 ⭐
+
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_35_03_005 |
+| **实测结果** | ArkTS `(): int => 42`（可简写 `() => 42` 推断类型）；Java `() -> 42` 最简洁；Swift `{ 42 }` 最简洁 |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
+
+**描述**：无参 lambda 表达式写法的简洁性对比。三语言语法风格不同，各有优势。
+
+**跨语言对比**：
+
+| 语言 | 写法 |
+|------|------|
+| ArkTS | `(): int => 42`，可以简写 `() => 42` 推断类型 |
+| Java | `() -> 42`，最简洁 |
+| Swift | `{ 42 }` 或 `{ () -> Int in 42 }`，最简洁 |
+
+**分类**：跨语言设计差异（三语言语法风格不同，各有优势）
+
+**建议**：保持现有设计。
+
+---
+
+### ID-03: 参数数量检查灵活性 ⭐
+
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | EXP_07_35_03_010 |
+| **实测结果** | ArkTS `const f: () => int = (x: int): int => x` → compile-fail；Java 函数式接口参数数量固定自动匹配；Swift `let f: () -> Int = { x in x }` → compile-error |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
+
+**描述**：函数类型要求 0 参数但提供 1 个参数时的编译时检查行为。三语言行为一致，均能检测到参数数量不匹配。
+
+**跨语言对比**：
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `const f: () => int = (x: int): int => x` | compile-fail |
+| Java | Java 中函数式接口参数数量固定，自动匹配 | compile-error |
+| Swift | `let f: () -> Int = { x in x }` | compile-error |
+
+**分类**：跨语言设计差异（三语言行为一致）
+
+**建议**：保持现有设计。
+
+### 结论
+
+| 分类 | 状态 |
+|:----:|:------|
+| **D 类**（Spec 与实现不一致） | **0** |
+| **compile-pass** | **7/7** ✅ |
+| **compile-fail** | **3/3** ✅ |
+| **runtime** | **1/1** ✅ |
+| **Java** | **12/12** ✅ |
+| **Swift** | **13/13** ✅ |

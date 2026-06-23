@@ -1,55 +1,36 @@
-# 7.29.2 布尔逻辑运算符 - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
+# 7.29.2 Boolean Logical Operators — ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
-**报告日期：** 2026-06-23
-**测试用例数：** 30（10 compile-pass + 10 compile-fail + 10 runtime）
-**通过率：** 100%（30/30，0 unexpected）
-**编译器：** es2panda + ark VM (Linux native)
-**Spec 依据：** arktsspecification.md §7.29.2
+## 设计问题及差异清单
 
-## 报告分类口径
+### ID-01: Swift 缺少非短路 boolean 逻辑运算符 ⭐
 
-| 分类 | 含义 | 处理方式 |
-|------|------|----------|
-| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
-| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
-| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
-| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+| 字段 | 值 |
+|------|-----|
+| **复现用例** | 跨语言对比验证 |
+| **差异类型** | 符合 ArkTS spec 的语言设计差异 |
 
-## 一、已验证规范一致行为
+**描述**：Swift 对 boolean 只提供短路逻辑运算符 `&&`（AND）、`||`（OR），无 `^` 运算符。ArkTS 和 Java 均提供非短路 `&`、`^`、`|` 运算符。当操作数无副作用时结果相同，有副作用时行为不同。
 
-经 es2panda + ark VM 实测，以下行为与 ArkTS spec §7.29.2 一致：
+**跨语言对比**：
 
-| 行为 | 验证方式 | 结果 |
-|------|---------|------|
-| 布尔逻辑运算符（! && ||），操作数为boolean，&&和||短路求值 | 10 compile-pass + 10 compile-fail + 10 runtime | ✅ 全部通过 |
+| 语言 | boolean & (AND) | boolean ^ (XOR) | boolean \| (OR) |
+|------|:---------------:|:----------------:|:---------------:|
+| ArkTS | `true & false` → `false`（非短路） | `true ^ false` → `true`（非短路） | `true \| false` → `true`（非短路） |
+| Java | `true & false` → `false`（非短路） | `true ^ false` → `true`（非短路） | `true \| false` → `true`（非短路） |
+| Swift | `true && false` → `false`（短路） | `true != false` → `true` | `true \|\| false` → `true`（短路） |
 
-| 分类 | 数量 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 10 | 10 | 0 | 100% |
-| compile-fail | 10 | 10 | 0 | 100% |
-| runtime | 10 | 10 | 0 | 100% |
-| **总计** | **30** | **30** | **0** | **100%** |
+**分类**：符合 ArkTS spec 的语言设计差异
 
-**结论：30 个测试用例全部编译运行通过。本章节 Spec 约束与 es2panda + ark VM 行为一致。**
+---
 
-## 二、跨语言对比摘要
+本子章节未发现 D 类异常（规范与实现不一致）。全部 6 个测试用例通过，规范与实现完全一致。
 
-| 维度 | ArkTS | Java | Swift | TypeScript |
-|------|-------|------|-------|-----------|
-| 编译验证 | ✅ es2panda — 30/30 通过 | ✅ javac | ✅ swiftc | ✅ tsc |
-| 运行时验证 | ✅ ark VM — 10/10 runtime 通过 | ✅ JVM | ✅ Swift runtime | ✅ Node.js |
-| Spec 一致性 | ✅ 与 arktsspecification.md §7.29.2 一致 | ✅ JLS SE21 | ✅ Swift 5.10 | N/A |
-| 语言差异 | ArkTS 静态类型 + nullish 安全 | 传统静态类型 | 严格静态 + Optional | 结构化类型 |
-
-## 三、分类汇总
-
-| 条目 | 分类 |
-|------|------|
-| — 本章节无差异点 | 已验证规范一致行为 |
-
-## 四、关联记录
-
-- 章节级异常汇总：[issue_report.md](../../issue_report.md)
-- 测试执行报告：[test_report_7.29.2.md](test_report_7.29.2.md)
-- 跨语言对比：[comparison_report_arkts_java_swift.md](comparison_report_arkts_java_swift.md)
-- 测试设计：[test_design_mindmap_7.29.2.md](test_design_mindmap_7.29.2.md)
+| 分类 | 数量 | 状态 |
+|:----:|:----:|:----:|
+| **D 类**（Spec 与实现不一致） | **0** | 无异常 |
+| **跨语言设计差异** | **1** | Swift 缺少非短路 boolean 逻辑运算符 |
+| **compile-pass** | **3/3** | ✅ 全部通过 |
+| **compile-fail** | **2/2** | ✅ 全部通过 |
+| **runtime** | **1/1** | ✅ 24 断言全部通过 |
+| **Java** | **24/24** | ✅ |
+| **Swift** | **24/24** | ✅ |

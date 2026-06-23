@@ -1,0 +1,15 @@
+/**
+ * @id EXP_07_27_04_004_PASS_BOOL_EXPRESSION
+ * @expect compile-pass
+ * @section 7.27.4
+ * @design 验证 boolean 逻辑表达式作为操作数编译通过
+ * @note 正向用例：&& || ! 表达式结果作为 boolean 关系操作数
+ */
+let x: boolean = true;
+let y: boolean = false;
+let r1: boolean = (x && y) < (x || y);
+let r2: boolean = (x && y) <= (x || y);
+let r3: boolean = (x || y) > (!x);
+let r4: boolean = (x || y) >= (!y);
+let r5: boolean = (!x) < (!y);
+let r6: boolean = (!x) <= (true && false);

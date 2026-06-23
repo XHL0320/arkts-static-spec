@@ -2,18 +2,31 @@
  * @id EXP_07_26_002_PASS_LONG_SHIFT_BASIC
  * @expect compile-pass
  * @section 7.26
- * @design 验证long类型左移(<<)、有符号右移(>>)、无符号右移(>>>)的基本用法
- * @note 正向用例：验证该特性编译通过的正确用法
+ * @design long 类型三个移位运算符（<<, >>, >>>）的基本编译通过验证
+ * @note 正向用例：验证 long 类型在三种移位运算中均可编译通过
+ *       包括：左移、带符号右移、无符号右移
+ *       ArkTS 不支持 Java 风格的 L 后缀，使用 long 变量代替
  */
-function testShiftLongBasic(): void {
-  let a: long = 1024
-  let b: long = 3
-  let r1: long = a << b     // 1024 << 3 = 8192
-  let r2: long = a >> b     // 1024 >> 3 = 128
-  let r3: long = a >>> b    // 1024 >>> 3 = 128
-  let r4: long = 1 << 40    // literal long shift (within 64 bit)
-  let r5: long = -2048 >> 2 // negative long signed right shift
-  let r6: long = -2048 >>> 2 // negative long unsigned right shift
-  console.log(r1.toString() + r2.toString() + r3.toString() +
-              r4.toString() + r5.toString() + r6.toString())
+function main(): void {
+    let a: long = 16;
+    let b: long = 2;
+    let c8: long = 8;
+    let c3: long = 3;
+    let c2: long = 2;
+
+    // 左移
+    let left: long = a << b;
+    // 带符号右移
+    let signedRight: long = a >> b;
+    // 无符号右移
+    let unsignedRight: long = a >>> b;
+
+    // 字面量移位
+    let l1: long = c8 << c3;
+    let l2: long = c8 >> c2;
+    let l3: long = c8 >>> c2;
+
+    console.log("result left: " + left);
+    console.log("result signedRight: " + signedRight);
+    console.log("result unsignedRight: " + unsignedRight);
 }
