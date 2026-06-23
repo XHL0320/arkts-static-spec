@@ -7,3 +7,11 @@
 | SEM_15_10_04_100 | RUNTIME | 等价签名运行时 |
 ## Cross-Chapter Links
 - 15.10 Overloading\n- 15.11.7 Overload Set Warning
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- equivalent signatures (should fail compilation)
+

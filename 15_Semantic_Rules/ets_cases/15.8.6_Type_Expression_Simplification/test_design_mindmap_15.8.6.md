@@ -34,6 +34,36 @@
 ### 4.3 运行时测试用例
 - **SEM_15_08_06_100**: 验证类型表达式简化运行时行为
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- intersection associativity ((A&B)&C = A&(B&C))
+- intersection commutativity (A&B = B&A)
+- intersection with subtyping (A&B = A if A<:B)
+- intersection with never (A&never = never)
+- intersection with Any (A&Any = A)
+- union associativity ((A|B)|C = A|(B|C))
+- union commutativity (A|B = B|A)
+- union with subtyping (A|B = A if A<:B)
+- union with never (A|never = A)
+- union with Any (A|Any = Any)
+- difference with never (A-never = A)
+- difference with subtyping (A-B = never if A<:B)
+- difference with Any (A-Any = never)
+- difference commutativity ((B-A)&A = never)
+- intersection-difference simplification ((A&B)-C = (A-C)&(B-C))
+- union-difference simplification ((A|B)-C = (A-C)|(B-C))
+- nested difference simplification ((A-B)-C = A-(B|C))
+- object type simplification (A&B = never if neither extends the other)
+- final class-interface simplification (A&I = never if A not implement I)
+- class/interface with never/undefined (A&U = never, A-U = A)
+- push difference inside intersection/union
+- push intersection inside union
+- union type normalization after simplification
+- difference type approximation (A-B recursively replaced by A)
+
 ## 五、覆盖率分析
 
 | 规范条目 | 覆盖状态 | 备注 |

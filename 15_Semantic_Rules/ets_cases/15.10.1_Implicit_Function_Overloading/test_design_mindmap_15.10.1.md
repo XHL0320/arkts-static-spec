@@ -10,3 +10,12 @@
 | SEM_15_10_01_100 | RUNTIME | 函数重载运行时解析 |
 ## Cross-Chapter Links
 - 15.10 Overloading\n- 4.7 Function Declarations
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- function overloading with different params
+- overload resolution
+

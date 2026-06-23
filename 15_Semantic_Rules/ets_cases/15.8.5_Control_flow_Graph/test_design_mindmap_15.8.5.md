@@ -34,6 +34,32 @@
 ### 4.3 运行时测试用例
 - **SEM_15_08_05_100**: 验证控制流图运行时行为
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- CFG node types (expression, branching, assuming, backedge)
+- if/else statement translation to CFG
+- if/else if/else chain translation
+- switch statement translation (with cases and default)
+- while loop translation (with backedge)
+- do-while loop translation
+- for loop translation (with initialization, condition, update)
+- for-in/for-of loop translation
+- ternary conditional expression translation
+- logical AND/OR short-circuit translation
+- variable declaration node creation
+- assignment node creation
+- instanceof expression node creation
+- typeof expression node creation
+- branching node with true/false branches
+- assuming node with assumed condition
+- backedge node marking loop transfer
+- CFG branch joining (union of smart types)
+- must-alias sets computation across CFG
+- TBD: language construct to CFG fragment mapping verification
+
 ## 五、覆盖率分析
 
 | 规范条目 | 覆盖状态 | 备注 |

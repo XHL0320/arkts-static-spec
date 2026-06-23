@@ -39,6 +39,15 @@
 ### 4.3 运行时测试用例
 - **SEM_15_07_02_012**: 验证返回类型运行时行为，函数返回值在运行时正确
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- explicit return type annotation
+- inference from return statements
+- no return (infer void)
+
 ## 五、覆盖率分析
 
 | 规范条目 | 覆盖状态 | 备注 |

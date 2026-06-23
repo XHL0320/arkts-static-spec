@@ -40,3 +40,16 @@
 ## 子章节链接
 - 15.13: Static Initialization
 - 9.9.1: Constructor Body
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- access to not yet initialized variable (compile-error)
+- access to not yet initialized static field (compile-error)
+- default value for uninitialized entity with default type
+- NullPointerError for uninitialized entity without default value
+- safe access to fully initialized entities
+- concurrent access to static initialization guard
+

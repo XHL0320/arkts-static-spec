@@ -29,6 +29,21 @@
 |---------|--------|----------|
 | SEM_15_05_020 | 变体运行时行为：协变返回值 + 逆变参数的实际方法派发 | runtime |
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- generic class invariance (no subtyping for different type args)
+- method return type covariance (valid overriding)
+- method parameter type contravariance (valid overriding)
+- prohibition of parameter type covariance (compile-error)
+- prohibition of return type contravariance (compile-error)
+- generic interface variance annotations (in/out)
+- variance in function types
+- invariance with wildcard types
+- covariance with array types (restricted in ArkTS)
+
 ## 跨章节关联
 - 5.1.3 Type Parameter Variance（类型参数变型）
 - 15.2.6 Function Type Subtyping（函数类型子类型）

@@ -46,3 +46,11 @@
 `SEM_15_11_01_YYY_{CATEGORY}_{DESCRIPTION}.ets`
 
 > 注意：当前用例文件使用 `SEM_15_11_01_001` 格式（章节号使用 `01` 而非 `001`），保持原文件名不变。
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- overload set formation rules
+

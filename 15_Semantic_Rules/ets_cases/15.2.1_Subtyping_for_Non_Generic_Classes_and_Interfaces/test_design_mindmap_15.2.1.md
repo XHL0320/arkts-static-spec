@@ -78,6 +78,16 @@
 - [ ] 类与接口之间的子类型关系（类 implements 接口）
 - [ ] 多层继承的子类型关系
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- class extends
+- interface extends
+- transitive closure
+- Object as implicit supertype
+
 ## 5. 测试用例清单
 
 | 编号 | 用例文件 | 类型 | 测试点 |

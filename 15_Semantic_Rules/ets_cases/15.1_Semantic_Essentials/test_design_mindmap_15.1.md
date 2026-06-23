@@ -100,6 +100,15 @@
 | SEM_15_01_023 | SEM_15_01_023_RT_SMART_GLOBAL_overload_declared_base_top_level.ets | 全局重载声明基础顶层 |
 | SEM_15_01_101 | SEM_15_01_101.ets | 语义基础运行时 |
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- normal cases
+- edge cases
+- error cases
+
 ## 5. 跨章节链接
 - 15.1.1 ~ 15.1.8 子章节
 - 4.6 Variable and Constant Declarations

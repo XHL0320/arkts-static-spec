@@ -42,6 +42,14 @@
 - **测试代码**: 创建 FixedArray，进行赋值和操作
 - **预期结果**: 运行时行为符合预期
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- identical FixedArray types
+- different FixedArray types (no subtyping)
+
 ## 跨章节关联
 
 - **15.2 Subtyping**: 子类型关系基础

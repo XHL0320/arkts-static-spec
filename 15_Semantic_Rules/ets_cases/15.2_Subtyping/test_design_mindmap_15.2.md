@@ -146,6 +146,15 @@
 | SEM_15_02_042 | SEM_15_02_042_RT_SMART_GLOBAL_overload_declared_base_top_level.ets | 全局重载声明基础 |
 | SEM_15_02_101 | SEM_15_02_101.ets | 子类型运行时（占位） |
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- normal cases
+- edge cases
+- error cases
+
 ## 5. 跨章节链接
 - 15.2.1 ~ 15.2.9 子章节
 - 15.1 Semantic Essentials

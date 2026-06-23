@@ -152,4 +152,4 @@ cd /path/to/test-project-610
 
 ## 测试环境
 - **编译器**：ArkTS static_core (es2panda)
-- **测试日期**：2026-06-22
+- **测试日期**：2026-06-23

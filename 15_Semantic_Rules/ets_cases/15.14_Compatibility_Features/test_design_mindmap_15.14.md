@@ -55,3 +55,12 @@
 ## 子章节链接
 - 15.14.1: Extended Conditional Expressions
 - 15.7: Type Inference
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- deprecated extended semantics
+- conditional expressions
+

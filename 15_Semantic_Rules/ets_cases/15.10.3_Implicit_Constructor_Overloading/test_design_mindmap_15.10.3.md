@@ -7,3 +7,11 @@
 | SEM_15_10_03_100 | RUNTIME | 构造函数重载运行时 |
 ## Cross-Chapter Links
 - 15.10 Overloading\n- 9.9 Constructors
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- constructor overloading
+

@@ -60,3 +60,11 @@
 - 7.4 String Operators
 - 15.1.1 Standalone Expression
 - 15.1.4 Numeric Operator Contexts
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- '+' with string operand (string conversion)
+

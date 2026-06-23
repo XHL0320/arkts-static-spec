@@ -31,6 +31,20 @@
 |---------|--------|----------|
 | SEM_15_04_020_RUNTIME_ASSIGNABILITY | 可赋值性运行时行为：子类型赋值后方法调用正确 | runtime |
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- subtyping-based assignability
+- implicit conversion-based assignability
+- assignability asymmetry verification
+- assignability with union types
+- assignability with intersection types
+- assignability with literal types
+- assignability with null/undefined
+- failed assignability (compile-error)
+
 ## 跨章节关联
 - 15.2 Subtyping（可赋值性基于子类型关系）
 - 15.3 Type Identity（类型同一性影响可赋值性判断）

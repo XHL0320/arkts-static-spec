@@ -7,3 +7,13 @@
 | SEM_15_10_101 | RUNTIME | 重载运行时行为 |
 ## Cross-Chapter Links
 All 15.10.x sub-sections
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- normal cases
+- edge cases
+- error cases
+

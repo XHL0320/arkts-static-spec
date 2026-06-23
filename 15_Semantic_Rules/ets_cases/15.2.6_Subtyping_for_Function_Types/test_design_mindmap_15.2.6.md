@@ -36,6 +36,15 @@
 - **测试代码**: 传递函数作为参数
 - **预期结果**: 运行时行为符合预期
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- parameter contravariance
+- return type covariance
+- function type assignment compatibility
+
 ## 跨章节关联
 
 - **15.2 Subtyping**: 子类型关系基础

@@ -57,3 +57,12 @@
 - 15.1.1 Standalone Expression
 - 15.5 Type Inference
 - 15.7 Generic Functions
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- type parameter provides no inference info in assignment context
+- compile-time error expected
+

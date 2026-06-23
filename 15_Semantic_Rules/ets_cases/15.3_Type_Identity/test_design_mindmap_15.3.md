@@ -31,6 +31,19 @@
 |---------|--------|----------|
 | SEM_15_03_007_RUNTIME_TYPE_IDENTITY | 类型同一性运行时行为：别名类型与原始类型同一 | runtime |
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- array type identity (T1[] vs Array<T2>)
+- tuple type identity (same length and identical elements)
+- union type identity (permutation of types)
+- type alias identity (alias is indistinguishable from base type)
+- generic class/interface type parameter shadowing
+- identity relation symmetry and transitivity
+- class type parameter vs method type parameter conflict
+
 ## 跨章节关联
 - 15.2 Subtyping（子类型关系影响类型同一性判断）
 - 15.4 Assignability（类型同一性是可赋值性的基础）

@@ -27,6 +27,22 @@
 |---------|--------|----------|
 | SEM_15_06_012 | 调用参数运行时行为：参数传递正确，值一致 | runtime |
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- spread expression linearization (Step 1)
+- non-rest parameter assignment (Step 2 arg_pos/par_pos increment)
+- rest array parameter matching (type assignability)
+- rest tuple parameter matching (element-wise assignability)
+- excess argument error (no matching parameter)
+- missing required argument error
+- assignability check for each argument
+- implicit conversions in call arguments
+- spread of non-array expression (compile-error)
+- argument count exceeding parameter count (compile-error)
+
 ## 跨章节关联
 - 15.2 Subtyping（子类型关系影响参数传递）
 - 15.4 Assignability（参数类型兼容性基于可赋值性）

@@ -26,7 +26,17 @@
 - `let arr = [1, 2, 3]` → `arr: int[]`
 - 数组字面量类型从元素类型推断
 
-### 5. 对象字面量禁止作为独立表达式
+#
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- numeric literals (int/long, double/float)
+- constant expressions
+- array literals
+- object literal (compile-fail)
+
+## 5. 对象字面量禁止作为独立表达式
 - `{x: 1}` 作为独立表达式应报编译错误
 - 错误码：ESE0127
 

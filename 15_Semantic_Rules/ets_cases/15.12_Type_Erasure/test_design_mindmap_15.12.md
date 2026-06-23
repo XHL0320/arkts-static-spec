@@ -76,3 +76,25 @@
 - 15.2.2: Subtyping for Generic Classes
 - 5: Generics
 - 15.12: Type Erasure
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- generic type erasure (covariant → constraint, contravariant → never, invariant → wildcard)
+- type parameter erasure (to constraint type)
+- union type erasure (effective type of union members)
+- array type erasure (to Array<effective type>)
+- FixedArray erasure (to FixedArray<effective type>)
+- function type erasure (parameters → Any, return → never)
+- rest parameter function type erasure
+- tuple type erasure (to internal generic tuple type)
+- string literal type erasure (to string)
+- Awaited type erasure (based on Promise type)
+- NonNullable erasure (effective type - null)
+- Record<K,V> erasure (to Map<effective K, effective V>)
+- effective signature type (return never → never)
+- runtime type safety checks after erasure
+- cast expression with erased types (potential ClassCastError)
+

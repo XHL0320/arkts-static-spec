@@ -36,6 +36,14 @@
 - **测试代码**: 创建元组，进行赋值和访问
 - **预期结果**: 运行时行为符合预期
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- identical tuple types
+- different tuple types (no subtyping)
+
 ## 跨章节关联
 
 - **15.2 Subtyping**: 子类型关系基础

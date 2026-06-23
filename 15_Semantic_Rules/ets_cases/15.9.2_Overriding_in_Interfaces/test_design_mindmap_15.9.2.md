@@ -32,6 +32,14 @@
 | SEM_15_09_004 | SEM_15_09_004_FAIL_MISSING_IMPL.ets | compile-fail | 缺少接口方法实现 | ✅ compile-fail |
 | SEM_15_09_009 | SEM_15_09_009_RUNTIME_INTERFACE_OVERRIDE.ets | runtime | 接口覆写运行时 | ✅ runtime |
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- default method override
+- abstract method implementation
+
 ## 5. 跨章节链接
 - 15.9 Overriding
 - 10 Interfaces

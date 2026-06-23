@@ -40,3 +40,13 @@
 ## 子章节链接
 - 15.14: Compatibility Features
 - 15.7: Type Inference
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- ternary conditional expressions
+- conditional-and/or
+- logical complement
+

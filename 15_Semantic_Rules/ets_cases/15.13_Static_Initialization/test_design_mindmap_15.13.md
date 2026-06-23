@@ -49,3 +49,19 @@
 ## 子章节链接
 - 15.13.1: Static Initialization Safety
 - 9.9.1: Constructor Body
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- class static field initialization before first access
+- namespace initialization before member use
+- module initialization before function call
+- static block execution order
+- recursive static initialization prevention
+- concurrent initialization synchronization
+- deadlock potential in circular dependencies
+- initialization failure and exception handling
+- static initialization of direct subclass triggers superclass initialization
+

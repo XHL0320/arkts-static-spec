@@ -36,6 +36,15 @@
 - **测试代码**: 创建泛型实例，进行赋值和操作
 - **预期结果**: 运行时行为符合预期
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- invariance verification
+- constraint checking
+- type parameter substitution
+
 ## 跨章节关联
 
 - **15.2 Subtyping**: 子类型关系基础

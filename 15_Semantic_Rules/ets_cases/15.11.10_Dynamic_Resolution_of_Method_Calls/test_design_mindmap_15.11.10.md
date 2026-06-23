@@ -41,3 +41,29 @@
 
 ## 文件命名规范
 `SEM_15_11_10_YYY_{CATEGORY}_{DESCRIPTION}.ets`
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- static method call (no overriding, use statically determined method)
+- super call (no overriding, use superclass method)
+- instance method call (use actual objectReference type T)
+- method resolution with T = C (result is M)
+- method resolution with T has superclass (search superclass hierarchy)
+- multiple overriding methods in subclass (exactly one matches)
+- multiple overriding methods error (more than one matches)
+- superinterface default method search
+- superinterface method resolution (no default method)
+- superinterface method resolution (multiple default methods error)
+- closest superclass definition priority
+- closest superinterface definition priority
+- method resolution failure (runtime error)
+- static type vs runtime type interaction
+- overload resolution followed by dynamic dispatch
+- overriding with contravariant parameters and covariant return
+- bridge method generation for generic overriding
+- resolution with generic type erasure
+- resolution safety for programs compiled without source updates
+

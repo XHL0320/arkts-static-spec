@@ -43,3 +43,11 @@
 
 ## 文件命名规范
 `SEM_15_11_03_YYY_{CATEGORY}_{DESCRIPTION}.ets`
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- interface method overload resolution
+

@@ -60,3 +60,12 @@
 - 6.3 Numeric Operator Contexts
 - 15.1.1 Standalone Expression
 - 15.1.2 Assignment-like Contexts
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- postfix/prefix increment on byte/short (no widening)
+- numeric operators widening (min int)
+

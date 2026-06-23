@@ -59,3 +59,11 @@
 - 4.6 Variable and Constant Declarations
 - 15.4 Assignability
 - 15.5 Type Inference
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- terminology verification
+

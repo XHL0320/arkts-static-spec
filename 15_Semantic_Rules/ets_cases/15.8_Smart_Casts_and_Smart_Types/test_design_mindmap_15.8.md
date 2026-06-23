@@ -30,6 +30,15 @@
 |---------|--------|----------|
 | SEM_15_08_101 | 智能转换运行时行为：智能转换在运行时正确 | runtime |
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- normal cases
+- edge cases
+- error cases
+
 ## 跨章节关联
 - 15.8.1 Type Expression（类型表达式）
 - 15.8.2 Intersection Types（交叉类型，依赖 ESY145527）

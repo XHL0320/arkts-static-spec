@@ -36,6 +36,14 @@
 - **测试代码**: 使用字面量类型进行赋值和函数调用
 - **预期结果**: 运行时行为符合预期
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- string literal subtype of string
+- numeric literal subtype of numeric type
+
 ## 跨章节关联
 
 - **15.2 Subtyping**: 子类型关系基础

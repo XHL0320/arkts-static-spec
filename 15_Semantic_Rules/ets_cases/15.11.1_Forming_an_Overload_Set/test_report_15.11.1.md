@@ -68,4 +68,4 @@ cd doc/15_Semantic_Rules/ets_cases/15.11.1_Forming_an_Overload_Set
 
 ## 测试环境
 - **编译器**：ArkTS static_core (es2panda)
-- **测试日期**：2026-06-22
+- **测试日期**：2026-06-23

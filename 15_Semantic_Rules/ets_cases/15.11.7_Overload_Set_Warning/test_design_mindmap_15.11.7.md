@@ -45,3 +45,11 @@
 `SEM_15_11_XXX_{CATEGORY}_{DESCRIPTION}.ets`
 
 > 注意：当前用例文件命名格式不一致，保持原文件名不变。
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- ambiguous call warning
+

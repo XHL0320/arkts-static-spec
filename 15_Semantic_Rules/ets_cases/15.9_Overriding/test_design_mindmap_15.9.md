@@ -32,6 +32,15 @@
 | SEM_15_09_100 | SEM_15_09_100.ets | compile-pass | 覆写基础 | ✅ compile-pass |
 | SEM_15_09_101 | SEM_15_09_101.ets | runtime | 覆写运行时 | ✅ runtime |
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- normal cases
+- edge cases
+- error cases
+
 ## 5. 跨章节链接
 - 15.9.1 Overriding in Classes
 - 15.9.2 Overriding in Interfaces

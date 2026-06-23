@@ -34,6 +34,26 @@
 ### 4.3 运行时测试用例
 - **SEM_15_08_04_100**: 验证智能类型运行时行为
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- variable declaration (l(v) and s(l(v)) initialization)
+- assignment (variable alias update)
+- instanceof assumption (s'(l(v)) := s(l(v)) & A)
+- strict equality with string literal (s'(l(v)) := str)
+- strict equality with undefined (s'(l(v)) := undefined)
+- strict equality with null (s'(l(v)) := null)
+- loose equality with undefined (s'(l(v)) := undefined|null)
+- typeof assumption (type T evaluation)
+- strict equality with enum constant (s'(l(v)) := N(ec))
+- truthiness check (s'(l(v)) := s(l(v)) - (null|undefined|""))
+- CFG branch joining (union of smart types)
+- backedge node update (loop variable reset to declared type)
+- must-alias sets computation
+- smart type for captured variables in lambdas
+
 ## 五、覆盖率分析
 
 | 规范条目 | 覆盖状态 | 备注 |

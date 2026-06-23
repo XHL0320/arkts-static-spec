@@ -25,6 +25,15 @@
 |---------|--------|----------|
 | SEM_15_07_101 | 类型推断运行时行为：推断类型在运行时正确 | runtime |
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- normal cases
+- edge cases
+- error cases
+
 ## 跨章节关联
 - 15.7.1 Type Inference for Constant Expressions（常量表达式类型推断）
 - 15.7.2 Return Type Inference（返回类型推断）

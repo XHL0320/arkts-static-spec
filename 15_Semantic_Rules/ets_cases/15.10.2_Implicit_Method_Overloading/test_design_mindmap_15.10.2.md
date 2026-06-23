@@ -8,3 +8,11 @@
 | SEM_15_10_02_100 | RUNTIME | 方法重载运行时 |
 ## Cross-Chapter Links
 - 15.10 Overloading\n- 9 Classes
+
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- method overloading in class
+

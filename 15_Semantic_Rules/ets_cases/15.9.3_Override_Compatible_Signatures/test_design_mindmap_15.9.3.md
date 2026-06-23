@@ -32,6 +32,14 @@
 | SEM_15_09_006 | SEM_15_09_006_FAIL_INCOMPATIBLE_OVERRIDE.ets | compile-fail | 不兼容签名覆写 | ✅ compile-fail |
 | SEM_15_09_008 | SEM_15_09_008_RUNTIME_COMPATIBLE_OVERRIDE.ets | runtime | 兼容签名覆写运行时 | ✅ runtime |
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- parameter types same
+- return type covariance
+
 ## 5. 跨章节链接
 - 15.9 Overriding
 - 15.5 Variance

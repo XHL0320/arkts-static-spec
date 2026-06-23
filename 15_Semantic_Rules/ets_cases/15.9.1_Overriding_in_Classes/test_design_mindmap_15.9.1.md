@@ -32,6 +32,16 @@
 | SEM_15_09_002 | SEM_15_09_002_FAIL_OVERRIDE_SIGNATURE.ets | compile-fail | 覆写签名不匹配 | ✅ compile-fail |
 | SEM_15_09_007 | SEM_15_09_007_RUNTIME_OVERRIDE.ets | runtime | 类方法覆写运行时 | ✅ runtime |
 
+
+## 最新设计要点
+
+从章节思维导图同步的最新测试设计点：
+
+- override keyword required
+- return type covariance
+- access modifier cannot be more strict
+- static methods cannot be overridden
+
 ## 5. 跨章节链接
 - 15.9 Overriding
 - 15.5 Variance
