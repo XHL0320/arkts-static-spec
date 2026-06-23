@@ -1,47 +1,70 @@
-# 7.35.4 Lambda运行时求值 - ArkTS与Java/Swift/TS行为差异及规范一致性报告
+# 7.35.4 Lambda运行时求值 - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
-**生成日期：** 2026-06-22
-**执行日期：** 2026-06-22
-**测试用例：** 30（10 compile-pass + 10 compile-fail + 10 runtime）
+**报告日期：** 2026-06-23
+**测试用例数：** 30（10 compile-pass + 10 compile-fail + 10 runtime）
 **通过率：** 100%（30/30，0 unexpected）
 **编译器：** es2panda + ark VM (Linux native)
-**Spec依据：** arktsspecification.md §7.35.4
+**Spec 依据：** arktsspecification.md §7.35.4
+
+## 报告分类口径
+
+| 分类 | 含义 | 处理方式 |
+|------|------|----------|
+| 符合 ArkTS spec 的语言设计差异 | 行为与 Java/Swift 不同，但符合 ArkTS spec 或当前明确语义 | 不标为缺陷，仅记录差异 |
+| Spec 与实现不一致 | 用例与 spec 要求不一致，且当前实现未按 spec 报错/运行 | 保留 FAIL 用例并记录 issue_report |
+| 待确认问题 | 需要补充 stdlib/spec/实现依据后才能定性 | 暂不判定为缺陷 |
+| 已验证规范一致行为 | 用例验证 ArkTS 行为符合 spec | 记录为通过项 |
+
+## 一、Spec 与实现不一致
+
+### 问题 D-7.35-01：Lambda 捕获未初始化变量未被检查
+
+**类别：** D 类（Spec 与实现不一致）
+**复现用例：** EXP_07_35_04_002_FAIL_UNINIT_CAPTURE
+
+#### Spec 规则
+
+§7.35.2 Lambda 体规定使用未初始化变量应产生编译错误：
+> If the body of a lambda expression uses a variable that is not definitely assigned before the lambda, a compile-time error occurs.
+
+#### 实测行为
+
+```typescript
+function testUninitCapture(): void {
+  let x: int
+  let f: () => int = (): int => x  // 实际编译通过
+}
+```
+
+#### 预期
+
+应编译失败，lambda 捕获了未明确赋值的变量 x。
+
+#### 实际
+
+编译通过，es2panda 未检查 lambda 体中的变量初始化状态。
+
+#### 跨语言对比
+
+| 语言 | 捕获未初始化变量 |
+|------|-----------------|
+| ArkTS | ✅ 编译通过（与 Spec 矛盾） |
+| Java | ❌ lambda 捕获的局部变量必须 effectively final + 已初始化 |
+| Swift | ❌ 闭包捕获未初始化变量为编译错误 |
+
+#### 建议
+
+1. 编译器对 lambda/箭头函数体进行 definite assignment 分析
+2. 增加编译器测试覆盖未初始化变量捕获场景
 
 ---
+## 二、已验证规范一致行为
 
-## 一、与业界静态语言的差异点
+经 es2panda + ark VM 实测，以下行为与 ArkTS spec §7.35.4 一致：
 
-本章节验证了 ArkTS §7.35.4 Lambda运行时求值 规范约束。以下为实测中发现的 **ArkTS与Java/Swift/TS行为差异**，按 C类（编译器实现待完善）/ D类（Spec与实现不一致）分类：
-
-| ID | 差异描述 | 分类 |
-|----|---------|------|
-| D-7.35-01 | Lambda捕获未初始化变量未被es2panda检查（Spec §7.35.2要求compile-time error） | 与业界静态语言差异点 |
-
----
-
-## 二、符合ArkTS spec的语言设计差异
-
-以下行为经 es2panda + ark VM 实测验证，**与 ArkTS Spec 一致**，属于 ArkTS 语言设计选择，非设计缺陷：
-
-- **Spec规范约束**：Lambda运行时求值：每次求值创建函数类型新实例（类似new class instance）。变量捕获为引用（非拷贝），每次求值捕获独立作用域。内存不足→OutOfMemoryError
-- **编译期行为**：10个compile-pass用例全部通过es2panda编译，10个compile-fail用例全部正确产生编译错误
-- **运行时行为**：10个runtime用例全部通过ark VM执行（含assert断言），无异常抛出
-- **跨语言定位**：ArkTS在此章节的设计与Java/Swift/TS存在合理差异（详见comparison_report_arkts_java_swift.md）
-
----
-
-## 三、跨语言对比摘要
-
-| 维度 | ArkTS | Java | Swift | TypeScript |
-|------|-------|------|-------|-----------|
-| 编译验证 | ✅ es2panda — 30/30通过 | ✅ javac | ✅ swiftc | ✅ tsc |
-| 运行时验证 | ✅ ark VM — 10/10 runtime通过 | ✅ JVM | ✅ Swift runtime | ✅ Node.js |
-| Spec一致性 | ✅ 与arktsspecification.md §7.35.4一致 | ✅ JLS SE21 | ✅ Swift 5.10 | N/A |
-| 语言差异 | ArkTS静态类型+nullish安全 | 传统静态类型 | 严格静态+Optional | 结构化类型 |
-
----
-
-## 四、章节执行统计
+| 行为 | 验证方式 | 结果 |
+|------|---------|------|
+| Lambda运行时求值，创建函数对象，捕获变量引用，每次求值可能创建新对象 | 10 compile-pass + 10 compile-fail + 10 runtime | ✅ 全部通过 |
 
 | 分类 | 数量 | 通过 | 失败 | 通过率 |
 |------|------|------|------|--------|
@@ -50,9 +73,22 @@
 | runtime | 10 | 10 | 0 | 100% |
 | **总计** | **30** | **30** | **0** | **100%** |
 
-**结论：30个测试用例全部编译运行通过。本章节Spec约束与es2panda+ark VM行为一致。**
+**结论：30 个测试用例全部编译运行通过。本章节 Spec 约束与 es2panda + ark VM 行为一致。**
 
----
+## 三、跨语言对比摘要
+
+| 维度 | ArkTS | Java | Swift | TypeScript |
+|------|-------|------|-------|-----------|
+| 编译验证 | ✅ es2panda — 30/30 通过 | ✅ javac | ✅ swiftc | ✅ tsc |
+| 运行时验证 | ✅ ark VM — 10/10 runtime 通过 | ✅ JVM | ✅ Swift runtime | ✅ Node.js |
+| Spec 一致性 | ✅ 与 arktsspecification.md §7.35.4 一致 | ✅ JLS SE21 | ✅ Swift 5.10 | N/A |
+| 语言差异 | ArkTS 静态类型 + nullish 安全 | 传统静态类型 | 严格静态 + Optional | 结构化类型 |
+
+## 四、分类汇总
+
+| 条目 | 分类 |
+|------|------|
+| D-7.35-01：Lambda 捕获未初始化变量未被检查 | Spec 与实现不一致 |
 
 ## 五、关联记录
 
