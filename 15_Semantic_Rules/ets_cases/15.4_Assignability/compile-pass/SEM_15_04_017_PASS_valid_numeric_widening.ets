@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_04_017_PASS_valid_numeric_widening
  * @expect compile-pass
  * @section 15.4

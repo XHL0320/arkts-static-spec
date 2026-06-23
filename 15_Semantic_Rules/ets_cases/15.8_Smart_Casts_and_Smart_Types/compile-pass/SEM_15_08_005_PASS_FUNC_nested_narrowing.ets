@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_005_PASS_FUNC_nested_narrowing
  * @expect compile-pass
  * @section 15.8

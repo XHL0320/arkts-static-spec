@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_08_002
+ * @id SEM_15_08_002_PASS_NULL_SMART_CAST
  * @expect compile-pass
  * @section 15.8.1
  * @design 验证 null/undefined smart cast：!= undefined 检查后类型收窄

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_10_013_PASS_function_overload_by_param
  * @expect compile-pass
  * @section 15.10

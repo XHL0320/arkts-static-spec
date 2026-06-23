@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_05_013_PASS_override_param_supertype
  * @expect compile-pass
  * @section 15.5

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_09_005
+ * @id SEM_15_09_005_PASS_COMPATIBLE_OVERRIDE
  * @expect compile-pass
  * @section 15.9.3
  * @design 验证覆写兼容签名：返回值协变 + 参数逆变时签名兼容

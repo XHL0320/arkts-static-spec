@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_019_PASS_string_plus_nullish
  * @expect compile-pass
  * @section 15.1

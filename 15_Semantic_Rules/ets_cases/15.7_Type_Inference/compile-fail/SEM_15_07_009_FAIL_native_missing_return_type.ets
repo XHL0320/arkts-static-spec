@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_009_FAIL_native_missing_return_type
  * @expect compile-fail
  * @section 15.7

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_04_020
+ * @id SEM_15_04_020_RUNTIME_ASSIGNABILITY
  * @expect runtime
  * @section 15.4
  * @design 验证可赋值性运行时行为：子类型赋值后方法调用正确

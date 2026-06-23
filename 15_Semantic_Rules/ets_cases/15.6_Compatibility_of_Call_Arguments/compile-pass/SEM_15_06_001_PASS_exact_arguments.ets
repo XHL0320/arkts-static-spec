@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_06_001_PASS_exact_arguments
  * @expect compile-pass
  * @section 15.6

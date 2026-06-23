@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_009_PASS_GEN_exact_generic_super
  * @expect compile-pass
  * @section 15.2

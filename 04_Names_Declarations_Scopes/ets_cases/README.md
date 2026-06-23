@@ -24,11 +24,11 @@ Each subsection contains three categories:
 ## Naming Convention
 
 ```
-NAM_{XX}_{YY}_{NNN}_{TYPE}_{DESCRIPTION}.ets
+NAM_{XX}_{YY}[_{ZZ}]_{NNN}_{TYPE}_{DESCRIPTION}.ets
 ```
 
 - `NAM` — chapter prefix (Names, Declarations & Scopes)
-- `{XX}_{YY}` — subsection number (e.g., `04_01`)
+- `{XX}_{YY}[_{ZZ}]` — subsection number, with optional deeper nesting for sub-subsections (e.g., `04_01`, `04_05_01`)
 - `{NNN}` — sequential number (001–019: PASS, 010–029: FAIL, 020–039: RUNTIME)
 - `{TYPE}` — `PASS` / `FAIL` / `RUNTIME`
 - `{DESCRIPTION}` — UPPER_SNAKE_CASE topic description

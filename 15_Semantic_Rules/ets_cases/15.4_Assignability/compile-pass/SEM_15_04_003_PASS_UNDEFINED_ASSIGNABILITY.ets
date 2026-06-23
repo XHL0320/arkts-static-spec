@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_04_003
+ * @id SEM_15_04_003_PASS_UNDEFINED_ASSIGNABILITY
  * @expect compile-pass
  * @section 15.4
  * @design 验证 undefined 可赋值性：undefined 可赋值给含 undefined 的联合类型

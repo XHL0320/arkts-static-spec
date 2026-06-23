@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_07_01_002
+ * @id SEM_15_07_01_002_PASS_BOOL_CONST_EXPR
  * @expect compile-pass
  * @section 15.7.1
  * @design 验证布尔常量表达式类型推断：关系运算推断为 boolean

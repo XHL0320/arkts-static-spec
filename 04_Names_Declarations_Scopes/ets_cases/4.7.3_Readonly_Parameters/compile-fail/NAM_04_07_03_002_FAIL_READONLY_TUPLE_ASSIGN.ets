@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_024_FAIL_READONLY_TUPLE_ASSIGN
+ * @id NAM_04_07_03_002_FAIL_READONLY_TUPLE_ASSIGN
  * @expect compile-fail
  * @section 4.7.3
  * @design 对只读元组参数赋值

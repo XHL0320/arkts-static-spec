@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_016_FAIL_READONLY_ASSIGN
+ * @id NAM_04_07_03_001_FAIL_READONLY_ASSIGN
  * @expect compile-fail
  * @section 4.7.3
  * @design 对只读参数赋值

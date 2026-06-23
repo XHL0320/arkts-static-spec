@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_14_014_PASS_local_copy_truthiness
  * @expect compile-pass
  * @section 15.14

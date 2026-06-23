@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_024_FAIL_WILDCARD_INVARIANT_ASSIGN
+ * @id GEN_05_01_04_008_FAIL_ASSIGN
  * @expect compile-fail
  * @section 5.2
  * @design 两个通配符类型间 invariant 属性赋值

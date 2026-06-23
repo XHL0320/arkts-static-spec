@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_018_FAIL_REST_NOT_ARRAY
+ * @id NAM_04_07_05_002_FAIL_REST_NOT_ARRAY
  * @expect compile-fail
  * @section 4.7.5
  * @design rest参数非数组类型

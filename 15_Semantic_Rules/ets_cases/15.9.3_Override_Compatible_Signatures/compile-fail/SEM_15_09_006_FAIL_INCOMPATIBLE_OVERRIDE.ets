@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_09_006
+ * @id SEM_15_09_006_FAIL_INCOMPATIBLE_OVERRIDE
  * @expect compile-fail
  * @section 15.9.3
  * @design 验证覆写签名不可兼容拒绝：逆变返回值 + 协变参数

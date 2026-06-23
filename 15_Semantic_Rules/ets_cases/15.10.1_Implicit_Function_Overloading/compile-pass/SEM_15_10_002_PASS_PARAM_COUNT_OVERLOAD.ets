@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_10_002
+ * @id SEM_15_10_002_PASS_PARAM_COUNT_OVERLOAD
  * @expect compile-pass
  * @section 15.10.1
  * @design 验证多参数重载：不同参数数量的函数重载

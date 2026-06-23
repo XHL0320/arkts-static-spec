@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_013_FAIL_string_minus_int
  * @expect compile-fail
  * @section 15.1

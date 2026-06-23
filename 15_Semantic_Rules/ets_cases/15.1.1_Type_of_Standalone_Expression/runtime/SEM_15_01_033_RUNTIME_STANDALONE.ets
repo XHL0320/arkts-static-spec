@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_01_033
+ * @id SEM_15_01_033_RUNTIME_STANDALONE
  * @expect runtime
  * @section 15.1.1
  * @design 验证独立表达式运行时类型行为：整数字面量作为独立表达式推断正确

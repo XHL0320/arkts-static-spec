@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_024_FAIL_DEPENDENT_NOT_SATISFIED
+ * @id GEN_05_01_01_005_FAIL_DEPENDENT_NOT_SATISFIED
  * @expect compile-fail
  * @section 5.1
  * @design 依赖约束不满足

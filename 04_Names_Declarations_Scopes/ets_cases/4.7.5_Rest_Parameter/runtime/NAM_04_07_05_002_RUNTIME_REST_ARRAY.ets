@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_027_RUNTIME_REST_ARRAY
+ * @id NAM_04_07_05_002_RUNTIME_REST_ARRAY
  * @expect runtime
  * @section 4.7.5
  * @design rest参数运行时

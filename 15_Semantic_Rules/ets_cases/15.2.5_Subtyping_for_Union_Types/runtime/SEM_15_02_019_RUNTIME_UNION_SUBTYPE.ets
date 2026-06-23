@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_019
+ * @id SEM_15_02_019_RUNTIME_UNION_SUBTYPE
  * @expect runtime
  * @section 15.2.5
  * @design 验证联合类型子类型运行时行为

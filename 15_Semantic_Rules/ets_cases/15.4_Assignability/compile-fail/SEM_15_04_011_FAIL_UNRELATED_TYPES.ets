@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_04_011
+ * @id SEM_15_04_011_FAIL_UNRELATED_TYPES
  * @expect compile-fail
  * @section 15.4
  * @design 验证非子类型不可赋值：无继承关系的类不可互相赋值

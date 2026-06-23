@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_06_004_PASS_spread_tuple
  * @expect compile-pass
  * @section 15.6

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_03_002
+ * @id SEM_15_03_002_PASS_GENERIC_IDENTITY
  * @expect compile-pass
  * @section 15.3
  * @design 验证泛型类型实例化同一性：Container<int> 和 Container<int> 是同一类型

@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_017_FAIL_WILDCARD_NOT_SUBTYPE_CONSTRAINT
+ * @id GEN_05_01_04_002_FAIL_CONSTRAINT
  * @expect compile-fail
  * @section 5.2
  * @design X<*> 不是 X<C> 或 X<never> 的子类型

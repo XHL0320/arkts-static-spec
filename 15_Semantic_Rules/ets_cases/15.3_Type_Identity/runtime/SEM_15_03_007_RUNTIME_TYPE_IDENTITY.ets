@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_03_007
+ * @id SEM_15_03_007_RUNTIME_TYPE_IDENTITY
  * @expect runtime
  * @section 15.3
  * @design 验证类型同一性运行时行为：别名类型与原始类型同一

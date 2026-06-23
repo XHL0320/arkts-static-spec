@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_05_011
+ * @id SEM_15_05_011_FAIL_CONTRAVARIANT_RETURN
  * @expect compile-fail
  * @section 15.5
  * @design 验证逆变位置禁止返回值：in 类型参数不可用于返回值位置

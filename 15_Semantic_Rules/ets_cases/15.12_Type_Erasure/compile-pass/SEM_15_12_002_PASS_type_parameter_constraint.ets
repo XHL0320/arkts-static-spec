@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_12_002_PASS_type_parameter_constraint
  * @expect compile-pass
  * @section 15.12

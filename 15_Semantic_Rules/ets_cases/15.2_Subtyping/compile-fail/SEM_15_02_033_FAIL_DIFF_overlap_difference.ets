@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_033_FAIL_DIFF_overlap_difference
  * @expect compile-fail
  * @section 15.2

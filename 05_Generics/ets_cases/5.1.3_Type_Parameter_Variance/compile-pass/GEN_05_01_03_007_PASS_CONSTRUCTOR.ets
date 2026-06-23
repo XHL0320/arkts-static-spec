@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_006_PASS_OUT_CONSTRUCTOR
+ * @id GEN_05_01_03_007_PASS_CONSTRUCTOR
  * @expect compile-pass
  * @section 5.2
  * @design out 构造函数参数

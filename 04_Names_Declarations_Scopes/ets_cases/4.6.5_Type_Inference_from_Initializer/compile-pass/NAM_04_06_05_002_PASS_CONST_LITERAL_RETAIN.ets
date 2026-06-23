@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_009_PASS_CONST_LITERAL_RETAIN
+ * @id NAM_04_06_05_002_PASS_CONST_LITERAL_RETAIN
  * @expect compile-pass
  * @section 4.6.5
  * @design const字面量保留

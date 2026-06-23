@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_023_FAIL_CONST_OBJECT_LITERAL_INFER
+ * @id NAM_04_06_05_002_FAIL_CONST_OBJECT_LITERAL_INFER
  * @expect compile-fail
  * @section 4.6.5
  * @design const 声明对象字面量类型推断失败

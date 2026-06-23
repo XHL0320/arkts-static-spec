@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_003_PASS_FUNC_nullish_check
  * @expect compile-pass
  * @section 15.8

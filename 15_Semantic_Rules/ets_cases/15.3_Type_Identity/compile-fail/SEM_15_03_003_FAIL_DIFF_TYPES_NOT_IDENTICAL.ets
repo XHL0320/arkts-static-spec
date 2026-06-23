@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_03_003
+ * @id SEM_15_03_003_FAIL_DIFF_TYPES_NOT_IDENTICAL
  * @expect compile-fail
  * @section 15.3
  * @design 验证不同类型不具同一性：int 和 string 不是同一类型

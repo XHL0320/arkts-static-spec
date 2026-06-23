@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_005_PASS_CONST_WITH_TYPE
+ * @id NAM_04_06_02_001_PASS_CONST_WITH_TYPE
  * @expect compile-pass
  * @section 4.6.2
  * @design 常量声明带类型注解

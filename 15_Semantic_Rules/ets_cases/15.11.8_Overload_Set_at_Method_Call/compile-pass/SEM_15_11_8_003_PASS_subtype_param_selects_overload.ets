@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_8_003
+ * @id SEM_15_11_8_003_PASS_subtype_param_selects_overload
  * @expect compile-pass
  * @section 15.11.8
  * @design 子类型参数选择合适重载

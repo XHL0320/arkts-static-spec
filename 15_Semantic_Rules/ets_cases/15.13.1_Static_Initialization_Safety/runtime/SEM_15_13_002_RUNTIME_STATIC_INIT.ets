@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_13_002
+ * @id SEM_15_13_002_RUNTIME_STATIC_INIT
  * @expect runtime
  * @section 15.13.1
  * @design 验证静态初始化运行时顺序：静态字段按声明顺序初始化

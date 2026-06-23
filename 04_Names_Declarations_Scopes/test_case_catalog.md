@@ -121,7 +121,7 @@
 | NAM_04_05_028 | Const enum unsupported | FAIL | `4.5_Type_Declarations/compile-fail/NAM_04_05_028_FAIL_TYPE_DECL_CONST_ENUM_UNSUPPORTED.ets` |
 | NAM_04_05_025 | Type alias use | RUNTIME | `4.5_Type_Declarations/runtime/NAM_04_05_025_RUNTIME_TYPE_ALIAS_USE.ets` |
 
-## 4.5.1 Type Alias Declaration (7 cases)
+## 4.5.1 Type Alias Declaration (11 cases)
 
 | ID | 子主题 | 类型 | 文件 |
 |---|--------|:--:|------|
@@ -151,7 +151,7 @@
 | NAM_04_06_01_003 | Ambiguous var no type | FAIL | `4.6.1_Variable_Declarations/compile-fail/NAM_04_06_01_003_FAIL_AMBIGUOUS_VAR_NO_TYPE.ets` |
 | NAM_04_06_01_001 | Var ops runtime | RUNTIME | `4.6.1_Variable_Declarations/runtime/NAM_04_06_01_001_RUNTIME_VAR_OPS.ets` |
 
-## 4.6.2 Constant Declarations (6 cases)
+## 4.6.2 Constant Declarations (7 cases)
 
 | ID | 子主题 | 类型 | 文件 |
 |---|--------|:--:|------|
@@ -160,7 +160,7 @@
 | NAM_04_06_02_003 | Const multi | PASS | `4.6.2_Constant_Declarations/compile-pass/NAM_04_06_02_003_PASS_CONST_MULTI.ets` |
 | NAM_04_06_02_001 | Const no init | FAIL | `4.6.2_Constant_Declarations/compile-fail/NAM_04_06_02_001_FAIL_CONST_NO_INIT.ets` |
 | NAM_04_06_02_002 | Const ambiguous no init | FAIL | `4.6.2_Constant_Declarations/compile-fail/NAM_04_06_02_002_FAIL_CONST_AMBIGUOUS_NO_INIT.ets` |
-| NAM_04_06_02_002 | Const no type no init | FAIL | `4.6.2_Constant_Declarations/compile-fail/NAM_04_06_02_002_FAIL_CONST_NO_TYPE_NO_INIT.ets` |
+| NAM_04_06_02_003 | Const no type no init | FAIL | `4.6.2_Constant_Declarations/compile-fail/NAM_04_06_02_003_FAIL_CONST_NO_TYPE_NO_INIT.ets` |
 | NAM_04_06_02_001 | Const ops runtime | RUNTIME | `4.6.2_Constant_Declarations/runtime/NAM_04_06_02_001_RUNTIME_CONST_OPS.ets` |
 
 ## 4.6.3 Validity of Initializer (3 cases)

@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_018_FAIL_WILDCARD_WRITE_IN_POS
+ * @id GEN_05_01_04_003_FAIL_POS
  * @expect compile-fail
  * @section 5.2
  * @design 通配符写入 in-position（T 实例化为 never）

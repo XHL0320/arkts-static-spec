@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_004_PASS_READONLY_PARAM_READ
+ * @id NAM_04_07_03_001_PASS_READONLY_PARAM_READ
  * @expect compile-pass
  * @section 4.7.3
  * @design 只读参数可读取

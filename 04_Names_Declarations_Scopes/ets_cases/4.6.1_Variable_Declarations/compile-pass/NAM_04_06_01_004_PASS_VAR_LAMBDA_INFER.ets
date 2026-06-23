@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_004_PASS_VAR_LAMBDA_INFER
+ * @id NAM_04_06_01_004_PASS_VAR_LAMBDA_INFER
  * @expect compile-pass
  * @section 4.6.1
  * @design lambda类型推断

@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_03_025_RUNTIME_EXPLICIT_INST
+ * @id GEN_05_02_02_001_RUNTIME_EXPLICIT_INST
  * @expect runtime
  * @section 5.3
  * @design 明确实例化运行时

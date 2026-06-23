@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_020_FAIL_RETURN_NEVER_MISSING
+ * @id NAM_04_07_07_002_FAIL_RETURN_NEVER_MISSING
  * @expect compile-fail
  * @section 4.7.7
  * @design never返回类型缺少退出

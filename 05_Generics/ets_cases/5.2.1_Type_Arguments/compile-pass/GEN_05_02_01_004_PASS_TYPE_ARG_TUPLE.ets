@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_03_004_PASS_TYPE_ARG_TUPLE
+ * @id GEN_05_02_01_004_PASS_TYPE_ARG_TUPLE
  * @expect compile-pass
  * @section 5.3
  * @design 类型参数-元组类型

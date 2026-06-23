@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_007_PASS_REST_ARRAY
+ * @id NAM_04_07_05_001_PASS_REST_ARRAY
  * @expect compile-pass
  * @section 4.7.5
  * @design rest参数-数组类型

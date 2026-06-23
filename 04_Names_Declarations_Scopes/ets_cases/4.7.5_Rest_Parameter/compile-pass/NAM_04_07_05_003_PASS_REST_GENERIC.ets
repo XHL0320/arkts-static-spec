@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_009_PASS_REST_GENERIC
+ * @id NAM_04_07_05_003_PASS_REST_GENERIC
  * @expect compile-pass
  * @section 4.7.5
  * @design rest参数-泛型类型参数

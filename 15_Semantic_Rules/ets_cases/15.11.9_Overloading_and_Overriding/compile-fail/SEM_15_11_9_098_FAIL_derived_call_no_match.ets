@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_9_098
+ * @id SEM_15_11_9_098_FAIL_derived_call_no_match
  * @expect compile-fail
  * @section 15.11.9
  * @design 派生类调用无匹配

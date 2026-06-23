@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_011_PASS_GEN_variance_compatible
  * @expect compile-pass
  * @section 15.2

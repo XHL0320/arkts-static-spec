@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_021_FAIL_CONSTRAINT_UNION_NOT_SATISFIED
+ * @id GEN_05_01_01_002_FAIL_CONSTRAINT_UNION_NOT_SATISFIED
  * @expect compile-fail
  * @section 5.1
  * @design 联合约束不满足

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_029_FAIL_function_declared_base_init_derived_assign
  * @expect compile-fail
  * @section 15.8

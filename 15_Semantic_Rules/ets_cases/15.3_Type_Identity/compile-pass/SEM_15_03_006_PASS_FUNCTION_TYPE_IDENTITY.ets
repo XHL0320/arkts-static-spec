@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_03_006
+ * @id SEM_15_03_006_PASS_FUNCTION_TYPE_IDENTITY
  * @expect compile-pass
  * @section 15.3
  * @design 验证函数类型同一性：相同签名函数类型视为同一类型

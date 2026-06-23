@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_001
+ * @id SEM_15_02_001_PASS_CLASS_EXTENDS_SUBTYPE
  * @expect compile-pass
  * @section 15.2.1
  * @design 验证非泛型类 extends 产生直接子类型关系：class B extends A → B <: A

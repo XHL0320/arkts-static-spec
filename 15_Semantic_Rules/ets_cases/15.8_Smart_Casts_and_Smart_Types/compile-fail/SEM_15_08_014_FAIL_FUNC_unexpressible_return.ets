@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_014_FAIL_FUNC_unexpressible_return
  * @expect compile-fail
  * @section 15.8

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_001_PASS_infer_int_initializer
  * @expect compile-pass
  * @section 15.7

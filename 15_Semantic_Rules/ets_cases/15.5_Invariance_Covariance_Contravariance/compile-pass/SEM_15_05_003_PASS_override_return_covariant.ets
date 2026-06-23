@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_05_003_PASS_override_return_covariant
  * @expect compile-pass
  * @section 15.5

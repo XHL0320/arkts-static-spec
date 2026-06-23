@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_14_016_FAIL_union_truthiness_wrong_assumption
  * @expect compile-fail
  * @section 15.14

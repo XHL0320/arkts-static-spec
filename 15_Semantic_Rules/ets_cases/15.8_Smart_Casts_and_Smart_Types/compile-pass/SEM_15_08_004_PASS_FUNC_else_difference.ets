@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_004_PASS_FUNC_else_difference
  * @expect compile-pass
  * @section 15.8

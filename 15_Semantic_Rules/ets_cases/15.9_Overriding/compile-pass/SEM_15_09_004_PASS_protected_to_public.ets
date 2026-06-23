@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_09_004_PASS_protected_to_public
  * @expect compile-pass
  * @section 15.9

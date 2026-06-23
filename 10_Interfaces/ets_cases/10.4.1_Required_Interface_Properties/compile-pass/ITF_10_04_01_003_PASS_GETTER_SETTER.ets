@@ -1,5 +1,5 @@
 /**
- * @id ITF_10_04_003_PASS_GETTER_SETTER
+ * @id ITF_10_04_01_003_PASS_GETTER_SETTER
  * @expect compile-pass
  * @section 10.4
  * @design getter/setter 形式

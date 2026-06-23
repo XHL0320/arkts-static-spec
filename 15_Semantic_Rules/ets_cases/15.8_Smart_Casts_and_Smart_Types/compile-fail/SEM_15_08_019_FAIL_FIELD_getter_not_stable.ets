@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_019_FAIL_FIELD_getter_not_stable
  * @expect compile-fail
  * @section 15.8

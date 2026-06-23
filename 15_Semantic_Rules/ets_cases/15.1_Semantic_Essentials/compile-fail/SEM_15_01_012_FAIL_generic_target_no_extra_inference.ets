@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_012_FAIL_generic_target_no_extra_inference
  * @expect compile-fail
  * @section 15.1

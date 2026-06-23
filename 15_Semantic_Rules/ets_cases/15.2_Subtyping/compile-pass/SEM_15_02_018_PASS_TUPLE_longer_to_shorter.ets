@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_018_PASS_TUPLE_longer_to_shorter
  * @expect compile-pass
  * @section 15.2

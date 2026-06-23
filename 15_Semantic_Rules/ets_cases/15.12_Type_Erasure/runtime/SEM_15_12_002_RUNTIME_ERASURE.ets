@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_12_002
+ * @id SEM_15_12_002_RUNTIME_ERASURE
  * @expect runtime
  * @section 15.12
  * @design 验证泛型类型擦除运行时行为：擦除后类型信息不影响运行时

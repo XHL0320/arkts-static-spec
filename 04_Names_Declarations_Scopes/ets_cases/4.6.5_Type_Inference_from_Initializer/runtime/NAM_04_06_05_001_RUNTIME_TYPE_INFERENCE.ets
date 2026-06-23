@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_027_RUNTIME_TYPE_INFERENCE
+ * @id NAM_04_06_05_001_RUNTIME_TYPE_INFERENCE
  * @expect runtime
  * @section 4.6.5
  * @design 类型推断运行时正确

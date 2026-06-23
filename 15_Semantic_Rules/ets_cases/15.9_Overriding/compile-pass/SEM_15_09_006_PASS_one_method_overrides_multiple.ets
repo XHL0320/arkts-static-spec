@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_09_006_PASS_one_method_overrides_multiple
  * @expect compile-pass
  * @section 15.9

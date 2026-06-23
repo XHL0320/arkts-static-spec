@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_12_001
+ * @id SEM_15_12_001_PASS_TYPE_ERASURE
  * @expect compile-pass
  * @section 15.12
  * @design 验证泛型类型擦除：泛型函数调用正确

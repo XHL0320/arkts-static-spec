@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_003
+ * @id SEM_15_02_003_FAIL_GENERIC_INVARIANCE
  * @expect compile-fail
  * @section 15.2.2
  * @design 验证泛型类不变性：Array<Derived> 不是 Array<Base> 的子类型

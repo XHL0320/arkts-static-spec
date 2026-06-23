@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_01_028
+ * @id SEM_15_01_028_RUNTIME_STRING_CONCAT
  * @expect runtime
  * @section 15.1.5
  * @design 验证字符串拼接运行时行为

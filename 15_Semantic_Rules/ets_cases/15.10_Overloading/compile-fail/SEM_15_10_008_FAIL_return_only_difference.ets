@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_10_008_FAIL_return_only_difference
  * @expect compile-fail
  * @section 15.10

@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_005_PASS_VARIANCE_INTERLEAVE
+ * @id GEN_05_01_03_006_PASS_INTERLEAVE
  * @expect compile-pass
  * @section 5.2
  * @design 变体交错-in-out函数类型

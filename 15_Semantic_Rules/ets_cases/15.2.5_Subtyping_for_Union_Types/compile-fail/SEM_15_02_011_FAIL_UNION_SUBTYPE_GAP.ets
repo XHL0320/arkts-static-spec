@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_011
+ * @id SEM_15_02_011_FAIL_UNION_SUBTYPE_GAP
  * @expect compile-fail
  * @section 15.2.5
  * @design 验证联合类型子类型严格检查：U <: T 要求 U 的每个成员 <: T

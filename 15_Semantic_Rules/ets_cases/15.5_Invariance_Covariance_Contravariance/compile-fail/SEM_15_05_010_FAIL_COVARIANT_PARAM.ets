@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_05_010
+ * @id SEM_15_05_010_FAIL_COVARIANT_PARAM
  * @expect compile-fail
  * @section 15.5
  * @design 验证协变位置禁止参数：out 类型参数不可用于参数位置

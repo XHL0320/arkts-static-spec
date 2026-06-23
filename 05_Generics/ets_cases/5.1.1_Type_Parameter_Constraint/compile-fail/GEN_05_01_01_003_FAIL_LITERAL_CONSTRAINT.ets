@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_022_FAIL_LITERAL_CONSTRAINT
+ * @id GEN_05_01_01_003_FAIL_LITERAL_CONSTRAINT
  * @expect compile-fail
  * @section 5.1
  * @design 字面量约束不匹配

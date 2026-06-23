@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_004_PASS_INVARIANT_ANY_POS
+ * @id GEN_05_01_03_005_PASS_POS
  * @expect compile-pass
  * @section 5.2
  * @design 不变体任意位置

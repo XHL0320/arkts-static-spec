@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_04_001
+ * @id SEM_15_04_001_PASS_SUBTYPE_ASSIGNABILITY
  * @expect compile-pass
  * @section 15.4
  * @design 验证子类型可赋值性：S <: T ⇒ S 可赋值给 T

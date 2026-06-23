@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_10_003_PASS_implicit_constructor
  * @expect compile-pass
  * @section 15.10

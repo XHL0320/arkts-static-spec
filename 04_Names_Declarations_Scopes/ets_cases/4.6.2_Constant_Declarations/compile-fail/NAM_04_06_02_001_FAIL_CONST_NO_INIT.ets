@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_017_FAIL_CONST_NO_INIT
+ * @id NAM_04_06_02_001_FAIL_CONST_NO_INIT
  * @expect compile-fail
  * @section 4.6.2
  * @design 常量无初始化

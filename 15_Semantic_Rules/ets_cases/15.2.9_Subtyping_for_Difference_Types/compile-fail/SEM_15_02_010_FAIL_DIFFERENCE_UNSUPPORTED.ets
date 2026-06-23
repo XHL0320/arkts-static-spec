@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_010
+ * @id SEM_15_02_010_FAIL_DIFFERENCE_UNSUPPORTED
  * @expect compile-fail
  * @section 15.2.9
  * @design 验证差分类型 — Spec 要求 T \ U <: T 但编译器暂不支持差分类型

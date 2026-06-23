@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_03_005_PASS_same_function_signature
  * @expect compile-pass
  * @section 15.3

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_10_001
+ * @id SEM_15_10_001_PASS_FUNCTION_OVERLOAD
  * @expect compile-pass
  * @section 15.10.1
  * @design 验证函数重载：同名函数不同参数类型可共存

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_14_015_FAIL_logical_result_wrong_assignment
  * @expect compile-fail
  * @section 15.14

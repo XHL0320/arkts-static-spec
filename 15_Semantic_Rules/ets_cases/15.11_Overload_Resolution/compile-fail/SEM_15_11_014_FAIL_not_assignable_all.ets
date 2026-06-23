@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_11_014_FAIL_not_assignable_all
  * @expect compile-fail
  * @section 15.11

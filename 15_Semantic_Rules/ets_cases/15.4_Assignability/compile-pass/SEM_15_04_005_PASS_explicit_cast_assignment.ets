@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_04_005_PASS_explicit_cast_assignment
  * @expect compile-pass
  * @section 15.4

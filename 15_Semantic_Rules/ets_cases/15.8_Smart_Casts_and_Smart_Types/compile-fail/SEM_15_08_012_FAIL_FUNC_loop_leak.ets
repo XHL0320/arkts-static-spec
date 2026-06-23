@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_012_FAIL_FUNC_loop_leak
  * @expect compile-fail
  * @section 15.8

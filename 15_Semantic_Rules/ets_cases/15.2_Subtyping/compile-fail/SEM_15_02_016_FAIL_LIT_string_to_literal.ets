@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_016_FAIL_LIT_string_to_literal
  * @expect compile-fail
  * @section 15.2

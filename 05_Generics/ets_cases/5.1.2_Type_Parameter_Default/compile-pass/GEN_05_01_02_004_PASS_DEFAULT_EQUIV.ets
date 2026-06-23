@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_014_PASS_DEFAULT_EQUIV
+ * @id GEN_05_01_02_004_PASS_DEFAULT_EQUIV
  * @expect compile-pass
  * @section 5.1
  * @design 默认值的语义等价

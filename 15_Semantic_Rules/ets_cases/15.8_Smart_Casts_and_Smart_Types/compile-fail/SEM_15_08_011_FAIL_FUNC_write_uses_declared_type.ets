@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_011_FAIL_FUNC_write_uses_declared_type
  * @expect compile-fail
  * @section 15.8

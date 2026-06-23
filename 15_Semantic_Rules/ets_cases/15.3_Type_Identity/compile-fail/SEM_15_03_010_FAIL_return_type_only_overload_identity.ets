@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_03_010_FAIL_return_type_only_overload_identity
  * @expect compile-fail
  * @section 15.3

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_10_003
+ * @id SEM_15_10_003_PASS_UNION_OVERLOAD
  * @expect compile-pass
  * @section 15.10.1
  * @design 验证联合类型参数重载：参数类型为联合类型时的重载解析

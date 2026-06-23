@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_001_PASS_standalone_int_literal
  * @expect compile-pass
  * @section 15.1

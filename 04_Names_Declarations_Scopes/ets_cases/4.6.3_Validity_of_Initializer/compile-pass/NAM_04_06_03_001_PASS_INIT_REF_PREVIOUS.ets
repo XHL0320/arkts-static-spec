@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_013_PASS_INIT_REF_PREVIOUS
+ * @id NAM_04_06_03_001_PASS_INIT_REF_PREVIOUS
  * @expect compile-pass
  * @section 4.6.3
  * @design 初始化引用前文声明

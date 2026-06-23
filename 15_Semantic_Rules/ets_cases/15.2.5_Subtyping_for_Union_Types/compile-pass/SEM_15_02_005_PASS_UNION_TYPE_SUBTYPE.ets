@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_005
+ * @id SEM_15_02_005_PASS_UNION_TYPE_SUBTYPE
  * @expect compile-pass
  * @section 15.2.5
  * @design 验证联合类型子类型：U <: T 当且仅当 U 的每个成员 <: T

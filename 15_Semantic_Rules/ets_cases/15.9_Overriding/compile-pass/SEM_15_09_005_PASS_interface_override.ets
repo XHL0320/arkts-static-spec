@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_09_005_PASS_interface_override
  * @expect compile-pass
  * @section 15.9

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_033_PASS_function_declared_base_instanceof_member
  * @expect compile-pass
  * @section 15.8

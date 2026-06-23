@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_10_02_002
+ * @id SEM_15_10_022_PASS_METHOD_OVERLOAD_2
  * @expect compile-pass
  * @section 15.10.2
  * @design 方法重载可区分 - 编译器选择最佳匹配

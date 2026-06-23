@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_06_010_FAIL_arg_not_assignable
  * @expect compile-fail
  * @section 15.6

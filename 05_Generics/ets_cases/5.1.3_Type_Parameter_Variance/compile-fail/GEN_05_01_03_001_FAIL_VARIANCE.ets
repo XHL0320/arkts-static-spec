@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_030_FAIL_GENERIC_METHOD_VARIANCE
+ * @id GEN_05_01_03_001_FAIL_VARIANCE
  * @expect compile-fail
  * @section 5.1
  * @design 函数类型参数不能有变体修饰

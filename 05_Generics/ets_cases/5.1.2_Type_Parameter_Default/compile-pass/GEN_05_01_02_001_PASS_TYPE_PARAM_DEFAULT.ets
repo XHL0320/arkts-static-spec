@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_011_PASS_TYPE_PARAM_DEFAULT
+ * @id GEN_05_01_02_001_PASS_TYPE_PARAM_DEFAULT
  * @expect compile-pass
  * @section 5.1
  * @design 类型参数默认值

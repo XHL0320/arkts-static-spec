@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_013_FAIL_FUNC_closure_mutation
  * @expect compile-fail
  * @section 15.8

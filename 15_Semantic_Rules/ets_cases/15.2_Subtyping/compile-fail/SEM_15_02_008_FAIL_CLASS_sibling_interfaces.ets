@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_008_FAIL_CLASS_sibling_interfaces
  * @expect compile-fail
  * @section 15.2

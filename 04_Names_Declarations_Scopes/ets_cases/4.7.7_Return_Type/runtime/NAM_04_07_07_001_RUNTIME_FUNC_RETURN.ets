@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_028_RUNTIME_FUNC_RETURN
+ * @id NAM_04_07_07_001_RUNTIME_FUNC_RETURN
  * @expect runtime
  * @section 4.7.7
  * @design 函数返回类型运行时

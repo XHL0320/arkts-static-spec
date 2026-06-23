@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_05_002
+ * @id SEM_15_05_002_PASS_RETURN_COVARIANCE
  * @expect compile-pass
  * @section 15.5
  * @design 验证返回值协变：子类覆写方法返回 Dog <: Animal 允许

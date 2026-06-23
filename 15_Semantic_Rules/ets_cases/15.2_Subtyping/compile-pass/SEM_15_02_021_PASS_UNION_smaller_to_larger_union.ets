@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_021_PASS_UNION_smaller_to_larger_union
  * @expect compile-pass
  * @section 15.2

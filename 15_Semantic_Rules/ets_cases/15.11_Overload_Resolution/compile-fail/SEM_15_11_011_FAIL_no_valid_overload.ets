@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_11_011_FAIL_no_valid_overload
  * @expect compile-fail
  * @section 15.11

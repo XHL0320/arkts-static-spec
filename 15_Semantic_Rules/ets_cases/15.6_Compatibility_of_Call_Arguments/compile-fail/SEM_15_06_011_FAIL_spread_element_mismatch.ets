@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_06_011_FAIL_spread_element_mismatch
  * @expect compile-fail
  * @section 15.6

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_04_010_FAIL_unrelated_assignment
  * @expect compile-fail
  * @section 15.4

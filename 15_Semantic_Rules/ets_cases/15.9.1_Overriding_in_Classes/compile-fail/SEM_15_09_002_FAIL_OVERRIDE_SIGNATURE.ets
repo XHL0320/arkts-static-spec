@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_09_002
+ * @id SEM_15_09_002_FAIL_OVERRIDE_SIGNATURE
  * @expect compile-fail
  * @section 15.9.1
  * @design 验证覆写返回类型不匹配拒绝

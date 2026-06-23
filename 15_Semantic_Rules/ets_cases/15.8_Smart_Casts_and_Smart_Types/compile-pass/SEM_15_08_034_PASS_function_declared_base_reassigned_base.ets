@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_034_PASS_function_declared_base_reassigned_base
  * @expect compile-pass
  * @section 15.8

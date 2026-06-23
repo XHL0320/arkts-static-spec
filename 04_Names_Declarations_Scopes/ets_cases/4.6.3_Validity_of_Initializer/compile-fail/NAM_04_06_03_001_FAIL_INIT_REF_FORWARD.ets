@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_018_FAIL_INIT_REF_FORWARD
+ * @id NAM_04_06_03_001_FAIL_INIT_REF_FORWARD
  * @expect compile-fail
  * @section 4.6.3
  * @design 初始化引用后文声明

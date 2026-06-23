@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_10_011
+ * @id SEM_15_10_011_FAIL_ERASURE_AMBIGUOUS
  * @expect compile-fail
  * @section 15.10.1
  * @design 验证重载解析 — 类型擦除后签名不可区分时报错

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_06_005_PASS_spread_array_literal
  * @expect compile-pass
  * @section 15.6

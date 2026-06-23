@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_006_PASS_FUNC_return_guard_narrowing
  * @expect compile-pass
  * @section 15.8

@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_037_RUNTIME_DEFAULT_TYPE_ARG
+ * @id GEN_05_01_02_001_RUNTIME_DEFAULT_TYPE_ARG
  * @expect runtime
  * @section 5.1
  * @design 默认类型参数运行时

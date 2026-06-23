@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_007_PASS_CONST_MULTI
+ * @id NAM_04_06_02_003_PASS_CONST_MULTI
  * @expect compile-pass
  * @section 4.6.2
  * @design 多常量声明

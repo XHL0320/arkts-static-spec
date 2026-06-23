@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_011_PASS_TERNARY_INFER_CONST
+ * @id NAM_04_06_05_004_PASS_TERNARY_INFER_CONST
  * @expect compile-pass
  * @section 4.6.5
  * @design 三元运算类型推断-const

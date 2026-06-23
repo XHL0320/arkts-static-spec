@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_008_PASS_CONSTRAINT_LITERAL_UNION
+ * @id GEN_05_01_01_003_PASS_CONSTRAINT_LITERAL_UNION
  * @expect compile-pass
  * @section 5.1
  * @design 类型参数约束-字面量联合

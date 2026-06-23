@@ -1,5 +1,5 @@
-﻿/*
- * @id SEM_15_11_015_WARN_unreachable_entity
+/*
+ * @id SEM_15_11_015_PASS_unreachable_entity
  * @expect compile-warn
  * @section 15.11
  * @design 后面的重载永远不可达。

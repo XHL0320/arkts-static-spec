@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_03_009_FAIL_array_base_vs_derived
  * @expect compile-fail
  * @section 15.3

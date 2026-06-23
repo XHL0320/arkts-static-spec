@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_03_003_PASS_TYPE_ARG_ARRAY
+ * @id GEN_05_02_01_003_PASS_TYPE_ARG_ARRAY
  * @expect compile-pass
  * @section 5.3
  * @design 类型参数-数组类型

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_03_005
+ * @id SEM_15_03_005_PASS_UNION_IDENTITY
  * @expect compile-pass
  * @section 15.3
  * @design 验证联合类型同一性：相同成员的联合类型视为同一类型

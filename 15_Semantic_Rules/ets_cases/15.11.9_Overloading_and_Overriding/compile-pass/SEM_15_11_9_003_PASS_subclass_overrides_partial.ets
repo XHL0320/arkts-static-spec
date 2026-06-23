@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_9_003
+ * @id SEM_15_11_9_003_PASS_subclass_overrides_partial
  * @expect compile-pass
  * @section 15.11.9
  * @design 子类重写部分重载

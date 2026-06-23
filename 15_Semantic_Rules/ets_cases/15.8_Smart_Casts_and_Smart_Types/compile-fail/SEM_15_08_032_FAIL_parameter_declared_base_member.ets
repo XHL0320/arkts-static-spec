@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_032_FAIL_parameter_declared_base_member
  * @expect compile-fail
  * @section 15.8

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_024_PASS_FUNC_parameter_contravariance
  * @expect compile-pass
  * @section 15.2

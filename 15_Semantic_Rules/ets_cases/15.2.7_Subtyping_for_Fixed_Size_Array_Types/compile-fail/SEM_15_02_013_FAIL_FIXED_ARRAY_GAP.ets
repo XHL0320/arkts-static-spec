@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_013
+ * @id SEM_15_02_013_FAIL_FIXED_ARRAY_GAP
  * @expect compile-fail
  * @section 15.2.7
  * @design 验证 FixedArray<Object> 不是 FixedArray<string> 的子类型（逆变拒绝）

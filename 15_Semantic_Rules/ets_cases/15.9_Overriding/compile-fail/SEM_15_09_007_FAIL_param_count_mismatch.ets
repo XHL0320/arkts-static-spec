@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_09_007_FAIL_param_count_mismatch
  * @expect compile-fail
  * @section 15.9

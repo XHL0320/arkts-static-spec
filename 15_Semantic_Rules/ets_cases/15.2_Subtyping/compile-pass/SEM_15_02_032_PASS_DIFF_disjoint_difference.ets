@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_032_PASS_DIFF_disjoint_difference
  * @expect compile-pass
  * @section 15.2

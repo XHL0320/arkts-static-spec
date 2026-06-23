@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_012_PASS_NULL_UNDEF_INFER
+ * @id NAM_04_06_01_005_PASS_NULL_UNDEF_INFER
  * @expect compile-pass
  * @section 4.6.5
  * @design null和undefined推断

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_021_PASS_all_paths_common_supertype
  * @expect compile-pass
  * @section 15.7

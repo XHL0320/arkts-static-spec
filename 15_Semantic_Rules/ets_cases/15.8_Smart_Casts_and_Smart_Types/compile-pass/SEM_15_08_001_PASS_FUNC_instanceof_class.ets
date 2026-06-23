@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_001_PASS_FUNC_instanceof_class
  * @expect compile-pass
  * @section 15.8

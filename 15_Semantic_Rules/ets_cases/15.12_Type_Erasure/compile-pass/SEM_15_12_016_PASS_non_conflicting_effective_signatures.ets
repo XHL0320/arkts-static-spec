@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_12_016_PASS_non_conflicting_effective_signatures
  * @expect compile-pass
  * @section 15.12

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_01_032
+ * @id SEM_15_01_032_RUNTIME_TYPE_PARAM
  * @expect runtime
  * @section 15.1.7
  * @design 验证类型参数运行时行为：泛型函数运行时派发正确

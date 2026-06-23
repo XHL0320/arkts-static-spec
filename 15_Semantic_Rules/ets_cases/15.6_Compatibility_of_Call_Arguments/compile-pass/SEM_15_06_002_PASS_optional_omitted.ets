@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_06_002_PASS_optional_omitted
  * @expect compile-pass
  * @section 15.6

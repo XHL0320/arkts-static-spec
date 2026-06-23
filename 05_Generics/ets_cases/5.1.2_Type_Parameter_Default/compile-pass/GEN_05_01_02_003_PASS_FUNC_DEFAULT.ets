@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_013_PASS_FUNC_DEFAULT
+ * @id GEN_05_01_02_003_PASS_FUNC_DEFAULT
  * @expect compile-pass
  * @section 5.1
  * @design 泛型函数默认类型参数

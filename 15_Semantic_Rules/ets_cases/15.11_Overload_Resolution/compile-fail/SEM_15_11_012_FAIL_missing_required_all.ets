@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_11_012_FAIL_missing_required_all
  * @expect compile-fail
  * @section 15.11

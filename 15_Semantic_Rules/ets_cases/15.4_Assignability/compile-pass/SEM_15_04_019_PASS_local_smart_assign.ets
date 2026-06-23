@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_04_019_PASS_local_smart_assign
  * @expect compile-pass
  * @section 15.4

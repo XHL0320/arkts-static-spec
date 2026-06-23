@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_09_008_FAIL_param_wrong_direction
  * @expect compile-fail
  * @section 15.9

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_05_010_FAIL_constraint_variance_wrong
  * @expect compile-fail
  * @section 15.5

@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_010_PASS_PARAM_SHADOWING
+ * @id NAM_04_07_06_001_PASS_PARAM_SHADOWING
  * @expect compile-pass
  * @section 4.7.6
  * @design 参数覆盖顶层变量

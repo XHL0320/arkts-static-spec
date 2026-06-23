@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_019_FAIL_INIT_NOT_ASSIGNABLE
+ * @id NAM_04_06_04_001_FAIL_INIT_NOT_ASSIGNABLE
  * @expect compile-fail
  * @section 4.6.4
  * @design 初始化类型不可赋值

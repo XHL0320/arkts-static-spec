@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_10_016_PASS_single_main
  * @expect compile-pass
  * @section 15.10

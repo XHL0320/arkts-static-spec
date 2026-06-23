@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_029_FAIL_RETURN_IMPLICIT_UNDEFINED
+ * @id NAM_04_07_07_003_FAIL_RETURN_IMPLICIT_UNDEFINED
  * @expect compile-fail
  * @section 4.7.7
  * @design 非 void/undefined 返回类型的空函数体

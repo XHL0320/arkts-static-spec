@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_019_FAIL_RETURN_MISSING
+ * @id NAM_04_07_07_001_FAIL_RETURN_MISSING
  * @expect compile-fail
  * @section 4.7.7
  * @design 缺少return或throw

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_13_011_FAIL_static_block_uninitialized_read
  * @expect compile-fail
  * @section 15.13

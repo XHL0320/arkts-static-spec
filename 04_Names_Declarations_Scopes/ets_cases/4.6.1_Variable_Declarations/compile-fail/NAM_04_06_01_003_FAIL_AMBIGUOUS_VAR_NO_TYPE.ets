@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_022_FAIL_AMBIGUOUS_VAR_NO_TYPE
+ * @id NAM_04_06_01_003_FAIL_AMBIGUOUS_VAR_NO_TYPE
  * @expect compile-fail
  * @section 4.6.1
  * @design ambient变量声明缺少类型注解

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_09_011_FAIL_private_override
  * @expect compile-fail
  * @section 15.9

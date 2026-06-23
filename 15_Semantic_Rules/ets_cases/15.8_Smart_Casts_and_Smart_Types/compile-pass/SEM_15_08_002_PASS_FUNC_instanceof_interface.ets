@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_002_PASS_FUNC_instanceof_interface
  * @expect compile-pass
  * @section 15.8

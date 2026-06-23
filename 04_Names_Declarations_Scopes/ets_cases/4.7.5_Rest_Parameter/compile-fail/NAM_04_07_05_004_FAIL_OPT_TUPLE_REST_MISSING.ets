@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_023_FAIL_OPT_TUPLE_REST_MISSING
+ * @id NAM_04_07_05_004_FAIL_OPT_TUPLE_REST_MISSING
  * @expect compile-fail
  * @section 4.7.5
  * @design 可选元组+rest元组参数缺少rest实参

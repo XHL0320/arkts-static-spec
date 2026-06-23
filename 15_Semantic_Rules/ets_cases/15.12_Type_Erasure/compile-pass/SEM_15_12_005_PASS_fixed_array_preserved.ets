@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_12_005_PASS_fixed_array_preserved
  * @expect compile-pass
  * @section 15.12

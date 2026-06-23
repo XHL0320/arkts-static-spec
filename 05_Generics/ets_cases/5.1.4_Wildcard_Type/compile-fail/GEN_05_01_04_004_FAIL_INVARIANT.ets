@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_019_FAIL_WILDCARD_WRITE_INVARIANT
+ * @id GEN_05_01_04_004_FAIL_INVARIANT
  * @expect compile-fail
  * @section 5.2
  * @design 通配符写入 invariant-position（propread）

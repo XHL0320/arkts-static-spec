@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_13_010_FAIL_top_level_forward_read
  * @expect compile-fail
  * @section 15.13

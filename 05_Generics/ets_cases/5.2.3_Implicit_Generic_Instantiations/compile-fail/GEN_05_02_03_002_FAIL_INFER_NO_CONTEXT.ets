@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_03_024_FAIL_INFER_NO_CONTEXT
+ * @id GEN_05_02_03_002_FAIL_INFER_NO_CONTEXT
  * @expect compile-fail
  * @section 5.3
  * @design 无推断上下文

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_08_099
+ * @id SEM_15_08_099_FAIL_ST_placeholder
  * @expect compile-fail
  * @section 15.8
  * @design 智能转换拒绝

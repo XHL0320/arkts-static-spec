@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_03_006_FAIL_tuple_length_differs
  * @expect compile-fail
  * @section 15.3

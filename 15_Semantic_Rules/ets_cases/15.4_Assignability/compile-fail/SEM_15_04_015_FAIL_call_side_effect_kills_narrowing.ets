@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_04_015_FAIL_call_side_effect_kills_narrowing
  * @expect compile-fail
  * @section 15.4

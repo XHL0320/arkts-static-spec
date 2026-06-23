@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_017_PASS_FIELD_local_copy_this_field
  * @expect compile-pass
  * @section 15.8

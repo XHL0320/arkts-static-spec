@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_05_001_PASS_TYPE_ALIAS_ARRAY
+ * @id NAM_04_05_01_001_PASS_TYPE_ALIAS_ARRAY
  * @expect compile-pass
  * @section 4.5.1
  * @design 数组类型别名

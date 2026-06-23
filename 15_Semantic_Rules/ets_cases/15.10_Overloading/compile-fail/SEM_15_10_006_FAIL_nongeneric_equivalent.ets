@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_10_006_FAIL_nongeneric_equivalent
  * @expect compile-fail
  * @section 15.10

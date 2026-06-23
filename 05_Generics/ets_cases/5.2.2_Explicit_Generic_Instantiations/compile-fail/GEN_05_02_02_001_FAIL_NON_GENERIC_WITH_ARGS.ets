@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_03_020_FAIL_NON_GENERIC_WITH_ARGS
+ * @id GEN_05_02_02_001_FAIL_NON_GENERIC_WITH_ARGS
  * @expect compile-fail
  * @section 5.3
  * @design 非泛型实体提供类型参数

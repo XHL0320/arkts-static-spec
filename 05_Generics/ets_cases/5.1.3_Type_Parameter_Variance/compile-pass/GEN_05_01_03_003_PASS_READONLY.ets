@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_002_PASS_COVARIANT_OUT_READONLY
+ * @id GEN_05_01_03_003_PASS_READONLY
  * @expect compile-pass
  * @section 5.2
  * @design out readonly字段

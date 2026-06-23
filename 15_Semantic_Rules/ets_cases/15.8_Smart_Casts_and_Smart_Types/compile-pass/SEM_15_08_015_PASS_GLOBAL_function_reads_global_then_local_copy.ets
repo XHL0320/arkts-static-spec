@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_015_PASS_GLOBAL_function_reads_global_then_local_copy
  * @expect compile-pass
  * @section 15.8

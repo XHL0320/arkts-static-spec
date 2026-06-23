@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_05_006_FAIL_return_contravariant
  * @expect compile-fail
  * @section 15.5

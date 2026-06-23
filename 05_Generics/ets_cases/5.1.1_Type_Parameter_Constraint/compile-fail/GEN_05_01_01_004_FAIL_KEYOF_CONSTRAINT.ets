@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_023_FAIL_KEYOF_CONSTRAINT
+ * @id GEN_05_01_01_004_FAIL_KEYOF_CONSTRAINT
  * @expect compile-fail
  * @section 5.1
  * @design keyof约束不匹配

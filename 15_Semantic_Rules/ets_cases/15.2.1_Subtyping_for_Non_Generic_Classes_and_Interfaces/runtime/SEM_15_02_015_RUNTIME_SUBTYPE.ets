@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_015
+ * @id SEM_15_02_015_RUNTIME_SUBTYPE
  * @expect runtime
  * @section 15.2.1
  * @design 验证非泛型子类型运行时调用：父类引用调用子类方法

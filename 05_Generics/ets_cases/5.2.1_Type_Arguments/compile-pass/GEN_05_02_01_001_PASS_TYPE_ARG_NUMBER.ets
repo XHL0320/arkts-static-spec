@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_03_001_PASS_TYPE_ARG_NUMBER
+ * @id GEN_05_02_01_001_PASS_TYPE_ARG_NUMBER
  * @expect compile-pass
  * @section 5.3
  * @design 类型参数-number

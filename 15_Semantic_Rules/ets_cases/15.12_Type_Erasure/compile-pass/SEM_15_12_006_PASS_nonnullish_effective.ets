@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_12_006_PASS_nonnullish_effective
  * @expect compile-pass
  * @section 15.12

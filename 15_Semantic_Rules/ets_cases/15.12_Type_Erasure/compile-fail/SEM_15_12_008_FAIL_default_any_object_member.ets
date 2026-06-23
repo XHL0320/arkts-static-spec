@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_12_008_FAIL_default_any_object_member
  * @expect compile-fail
  * @section 15.12

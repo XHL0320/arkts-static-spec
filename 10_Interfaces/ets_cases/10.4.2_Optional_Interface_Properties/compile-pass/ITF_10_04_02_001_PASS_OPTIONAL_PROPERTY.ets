@@ -1,5 +1,5 @@
 /**
- * @id ITF_10_04_006_PASS_OPTIONAL_PROPERTY
+ * @id ITF_10_04_02_001_PASS_OPTIONAL_PROPERTY
  * @expect compile-pass
  * @section 10.4
  * @design 可选属性

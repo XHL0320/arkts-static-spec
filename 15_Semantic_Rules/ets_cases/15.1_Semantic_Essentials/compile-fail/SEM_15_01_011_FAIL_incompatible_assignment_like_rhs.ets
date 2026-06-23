@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_011_FAIL_incompatible_assignment_like_rhs
  * @expect compile-fail
  * @section 15.1

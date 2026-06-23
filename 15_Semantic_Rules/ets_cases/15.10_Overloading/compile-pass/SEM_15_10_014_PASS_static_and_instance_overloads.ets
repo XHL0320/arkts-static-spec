@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_10_014_PASS_static_and_instance_overloads
  * @expect compile-pass
  * @section 15.10

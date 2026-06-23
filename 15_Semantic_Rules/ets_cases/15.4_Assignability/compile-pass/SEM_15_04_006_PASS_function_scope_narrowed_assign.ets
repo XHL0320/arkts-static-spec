@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_04_006_PASS_function_scope_narrowed_assign
  * @expect compile-pass
  * @section 15.4

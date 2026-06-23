@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_06_002
+ * @id SEM_15_06_002_PASS_SUBTYPE_ARG
  * @expect compile-pass
  * @section 15.6
  * @design 验证子类型参数兼容：子类型参数可传父类型声明

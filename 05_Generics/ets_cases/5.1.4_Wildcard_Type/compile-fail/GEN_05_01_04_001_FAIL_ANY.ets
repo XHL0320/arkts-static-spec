@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_016_FAIL_WILDCARD_NOT_SUBTYPE_ANY
+ * @id GEN_05_01_04_001_FAIL_ANY
  * @expect compile-fail
  * @section 5.2
  * @design X<*> 不是 X<Any> 的子类型（invariant T）

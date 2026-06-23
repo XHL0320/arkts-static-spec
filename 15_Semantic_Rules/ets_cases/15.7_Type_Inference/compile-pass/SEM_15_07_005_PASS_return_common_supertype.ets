@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_005_PASS_return_common_supertype
  * @expect compile-pass
  * @section 15.7

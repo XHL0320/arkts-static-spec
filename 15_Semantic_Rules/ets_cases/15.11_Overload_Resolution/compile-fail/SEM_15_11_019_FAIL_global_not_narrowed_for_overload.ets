@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_11_019_FAIL_global_not_narrowed_for_overload
  * @expect compile-fail
  * @section 15.11

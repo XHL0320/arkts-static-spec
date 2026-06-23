@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_13_007_PASS_ordered_static_fields
  * @expect compile-pass
  * @section 15.13

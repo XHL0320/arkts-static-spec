@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_10_009_FAIL_erasure_equivalent_conflict
  * @expect compile-fail
  * @section 15.10

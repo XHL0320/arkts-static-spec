@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_015_PASS_LIT_string_literal_to_string
  * @expect compile-pass
  * @section 15.2

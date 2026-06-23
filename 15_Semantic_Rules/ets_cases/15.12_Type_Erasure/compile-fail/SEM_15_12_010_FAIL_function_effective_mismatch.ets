@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_12_010_FAIL_function_effective_mismatch
  * @expect compile-fail
  * @section 15.12

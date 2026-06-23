@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_027_PASS_no_side_effect_between_check_and_use
  * @expect compile-pass
  * @section 15.8

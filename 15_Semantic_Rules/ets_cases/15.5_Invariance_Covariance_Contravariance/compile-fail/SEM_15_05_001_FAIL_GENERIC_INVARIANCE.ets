@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_05_001
+ * @id SEM_15_05_001_FAIL_GENERIC_INVARIANCE
  * @expect compile-fail
  * @section 15.5
  * @design 验证泛型类型参数不变性：Holder<Derived> 不是 Holder<Base> 的子类型

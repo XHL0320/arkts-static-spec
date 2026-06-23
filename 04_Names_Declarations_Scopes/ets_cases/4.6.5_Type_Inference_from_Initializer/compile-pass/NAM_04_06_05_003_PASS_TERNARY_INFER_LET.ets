@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_010_PASS_TERNARY_INFER_LET
+ * @id NAM_04_06_05_003_PASS_TERNARY_INFER_LET
  * @expect compile-pass
  * @section 4.6.5
  * @design 三元运算类型推断-let

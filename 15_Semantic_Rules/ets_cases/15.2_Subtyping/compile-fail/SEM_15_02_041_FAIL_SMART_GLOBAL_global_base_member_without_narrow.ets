@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_041_FAIL_SMART_GLOBAL_global_base_member_without_narrow
  * @expect compile-fail
  * @section 15

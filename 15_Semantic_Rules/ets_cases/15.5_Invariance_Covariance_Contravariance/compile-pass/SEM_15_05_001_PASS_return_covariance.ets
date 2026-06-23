@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_05_001_PASS_return_covariance
  * @expect compile-pass
  * @section 15.5

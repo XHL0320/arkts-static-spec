@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_006_PASS_CONST_INFERRED
+ * @id NAM_04_06_02_002_PASS_CONST_INFERRED
  * @expect compile-pass
  * @section 4.6.2
  * @design 常量类型推断

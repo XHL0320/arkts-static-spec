@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_003_PASS_array_literal_target_double
  * @expect compile-pass
  * @section 15.1

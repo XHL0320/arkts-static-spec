@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_012_PASS_RETURN_UNDEFINED
+ * @id NAM_04_07_07_004_PASS_RETURN_UNDEFINED
  * @expect compile-pass
  * @section 4.7.7
  * @design undefined返回类型

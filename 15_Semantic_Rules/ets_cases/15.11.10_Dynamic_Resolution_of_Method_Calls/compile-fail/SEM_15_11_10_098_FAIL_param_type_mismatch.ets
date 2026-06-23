@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_10_098
+ * @id SEM_15_11_10_098_FAIL_param_type_mismatch
  * @expect compile-fail
  * @section 15.11.10
  * @design 参数类型不匹配

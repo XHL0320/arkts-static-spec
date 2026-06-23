@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_029_FAIL_FIXED_fixed_resizable_mix
  * @expect compile-fail
  * @section 15.2

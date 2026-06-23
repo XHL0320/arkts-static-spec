@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_05_004_PASS_TYPE_ALIAS_SHORT_NAME
+ * @id NAM_04_05_01_004_PASS_TYPE_ALIAS_SHORT_NAME
  * @expect compile-pass
  * @section 4.5.1
  * @design 长类型简短别名

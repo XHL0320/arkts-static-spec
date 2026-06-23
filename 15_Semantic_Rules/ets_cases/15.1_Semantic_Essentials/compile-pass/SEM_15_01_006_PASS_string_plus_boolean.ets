@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_006_PASS_string_plus_boolean
  * @expect compile-pass
  * @section 15.1

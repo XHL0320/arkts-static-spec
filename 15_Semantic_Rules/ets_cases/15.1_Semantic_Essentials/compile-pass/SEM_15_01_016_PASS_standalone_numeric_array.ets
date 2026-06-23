@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_016_PASS_standalone_numeric_array
  * @expect compile-pass
  * @section 15.1

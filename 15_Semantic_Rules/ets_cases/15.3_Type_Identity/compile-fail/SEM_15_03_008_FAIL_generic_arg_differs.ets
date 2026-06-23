@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_03_008_FAIL_generic_arg_differs
  * @expect compile-fail
  * @section 15.3

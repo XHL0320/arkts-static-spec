@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_007_PASS_CONSTRAINT_UNION
+ * @id GEN_05_01_01_002_PASS_CONSTRAINT_UNION
  * @expect compile-pass
  * @section 5.1
  * @design 类型参数约束-联合类型

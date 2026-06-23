@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_13_008_PASS_function_local_init_logic
  * @expect compile-pass
  * @section 15.13

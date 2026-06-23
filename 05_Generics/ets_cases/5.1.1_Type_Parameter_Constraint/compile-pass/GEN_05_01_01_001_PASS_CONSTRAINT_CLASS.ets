@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_006_PASS_CONSTRAINT_CLASS
+ * @id GEN_05_01_01_001_PASS_CONSTRAINT_CLASS
  * @expect compile-pass
  * @section 5.1
  * @design 类型参数约束-类约束

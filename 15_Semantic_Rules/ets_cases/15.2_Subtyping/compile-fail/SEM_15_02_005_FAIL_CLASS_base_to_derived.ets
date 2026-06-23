@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_005_FAIL_CLASS_base_to_derived
  * @expect compile-fail
  * @section 15.2

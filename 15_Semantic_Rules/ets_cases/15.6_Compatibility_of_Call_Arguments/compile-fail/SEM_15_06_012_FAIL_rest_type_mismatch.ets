@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_06_012_FAIL_rest_type_mismatch
  * @expect compile-fail
  * @section 15.6

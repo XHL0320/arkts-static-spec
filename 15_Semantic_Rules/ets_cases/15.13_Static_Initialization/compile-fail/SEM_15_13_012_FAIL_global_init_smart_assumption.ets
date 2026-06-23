@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_13_012_FAIL_global_init_smart_assumption
  * @expect compile-fail
  * @section 15.13

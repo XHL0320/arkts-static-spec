@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_013_FAIL_IN_INVARIANT_FIELD
+ * @id GEN_05_01_03_005_FAIL_FIELD
  * @expect compile-fail
  * @section 5.2
  * @design in 在字段位置

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_06_001
+ * @id SEM_15_06_001_PASS_ARG_COMPATIBILITY
  * @expect compile-pass
  * @section 15.6
  * @design 验证调用参数类型兼容：参数类型与声明类型匹配时通过

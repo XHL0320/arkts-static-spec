@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_004
+ * @id SEM_15_02_004_PASS_STRING_LITERAL_SUBTYPE
  * @expect compile-pass
  * @section 15.2.3
  * @design 验证字符串字面量类型是其基础类型 string 的子类型

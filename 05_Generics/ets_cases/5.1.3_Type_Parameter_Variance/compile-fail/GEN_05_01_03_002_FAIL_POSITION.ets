@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_010_FAIL_OUT_IN_IN_POSITION
+ * @id GEN_05_01_03_002_FAIL_POSITION
  * @expect compile-fail
  * @section 5.2
  * @design out 在 in-position（方法参数）

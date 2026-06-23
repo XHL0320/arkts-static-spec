@@ -1,7 +1,7 @@
 {
   "chapter": "10_Interfaces",
   "prefix": "ITF_",
-  "total_cases": 57,
+  "total_cases": 59,
   "sections": [
     "10.1_Interface_Declarations",
     "10.2_Superinterfaces_Subinterfaces",
@@ -11,5 +11,15 @@
     "10.4.2_Optional_Interface_Properties",
     "10.5_Interface_Method_Declarations",
     "10.6_Interface_Inheritance"
-  ]
+  ],
+  "section_stats": {
+    "10.1_Interface_Declarations": {"pass": 5, "fail": 1, "runtime": 1, "total": 7},
+    "10.2_Superinterfaces_Subinterfaces": {"pass": 3, "fail": 4, "runtime": 1, "total": 8},
+    "10.3_Interface_Members": {"pass": 3, "fail": 2, "runtime": 1, "total": 6},
+    "10.4_Interface_Properties": {"pass": 1, "fail": 2, "runtime": 1, "total": 4},
+    "10.4.1_Required_Interface_Properties": {"pass": 6, "fail": 1, "runtime": 1, "total": 8},
+    "10.4.2_Optional_Interface_Properties": {"pass": 3, "fail": 1, "runtime": 2, "total": 6},
+    "10.5_Interface_Method_Declarations": {"pass": 6, "fail": 2, "runtime": 2, "total": 10},
+    "10.6_Interface_Inheritance": {"pass": 5, "fail": 4, "runtime": 1, "total": 10}
+  }
 }

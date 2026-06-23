@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_03_009_PASS_EXPLICIT_TYPE_ALIAS
+ * @id GEN_05_02_02_004_PASS_EXPLICIT_TYPE_ALIAS
  * @expect compile-pass
  * @section 5.3
  * @design 类型别名明确实例化

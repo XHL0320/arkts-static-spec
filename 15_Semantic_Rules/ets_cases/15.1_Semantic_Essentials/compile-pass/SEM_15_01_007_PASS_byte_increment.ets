@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_007_PASS_byte_increment
  * @expect compile-pass
  * @section 15.1

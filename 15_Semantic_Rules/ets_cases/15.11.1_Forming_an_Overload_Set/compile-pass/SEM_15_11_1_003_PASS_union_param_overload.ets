@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_1_003
+ * @id SEM_15_11_1_003_PASS_union_param_overload
  * @expect compile-pass
  * @section 15.11.1
  * @design 联合类型参数形成重载

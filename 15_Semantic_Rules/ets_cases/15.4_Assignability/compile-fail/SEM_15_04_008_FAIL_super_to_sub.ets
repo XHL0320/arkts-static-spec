@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_04_008_FAIL_super_to_sub
  * @expect compile-fail
  * @section 15.4

@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_015_FAIL_OPTIONAL_BEFORE_REQUIRED
+ * @id NAM_04_07_02_001_FAIL_OPTIONAL_BEFORE_REQUIRED
  * @expect compile-fail
  * @section 4.7.2
  * @design 可选参数在必需参数前

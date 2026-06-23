@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_05_026_RUNTIME_ALIAS_FUNC_TYPE
+ * @id NAM_04_05_01_002_RUNTIME_ALIAS_FUNC_TYPE
  * @expect runtime
  * @section 4.5.1
  * @design 函数类型别名运行时

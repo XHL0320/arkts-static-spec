@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_038_FAIL_SMART_FUNC_function_base_member_without_narrow
  * @expect compile-fail
  * @section 15

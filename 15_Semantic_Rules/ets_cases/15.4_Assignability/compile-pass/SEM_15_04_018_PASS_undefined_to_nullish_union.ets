@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_04_018_PASS_undefined_to_nullish_union
  * @expect compile-pass
  * @section 15.4

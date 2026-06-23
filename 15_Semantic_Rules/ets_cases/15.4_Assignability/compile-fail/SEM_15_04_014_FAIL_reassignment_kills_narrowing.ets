@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_04_014_FAIL_reassignment_kills_narrowing
  * @expect compile-fail
  * @section 15.4

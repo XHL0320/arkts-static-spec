@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_008
+ * @id SEM_15_02_008_PASS_TUPLE_IDENTITY
  * @expect compile-pass
  * @section 15.2.4
  * @design 验证元组类型的子类型关系：相同结构元组 <: 自身

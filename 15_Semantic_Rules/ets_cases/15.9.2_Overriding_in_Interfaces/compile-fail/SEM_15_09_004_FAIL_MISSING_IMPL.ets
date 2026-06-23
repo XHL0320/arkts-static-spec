@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_09_004
+ * @id SEM_15_09_004_FAIL_MISSING_IMPL
  * @expect compile-fail
  * @section 15.9.2
  * @design 验证接口方法未实现拒绝：缺少接口方法实现应报错

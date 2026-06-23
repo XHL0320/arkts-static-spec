@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_14_013_PASS_function_truthiness_nullish
  * @expect compile-pass
  * @section 15.14

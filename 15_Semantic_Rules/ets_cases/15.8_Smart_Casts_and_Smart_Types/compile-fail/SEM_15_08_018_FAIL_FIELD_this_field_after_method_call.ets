@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_018_FAIL_FIELD_this_field_after_method_call
  * @expect compile-fail
  * @section 15.8

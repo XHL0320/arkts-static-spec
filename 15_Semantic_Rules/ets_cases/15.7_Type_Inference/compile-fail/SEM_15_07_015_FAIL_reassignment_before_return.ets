@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_015_FAIL_reassignment_before_return
  * @expect compile-fail
  * @section 15.7

@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_03_012_PASS_IMPLICIT_MULTI_INFER
+ * @id GEN_05_02_03_002_PASS_IMPLICIT_MULTI_INFER
  * @expect compile-pass
  * @section 5.3
  * @design 隐式实例化-多参数推断

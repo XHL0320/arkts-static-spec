@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_09_007
+ * @id SEM_15_09_007_RUNTIME_OVERRIDE
  * @expect runtime
  * @section 15.9.1
  * @design 验证类方法覆写运行时行为：多态派发正确

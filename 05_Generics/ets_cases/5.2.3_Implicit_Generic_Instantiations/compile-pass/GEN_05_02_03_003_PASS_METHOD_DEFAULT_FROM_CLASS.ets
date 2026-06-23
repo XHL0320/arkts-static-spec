@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_03_013_PASS_METHOD_DEFAULT_FROM_CLASS
+ * @id GEN_05_02_03_003_PASS_METHOD_DEFAULT_FROM_CLASS
  * @expect compile-pass
  * @section 5.3
  * @design 方法默认类型参数来自类

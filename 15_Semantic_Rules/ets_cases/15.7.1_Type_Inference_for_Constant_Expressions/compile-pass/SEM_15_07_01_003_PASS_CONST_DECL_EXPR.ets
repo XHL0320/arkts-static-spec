@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_07_01_003
+ * @id SEM_15_07_01_003_PASS_CONST_DECL_EXPR
  * @expect compile-pass
  * @section 15.7.1
  * @design 验证 const 声明常量表达式计算：编译期常量可参与表达式

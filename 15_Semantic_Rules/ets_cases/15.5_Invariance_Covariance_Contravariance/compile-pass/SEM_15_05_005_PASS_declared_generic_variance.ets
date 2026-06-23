@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_05_005_PASS_declared_generic_variance
  * @expect compile-pass
  * @section 15.5

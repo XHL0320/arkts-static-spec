@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_026_PASS_TYPE_ALIAS_VARIANCE
+ * @id GEN_05_01_03_002_PASS_VARIANCE
  * @expect compile-pass
  * @section 5.2
  * @design 类型别名上的 out/in 修饰被接受【设计问题：语义不明确】

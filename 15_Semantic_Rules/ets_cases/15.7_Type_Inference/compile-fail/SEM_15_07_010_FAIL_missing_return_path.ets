@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_010_FAIL_missing_return_path
  * @expect compile-fail
  * @section 15.7

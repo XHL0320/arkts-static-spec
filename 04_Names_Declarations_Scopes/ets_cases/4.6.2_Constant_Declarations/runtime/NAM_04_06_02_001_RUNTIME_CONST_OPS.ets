@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_026_RUNTIME_CONST_OPS
+ * @id NAM_04_06_02_001_RUNTIME_CONST_OPS
  * @expect runtime
  * @section 4.6.2
  * @design 常量运行时不可赋值

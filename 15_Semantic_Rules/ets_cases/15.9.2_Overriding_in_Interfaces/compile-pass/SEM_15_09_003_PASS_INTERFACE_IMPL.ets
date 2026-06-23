@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_09_003
+ * @id SEM_15_09_003_PASS_INTERFACE_IMPL
  * @expect compile-pass
  * @section 15.9.2
  * @design 验证接口方法实现：类实现接口中的所有方法

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_007
+ * @id SEM_15_02_007_PASS_fixed_array_element_covariance
  * @expect compile-pass
  * @section 15.2.7
  * @design 验证 FixedArray 元素协变：FixedArray<Derived> 可作为 FixedArray<Base>

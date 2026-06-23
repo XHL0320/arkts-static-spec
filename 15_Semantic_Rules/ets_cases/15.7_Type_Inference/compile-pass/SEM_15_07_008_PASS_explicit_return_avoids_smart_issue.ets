@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_008_PASS_explicit_return_avoids_smart_issue
  * @expect compile-pass
  * @section 15.7

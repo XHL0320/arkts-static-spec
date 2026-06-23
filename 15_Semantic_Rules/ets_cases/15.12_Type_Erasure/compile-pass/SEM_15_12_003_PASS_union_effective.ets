@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_12_003_PASS_union_effective
  * @expect compile-pass
  * @section 15.12

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_06_015_FAIL_reassigned_before_call
  * @expect compile-fail
  * @section 15.6

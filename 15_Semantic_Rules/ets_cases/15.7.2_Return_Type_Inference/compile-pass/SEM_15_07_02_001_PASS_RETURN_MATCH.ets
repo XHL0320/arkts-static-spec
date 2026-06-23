@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_07_02_001
+ * @id SEM_15_07_02_001_PASS_RETURN_MATCH
  * @expect compile-pass
  * @section 15.7.2
  * @design 验证函数返回类型推断：显式返回类型匹配

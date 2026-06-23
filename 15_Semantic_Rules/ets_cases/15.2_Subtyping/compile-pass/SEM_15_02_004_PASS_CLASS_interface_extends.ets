@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_004_PASS_CLASS_interface_extends
  * @expect compile-pass
  * @section 15.2

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_004_PASS_return_same_type
  * @expect compile-pass
  * @section 15.7

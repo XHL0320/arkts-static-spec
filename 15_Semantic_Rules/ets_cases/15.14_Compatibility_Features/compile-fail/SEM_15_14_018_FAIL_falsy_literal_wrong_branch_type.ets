@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_14_018_FAIL_falsy_literal_wrong_branch_type
  * @expect compile-fail
  * @section 15.14

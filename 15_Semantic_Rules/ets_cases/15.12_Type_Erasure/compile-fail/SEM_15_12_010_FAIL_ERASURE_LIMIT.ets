@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_12_010
+ * @id SEM_15_12_010_FAIL_ERASURE_LIMIT
  * @expect compile-fail
  * @section 15.12
  * @design 验证 FixedArray 泛型擦除限制：擦除后类型不可作 FixedArray 类型参数

@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_013_PASS_RETURN_INFERRED
+ * @id NAM_04_07_07_005_PASS_RETURN_INFERRED
  * @expect compile-pass
  * @section 4.7.7
  * @design 返回类型推断

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_04_004_PASS_member_to_union
  * @expect compile-pass
  * @section 15.4

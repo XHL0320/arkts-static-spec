@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_013_FAIL_incompatible_return_branches
  * @expect compile-fail
  * @section 15.7

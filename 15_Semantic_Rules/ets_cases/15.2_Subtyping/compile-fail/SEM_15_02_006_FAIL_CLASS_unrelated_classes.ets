@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_006_FAIL_CLASS_unrelated_classes
  * @expect compile-fail
  * @section 15.2

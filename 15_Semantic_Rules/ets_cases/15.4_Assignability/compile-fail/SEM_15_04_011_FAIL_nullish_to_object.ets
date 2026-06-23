@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_04_011_FAIL_nullish_to_object
  * @expect compile-fail
  * @section 15.4

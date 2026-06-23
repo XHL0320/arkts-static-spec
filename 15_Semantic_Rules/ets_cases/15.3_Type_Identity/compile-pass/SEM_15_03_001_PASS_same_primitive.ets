@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_03_001_PASS_same_primitive
  * @expect compile-pass
  * @section 15.3

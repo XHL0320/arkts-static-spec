@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_001_PASS_COVARIANT_OUT_RETURN
+ * @id GEN_05_01_03_001_PASS_RETURN
  * @expect compile-pass
  * @section 5.2
  * @design out 返回值位置

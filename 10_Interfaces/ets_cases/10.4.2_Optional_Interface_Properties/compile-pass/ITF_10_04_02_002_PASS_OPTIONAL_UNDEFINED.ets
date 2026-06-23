@@ -1,5 +1,5 @@
 /**
- * @id ITF_10_04_007_PASS_OPTIONAL_UNDEFINED
+ * @id ITF_10_04_02_002_PASS_OPTIONAL_UNDEFINED
  * @expect compile-pass
  * @section 10.4
  * @design 可选属性-explicit undefined

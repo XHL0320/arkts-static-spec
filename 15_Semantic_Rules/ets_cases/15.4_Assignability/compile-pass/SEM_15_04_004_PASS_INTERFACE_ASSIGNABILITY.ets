@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_04_004
+ * @id SEM_15_04_004_PASS_INTERFACE_ASSIGNABILITY
  * @expect compile-pass
  * @section 15.4
  * @design 验证接口实现的可赋值性：实现类可赋值给接口类型

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_04_013_FAIL_global_narrowing_assumed
  * @expect compile-fail
  * @section 15.4

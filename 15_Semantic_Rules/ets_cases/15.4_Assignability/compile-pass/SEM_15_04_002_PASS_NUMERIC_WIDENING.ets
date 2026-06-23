@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_04_002
+ * @id SEM_15_04_002_PASS_NUMERIC_WIDENING
  * @expect compile-pass
  * @section 15.4
  * @design 验证数值拓宽可赋值性：int → double

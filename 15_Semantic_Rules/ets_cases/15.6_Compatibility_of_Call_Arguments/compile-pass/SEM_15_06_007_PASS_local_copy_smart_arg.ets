@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_06_007_PASS_local_copy_smart_arg
  * @expect compile-pass
  * @section 15.6

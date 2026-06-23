@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_018_PASS_int_division_result
  * @expect compile-pass
  * @section 15.1

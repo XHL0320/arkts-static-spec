@@ -1,5 +1,5 @@
 /**
- * @id ITF_10_04_004_PASS_GETTER_ONLY
+ * @id ITF_10_04_01_004_PASS_GETTER_ONLY
  * @expect compile-pass
  * @section 10.4
  * @design getter-only 属性

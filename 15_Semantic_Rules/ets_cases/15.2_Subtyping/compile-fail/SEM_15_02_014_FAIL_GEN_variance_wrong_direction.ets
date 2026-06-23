@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_014_FAIL_GEN_variance_wrong_direction
  * @expect compile-fail
  * @section 15.2

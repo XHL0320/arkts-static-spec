@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_07_02_012
+ * @id SEM_15_07_02_012_RUNTIME_RETURN
  * @expect runtime
  * @section 15.7.2
  * @design 验证返回类型运行时行为

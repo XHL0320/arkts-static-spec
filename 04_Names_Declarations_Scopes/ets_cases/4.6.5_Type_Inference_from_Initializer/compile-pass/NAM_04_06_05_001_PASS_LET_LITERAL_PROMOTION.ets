@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_008_PASS_LET_LITERAL_PROMOTION
+ * @id NAM_04_06_05_001_PASS_LET_LITERAL_PROMOTION
  * @expect compile-pass
  * @section 4.6.5
  * @design let字面量提升

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_07_02_011
+ * @id SEM_15_07_02_011_FAIL_MISSING_RETURN
  * @expect compile-fail
  * @section 15.7.2
  * @design 验证缺少 return 语句：非 void 函数缺少 return 应报错

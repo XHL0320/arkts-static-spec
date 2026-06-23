@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_001
+ * @id SEM_15_11_001_PASS_OVERLOAD_RESOLUTION
  * @expect compile-pass
  * @section 15.11
  * @design 验证重载解析：按参数类型选择最匹配的重载

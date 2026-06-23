@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_11_013_FAIL_excess_arg_all
  * @expect compile-fail
  * @section 15.11

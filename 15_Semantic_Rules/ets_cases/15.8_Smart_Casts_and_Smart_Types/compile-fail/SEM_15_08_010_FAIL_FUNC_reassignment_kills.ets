@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_010_FAIL_FUNC_reassignment_kills
  * @expect compile-fail
  * @section 15.8

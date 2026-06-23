@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_03_007_PASS_EXPLICIT_METHOD_INST
+ * @id GEN_05_02_02_002_PASS_EXPLICIT_METHOD_INST
  * @expect compile-pass
  * @section 5.3
  * @design 方法明确实例化

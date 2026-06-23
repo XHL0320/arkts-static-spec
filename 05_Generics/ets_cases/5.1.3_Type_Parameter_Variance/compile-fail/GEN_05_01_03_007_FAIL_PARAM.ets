@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_015_FAIL_OUT_IN_RETURN_OF_METHOD_PARAM
+ * @id GEN_05_01_03_007_FAIL_PARAM
  * @expect compile-fail
  * @section 5.2
  * @design out 作为方法参数中函数类型的返回值

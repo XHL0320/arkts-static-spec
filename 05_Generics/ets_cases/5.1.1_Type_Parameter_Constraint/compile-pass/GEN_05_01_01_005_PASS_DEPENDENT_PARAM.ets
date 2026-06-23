@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_010_PASS_DEPENDENT_PARAM
+ * @id GEN_05_01_01_005_PASS_DEPENDENT_PARAM
  * @expect compile-pass
  * @section 5.1
  * @design 依赖前一个类型参数

@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_016_FAIL_AMBIGUOUS_VAR_WITH_INIT
+ * @id NAM_04_06_01_002_FAIL_AMBIGUOUS_VAR_WITH_INIT
  * @expect compile-fail
  * @section 4.6.1
  * @design ambient变量有初始化

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_09_010_FAIL_access_reduction
  * @expect compile-fail
  * @section 15.9

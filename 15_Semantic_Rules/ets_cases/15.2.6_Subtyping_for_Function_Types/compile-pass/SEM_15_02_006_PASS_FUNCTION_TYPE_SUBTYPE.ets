@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_006
+ * @id SEM_15_02_006_PASS_FUNCTION_TYPE_SUBTYPE
  * @expect compile-pass
  * @section 15.2.6
  * @design 验证函数类型子类型：参数逆变，返回值协变

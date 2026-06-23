@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_022_FAIL_UNION_larger_to_smaller_union
  * @expect compile-fail
  * @section 15.2

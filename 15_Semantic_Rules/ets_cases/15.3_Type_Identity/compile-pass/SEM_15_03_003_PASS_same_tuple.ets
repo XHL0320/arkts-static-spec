@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_03_003_PASS_same_tuple
  * @expect compile-pass
  * @section 15.3

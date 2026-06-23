@@ -1,7 +1,7 @@
 #!/bin/bash
 # run_generics_cases_wsl.sh - Run all Chapter 5 Generics test cases
 # Usage: SECTIONS="5.1_Type_Parameters" bash run_generics_cases_wsl.sh
-# Usage: SECTIONS="5.1_Type_Parameters,5.2_Variance_Wildcard" bash run_generics_cases_wsl.sh
+# Usage: SECTIONS="5.1_Type_Parameters,5.1.1_Type_Parameter_Constraint" bash run_generics_cases_wsl.sh
 # Usage: bash run_generics_cases_wsl.sh (runs all)
 
 ES2PANDA=~/arkcompiler/runtime_core/static_core/out/bin/es2panda

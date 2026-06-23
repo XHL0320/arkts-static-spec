@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_020_PASS_explicit_T_number
  * @expect compile-pass
  * @section 15.1

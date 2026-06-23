@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_10_003
+ * @id SEM_15_11_10_003_PASS_runtime_type_selects_overload
  * @expect compile-pass
  * @section 15.11.10
  * @design 运行时类型决定重载

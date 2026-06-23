@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_09_001
+ * @id SEM_15_09_001_PASS_CLASS_OVERRIDE
  * @expect compile-pass
  * @section 15.9.1
  * @design 验证类方法覆写：子类 override 父类方法

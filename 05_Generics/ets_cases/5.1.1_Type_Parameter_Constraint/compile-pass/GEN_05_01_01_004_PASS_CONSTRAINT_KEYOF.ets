@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_009_PASS_CONSTRAINT_KEYOF
+ * @id GEN_05_01_01_004_PASS_CONSTRAINT_KEYOF
  * @expect compile-pass
  * @section 5.1
  * @design 类型参数约束-keyof

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_020_PASS_int_or_double_target
  * @expect compile-pass
  * @section 15.7

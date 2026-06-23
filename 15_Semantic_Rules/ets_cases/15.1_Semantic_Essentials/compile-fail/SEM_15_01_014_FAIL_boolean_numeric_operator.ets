@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_014_FAIL_boolean_numeric_operator
  * @expect compile-fail
  * @section 15.1

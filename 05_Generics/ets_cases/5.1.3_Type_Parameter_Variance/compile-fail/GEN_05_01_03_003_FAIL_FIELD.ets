@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_011_FAIL_OUT_IN_FIELD
+ * @id GEN_05_01_03_003_FAIL_FIELD
  * @expect compile-fail
  * @section 5.2
  * @design out 在非readonly字段

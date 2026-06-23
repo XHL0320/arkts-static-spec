@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_002
+ * @id SEM_15_02_002_PASS_INTERFACE_EXTENDS_SUBTYPE
  * @expect compile-pass
  * @section 15.2.1
  * @design 验证接口 extends 产生直接子类型关系：interface I extends J → I <: J

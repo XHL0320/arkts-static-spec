@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_014_FAIL_global_condition_initializer
  * @expect compile-fail
  * @section 15.7

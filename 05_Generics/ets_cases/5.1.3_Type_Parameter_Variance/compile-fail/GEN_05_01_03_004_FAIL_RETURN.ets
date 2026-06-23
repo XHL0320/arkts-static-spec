@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_012_FAIL_IN_IN_OUT_POSITION_RETURN
+ * @id GEN_05_01_03_004_FAIL_RETURN
  * @expect compile-fail
  * @section 5.2
  * @design in 在 out-position（返回值）

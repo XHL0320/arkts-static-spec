@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_038_PASS_UNION_union_to_common_base
  * @expect compile-pass
  * @section 15.2

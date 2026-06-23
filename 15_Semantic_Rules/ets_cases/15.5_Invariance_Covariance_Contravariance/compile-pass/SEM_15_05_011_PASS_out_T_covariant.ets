@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_05_011_PASS_out_T_covariant
  * @expect compile-pass
  * @section 15.5

@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_003_PASS_CONTRAVARIANT_IN_PARAM
+ * @id GEN_05_01_03_004_PASS_PARAM
  * @expect compile-pass
  * @section 5.2
  * @design in 方法参数位置

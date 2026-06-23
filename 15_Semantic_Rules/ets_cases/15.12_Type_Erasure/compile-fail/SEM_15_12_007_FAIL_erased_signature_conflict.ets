@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_12_007_FAIL_erased_signature_conflict
  * @expect compile-fail
  * @section 15.12

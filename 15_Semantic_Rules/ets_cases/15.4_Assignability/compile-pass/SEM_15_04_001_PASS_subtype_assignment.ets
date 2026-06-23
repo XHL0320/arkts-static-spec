@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_04_001_PASS_subtype_assignment
  * @expect compile-pass
  * @section 15.4

@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_023_FAIL_IN_WILDCARD_WRITE
+ * @id GEN_05_01_04_007_FAIL_WRITE
  * @expect compile-fail
  * @section 5.2
  * @design in-variant 通配符写入（T 实例化为 never）

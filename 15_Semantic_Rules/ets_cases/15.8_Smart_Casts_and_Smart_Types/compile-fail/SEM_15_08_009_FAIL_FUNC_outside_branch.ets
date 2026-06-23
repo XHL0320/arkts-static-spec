@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_009_FAIL_FUNC_outside_branch
  * @expect compile-fail
  * @section 15.8

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_004_PASS_function_arg_target_type
  * @expect compile-pass
  * @section 15.1

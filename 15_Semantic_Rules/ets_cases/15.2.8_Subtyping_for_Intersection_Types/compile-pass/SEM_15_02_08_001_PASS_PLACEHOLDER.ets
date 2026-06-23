@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_08_001
+ * @id SEM_15_02_08_001_PASS_PLACEHOLDER
  * @expect compile-pass
  * @section 15.2.8
  * @design 交叉类型—仅用于概念验证

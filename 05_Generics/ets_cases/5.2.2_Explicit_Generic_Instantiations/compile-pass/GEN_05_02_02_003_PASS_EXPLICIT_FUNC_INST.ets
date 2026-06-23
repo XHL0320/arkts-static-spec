@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_03_008_PASS_EXPLICIT_FUNC_INST
+ * @id GEN_05_02_02_003_PASS_EXPLICIT_FUNC_INST
  * @expect compile-pass
  * @section 5.3
  * @design 函数明确实例化

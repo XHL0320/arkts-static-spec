@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_04_012_FAIL_union_missing_member
  * @expect compile-fail
  * @section 15.4

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_07_02_010
+ * @id SEM_15_07_02_010_FAIL_RETURN_MISMATCH
  * @expect compile-fail
  * @section 15.7.2
  * @design 验证返回类型不匹配拒绝：声明的 int 返回 string 应报错

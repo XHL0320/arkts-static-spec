@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_026_RUNTIME_OPTIONAL_DEFAULT
+ * @id NAM_04_07_04_001_RUNTIME_OPTIONAL_DEFAULT
  * @expect runtime
  * @section 4.7.4
  * @design 可选参数默认值运行时

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_011_FAIL_unexpressible_smart_return
  * @expect compile-fail
  * @section 15.7

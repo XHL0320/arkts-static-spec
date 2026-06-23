@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_13_001
+ * @id SEM_15_13_001_PASS_STATIC_INIT
  * @expect compile-pass
  * @section 15.13.1
  * @design 验证静态初始化安全性：静态变量初始化顺序正确

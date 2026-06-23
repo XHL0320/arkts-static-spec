@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_005_PASS_OPTIONAL_DEFAULT
+ * @id NAM_04_07_04_001_PASS_OPTIONAL_DEFAULT
  * @expect compile-pass
  * @section 4.7.4
  * @design 可选参数带默认值

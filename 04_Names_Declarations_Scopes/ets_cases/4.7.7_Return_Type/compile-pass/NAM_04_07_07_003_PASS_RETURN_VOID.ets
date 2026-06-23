@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_011_PASS_RETURN_VOID
+ * @id NAM_04_07_07_003_PASS_RETURN_VOID
  * @expect compile-pass
  * @section 4.7.7
  * @design void返回类型

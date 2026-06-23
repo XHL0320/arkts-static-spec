@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_002_PASS_target_numeric_initializer
  * @expect compile-pass
  * @section 15.7

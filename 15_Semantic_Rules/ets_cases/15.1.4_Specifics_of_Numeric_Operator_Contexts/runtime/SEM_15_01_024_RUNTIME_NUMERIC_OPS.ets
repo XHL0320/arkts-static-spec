@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_01_024
+ * @id SEM_15_01_024_RUNTIME_NUMERIC_OPS
  * @expect runtime
  * @section 15.1.4
  * @design 验证数值运算符运行时行为

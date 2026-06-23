@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_08_001
+ * @id SEM_15_08_001_PASS_INSTANCEOF_SMART_CAST
  * @expect compile-pass
  * @section 15.8.1
  * @design 验证 instanceof smart cast：instanceof 检查后类型收窄

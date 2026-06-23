@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_016_FAIL_GLOBAL_top_level_instanceof_then_member
  * @expect compile-fail
  * @section 15.8

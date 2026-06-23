@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_018
+ * @id SEM_15_02_018_RUNTIME_LITERAL
  * @expect runtime
  * @section 15.2.3
  * @design 验证字符串字面量子类型运行时行为

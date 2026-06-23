@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_10_004_PASS_generic_and_nongeneric_equivalent
  * @expect compile-pass
  * @section 15.10

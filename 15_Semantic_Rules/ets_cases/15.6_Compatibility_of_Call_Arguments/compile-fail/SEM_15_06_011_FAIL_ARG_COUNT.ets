@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_06_011
+ * @id SEM_15_06_011_FAIL_ARG_COUNT
  * @expect compile-fail
  * @section 15.6
  * @design 验证参数数量不匹配：少传参数应报错

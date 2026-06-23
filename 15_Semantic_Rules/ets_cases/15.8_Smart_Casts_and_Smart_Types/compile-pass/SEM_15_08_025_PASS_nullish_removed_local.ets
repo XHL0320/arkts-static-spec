@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_025_PASS_nullish_removed_local
  * @expect compile-pass
  * @section 15.8

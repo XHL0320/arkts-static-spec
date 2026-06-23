@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_017_PASS_TUPLE_tuple_to_tuple_base
  * @expect compile-pass
  * @section 15.2

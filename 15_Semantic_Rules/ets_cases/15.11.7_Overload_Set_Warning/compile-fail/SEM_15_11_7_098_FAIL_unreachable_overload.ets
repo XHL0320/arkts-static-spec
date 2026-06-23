@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_7_098
+ * @id SEM_15_11_7_098_FAIL_unreachable_overload
  * @expect compile-fail
  * @section 15.11.7
  * @design 不可达重载

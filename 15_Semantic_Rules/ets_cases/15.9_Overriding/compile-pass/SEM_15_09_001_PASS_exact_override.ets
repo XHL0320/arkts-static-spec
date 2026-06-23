@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_09_001_PASS_exact_override
  * @expect compile-pass
  * @section 15.9

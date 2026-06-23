@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_06_013_FAIL_branch_outside_no_smart_arg
  * @expect compile-fail
  * @section 15.6

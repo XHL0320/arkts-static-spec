@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_05_003
+ * @id SEM_15_05_003_PASS_PARAM_CONTRAVARIANCE
  * @expect compile-pass
  * @section 15.5
  * @design 验证函数参数逆变：Animal 处理器可作 Dog 参数的回调

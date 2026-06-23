@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_09_009
+ * @id SEM_15_09_009_RUNTIME_INTERFACE_OVERRIDE
  * @expect runtime
  * @section 15.9.2
  * @design 验证接口方法覆写运行时行为：多态派发正确

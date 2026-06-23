@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_6_098
+ * @id SEM_15_11_6_098_FAIL_call_no_matching_ctor
  * @expect compile-fail
  * @section 15.11.6
  * @design 调用参数无匹配构造器

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_07_02_002
+ * @id SEM_15_07_02_002_PASS_RETURN_COVARIANCE
  * @expect compile-pass
  * @section 15.7.2
  * @design 验证返回值协变：子类方法可返回子类型

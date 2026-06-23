@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_020_RUNTIME_INSTANCEOF_WILDCARD
+ * @id GEN_05_01_04_001_RUNTIME_INSTANCEOF_WILDCARD
  * @expect runtime
  * @section 5.2
  * @design instanceof产生通配符类型

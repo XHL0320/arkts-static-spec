@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_022_PASS_object_literal_with_class_target
  * @expect compile-pass
  * @section 15.7

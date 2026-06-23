@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_09_008
+ * @id SEM_15_09_008_RUNTIME_COMPATIBLE_OVERRIDE
  * @expect runtime
  * @section 15.9.3
  * @design 验证兼容签名覆写运行时行为：基类引用调用派生类方法

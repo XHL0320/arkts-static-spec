@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_07_01_004
+ * @id SEM_15_07_01_004_FAIL_INVALID_CONST_EXPR
  * @expect compile-fail
  * @section 15.7.1
  * @design 验证非法常量表达式拒绝：字符串与整数相乘无效

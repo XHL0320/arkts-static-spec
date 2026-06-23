@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_013_FAIL_GEN_wrong_arg_count
  * @expect compile-fail
  * @section 15.2

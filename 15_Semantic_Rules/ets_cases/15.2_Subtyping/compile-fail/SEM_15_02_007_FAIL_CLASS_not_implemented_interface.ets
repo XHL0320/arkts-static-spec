@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_007_FAIL_CLASS_not_implemented_interface
  * @expect compile-fail
  * @section 15.2

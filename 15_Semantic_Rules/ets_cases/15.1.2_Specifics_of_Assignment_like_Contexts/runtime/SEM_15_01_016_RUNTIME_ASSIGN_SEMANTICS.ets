@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_01_016
+ * @id SEM_15_01_016_RUNTIME_ASSIGN_SEMANTICS
  * @expect runtime
  * @section 15.1.2
  * @design 验证赋值上下文运行时行为：赋值后变量值正确

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_007_PASS_function_smart_return_expressible
  * @expect compile-pass
  * @section 15.7

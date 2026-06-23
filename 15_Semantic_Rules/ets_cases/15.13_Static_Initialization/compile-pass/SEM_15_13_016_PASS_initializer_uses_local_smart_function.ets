@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_13_016_PASS_initializer_uses_local_smart_function
  * @expect compile-pass
  * @section 15.13

@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_029_FAIL_DEFAULT_REF_FORWARD
+ * @id GEN_05_01_02_002_FAIL_DEFAULT_REF_FORWARD
  * @expect compile-fail
  * @section 5.1
  * @design 默认值引用后文类型参数

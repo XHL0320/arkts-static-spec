@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_002_PASS_CLASS_class_to_object
  * @expect compile-pass
  * @section 15.2

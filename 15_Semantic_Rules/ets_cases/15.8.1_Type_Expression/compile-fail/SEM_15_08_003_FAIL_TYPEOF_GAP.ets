@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_08_003
+ * @id SEM_15_08_003_FAIL_TYPEOF_GAP
  * @expect compile-fail
  * @section 15.8.1
  * @design 验证 typeof smart cast — Spec 要求 typeof 收窄，编译器未实现

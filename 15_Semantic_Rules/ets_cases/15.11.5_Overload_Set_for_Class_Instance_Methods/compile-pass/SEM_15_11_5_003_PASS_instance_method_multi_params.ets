@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_5_003
+ * @id SEM_15_11_5_003_PASS_instance_method_multi_params
  * @expect compile-pass
  * @section 15.11.5
  * @design 实例方法多参数组合

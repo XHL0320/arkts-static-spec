@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_10_03_099
+ * @id SEM_15_10_031_FAIL_CTOR_OVERLOAD
  * @expect compile-fail
  * @section 15.10.3
  * @design 构造函数重载非法参数

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_003_PASS_array_literal_inference
  * @expect compile-pass
  * @section 15.7

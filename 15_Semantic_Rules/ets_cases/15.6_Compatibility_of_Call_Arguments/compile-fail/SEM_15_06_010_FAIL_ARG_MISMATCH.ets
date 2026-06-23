@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_06_010
+ * @id SEM_15_06_010_FAIL_ARG_MISMATCH
  * @expect compile-fail
  * @section 15.6
  * @design 验证调用参数类型不匹配拒绝：string 传 int 声明应报错

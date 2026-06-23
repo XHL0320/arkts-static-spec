@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_05_007_FAIL_parameter_covariant
  * @expect compile-fail
  * @section 15.5

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_07_01_001
+ * @id SEM_15_07_01_001_PASS_CONST_EXPR_TYPE
  * @expect compile-pass
  * @section 15.7.1
  * @design 验证常量表达式类型推断：算术常量的类型从操作数推断

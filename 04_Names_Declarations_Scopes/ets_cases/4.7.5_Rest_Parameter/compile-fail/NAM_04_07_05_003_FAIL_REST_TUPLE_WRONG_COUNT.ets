@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_07_022_FAIL_REST_TUPLE_WRONG_COUNT
+ * @id NAM_04_07_05_003_FAIL_REST_TUPLE_WRONG_COUNT
  * @expect compile-fail
  * @section 4.7.5
  * @design rest元组参数数量不匹配

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_015_FAIL_implicit_numeric_narrowing
  * @expect compile-fail
  * @section 15.1

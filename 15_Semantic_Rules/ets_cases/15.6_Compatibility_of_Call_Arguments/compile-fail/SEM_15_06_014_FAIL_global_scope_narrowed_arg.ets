@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_06_014_FAIL_global_scope_narrowed_arg
  * @expect compile-fail
  * @section 15.6

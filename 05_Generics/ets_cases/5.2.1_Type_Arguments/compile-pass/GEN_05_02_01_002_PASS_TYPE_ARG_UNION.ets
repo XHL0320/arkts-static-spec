@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_03_002_PASS_TYPE_ARG_UNION
+ * @id GEN_05_02_01_002_PASS_TYPE_ARG_UNION
  * @expect compile-pass
  * @section 5.3
  * @design 类型参数-联合类型

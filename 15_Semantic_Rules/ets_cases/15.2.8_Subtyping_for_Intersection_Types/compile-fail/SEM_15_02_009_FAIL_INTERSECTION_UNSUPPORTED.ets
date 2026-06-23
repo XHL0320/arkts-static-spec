@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_009
+ * @id SEM_15_02_009_FAIL_INTERSECTION_UNSUPPORTED
  * @expect compile-fail
  * @section 15.2.8
  * @design 验证交叉类型 — Spec 要求 A & B <: A 但编译器暂不支持交叉类型

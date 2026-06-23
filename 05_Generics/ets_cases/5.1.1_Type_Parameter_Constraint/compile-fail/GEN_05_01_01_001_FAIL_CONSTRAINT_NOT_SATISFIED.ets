@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_020_FAIL_CONSTRAINT_NOT_SATISFIED
+ * @id GEN_05_01_01_001_FAIL_CONSTRAINT_NOT_SATISFIED
  * @expect compile-fail
  * @section 5.1
  * @design 类型参数不满足约束

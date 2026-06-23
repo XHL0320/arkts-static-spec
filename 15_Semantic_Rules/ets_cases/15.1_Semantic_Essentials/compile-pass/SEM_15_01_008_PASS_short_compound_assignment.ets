@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_008_PASS_short_compound_assignment
  * @expect compile-pass
  * @section 15.1

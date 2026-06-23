@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_04_020_PASS_SMART_FUNC_instanceof_narrowing
  * @expect compile-pass
  * @section 15

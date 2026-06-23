@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_019_FAIL_TUPLE_shorter_to_longer
  * @expect compile-fail
  * @section 15.2

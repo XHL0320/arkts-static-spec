@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_4_003
+ * @id SEM_15_11_4_003_PASS_static_method_multi_overload
  * @expect compile-pass
  * @section 15.11.4
  * @design 类静态方法多个重载

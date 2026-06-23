@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_6_003
+ * @id SEM_15_11_6_003_PASS_constructor_multi_params
  * @expect compile-pass
  * @section 15.11.6
  * @design 构造函数多参数

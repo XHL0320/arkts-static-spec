@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_10_02_099
+ * @id SEM_15_10_021_FAIL_EQUIVALENT_METHOD
  * @expect compile-fail
  * @section 15.10.2
  * @design 方法重载不可区分拒绝

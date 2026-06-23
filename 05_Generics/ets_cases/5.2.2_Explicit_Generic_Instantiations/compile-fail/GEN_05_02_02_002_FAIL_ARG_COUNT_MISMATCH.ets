@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_03_021_FAIL_ARG_COUNT_MISMATCH
+ * @id GEN_05_02_02_002_FAIL_ARG_COUNT_MISMATCH
  * @expect compile-fail
  * @section 5.3
  * @design 类型参数数量不匹配

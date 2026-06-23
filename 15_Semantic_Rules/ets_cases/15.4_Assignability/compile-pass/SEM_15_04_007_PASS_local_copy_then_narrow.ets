@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_04_007_PASS_local_copy_then_narrow
  * @expect compile-pass
  * @section 15.4

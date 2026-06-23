@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_12_011_FAIL_never_wrong_context
  * @expect compile-fail
  * @section 15.12

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_03_004_PASS_mutual_subtyping_identity
  * @expect compile-pass
  * @section 15.3

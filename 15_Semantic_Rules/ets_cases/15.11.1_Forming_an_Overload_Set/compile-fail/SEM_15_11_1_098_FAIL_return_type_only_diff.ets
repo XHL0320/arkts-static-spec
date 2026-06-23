@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_1_098
+ * @id SEM_15_11_1_098_FAIL_return_type_only_diff
  * @expect compile-fail
  * @section 15.11.1
  * @design 仅返回类型不同不构成重载

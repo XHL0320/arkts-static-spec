@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_12_009_FAIL_tuple_effective_mismatch
  * @expect compile-fail
  * @section 15.12

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_12_015_PASS_literal_effective_string
  * @expect compile-pass
  * @section 15.12

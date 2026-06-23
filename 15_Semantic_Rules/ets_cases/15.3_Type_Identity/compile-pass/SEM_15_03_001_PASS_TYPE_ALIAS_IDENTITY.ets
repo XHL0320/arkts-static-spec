@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_03_001
+ * @id SEM_15_03_001_PASS_TYPE_ALIAS_IDENTITY
  * @expect compile-pass
  * @section 15.3
  * @design 验证类型别名同一性：type MyInt = int，MyInt 和 int 是同一类型

@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_08_005
+ * @id SEM_15_08_005_FAIL_INTERSECTION_UNSUPPORTED
  * @expect compile-fail
  * @section 15.8.2
  * @design 验证交叉类型 — Spec §15.8.2 定义但编译器暂不支持

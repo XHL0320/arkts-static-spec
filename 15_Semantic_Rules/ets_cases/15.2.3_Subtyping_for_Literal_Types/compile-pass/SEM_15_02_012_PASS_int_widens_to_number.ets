@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_012
+ * @id SEM_15_02_012_PASS_int_widens_to_number
  * @expect compile-pass
  * @section 15.2.3
  * @design 验证 int 可隐式拓宽为 number：int 字面量可赋值给 number|string 联合类型

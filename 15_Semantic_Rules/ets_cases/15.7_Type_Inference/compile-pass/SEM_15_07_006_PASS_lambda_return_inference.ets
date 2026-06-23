@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_006_PASS_lambda_return_inference
  * @expect compile-pass
  * @section 15.7

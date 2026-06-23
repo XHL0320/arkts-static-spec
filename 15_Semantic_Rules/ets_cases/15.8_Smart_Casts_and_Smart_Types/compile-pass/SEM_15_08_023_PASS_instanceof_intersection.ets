@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_08_023_PASS_instanceof_intersection
  * @expect compile-pass
  * @section 15.8

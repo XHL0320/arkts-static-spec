@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_031_FAIL_INTER_component_to_intersection
  * @expect compile-fail
  * @section 15.2

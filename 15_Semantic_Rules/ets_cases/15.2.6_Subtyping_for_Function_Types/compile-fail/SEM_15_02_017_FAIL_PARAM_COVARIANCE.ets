@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_02_017
+ * @id SEM_15_02_017_FAIL_PARAM_COVARIANCE
  * @expect compile-fail
  * @section 15.2.6
  * @design 验证函数类型参数逆变违规拒绝：(Dog)=>void 不可用作 (Animal)=>void

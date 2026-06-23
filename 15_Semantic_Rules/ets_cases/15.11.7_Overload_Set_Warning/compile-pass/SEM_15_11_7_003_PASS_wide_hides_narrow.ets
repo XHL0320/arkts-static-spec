@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_7_003
+ * @id SEM_15_11_7_003_PASS_wide_hides_narrow
  * @expect compile-pass
  * @section 15.11.7
  * @design 宽类型隐藏窄类型

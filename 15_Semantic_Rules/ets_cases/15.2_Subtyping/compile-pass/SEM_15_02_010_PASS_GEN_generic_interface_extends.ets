@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_010_PASS_GEN_generic_interface_extends
  * @expect compile-pass
  * @section 15.2

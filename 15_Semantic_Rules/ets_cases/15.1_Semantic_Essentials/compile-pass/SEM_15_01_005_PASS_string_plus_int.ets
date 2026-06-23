@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_005_PASS_string_plus_int
  * @expect compile-pass
  * @section 15.1

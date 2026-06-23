@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_07_019_PASS_byte_target_127
  * @expect compile-pass
  * @section 15.7

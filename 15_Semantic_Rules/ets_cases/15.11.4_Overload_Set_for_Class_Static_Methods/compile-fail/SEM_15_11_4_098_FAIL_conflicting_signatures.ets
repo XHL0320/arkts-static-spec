@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_4_098
+ * @id SEM_15_11_4_098_FAIL_conflicting_signatures
  * @expect compile-fail
  * @section 15.11.4
  * @design 冲突签名

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_10_017_FAIL_static_method_not_inherited_by_subclass_name
  * @expect compile-fail
  * @section 15.10

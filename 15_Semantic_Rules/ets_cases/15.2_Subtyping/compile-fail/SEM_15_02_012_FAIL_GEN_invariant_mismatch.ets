@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_012_FAIL_GEN_invariant_mismatch
  * @expect compile-fail
  * @section 15.2

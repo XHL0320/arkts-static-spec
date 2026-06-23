@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_035_PASS_GEN_out_covariant_assignment
  * @expect compile-pass
  * @section 15.2

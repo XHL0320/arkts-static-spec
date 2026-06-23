@@ -1,5 +1,5 @@
 /**
- * @id NAM_04_06_025_RUNTIME_VAR_OPS
+ * @id NAM_04_06_01_001_RUNTIME_VAR_OPS
  * @expect runtime
  * @section 4.6.1
  * @design 变量运行时读写

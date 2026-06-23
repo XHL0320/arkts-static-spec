@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_03_023_FAIL_CANNOT_INFER
+ * @id GEN_05_02_03_001_FAIL_CANNOT_INFER
  * @expect compile-fail
  * @section 5.3
  * @design 无法推断类型参数

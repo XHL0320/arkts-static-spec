@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_09_018_PASS_param_contravariant_override
  * @expect compile-pass
  * @section 15.9

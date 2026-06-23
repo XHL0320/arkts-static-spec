@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_022_FAIL_IN_WILDCARD_NOT_SUBTYPE_C
+ * @id GEN_05_01_04_006_FAIL_C
  * @expect compile-fail
  * @section 5.2
  * @design in-variant 通配符 X<never> 不是 X<C> 子类型

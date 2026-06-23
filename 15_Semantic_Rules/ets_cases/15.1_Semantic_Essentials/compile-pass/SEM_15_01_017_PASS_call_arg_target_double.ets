@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_017_PASS_call_arg_target_double
  * @expect compile-pass
  * @section 15.1

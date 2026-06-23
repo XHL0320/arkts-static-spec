@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_11_2_003
+ * @id SEM_15_11_2_003_PASS_generic_func_overload
  * @expect compile-pass
  * @section 15.11.2
  * @design 泛型函数重载

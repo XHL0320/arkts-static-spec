@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_04_010
+ * @id SEM_15_04_010_FAIL_TYPE_MISMATCH
  * @expect compile-fail
  * @section 15.4
  * @design 验证不同类型不可赋值：string 不可赋值给 int

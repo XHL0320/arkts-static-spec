@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_08_100
+ * @id SEM_15_08_100_PASS_ST_placeholder
  * @expect compile-pass
  * @section 15.8
  * @design 智能类型：instanceof 类型收窄

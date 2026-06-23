@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_06_009_FAIL_excess_argument
  * @expect compile-fail
  * @section 15.6

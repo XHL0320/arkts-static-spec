@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_03_010_PASS_PARTIAL_INST_GENERIC
+ * @id GEN_05_02_02_005_PASS_PARTIAL_INST_GENERIC
  * @expect compile-pass
  * @section 5.3
  * @design 部分实例化产生新泛型

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_02_030_PASS_INTER_intersection_to_component
  * @expect compile-pass
  * @section 15.2

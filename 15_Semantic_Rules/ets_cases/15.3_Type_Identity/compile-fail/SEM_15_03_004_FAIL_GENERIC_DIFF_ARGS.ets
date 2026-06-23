@@ -1,5 +1,5 @@
 /**
- * @id SEM_15_03_004
+ * @id SEM_15_03_004_FAIL_GENERIC_DIFF_ARGS
  * @expect compile-fail
  * @section 15.3
  * @design 验证泛型类型不同参数不具同一性：Container<int> 和 Container<string> 不是同一类型

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @id SEM_15_01_010_FAIL_standalone_object_literal
  * @expect compile-fail
  * @section 15.1

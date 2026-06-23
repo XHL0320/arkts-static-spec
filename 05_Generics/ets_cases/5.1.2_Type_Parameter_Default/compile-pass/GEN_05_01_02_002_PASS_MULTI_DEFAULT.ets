@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_01_012_PASS_MULTI_DEFAULT
+ * @id GEN_05_01_02_002_PASS_MULTI_DEFAULT
  * @expect compile-pass
  * @section 5.1
  * @design 多参数部分默认
