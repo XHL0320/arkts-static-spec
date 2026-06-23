@@ -1,4 +1,4 @@
-# 2.5 Tokens - 测试设计思维导图
+# 2.5 Tokens - 测试设计思维导图（v1.1 - 标准化 + 补充cross_lang_verify目录）
 
 ## 概述
 Token 是 ArkTS 词法的基本单位，构成语言词汇。共 4 类：
@@ -12,6 +12,8 @@ Token 是 ArkTS 词法的基本单位，构成语言词汇。共 4 类：
 2. **最长匹配原则**（longest match）：tokenization 时下一个 token 总是构成有效 token 的最长字符序列
 3. Token 被 white spaces / operators / punctuators 分隔
 4. White spaces 被语法分析忽略
+
+> ⚠️ 重要说明：本测试设计参考 ArkTS Static Language Specification §2.5，并结合 TESTING_PROCESS_GUIDE.md 要求，标准化为所有章节的统一格式。所有测试用例均已通过实际 ark VM 运行验证。
 
 ## 全覆盖测试矩阵
 
@@ -122,3 +124,45 @@ Token 是 ArkTS 词法的基本单位，构成语言词汇。共 4 类：
 - 示例：`LEX_02_05_001_PASS_IDENTIFIER_SIMPLE.ets`
 - 示例：`LEX_02_05_030_FAIL_NUMBER_FOLLOWED_BY_LETTERS.ets`
 - 示例：`LEX_02_05_034_RT_LONGEST_MATCH_EQUALITY.ets`
+
+
+## 娴嬭瘯鍥犲瓙checklist 瑕嗙洊搴﹀垎鏋?
+### 鉁?蹇呴』姝ｄ氦鐨勫洜瀛愶紙宸茶鐩栵級
+
+| 鍥犲瓙鍒嗙被 | 瑕佹眰鍦烘櫙 | 2.5 瑕嗙洊鎯呭喌 | 楠岃瘉鐘舵€?|
+|---------|---------|------------|---------|
+| **鍩虹璇硶浣?* | 4绫?Token 鐙珛璇硶 | compile-pass (001~032) | 鉁?宸查獙璇?|
+| | Token 鍒嗛殧绗﹁姹?| compile-pass (025~029) | 鉁?宸查獙璇?|
+| | 闈炴硶 Token 搴忓垪 | compile-fail (022~033) | 鉁?宸查獙璇?|
+| | 杩愯鏃惰涔夋纭€?| runtime | 鉁?宸查獙璇?|
+
+### 鍏抽敭 Token 瑕嗙洊鐭╅樀
+
+| Token 绫诲瀷 | ArkTS compile | Java/Swift | 楠岃瘉鐘舵€?|
+|-----------|--------------|-----------|---------|
+| Simple Identifier | 鉁?| 鉁?| 鉁?|
+| Identifier w/ digits | 鉁?| 鉁?| 鉁?|
+| Keyword var | 鉁?| 鈿狅笍 姒傚康鏄犲皠 | 鈿狅笍 |
+| Arithmetic ops | 鉁?| 鉁?| 鉁?|
+| Comparison ops | 鉁?| 鉁?| 鉁?|
+| Logical ops | 鉁?| 鉁?| 鉁?|
+| Assignment ops | 鉁?| 鉁?| 鉁?|
+| Integer literals | 鉁?| 鉁?| 鉁?|
+| Boolean literals | 鉁?| 鉁?| 鉁?|
+
+### Token 鏈€闀垮尮閰嶇壒鎬?
+| 鍦烘櫙 | ArkTS | Java | Swift | 涓€鑷存€?|
+|------|-------|------|-------|--------|
+| `===` 璇嗗埆 | 鉁?| 鈿狅笍 璇瘑鍒?| 鈿狅笍 鏀寔 | 鈿狅笍  |
+| `>>>` 璇嗗埆 | 鉁?| 鉁?| 鉁?| 鉁?涓€鑷?|
+| `?.` 璇嗗埆 | 鉁?| 鉁?| 鉁?| 鉁?涓€鑷?|
+
+---
+
+
+## 鍒嗙被璇存槑
+- **compile-pass**锛氬悎娉?Token 缁勫悎蹇呴』缂栬瘧閫氳繃
+- **compile-fail**锛氶潪娉?Token 搴忓垪蹇呴』缂栬瘧澶辫触
+- **runtime**锛歍oken 缁勫悎鍙樺寲涓嶅奖鍝嶅簳灞備唬鐮佹墽琛岄€昏緫
+
+---

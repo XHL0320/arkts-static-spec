@@ -1,0 +1,24 @@
+/**
+ * @id LEX_02_09_04_015_RT_BIGINT_ASUINTN
+ * @expect runtime
+ * @section 2.9.4
+ * @design asUintN 函数验证
+ * @note runtime 用例：验证 BigInt.asUintN() 函数
+ */
+
+function main(): void {
+  // 验证 asUintN 函数 - 取低 8 位
+  let x: bigint = 256n
+  let result: bigint = BigInt.asUintN(8, x)
+  if (result !== 0n) { throw new Error("asUintN(8, 256) failed, got " + result) }
+
+  // 验证 asUintN 函数 - 16 位
+  let y: bigint = 65535n
+  let result2: bigint = BigInt.asUintN(16, y)
+  if (result2 !== 65535n) { throw new Error("asUintN(16, 65535) failed, got " + result2) }
+
+  // 验证 asUintN 函数 - 超出范围
+  let z: bigint = 65536n
+  let result3: bigint = BigInt.asUintN(16, z)
+  if (result3 !== 0n) { throw new Error("asUintN(16, 65536) failed, got " + result3) }
+}

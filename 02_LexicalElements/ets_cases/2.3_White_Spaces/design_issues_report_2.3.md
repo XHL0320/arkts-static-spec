@@ -1,191 +1,337 @@
-# 2.3 White Spaces - ArkTS 设计问题发现报告
+# 2.3 White Spaces - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
-**报告日期：** 2026-06-15
+**报告日期：** 2026-06-22
 **测试用例数：** 38（compile-pass: 21, compile-fail: 10, runtime: 7）
-**目的：** 通过 6 种空白符的全面测试识别 ArkTS 静态编译器的设计问题。
+**更新版本：** v3.0 - 重新分类：区分"语言设计差异"与"规范一致性问题"
+**目的：** 通过 6 种空白符的全面测试，识别 ArkTS 在空白符处理方面与 Java/Swift/TS 的行为差异，以及规范与实现的一致性问题。
 
 ---
 
-## 一、设计问题
+## 一、前言：ArkTS 规范引用要求
 
-### 问题 A：spec 列表与 Unicode 空白符标准不完全对齐 ⭐⭐ MEDIUM
+> ✅ 本报告中所有差异点必须明确标注规范来源
+> ✅ 规范依据来自 `C:/Users/ymwangfa/.opencode/skills/arkts-static-spec/spec/`
+> ❌ 不得在没有规范依据的情况下讨论语言设计问题
 
-**spec 描述：** 列出 6 种空白符 (U+0020, U+0009, U+000B, U+000C, U+00A0, U+FEFF)。
+### 差异分类说明
 
-**Unicode 标准 White_Space 属性：** Unicode 15.0 中 White_Space 属性涵盖 25 个码点，包括：
-- Tab/LF/VT/FF/CR (U+0009-U+000D)
-- Space (U+0020)
-- NEL (U+0085)
-- NBSP (U+00A0)
-- Ogham Space Mark (U+1680)
-- En Quad / Em Quad / En Space / Em Space 等 (U+2000-U+200A)
-- Line Separator (U+2028) / Paragraph Separator (U+2029)
-- Narrow No-Break Space (U+202F)
-- Medium Mathematical Space (U+205F)
-- Ideographic Space (U+3000)
+| 分类 | 说明 | 处理方式 |
+|------|------|---------|
+| **语言设计差异** | 符合 ArkTS spec 的有意设计，与 Java/Swift/TS 行为不同 | 记录为差异点，无需修改 |
+| **规范一致性问题** | ArkTS 实现与 spec 定义不一致 | 需要修复 |
+| **待确认问题** | spec 未明确定义，需要补充规范 | 需要 spec 团队确认 |
 
-**ArkTS 取舍：** 仅采纳 6 个，明显少于 Unicode 标准。这与 TypeScript/JavaScript 的标准（覆盖更多空白符）不一致。
+### ArkTS 关键规范文档
 
-**对比：**
-| 语言 | 空白符数量 |
-|------|-----------|
-| ArkTS | 6 (Space, Tab, VT, FF, NBSP, ZWNBSP) |
-| Java | 5 (SP, HT, FF, LF, CR) - 注：Java 把 LF/CR 算入空白 |
-| TypeScript | 类 ECMAScript（约 18+） |
-| Swift | 类 Unicode 标准 |
-
-**评价：** ArkTS 的空白符列表是显式枚举式，便于编译器实现，但与 Unicode 标准不一致可能给 Unicode 文本工具的输出带来兼容性问题。
-
-**建议：** spec 应明确说明为什么选择这 6 个，是否要求源文件中其他 Unicode 空白符（如 U+3000 全角空格）必须报错。
+| 文档 | 章节 | 说明 |
+|------|------|------|
+| spec/lexical.md | §2.3 White Spaces | 定义空白符列表 |
+| spec/lexical.md | §2.2 Lexical Input Elements | 定义词法输入元素 |
 
 ---
 
-### 问题 B：ZWNBSP (U+FEFF) 的双重身份 ⭐⭐⭐ HIGH
+## 二、符合 ArkTS Spec 的语言设计差异（与 Java/Swift/TS 不同）
 
-**spec 描述：** ZWNBSP (U+FEFF) 同时是：
-- BOM（字节序标记）—— 文件开头使用
-- 普通空白符 —— 文件中间使用
+以下差异点是 ArkTS 的有意设计选择，符合 spec 定义，与 Java/Swift/TS 行为不同但不构成设计缺陷。
 
-**实测验证（用例 021）：**
+### 差异 A：支持 NBSP (U+00A0) 作分隔符，与 Java/Swift 不同 ✅ 符合 ArkTS Spec
+
+**用例：** LEX_02_03_005_PASS_NBSP_SEPARATOR, LEX_02_03_035_RT_NBSP_SEPARATED
+
+**ArkTS Spec 描述：** spec/lexical.md 列出 NBSP (U+00A0) 为合法空白符。
+
+**实际行为（编译通过）：**
 ```typescript
-let{ZWNBSP}b: int = 2  // 编译通过：ZWNBSP 作分隔符
+let{NBSP}x: number = 1  // 等同于 let x: number = 1
 ```
 
-**实测验证（用例 038）：**
+**与业界静态语言对比：**
+| 语言 | NBSP 处理 | 规范依据 |
+|------|----------|---------|
+| **ArkTS** | ✅ 等同空格 | spec/lexical.md |
+| **Java** | ❌ 不允许 | JLS §3.6 |
+| **Swift** | ❌ 不允许 | Swift Lang |
+| **TypeScript** | ✅ 等同空格 | TS 规范 |
+
+**差异说明：** ArkTS 选择与 TypeScript 一致的 NBSP 处理策略，沿袭 ECMAScript 标准。这是语言设计选择，不是缺陷。
+
+**分类：** ✅ 符合 ArkTS spec 的语言设计差异（与 TS 一致）
+
+---
+
+### 差异 B：支持 ZWNBSP (U+FEFF) 作分隔符，与 Java/Swift 不同 ✅ 符合 ArkTS Spec
+
+**用例：** LEX_02_03_006_PASS_ZWNBSP_SEPARATOR, LEX_02_03_021_PASS_ZWNBSP_VARIOUS_POSITIONS
+
+**ArkTS Spec 描述：** spec/lexical.md 列出 ZWNBSP (U+FEFF) 为合法空白符。
+
+**实际行为（编译通过）：**
 ```typescript
-let s: string = "ab{ZWNBSP}cd"
-console.log(s.length)  // 5: ZWNBSP 在字符串字面量内是内容
+let{ZWNBSP}b: number = 2  // ZWNBSP 作分隔符
+let s: string = "ab{ZWNBSP}cd"  // ZWNBSP 在字符串内是内容
 ```
 
-**问题：**
-1. 同一字符在不同上下文有不同语义（分隔符 vs 内容）
-2. 与字符串处理工具不一致（很多工具认为 BOM 应被 strip）
-3. 隐藏 bug：用户复制粘贴含 ZWNBSP 的代码可能产生隐式空白
+**与业界静态语言对比：**
+| 语言 | ZWNBSP 处理 | 规范依据 |
+|------|------------|---------|
+| **ArkTS** | ✅ 既是 BOM 也是空白符 | spec/lexical.md |
+| **Java** | ⚠️ 仅 BOM 位置合法 | JLS §3.6 |
+| **Swift** | ⚠️ 仅 BOM 位置合法 | Swift Lang |
+| **TypeScript** | ✅ 既是 BOM 也是空白符 | TS 规范 |
 
-**对比：**
-| 语言 | ZWNBSP 处理 |
-|------|------------|
-| ArkTS | 既是 BOM 也是空白符 |
-| TypeScript | 仅文件开头 BOM，中间为字符（取决于实现）|
-| Java | 仅作为 BOM，中间出现报错 |
-| Swift | 仅作 BOM |
+**差异说明：** ArkTS 选择与 TypeScript 一致的 ZWNBSP 处理策略，沿袭 ECMAScript 标准。这是语言设计选择，不是缺陷。
 
-**评价：** 这是 ArkTS 沿袭 ECMAScript 的设计，但容易导致隐藏问题。
-
-**建议：**
-1. 编译器对源文件中部的 ZWNBSP 发出 warning，提示开发者其等同于普通空白
-2. 提供工具/规范，要求源代码格式化时 strip 掉非 BOM 位置的 ZWNBSP
+**分类：** ✅ 符合 ArkTS spec 的语言设计差异（与 TS 一致）
 
 ---
 
-### 问题 C：VT (U+000B) 和 FF (U+000C) 在源代码中无实际意义 ⭐ LOW
+### 差异 C：支持 VT (U+000B) 作分隔符，与 Swift 不同 ✅ 符合 ArkTS Spec
 
-**spec 描述：** VT、FF 列为合法空白符。
+**用例：** LEX_02_03_003_PASS_VTAB_SEPARATOR
 
-**实测：** 三种均编译通过。
+**ArkTS Spec 描述：** spec/lexical.md 列出 VT (U+000B) 为合法空白符。
 
-**实际使用：** VT 和 FF 是 ASCII 早期的打印控制符，在现代源代码中几乎不出现。
+**实际行为（编译通过）：**
+```typescript
+let{VT}x: number = 1  // VT 作分隔符
+```
 
-**对比：**
-| 语言 | VT/FF |
-|------|-------|
-| ArkTS | ✅ 允许 |
-| Java | ✅ 允许 |
-| TypeScript | ✅ 允许 |
-| Swift | ❌ 不允许（编译器报告 invalid character）|
+**与业界静态语言对比：**
+| 语言 | VT 处理 | 规范依据 |
+|------|--------|---------|
+| **ArkTS** | ✅ 合法空白符 | spec/lexical.md |
+| **Java** | ❌ 不合法 | JLS §3.6 |
+| **Swift** | ❌ 不合法 | Swift Lang |
+| **TypeScript** | ✅ 合法空白符 | TS 规范 |
 
-**评价：** 沿袭 Java/ECMAScript 的历史设计，无害但冗余。
+**差异说明：** ArkTS 选择与 TypeScript/Java 一致的 VT 处理策略，沿袭 ECMAScript 标准。这是语言设计选择，不是缺陷。
 
----
-
-### 问题 D：NBSP (U+00A0) 易与普通空格混淆 ⭐⭐ MEDIUM
-
-**spec 描述：** NBSP 是合法空白符。
-
-**用例 035 验证：** `let{NBSP}a:{NBSP}int{NBSP}={NBSP}5` 编译通过。
-
-**问题：**
-- NBSP 在编辑器中视觉上与普通空格无差异
-- 复制粘贴自网页/Word 文档常引入 NBSP，编译通过但代码风格不一致
-- 在文本搜索（grep "let "）时 NBSP 不会被匹配
-
-**实际场景：** 用户从 Web 复制示例代码，引入 NBSP，造成隐式问题。
-
-**对比：**
-| 语言 | NBSP 处理 |
-|------|----------|
-| ArkTS | ✅ 等同空格 |
-| Java | ❌ 不允许（视为普通字符）|
-| Swift | ❌ 不允许 |
-
-**建议：** 编译器对 NBSP 发出 warning，鼓励规范化为普通空格。
+**分类：** ✅ 符合 ArkTS spec 的语言设计差异（与 TS/Java 一致）
 
 ---
 
-### 问题 E：6 种空白符全混合的可读性 ⭐ LOW
+### 差异 D：支持 FF (U+000C) 作分隔符，与 Swift 不同 ✅ 符合 ArkTS Spec
 
-**用例 008：** 文件中混用全部 6 种空白符，编译器编译通过。
+**用例：** LEX_02_03_004_PASS_FORMFEED_SEPARATOR
 
-**评价：** 这是 spec 允许的极端场景，仅作覆盖测试，不构成实际问题。
+**ArkTS Spec 描述：** spec/lexical.md 列出 FF (U+000C) 为合法空白符。
 
----
+**实际行为（编译通过）：**
+```typescript
+let{FF}x: number = 1  // FF 作分隔符
+```
 
-## 二、已验证 ArkTS 行为（与规范一致）
+**与业界静态语言对比：**
+| 语言 | FF 处理 | 规范依据 |
+|------|--------|---------|
+| **ArkTS** | ✅ 合法空白符 | spec/lexical.md |
+| **Java** | ✅ 合法空白符 | JLS §3.6 |
+| **Swift** | ❌ 不合法 | Swift Lang |
+| **TypeScript** | ✅ 合法空白符 | TS 规范 |
 
-| 行为 | 用例编号 | 状态 |
-|------|---------|------|
-| Space (U+0020) 作分隔符 | 001 | ✅ |
-| Tab (U+0009) 作分隔符 | 002 | ✅ |
-| VT (U+000B) 作分隔符 | 003 | ✅ |
-| FF (U+000C) 作分隔符 | 004 | ✅ |
-| NBSP (U+00A0) 作分隔符 | 005 | ✅ |
-| ZWNBSP (U+FEFF) 作分隔符 | 006 | ✅ |
-| 多空白符等价于单个 | 009 | ✅ |
-| 空白符被语法分析忽略 | 032~037 | ✅ |
-| 空白符不出现在 Token 内 | 022~025 | ✅ |
-| 空白符不出现在关键字内 | 026 | ✅ |
-| 空白符不分隔多字符运算符 | 027~029 | ✅ |
-| 空白符可在注释中 | 017~018 | ✅ |
-| 字符串内空白是内容 | 019, 038 | ✅ |
+**差异说明：** ArkTS 选择与 TypeScript/Java 一致的 FF 处理策略。这是语言设计选择，不是缺陷。
+
+**分类：** ✅ 符合 ArkTS spec 的语言设计差异（与 TS/Java 一致）
 
 ---
 
-## 三、严重性等级总览
+## 三、待确认问题（需要 Spec 团队确认）
 
-| 严重性 | 数量 | 问题列表 |
-|-------|------|---------|
-| ⭐⭐⭐ HIGH | 1 | 问题 B: ZWNBSP 双重身份 |
-| ⭐⭐ MEDIUM | 2 | 问题 A: 与 Unicode 标准不对齐、问题 D: NBSP 易混淆 |
-| ⭐ LOW | 2 | 问题 C: VT/FF 冗余、问题 E: 极端混用可读性 |
+### 问题 E：spec 空白符列表与 Unicode 标准不完全对齐 ⚠️ 待确认
+
+**用例：** 多个 compile-pass 用例
+
+**问题描述：** spec/lexical.md 列出 6 种空白符，但 Unicode 标准 White_Space 属性涵盖 25 个码点。
+
+**规范依据：**
+- spec/lexical.md: 列出 6 种空白符
+- Unicode 标准: White_Space 属性涵盖 25 个码点
+
+**与业界静态语言对比：**
+| 语言 | 空白符数量 | 规范依据 |
+|------|-----------|---------|
+| **ArkTS** | 6 | spec/lexical.md |
+| **Java** | 5 | JLS §3.6 |
+| **TypeScript** | 约 18+ | ECMAScript |
+| **Swift** | 约 25 | Unicode 标准 |
+
+**待确认事项：**
+1. spec 是否需要明确说明为什么仅采纳 6 种空白符？
+2. 是否需要明确其他 Unicode 空白符（如 U+3000 全角空格）的处理规则？
+
+**分类：** ⚠️ 待确认（spec 未明确定义选择依据）
 
 ---
 
-## 四、改进方向建议
+### 问题 F：ZWNBSP 双重身份的语义边界 ⚠️ 待确认
 
-### 短期（编译器警告）
-1. NBSP 与普通空格混合使用时发出 warning（问题 D）
-2. 文件中部出现 ZWNBSP 时发出 warning（问题 B）
-3. 单个文件混用超过 3 种空白符时发出风格 warning
+**用例：** LEX_02_03_006_PASS_ZWNBSP_SEPARATOR, LEX_02_03_038_RT_ZWNBSP_STRING_CONTENT
 
-### 中期（spec 完善）
-1. 明确说明为什么仅采纳 6 种空白符，不采纳 Unicode 标准的 25 种
-2. 明确 ZWNBSP 在 BOM 和分隔符两个角色的语义边界
-3. 考虑增加 lint 规则推荐：仅使用 Space + Tab 作为缩进/分隔
+**问题描述：** ZWNBSP (U+FEFF) 同时是 BOM（字节序标记）和普通空白符，同一字符在不同上下文有不同语义。
 
-### 长期（语言演进）
-1. 评估是否将 VT/FF 标记为 deprecated（问题 C）
-2. 提供 lint 工具检测 NBSP 引入
+**实际行为：**
+```typescript
+let{ZWNBSP}b: number = 2  // 作分隔符
+let s: string = "ab{ZWNBSP}cd"  // 在字符串内是内容
+```
+
+**与业界静态语言对比：**
+| 语言 | ZWNBSP 处理 | 规范依据 |
+|------|------------|---------|
+| **ArkTS** | 既是 BOM 也是空白符 | spec/lexical.md |
+| **Java** | 仅作为 BOM | JLS §3.6 |
+| **Swift** | 仅作 BOM | Swift Lang |
+
+**待确认事项：**
+1. spec 是否需要明确 ZWNBSP 在 BOM 和分隔符两个角色的语义边界？
+2. 是否需要对文件中部的 ZWNBSP 发出 warning？
+
+**分类：** ⚠️ 待确认（spec 未明确定义双重身份的语义边界）
 
 ---
 
-## 五、用例索引
+### 问题 G：NBSP 易与普通空格混淆 ⚠️ 待确认
 
-| 用例 ID | 发现的问题 |
-|---------|-----------|
-| LEX_02_03_005 | 问题 D: NBSP 易混淆（编译通过但可视化困难）|
-| LEX_02_03_006 | 问题 B: ZWNBSP 作为分隔符 |
-| LEX_02_03_021 | 问题 B: ZWNBSP 多位置使用（非 BOM 位置）|
-| LEX_02_03_038 | 问题 B: ZWNBSP 在字符串内是内容（双重身份验证）|
-| LEX_02_03_003 | 问题 C: VT 在源代码中无实际意义 |
-| LEX_02_03_004 | 问题 C: FF 在源代码中无实际意义 |
-| LEX_02_03_008 | 问题 E: 6 种全混合极端场景 |
+**用例：** LEX_02_03_005_PASS_NBSP_SEPARATOR
+
+**问题描述：** NBSP 在编辑器中视觉上与普通空格无差异，复制粘贴自网页/Word 文档常引入 NBSP。
+
+**实际行为：**
+```typescript
+let{NBSP}x: number = 1  // 编译通过，但视觉上无法区分
+```
+
+**与业界静态语言对比：**
+| 语言 | NBSP 处理 | 规范依据 |
+|------|----------|---------|
+| **ArkTS** | ✅ 等同空格 | spec/lexical.md |
+| **Java** | ❌ 不允许 | JLS §3.6 |
+| **Swift** | ❌ 不允许 | Swift Lang |
+
+**待确认事项：**
+1. 编译器是否需要对 NBSP 发出 warning？
+2. 是否需要提供 lint 工具检测 NBSP 引入？
+
+**分类：** ⚠️ 待确认（spec 未明确定义 warning 规则）
+
+---
+
+## 四、与业界静态语言差异点汇总
+
+以下差异点是 ArkTS 与 Java/Swift/TS 的设计选择差异，不构成设计缺陷，但需要开发者了解。
+
+### 4.1 空白符列表
+
+| 空白符 | Unicode | ArkTS | Java | Swift | TypeScript | 说明 |
+|--------|---------|-------|------|-------|------------|------|
+| Space | U+0020 | ✅ | ✅ | ✅ | ✅ | 三语言一致 |
+| Tab | U+0009 | ✅ | ✅ | ✅ | ✅ | 三语言一致 |
+| VT | U+000B | ✅ | ❌ | ❌ | ✅ | ArkTS 与 TS 一致 |
+| FF | U+000C | ✅ | ✅ | ❌ | ✅ | ArkTS 与 Java/TS 一致 |
+| NBSP | U+00A0 | ✅ | ❌ | ❌ | ✅ | ArkTS 与 TS 一致 |
+| ZWNBSP | U+FEFF | ✅ | ⚠️ | ⚠️ | ✅ | ArkTS 与 TS 一致 |
+
+### 4.2 空白符语义
+
+| 维度 | ArkTS | Java | Swift | TypeScript | 说明 |
+|------|-------|------|-------|------------|------|
+| 作 Token 分隔符 | ✅ | ✅ | ✅ | ✅ | 三语言一致 |
+| 多个等价于一个 | ✅ | ✅ | ✅ | ✅ | 三语言一致 |
+| 在 Token 内部禁止 | ✅ | ✅ | ✅ | ✅ | 三语言一致 |
+| 在注释中允许 | ✅ | ✅ | ✅ | ✅ | 三语言一致 |
+| 在字符串内是内容 | ✅ | ✅ | ✅ | ✅ | 三语言一致 |
+
+---
+
+## 五、已验证 ArkTS 行为（符合 Spec）
+
+以下行为已通过编译期 + 运行时验证，符合 spec/lexical.md 规范：
+
+| 行为 | 用例编号 | 状态 | 规范依据 |
+|------|---------|------|---------|
+| Space (U+0020) 作分隔符 | 001 | ✅ | spec/lexical.md |
+| Tab (U+0009) 作分隔符 | 002 | ✅ | spec/lexical.md |
+| VT (U+000B) 作分隔符 | 003 | ✅ | spec/lexical.md |
+| FF (U+000C) 作分隔符 | 004 | ✅ | spec/lexical.md |
+| NBSP (U+00A0) 作分隔符 | 005 | ✅ | spec/lexical.md |
+| ZWNBSP (U+FEFF) 作分隔符 | 006 | ✅ | spec/lexical.md |
+| 多空白符等价于单个 | 009 | ✅ | spec/lexical.md |
+| 空白符被语法分析忽略 | 032~037 | ✅ | spec/lexical.md |
+| 空白符不出现在 Token 内 | 022~025 | ✅ | spec/lexical.md |
+| 空白符不出现在关键字内 | 026 | ✅ | spec/lexical.md |
+| 空白符不分隔多字符运算符 | 027~029 | ✅ | spec/lexical.md |
+| 空白符可在注释中 | 017~018 | ✅ | spec/lexical.md |
+| 字符串内空白是内容 | 019, 038 | ✅ | spec/lexical.md |
+
+---
+
+## 六、差异分类汇总
+
+| 分类 | 数量 | 差异列表 |
+|------|------|---------|
+| ✅ 符合 ArkTS Spec 的语言设计差异 | 4 | 差异 A（NBSP）、差异 B（ZWNBSP）、差异 C（VT）、差异 D（FF） |
+| ⚠️ 待确认问题 | 3 | 问题 E（Unicode 标准不对齐）、问题 F（ZWNBSP 双重身份）、问题 G（NBSP 易混淆） |
+| 与业界静态语言差异点 | 多项 | 见第四章汇总表 |
+
+---
+
+## 七、建议
+
+### 7.1 明确 spec 选择依据
+
+spec/lexical.md 应明确说明为什么仅采纳 6 种空白符，不采纳 Unicode 标准的 25 种。
+
+### 7.2 明确 ZWNBSP 双重身份
+
+spec/lexical.md 应明确 ZWNBSP 在 BOM 和分隔符两个角色的语义边界。
+
+### 7.3 提供 warning 规则
+
+编译器应对 NBSP 和文件中部的 ZWNBSP 发出 warning，鼓励规范化。
+
+---
+
+## 八、用例索引
+
+| 用例 ID | 差异/问题 | 分类 | 关联规范 |
+|---------|----------|------|---------|
+| LEX_02_03_005 | 差异 A: NBSP 分隔符 | ✅ 语言设计差异 | spec/lexical.md |
+| LEX_02_03_035 | 差异 A: NBSP 运行时 | ✅ 语言设计差异 | spec/lexical.md |
+| LEX_02_03_006 | 差异 B: ZWNBSP 分隔符 | ✅ 语言设计差异 | spec/lexical.md |
+| LEX_02_03_021 | 差异 B: ZWNBSP 多位置 | ✅ 语言设计差异 | spec/lexical.md |
+| LEX_02_03_003 | 差异 C: VT 分隔符 | ✅ 语言设计差异 | spec/lexical.md |
+| LEX_02_03_004 | 差异 D: FF 分隔符 | ✅ 语言设计差异 | spec/lexical.md |
+| LEX_02_03_038 | 问题 F: ZWNBSP 字符串 | ⚠️ 待确认 | spec/lexical.md |
+| - | 问题 E: Unicode 标准不对齐 | ⚠️ 待确认 | spec/lexical.md |
+| - | 问题 G: NBSP 易混淆 | ⚠️ 待确认 | spec/lexical.md |
+
+---
+
+## 九、Cross-Language 对比表格
+
+### 差异 A: NBSP 处理（与 TS 一致，与 Java/Swift 不同）
+
+| 语言 | NBSP 作分隔符 | 规范依据 |
+|------|-------------|---------|
+| **ArkTS** | ✅ 等同空格 | spec/lexical.md |
+| **Java** | ❌ 不允许 | JLS §3.6 |
+| **Swift** | ❌ 不允许 | Swift Lang |
+| **TypeScript** | ✅ 等同空格 | TS 规范 |
+
+### 差异 B: ZWNBSP 处理（与 TS 一致，与 Java/Swift 不同）
+
+| 语言 | ZWNBSP 作分隔符 | ZWNBSP 作 BOM | 规范依据 |
+|------|----------------|---------------|---------|
+| **ArkTS** | ✅ | ✅ | spec/lexical.md |
+| **Java** | ❌ | ✅ | JLS §3.6 |
+| **Swift** | ❌ | ✅ | Swift Lang |
+| **TypeScript** | ✅ | ✅ | TS 规范 |
+
+---
+
+**报告生成人：** GLM5.1
+**最后更新：** 2026-06-22
+**下一步行动：**
+1. 明确 spec 选择 6 种空白符的依据
+2. 明确 ZWNBSP 双重身份的语义边界
+3. 评估编译器对 NBSP/ZWNBSP 的 warning 规则

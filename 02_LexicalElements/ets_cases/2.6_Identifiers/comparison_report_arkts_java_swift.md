@@ -1,8 +1,20 @@
 # 2.6 Identifiers - ArkTS vs Java vs Swift vs TypeScript 对比报告
 
-**生成日期：** 2026-06-15
+**生成日期：** 2026-06-22
+**更新版本：** v2.1 - 补充三环境实测结果章节
 **规范来源：** ArkTS Static Spec §2.6, Java JLS SE21 §3.8, Swift Language Reference (Identifiers), ECMAScript 2023 §12.6
-**测试基础：** 39 个用例（23 compile-pass + 11 compile-fail + 5 runtime 真实执行）
+**测试基础：** 52 个用例（30 compile-pass + 13 compile-fail + 9 runtime 真实执行）
+**运行环境：**
+- ArkTS: WSL2 Ubuntu 22.04 (es2panda + ark VM)
+- Java: WSL2 Ubuntu 22.04 (OpenJDK 1.8)
+- Swift: WSL2 Ubuntu 22.04 (Swift 5.10)
+
+### 📋 实际验证文件路径
+
+- **ArkTS 测试基础：** `E:\spec_git\ARKTS_STATIC_TEST\02_LexicalElements\ets_cases\2.6_Identifiers\`
+- **三环境实测验证：** `cross_lang_verify/verification_report.md`
+- **Java 等价用例：** `cross_lang_verify/IdentifiersNewRuntimeTest.java`
+- **Swift 等价用例：** `cross_lang_verify/IdentifiersNewRuntimeTest.swift`
 
 ---
 
@@ -149,7 +161,101 @@ let string: string = "" // ✅ 沿用类型注解
 
 ---
 
-## 四、综合评分
+## 六、用例 1:1 对照（三环境实测结果）⭐【必选】
+
+### 6.1 IdentifierStart 测试
+
+| # | 用例 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 001 | Lu 大写字母 | ✅ compile-pass | ✅ compile-pass | ✅ compile-pass |
+| 002 | Ll 小写字母 | ✅ compile-pass | ✅ compile-pass | ✅ compile-pass |
+| 003 | Lt 标题字母 | ✅ compile-pass | ✅ compile-pass | ✅ compile-pass |
+| 004 | Lm 修饰字母 | ✅ compile-pass | ✅ compile-pass | ✅ compile-pass |
+| 005 | Lo 其他字母 | ✅ compile-pass | ✅ compile-pass | ✅ compile-pass |
+| 006 | $ 起始 | ✅ compile-pass | ✅ compile-pass | ❌ 不支持 |
+| 007 | _ 起始 | ✅ compile-pass | ✅ compile-pass | ✅ compile-pass |
+| 008 | \uHHHH 转义 | ✅ compile-pass | ✅ compile-pass | ❌ 不支持 |
+| 009 | \u{...} 扩展转义 | ✅ compile-pass | ❌ 不支持 | ❌ 不支持 |
+
+### 6.2 IdentifierPart 测试
+
+| # | 用例 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 010 | Nd 数字 | ✅ compile-pass | ✅ compile-pass | ✅ compile-pass |
+| 011 | ZWJ 连接符 | ✅ compile-pass | ❌ 不支持 | ❌ 不支持 |
+| 012 | ZWNJ 连接符 | ✅ compile-pass | ❌ 不支持 | ❌ 不支持 |
+| 013 | \uHHHH 转义中部 | ✅ compile-pass | ✅ compile-pass | ❌ 不支持 |
+| 014 | \u{...} 转义中部 | ✅ compile-pass | ❌ 不支持 | ❌ 不支持 |
+
+### 6.3 标识符使用测试
+
+| # | 用例 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 018 | 类名 | ✅ compile-pass | ✅ compile-pass | ✅ compile-pass |
+| 019 | 接口名 | ✅ compile-pass | ✅ compile-pass | ✅ compile-pass |
+| 020 | 函数参数名 | ✅ compile-pass | ✅ compile-pass | ✅ compile-pass |
+| 024 | 数字开头失败 | ✅ compile-fail | ✅ compile-fail | ✅ compile-fail |
+| 030 | 硬关键字失败 | ✅ compile-fail | ✅ compile-fail | ✅ compile-fail |
+| 031 | 类型关键字失败 | ✅ compile-fail | ✅ compile-fail | ✅ compile-fail |
+
+### 6.4 运行时验证测试
+
+| # | 用例 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 035 | Unicode 转义等价性 | ✅ runtime | ✅ runtime | ❌ 不支持 |
+| 036 | Unicode 值 | ✅ runtime | ✅ runtime | ✅ runtime |
+| 037 | ZWJ 标识符 | ✅ runtime | ❌ 不支持 | ❌ 不支持 |
+| 038 | 多语言标识符 | ✅ runtime | ✅ runtime | ✅ runtime |
+| 039 | 数字标识符 | ✅ runtime | ✅ runtime | ✅ runtime |
+| 048 | 长标识符 | ✅ runtime | ✅ runtime | ✅ runtime |
+| 049 | 大小写敏感 | ✅ runtime | ✅ runtime | ✅ runtime |
+| 050 | 作用域 | ✅ runtime | ✅ runtime | ✅ runtime |
+
+### 关键差异详解
+
+#### 用例 006: $ 标识符 ⭐⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `let $x = 1` | ✅ 编译通过 |
+| Java | `int $x = 1;` | ✅ 编译通过 |
+| Swift | `let $x = 1` | ❌ 编译错误 |
+
+#### 用例 008: \uHHHH 转义标识符 ⭐⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `let \u0041 = 1` | ✅ 编译通过 |
+| Java | `int \u0041 = 1;` | ✅ 编译通过 |
+| Swift | `let \u0041 = 1` | ❌ 编译错误 |
+
+#### 用例 009: \u{...} 扩展转义标识符 ⭐⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `let \u{41} = 1` | ✅ 编译通过 |
+| Java | `int \u{41} = 1;` | ❌ 编译错误 |
+| Swift | `let \u{41} = 1` | ❌ 编译错误 |
+
+#### 用例 011/037: ZWJ/ZWNJ 标识符 ⭐⭐⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `let aZWJb = 1` (含 U+200D) | ✅ 编译通过 |
+| Java | `int aZWJb = 1;` | ❌ 编译错误 |
+| Swift | `let aZWJb = 1` | ❌ 编译错误 |
+
+#### 用例 035: Unicode 转义等价性 ⭐⭐⭐
+
+| 语言 | 代码 | 行为 |
+|------|------|------|
+| ArkTS | `\u0041var` 等价 `Avar` | ✅ 同一变量 |
+| Java | `\u0041var` 等价 `Avar` | ✅ 同一变量 |
+| Swift | N/A | N/A |
+
+---
+
+## 七、综合评分
 
 | 维度 | ArkTS | Java | Swift | TypeScript |
 |------|-------|------|-------|-----------|
@@ -195,3 +301,8 @@ let string: string = "" // ✅ 沿用类型注解
 | Java | Java Language Specification SE21, §3.8 Identifiers |
 | Swift | The Swift Programming Language (Swift 5.x), Lexical Structure - Identifiers |
 | TypeScript | ECMAScript 2023 Language Specification, §12.6 Names and Keywords |
+
+---
+
+**报告生成人：** GLM5.1
+**最后更新：** 2026-06-22
