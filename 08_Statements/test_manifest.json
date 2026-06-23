@@ -1,0 +1,744 @@
+{
+  "chapter": "08",
+  "topic": "Statements",
+  "directory": "08_Statements",
+  "spec_source": "ArkTS static language specification",
+  "subtopics": [
+    "8.1_Normal_and_Abrupt_Statement_Execution",
+    "8.2_Expression_Statements",
+    "8.3_Block",
+    "8.4_Constant_or_Variable_Declarations",
+    "8.5_if_Statements",
+    "8.6_Loop_Statements",
+    "8.7_while_Statements_and_do_Statements",
+    "8.8_for_Statements",
+    "8.9_for_of_Statements",
+    "8.10_break_Statements",
+    "8.11_continue_Statements",
+    "8.12_return_Statements",
+    "8.13_switch_Statements",
+    "8.14_throw_Statements",
+    "8.15_try_Statements",
+    "8.15.1_catch_Clause",
+    "8.15.2_finally_Clause",
+    "8.15.3_try_Statement_Execution"
+  ],
+  "case_roots": [
+    "ets_cases"
+  ],
+  "categories": [
+    "compile-pass",
+    "compile-fail",
+    "runtime"
+  ],
+  "cases": [
+    {
+      "id": "STM_08_03_001_PASS_basic_block",
+      "section": "8.3",
+      "category": "compile-pass",
+      "description": "Basic block with multiple statements (assignments, expressions, variable decls, control flow)"
+    },
+    {
+      "id": "STM_08_03_002_PASS_nested_blocks",
+      "section": "8.3",
+      "category": "compile-pass",
+      "description": "Nested block statements with multiple nesting levels and variable shadowing"
+    },
+    {
+      "id": "STM_08_03_003_PASS_void_function_body",
+      "section": "8.3",
+      "category": "compile-pass",
+      "description": "Void function body as block with implicit return and empty return; statements"
+    },
+    {
+      "id": "STM_08_03_004_PASS_block_type_declarations",
+      "section": "8.3",
+      "category": "compile-pass",
+      "description": "Block containing type declarations (interface, type alias) as compile-time-only constructs"
+    },
+    {
+      "id": "STM_08_03_005_PASS_empty_block",
+      "section": "8.3",
+      "category": "compile-pass",
+      "description": "Empty block, comment-only block, semicolon-only block, multiple empty blocks"
+    },
+    {
+      "id": "STM_08_03_006_FAIL_nested_function_in_block",
+      "section": "8.3",
+      "category": "compile-fail",
+      "description": "Nested function declaration inside block should fail compilation"
+    },
+    {
+      "id": "STM_08_03_007_FAIL_local_class_in_block",
+      "section": "8.3",
+      "category": "compile-fail",
+      "description": "Local class declaration inside block should fail compilation"
+    },
+    {
+      "id": "STM_08_03_008_FAIL_local_type_alias_in_block",
+      "section": "8.3",
+      "category": "compile-fail",
+      "description": "Local type alias inside block should fail compilation"
+    },
+    {
+      "id": "STM_08_03_009_RUNTIME_block_execution_order",
+      "section": "8.3",
+      "category": "runtime",
+      "description": "Sequential execution order of statements inside blocks and nested blocks"
+    },
+    {
+      "id": "STM_08_03_010_RUNTIME_block_throw_error",
+      "section": "8.3",
+      "category": "runtime",
+      "description": "Throw error inside block stops subsequent statements from executing"
+    },
+    {
+      "id": "STM_08_04_001_PASS_basic_let",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "compile-pass",
+      "description": "let基本声明：let声明可变变量，类型推断，可重新赋值"
+    },
+    {
+      "id": "STM_08_04_002_PASS_basic_const",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "compile-pass",
+      "description": "const基本声明：const声明常量，类型推断，不可变"
+    },
+    {
+      "id": "STM_08_04_003_PASS_shadowing_in_block",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "compile-pass",
+      "description": "块作用域变量遮蔽：内层const与外层let同名合法"
+    },
+    {
+      "id": "STM_08_04_004_PASS_let_type_annotation",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "compile-pass",
+      "description": "let带显式类型注解：int/number/string/boolean/long/float"
+    },
+    {
+      "id": "STM_08_04_005_PASS_const_complex_types",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "compile-pass",
+      "description": "const复杂类型：数组int[]/string[]等类型声明"
+    },
+    {
+      "id": "STM_08_04_006_FAIL_param_local_conflict",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "compile-fail",
+      "description": "参数与局部变量同名：同一作用域同名产生编译错误"
+    },
+    {
+      "id": "STM_08_04_007_FAIL_reassign_const",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "compile-fail",
+      "description": "const重新赋值：常量二次赋值产生编译错误"
+    },
+    {
+      "id": "STM_08_04_008_FAIL_duplicate_let_same_scope",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "compile-fail",
+      "description": "同一作用域重复let声明同名变量产生编译错误"
+    },
+    {
+      "id": "STM_08_04_009_RUNTIME_let_const_values",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "runtime",
+      "description": "let可赋值和const不可变性运行时行为验证"
+    },
+    {
+      "id": "STM_08_04_010_RUNTIME_block_scope_shadow",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "runtime",
+      "description": "块作用域遮蔽运行时行为：内层遮蔽外层，离开后恢复"
+    },
+    {
+      "id": "STM_08_04_018_PASS_let_union_type",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "compile-pass",
+      "description": "let带复杂联合类型注解声明：string|number, int|null, string|int|boolean等"
+    },
+    {
+      "id": "STM_08_04_019_FAIL_const_top_level_no_init",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "compile-fail",
+      "description": "const在模块顶层声明缺少初始化器产生编译错误"
+    },
+    {
+      "id": "STM_08_04_020_FAIL_duplicate_let_block",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "compile-fail",
+      "description": "同一块作用域内重复let声明同名变量产生编译错误"
+    },
+    {
+      "id": "STM_08_04_021_RUNTIME_const_not_reassignable",
+      "section": "8.4_Constant_or_Variable_Declarations",
+      "category": "runtime",
+      "description": "const声明的常量在运行时保持初始值不变，包括表达式计算初始值"
+    },
+    {
+      "id": "STM_08_05_001_PASS_BASIC_IF",
+      "section": "8.5",
+      "category": "compile-pass",
+      "description": "基本 if 语句：boolean 字面量和 boolean 变量条件"
+    },
+    {
+      "id": "STM_08_05_002_PASS_IF_ELSE",
+      "section": "8.5",
+      "category": "compile-pass",
+      "description": "if-else 语句：boolean 条件驱动两分支执行"
+    },
+    {
+      "id": "STM_08_05_003_PASS_NESTED_IF_ELSE",
+      "section": "8.5",
+      "category": "compile-pass",
+      "description": "嵌套 if-else：多重嵌套和 else-if 链式语法"
+    },
+    {
+      "id": "STM_08_05_004_PASS_BLOCK_SCOPE",
+      "section": "8.5",
+      "category": "compile-pass",
+      "description": "块级作用域：不同 if/else 分支可声明同名变量"
+    },
+    {
+      "id": "STM_08_05_005_PASS_IF_WITHOUT_BLOCK",
+      "section": "8.5",
+      "category": "compile-pass",
+      "description": "无块 if/else：单语句体不创建块级作用域"
+    },
+    {
+      "id": "STM_08_05_006_FAIL_NUMERIC_CONDITION",
+      "section": "8.5",
+      "category": "compile-fail",
+      "description": "int 类型作为 if 条件产生编译时错误"
+    },
+    {
+      "id": "STM_08_05_007_FAIL_STRING_CONDITION",
+      "section": "8.5",
+      "category": "compile-fail",
+      "description": "string 类型作为 if 条件产生编译时错误"
+    },
+    {
+      "id": "STM_08_05_008_FAIL_FLOAT_CONDITION",
+      "section": "8.5",
+      "category": "compile-fail",
+      "description": "number 类型作为 if 条件产生编译时错误"
+    },
+    {
+      "id": "STM_08_05_009_RUNTIME_IF_TRUE_FALSE",
+      "section": "8.5",
+      "category": "runtime",
+      "description": "运行时验证 true/false 分支选择正确性"
+    },
+    {
+      "id": "STM_08_05_010_RUNTIME_NESTED_IF_ELSE",
+      "section": "8.5",
+      "category": "runtime",
+      "description": "运行时验证嵌套 if-else 和 else-if 链式语义"
+    },
+    {
+      "id": "STM_08_06_001_PASS_BasicWhile",
+      "section": "8.6",
+      "category": "compile-pass",
+      "description": "基本 while 循环：条件为 false 时循环体不执行，true 时正常迭代"
+    },
+    {
+      "id": "STM_08_06_002_PASS_BasicDoWhile",
+      "section": "8.6",
+      "category": "compile-pass",
+      "description": "基本 do-while 循环：至少执行一次循环体，条件初始为 false 时仍执行一次"
+    },
+    {
+      "id": "STM_08_06_003_PASS_BasicFor",
+      "section": "8.6",
+      "category": "compile-pass",
+      "description": "基本 for 循环：包含初始化、条件判断、更新表达式，支持多种写法"
+    },
+    {
+      "id": "STM_08_06_004_PASS_BasicForOf",
+      "section": "8.6",
+      "category": "compile-pass",
+      "description": "基本 for-of 循环：遍历数组元素，正确处理每个元素"
+    },
+    {
+      "id": "STM_08_06_005_PASS_LabeledLoopBreak",
+      "section": "8.6",
+      "category": "compile-pass",
+      "description": "带标签的 for 循环：在循环体内使用 break label 正确引用标签以提前终止外层循环"
+    },
+    {
+      "id": "STM_08_06_006_FAIL_LabelInLambdaContinue",
+      "section": "8.6",
+      "category": "compile-fail",
+      "description": "在标签循环体内使用 lambda 表达式，lambda 中引用外层标签的 continue 语句"
+    },
+    {
+      "id": "STM_08_06_007_FAIL_LabelInLambdaBreak",
+      "section": "8.6",
+      "category": "compile-fail",
+      "description": "在标签循环体内使用 lambda 表达式，lambda 中引用外层标签的 break 语句"
+    },
+    {
+      "id": "STM_08_06_008_FAIL_BreakToUndeclaredLabel",
+      "section": "8.6",
+      "category": "compile-fail",
+      "description": "break 语句引用一个未声明的标签标识符，应编译时报错"
+    },
+    {
+      "id": "STM_08_06_009_RUNTIME_WhileAndDoWhile",
+      "section": "8.6",
+      "category": "runtime",
+      "description": "while 和 do-while 循环运行时正确性验证"
+    },
+    {
+      "id": "STM_08_06_010_RUNTIME_ForAndForOf",
+      "section": "8.6",
+      "category": "runtime",
+      "description": "for 和 for-of 循环运行时正确性验证"
+    },
+    {
+      "id": "STM_08_06_011_RUNTIME_LabeledLoop",
+      "section": "8.6",
+      "category": "runtime",
+      "description": "带标签循环运行时正确性验证"
+    },
+    {
+      "id": "STM_08_08_001_PASS_BASIC_FOR",
+      "section": "8.8",
+      "category": "compile-pass",
+      "description": "基础 for 循环，forInit 声明新变量并显式指定 int 类型"
+    },
+    {
+      "id": "STM_08_08_002_PASS_FOR_TYPE_INFERENCE",
+      "section": "8.8",
+      "category": "compile-pass",
+      "description": "forInit 类型推导，let i = 0 自动推导为 int"
+    },
+    {
+      "id": "STM_08_08_003_PASS_FOR_EXISTING_VAR",
+      "section": "8.8",
+      "category": "compile-pass",
+      "description": "使用已存在的变量作为循环索引，forInit 为空"
+    },
+    {
+      "id": "STM_08_08_004_PASS_FOR_EMPTY_INIT",
+      "section": "8.8",
+      "category": "compile-pass",
+      "description": "for 循环的 forInit 和 forUpdate 均为空，仅保留条件表达式"
+    },
+    {
+      "id": "STM_08_08_005_PASS_FOR_EMPTY_CONTINUE",
+      "section": "8.8",
+      "category": "compile-pass",
+      "description": "forContinue 表达式为空，循环靠内部 break 退出"
+    },
+    {
+      "id": "STM_08_08_006_FAIL_NON_BOOLEAN_CONDITION",
+      "section": "8.8",
+      "category": "compile-fail",
+      "description": "forContinue 表达式类型为非 boolean，应产生编译时错误"
+    },
+    {
+      "id": "STM_08_08_007_FAIL_VAR_OUT_OF_SCOPE",
+      "section": "8.8",
+      "category": "compile-fail",
+      "description": "forInit 中声明的变量具有循环作用域，循环外不能访问"
+    },
+    {
+      "id": "STM_08_08_008_RUNTIME_FOR_BASIC",
+      "section": "8.8",
+      "category": "runtime",
+      "description": "基础 for 循环运行时：遍历 i=0..4 求和验证 sum == 10"
+    },
+    {
+      "id": "STM_08_08_009_RUNTIME_FOR_EXISTING_VAR",
+      "section": "8.8",
+      "category": "runtime",
+      "description": "已存在变量索引运行时：循环后验证 idx == 5"
+    },
+    {
+      "id": "STM_08_11_001",
+      "section": "8.11_continue_Statements",
+      "category": "compile-pass",
+      "description": "Unlabeled continue in for loop skips even iterations"
+    },
+    {
+      "id": "STM_08_11_002",
+      "section": "8.11_continue_Statements",
+      "category": "compile-pass",
+      "description": "Labeled continue in nested for loop jumps to outer loop"
+    },
+    {
+      "id": "STM_08_11_003",
+      "section": "8.11_continue_Statements",
+      "category": "compile-pass",
+      "description": "Unlabeled continue in while loop skips even iterations"
+    },
+    {
+      "id": "STM_08_11_004",
+      "section": "8.11_continue_Statements",
+      "category": "compile-pass",
+      "description": "Unlabeled continue in do-while loop skips even iterations"
+    },
+    {
+      "id": "STM_08_11_005",
+      "section": "8.11_continue_Statements",
+      "category": "compile-pass",
+      "description": "Labeled continue in deeply nested loops with middle and outer labels"
+    },
+    {
+      "id": "STM_08_11_006",
+      "section": "8.11_continue_Statements",
+      "category": "compile-fail",
+      "description": "Compile-time error: continue outside any enclosing loop"
+    },
+    {
+      "id": "STM_08_11_007",
+      "section": "8.11_continue_Statements",
+      "category": "compile-fail",
+      "description": "Compile-time error: continue with label not matching any enclosing loop"
+    },
+    {
+      "id": "STM_08_11_008",
+      "section": "8.11_continue_Statements",
+      "category": "compile-fail",
+      "description": "Compile-time error: continue with label on non-loop (block) statement"
+    },
+    {
+      "id": "STM_08_11_009",
+      "section": "8.11_continue_Statements",
+      "category": "runtime",
+      "description": "Runtime: unlabeled continue in for loop skips iteration 3"
+    },
+    {
+      "id": "STM_08_11_010",
+      "section": "8.11_continue_Statements",
+      "category": "runtime",
+      "description": "Runtime: labeled continue in nested loops jumps to outer loop"
+    },
+    {
+      "id": "STM_08_11_011",
+      "section": "8.11_continue_Statements",
+      "category": "runtime",
+      "description": "Runtime: unlabeled continue in while loop skips even numbers"
+    },
+    {
+      "id": "STM_08_13_001_PASS_basic_int_switch",
+      "section": "8.13_switch_Statements",
+      "category": "compile-pass",
+      "description": "Basic int type switch expression with case matching and break termination"
+    },
+    {
+      "id": "STM_08_13_002_PASS_fall_through",
+      "section": "8.13_switch_Statements",
+      "category": "compile-pass",
+      "description": "Int type switch with case fall-through when no break between case clauses"
+    },
+    {
+      "id": "STM_08_13_003_PASS_string_switch",
+      "section": "8.13_switch_Statements",
+      "category": "compile-pass",
+      "description": "String type switch expression with string literal case labels"
+    },
+    {
+      "id": "STM_08_13_004_PASS_boolean_switch",
+      "section": "8.13_switch_Statements",
+      "category": "compile-pass",
+      "description": "Boolean type switch expression with true/false case labels"
+    },
+    {
+      "id": "STM_08_13_005_PASS_labeled_break_switch",
+      "section": "8.13_switch_Statements",
+      "category": "compile-pass",
+      "description": "Labeled switch with break outer transferring control out of nested switch"
+    },
+    {
+      "id": "STM_08_13_006_FAIL_string_case_on_int_switch",
+      "section": "8.13_switch_Statements",
+      "category": "compile-fail",
+      "description": "Compile-time error: string case expression on int switch type mismatch"
+    },
+    {
+      "id": "STM_08_13_007_FAIL_int_case_on_string_switch",
+      "section": "8.13_switch_Statements",
+      "category": "compile-fail",
+      "description": "Compile-time error: int case expression on string switch type mismatch"
+    },
+    {
+      "id": "STM_08_13_008_FAIL_boolean_case_on_number_switch",
+      "section": "8.13_switch_Statements",
+      "category": "compile-fail",
+      "description": "Compile-time error: boolean case expression on number switch type mismatch"
+    },
+    {
+      "id": "STM_08_13_009_RUNTIME_basic_switch",
+      "section": "8.13_switch_Statements",
+      "category": "runtime",
+      "description": "Runtime verification: case 2 match produces expected value; unmatched value reaches default"
+    },
+    {
+      "id": "STM_08_13_010_RUNTIME_fall_through_and_default",
+      "section": "8.13_switch_Statements",
+      "category": "runtime",
+      "description": "Runtime verification: fall-through accumulates values; default executes on no match; match prevents default"
+    },
+    {
+      "id": "STM_08_13_011_RUNTIME_labeled_break_switch",
+      "section": "8.13_switch_Statements",
+      "category": "runtime",
+      "description": "Runtime verification: labeled break outer exits outer switch; normal break only exits inner switch"
+    },
+    {
+      "id": "STM_08_14_001_PASS_throw_new_error",
+      "section": "8.14",
+      "category": "compile-pass",
+      "description": "直接抛出 new Error() 实例"
+    },
+    {
+      "id": "STM_08_14_002_PASS_throw_error_variable",
+      "section": "8.14",
+      "category": "compile-pass",
+      "description": "通过 Error 类型变量抛出"
+    },
+    {
+      "id": "STM_08_14_003_PASS_throw_custom_error",
+      "section": "8.14",
+      "category": "compile-pass",
+      "description": "抛出自定义 Error 子类"
+    },
+    {
+      "id": "STM_08_14_004_PASS_throw_range_error",
+      "section": "8.14",
+      "category": "compile-pass",
+      "description": "抛出标准 Error 子类 RangeError"
+    },
+    {
+      "id": "STM_08_14_005_FAIL_throw_string",
+      "section": "8.14",
+      "category": "compile-fail",
+      "description": "抛出 string 类型—非 Error 类型编译错误"
+    },
+    {
+      "id": "STM_08_14_006_FAIL_throw_null",
+      "section": "8.14",
+      "category": "compile-fail",
+      "description": "抛出 null—null 不允许抛出编译错误"
+    },
+    {
+      "id": "STM_08_14_007_FAIL_throw_undefined",
+      "section": "8.14",
+      "category": "compile-fail",
+      "description": "抛出 undefined—undefined 不允许抛出编译错误"
+    },
+    {
+      "id": "STM_08_14_008_RUNTIME_throw_caught",
+      "section": "8.14",
+      "category": "runtime",
+      "description": "try-catch 正常捕获 throw"
+    },
+    {
+      "id": "STM_08_14_009_RUNTIME_throw_rethrow",
+      "section": "8.14",
+      "category": "runtime",
+      "description": "catch 块中 rethrow 重新抛出"
+    },
+    {
+      "id": "STM_08_15_3_001_PASS_try_block_normal_completion",
+      "section": "8.15.3_try_Statement_Execution",
+      "category": "compile-pass",
+      "description": "验证规则1：try块正常完成时整个try语句正常完成，try-finally结构中catch不存在"
+    },
+    {
+      "id": "STM_08_15_3_002_PASS_try_catch_error_handled",
+      "section": "8.15.3_try_Statement_Execution",
+      "category": "compile-pass",
+      "description": "验证规则2：try块抛出异常x，catch子句被执行，catch体正常完成，整个try语句正常完成"
+    },
+    {
+      "id": "STM_08_15_3_003_PASS_error_propagated_no_catch",
+      "section": "8.15.3_try_Statement_Execution",
+      "category": "compile-pass",
+      "description": "验证规则3：try块抛出异常但无catch子句时，异常传播到外围作用域，try-finally结构编译通过"
+    },
+    {
+      "id": "STM_08_15_3_004_PASS_finally_abrupt_completion",
+      "section": "8.15.3_try_Statement_Execution",
+      "category": "compile-pass",
+      "description": "验证规则4：finally子句执行时异常完成导致整个try语句异常完成，catch已处理但finally抛出新异常"
+    },
+    {
+      "id": "STM_08_15_3_005_FAIL_try_no_catch_no_finally",
+      "section": "8.15.3_try_Statement_Execution",
+      "category": "compile-fail",
+      "description": "try块既无catch也无finally产生编译错误——try语句必须至少包含catch或finally子句"
+    },
+    {
+      "id": "STM_08_15_3_006_FAIL_try_catch_local_class",
+      "section": "8.15.3_try_Statement_Execution",
+      "category": "compile-fail",
+      "description": "catch块内定义局部类导致编译错误——ArkTS禁止局部类定义"
+    },
+    {
+      "id": "STM_08_15_3_007_FAIL_try_finally_nested_function",
+      "section": "8.15.3_try_Statement_Execution",
+      "category": "compile-fail",
+      "description": "finally块内定义嵌套函数导致编译错误——ArkTS禁止嵌套函数定义"
+    },
+    {
+      "id": "STM_08_15_3_008_RUNTIME_try_normal_completion",
+      "section": "8.15.3_try_Statement_Execution",
+      "category": "runtime",
+      "description": "验证规则1运行时：try块正常完成时catch不执行，finally正常执行，整个try语句正常完成"
+    },
+    {
+      "id": "STM_08_15_3_009_RUNTIME_try_catch_normal_completion",
+      "section": "8.15.3_try_Statement_Execution",
+      "category": "runtime",
+      "description": "验证规则2运行时：try抛出Error被catch捕获，catch正常完成，try整体正常完成"
+    },
+    {
+      "id": "STM_08_15_3_010_RUNTIME_error_propagated_and_finally_abrupt",
+      "section": "8.15.3_try_Statement_Execution",
+      "category": "runtime",
+      "description": "验证规则3+4运行时：错误从try-finally传播到调用者，finally异常完成覆盖catch正常完成"
+    },
+    {
+      "id": "STM_08_15_001_PASS_try_catch",
+      "section": "8.15_try_Statements",
+      "category": "compile-pass",
+      "description": "基本 try-catch 结构编译通过"
+    },
+    {
+      "id": "STM_08_15_002_PASS_try_finally",
+      "section": "8.15_try_Statements",
+      "category": "compile-pass",
+      "description": "基本 try-finally 结构编译通过"
+    },
+    {
+      "id": "STM_08_15_003_PASS_try_catch_finally",
+      "section": "8.15_try_Statements",
+      "category": "compile-pass",
+      "description": "完整的 try-catch-finally 三元结构编译通过"
+    },
+    {
+      "id": "STM_08_15_004_PASS_try_nested",
+      "section": "8.15_try_Statements",
+      "category": "compile-pass",
+      "description": "嵌套 try 语句结构编译通过"
+    },
+    {
+      "id": "STM_08_15_005_PASS_try_catch_return",
+      "section": "8.15_try_Statements",
+      "category": "compile-pass",
+      "description": "try-catch 中包含 return 语句编译通过"
+    },
+    {
+      "id": "STM_08_15_006_FAIL_try_no_catch_no_finally",
+      "section": "8.15_try_Statements",
+      "category": "compile-fail",
+      "description": "try 块没有 catch 也没有 finally 产生编译错误"
+    },
+    {
+      "id": "STM_08_15_007_FAIL_try_catch_local_class",
+      "section": "8.15_try_Statements",
+      "category": "compile-fail",
+      "description": "try 块内定义局部类产生编译错误"
+    },
+    {
+      "id": "STM_08_15_008_FAIL_try_finally_local_type_alias",
+      "section": "8.15_try_Statements",
+      "category": "compile-fail",
+      "description": "finally 块内定义局部类型别名产生编译错误"
+    },
+    {
+      "id": "STM_08_15_009_FAIL_try_catch_nested_function",
+      "section": "8.15_try_Statements",
+      "category": "compile-fail",
+      "description": "catch 块内定义嵌套函数产生编译错误"
+    },
+    {
+      "id": "STM_08_15_010_RUNTIME_try_catch_no_error",
+      "section": "8.15_try_Statements",
+      "category": "runtime",
+      "description": "try 块未抛出异常时 catch 子句不执行"
+    },
+    {
+      "id": "STM_08_15_011_RUNTIME_try_catch_error",
+      "section": "8.15_try_Statements",
+      "category": "runtime",
+      "description": "try 块抛出异常时 catch 子句捕获并处理"
+    },
+    {
+      "id": "STM_08_15_012_RUNTIME_try_finally_always",
+      "section": "8.15_try_Statements",
+      "category": "runtime",
+      "description": "finally 子句始终执行（无论是否抛出异常）"
+    },
+    {
+      "id": "STM_08_15_2_001_PASS_basic_finally",
+      "section": "8.15.2_finally_Clause",
+      "category": "compile-pass",
+      "description": "Basic try-catch-finally: try completes normally, finally executes after try"
+    },
+    {
+      "id": "STM_08_15_2_002_PASS_finally_after_catch",
+      "section": "8.15.2_finally_Clause",
+      "category": "compile-pass",
+      "description": "try block throws exception, catch handles it, finally still executes"
+    },
+    {
+      "id": "STM_08_15_2_003_PASS_finally_after_return",
+      "section": "8.15.2_finally_Clause",
+      "category": "compile-pass",
+      "description": "try block contains return, finally executes before return"
+    },
+    {
+      "id": "STM_08_15_2_004_PASS_finally_no_catch",
+      "section": "8.15.2_finally_Clause",
+      "category": "compile-pass",
+      "description": "try-finally without catch: try completes normally, then finally executes"
+    },
+    {
+      "id": "STM_08_15_2_005_PASS_finally_nested",
+      "section": "8.15.2_finally_Clause",
+      "category": "compile-pass",
+      "description": "Nested try-catch-finally: inner finally executes, then outer finally executes"
+    },
+    {
+      "id": "STM_08_15_2_006_FAIL_finally_reserved_word",
+      "section": "8.15.2_finally_Clause",
+      "category": "compile-fail",
+      "description": "Using reserved keyword 'string' as variable name inside finally block -- compile error expected"
+    },
+    {
+      "id": "STM_08_15_2_007_FAIL_finally_local_class",
+      "section": "8.15.2_finally_Clause",
+      "category": "compile-fail",
+      "description": "Local class definition inside finally block -- violates ArkTS no-local-class constraint"
+    },
+    {
+      "id": "STM_08_15_2_008_FAIL_finally_nested_func",
+      "section": "8.15.2_finally_Clause",
+      "category": "compile-fail",
+      "description": "Nested function definition inside finally block -- violates ArkTS no-nested-function constraint"
+    },
+    {
+      "id": "STM_08_15_2_009_RUNTIME_finally_executes",
+      "section": "8.15.2_finally_Clause",
+      "category": "runtime",
+      "description": "Finally always executes: both normal completion and exception+catch scenarios verified"
+    },
+    {
+      "id": "STM_08_15_2_010_RUNTIME_finally_with_return",
+      "section": "8.15.2_finally_Clause",
+      "category": "runtime",
+      "description": "Finally executes before method returns: return in try and return in catch both tested"
+    },
+    {
+      "id": "STM_08_15_2_011_RUNTIME_finally_with_error",
+      "section": "8.15.2_finally_Clause",
+      "category": "runtime",
+      "description": "Finally executes when catch throws a new error: inner catch rethrows, outer catch catches"
+    }
+  ]
+}

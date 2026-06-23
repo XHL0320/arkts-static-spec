@@ -1,0 +1,12 @@
+/**
+ * @id STM_08_05_011_PASS_char_condition_extended
+ * @expect compile-pass
+ * @section 8.5
+ * @design char 类型作为 if 条件 — Extended Conditional Expressions 允许 char（c'\u0000' → false，其他 → true，STATEMENTS.md 引用）
+ * @note 正向用例：验证 Extended Conditional Expressions 对 char 类型的 truthiness 语义
+ */
+function testCharIfCondition(): void {
+  let c: char = c'a'
+  if (c) { let x: int = 1 }
+  if (!c) { let x: int = 99 }
+}

@@ -1,0 +1,14 @@
+/**
+ * @id STM_08_15_1_007_FAIL_catch_type_annotation_number
+ * @expect compile-fail
+ * @section 8.15.1
+ * @design 验证 catch 参数类型注解为 number 时产生编译错误。catch 标识符类型必须是 Error。
+ * @note 异常测试：catch 子句参数被注解为 number 类型，违反规范中 catch 标识符类型为 Error 的规定。
+ */
+function testCatchWrongTypeNumber(): void {
+    try {
+        throw new Error("test");
+    } catch (e: number) {
+        let val: number = e;
+    }
+}
