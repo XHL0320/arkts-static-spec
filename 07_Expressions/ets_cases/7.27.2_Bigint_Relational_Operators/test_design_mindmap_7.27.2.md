@@ -28,7 +28,7 @@ bigint 关系比较，bigint-bigint/bigint-整数/bigint-double 按规则转换
 ## 用例统计
 | 分类 | 数量 |
 |------|------|
-| compile-pass | 3 |
-| compile-fail | 3 |
-| runtime | 2 |
-| **总计** | **8** |
+| compile-pass | 10 |
+| compile-fail | 10 |
+| runtime | 10 |
+| **总计** | **30** |

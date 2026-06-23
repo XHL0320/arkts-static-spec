@@ -28,7 +28,7 @@ double/float 提升，大整数内部类型，混合常量独立求值
 ## 用例统计
 | 分类 | 数量 |
 |------|------|
-| compile-pass | 3 |
-| compile-fail | 0 |
-| runtime | 1 |
-| **总计** | **4** |
+| compile-pass | 10 |
+| compile-fail | 10 |
+| runtime | 10 |
+| **总计** | **30** |

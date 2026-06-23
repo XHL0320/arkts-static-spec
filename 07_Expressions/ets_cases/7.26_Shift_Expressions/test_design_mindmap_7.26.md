@@ -28,7 +28,7 @@
 ## 用例统计
 | 分类 | 数量 |
 |------|------|
-| compile-pass | 7 |
-| compile-fail | 7 |
-| runtime | 6 |
-| **总计** | **20** |
+| compile-pass | 10 |
+| compile-fail | 10 |
+| runtime | 10 |
+| **总计** | **30** |
