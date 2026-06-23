@@ -1,0 +1,19 @@
+/**
+ * @id EXP2_17_09_03_007_FAIL_OVERRIDE_MISSING
+ * @expect compile-fail
+ * @section 17.9.3
+ * @design 实现类 override 接口 overload 但缺少方法 — 编译错误
+ * @note 反向用例：实现类 override overload 但方法不完整
+ */
+interface IService {
+  svcInt(a: int): string
+  svcStr(a: string): string
+  overload service { svcInt, svcStr }
+}
+
+class BadService implements IService {
+  svcInt(a: int): string { return "int:" + a }
+  svcStr(a: string): string { return "str:" + a }
+  // 缺少 svcStr — 应编译失败
+  overload service { svcInt }
+}

@@ -1,50 +1,67 @@
 # 17 Experimental Features - Spec Extract
 
-Source: ArkTS static language specification, chapter 17 Experimental Features.
+Source: ArkTS static language specification, Chapter 17. Experimental Features (Release 1.2.1-alpha TECHNICAL PREVIEW 10)
 
-## Scope
+## Subchapters
 
-This file is reserved for translated or extracted normative text for this topic.
+### 17.1 Type `char`
+- Values: 16-bit Unicode code units (U+0000 to U+FFFF)
+- Class type, subtype of Object
+- `let a_char: char = c'a'`; `let o: Object = a_char` // OK
 
-## Subtopics
+### 17.1.1 `char` Literals
+- Syntax: `c'X'` — 16-bit Unicode code unit
+- Valid: `c'a'`, `c'\n'`, `c'\x7F'`
+- Error if > 16-bit: `c'\u{FFFFF}'`
 
-- 17.1_Type_char
-- 17.1.1_char_Literals
-- 17.1.2_char_Operations
-- 17.2_Fixed_Size_Array_Types
-- 17.2.1_Fixed_Size_Array_Creation
-- 17.3_Value_Array_Types
-- 17.4_Resizable_Array_Creation_Expressions
-- 17.4.1_Runtime_Evaluation_of_Array_Creation_Expressions
-- 17.5_Indexable_Types
-- 17.6_Iterable_Types
-- 17.7_Callable_Types
-- 17.7.1_Callable_Types_with_invoke_Method
-- 17.7.2_Callable_Types_with_instantiate_Method
-- 17.8_Statements
-- 17.8.1_For_of_Explicit_Type_Annotation
-- 17.9_Explicit_Overload_Declarations
-- 17.9.1_Explicit_Function_Overload
-- 17.9.2_Explicit_Class_Method_Overload
-- 17.9.3_Explicit_Interface_Method_Overload
-- 17.9.4_Explicit_Overload_Name_Same_As_Method_Name
-- 17.9.5_Explicit_Constructor_Overload
-- 17.10_Native_Functions_and_Methods
-- 17.10.1_Native_Functions
-- 17.10.2_Native_Methods
-- 17.10.3_Native_Constructors
-- 17.11_Classes_Experimental
-- 17.11.1_Final_Classes
-- 17.11.2_Final_Methods
-- 17.11.3_Named_Constructors
-- 17.12_Default_Interface_Method_Declarations
-- 17.13_Adding_Functionality_to_Existing_Types
-- 17.13.1_Functions_with_Receiver
-- 17.13.2_Receiver_Type
-- 17.13.3_Function_Types_with_Receiver
-- 17.13.4_Lambda_Expressions_with_Receiver
-- 17.13.5_Implicit_this_in_Lambda_with_Receiver_Body
-- 17.14_Trailing_Lambdas
-- 17.15_Accessor_Declarations
-- 17.16_Pattern_Matching
-- 17.16.1_Destructuring_Assignment
+### 17.1.2 `char` Operations
+- Equality/relational: char×char, char×numeric
+- char×char: unsigned 16-bit integer comparison
+
+### 17.2 Fixed-Size Array Types
+- `FixedArray<T>`, length immutable, no methods, not compatible with Array
+
+### 17.2.1 Fixed-Size Array Creation
+- Array Literal or `constructor(len: int, elem: T)`
+
+### 17.3 Value Array Types
+- `ValueArray<T>`, T must be value type, primitive storage
+
+### 17.4 Resizable Array Creation
+- `new arrayElementType[dimension](element)`
+
+### 17.5 Indexable Types
+- `$_get`/`$_set` methods enable `x[i]` / `x[i] = v` syntax
+
+### 17.6 Iterable Types
+- `$_iterator(): Iterator<T>` enables for-of
+
+### 17.7 Callable Types
+- Static `$_invoke` or `$_instantiate` makes class callable via `C()`
+
+### 17.8.1 For-of Explicit Type Annotation
+- `for (let x: Type of iterable)`
+
+### 17.9 Explicit Overload Declarations
+- `overload` keyword — compile-time ordered overload set
+
+### 17.10 Native Functions/Methods/Constructors
+- `native` keyword, no body, platform-dependent implementation
+
+### 17.11 Classes Experimental
+- `final` class/method, named constructors
+
+### 17.12 Default Interface Method Declarations
+- Interface methods with body (default implementation)
+
+### 17.13 Functions with Receiver
+- First param `this: Type`, two call syntaxes
+
+### 17.14 Trailing Lambdas
+- Last function-type param as trailing block
+
+### 17.15 Accessor Declarations
+- Top-level getter/setter
+
+### 17.16 Pattern Matching
+- Destructuring assignment: `[a, , b] = arrayOrTuple`

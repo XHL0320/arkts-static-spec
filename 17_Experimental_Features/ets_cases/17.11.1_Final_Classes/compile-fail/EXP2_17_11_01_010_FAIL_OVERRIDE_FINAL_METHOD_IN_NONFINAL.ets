@@ -1,0 +1,18 @@
+/**
+ * @id EXP2_17_11_01_010_FAIL_OVERRIDE_FINAL_METHOD_IN_NONFINAL
+ * @expect compile-fail
+ * @section 17.11.1
+ * @design 非 final 类中的 final 方法不能被重写：验证子类试图重写父类的 final 方法时应产生编译时错误
+ * @note 反向用例：验证非 final 类中 final 方法被子类重写时产生 ESE1324203 编译错误
+ */
+class NonFinalBase {
+  final compute(): int {
+    return 100
+  }
+}
+
+class NonFinalDerived extends NonFinalBase {
+  compute(): int {
+    return 200
+  }
+}
