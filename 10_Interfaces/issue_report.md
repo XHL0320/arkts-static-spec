@@ -6,7 +6,20 @@
 |---|------|--------|---------|--------|--------|
 | C-10.03-01 | ITF_10_03_101_FAIL_object_method_clash_return_gap | 接口中 `toString(): string` 返回值冲突未被拒绝 | compile-time error | 编译通过 | C类-编译器未实现 |
 | D-10.03-01 | ITF_10_03_003_PASS_object_method_clash | 接口中 `toString(p: number): void` 参数形式冲突被接受 | compile-time error | 编译通过 | D类-Spec不一致 |
-| D-10.03-02 | ITF_10_03_003, ITF_10_03_101 | Object 方法冲突规范描述不完整 | Spec 明确规则 | Spec 未明确边界情况 | D类-Spec不一致 |
+
+### 用例规模与覆盖分布
+
+| 章节 | pass | fail | runtime | 合计 |
+|---:|---:|---:|---:|---:|
+| 10.1 Interface Declarations | 5 | 1 | 1 | 7 |
+| 10.2 Superinterfaces & Subinterfaces | 3 | 4 | 1 | 8 |
+| 10.3 Interface Members | 3 | 2 | 1 | 6 |
+| 10.4 Interface Properties | 1 | 2 | 1 | 4 |
+| 10.4.1 Required Interface Properties | 6 | 1 | 1 | 8 |
+| 10.4.2 Optional Interface Properties | 3 | 1 | 2 | 6 |
+| 10.5 Interface Method Declarations | 6 | 2 | 2 | 10 |
+| 10.6 Interface Inheritance | 5 | 4 | 1 | 10 |
+| **合计** | **32** | **17** | **10** | **59** |
 
 ---
 
@@ -58,10 +71,13 @@
 
 ---
 
-**D-10.03-02** ⭐⭐ MEDIUM — Object 方法冲突规范描述不完整
+### 待确认问题
+
+以下问题为 Spec 文档未明确的边界情况，非直接 Spec/实现不一致，待 Spec 团队确认规则后重新评估。
+
+**D-10.03-02** — Object 方法冲突规范描述不完整
 
 - **问题描述：** Spec §10.3 要求接口中与 Object 公有方法同名的声明应报编译错误，但未明确说明参数不同、返回值不同等边界情况的处理。
-- **Spec 依据：** §10.3 Interface Members - 应明确边界情况
 - **涉及案例：**
   - `ITF_10_03_003_PASS_object_method_clash.ets`：参数不同的同名方法，编译器未拒绝（D-10.03-01）
   - `ITF_10_03_101_FAIL_object_method_clash_return_gap.ets`：返回值冲突，编译器未拒绝（C-10.03-01）
@@ -73,9 +89,6 @@
 | Java | 不禁止（子类实现时自然覆写） | 参数不同为重载，返回值不同报错 |
 | Swift | NSObjectProtocol 同名声明警告 | 部分兼容 |
 | TypeScript | 声明合并 | 所有情况合并处理 |
-
-- **建议：** Spec 应明确接口 Object 方法冲突的完整规则，包括参数列表、返回值等不同场景。
-- **分类：** D 类（Spec 与实现不一致 - Spec 文档不完整）
 
 ---
 

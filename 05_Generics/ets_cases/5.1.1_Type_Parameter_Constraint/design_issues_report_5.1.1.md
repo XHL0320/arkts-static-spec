@@ -17,21 +17,15 @@
 
 ## 一、行为差异与规范一致性概览
 
-### 观察点 B：联合约束和 keyof 约束支持 ⭐⭐⭐ HIGH
+当前无 Spec 与实现不一致的问题。
 
-**用例：** GEN_05_01_001~030 系列
+---
 
-**实际行为：**
-```typescript
-// ArkTS 支持联合约束
-function f<T extends A | B>() {}
+## 二、语言设计差异
 
-// ArkTS 支持字面量联合约束
-function f<T extends "a" | "b">() {}
+### 差异 B：联合约束和 keyof 约束支持 ⭐⭐⭐ HIGH
 
-// ArkTS 支持 keyof 约束
-function f<T extends keyof U>() {}
-```
+**说明：** ArkTS 支持联合约束、字面量联合约束、keyof 约束和依赖约束，比 Java/Swift 更灵活，与 TypeScript 高度一致。此行为符合 ArkTS Spec，非缺陷。
 
 **对比：**
 | 语言 | 类约束 | 联合约束 | 字面量联合约束 | keyof 约束 | 依赖约束 |
@@ -41,13 +35,9 @@ function f<T extends keyof U>() {}
 | Swift | ✅ `T: MyClass` | ❌ 不支持 | ❌ 不支持 | ❌ 不支持 | ✅ `V: T` |
 | TypeScript | ✅ `T extends MyClass` | ✅ | ✅ | ✅ | ✅ |
 
-**影响：** ArkTS 的约束系统比 Java/Swift 更灵活，与 TypeScript 高度一致。
-
-**评价：** 无问题，设计合理。
-
 ---
 
-## 二、已验证 ArkTS 行为（与规范一致）
+## 三、已验证 ArkTS 行为（与规范一致）
 
 | 行为 | 用例 | 状态 |
 |------|------|------|
@@ -61,7 +51,7 @@ function f<T extends keyof U>() {}
 
 ---
 
-## 三、严重性等级总览
+## 四、严重性等级总览
 
 | 严重性 | 数量 | 问题列表 |
 |-------|------|---------|
@@ -71,7 +61,7 @@ function f<T extends keyof U>() {}
 
 ---
 
-## 四、5.1.1 章节核心结论
+## 五、5.1.1 章节核心结论
 
 | 维度 | 评价 |
 |------|------|
@@ -84,7 +74,7 @@ function f<T extends keyof U>() {}
 
 ---
 
-## 五、建议改进
+## 六、建议改进
 
 ### 短期
 1. 无

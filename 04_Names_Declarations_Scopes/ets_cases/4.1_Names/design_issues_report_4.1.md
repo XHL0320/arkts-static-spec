@@ -45,7 +45,7 @@ let string: string = "hello";  // ❌ Semantic error
 
 ---
 
-### 问题 B-4.1：关键字作为名称的限制 ⭐ LOW
+### 差异 B-4.1：关键字作为名称的限制（语言设计差异）
 
 **Observation:** ArkTS 不允许使用关键字作为标识符（如 `let`、`class`、`function`），而 Swift 允许使用反引号转义关键字作为标识符。
 
@@ -105,7 +105,7 @@ let string: string = "hello";  // ❌ Semantic error
 |-------|------|---------|
 | ⭐⭐⭐ HIGH | 0 | 无 |
 | ⭐⭐ MEDIUM | 1 | 问题 A-4.1 保留名清单不完整 |
-| ⭐ LOW | 1 | 问题 B-4.1 关键字作为名称的限制 |
+| ⭐ LOW | 0 | 无 |
 
 ---
 

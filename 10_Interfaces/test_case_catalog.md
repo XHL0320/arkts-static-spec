@@ -191,4 +191,4 @@
 
 - 前缀：`ITF_10_XX_NNN_{PASS|FAIL|RUNTIME}_DESCRIPTION.ets`（父级）
 - 子节：`ITF_10_XX_ZZ_NNN_{PASS|FAIL|RUNTIME}_DESCRIPTION.ets`（ZZ = 子节号）
-- 全部 59 文件使用 `SEM_` 前缀命名
+- 全部 59 文件使用 `ITF_` 前缀命名

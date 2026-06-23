@@ -5,9 +5,6 @@
 | ID | Case | Symptom | Expected | Actual | Status |
 |---|------|--------|---------|--------|--------|
 | C-5.01-01 | GEN_05_01_03_006, GEN_05_01_03_008 | 变体检查未递归到回调函数类型内部 | compile-time error | 编译通过 | C类-编译器未实现 |
-| D-5.01-02 | GEN_05_01_023 | keyof 约束错误信息仅显示第一个 key | 完整错误信息 | 仅显示第一个 key | D类-Spec不一致 |
-| D-5.02-01 | GEN_05_02_001 | 内部类型名 `Double` 暴露给用户 | 显示 `number` 或 `double` | 显示 `Double` | D类-Spec不一致 |
-| D-5.02-02 | GEN_05_02_002 | 推断失败错误信息冗余 | 简洁错误信息 | 冗余信息 | D类-Spec不一致 |
 
 ---
 
@@ -42,58 +39,19 @@
 
 ---
 
-**D-5.01-02** ⭐ LOW — keyof 约束错误信息仅显示第一个 key
+### 用例规模与覆盖分布
 
-- **问题描述：** 约束为 `extends keyof A`（A 有 f1/f2/f3 三个字段），但错误信息 `'"f0"' should be a subtype of '"f1"' constraint` 只显示 `"f1"` 而非 `"f1"|"f2"|"f3"`。
-- **Spec 依据：** §5.1 Type Parameters - 错误信息应完整
-- **复现用例 ID：** GEN_05_01_023
-- **实测结果：**
-  ```typescript
-  interface A { f1: string; f2: number; f3: boolean }
-  function f<T extends keyof A>(x: T) {}
-  f("f0")  // 错误信息：'"f0"' should be a subtype of '"f1"' constraint
-  // 应显示：'"f0"' should be a subtype of '"f1"|"f2"|"f3"' constraint
-  ```
-- **跨语言对比：**
-
-| 语言 | keyof 约束错误信息 | 说明 |
-|------|-------------------|------|
-| ArkTS | 仅显示首个 key | 待优化 |
-| Java | 不支持 keyof 约束 | N/A |
-| Swift | 无等效 keyof | N/A |
-| TypeScript | 显示完整联合类型 | 更友好 |
-
-- **建议：** 错误信息应显示完整的 keyof 展开结果（如 `"f1"|"f2"|"f3"`）。
-- **分类：** D 类（Spec 与实现不一致 - 错误信息不完整）
-
----
-
-**D-5.02-01** ⭐ LOW — 内部类型名 `Double` 暴露给用户
-
-- **问题描述：** 类型推断失败时错误信息显示内部类型名 `Double`（应为 `number` 或 `double`）。
-- **Spec 依据：** §5.2 Type Arguments - 错误信息应使用用户可见类型名
-- **复现用例 ID：** GEN_05_02_001
-- **跨语言对比：**
-
-| 语言 | 错误信息类型名 | 说明 |
-|------|---------------|------|
-| ArkTS | 显示 `Double` | 内部类型名暴露 |
-| Java | 显示 `Integer`、`Double` | 使用公开类型名 |
-| Swift | 显示 `Int`、`Double` | 使用公开类型名 |
-| TypeScript | 显示 `number` | 使用公开类型名 |
-
-- **建议：** 错误信息应将内部类型名 `Double` 转换为用户可见的 `number` 或 `double`。
-- **分类：** D 类（Spec 与实现不一致 - 错误信息不准确）
-
----
-
-**D-5.02-02** ⭐ LOW — 推断失败错误信息冗余
-
-- **问题描述：** 泛型推断失败时错误信息存在冗余，影响可读性。
-- **Spec 依据：** §5.2.3 Implicit Generic Instantiations - 错误信息应简洁
-- **复现用例 ID：** GEN_05_02_002
-- **建议：** 简化泛型推断失败的错误信息，移除冗余内容。
-- **分类：** D 类（Spec 与实现不一致 - 错误信息冗余）
+| 章节 | pass | fail | runtime | 合计 |
+|---:|---:|---:|---:|---:|
+| 5.1 Type Parameters | 5 | 4 | 2 | 11 |
+| 5.1.1 Type Parameter Constraint | 6 | 5 | 1 | 12 |
+| 5.1.2 Type Parameter Default | 4 | 2 | 2 | 8 |
+| 5.1.3 Type Parameter Variance | 8 | 8 | 0 | 16 |
+| 5.1.4 Wildcard Type | 2 | 8 | 0 | 10 |
+| 5.2.1 Type Arguments | 5 | 1 | 1 | 7 |
+| 5.2.2 Explicit Generic Instantiations | 5 | 3 | 1 | 9 |
+| 5.2.3 Implicit Generic Instantiations | 3 | 3 | 1 | 7 |
+| **合计** | **38** | **34** | **8** | **80** |
 
 ---
 

@@ -19,6 +19,16 @@
 
 ## 一、行为差异与规范一致性概览
 
+### 待确认 B-4.5：const enum 语义临时性（待确认）
+
+**用例：** NAM_04_05_112_FAIL_type_decl_const_enum_unsupported
+
+**说明：** 当前 const enum 在 ArkTS 中不被支持（编译拒绝），但根据 spec/enums.md，const enum 语义为临时占位，后续可能随规范演进调整。需等待 spec 最终确定后再判定是否为规范一致行为。
+
+**状态：** 待确认 — 需根据 spec/enums.md 最终语义判定。
+
+---
+
 ### 问题 A-4.5：递归类型限制策略 ⭐⭐ MEDIUM
 
 **用例：** NAM_04_05_100_FAIL_direct_self_ref, NAM_04_05_101_FAIL_union_self_ref
@@ -76,7 +86,6 @@
 | class 声明作为类型声明 | NAM_04_05_012 | ✅ |
 | interface 声明作为类型声明 | NAM_04_05_013 | ✅ |
 | enum 声明作为类型声明 | NAM_04_05_014 | ✅ |
-| const enum 当前实现不支持 | NAM_04_05_028 | ✅ |
 
 ---
 
