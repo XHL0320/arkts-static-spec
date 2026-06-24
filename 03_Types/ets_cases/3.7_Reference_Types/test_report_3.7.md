@@ -3,11 +3,13 @@
 | 分类 | 总数 | 通过 |
 |------|------|------|
 | compile-pass | 8 | 8 |
+| compile-fail | 2 | 2 |
 | runtime | 3 | 3 |
-| **总计** | **11** | **11** |
+| **总计** | **13** | **13** |
 
-## 详细
-- 001~008 各种引用类型声明
-- 009~011 引用语义运行时验证（共享状态）
+## 覆盖点
 
-**🎯 一次通过率 100%**
+- class/interface/array/tuple/function/union/literal/Any/string/bigint/never/null/void/type parameter 引用类型声明
+- 多引用共享对象状态运行时验证
+- 值类型 vs 引用类型运行时语义对比
+- 反向：class/interface 引用不能赋值给值类型变量
