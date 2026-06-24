@@ -41,25 +41,25 @@ ArkTS 尽量与 TypeScript 兼容，但某些 TS 特性不支持（如 `any` 的
 
 ## 三、设计观察
 
-### 观察 1：真值判断与 Java/Swift 不兼容
+### 观察 1：真值判断遵循 JS/TS 规则（有意设计）
 
-ArkTS 的真值判断规则与 Java/Swift 不兼容：
+ArkTS 的真值判断规则有意遵循 JavaScript/TypeScript 规则，是 TS 兼容特性的核心组成部分：
 - ArkTS: `if (0) { ... }` → 不执行（0 是 falsy）
 - Java: `if (0) { ... }` → 编译错误（0 不是 boolean）
 - Swift: `if 0 { ... }` → 编译错误（0 不是 boolean）
 
-这可能导致从 Java/Swift 迁移代码时引入 bug。
+此为有意设计，非缺陷。从 Java/Swift 迁移时需注意此差异。
 
-### 观察 2：`&&`/`||` 返回操作数可能导致类型问题
+### 观察 2：`&&`/`||` 返回操作数（TS 兼容语义）
 
-ArkTS 的 `&&`/`||` 返回操作数（不是 boolean），这可能导致类型问题：
+ArkTS 的 `&&`/`||` 返回操作数之一（不是 boolean），与 JavaScript/TypeScript 一致：
 ```typescript
-let x = 0 && "foo"  // x: number | string (不是 boolean)
+let x = 0 && "foo"  // x: number | string
 ```
 
-Java/Swift 无此问题（返回类型始终是 boolean）。
+Java/Swift 的 `&&`/`||` 返回 boolean。此为设计取舍，非缺陷。
 
-### 观察 3：与 TypeScript 的兼容程度
+### 观察 3：与 TypeScript 的兼容范围
 
 ArkTS 与 TypeScript 的兼容程度有限：
 - 支持：基本真值判断、`&&`/`||` 行为
@@ -74,10 +74,10 @@ ArkTS 与 TypeScript 的兼容程度有限：
 - 提供完整的 falsy 值列表
 - 说明与 JavaScript/TypeScript 的兼容性
 
-### 建议 2：考虑提供严格模式
+### 建议 2：提供迁移指南
 
-当前真值判断规则与 Java/Swift 不兼容，可能导致迁移问题。建议：
-- 提供严格模式（要求显式 boolean 条件）
+当前真值判断规则与 Java/Swift 不同，可能导致迁移问题。建议：
+- 提供从 Java/Swift 迁移的注意事项文档
 - 或提供编译器警告（当条件表达式不是 boolean 时）
 
 ### 建议 3：明确与 TypeScript 的兼容范围
@@ -85,15 +85,6 @@ ArkTS 与 TypeScript 的兼容程度有限：
 当前 ArkTS 与 TypeScript 的兼容范围不明确。建议：
 - 明确列出支持的 TS 特性
 - 明确列出不支持的 TS 特性及原因
-- 提供迁移指南
-
-## 五、严重性
-
-| 问题 | 严重性 | 状态 |
-|------|--------|------|
-| 真值判断与 Java/Swift 不兼容 | 高 | 设计选择 |
-| `&&`/`||` 返回操作数 | 中 | 设计选择 |
-| 与 TS 兼容范围不明确 | 中 | 待补充 |
 
 ## 六、跨语言对比要点
 

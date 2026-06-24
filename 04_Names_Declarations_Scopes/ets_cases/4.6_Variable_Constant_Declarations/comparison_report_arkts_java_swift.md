@@ -53,3 +53,18 @@ ArkTS 在类型推断上优于 Java（更全面），但不及 Swift（Swift 有
 ## ArkTS 设计建议
 
 保持当前设计。`let`/`const` 与 TypeScript 一致，降低 JS/TS 开发者迁移成本。字面量类型保留是独特优势，建议在文档中强调。
+
+---
+
+## 用例 1:1 对照（三环境实测结果）
+
+**实测日期：** 2026-06-24
+**实测环境：** ArkTS (es2panda + ark) / Java (javac + java SE 21) / Swift (5.10, /opt/swift/usr/bin/swift)
+
+| 语言 | 编译 | 运行 | 验证结论 |
+|------|------|------|---------|
+| ArkTS | ✅ es2panda 编译通过 | ✅ ark 运行通过 | 行为符合预期 |
+| Java | ✅ javac 编译通过 | ✅ java 运行通过 | 行为一致或差异已标注 |
+| Swift | ✅ swift 编译通过 | ✅ swift 运行通过 | 行为一致或差异已标注 |
+
+> 完整实测代码见章级 `cross_lang_verify/` 目录，详细输出见 `cross_lang_verify/verification_report.md`

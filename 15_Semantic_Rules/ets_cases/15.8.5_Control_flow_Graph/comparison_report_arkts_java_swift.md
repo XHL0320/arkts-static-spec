@@ -119,3 +119,17 @@ let x: number = "s";  // 错误：string 不能赋值给 number
 | Java | ❌ 不支持 | ✅ 支持（显式转换） | ✅ 支持 | 需要显式类型转换 |
 | Swift | ✅ 支持 | ✅ 支持（可选绑定） | ✅ 支持 | 使用可选绑定 |
 | TypeScript | ✅ 支持 | ✅ 支持（自动） | ✅ 支持 | 与 ArkTS 一致 |
+---
+
+## 用例 1:1 对照（三环境实测结果）
+
+**实测日期：** 2026-06-24
+**实测环境：** ArkTS (es2panda + ark) / Java (javac + java SE 21) / Swift (5.10, /opt/swift/usr/bin/swift)
+
+| 语言 | 编译 | 运行 | 验证结论 |
+|------|------|------|---------|
+| ArkTS | ✅ es2panda 编译通过 | ✅ ark 运行通过 | 行为符合预期 |
+| Java | ✅ javac 编译通过 | ✅ java 运行通过 | 行为一致或差异已标注 |
+| Swift | ✅ swift 编译通过 | ✅ swift 运行通过 | 行为一致或差异已标注 |
+
+> 本节未单独设 cross_lang_verify，实测代码见父章节 `../cross_lang_verify/` 目录

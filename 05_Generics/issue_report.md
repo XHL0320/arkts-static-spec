@@ -37,23 +37,6 @@
 - **建议：** 编译器应实现递归变体检查，符合 Spec §5.1.3 要求。
 - **分类：** C 类（编译器实现 bug - 未实现 Spec 要求）
 
----
-
-### 用例规模与覆盖分布
-
-| 章节 | pass | fail | runtime | 合计 |
-|---:|---:|---:|---:|---:|
-| 5.1 Type Parameters | 5 | 4 | 2 | 11 |
-| 5.1.1 Type Parameter Constraint | 6 | 5 | 1 | 12 |
-| 5.1.2 Type Parameter Default | 4 | 2 | 2 | 8 |
-| 5.1.3 Type Parameter Variance | 8 | 8 | 0 | 16 |
-| 5.1.4 Wildcard Type | 2 | 8 | 0 | 10 |
-| 5.2.1 Type Arguments | 5 | 1 | 1 | 7 |
-| 5.2.2 Explicit Generic Instantiations | 5 | 3 | 1 | 9 |
-| 5.2.3 Implicit Generic Instantiations | 3 | 3 | 1 | 7 |
-| **合计** | **38** | **34** | **8** | **80** |
-
----
 
 ### 说明
 

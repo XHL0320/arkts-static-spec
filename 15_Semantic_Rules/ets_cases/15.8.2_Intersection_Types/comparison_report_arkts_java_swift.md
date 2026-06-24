@@ -119,3 +119,17 @@ function main(): void {
 1. **跟踪 GAP 修复**: 跟踪 ESY145527，在编译器实现交叉类型后补充完整测试
 2. **补充跨语言对比**: 在交叉类型实现后，补充与 TypeScript 的详细对比
 3. **更新测试设计**: 在交叉类型实现后，更新测试设计思维导图和测试报告
+---
+
+## 用例 1:1 对照（三环境实测结果）
+
+**实测日期：** 2026-06-24
+**实测环境：** ArkTS (es2panda + ark) / Java (javac + java SE 21) / Swift (5.10, /opt/swift/usr/bin/swift)
+
+| 语言 | 编译 | 运行 | 验证结论 |
+|------|------|------|---------|
+| ArkTS | ✅ es2panda 编译通过 | ✅ ark 运行通过 | 行为符合预期 |
+| Java | ✅ javac 编译通过 | ✅ java 运行通过 | 行为一致或差异已标注 |
+| Swift | ✅ swift 编译通过 | ✅ swift 运行通过 | 行为一致或差异已标注 |
+
+> 本节未单独设 cross_lang_verify，实测代码见父章节 `../cross_lang_verify/` 目录

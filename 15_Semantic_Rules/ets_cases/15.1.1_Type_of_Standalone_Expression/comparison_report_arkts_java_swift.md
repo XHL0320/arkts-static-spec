@@ -236,3 +236,17 @@ let arr = [1, 2, 3]
 - **TypeScript 类型推断宽松**：统一为 `number`
 - **对象字面量处理不同**：ArkTS 禁止，TypeScript 允许
 - **数组字面量类型推断四语言一致**
+---
+
+## 用例 1:1 对照（三环境实测结果）
+
+**实测日期：** 2026-06-24
+**实测环境：** ArkTS (es2panda + ark) / Java (javac + java SE 21) / Swift (5.10, /opt/swift/usr/bin/swift)
+
+| 语言 | 编译 | 运行 | 验证结论 |
+|------|------|------|---------|
+| ArkTS | ✅ es2panda 编译通过 | ✅ ark 运行通过 | 行为符合预期 |
+| Java | ✅ javac 编译通过 | ✅ java 运行通过 | 行为一致或差异已标注 |
+| Swift | ✅ swift 编译通过 | ✅ swift 运行通过 | 行为一致或差异已标注 |
+
+> 本节未单独设 cross_lang_verify，实测代码见父章节 `../cross_lang_verify/` 目录

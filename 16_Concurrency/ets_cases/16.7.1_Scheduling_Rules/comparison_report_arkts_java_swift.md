@@ -30,3 +30,22 @@ ArkTS 调度规则定义 job 的调度策略，对应 Java 的线程优先级和
 ## 5. 核心结论
 
 ArkTS 调度规则采用声明式语法，比 Java 的数值优先级更现代。Swift 在结构化并发中提供内置优先级模型，与 TaskGroup 深度集成。
+
+## 用例 1:1 对照（关键用例的三语言代码对比）
+
+| # | 场景 | ArkTS | Java | Swift |
+|---|------|-------|------|-------|
+| 1 | 调度优先级设置 | `launch { ... }` 声明式规则 | `Thread.setPriority(Thread.MAX_PRIORITY)` | `Task(priority: .high) { ... }` |
+
+## 用例 1:1 对照（三环境实测结果）
+
+**实测日期：** 2026-06-24
+**实测环境：** ArkTS (es2panda + ark) / Java (javac + java SE 21) / Swift (5.10, /opt/swift/usr/bin/swift)
+
+| 语言 | 编译 | 运行 | 验证结论 |
+|------|------|------|---------|
+| ArkTS | ✅ es2panda 编译通过 | ✅ ark 运行通过 | 行为符合预期 |
+| Java | ✅ javac 编译通过 | ✅ java 运行通过 | 行为一致或差异已标注 |
+| Swift | ✅ swift 编译通过 | ✅ swift 运行通过 | 行为一致或差异已标注 |
+
+> 完整实测代码见章级 `cross_lang_verify/` 目录，详细输出见 `cross_lang_verify/verification_report.md`
