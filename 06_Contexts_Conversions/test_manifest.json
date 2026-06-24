@@ -1,21 +1,22 @@
-{
+﻿{
     "chapter":  "06",
     "topic":  "Contexts and Conversions",
     "directory":  "06_Contexts_Conversions",
-    "spec_source":  "ArkTS static language specification",
-    "subtopics":  [
-                       "6.1_Assignment_like_Contexts",
-                       "6.2_String_Operator_Contexts",
-                       "6.3_Numeric_Operator_Contexts",
-                       "6.3.1_Numeric_Conversions_for_Relational_and_Equality_Operands",
-                       "6.3.2_char_Conversions_for_Relational_and_Equality_Operands",
-                       "6.4_Implicit_Conversions",
-                       "6.4.1_Widening_Numeric_Conversions",
-                       "6.4.2_Widening_Numeric_to_a_Union_Type",
-                       "6.4.3_Enumeration_to_Numeric_Type_Conversion",
-                       "6.4.4_Enumeration_to_string_Type_Conversion",
-                       "6.5_Numeric_Casting_Conversions"
-                   ],
+    "prefix":  "CON_",
+    "total_cases":  253,
+    "sections":  [
+                     "6.1_Assignment_like_Contexts",
+                     "6.2_String_Operator_Contexts",
+                     "6.3.1_Numeric_Conversions_for_Relational_and_Equality_Operands",
+                     "6.3.2_char_Conversions_for_Relational_and_Equality_Operands",
+                     "6.3_Numeric_Operator_Contexts",
+                     "6.4.1_Widening_Numeric_Conversions",
+                     "6.4.2_Widening_Numeric_to_a_Union_Type",
+                     "6.4.3_Enumeration_to_Numeric_Type_Conversion",
+                     "6.4.4_Enumeration_to_string_Type_Conversion",
+                     "6.4_Implicit_Conversions",
+                     "6.5_Numeric_Casting_Conversions"
+                 ],
     "case_roots":  [
                        "ets_cases"
                    ],
@@ -24,40 +25,94 @@
                        "compile-fail",
                        "runtime"
                    ],
-    "cases":  [
-                  {
-                      "id": "CON_06_01_001",
-                      "section": "6.1",
-                      "type": "compile-pass",
-                      "file": "CON_06_01_001_PASS_DECLARATION_VAR_BASIC.ets",
-                      "purpose": "Variable declaration with matching types",
-                      "status": "pass"
-                  },
-                  {
-                      "id": "CON_06_01_042",
-                      "section": "6.1",
-                      "type": "runtime",
-                      "file": "CON_06_01_042_RUNTIME_ALL_CONTEXTS_INTEGRATION.ets",
-                      "purpose": "Runtime integration test for all assignment-like contexts",
-                      "status": "pass"
-                  }
-              ],
     "stats":  {
-                  "6.1_Assignment_like_Contexts": {
-                      "compile-pass": 15,
-                      "compile-fail": 15,
-                      "runtime": 12,
-                      "total": 42,
-                      "pass": 42,
-                      "fail": 0
-                  },
-                  "6.2_String_Operator_Contexts": {
-                      "compile-pass": 10,
-                      "compile-fail": 5,
-                      "runtime": 10,
-                      "total": 25,
-                      "pass": 25,
-                      "fail": 0
-                  }
+                  "6.5_Numeric_Casting_Conversions":  {
+                                                          "compile-pass":  8,
+                                                          "compile-fail":  2,
+                                                          "runtime":  6,
+                                                          "total":  16,
+                                                          "pass":  16,
+                                                          "fail":  0
+                                                      },
+                  "6.1_Assignment_like_Contexts":  {
+                                                       "compile-pass":  15,
+                                                       "compile-fail":  15,
+                                                       "runtime":  12,
+                                                       "total":  42,
+                                                       "pass":  42,
+                                                       "fail":  0
+                                                   },
+                  "6.3.1_Numeric_Conversions_for_Relational_and_Equality_Operands":  {
+                                                                                         "compile-pass":  12,
+                                                                                         "compile-fail":  6,
+                                                                                         "runtime":  10,
+                                                                                         "total":  28,
+                                                                                         "pass":  28,
+                                                                                         "fail":  0
+                                                                                     },
+                  "6.2_String_Operator_Contexts":  {
+                                                       "compile-pass":  10,
+                                                       "compile-fail":  5,
+                                                       "runtime":  10,
+                                                       "total":  25,
+                                                       "pass":  25,
+                                                       "fail":  0
+                                                   },
+                  "6.4.4_Enumeration_to_string_Type_Conversion":  {
+                                                                      "compile-pass":  5,
+                                                                      "compile-fail":  3,
+                                                                      "runtime":  2,
+                                                                      "total":  10,
+                                                                      "pass":  10,
+                                                                      "fail":  0
+                                                                  },
+                  "6.3_Numeric_Operator_Contexts":  {
+                                                        "compile-pass":  12,
+                                                        "compile-fail":  6,
+                                                        "runtime":  9,
+                                                        "total":  27,
+                                                        "pass":  27,
+                                                        "fail":  0
+                                                    },
+                  "6.4_Implicit_Conversions":  {
+                                                   "compile-pass":  10,
+                                                   "compile-fail":  5,
+                                                   "runtime":  8,
+                                                   "total":  23,
+                                                   "pass":  23,
+                                                   "fail":  0
+                                               },
+                  "6.3.2_char_Conversions_for_Relational_and_Equality_Operands":  {
+                                                                                      "compile-pass":  12,
+                                                                                      "compile-fail":  5,
+                                                                                      "runtime":  9,
+                                                                                      "total":  26,
+                                                                                      "pass":  26,
+                                                                                      "fail":  0
+                                                                                  },
+                  "6.4.3_Enumeration_to_Numeric_Type_Conversion":  {
+                                                                       "compile-pass":  9,
+                                                                       "compile-fail":  4,
+                                                                       "runtime":  4,
+                                                                       "total":  17,
+                                                                       "pass":  17,
+                                                                       "fail":  0
+                                                                   },
+                  "6.4.2_Widening_Numeric_to_a_Union_Type":  {
+                                                                 "compile-pass":  8,
+                                                                 "compile-fail":  4,
+                                                                 "runtime":  4,
+                                                                 "total":  16,
+                                                                 "pass":  16,
+                                                                 "fail":  0
+                                                             },
+                  "6.4.1_Widening_Numeric_Conversions":  {
+                                                             "compile-pass":  10,
+                                                             "compile-fail":  5,
+                                                             "runtime":  8,
+                                                             "total":  23,
+                                                             "pass":  23,
+                                                             "fail":  0
+                                                         }
               }
 }
