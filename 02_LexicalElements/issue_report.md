@@ -143,6 +143,8 @@
 | CONFIRM-041 | 空值类型系统差异 | spec/types.md | ⚠️ 待确认 |
 | CONFIRM-042 | 类型检查语法差异（typeof vs instanceof） | spec/operators.md | ⚠️ 待确认 |
 | CONFIRM-043 | 比较运算符差异（=== vs ==） | spec/operators.md | ⚠️ 待确认 |
+| CONFIRM-052 | 可选链语法差异（?. vs 不支持） | spec/operators.md | ⚠️ 待确认 |
+| CONFIRM-053 | 空值合并语法差异（?? vs 三元运算符） | spec/operators.md | ⚠️ 待确认 |
 
 #### 2.9.9 Null Literal
 
@@ -152,6 +154,8 @@
 | CONFIRM-045 | 空值类型系统差异 | spec/types.md | ⚠️ 待确认 |
 | CONFIRM-046 | 类型检查语法差异（typeof vs instanceof） | spec/operators.md | ⚠️ 待确认 |
 | CONFIRM-047 | 比较运算符差异（=== vs ==） | spec/operators.md | ⚠️ 待确认 |
+| CONFIRM-054 | 可选链语法差异（?. vs 不支持） | spec/operators.md | ⚠️ 待确认 |
+| CONFIRM-055 | 空值合并语法差异（?? vs 三元运算符） | spec/operators.md | ⚠️ 待确认 |
 
 ### 2.10 Comments
 
@@ -560,8 +564,8 @@ let{NBSP}x: number = 1  // 编译通过，但视觉上无法区分
 |------|------|
 | 🔴 未解决 | 2 |
 | ⚠️ SPEC 不一致 | 7 |
-| ⚠️ 待确认 | 51 |
-| **总计** | **60** |
+| ⚠️ 待确认 | 55 |
+| **总计** | **64** |
 
 ---
 
@@ -577,7 +581,7 @@ let{NBSP}x: number = 1  // 编译通过，但视觉上无法区分
 | 2.6 Identifiers | 0 | 0 | 3 | 3 |
 | 2.7 Keywords | 0 | 0 | 3 | 3 |
 | 2.8 Operators and Punctuators | 1 | 0 | 3 | 4 |
-| **2.9 Literals (小计)** | **0** | **0** | **32** | **32** |
+| **2.9 Literals (小计)** | **0** | **0** | **36** | **36** |
 | ├─ 2.9.1 Numeric Literals | 0 | 0 | 2 | 2 |
 | ├─ 2.9.2 Integer Literals | 0 | 0 | 2 | 2 |
 | ├─ 2.9.3 Floating-Point Literals | 0 | 0 | 2 | 2 |
@@ -585,11 +589,11 @@ let{NBSP}x: number = 1  // 编译通过，但视觉上无法区分
 | ├─ 2.9.5 Boolean Literals | 0 | 0 | 3 | 3 |
 | ├─ 2.9.6 String Literals | 0 | 0 | 6 | 6 |
 | ├─ 2.9.7 Multiline String Literal | 0 | 0 | 3 | 3 |
-| ├─ 2.9.8 Undefined Literal | 0 | 0 | 4 | 4 |
-| └─ 2.9.9 Null Literal | 0 | 0 | 4 | 4 |
+| ├─ 2.9.8 Undefined Literal | 0 | 0 | 6 | 6 |
+| └─ 2.9.9 Null Literal | 0 | 0 | 6 | 6 |
 | 2.10 Comments | 0 | 0 | 2 | 2 |
 | 2.11 Semicolons | 0 | 0 | 2 | 2 |
-| **总计** | **2** | **7** | **51** | **60** |
+| **总计** | **2** | **7** | **55** | **64** |
 
 ---
 
