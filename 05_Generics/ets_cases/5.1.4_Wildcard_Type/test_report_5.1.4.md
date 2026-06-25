@@ -12,8 +12,8 @@
 |----------|:-----:|:------:|
 | compile-pass | 2 | ✅ |
 | compile-fail | 8 | ✅ |
-| runtime | 0 | ✅ |
-| **Total** | **10** | ✅ |
+| runtime | 1 | ✅ |
+| **Total** | **11** | ✅ |
 
 ## Notes
 - All cases pass

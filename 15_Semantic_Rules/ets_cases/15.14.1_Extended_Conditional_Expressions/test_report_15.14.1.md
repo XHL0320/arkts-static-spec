@@ -1,70 +1,47 @@
-# 15.14.1 Extended Conditional Expressions - 测试报告
+# 15.14.1 Extended Conditional Expressions - Test Report
 
-## 总体统计
+## Execution Overview
+| Metric | Value |
+|---|---|
+| Total Cases | 3 |
+| Passed | 3 |
+| Failed | 0 |
+| Pass Rate | 100% |
 
-| 分类 | 总数 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 1 | 1 | 0 | 100% |
-| compile-fail | 1 | 1 | 0 | 100% |
-| runtime（真实执行） | 1 | 1 | 0 | 100% |
-| **总计** | **3** | **3** | **0** | **100%** |
+## Case List
+| ID | Case File | Type | Result |
+|---|---|---|---|
+| SEM_15_14_01_001_PASS_TERNARY | SEM_15_14_01_001_PASS_TERNARY.ets | compile-pass | ✅ |
+| SEM_15_14_01_100_FAIL_ternary_type_mismatch | SEM_15_14_01_100_FAIL_ternary_type_mismatch.ets | compile-fail | ✅ |
+| SEM_15_14_01_200_RUNTIME_ternary | SEM_15_14_01_200_RUNTIME_ternary.ets | runtime | ✅ |
 
-> ✅ **执行时间**：2026-06-22
-> ✅ **执行环境**：ArkTS static_core
+## Result Statistics
+| Category | Count | Pass | Fail |
+|---|---|---|---|
+| compile-pass | 1 | 1 | 0 |
+| compile-fail | 1 | 1 | 0 |
+| runtime | 1 | 1 | 0 |
+| **Total** | **3** | **3** | **0** |
 
----
+## Detailed Results
 
-## 详细执行结果
+### compile-pass (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_14_01_001_PASS_TERNARY | SEM_15_14_01_001_PASS_TERNARY.ets | compile-pass | compile-pass | ✅ |
 
-### compile-pass (1 个)
+### compile-fail (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_14_01_100_FAIL_ternary_type_mismatch | SEM_15_14_01_100_FAIL_ternary_type_mismatch.ets | compile-fail | compile-fail | ✅ |
 
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_14_01_001_PASS_TERNARY | 三元表达式类型推断 | ✅ PASS |
+### runtime (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_14_01_200_RUNTIME_ternary | SEM_15_14_01_200_RUNTIME_ternary.ets | runtime | runtime | ✅ |
 
-### compile-fail (1 个)
-
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_14_01_099 | 三元表达式类型不匹配拒绝 | ✅ PASS (预期编译失败) |
-
-### runtime (1 个)
-
-| # | 用例 ID | 验证内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_14_01_100 | 三元表达式运行时行为 | ✅ PASS |
-
----
-
-## 测试覆盖分析
-
-### 覆盖的 Spec 要点
-
-| Spec 要点 | 覆盖用例 | 状态 |
-|-----------|----------|------|
-| 三元表达式类型推断 | 001_PASS | ✅ |
-| 类型不匹配拒绝 | 099 | ✅ |
-| 运行时行为 | 100 | ✅ |
-
----
-
-## 执行过程异常修复记录
-
-（无异常，一次通过）
-
----
-
-## 后续运行命令
-
-```bash
-cd /path/to/test-project-610
-# 运行 15.14.1 Extended Conditional Expressions 测试用例
-```
-
----
-
-**报告生成时间**：2026-06-22
-**报告状态**：✅ 全部通过
+## Issues Found
+无
 
 ## 测试环境
 - **编译器**：ArkTS static_core (es2panda)

@@ -1,70 +1,61 @@
-# 15.11.3 Overload Set for Interface Methods - 测试报告
+# 15.11.3 Overload Set for Interface Methods - Test Report
 
-## 总体统计
+## Execution Overview
+| Metric | Value |
+|---|---|
+| Total Cases | 10 |
+| Passed | 10 |
+| Failed | 0 |
+| Pass Rate | 100% |
 
-| 分类 | 总数 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 2 | 2 | 0 | 100% |
-| compile-fail | 2 | 2 | 0 | 100% |
-| runtime（真实执行） | 1 | 1 | 0 | 100% |
-| **总计** | **5** | **5** | **0** | **100%** |
+## Case List
+| ID | Case File | Type | Result |
+|---|---|---|---|
+| SEM_15_11_03_001_PASS_interface_overload_set | SEM_15_11_03_001_PASS_interface_overload_set.ets | compile-pass | ✅ |
+| SEM_15_11_03_002_PASS_interface_method_overloads | SEM_15_11_03_002_PASS_interface_method_overloads.ets | compile-pass | ✅ |
+| SEM_15_11_03_003_PASS_interface_no_super | SEM_15_11_03_003_PASS_interface_no_super.ets | compile-pass | ✅ |
+| SEM_15_11_03_004_PASS_interface_extends_order | SEM_15_11_03_004_PASS_interface_extends_order.ets | compile-pass | ✅ |
+| SEM_15_11_03_005_PASS_interface_override_dedup | SEM_15_11_03_005_PASS_interface_override_dedup.ets | compile-pass | ✅ |
+| SEM_15_11_03_006_PASS_interface_implicit_explicit_combine | SEM_15_11_03_006_PASS_interface_implicit_explicit_combine.ets | compile-pass | ✅ |
+| SEM_15_11_03_100_FAIL_no_matching_overload | SEM_15_11_03_100_FAIL_no_matching_overload.ets | compile-fail | ✅ |
+| SEM_15_11_03_101_FAIL_call_no_matching_overload | SEM_15_11_03_101_FAIL_call_no_matching_overload.ets | compile-fail | ✅ |
+| SEM_15_11_03_102_FAIL_interface_with_overload | SEM_15_11_03_102_FAIL_interface_with_overload.ets | compile-fail | ✅ |
+| SEM_15_11_03_200_RUNTIME_interface_overload | SEM_15_11_03_200_RUNTIME_interface_overload.ets | runtime | ✅ |
 
-> ✅ **执行时间**：2026-06-22
-> ✅ **执行环境**：ArkTS static_core
+## Result Statistics
+| Category | Count | Pass | Fail |
+|---|---|---|---|
+| compile-pass | 6 | 6 | 0 |
+| compile-fail | 3 | 3 | 0 |
+| runtime | 1 | 1 | 0 |
+| **Total** | **10** | **10** | **0** |
 
----
+## Detailed Results
 
-## 详细执行结果
+### compile-pass (6/6 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_03_001_PASS_interface_overload_set | SEM_15_11_03_001_PASS_interface_overload_set.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_11_03_002_PASS_interface_method_overloads | SEM_15_11_03_002_PASS_interface_method_overloads.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_11_03_003_PASS_interface_no_super | SEM_15_11_03_003_PASS_interface_no_super.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_11_03_004_PASS_interface_extends_order | SEM_15_11_03_004_PASS_interface_extends_order.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_11_03_005_PASS_interface_override_dedup | SEM_15_11_03_005_PASS_interface_override_dedup.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_11_03_006_PASS_interface_implicit_explicit_combine | SEM_15_11_03_006_PASS_interface_implicit_explicit_combine.ets | compile-pass | compile-pass | ✅ |
 
-### compile-pass (1 个)
+### compile-fail (3/3 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_03_100_FAIL_no_matching_overload | SEM_15_11_03_100_FAIL_no_matching_overload.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_11_03_101_FAIL_call_no_matching_overload | SEM_15_11_03_101_FAIL_call_no_matching_overload.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_11_03_102_FAIL_interface_with_overload | SEM_15_11_03_102_FAIL_interface_with_overload.ets | compile-fail | compile-fail | ✅ |
 
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_03_001 | 接口方法重载集：接口中定义重载方法，类中实现 | ✅ PASS |
+### runtime (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_03_200_RUNTIME_interface_overload | SEM_15_11_03_200_RUNTIME_interface_overload.ets | runtime | runtime | ✅ |
 
-### compile-fail (1 个)
-
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_03_099 | 接口方法重载类型拒绝：参数类型不匹配 | ✅ PASS |
-
-### runtime (1 个)
-
-| # | 用例 ID | 验证内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_03_100 | 接口方法重载运行时 | ✅ PASS |
-
----
-
-## 测试覆盖分析
-
-### 覆盖的 Spec 要点
-
-| Spec 要点 | 覆盖用例 | 状态 |
-|-----------|----------|------|
-| 接口方法重载集形成 | SEM_15_11_03_001 | ✅ |
-| 类型不匹配拒绝 | SEM_15_11_03_099 | ✅ |
-| 运行时验证 | SEM_15_11_03_100 | ✅ |
-
----
-
-## 执行过程异常修复记录
-
-（无异常，一次通过）
-
----
-
-## 后续运行命令
-
-```bash
-cd doc/15_Semantic_Rules/ets_cases/15.11.3_Overload_Set_for_Interface_Methods
-# 手动验证用例
-```
-
----
-
-**报告生成时间**：2026-06-22
-**报告状态**：✅ 全部通过
+## Issues Found
+无
 
 ## 测试环境
 - **编译器**：ArkTS static_core (es2panda)

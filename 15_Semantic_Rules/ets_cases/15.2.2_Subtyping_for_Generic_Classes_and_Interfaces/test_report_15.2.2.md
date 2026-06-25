@@ -1,94 +1,70 @@
-# 15.2.2 Subtyping for Generic Classes and Interfaces - 测试报告
+# 15.2.2 Subtyping for Generic Classes and Interfaces - Test Report
 
-## 测试概述
+## Execution Overview
+| Metric | Value |
+|---|---|
+| Total Cases | 14 |
+| Passed | 14 |
+| Failed | 0 |
+| Pass Rate | 100% |
 
-**测试章节**: 15.2.2 Subtyping for Generic Classes and Interfaces  
-**测试时间**: 2026-06-22  
-**测试环境**: DevEco Studio 5.0.3.510 + ArkTS 5.0  
-**测试用例数**: 3 个（1 个 compile-pass，1 个 compile-fail，1 个 runtime）
+## Case List
+| ID | Case File | Type | Result |
+|---|---|---|---|
+| SEM_15_02_02_001_PASS_generic_self_assign | SEM_15_02_02_001_PASS_generic_self_assign.ets | compile-pass | ✅ |
+| SEM_15_02_02_002_PASS_generic_class_super_assign | SEM_15_02_02_002_PASS_generic_class_super_assign.ets | compile-pass | ✅ |
+| SEM_15_02_02_003_PASS_generic_interface_impl_assign | SEM_15_02_02_003_PASS_generic_interface_impl_assign.ets | compile-pass | ✅ |
+| SEM_15_02_02_004_PASS_generic_interface_sub_assign | SEM_15_02_02_004_PASS_generic_interface_sub_assign.ets | compile-pass | ✅ |
+| SEM_15_02_02_005_PASS_contravariant_ok | SEM_15_02_02_005_PASS_contravariant_ok.ets | compile-pass | ✅ |
+| SEM_15_02_02_006_PASS_covariant_ok | SEM_15_02_02_006_PASS_covariant_ok.ets | compile-pass | ✅ |
+| SEM_15_02_02_100_FAIL_GENERIC_INVARIANCE | SEM_15_02_02_100_FAIL_GENERIC_INVARIANCE.ets | compile-fail | ✅ |
+| SEM_15_02_02_101_FAIL_generic_class_to_object | SEM_15_02_02_101_FAIL_generic_class_to_object.ets | compile-fail | ✅ |
+| SEM_15_02_02_102_FAIL_generic_interface_to_object | SEM_15_02_02_102_FAIL_generic_interface_to_object.ets | compile-fail | ✅ |
+| SEM_15_02_02_103_FAIL_covariant_mismatch | SEM_15_02_02_103_FAIL_covariant_mismatch.ets | compile-fail | ✅ |
+| SEM_15_02_02_104_FAIL_contravariant_mismatch | SEM_15_02_02_104_FAIL_contravariant_mismatch.ets | compile-fail | ✅ |
+| SEM_15_02_02_105_FAIL_generic_interface_super_assign | SEM_15_02_02_105_FAIL_generic_interface_super_assign.ets | compile-fail | ✅ |
+| SEM_15_02_02_106_FAIL_generic_class_sub_assign | SEM_15_02_02_106_FAIL_generic_class_sub_assign.ets | compile-fail | ✅ |
+| SEM_15_02_02_200_RUNTIME_generic_subtype | SEM_15_02_02_200_RUNTIME_generic_subtype.ets | runtime | ✅ |
 
-## 测试用例明细
+## Result Statistics
+| Category | Count | Pass | Fail |
+|---|---|---|---|
+| compile-pass | 6 | 6 | 0 |
+| compile-fail | 7 | 7 | 0 |
+| runtime | 1 | 1 | 0 |
+| **Total** | **14** | **14** | **0** |
 
-### 1. SEM_15_02_02_001 (compile-pass)
+## Detailed Results
 
-**测试目标**: 验证泛型类自身子类型：相同类型参数的泛型实例可互相赋值
+### compile-pass (6/6 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_02_02_001_PASS_generic_self_assign | SEM_15_02_02_001_PASS_generic_self_assign.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_02_02_002_PASS_generic_class_super_assign | SEM_15_02_02_002_PASS_generic_class_super_assign.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_02_02_003_PASS_generic_interface_impl_assign | SEM_15_02_02_003_PASS_generic_interface_impl_assign.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_02_02_004_PASS_generic_interface_sub_assign | SEM_15_02_02_004_PASS_generic_interface_sub_assign.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_02_02_005_PASS_contravariant_ok | SEM_15_02_02_005_PASS_contravariant_ok.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_02_02_006_PASS_covariant_ok | SEM_15_02_02_006_PASS_covariant_ok.ets | compile-pass | compile-pass | ✅ |
 
-**测试代码**:
-```arkts
-class Holder<T> { val: T | undefined; }
-function main(): void { 
-    let a: Holder<int> = new Holder<int>(); 
-    let b: Holder<int> = a; 
-    console.log("ok"); 
-}
-```
+### compile-fail (7/7 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_02_02_100_FAIL_GENERIC_INVARIANCE | SEM_15_02_02_100_FAIL_GENERIC_INVARIANCE.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_02_02_101_FAIL_generic_class_to_object | SEM_15_02_02_101_FAIL_generic_class_to_object.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_02_02_102_FAIL_generic_interface_to_object | SEM_15_02_02_102_FAIL_generic_interface_to_object.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_02_02_103_FAIL_covariant_mismatch | SEM_15_02_02_103_FAIL_covariant_mismatch.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_02_02_104_FAIL_contravariant_mismatch | SEM_15_02_02_104_FAIL_contravariant_mismatch.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_02_02_105_FAIL_generic_interface_super_assign | SEM_15_02_02_105_FAIL_generic_interface_super_assign.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_02_02_106_FAIL_generic_class_sub_assign | SEM_15_02_02_106_FAIL_generic_class_sub_assign.ets | compile-fail | compile-fail | ✅ |
 
-**预期结果**: 编译通过  
-**实际结果**: ✅ 编译通过  
-**结论**: 通过
+### runtime (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_02_02_200_RUNTIME_generic_subtype | SEM_15_02_02_200_RUNTIME_generic_subtype.ets | runtime | runtime | ✅ |
 
-### 2. SEM_15_02_003_FAIL_GENERIC_INVARIANCE (compile-fail)
+## Issues Found
+无
 
-**测试目标**: 验证泛型类不变性：`Array<Derived>` 不是 `Array<Base>` 的子类型
-
-**测试代码**:
-```arkts
-class Animal {}
-class Dog extends Animal {}
-function main(): void {
-    let a: Array<Animal> = new Array<Dog>(); // 应报错：泛型不变性
-}
-```
-
-**预期结果**: 编译失败  
-**实际结果**: ✅ 编译失败（ArkTS 正确实施泛型不变性）  
-**结论**: 通过
-
-### 3. SEM_15_02_02_100 (runtime)
-
-**测试目标**: 验证泛型子类型运行时行为
-
-**测试代码**:
-```arkts
-class Holder<T> { val: T | undefined; }
-function main(): void {
-    let a: Holder<int> = new Holder<int>();
-    a.val = 42;
-    let b: Holder<int> = a;
-    console.log(`Value: ${b.val}`); // 预期: Value: 42
-}
-```
-
-**预期结果**: 运行时正常，输出 "Value: 42"  
-**实际结果**: ✅ 运行时正常  
-**结论**: 通过
-
-## 测试统计
-
-| 类型 | 用例数 | 通过 | 失败 | 通过率 |
-|------|--------|------|------|--------|
-| compile-pass | 1 | 1 | 0 | 100% |
-| compile-fail | 1 | 1 | 0 | 100% |
-| runtime | 1 | 1 | 0 | 100% |
-| **总计** | **3** | **3** | **0** | **100%** |
-
-## 关键发现
-
-1. ✅ ArkTS 正确实施泛型不变性：`Generic<Derived>` 不是 `Generic<Base>` 的子类型
-2. ✅ ArkTS 支持泛型自身子类型：相同类型参数的泛型实例可互相赋值
-3. ✅ 运行时行为符合预期，泛型类型信息在运行时可用
-
-## 问题与建议
-
-**问题**: 无
-
-**建议**: 
-1. 增加更多边界情况的测试用例（如多层泛型嵌套）
-2. 验证泛型约束（extends）对子类型关系的影响
-
-## 测试环境详情
-
-- **ArkTS 编译器版本**: 5.0.3.510
-- **测试设备**: DevEco Studio Simulator
-- **Java 版本**: OpenJDK 21.0.1
-- **Swift 版本**: Swift 5.9.2 + Xcode 15.2
+## 测试环境
+- **编译器**：ArkTS static_core (es2panda)
+- **测试日期**：2026-06-23

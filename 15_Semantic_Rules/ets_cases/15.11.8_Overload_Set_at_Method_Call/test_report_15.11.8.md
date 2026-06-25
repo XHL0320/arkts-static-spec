@@ -1,70 +1,53 @@
-# 15.11.8 Overload Set at Method Call - 测试报告
+# 15.11.8 Overload Set at Method Call - Test Report
 
-## 总体统计
+## Execution Overview
+| Metric | Value |
+|---|---|
+| Total Cases | 6 |
+| Passed | 6 |
+| Failed | 0 |
+| Pass Rate | 100% |
 
-| 分类 | 总数 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 2 | 2 | 0 | 100% |
-| compile-fail | 2 | 2 | 0 | 100% |
-| runtime（真实执行） | 1 | 1 | 0 | 100% |
-| **总计** | **5** | **5** | **0** | **100%** |
+## Case List
+| ID | Case File | Type | Result |
+|---|---|---|---|
+| SEM_15_11_08_001_PASS_arg_based_resolution | SEM_15_11_08_001_PASS_arg_based_resolution.ets | compile-pass | ✅ |
+| SEM_15_11_08_002_PASS_subtype_param_selects_overload | SEM_15_11_08_002_PASS_subtype_param_selects_overload.ets | compile-pass | ✅ |
+| SEM_15_11_08_003_PASS_function_with_receiver | SEM_15_11_08_003_PASS_function_with_receiver.ets | compile-pass | ✅ |
+| SEM_15_11_08_100_FAIL_no_matching_overload | SEM_15_11_08_100_FAIL_no_matching_overload.ets | compile-fail | ✅ |
+| SEM_15_11_08_101_FAIL_no_matching_overload | SEM_15_11_08_101_FAIL_no_matching_overload.ets | compile-fail | ✅ |
+| SEM_15_11_08_200_RUNTIME_call_overload | SEM_15_11_08_200_RUNTIME_call_overload.ets | runtime | ✅ |
 
-> ✅ **执行时间**：2026-06-22
-> ✅ **执行环境**：ArkTS static_core
+## Result Statistics
+| Category | Count | Pass | Fail |
+|---|---|---|---|
+| compile-pass | 3 | 3 | 0 |
+| compile-fail | 2 | 2 | 0 |
+| runtime | 1 | 1 | 0 |
+| **Total** | **6** | **6** | **0** |
 
----
+## Detailed Results
 
-## 详细执行结果
+### compile-pass (3/3 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_08_001_PASS_arg_based_resolution | SEM_15_11_08_001_PASS_arg_based_resolution.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_11_08_002_PASS_subtype_param_selects_overload | SEM_15_11_08_002_PASS_subtype_param_selects_overload.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_11_08_003_PASS_function_with_receiver | SEM_15_11_08_003_PASS_function_with_receiver.ets | compile-pass | compile-pass | ✅ |
 
-### compile-pass (1 个)
+### compile-fail (2/2 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_08_100_FAIL_no_matching_overload | SEM_15_11_08_100_FAIL_no_matching_overload.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_11_08_101_FAIL_no_matching_overload | SEM_15_11_08_101_FAIL_no_matching_overload.ets | compile-fail | compile-fail | ✅ |
 
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_08_001 | 调用时重载集：按实参解析 | ✅ PASS |
+### runtime (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_08_200_RUNTIME_call_overload | SEM_15_11_08_200_RUNTIME_call_overload.ets | runtime | runtime | ✅ |
 
-### compile-fail (1 个)
-
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_08_099 | 调用时重载拒绝：实参类型不匹配 | ✅ PASS |
-
-### runtime (1 个)
-
-| # | 用例 ID | 验证内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_08_100 | 调用时重载运行时 | ✅ PASS |
-
----
-
-## 测试覆盖分析
-
-### 覆盖的 Spec 要点
-
-| Spec 要点 | 覆盖用例 | 状态 |
-|-----------|----------|------|
-| 调用时重载集解析 | SEM_15_11_08_001 | ✅ |
-| 类型不匹配拒绝 | SEM_15_11_08_099 | ✅ |
-| 运行时验证 | SEM_15_11_08_100 | ✅ |
-
----
-
-## 执行过程异常修复记录
-
-（无异常，一次通过）
-
----
-
-## 后续运行命令
-
-```bash
-cd doc/15_Semantic_Rules/ets_cases/15.11.8_Overload_Set_at_Method_Call
-# 手动验证用例
-```
-
----
-
-**报告生成时间**：2026-06-22
-**报告状态**：✅ 全部通过
+## Issues Found
+无
 
 ## 测试环境
 - **编译器**：ArkTS static_core (es2panda)

@@ -1,70 +1,55 @@
-# 15.11.9 Overloading and Overriding - 测试报告
+# 15.11.9 Overloading and Overriding - Test Report
 
-## 总体统计
+## Execution Overview
+| Metric | Value |
+|---|---|
+| Total Cases | 7 |
+| Passed | 7 |
+| Failed | 0 |
+| Pass Rate | 100% |
 
-| 分类 | 总数 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 2 | 2 | 0 | 100% |
-| compile-fail | 2 | 2 | 0 | 100% |
-| runtime（真实执行） | 1 | 1 | 0 | 100% |
-| **总计** | **5** | **5** | **0** | **100%** |
+## Case List
+| ID | Case File | Type | Result |
+|---|---|---|---|
+| SEM_15_11_09_001_PASS_overload_override_interact | SEM_15_11_09_001_PASS_overload_override_interact.ets | compile-pass | ✅ |
+| SEM_15_11_09_002_PASS_subclass_overrides_partial | SEM_15_11_09_002_PASS_subclass_overrides_partial.ets | compile-pass | ✅ |
+| SEM_15_11_09_003_PASS_overload_override_interact | SEM_15_11_09_003_PASS_overload_override_interact.ets | compile-pass | ✅ |
+| SEM_15_11_09_004_PASS_single_override_both | SEM_15_11_09_004_PASS_single_override_both.ets | compile-pass | ✅ |
+| SEM_15_11_09_100_FAIL_override_param_mismatch | SEM_15_11_09_100_FAIL_override_param_mismatch.ets | compile-fail | ✅ |
+| SEM_15_11_09_101_FAIL_derived_call_no_match | SEM_15_11_09_101_FAIL_derived_call_no_match.ets | compile-fail | ✅ |
+| SEM_15_11_09_200_RUNTIME_overload_override | SEM_15_11_09_200_RUNTIME_overload_override.ets | runtime | ✅ |
 
-> ✅ **执行时间**：2026-06-22
-> ✅ **执行环境**：ArkTS static_core
+## Result Statistics
+| Category | Count | Pass | Fail |
+|---|---|---|---|
+| compile-pass | 4 | 4 | 0 |
+| compile-fail | 2 | 2 | 0 |
+| runtime | 1 | 1 | 0 |
+| **Total** | **7** | **7** | **0** |
 
----
+## Detailed Results
 
-## 详细执行结果
+### compile-pass (4/4 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_09_001_PASS_overload_override_interact | SEM_15_11_09_001_PASS_overload_override_interact.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_11_09_002_PASS_subclass_overrides_partial | SEM_15_11_09_002_PASS_subclass_overrides_partial.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_11_09_003_PASS_overload_override_interact | SEM_15_11_09_003_PASS_overload_override_interact.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_11_09_004_PASS_single_override_both | SEM_15_11_09_004_PASS_single_override_both.ets | compile-pass | compile-pass | ✅ |
 
-### compile-pass (1 个)
+### compile-fail (2/2 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_09_100_FAIL_override_param_mismatch | SEM_15_11_09_100_FAIL_override_param_mismatch.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_11_09_101_FAIL_derived_call_no_match | SEM_15_11_09_101_FAIL_derived_call_no_match.ets | compile-fail | compile-fail | ✅ |
 
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_09_001 | 重载与覆写交互：子类中同时覆写和重载 | ✅ PASS |
+### runtime (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_09_200_RUNTIME_overload_override | SEM_15_11_09_200_RUNTIME_overload_override.ets | runtime | runtime | ✅ |
 
-### compile-fail (1 个)
-
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_09_099 | 重载覆写交互拒绝：覆写方法签名不兼容 | ✅ PASS |
-
-### runtime (1 个)
-
-| # | 用例 ID | 验证内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_09_100 | 重载覆写交互运行时 | ✅ PASS |
-
----
-
-## 测试覆盖分析
-
-### 覆盖的 Spec 要点
-
-| Spec 要点 | 覆盖用例 | 状态 |
-|-----------|----------|------|
-| 重载与覆写交互 | SEM_15_11_09_001 | ✅ |
-| 覆写签名不兼容拒绝 | SEM_15_11_09_099 | ✅ |
-| 运行时验证 | SEM_15_11_09_100 | ✅ |
-
----
-
-## 执行过程异常修复记录
-
-（无异常，一次通过）
-
----
-
-## 后续运行命令
-
-```bash
-cd doc/15_Semantic_Rules/ets_cases/15.11.9_Overloading_and_Overriding
-# 手动验证用例
-```
-
----
-
-**报告生成时间**：2026-06-22
-**报告状态**：✅ 全部通过
+## Issues Found
+无
 
 ## 测试环境
 - **编译器**：ArkTS static_core (es2panda)

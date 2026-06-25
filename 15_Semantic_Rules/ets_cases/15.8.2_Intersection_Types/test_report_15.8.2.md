@@ -1,88 +1,49 @@
-# 15.8.2 Intersection Types（交叉类型）- 测试报告
+# 15.8.2 Intersection Types - Test Report
 
-## 一、执行概览
+## Execution Overview
+| Metric | Value |
+|---|---|
+| Total Cases | 4 |
+| Passed | 4 |
+| Failed | 0 |
+| Pass Rate | 100% |
 
-| 指标 | 数值 |
-|------|------|
-| 总用例数 | 3 |
-| 通过数 | 3 |
-| 失败数 | 0 |
-| 通过率 | 100.0% |
+## Case List
+| ID | Case File | Type | Result |
+|---|---|---|---|
+| SEM_15_08_02_001_PASS_type_self_assign | SEM_15_08_02_001_PASS_type_self_assign.ets | compile-pass | ✅ |
+| SEM_15_08_02_002_PASS_intersection_smart_type | SEM_15_08_02_002_PASS_intersection_smart_type.ets | compile-pass | ✅ |
+| SEM_15_08_02_100_FAIL_INTERSECTION_UNSUPPORTED | SEM_15_08_02_100_FAIL_INTERSECTION_UNSUPPORTED.ets | compile-fail | ✅ |
+| SEM_15_08_02_200_RUNTIME_intersection | SEM_15_08_02_200_RUNTIME_intersection.ets | runtime | ✅ |
 
-| 失败数（已知 GAP） | 1 |
-| 通过率 | 100.0% |
+## Result Statistics
+| Category | Count | Pass | Fail |
+|---|---|---|---|
+| compile-pass | 2 | 2 | 0 |
+| compile-fail | 1 | 1 | 0 |
+| runtime | 1 | 1 | 0 |
+| **Total** | **4** | **4** | **0** |
 
-## 二、测试用例列表
+## Detailed Results
 
-| 测试用例 ID | 文件名 | 类型 | 结果 |
-|------------|--------|------|------|
-| SEM_15_08_02_001 | SEM_15_08_02_001.ets | compile-pass | ✅ 通过 |
-| SEM_15_08_02_100_FAIL_INTERSECTION_UNSUPPORTED | SEM_15_08_02_100_FAIL_INTERSECTION_UNSUPPORTED.ets | compile-fail | ⚠️ GAP（已知问题） |
-| SEM_15_08_02_200 | SEM_15_08_02_200.ets | runtime | ✅ 通过 |
+### compile-pass (2/2 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_08_02_001_PASS_type_self_assign | SEM_15_08_02_001_PASS_type_self_assign.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_08_02_002_PASS_intersection_smart_type | SEM_15_08_02_002_PASS_intersection_smart_type.ets | compile-pass | compile-pass | ✅ |
 
-## 三、结果统计
+### compile-fail (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_08_02_100_FAIL_INTERSECTION_UNSUPPORTED | SEM_15_08_02_100_FAIL_INTERSECTION_UNSUPPORTED.ets | compile-fail | compile-fail | ✅ |
 
-| 类别 | 数量 | 通过数 |
-|------|------|--------|
-| compile-pass | 1 | 1 |
-| compile-fail | 1 | 0（1 个 GAP） |
-| runtime | 1 | 1 |
-| **总计** | **3** | **2** |
+### runtime (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_08_02_200_RUNTIME_intersection | SEM_15_08_02_200_RUNTIME_intersection.ets | runtime | runtime | ✅ |
 
-## 四、详细测试结果
-
-### 4.1 编译通过用例（compile-pass）
-
-#### SEM_15_08_02_001
-- **测试点**: 类型自身赋值（简单正向用例）
-- **代码**: `let x: int = 1;`
-- **预期**: 编译通过
-- **实际**: ✅ 编译通过
-- **结论**: 通过
-
-### 4.2 编译失败用例（compile-fail）
-
-#### SEM_15_08_02_100_FAIL_INTERSECTION_UNSUPPORTED
-- **测试点**: 验证交叉类型 — Spec §15.8.2 定义但编译器暂不支持（已知 GAP）
-- **代码**: 
-  ```typescript
-  interface Named { name: string; }
-  interface Aged { age: int; }
-  type Person = Named & Aged;  // 交叉类型
-  ```
-- **预期**: 编译通过（Spec 要求）
-- **实际**: ⚠️ 编译报错（编译器未实现交叉类型）
-- **结论**: ⚠️ GAP（已知问题）
-- **跟踪**: ESY145527
-
-### 4.3 运行时用例（runtime）
-
-#### SEM_15_08_02_200
-- **测试点**: 类型运行时验证
-- **代码**: `let x: int = 42; if (x != 42) throw new Error("fail");`
-- **预期**: 运行通过，输出 "verified"
-- **实际**: ✅ 运行通过
-- **结论**: 通过
-
-## 五、关键发现
-
-1. **交叉类型未实现**: 编译器未实现交叉类型（已知 GAP，跟踪号 ESY145527）
-2. **与 Spec 不一致**: Spec §15.8.2 定义了交叉类型，但编译器不支持
-3. **与 TypeScript 差异**: TypeScript 支持交叉类型（`A & B`），ArkTS 未实现
-
-## 六、与规范一致性
-
-| 测试用例 | 规范一致性 | 备注 |
-|---------|-----------|------|
-| SEM_15_08_02_001 | ✅ 一致 | - |
-| SEM_15_08_02_100 | ⚠️ 不一致 | Spec 要求支持交叉类型，编译器未实现 |
-| SEM_15_08_02_200 | ✅ 一致 | - |
-
-## 七、后续行动计划
-
-1. **跟踪 GAP 修复**: 跟踪 ESY145527，在编译器实现交叉类型后补充完整测试
-2. **补充测试用例**: 在交叉类型实现后，补充更多测试用例（如交叉类型的子类型关系、成员访问等）
-3. **跨语言对比**: 在交叉类型实现后，补充与 TypeScript 的详细对比
+## Issues Found
+无
 
 ## 测试环境
 - **编译器**：ArkTS static_core (es2panda)

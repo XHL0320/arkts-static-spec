@@ -11,9 +11,9 @@
 ## Case List
 | ID | Case File | Type | Result |
 |---|---|---|---|
-| SEM_15_01_08_001 | SEM_15_01_08_001.ets | compile-pass | ✅ |
-| SEM_15_01_08_099 | SEM_15_01_08_099.ets | compile-fail | ✅ |
-| SEM_15_01_08_100 | SEM_15_01_08_100.ets | runtime | ✅ |
+| SEM_15_01_08_001_PASS_comprehensive_expr | SEM_15_01_08_001_PASS_comprehensive_expr.ets | compile-pass | ✅ |
+| SEM_15_01_08_100_FAIL_invalid_operation | SEM_15_01_08_100_FAIL_invalid_operation.ets | compile-fail | ✅ |
+| SEM_15_01_08_200_RUNTIME_summary | SEM_15_01_08_200_RUNTIME_summary.ets | runtime | ✅ |
 
 ## Result Statistics
 | Category | Count | Pass | Fail |
@@ -28,17 +28,17 @@
 ### compile-pass (1/1 passed)
 | ID | Case File | Expected | Actual | Status |
 |---|---|---|---|---|
-| SEM_15_01_08_001 | SEM_15_01_08_001.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_08_001_PASS_comprehensive_expr | SEM_15_01_08_001_PASS_comprehensive_expr.ets | compile-pass | compile-pass | ✅ |
 
 ### compile-fail (1/1 passed)
 | ID | Case File | Expected | Actual | Status |
 |---|---|---|---|---|
-| SEM_15_01_08_099 | SEM_15_01_08_099.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_01_08_100_FAIL_invalid_operation | SEM_15_01_08_100_FAIL_invalid_operation.ets | compile-fail | compile-fail | ✅ |
 
 ### runtime (1/1 passed)
 | ID | Case File | Expected | Actual | Status |
 |---|---|---|---|---|
-| SEM_15_01_08_100 | SEM_15_01_08_100.ets | runtime | runtime | ✅ |
+| SEM_15_01_08_200_RUNTIME_summary | SEM_15_01_08_200_RUNTIME_summary.ets | runtime | runtime | ✅ |
 
 ## Issues Found
 无

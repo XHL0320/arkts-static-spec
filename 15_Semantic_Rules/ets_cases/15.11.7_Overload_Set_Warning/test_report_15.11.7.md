@@ -1,65 +1,53 @@
-# 15.11.7 Overload Set Warning - 测试报告
+# 15.11.7 Overload Set Warning - Test Report
 
-## 总体统计
+## Execution Overview
+| Metric | Value |
+|---|---|
+| Total Cases | 6 |
+| Passed | 6 |
+| Failed | 0 |
+| Pass Rate | 100% |
 
-| 分类 | 总数 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 2 | 2 | 0 | 100% |
-| runtime（真实执行） | 1 | 1 | 0 | 100% |
-| **总计** | **5** | **5** | **0** | **100%** |
+## Case List
+| ID | Case File | Type | Result |
+|---|---|---|---|
+| SEM_15_11_07_001_PASS_OVERLOAD_WARNING | SEM_15_11_07_001_PASS_OVERLOAD_WARNING.ets | compile-pass | ✅ |
+| SEM_15_11_07_002_PASS_distinguishable_no_warning | SEM_15_11_07_002_PASS_distinguishable_no_warning.ets | compile-pass | ✅ |
+| SEM_15_11_07_003_PASS_wide_hides_narrow | SEM_15_11_07_003_PASS_wide_hides_narrow.ets | compile-pass | ✅ |
+| SEM_15_11_07_004_PASS_overload_warning_unreachable | SEM_15_11_07_004_PASS_overload_warning_unreachable.ets | compile-pass | ✅ |
+| SEM_15_11_07_100_FAIL_unreachable_overload | SEM_15_11_07_100_FAIL_unreachable_overload.ets | compile-fail | ✅ |
+| SEM_15_11_07_200_RUNTIME_warning | SEM_15_11_07_200_RUNTIME_warning.ets | runtime | ✅ |
 
-> ✅ **执行时间**：2026-06-22
-> ✅ **执行环境**：ArkTS static_core
-> ⚠️ **警告说明**：用例 SEM_15_11_010_FAIL_OVERLOAD_WARNING 会产生 W2323 警告，但不阻塞编译
+## Result Statistics
+| Category | Count | Pass | Fail |
+|---|---|---|---|
+| compile-pass | 4 | 4 | 0 |
+| compile-fail | 1 | 1 | 0 |
+| runtime | 1 | 1 | 0 |
+| **Total** | **6** | **6** | **0** |
 
----
+## Detailed Results
 
-## 详细执行结果
+### compile-pass (4/4 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_07_001_PASS_OVERLOAD_WARNING | SEM_15_11_07_001_PASS_OVERLOAD_WARNING.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_11_07_002_PASS_distinguishable_no_warning | SEM_15_11_07_002_PASS_distinguishable_no_warning.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_11_07_003_PASS_wide_hides_narrow | SEM_15_11_07_003_PASS_wide_hides_narrow.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_11_07_004_PASS_overload_warning_unreachable | SEM_15_11_07_004_PASS_overload_warning_unreachable.ets | compile-pass | compile-pass | ✅ |
 
-### compile-pass (2 个)
+### compile-fail (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_07_100_FAIL_unreachable_overload | SEM_15_11_07_100_FAIL_unreachable_overload.ets | compile-fail | compile-fail | ✅ |
 
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_07_001 | 可区分重载无警告 | ✅ PASS |
-| 2 | SEM_15_11_010_FAIL_OVERLOAD_WARNING | 等价签名重载产生W2323警告 | ✅ PASS（带警告） |
+### runtime (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_07_200_RUNTIME_warning | SEM_15_11_07_200_RUNTIME_warning.ets | runtime | runtime | ✅ |
 
-### runtime (1 个)
-
-| # | 用例 ID | 验证内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_07_100 | 重载警告运行时 | ✅ PASS |
-
----
-
-## 测试覆盖分析
-
-### 覆盖的 Spec 要点
-
-| Spec 要点 | 覆盖用例 | 状态 |
-|-----------|----------|------|
-| 可区分重载无警告 | SEM_15_11_07_001 | ✅ |
-| 等价签名重载警告 | SEM_15_11_010_FAIL_OVERLOAD_WARNING | ✅（W2323） |
-| 运行时验证 | SEM_15_11_07_100 | ✅ |
-
----
-
-## 执行过程异常修复记录
-
-（无异常，一次通过）
-
----
-
-## 后续运行命令
-
-```bash
-cd doc/15_Semantic_Rules/ets_cases/15.11.7_Overload_Set_Warning
-# 手动验证用例
-```
-
----
-
-**报告生成时间**：2026-06-22
-**报告状态**：✅ 全部通过（带警告）
+## Issues Found
+无
 
 ## 测试环境
 - **编译器**：ArkTS static_core (es2panda)

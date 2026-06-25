@@ -11,14 +11,14 @@
 ## Case List
 | ID | Case File | Type | Result |
 |---|---|---|---|
-| SEM_15_01_06_001 | SEM_15_01_06_001.ets | compile-pass | ✅ |
-| SEM_15_01_06_002 | SEM_15_01_06_002_PASS_BOOL_CONTEXT.ets | compile-pass | ✅ |
-| SEM_15_01_06_003 | SEM_15_01_06_003_PASS_ARRAY_CONTEXT.ets | compile-pass | ✅ |
-| SEM_15_01_06_004 | SEM_15_01_06_004_PASS_FUNC_RETURN_CONTEXT.ets | compile-pass | ✅ |
-| SEM_15_01_06_005 | SEM_15_01_06_005_PASS_PROPERTY_ACCESS.ets | compile-pass | ✅ |
-| SEM_15_01_06_101 | SEM_15_01_06_101.ets | compile-pass | ✅ |
-| SEM_15_01_06_099 | SEM_15_01_06_100_FAIL_MISMATCH.ets | compile-fail | ✅ |
-| SEM_15_01_06_100 | SEM_15_01_06_100.ets | runtime | ✅ |
+| SEM_15_01_06_001_PASS_string_standalone | SEM_15_01_06_001_PASS_string_standalone.ets | compile-pass | ✅ |
+| SEM_15_01_06_002_PASS_BOOL_CONTEXT | SEM_15_01_06_002_PASS_BOOL_CONTEXT.ets | compile-pass | ✅ |
+| SEM_15_01_06_003_PASS_ARRAY_CONTEXT | SEM_15_01_06_003_PASS_ARRAY_CONTEXT.ets | compile-pass | ✅ |
+| SEM_15_01_06_004_PASS_FUNC_RETURN_CONTEXT | SEM_15_01_06_004_PASS_FUNC_RETURN_CONTEXT.ets | compile-pass | ✅ |
+| SEM_15_01_06_005_PASS_PROPERTY_ACCESS | SEM_15_01_06_005_PASS_PROPERTY_ACCESS.ets | compile-pass | ✅ |
+| SEM_15_01_06_006_PASS_bool_string_concat | SEM_15_01_06_006_PASS_bool_string_concat.ets | compile-pass | ✅ |
+| SEM_15_01_06_100_FAIL_MISMATCH | SEM_15_01_06_100_FAIL_MISMATCH.ets | compile-fail | ✅ |
+| SEM_15_01_06_200_RUNTIME_other_contexts | SEM_15_01_06_200_RUNTIME_other_contexts.ets | runtime | ✅ |
 
 ## Result Statistics
 | Category | Count | Pass | Fail |
@@ -33,22 +33,22 @@
 ### compile-pass (6/6 passed)
 | ID | Case File | Expected | Actual | Status |
 |---|---|---|---|---|
-| SEM_15_01_06_001 | SEM_15_01_06_001.ets | compile-pass | compile-pass | ✅ |
-| SEM_15_01_06_002 | SEM_15_01_06_002_PASS_BOOL_CONTEXT.ets | compile-pass | compile-pass | ✅ |
-| SEM_15_01_06_003 | SEM_15_01_06_003_PASS_ARRAY_CONTEXT.ets | compile-pass | compile-pass | ✅ |
-| SEM_15_01_06_004 | SEM_15_01_06_004_PASS_FUNC_RETURN_CONTEXT.ets | compile-pass | compile-pass | ✅ |
-| SEM_15_01_06_005 | SEM_15_01_06_005_PASS_PROPERTY_ACCESS.ets | compile-pass | compile-pass | ✅ |
-| SEM_15_01_06_101 | SEM_15_01_06_101.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_06_001_PASS_string_standalone | SEM_15_01_06_001_PASS_string_standalone.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_06_002_PASS_BOOL_CONTEXT | SEM_15_01_06_002_PASS_BOOL_CONTEXT.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_06_003_PASS_ARRAY_CONTEXT | SEM_15_01_06_003_PASS_ARRAY_CONTEXT.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_06_004_PASS_FUNC_RETURN_CONTEXT | SEM_15_01_06_004_PASS_FUNC_RETURN_CONTEXT.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_06_005_PASS_PROPERTY_ACCESS | SEM_15_01_06_005_PASS_PROPERTY_ACCESS.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_06_006_PASS_bool_string_concat | SEM_15_01_06_006_PASS_bool_string_concat.ets | compile-pass | compile-pass | ✅ |
 
 ### compile-fail (1/1 passed)
 | ID | Case File | Expected | Actual | Status |
 |---|---|---|---|---|
-| SEM_15_01_06_099 | SEM_15_01_06_100_FAIL_MISMATCH.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_01_06_100_FAIL_MISMATCH | SEM_15_01_06_100_FAIL_MISMATCH.ets | compile-fail | compile-fail | ✅ |
 
 ### runtime (1/1 passed)
 | ID | Case File | Expected | Actual | Status |
 |---|---|---|---|---|
-| SEM_15_01_06_100 | SEM_15_01_06_100.ets | runtime | runtime | ✅ |
+| SEM_15_01_06_200_RUNTIME_other_contexts | SEM_15_01_06_200_RUNTIME_other_contexts.ets | runtime | runtime | ✅ |
 
 ## Issues Found
 无

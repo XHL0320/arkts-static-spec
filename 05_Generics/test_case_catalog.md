@@ -86,13 +86,13 @@
 
 | ID | 子主题 | 类型 | 文件 |
 |---|--------|:--:|------|
-| GEN_05_02_01_001_PASS_TYPE_ARG_NUMBER | Type arg — number | PASS | `5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_001_PASS_TYPE_ARG_NUMBER.ets` |
-| GEN_05_02_01_002_PASS_TYPE_ARG_UNION | Type arg — union | PASS | `5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_002_PASS_TYPE_ARG_UNION.ets` |
-| GEN_05_02_01_003_PASS_TYPE_ARG_ARRAY | Type arg — array | PASS | `5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_003_PASS_TYPE_ARG_ARRAY.ets` |
-| GEN_05_02_01_004_PASS_TYPE_ARG_TUPLE | Type arg — tuple | PASS | `5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_004_PASS_TYPE_ARG_TUPLE.ets` |
-| GEN_05_02_01_005_PASS_TYPE_ARG_FUNC_TYPE | Type arg — func type | PASS | `5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_005_PASS_TYPE_ARG_FUNC_TYPE.ets` |
-| GEN_05_02_01_100_FAIL_INVALID_TYPE_ARG | Invalid type arg | FAIL | `5.2.1_Type_Arguments/compile-fail/GEN_05_02_01_100_FAIL_INVALID_TYPE_ARG.ets` |
-| GEN_05_02_01_200_RUNTIME_TYPE_ARG | Type arg runtime | RUNTIME | `5.2.1_Type_Arguments/runtime/GEN_05_02_01_200_RUNTIME_TYPE_ARG.ets` |
+| GEN_05_02_01_001_PASS_TYPE_ARG_NUMBER | Type arg — number | PASS | `5.2_Generics_Instantiations/5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_001_PASS_TYPE_ARG_NUMBER.ets` |
+| GEN_05_02_01_002_PASS_TYPE_ARG_UNION | Type arg — union | PASS | `5.2_Generics_Instantiations/5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_002_PASS_TYPE_ARG_UNION.ets` |
+| GEN_05_02_01_003_PASS_TYPE_ARG_ARRAY | Type arg — array | PASS | `5.2_Generics_Instantiations/5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_003_PASS_TYPE_ARG_ARRAY.ets` |
+| GEN_05_02_01_004_PASS_TYPE_ARG_TUPLE | Type arg — tuple | PASS | `5.2_Generics_Instantiations/5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_004_PASS_TYPE_ARG_TUPLE.ets` |
+| GEN_05_02_01_005_PASS_TYPE_ARG_FUNC_TYPE | Type arg — func type | PASS | `5.2_Generics_Instantiations/5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_005_PASS_TYPE_ARG_FUNC_TYPE.ets` |
+| GEN_05_02_01_100_FAIL_INVALID_TYPE_ARG | Invalid type arg | FAIL | `5.2_Generics_Instantiations/5.2.1_Type_Arguments/compile-fail/GEN_05_02_01_100_FAIL_INVALID_TYPE_ARG.ets` |
+| GEN_05_02_01_200_RUNTIME_TYPE_ARG | Type arg runtime | RUNTIME | `5.2_Generics_Instantiations/5.2.1_Type_Arguments/runtime/GEN_05_02_01_200_RUNTIME_TYPE_ARG.ets` |
 
 ## 5.2.2 Explicit Generic Instantiations (9 cases)
 

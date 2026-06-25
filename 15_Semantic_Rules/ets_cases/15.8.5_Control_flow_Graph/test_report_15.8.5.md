@@ -1,79 +1,47 @@
-# 15.8.5 Control Flow Graph（控制流图）- 测试报告
+# 15.8.5 Control flow Graph - Test Report
 
-## 一、执行概览
+## Execution Overview
+| Metric | Value |
+|---|---|
+| Total Cases | 3 |
+| Passed | 3 |
+| Failed | 0 |
+| Pass Rate | 100% |
 
-| 指标 | 数值 |
-|------|------|
-| 总用例数 | 3 |
-| 通过数 | 3 |
-| 失败数 | 0 |
-| 通过率 | 100.0% |
+## Case List
+| ID | Case File | Type | Result |
+|---|---|---|---|
+| SEM_15_08_05_001_PASS_if_else_branch | SEM_15_08_05_001_PASS_if_else_branch.ets | compile-pass | ✅ |
+| SEM_15_08_05_100_FAIL_type_mismatch | SEM_15_08_05_100_FAIL_type_mismatch.ets | compile-fail | ✅ |
+| SEM_15_08_05_200_RUNTIME_control_flow | SEM_15_08_05_200_RUNTIME_control_flow.ets | runtime | ✅ |
 
-## 二、测试用例列表
+## Result Statistics
+| Category | Count | Pass | Fail |
+|---|---|---|---|
+| compile-pass | 1 | 1 | 0 |
+| compile-fail | 1 | 1 | 0 |
+| runtime | 1 | 1 | 0 |
+| **Total** | **3** | **3** | **0** |
 
-| 测试用例 ID | 文件名 | 类型 | 结果 |
-|------------|--------|------|------|
-| SEM_15_08_05_001 | SEM_15_08_05_001.ets | compile-pass | ✅ 通过 |
-| SEM_15_08_05_100 | SEM_15_08_05_200.ets | compile-fail | ✅ 通过 |
-| SEM_15_08_05_200 | SEM_15_08_05_200.ets | runtime | ✅ 通过 |
+## Detailed Results
 
-## 三、结果统计
+### compile-pass (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_08_05_001_PASS_if_else_branch | SEM_15_08_05_001_PASS_if_else_branch.ets | compile-pass | compile-pass | ✅ |
 
-| 类别 | 数量 | 通过数 |
-|------|------|--------|
-| compile-pass | 1 | 1 | 0 | 100% |
-| compile-fail | 1 | 1 | 0 | 100% |
-| runtime | 1 | 1 | 0 | 100% |
-| **总计** | **3** | **3** | **0** | **100%** | **3** | **3** |
+### compile-fail (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_08_05_100_FAIL_type_mismatch | SEM_15_08_05_100_FAIL_type_mismatch.ets | compile-fail | compile-fail | ✅ |
 
-## 四、详细测试结果
+### runtime (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_08_05_200_RUNTIME_control_flow | SEM_15_08_05_200_RUNTIME_control_flow.ets | runtime | runtime | ✅ |
 
-### 4.1 编译通过用例（compile-pass）
-
-#### SEM_15_08_05_001
-- **测试点**: 控制流图：if/else 分支类型
-- **代码**: 
-  ```typescript
-  class Animal { name: string = ""; }
-  class Dog extends Animal { breed: string = ""; }
-  function main(): void {
-      let a: Animal = new Dog();
-      if (a instanceof Dog) {
-          console.log("dog");  // 在 if 分支中，a 收窄为 Dog
-      }
-  }
-  ```
-- **预期**: 编译通过
-- **实际**: ✅ 编译通过
-- **结论**: 通过
-
-### 4.2 编译失败用例（compile-fail）
-
-#### SEM_15_08_05_200
-- **测试点**: 控制流拒绝：类型不能赋值
-- **代码**: `let x: int = "s";`
-- **预期**: 编译报错
-- **实际**: ✅ 编译报错（类型不匹配）
-- **结论**: 通过
-
-### 4.3 运行时用例（runtime）
-
-#### SEM_15_08_05_200
-- **测试点**: 控制流运行时验证
-- **代码**: `let x = 42; if (x != 42) throw new Error("fail");`
-- **预期**: 运行通过，输出 "verified"
-- **实际**: ✅ 运行通过
-- **结论**: 通过
-
-## 五、关键发现
-
-1. **控制流图正确**: ArkTS 正确使用控制流图进行智能类型分析
-2. **类型安全**: 编译器正确拒绝类型不兼容的赋值
-3. **instanceof 收窄**: 编译器在 `if` 分支中正确收窄类型
-
-## 六、与规范一致性
-
-所有测试用例均与 ArkTS 规范 15.8.5 节保持一致。
+## Issues Found
+无
 
 ## 测试环境
 - **编译器**：ArkTS static_core (es2panda)

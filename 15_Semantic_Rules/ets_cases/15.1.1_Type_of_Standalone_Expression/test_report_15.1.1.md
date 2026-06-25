@@ -1,76 +1,53 @@
-# 15.1.1 Type of Standalone Expression - 测试执行报告
+# 15.1.1 Type of Standalone Expression - Test Report
 
-## 总体统计
+## Execution Overview
+| Metric | Value |
+|---|---|
+| Total Cases | 6 |
+| Passed | 6 |
+| Failed | 0 |
+| Pass Rate | 100% |
 
-| 分类 | 总数 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 4 | 4 | 0 | 100% |
-| compile-fail | 1 | 1 | 0 | 100% |
-| runtime（真实执行） | 1 | 1 | 0 | 100% |
-| **总计** | **6** | **6** | **0** | **100%** |
+## Case List
+| ID | Case File | Type | Result |
+|---|---|---|---|
+| SEM_15_01_01_001_PASS_INT_LITERAL_TYPE | SEM_15_01_01_001_PASS_INT_LITERAL_TYPE.ets | compile-pass | ✅ |
+| SEM_15_01_01_002_PASS_FLOAT_LITERAL_TYPE | SEM_15_01_01_002_PASS_FLOAT_LITERAL_TYPE.ets | compile-pass | ✅ |
+| SEM_15_01_01_003_PASS_CONST_EXPR_TYPE | SEM_15_01_01_003_PASS_CONST_EXPR_TYPE.ets | compile-pass | ✅ |
+| SEM_15_01_01_004_PASS_ARRAY_LITERAL_TYPE | SEM_15_01_01_004_PASS_ARRAY_LITERAL_TYPE.ets | compile-pass | ✅ |
+| SEM_15_01_01_100_FAIL_OBJECT_LITERAL_STANDALONE | SEM_15_01_01_100_FAIL_OBJECT_LITERAL_STANDALONE.ets | compile-fail | ✅ |
+| SEM_15_01_01_200_RUNTIME_STANDALONE | SEM_15_01_01_200_RUNTIME_STANDALONE.ets | runtime | ✅ |
 
-> ✅ **执行时间**：2026-06-22
-> ✅ **执行环境**：ArkTS static_core
+## Result Statistics
+| Category | Count | Pass | Fail |
+|---|---|---|---|
+| compile-pass | 4 | 4 | 0 |
+| compile-fail | 1 | 1 | 0 |
+| runtime | 1 | 1 | 0 |
+| **Total** | **6** | **6** | **0** |
 
----
+## Detailed Results
 
-## 详细执行结果
+### compile-pass (4/4 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_01_01_001_PASS_INT_LITERAL_TYPE | SEM_15_01_01_001_PASS_INT_LITERAL_TYPE.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_01_002_PASS_FLOAT_LITERAL_TYPE | SEM_15_01_01_002_PASS_FLOAT_LITERAL_TYPE.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_01_003_PASS_CONST_EXPR_TYPE | SEM_15_01_01_003_PASS_CONST_EXPR_TYPE.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_01_01_004_PASS_ARRAY_LITERAL_TYPE | SEM_15_01_01_004_PASS_ARRAY_LITERAL_TYPE.ets | compile-pass | compile-pass | ✅ |
 
-### compile-pass (4 个)
+### compile-fail (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_01_01_100_FAIL_OBJECT_LITERAL_STANDALONE | SEM_15_01_01_100_FAIL_OBJECT_LITERAL_STANDALONE.ets | compile-fail | compile-fail | ✅ |
 
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_01_01_001_PASS_INT_LITERAL_TYPE | 整数字面量类型推断为 int | ✅ PASS |
-| 2 | SEM_15_01_01_002_PASS_FLOAT_LITERAL_TYPE | 浮点字面量类型推断为 double | ✅ PASS |
-| 3 | SEM_15_01_01_003_PASS_CONST_EXPR_TYPE | 常量表达式类型推断 | ✅ PASS |
-| 4 | SEM_15_01_01_004_PASS_ARRAY_LITERAL_TYPE | 数组字面量类型推断 | ✅ PASS |
+### runtime (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_01_01_200_RUNTIME_STANDALONE | SEM_15_01_01_200_RUNTIME_STANDALONE.ets | runtime | runtime | ✅ |
 
-### compile-fail (1 个)
-
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_01_01_100_FAIL_OBJECT_LITERAL_STANDALONE | 对象字面量作为独立表达式应报编译错误 | ✅ PASS |
-
-### runtime (1 个)
-
-| # | 用例 ID | 验证内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_01_01_200_RUNTIME_STANDALONE | 独立表达式运行时类型行为验证 | ✅ PASS |
-
----
-
-## 测试覆盖分析
-
-### 覆盖的 Spec 要点
-
-| Spec 要点 | 覆盖用例 | 状态 |
-|-----------|----------|------|
-| 整数字面量类型推断 | 001 | ✅ |
-| 浮点字面量类型推断 | 002 | ✅ |
-| 常量表达式类型推断 | 003 | ✅ |
-| 数组字面量类型推断 | 004 | ✅ |
-| 对象字面量禁止作为独立表达式 | 005 | ✅ |
-| 运行时类型行为 | 033 | ✅ |
-
----
-
-## 执行过程异常修复记录
-
-（无异常，一次通过）
-
----
-
-## 后续运行命令
-
-```bash
-cd /path/to/project
-# TODO: 添加具体的运行命令
-```
-
----
-
-**报告生成时间**：2026-06-22
-**报告状态**：✅ 全部通过
+## Issues Found
+无
 
 ## 测试环境
 - **编译器**：ArkTS static_core (es2panda)

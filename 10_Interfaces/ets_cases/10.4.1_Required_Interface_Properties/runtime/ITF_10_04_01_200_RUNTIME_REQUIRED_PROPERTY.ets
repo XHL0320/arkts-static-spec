@@ -16,4 +16,6 @@ class Coord implements Point {
 function main(): void {
     let c: Coord = new Coord();
     if (c.x != 10 || c.y != 20) throw new Error("assertion failed");
+
+    console.log("verified");
 }

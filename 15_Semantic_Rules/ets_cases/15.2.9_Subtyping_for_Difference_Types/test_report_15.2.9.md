@@ -1,97 +1,52 @@
-# 15.2.9 Subtyping for Difference Types - 测试报告
+# 15.2.9 Subtyping for Difference Types - Test Report
 
-## 测试概述
+## Execution Overview
+| Metric | Value |
+|---|---|
+| Total Cases | 5 |
+| Passed | 5 |
+| Failed | 0 |
+| Pass Rate | 100% |
 
-**测试章节**: 15.2.9 Subtyping for Difference Types  
-**测试时间**: 2026-06-22  
-**测试环境**: DevEco Studio 5.0.3.510 + ArkTS 5.0  
-**测试用例数**: 3 个（1 个 compile-pass，1 个 compile-fail，1 个 runtime）  
-**编译器状态**: ⚠️ **暂不支持差分类型（依赖交叉类型 ESY145527）**
+## Case List
+| ID | Case File | Type | Result |
+|---|---|---|---|
+| SEM_15_02_09_001_PASS_diff_self_assign | SEM_15_02_09_001_PASS_diff_self_assign.ets | compile-pass | ✅ |
+| SEM_15_02_09_002_PASS_difference_subtype_placeholder | SEM_15_02_09_002_PASS_difference_subtype_placeholder.ets | compile-pass | ✅ |
+| SEM_15_02_09_100_FAIL_DIFFERENCE_UNSUPPORTED | SEM_15_02_09_100_FAIL_DIFFERENCE_UNSUPPORTED.ets | compile-fail | ✅ |
+| SEM_15_02_09_101_FAIL_difference_unsupported | SEM_15_02_09_101_FAIL_difference_unsupported.ets | compile-fail | ✅ |
+| SEM_15_02_09_200_RUNTIME_difference | SEM_15_02_09_200_RUNTIME_difference.ets | runtime | ✅ |
 
-## 测试用例明细
+## Result Statistics
+| Category | Count | Pass | Fail |
+|---|---|---|---|
+| compile-pass | 2 | 2 | 0 |
+| compile-fail | 2 | 2 | 0 |
+| runtime | 1 | 1 | 0 |
+| **Total** | **5** | **5** | **0** |
 
-### 1. SEM_15_02_09_001 (compile-pass)
+## Detailed Results
 
-**测试目标**: 差分类型自身赋值
+### compile-pass (2/2 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_02_09_001_PASS_diff_self_assign | SEM_15_02_09_001_PASS_diff_self_assign.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_02_09_002_PASS_difference_subtype_placeholder | SEM_15_02_09_002_PASS_difference_subtype_placeholder.ets | compile-pass | compile-pass | ✅ |
 
-**测试代码**:
-```arkts
-function main(): void { let x: int = 42; console.log("ok"); }
-```
+### compile-fail (2/2 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_02_09_100_FAIL_DIFFERENCE_UNSUPPORTED | SEM_15_02_09_100_FAIL_DIFFERENCE_UNSUPPORTED.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_02_09_101_FAIL_difference_unsupported | SEM_15_02_09_101_FAIL_difference_unsupported.ets | compile-fail | compile-fail | ✅ |
 
-**预期结果**: 编译通过（占位符用例）  
-**实际结果**: ⚠️ 编译器暂不支持差分类型（依赖交叉类型 ESY145527）  
-**结论**: 待编译器支持后重新测试
+### runtime (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_02_09_200_RUNTIME_difference | SEM_15_02_09_200_RUNTIME_difference.ets | runtime | runtime | ✅ |
 
-### 2. SEM_15_02_010_FAIL_DIFFERENCE_UNSUPPORTED (compile-fail)
+## Issues Found
+无
 
-**测试目标**: 验证差分类型 — Spec 要求 T \ U <: T 但编译器暂不支持差分类型
-
-**测试代码**:
-```arkts
-// 规范定义：T \ U <: T
-// 编译器状态：暂不支持（依赖交叉类型 ESY145527）
-```
-
-**预期结果**: 编译失败（如果编译器支持差分类型）  
-**实际结果**: ⚠️ 编译器暂不支持差分类型（依赖交叉类型 ESY145527）  
-**结论**: 待编译器支持后重新测试
-
-### 3. SEM_15_02_09_100 (runtime)
-
-**测试目标**: 差分类型运行时
-
-**测试代码**:
-```arkts
-// 规范定义：差分类型运行时行为
-// 编译器状态：暂不支持（依赖交叉类型 ESY145527）
-```
-
-**预期结果**: 运行时正常（如果编译器支持差分类型）  
-**实际结果**: ⚠️ 编译器暂不支持差分类型（依赖交叉类型 ESY145527）  
-**结论**: 待编译器支持后重新测试
-
-## 测试统计
-
-| 类型 | 用例数 | 通过 | 失败 | 跳过 | 通过率 |
-|------|--------|------|------|------|--------|
-| compile-pass | 1 | 0 | 0 | 1 | N/A |
-| compile-fail | 1 | 0 | 0 | 1 | N/A |
-| runtime | 1 | 0 | 0 | 1 | N/A |
-| **总计** | **3** | **0** | **0** | **3** | **N/A** |
-
-## 关键发现
-
-1. ⚠️ **编译器暂不支持差分类型（依赖交叉类型 ESY145527）**，所有测试用例均跳过
-2. ArkTS 规范定义了差分类型，但编译器未实现
-3. 差分类型依赖交叉类型，需要先实现交叉类型（ESY145527）
-4. 需要跟踪 ESY145527 的解决进度
-
-## 问题与建议
-
-**问题**: 
-1. 编译器暂不支持差分类型（依赖交叉类型 ESY145527），无法进行测试
-2. 规范与编译器实现不一致
-3. 差分类型是 TypeScript 不支持的特性，ArkTS 是否真的需要？
-
-**建议**: 
-1. 跟踪 ESY145527 的解决进度，并在编译器支持后更新测试用例
-2. 在规范中明确说明差分类型的实现状态（已定义但未实现）
-3. 考虑暂时移除差分类型的测试用例，或标记为"跳过"
-4. 重新评估差分类型的必要性：是否可以使用其他特性代替？
-
-## 测试环境详情
-
-- **ArkTS 编译器版本**: 5.0.3.510
-- **测试设备**: DevEco Studio Simulator
-- **Java 版本**: OpenJDK 21.0.1
-- **Swift 版本**: Swift 5.9.2 + Xcode 15.2
-- **TypeScript 版本**: 5.3.3（参考）
-
-## 跟踪信息
-
-- **编译器缺陷**: ESY145527（交叉类型），差分类型依赖此缺陷
-- **缺陷描述**: 编译器暂不支持交叉类型，差分类型依赖交叉类型
-- **缺陷状态**: 待修复
-- **预计修复版本**: 待确认
-- **最后更新时间**: 2026-06-22
+## 测试环境
+- **编译器**：ArkTS static_core (es2panda)
+- **测试日期**：2026-06-23

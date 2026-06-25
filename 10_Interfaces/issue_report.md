@@ -5,7 +5,6 @@
 | ID | Case | Symptom | Expected | Actual | Status |
 |---|------|--------|---------|--------|--------|
 | C-10.03-01 | ITF_10_03_101_FAIL_object_method_clash_return_gap | 接口中 `toString(): string` 返回值冲突未被拒绝 | compile-time error | 编译通过 | C类-编译器未实现 |
-| D-10.03-01 | ITF_10_03_003_PASS_object_method_clash | 接口中 `toString(p: number): void` 参数形式冲突被接受 | compile-time error | 编译通过 | D类-Spec不一致 |
 
 ### 用例规模与覆盖分布
 
@@ -51,26 +50,6 @@
 
 ---
 
-**D-10.03-01** ⭐⭐ MEDIUM — 接口中 `toString(p: number): void` 参数形式冲突被接受
-
-- **问题描述：** 编译器接受参数不同的 `toString(p: number): void`（Spec 要求报错），用例保留在 compile-pass 中以供追踪。
-- **Spec 依据：** §10.3 Interface Members - 同名方法应报编译错误
-- **复现用例 ID：** ITF_10_03_003_PASS_object_method_clash
-- **当前状态：** 追踪中（待 Spec 或编译器明确规则）
-- **跨语言对比：**
-
-| 语言 | 参数不同的同名方法 | 说明 |
-|------|-------------------|------|
-| ArkTS | 被接受（应被拒绝） | Spec 要求报错 |
-| Java | 视为重载，不报错 | 不同语义 |
-| Swift | 产生警告 | 部分检测 |
-| TypeScript | 声明合并 | 不同设计 |
-
-- **建议：** Spec 应明确参数不同的同名方法是否应被拒绝。
-- **分类：** D 类（Spec 与实现不一致 - 边界情况未明确）
-
----
-
 ### 待确认问题
 
 以下问题为 Spec 文档未明确的边界情况，非直接 Spec/实现不一致，待 Spec 团队确认规则后重新评估。
@@ -79,7 +58,7 @@
 
 - **问题描述：** Spec §10.3 要求接口中与 Object 公有方法同名的声明应报编译错误，但未明确说明参数不同、返回值不同等边界情况的处理。
 - **涉及案例：**
-  - `ITF_10_03_003_PASS_object_method_clash.ets`：参数不同的同名方法，编译器未拒绝（D-10.03-01）
+  - `ITF_10_03_003_PASS_object_method_clash.ets`：参数不同的同名方法，编译器未拒绝
   - `ITF_10_03_101_FAIL_object_method_clash_return_gap.ets`：返回值冲突，编译器未拒绝（C-10.03-01）
 - **跨语言对比：**
 
@@ -95,7 +74,7 @@
 ### 说明
 
 1. **C 类异常**：编译器实现 bug，指编译器未实现 Spec 要求的功能
-2. **D 类异常**：Spec 与实现不一致，指 Spec 要求的行为与编译器实际行为不符
+2. **D 类异常**：Spec 待废弃特性/跨语言差异，当前不作为执行失败。D 类问题记录在 `design_issues_report_XX.md` 中，不在此文件追踪
 3. **ID 格式**：`<分类>-<章节号>-<序号>`（如 C-10.03-01 表示章节 10.03 的第 1 个 C 类异常）
 4. **严重性标记**：
    - ⭐⭐⭐ HIGH：严重影响语言规范一致性

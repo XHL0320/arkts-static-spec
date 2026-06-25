@@ -7,8 +7,8 @@
       "name": "5.1_Type_Parameters",
       "pass": 5,
       "fail": 4,
-      "runtime": 2,
-      "total": 11
+      "runtime": 3,
+      "total": 46
     },
     {
       "name": "5.1.1_Type_Parameter_Constraint",
@@ -28,36 +28,43 @@
       "name": "5.1.3_Type_Parameter_Variance",
       "pass": 10,
       "fail": 6,
-      "runtime": 0,
-      "total": 16
+      "runtime": 1,
+      "total": 17
     },
     {
       "name": "5.1.4_Wildcard_Type",
       "pass": 2,
       "fail": 8,
-      "runtime": 0,
-      "total": 10
+      "runtime": 1,
+      "total": 11
     },
     {
-      "name": "5.2.1_Type_Arguments",
+      "name": "5.2_Generics_Instantiations/5.2.1_Type_Arguments",
       "pass": 5,
       "fail": 1,
       "runtime": 1,
       "total": 7
     },
     {
-      "name": "5.2.2_Explicit_Generic_Instantiations",
+      "name": "5.2_Generics_Instantiations/5.2.2_Explicit_Generic_Instantiations",
       "pass": 5,
       "fail": 3,
       "runtime": 1,
       "total": 9
     },
     {
-      "name": "5.2.3_Implicit_Generic_Instantiations",
+      "name": "5.2_Generics_Instantiations/5.2.3_Implicit_Generic_Instantiations",
       "pass": 3,
       "fail": 3,
       "runtime": 1,
       "total": 7
+    },
+    {
+      "name": "5.2_Generics_Instantiations",
+      "pass": 13,
+      "fail": 7,
+      "runtime": 3,
+      "total": 23
     }
   ]
 }

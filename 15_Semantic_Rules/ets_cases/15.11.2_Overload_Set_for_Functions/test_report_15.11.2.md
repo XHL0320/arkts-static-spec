@@ -1,70 +1,53 @@
-# 15.11.2 Overload Set for Functions - 测试报告
+# 15.11.2 Overload Set for Functions - Test Report
 
-## 总体统计
+## Execution Overview
+| Metric | Value |
+|---|---|
+| Total Cases | 6 |
+| Passed | 6 |
+| Failed | 0 |
+| Pass Rate | 100% |
 
-| 分类 | 总数 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 2 | 2 | 0 | 100% |
-| compile-fail | 2 | 2 | 0 | 100% |
-| runtime（真实执行） | 1 | 1 | 0 | 100% |
-| **总计** | **5** | **5** | **0** | **100%** |
+## Case List
+| ID | Case File | Type | Result |
+|---|---|---|---|
+| SEM_15_11_02_001_PASS_OVERLOAD_RESOLUTION | SEM_15_11_02_001_PASS_OVERLOAD_RESOLUTION.ets | compile-pass | ✅ |
+| SEM_15_11_02_002_PASS_generic_func_overload | SEM_15_11_02_002_PASS_generic_func_overload.ets | compile-pass | ✅ |
+| SEM_15_11_02_100_FAIL_no_matching_overload | SEM_15_11_02_100_FAIL_no_matching_overload.ets | compile-fail | ✅ |
+| SEM_15_11_02_101_FAIL_param_type_not_assignable | SEM_15_11_02_101_FAIL_param_type_not_assignable.ets | compile-fail | ✅ |
+| SEM_15_11_02_102_FAIL_overload_set_functions | SEM_15_11_02_102_FAIL_overload_set_functions.ets | compile-fail | ✅ |
+| SEM_15_11_02_200_RUNTIME_func_overload | SEM_15_11_02_200_RUNTIME_func_overload.ets | runtime | ✅ |
 
-> ✅ **执行时间**：2026-06-22
-> ✅ **执行环境**：ArkTS static_core
+## Result Statistics
+| Category | Count | Pass | Fail |
+|---|---|---|---|
+| compile-pass | 2 | 2 | 0 |
+| compile-fail | 3 | 3 | 0 |
+| runtime | 1 | 1 | 0 |
+| **Total** | **6** | **6** | **0** |
 
----
+## Detailed Results
 
-## 详细执行结果
+### compile-pass (2/2 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_02_001_PASS_OVERLOAD_RESOLUTION | SEM_15_11_02_001_PASS_OVERLOAD_RESOLUTION.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_11_02_002_PASS_generic_func_overload | SEM_15_11_02_002_PASS_generic_func_overload.ets | compile-pass | compile-pass | ✅ |
 
-### compile-pass (1 个)
+### compile-fail (3/3 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_02_100_FAIL_no_matching_overload | SEM_15_11_02_100_FAIL_no_matching_overload.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_11_02_101_FAIL_param_type_not_assignable | SEM_15_11_02_101_FAIL_param_type_not_assignable.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_11_02_102_FAIL_overload_set_functions | SEM_15_11_02_102_FAIL_overload_set_functions.ets | compile-fail | compile-fail | ✅ |
 
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_02_001_PASS_OVERLOAD_RESOLUTION | 验证重载解析：按参数数量选择最匹配的重载 | ✅ PASS |
+### runtime (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_02_200_RUNTIME_func_overload | SEM_15_11_02_200_RUNTIME_func_overload.ets | runtime | runtime | ✅ |
 
-### compile-fail (1 个)
-
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_02_099 | 函数重载集拒绝：参数类型不匹配 | ✅ PASS |
-
-### runtime (1 个)
-
-| # | 用例 ID | 验证内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_02_100 | 函数重载集运行时 | ✅ PASS |
-
----
-
-## 测试覆盖分析
-
-### 覆盖的 Spec 要点
-
-| Spec 要点 | 覆盖用例 | 状态 |
-|-----------|----------|------|
-| 重载解析（参数数量） | SEM_15_11_02_001_PASS_OVERLOAD_RESOLUTION | ✅ |
-| 类型不匹配拒绝 | SEM_15_11_02_099 | ✅ |
-| 运行时验证 | SEM_15_11_02_100 | ✅ |
-
----
-
-## 执行过程异常修复记录
-
-（无异常，一次通过）
-
----
-
-## 后续运行命令
-
-```bash
-cd doc/15_Semantic_Rules/ets_cases/15.11.2_Overload_Set_for_Functions
-# 手动验证用例
-```
-
----
-
-**报告生成时间**：2026-06-22
-**报告状态**：✅ 全部通过
+## Issues Found
+无
 
 ## 测试环境
 - **编译器**：ArkTS static_core (es2panda)

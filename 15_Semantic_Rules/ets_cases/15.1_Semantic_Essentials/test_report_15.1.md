@@ -34,7 +34,7 @@
 | SEM_15_01_019 | SEM_15_01_00_013_PASS_string_plus_nullish.ets | 字符串 + nullish | ✅ compile-pass | ✅ |
 | SEM_15_01_020 | SEM_15_01_00_014_PASS_explicit_T_number.ets | 显式 T 扩展 number | ✅ compile-pass | ✅ |
 | SEM_15_01_021 | SEM_15_01_00_015_PASS_SMART_FUNC_instanceof_narrowing.ets | instanceof 缩小 | ✅ compile-pass | ✅ |
-| SEM_15_01_100 | SEM_15_01_100.ets | 语义基础：类型注解变量声明 | ✅ compile-pass | ✅ |
+| SEM_15_01_016 | SEM_15_01_00_016_PASS_type_annotated_declaration.ets | 语义基础：类型注解变量声明 | ✅ compile-pass | ✅ |
 
 ### 3.2 compile-fail 用例（8 个）
 | 编号 | 用例文件 | 测试点 | 预期结果 | 实际结果 |

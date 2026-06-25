@@ -194,7 +194,7 @@ GEN_05_01_03_107_FAIL_CALLBACK_RETURN_GAP
 | `5.1.2_Type_Parameter_Default` | 4 | 2 | 2 | 8 |
 | `5.1.3_Type_Parameter_Variance` | 8 | 8 | 0 | 16 |
 | `5.1.4_Wildcard_Type` | 2 | 8 | 0 | 10 |
-| `5.2.1_Type_Arguments` | 5 | 1 | 1 | 7 |
+| `5.2_Generics_Instantiations/5.2.1_Type_Arguments` | 5 | 1 | 1 | 7 |
 | `5.2.2_Explicit_Generic_Instantiations` | 5 | 3 | 1 | 9 |
 | `5.2.3_Implicit_Generic_Instantiations` | 3 | 3 | 1 | 7 |
 

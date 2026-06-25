@@ -1,70 +1,47 @@
-# 15.13.1 Static Initialization Safety - 测试报告
+# 15.13.1 Static Initialization Safety - Test Report
 
-## 总体统计
+## Execution Overview
+| Metric | Value |
+|---|---|
+| Total Cases | 3 |
+| Passed | 3 |
+| Failed | 0 |
+| Pass Rate | 100% |
 
-| 分类 | 总数 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 1 | 1 | 0 | 100% |
-| compile-fail | 1 | 1 | 0 | 100% |
-| runtime（真实执行） | 1 | 1 | 0 | 100% |
-| **总计** | **3** | **3** | **0** | **100%** |
+## Case List
+| ID | Case File | Type | Result |
+|---|---|---|---|
+| SEM_15_13_01_001_PASS_STATIC_INIT | SEM_15_13_01_001_PASS_STATIC_INIT.ets | compile-pass | ✅ |
+| SEM_15_13_01_100_FAIL_STATIC_FORWARD_REF | SEM_15_13_01_100_FAIL_STATIC_FORWARD_REF.ets | compile-fail | ✅ |
+| SEM_15_13_01_200_RUNTIME_STATIC_INIT | SEM_15_13_01_200_RUNTIME_STATIC_INIT.ets | runtime | ✅ |
 
-> ✅ **执行时间**：2026-06-22
-> ✅ **执行环境**：ArkTS static_core
+## Result Statistics
+| Category | Count | Pass | Fail |
+|---|---|---|---|
+| compile-pass | 1 | 1 | 0 |
+| compile-fail | 1 | 1 | 0 |
+| runtime | 1 | 1 | 0 |
+| **Total** | **3** | **3** | **0** |
 
----
+## Detailed Results
 
-## 详细执行结果
+### compile-pass (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_13_01_001_PASS_STATIC_INIT | SEM_15_13_01_001_PASS_STATIC_INIT.ets | compile-pass | compile-pass | ✅ |
 
-### compile-pass (1 个)
+### compile-fail (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_13_01_100_FAIL_STATIC_FORWARD_REF | SEM_15_13_01_100_FAIL_STATIC_FORWARD_REF.ets | compile-fail | compile-fail | ✅ |
 
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_13_01_001_PASS_STATIC_INIT | 静态初始化安全性验证 | ✅ PASS |
+### runtime (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_13_01_200_RUNTIME_STATIC_INIT | SEM_15_13_01_200_RUNTIME_STATIC_INIT.ets | runtime | runtime | ✅ |
 
-### compile-fail (1 个)
-
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_13_01_100_FAIL_STATIC_FORWARD_REF | 静态初始化前向引用拒绝 | ✅ PASS (预期编译失败) |
-
-### runtime (1 个)
-
-| # | 用例 ID | 验证内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_13_01_200_RUNTIME_STATIC_INIT | 静态初始化运行时顺序 | ✅ PASS |
-
----
-
-## 测试覆盖分析
-
-### 覆盖的 Spec 要点
-
-| Spec 要点 | 覆盖用例 | 状态 |
-|-----------|----------|------|
-| 前向引用拒绝 | 010_FAIL | ✅ |
-| 静态初始化安全 | 001_PASS | ✅ |
-| 运行时初始化顺序 | 002_RUNTIME | ✅ |
-
----
-
-## 执行过程异常修复记录
-
-（无异常，一次通过）
-
----
-
-## 后续运行命令
-
-```bash
-cd /path/to/test-project-610
-# 运行 15.13.1 Static Initialization Safety 测试用例
-```
-
----
-
-**报告生成时间**：2026-06-22
-**报告状态**：✅ 全部通过
+## Issues Found
+无
 
 ## 测试环境
 - **编译器**：ArkTS static_core (es2panda)

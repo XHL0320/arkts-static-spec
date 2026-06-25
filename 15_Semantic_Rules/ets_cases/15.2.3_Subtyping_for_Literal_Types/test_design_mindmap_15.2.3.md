@@ -15,9 +15,13 @@
 
 | 用例 ID | 类型 | 测试点 | 对应 Spec 章节 |
 |---------|------|--------|----------------|
-| SEM_15_02_004_PASS_STRING_LITERAL_SUBTYPE | compile-pass | 验证字符串字面量类型是其基础类型 string 的子类型 | 15.2.3 |
-| SEM_15_02_012_FAIL_INT_SUBTYPE_GAP | compile-fail | 验证 int 不是 number 的子类型：字面量不应被提升为 number | 15.2.3 |
-| SEM_15_02_018_RUNTIME_LITERAL | runtime | 验证字符串字面量子类型运行时行为 | 15.2.3 |
+| SEM_15_02_03_001_PASS_STRING_LITERAL_SUBTYPE | compile-pass | 验证字符串字面量类型是其基础类型 string 的子类型 | 15.2.3 |
+| SEM_15_02_03_002_PASS_int_widens_to_number | compile-pass | 验证 int 字面量隐式拓宽为 number | 15.2.3 |
+| SEM_15_02_03_003_PASS_string_literal_override_subtype | compile-pass | 验证字符串字面量在覆写场景中的子类型关系 | 15.2.3 |
+| SEM_15_02_03_100_FAIL_STRING_LITERAL_NOT_INT | compile-fail | 验证字符串字面量不是 int 的子类型 | 15.2.3 |
+| SEM_15_02_03_101_FAIL_INT_LITERAL_NOT_STRING | compile-fail | 验证 int 字面量不是 string 的子类型 | 15.2.3 |
+| SEM_15_02_03_102_FAIL_BOOLEAN_LITERAL_NOT_NUMBER | compile-fail | 验证 boolean 字面量不是 number 的子类型 | 15.2.3 |
+| SEM_15_02_03_200_RUNTIME_LITERAL | runtime | 验证字符串字面量子类型运行时行为 | 15.2.3 |
 
 ## 测试设计思路
 

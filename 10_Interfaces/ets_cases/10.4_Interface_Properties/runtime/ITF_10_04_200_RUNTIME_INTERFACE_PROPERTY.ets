@@ -14,4 +14,6 @@ class Person implements Named {
 function main(): void {
     let p: Person = new Person();
     if (p.name != "Alice") throw new Error("assertion failed: " + p.name);
+
+    console.log("verified");
 }

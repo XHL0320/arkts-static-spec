@@ -3,8 +3,8 @@
 ## Execution Overview
 | Metric | Value |
 |--------|-------|
-| Total Cases | 47 |
-| Passed | 47 |
+| Total Cases | 49 |
+| Passed | 49 |
 | Failed | 0 |
 | Pass Rate | 100% |
 
@@ -12,7 +12,7 @@
 | Category | Count | Pass | Fail |
 |----------|-------|------|------|
 | compile-pass | 22 | 22 | 0 |
-| compile-fail | 20 | 20 | 0 |
+| compile-fail | 22 | 22 | 0 |
 | runtime | 5 | 5 | 0 |
 | **Total** | **47** | **47** | **0** |
 

@@ -10,7 +10,7 @@
 
 | Category | Count | Status |
 |----------|:-----:|:------:|
-| compile-pass | 4 | ✅ |
-| compile-fail | 2 | ✅ |
+| compile-pass | 5 | ✅ |
+| compile-fail | 4 | ✅ |
 | runtime | 1 | ✅ |
 | **Total** | **7** | ✅ |

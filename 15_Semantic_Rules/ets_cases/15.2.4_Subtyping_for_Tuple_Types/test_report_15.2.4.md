@@ -1,93 +1,60 @@
-# 15.2.4 Subtyping for Tuple Types - 测试报告
+# 15.2.4 Subtyping for Tuple Types - Test Report
 
-## 测试概述
+## Execution Overview
+| Metric | Value |
+|---|---|
+| Total Cases | 9 |
+| Passed | 9 |
+| Failed | 0 |
+| Pass Rate | 100% |
 
-**测试章节**: 15.2.4 Subtyping for Tuple Types  
-**测试时间**: 2026-06-22  
-**测试环境**: DevEco Studio 5.0.3.510 + ArkTS 5.0  
-**测试用例数**: 3 个（1 个 compile-pass，1 个 compile-fail，1 个 runtime）
+## Case List
+| ID | Case File | Type | Result |
+|---|---|---|---|
+| SEM_15_02_04_001_PASS_TUPLE_IDENTITY | SEM_15_02_04_001_PASS_TUPLE_IDENTITY.ets | compile-pass | ✅ |
+| SEM_15_02_04_002_PASS_empty_tuple_from_number | SEM_15_02_04_002_PASS_empty_tuple_from_number.ets | compile-pass | ✅ |
+| SEM_15_02_04_003_PASS_prefix_tuple_subtype | SEM_15_02_04_003_PASS_prefix_tuple_subtype.ets | compile-pass | ✅ |
+| SEM_15_02_04_004_PASS_tuple_longer_to_shorter | SEM_15_02_04_004_PASS_tuple_longer_to_shorter.ets | compile-pass | ✅ |
+| SEM_15_02_04_100_FAIL_tuple_element_mismatch | SEM_15_02_04_100_FAIL_tuple_element_mismatch.ets | compile-fail | ✅ |
+| SEM_15_02_04_101_FAIL_tuple_shorter_to_longer | SEM_15_02_04_101_FAIL_tuple_shorter_to_longer.ets | compile-fail | ✅ |
+| SEM_15_02_04_102_FAIL_tuple_length_mismatch | SEM_15_02_04_102_FAIL_tuple_length_mismatch.ets | compile-fail | ✅ |
+| SEM_15_02_04_103_FAIL_tuple_element_type_mismatch | SEM_15_02_04_103_FAIL_tuple_element_type_mismatch.ets | compile-fail | ✅ |
+| SEM_15_02_04_200_RUNTIME_tuple_subtype | SEM_15_02_04_200_RUNTIME_tuple_subtype.ets | runtime | ✅ |
 
-## 测试用例明细
+## Result Statistics
+| Category | Count | Pass | Fail |
+|---|---|---|---|
+| compile-pass | 4 | 4 | 0 |
+| compile-fail | 4 | 4 | 0 |
+| runtime | 1 | 1 | 0 |
+| **Total** | **9** | **9** | **0** |
 
-### 1. SEM_15_02_008_PASS_TUPLE_IDENTITY (compile-pass)
+## Detailed Results
 
-**测试目标**: 验证元组类型的子类型关系：相同结构元组 <: 自身
+### compile-pass (4/4 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_02_04_001_PASS_TUPLE_IDENTITY | SEM_15_02_04_001_PASS_TUPLE_IDENTITY.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_02_04_002_PASS_empty_tuple_from_number | SEM_15_02_04_002_PASS_empty_tuple_from_number.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_02_04_003_PASS_prefix_tuple_subtype | SEM_15_02_04_003_PASS_prefix_tuple_subtype.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_02_04_004_PASS_tuple_longer_to_shorter | SEM_15_02_04_004_PASS_tuple_longer_to_shorter.ets | compile-pass | compile-pass | ✅ |
 
-**测试代码**:
-```arkts
-function main(): void {
-    let t1: [int, string] = [1, "a"];
-    let t2: [int, string] = t1;
-    console.log(`t2[0]=${t2[0]}, t2[1]=${t2[1]}`);
-}
-```
+### compile-fail (4/4 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_02_04_100_FAIL_tuple_element_mismatch | SEM_15_02_04_100_FAIL_tuple_element_mismatch.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_02_04_101_FAIL_tuple_shorter_to_longer | SEM_15_02_04_101_FAIL_tuple_shorter_to_longer.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_02_04_102_FAIL_tuple_length_mismatch | SEM_15_02_04_102_FAIL_tuple_length_mismatch.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_02_04_103_FAIL_tuple_element_type_mismatch | SEM_15_02_04_103_FAIL_tuple_element_type_mismatch.ets | compile-fail | compile-fail | ✅ |
 
-**预期结果**: 编译通过  
-**实际结果**: ✅ 编译通过  
-**结论**: 通过
+### runtime (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_02_04_200_RUNTIME_tuple_subtype | SEM_15_02_04_200_RUNTIME_tuple_subtype.ets | runtime | runtime | ✅ |
 
-### 2. SEM_15_02_04_099 (compile-fail)
+## Issues Found
+无
 
-**测试目标**: 验证元组元素类型不匹配时，不能赋值
-
-**测试代码**:
-```arkts
-function main(): void {
-    let t1: [int, string] = [1, "a"];
-    let t2: [string, int] = t1; // 应报错：元素类型不匹配
-}
-```
-
-**预期结果**: 编译失败  
-**实际结果**: ✅ 编译失败（ArkTS 正确拒绝类型不匹配的元组赋值）  
-**结论**: 通过
-
-### 3. SEM_15_02_04_100 (runtime)
-
-**测试目标**: 验证元组子类型运行时行为
-
-**测试代码**:
-```arkts
-function main(): void {
-    let t1: [int, string] = [1, "a"];
-    let t2: [int, string] = t1;
-    console.log(`t2[0]=${t2[0]}, t2[1]=${t2[1]}`); // 预期: t2[0]=1, t2[1]=a
-}
-```
-
-**预期结果**: 运行时正常，输出 "t2[0]=1, t2[1]=a"  
-**实际结果**: ✅ 运行时正常  
-**结论**: 通过
-
-## 测试统计
-
-| 类型 | 用例数 | 通过 | 失败 | 通过率 |
-|------|--------|------|------|--------|
-| compile-pass | 1 | 1 | 0 | 100% |
-| compile-fail | 1 | 1 | 0 | 100% |
-| runtime | 1 | 1 | 0 | 100% |
-| **总计** | **3** | **3** | **0** | **100%** |
-
-## 关键发现
-
-1. ✅ ArkTS 正确支持元组身份子类型：相同结构元组可以互相赋值
-2. ✅ ArkTS 正确拒绝元组元素类型不匹配的赋值
-3. ✅ 运行时行为符合预期，元组的长度和元素类型保留
-
-## 问题与建议
-
-**问题**: 
-1. ArkTS 是否支持元组协变/逆变？需要确认规范
-2. 元组长度不匹配的情况未测试
-
-**建议**: 
-1. 明确 ArkTS 是否支持元组协变/逆变，并在规范中说明
-2. 增加元组长度不匹配的测试用例
-3. 增加元组协变/逆变的测试用例（如果支持）
-
-## 测试环境详情
-
-- **ArkTS 编译器版本**: 5.0.3.510
-- **测试设备**: DevEco Studio Simulator
-- **Java 版本**: OpenJDK 21.0.1
-- **Swift 版本**: Swift 5.9.2 + Xcode 15.2
+## 测试环境
+- **编译器**：ArkTS static_core (es2panda)
+- **测试日期**：2026-06-23

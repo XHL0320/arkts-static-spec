@@ -81,7 +81,7 @@ mindmap
         Wildcard declaration
       Runtime
         instanceof wildcard
-    5.2.1_Type_Arguments
+    5.2_Generics_Instantiations/5.2.1_Type_Arguments
       Type Arguments
         Number type arg
         Union type arg

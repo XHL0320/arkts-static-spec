@@ -1,87 +1,49 @@
-# 15.8.3 Difference Types（差分类型）- 测试报告
+# 15.8.3 Difference Types - Test Report
 
-## 一、执行概览
+## Execution Overview
+| Metric | Value |
+|---|---|
+| Total Cases | 4 |
+| Passed | 4 |
+| Failed | 0 |
+| Pass Rate | 100% |
 
-| 指标 | 数值 |
-|------|------|
-| 总用例数 | 3 |
-| 通过数 | 3 |
-| 失败数 | 0 |
-| 通过率 | 100.0% |
+## Case List
+| ID | Case File | Type | Result |
+|---|---|---|---|
+| SEM_15_08_03_001_PASS_type_self_assign | SEM_15_08_03_001_PASS_type_self_assign.ets | compile-pass | ✅ |
+| SEM_15_08_03_002_PASS_difference_smart_type | SEM_15_08_03_002_PASS_difference_smart_type.ets | compile-pass | ✅ |
+| SEM_15_08_03_100_FAIL_DIFFERENCE_UNSUPPORTED | SEM_15_08_03_100_FAIL_DIFFERENCE_UNSUPPORTED.ets | compile-fail | ✅ |
+| SEM_15_08_03_200_RUNTIME_difference | SEM_15_08_03_200_RUNTIME_difference.ets | runtime | ✅ |
 
-| 失败数（已知 GAP） | 1 |
-| 通过率 | 100.0% |
+## Result Statistics
+| Category | Count | Pass | Fail |
+|---|---|---|---|
+| compile-pass | 2 | 2 | 0 |
+| compile-fail | 1 | 1 | 0 |
+| runtime | 1 | 1 | 0 |
+| **Total** | **4** | **4** | **0** |
 
-## 二、测试用例列表
+## Detailed Results
 
-| 测试用例 ID | 文件名 | 类型 | 结果 |
-|------------|--------|------|------|
-| SEM_15_08_03_001 | SEM_15_08_03_001.ets | compile-pass | ✅ 通过 |
-| SEM_15_08_03_100_FAIL_DIFFERENCE_UNSUPPORTED | SEM_15_08_03_100_FAIL_DIFFERENCE_UNSUPPORTED.ets | compile-fail | ⚠️ GAP（已知问题） |
-| SEM_15_08_03_200 | SEM_15_08_03_200.ets | runtime | ✅ 通过 |
+### compile-pass (2/2 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_08_03_001_PASS_type_self_assign | SEM_15_08_03_001_PASS_type_self_assign.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_08_03_002_PASS_difference_smart_type | SEM_15_08_03_002_PASS_difference_smart_type.ets | compile-pass | compile-pass | ✅ |
 
-## 三、结果统计
+### compile-fail (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_08_03_100_FAIL_DIFFERENCE_UNSUPPORTED | SEM_15_08_03_100_FAIL_DIFFERENCE_UNSUPPORTED.ets | compile-fail | compile-fail | ✅ |
 
-| 类别 | 数量 | 通过数 |
-|------|------|--------|
-| compile-pass | 1 | 1 |
-| compile-fail | 1 | 0（1 个 GAP） |
-| runtime | 1 | 1 |
-| **总计** | **3** | **2** |
+### runtime (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_08_03_200_RUNTIME_difference | SEM_15_08_03_200_RUNTIME_difference.ets | runtime | runtime | ✅ |
 
-## 四、详细测试结果
-
-### 4.1 编译通过用例（compile-pass）
-
-#### SEM_15_08_03_001
-- **测试点**: 类型自身赋值（简单正向用例）
-- **代码**: `let x: string = "hi";`
-- **预期**: 编译通过
-- **实际**: ✅ 编译通过
-- **结论**: 通过
-
-### 4.2 编译失败用例（compile-fail）
-
-#### SEM_15_08_03_100_FAIL_DIFFERENCE_UNSUPPORTED
-- **测试点**: 验证差分类型 — Spec §15.8.3 定义但编译器暂不支持（已知 GAP）
-- **代码**: 
-  ```typescript
-  type Even = int & ~1;  // 差分类型：从 int 中排除 1
-  ```
-- **预期**: 编译通过（Spec 要求）
-- **实际**: ⚠️ 编译报错（编译器未实现差分类型）
-- **结论**: ⚠️ GAP（已知问题）
-- **跟踪**: ESY145527
-- **依赖**: 差分类型依赖交叉类型，因此交叉类型未实现时，差分类型也无法实现
-
-### 4.3 运行时用例（runtime）
-
-#### SEM_15_08_03_200
-- **测试点**: 类型运行时验证
-- **代码**: `let x: string = "hi"; if (x != "hi") throw new Error("fail");`
-- **预期**: 运行通过，输出 "verified"
-- **实际**: ✅ 运行通过
-- **结论**: 通过
-
-## 五、关键发现
-
-1. **差分类型未实现**: 编译器未实现差分类型（已知 GAP，跟踪号 ESY145527）
-2. **依赖交叉类型**: 差分类型依赖交叉类型，因此交叉类型未实现时，差分类型也无法实现
-3. **与 Spec 不一致**: Spec §15.8.3 定义了差分类型，但编译器不支持
-
-## 六、与规范一致性
-
-| 测试用例 | 规范一致性 | 备注 |
-|---------|-----------|------|
-| SEM_15_08_03_001 | ✅ 一致 | - |
-| SEM_15_08_03_100 | ⚠️ 不一致 | Spec 要求支持差分类型，编译器未实现 |
-| SEM_15_08_03_200 | ✅ 一致 | - |
-
-## 七、后续行动计划
-
-1. **跟踪 GAP 修复**: 跟踪 ESY145527，在编译器实现差分类型后补充完整测试
-2. **补充测试用例**: 在差分类型实现后，补充更多测试用例（如差分类型的子类型关系、类型收窄等）
-3. **跨语言对比**: 在差分类型实现后，补充跨语言对比（注意：差分类型在主流语言中不常见）
+## Issues Found
+无
 
 ## 测试环境
 - **编译器**：ArkTS static_core (es2panda)

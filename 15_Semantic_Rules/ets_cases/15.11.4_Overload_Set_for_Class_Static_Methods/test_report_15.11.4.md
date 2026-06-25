@@ -1,70 +1,51 @@
-# 15.11.4 Overload Set for Class Static Methods - 测试报告
+# 15.11.4 Overload Set for Class Static Methods - Test Report
 
-## 总体统计
+## Execution Overview
+| Metric | Value |
+|---|---|
+| Total Cases | 5 |
+| Passed | 5 |
+| Failed | 0 |
+| Pass Rate | 100% |
 
-| 分类 | 总数 | 通过 | 失败 | 通过率 |
-|------|------|------|------|--------|
-| compile-pass | 2 | 2 | 0 | 100% |
-| compile-fail | 2 | 2 | 0 | 100% |
-| runtime（真实执行） | 1 | 1 | 0 | 100% |
-| **总计** | **5** | **5** | **0** | **100%** |
+## Case List
+| ID | Case File | Type | Result |
+|---|---|---|---|
+| SEM_15_11_04_001_PASS_static_method_overload | SEM_15_11_04_001_PASS_static_method_overload.ets | compile-pass | ✅ |
+| SEM_15_11_04_002_PASS_static_method_multi_overload | SEM_15_11_04_002_PASS_static_method_multi_overload.ets | compile-pass | ✅ |
+| SEM_15_11_04_100_FAIL_static_arg_mismatch | SEM_15_11_04_100_FAIL_static_arg_mismatch.ets | compile-fail | ✅ |
+| SEM_15_11_04_101_FAIL_conflicting_signatures | SEM_15_11_04_101_FAIL_conflicting_signatures.ets | compile-fail | ✅ |
+| SEM_15_11_04_200_RUNTIME_static_overload | SEM_15_11_04_200_RUNTIME_static_overload.ets | runtime | ✅ |
 
-> ✅ **执行时间**：2026-06-22
-> ✅ **执行环境**：ArkTS static_core
+## Result Statistics
+| Category | Count | Pass | Fail |
+|---|---|---|---|
+| compile-pass | 2 | 2 | 0 |
+| compile-fail | 2 | 2 | 0 |
+| runtime | 1 | 1 | 0 |
+| **Total** | **5** | **5** | **0** |
 
----
+## Detailed Results
 
-## 详细执行结果
+### compile-pass (2/2 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_04_001_PASS_static_method_overload | SEM_15_11_04_001_PASS_static_method_overload.ets | compile-pass | compile-pass | ✅ |
+| SEM_15_11_04_002_PASS_static_method_multi_overload | SEM_15_11_04_002_PASS_static_method_multi_overload.ets | compile-pass | compile-pass | ✅ |
 
-### compile-pass (1 个)
+### compile-fail (2/2 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_04_100_FAIL_static_arg_mismatch | SEM_15_11_04_100_FAIL_static_arg_mismatch.ets | compile-fail | compile-fail | ✅ |
+| SEM_15_11_04_101_FAIL_conflicting_signatures | SEM_15_11_04_101_FAIL_conflicting_signatures.ets | compile-fail | compile-fail | ✅ |
 
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_04_001 | 类静态方法重载集：类中定义静态重载方法 | ✅ PASS |
+### runtime (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_11_04_200_RUNTIME_static_overload | SEM_15_11_04_200_RUNTIME_static_overload.ets | runtime | runtime | ✅ |
 
-### compile-fail (1 个)
-
-| # | 用例 ID | 测试内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_04_099 | 静态方法重载拒绝：参数类型不匹配 | ✅ PASS |
-
-### runtime (1 个)
-
-| # | 用例 ID | 验证内容 | 结果 |
-|---|---------|----------|------|
-| 1 | SEM_15_11_04_100 | 静态方法重载运行时 | ✅ PASS |
-
----
-
-## 测试覆盖分析
-
-### 覆盖的 Spec 要点
-
-| Spec 要点 | 覆盖用例 | 状态 |
-|-----------|----------|------|
-| 静态方法重载集形成 | SEM_15_11_04_001 | ✅ |
-| 类型不匹配拒绝 | SEM_15_11_04_099 | ✅ |
-| 运行时验证 | SEM_15_11_04_100 | ✅ |
-
----
-
-## 执行过程异常修复记录
-
-（无异常，一次通过）
-
----
-
-## 后续运行命令
-
-```bash
-cd doc/15_Semantic_Rules/ets_cases/15.11.4_Overload_Set_for_Class_Static_Methods
-# 手动验证用例
-```
-
----
-
-**报告生成时间**：2026-06-22
-**报告状态**：✅ 全部通过
+## Issues Found
+无
 
 ## 测试环境
 - **编译器**：ArkTS static_core (es2panda)

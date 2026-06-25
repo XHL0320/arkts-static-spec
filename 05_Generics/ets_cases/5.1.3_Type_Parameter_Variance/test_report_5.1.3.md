@@ -12,8 +12,8 @@
 |----------|:-----:|:------:|
 | compile-pass | 10 | ✅ |
 | compile-fail | 6 | ✅ |
-| runtime | 0 | ✅ |
-| **Total** | **16** | ✅ |
+| runtime | 1 | ✅ |
+| **Total** | **17** | ✅ |
 
 ## Notes
 - All cases pass. GEN_05_01_03_009 and GEN_05_01_03_010 were reclassified from compile-fail to compile-pass per ArkTS spec variance interleaving rules.

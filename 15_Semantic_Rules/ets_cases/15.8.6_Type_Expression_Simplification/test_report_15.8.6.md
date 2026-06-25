@@ -1,76 +1,47 @@
-# 15.8.6 Type Expression Simplification（类型表达式简化）- 测试报告
+# 15.8.6 Type Expression Simplification - Test Report
 
-## 一、执行概览
+## Execution Overview
+| Metric | Value |
+|---|---|
+| Total Cases | 3 |
+| Passed | 3 |
+| Failed | 0 |
+| Pass Rate | 100% |
 
-| 指标 | 数值 |
-|------|------|
-| 总用例数 | 3 |
-| 通过数 | 3 |
-| 失败数 | 0 |
-| 通过率 | 100.0% |
+## Case List
+| ID | Case File | Type | Result |
+|---|---|---|---|
+| SEM_15_08_06_001_PASS_union_simplify | SEM_15_08_06_001_PASS_union_simplify.ets | compile-pass | ✅ |
+| SEM_15_08_06_100_FAIL_type_mismatch | SEM_15_08_06_100_FAIL_type_mismatch.ets | compile-fail | ✅ |
+| SEM_15_08_06_200_RUNTIME_type_simplify | SEM_15_08_06_200_RUNTIME_type_simplify.ets | runtime | ✅ |
 
-## 二、测试用例列表
+## Result Statistics
+| Category | Count | Pass | Fail |
+|---|---|---|---|
+| compile-pass | 1 | 1 | 0 |
+| compile-fail | 1 | 1 | 0 |
+| runtime | 1 | 1 | 0 |
+| **Total** | **3** | **3** | **0** |
 
-| 测试用例 ID | 文件名 | 类型 | 结果 |
-|------------|--------|------|------|
-| SEM_15_08_06_001 | SEM_15_08_06_001.ets | compile-pass | ✅ 通过 |
-| SEM_15_08_06_100 | SEM_15_08_06_200.ets | compile-fail | ✅ 通过 |
-| SEM_15_08_06_200 | SEM_15_08_06_200.ets | runtime | ✅ 通过 |
+## Detailed Results
 
-## 三、结果统计
+### compile-pass (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_08_06_001_PASS_union_simplify | SEM_15_08_06_001_PASS_union_simplify.ets | compile-pass | compile-pass | ✅ |
 
-| 类别 | 数量 | 通过数 |
-|------|------|--------|
-| compile-pass | 1 | 1 | 0 | 100% |
-| compile-fail | 1 | 1 | 0 | 100% |
-| runtime | 1 | 1 | 0 | 100% |
-| **总计** | **3** | **3** | **0** | **100%** | **3** | **3** |
+### compile-fail (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_08_06_100_FAIL_type_mismatch | SEM_15_08_06_100_FAIL_type_mismatch.ets | compile-fail | compile-fail | ✅ |
 
-## 四、详细测试结果
+### runtime (1/1 passed)
+| ID | Case File | Expected | Actual | Status |
+|---|---|---|---|---|
+| SEM_15_08_06_200_RUNTIME_type_simplify | SEM_15_08_06_200_RUNTIME_type_simplify.ets | runtime | runtime | ✅ |
 
-### 4.1 编译通过用例（compile-pass）
-
-#### SEM_15_08_06_001
-- **测试点**: 类型表达式简化：联合类型简化
-- **代码**: 
-  ```typescript
-  function main(): void {
-      let x: int|int = 42;  // 联合类型简化：int|int → int
-      let y: int = x;  // 可以赋值
-      console.log(`${y}`);
-  }
-  ```
-- **预期**: 编译通过
-- **实际**: ✅ 编译通过
-- **结论**: 通过
-
-### 4.2 编译失败用例（compile-fail）
-
-#### SEM_15_08_06_200
-- **测试点**: 类型简化拒绝：类型不能赋值
-- **代码**: `let x: int = "s";`
-- **预期**: 编译报错
-- **实际**: ✅ 编译报错（类型不匹配）
-- **结论**: 通过
-
-### 4.3 运行时用例（runtime）
-
-#### SEM_15_08_06_200
-- **测试点**: 类型简化运行时验证
-- **代码**: `let x = 42; if (x != 42) throw new Error("fail");`
-- **预期**: 运行通过，输出 "verified"
-- **实际**: ✅ 运行通过
-- **结论**: 通过
-
-## 五、关键发现
-
-1. **联合类型简化正确**: ArkTS 正确简化联合类型（`int|int` 简化为 `int`）
-2. **类型安全**: 编译器正确拒绝类型不兼容的赋值
-3. **与 TypeScript 一致**: TypeScript 也支持联合类型简化
-
-## 六、与规范一致性
-
-所有测试用例均与 ArkTS 规范 15.8.6 节保持一致。
+## Issues Found
+无
 
 ## 测试环境
 - **编译器**：ArkTS static_core (es2panda)

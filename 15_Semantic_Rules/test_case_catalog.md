@@ -1,7 +1,7 @@
 # 15 Semantic Rules — 测试用例目录
 
 **生成日期：** 2026-06-23
-**共计：** 870 个测试用例
+**共计：** 746 个测试用例
 
 > 此章节按规则类别组织，用例文件名前缀 `SEM_`，存放于各规则子章节的 `compile-pass/` / `compile-fail/` / `runtime/` 目录。
 
@@ -105,11 +105,11 @@
 
 ---
 
-## 15.2 Subtyping（128 用例）
+## 15.2 Subtyping（136 用例）
 
 ### 15.2.1 Non-Generic Classes and Interfaces（7）
 ### 15.2.2 Generic Classes and Interfaces（14）
-### 15.2.3 Literal Types（4）
+### 15.2.3 Literal Types（7）
 ### 15.2.4 Tuple Types（9）
 ### 15.2.5 Union Types（16）
 ### 15.2.6 Function Types（12）
@@ -205,7 +205,7 @@
 | 主章节 | compile-pass | compile-fail | runtime | 合计 |
 |--------|:-----------:|:-----------:|:-------:|:----:|
 | 15.1 Semantic Essentials | 45 | 18 | 10 | 73 |
-| 15.2 Subtyping | 69 | 53 | 11 | 133 |
+| 15.2 Subtyping | 69 | 56 | 11 | 136 |
 | 15.3 Type Identity | 17 | 8 | 2 | 27 |
 | 15.4 Assignability | 17 | 11 | 2 | 30 |
 | 15.5 Invariance/etc | 13 | 9 | 2 | 24 |
