@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_04_008_RUNTIME_DISPATCH
+ * @id EXP2_NameConflict_Dispatch_runtime
  * @expect runtime
  * @section 17.9.4
  * @design overload 名与方法同名时不产生歧义，运行时正确分发

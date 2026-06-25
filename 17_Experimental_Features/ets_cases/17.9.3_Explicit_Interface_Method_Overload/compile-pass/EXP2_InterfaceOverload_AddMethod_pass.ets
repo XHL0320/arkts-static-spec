@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_03_004_PASS_ADD_METHOD
+ * @id EXP2_InterfaceOverload_AddMethod_pass
  * @expect compile-pass
  * @section 17.9.3
  * @design override 接口 overload 时可添加新方法

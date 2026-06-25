@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_000_003_PASS_ORDERED
+ * @id EXP2_Overload_Ordered_pass
  * @expect compile-pass
  * @section 17.9
  * @design overload 按声明顺序检查匹配

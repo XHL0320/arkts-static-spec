@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_05_002_PASS_NAMED_CONSTRUCTORS
+ * @id EXP2_CtorOverload_NamedConstructors_pass
  * @expect compile-pass
  * @section 17.9.5
  * @design overload constructor 包含命名构造函数

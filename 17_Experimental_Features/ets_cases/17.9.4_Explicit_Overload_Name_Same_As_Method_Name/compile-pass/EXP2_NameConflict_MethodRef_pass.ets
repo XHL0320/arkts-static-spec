@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_04_005_PASS_METHOD_REF
+ * @id EXP2_NameConflict_MethodRef_pass
  * @expect compile-pass
  * @section 17.9.4
  * @design overload 名与实际方法名共存，可分别使用

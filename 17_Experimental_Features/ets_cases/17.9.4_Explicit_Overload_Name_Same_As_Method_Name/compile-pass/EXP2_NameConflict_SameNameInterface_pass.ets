@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_04_003_PASS_SAME_NAME_INTERFACE
+ * @id EXP2_NameConflict_SameNameInterface_pass
  * @expect compile-pass
  * @section 17.9.4
  * @design 接口中 overload 名与接口方法同名

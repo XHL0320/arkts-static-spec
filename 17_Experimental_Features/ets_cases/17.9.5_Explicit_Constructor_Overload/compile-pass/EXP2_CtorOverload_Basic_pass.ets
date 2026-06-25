@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_05_001_PASS_BASIC
+ * @id EXP2_CtorOverload_Basic_pass
  * @expect compile-pass
  * @section 17.9.5
  * @design 构造函数 overload 基本声明（命名构造函数在列表中，匿名构造函数隐式优先）

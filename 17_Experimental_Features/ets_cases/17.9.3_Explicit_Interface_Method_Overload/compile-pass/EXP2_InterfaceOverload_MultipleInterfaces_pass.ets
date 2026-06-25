@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_03_005_PASS_MULTIPLE_INTERFACES
+ * @id EXP2_InterfaceOverload_MultipleInterfaces_pass
  * @expect compile-pass
  * @section 17.9.3
  * @design 实现多个接口，各有不同的 overload

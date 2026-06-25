@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_01_001_PASS_BASIC_TYPES
+ * @id EXP2_FuncOverload_BasicTypes_pass
  * @expect compile-pass
  * @section 17.9.1
  * @design overload 函数重载：不同参数类型(int/string/boolean/double)

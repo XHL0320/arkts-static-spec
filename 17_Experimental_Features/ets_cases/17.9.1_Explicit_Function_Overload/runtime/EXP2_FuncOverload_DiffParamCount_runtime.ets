@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_01_016_RUNTIME_DIFFERENT_PARAM_COUNT
+ * @id EXP2_FuncOverload_DiffParamCount_runtime
  * @expect runtime
  * @section 17.9.1
  * @design overload 按参数数量区分

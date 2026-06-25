@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_01_009_FAIL_NAME_SAME_NOT_IN_LIST
+ * @id EXP2_FuncOverload_NameSameNotInList_fail
  * @expect compile-fail
  * @section 17.9.1
  * @design overload 名与函数名相同但该函数不在列表中 — 编译错误

@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_05_004_PASS_DIFFERENT_PARAM_COUNT
+ * @id EXP2_CtorOverload_DifferentParamCount_pass
  * @expect compile-pass
  * @section 17.9.5
  * @design 多个构造函数按参数数量区分

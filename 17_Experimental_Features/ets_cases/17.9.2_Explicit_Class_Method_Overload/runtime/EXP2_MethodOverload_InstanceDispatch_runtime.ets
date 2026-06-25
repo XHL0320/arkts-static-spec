@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_02_016_RUNTIME_INSTANCE_DISPATCH
+ * @id EXP2_MethodOverload_InstanceDispatch_runtime
  * @expect runtime
  * @section 17.9.2
  * @design 类实例方法 overload 运行时调度

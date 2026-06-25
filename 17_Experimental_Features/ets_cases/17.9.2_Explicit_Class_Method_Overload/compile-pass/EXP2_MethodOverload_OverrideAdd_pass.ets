@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_02_006_PASS_OVERRIDE_ADD
+ * @id EXP2_MethodOverload_OverrideAdd_pass
  * @expect compile-pass
  * @section 17.9.2
  * @design 子类覆盖 overload 时可添加新方法

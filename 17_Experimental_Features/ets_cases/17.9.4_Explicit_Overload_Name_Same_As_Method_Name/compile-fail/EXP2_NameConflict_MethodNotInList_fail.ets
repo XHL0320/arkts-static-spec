@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_04_006_FAIL_METHOD_NOT_IN_LIST
+ * @id EXP2_NameConflict_MethodNotInList_fail
  * @expect compile-fail
  * @section 17.9.4
  * @design 同名方法存在但不在 overload 列表中 — 编译错误

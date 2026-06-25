@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_02_008_PASS_MULTI_OVERLOAD_CLASS
+ * @id EXP2_MethodOverload_MultiOverload_pass
  * @expect compile-pass
  * @section 17.9.2
  * @design 同一个类中可以有多个 overload 声明

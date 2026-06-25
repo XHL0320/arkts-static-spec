@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_03_001_PASS_BASIC
+ * @id EXP2_InterfaceOverload_Basic_pass
  * @expect compile-pass
  * @section 17.9.3
  * @design 接口中 overload 声明

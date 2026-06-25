@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_03_021_RUNTIME_VALUEARRAY_LENGTH
+ * @id EXP2_17_03_021_RUNTIME_LENGTH
  * @expect runtime
  * @section 17.3
  * @design 运行时验证 ValueArray 的 length 属性正确反映数组元素数量

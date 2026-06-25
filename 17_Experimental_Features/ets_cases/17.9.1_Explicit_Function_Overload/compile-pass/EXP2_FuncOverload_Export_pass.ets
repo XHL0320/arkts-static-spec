@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_01_004_PASS_EXPORT
+ * @id EXP2_FuncOverload_Export_pass
  * @expect compile-pass
  * @section 17.9.1
  * @design 导出 overload：所有重载函数必须导出

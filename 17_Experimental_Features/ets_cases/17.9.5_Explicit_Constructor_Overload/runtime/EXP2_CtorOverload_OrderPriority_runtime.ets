@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_05_012_RUNTIME_ORDER_PRIORITY
+ * @id EXP2_CtorOverload_OrderPriority_runtime
  * @expect runtime
  * @section 17.9.5
  * @design 匿名构造函数隐式放在列表首位，声明顺序决定匹配优先级

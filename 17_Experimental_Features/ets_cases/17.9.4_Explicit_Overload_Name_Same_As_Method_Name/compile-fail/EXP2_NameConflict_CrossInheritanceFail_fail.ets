@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_04_007_FAIL_CROSS_INHERITANCE_CONFLICT
+ * @id EXP2_NameConflict_CrossInheritanceFail_fail
  * @expect compile-fail
  * @section 17.9.4
  * @design 跨继承层次，父类方法不在子类 overload 列表中 — 编译错误

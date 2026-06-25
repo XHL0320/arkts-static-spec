@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_03_003_PASS_INHERIT
+ * @id EXP2_InterfaceOverload_Inherit_pass
  * @expect compile-pass
  * @section 17.9.3
  * @design 实现类不 override，继承接口 overload

@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_02_010_FAIL_INSTANCE_MISMATCH
+ * @id EXP2_MethodOverload_InstanceMismatch_fail
  * @expect compile-fail
  * @section 17.9.2
  * @design 实例 overload 不能包含 static 方法 — 编译错误

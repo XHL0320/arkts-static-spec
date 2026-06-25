@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_02_014_FAIL_SYNC_ASYNC_MISMATCH
+ * @id EXP2_MethodOverload_SyncAsyncMismatch_fail
  * @expect compile-fail
  * @section 17.9.2
  * @design 非 async overload 不能包含 async 方法

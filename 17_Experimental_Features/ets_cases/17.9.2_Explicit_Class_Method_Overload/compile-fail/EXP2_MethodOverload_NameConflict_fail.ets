@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_02_015_FAIL_OVERLOAD_NAME_CONFLICT
+ * @id EXP2_MethodOverload_NameConflict_fail
  * @expect compile-fail
  * @section 17.9.2
  * @design overload 名与方法同名但方法不在列表中 — 编译错误

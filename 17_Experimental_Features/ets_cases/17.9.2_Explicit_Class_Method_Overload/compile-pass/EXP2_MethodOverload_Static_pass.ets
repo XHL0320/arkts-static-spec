@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_02_002_PASS_STATIC
+ * @id EXP2_MethodOverload_Static_pass
  * @expect compile-pass
  * @section 17.9.2
  * @design static overload 包含 static 方法

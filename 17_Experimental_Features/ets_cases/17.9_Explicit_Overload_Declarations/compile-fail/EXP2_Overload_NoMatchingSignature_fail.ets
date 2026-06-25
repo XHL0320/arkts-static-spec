@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_000_006_FAIL_NO_MATCHING_SIGNATURE
+ * @id EXP2_Overload_NoMatchingSignature_fail
  * @expect compile-fail
  * @section 17.9
  * @design 调用 overload 但无匹配签名 — 编译时错误

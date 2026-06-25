@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_02_017_RUNTIME_STATIC_DISPATCH
+ * @id EXP2_MethodOverload_StaticDispatch_runtime
  * @expect runtime
  * @section 17.9.2
  * @design static overload 运行时调度

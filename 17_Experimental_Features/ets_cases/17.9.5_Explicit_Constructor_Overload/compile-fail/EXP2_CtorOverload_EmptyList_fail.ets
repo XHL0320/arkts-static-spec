@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_05_010_FAIL_EMPTY_LIST
+ * @id EXP2_CtorOverload_EmptyList_fail
  * @expect compile-fail
  * @section 17.9.5
  * @design overload constructor 列表不能为空

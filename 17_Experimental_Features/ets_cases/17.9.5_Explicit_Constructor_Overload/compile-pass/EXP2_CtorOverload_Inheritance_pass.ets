@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_05_007_PASS_INHERITANCE
+ * @id EXP2_CtorOverload_Inheritance_pass
  * @expect compile-pass
  * @section 17.9.5
  * @design 子类继承父类，子类自身有 overload constructor

@@ -1,4 +1,7 @@
-# 17 Experimental Features Test Design Mindmap
+# 17 实验特性 - 测试设计思维导图（章节级）
+
+**前缀：** `EXP2_`
+**覆盖汇总：** 533 cases（238P + 161F + 134R），最后编译验证 2026-06-25（es2panda `--extension=ets`，Linux native），异常 16 项见 [issue_report.md](issue_report.md)
 
 ## 测试分类
 - compile-pass: 正向编译用例

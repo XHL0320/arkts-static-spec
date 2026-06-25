@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_01_012_FAIL_OVERLOAD_NAME_AS_FUNC_REF
+ * @id EXP2_FuncOverload_AsFuncRef_fail
  * @expect compile-fail
  * @section 17.9.1
  * @design overload 名不在 Function Reference 中考虑

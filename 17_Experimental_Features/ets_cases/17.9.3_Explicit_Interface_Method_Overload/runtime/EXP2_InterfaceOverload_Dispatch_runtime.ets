@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_03_010_RUNTIME_DISPATCH
+ * @id EXP2_InterfaceOverload_Dispatch_runtime
  * @expect runtime
  * @section 17.9.3
  * @design 通过接口类型调用 overload

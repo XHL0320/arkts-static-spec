@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_03_008_FAIL_DUPLICATE_OVERLOAD_CONFLICT
+ * @id EXP2_InterfaceOverload_DuplicateOverload_fail
  * @expect compile-fail
  * @section 17.9.3
  * @design 多接口继承同名 overload 但实现类未 override — 编译错误

@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_01_006_PASS_MULTI_OVERLOAD
+ * @id EXP2_FuncOverload_MultiOverload_pass
  * @expect compile-pass
  * @section 17.9.1
  * @design 一个函数可以出现在多个 overload 声明中

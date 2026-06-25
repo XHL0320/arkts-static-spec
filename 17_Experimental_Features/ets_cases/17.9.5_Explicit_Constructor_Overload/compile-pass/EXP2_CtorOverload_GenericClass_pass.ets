@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_05_006_PASS_GENERIC_CLASS
+ * @id EXP2_CtorOverload_GenericClass_pass
  * @expect compile-pass
  * @section 17.9.5
  * @design 泛型类中的 overload constructor

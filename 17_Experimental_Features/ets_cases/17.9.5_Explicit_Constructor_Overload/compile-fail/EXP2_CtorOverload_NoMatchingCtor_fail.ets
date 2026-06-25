@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_05_009_FAIL_NO_MATCHING_CONSTRUCTOR
+ * @id EXP2_CtorOverload_NoMatchingCtor_fail
  * @expect compile-fail
  * @section 17.9.5
  * @design 调用 constructor overload 但无匹配签名 — 编译错误

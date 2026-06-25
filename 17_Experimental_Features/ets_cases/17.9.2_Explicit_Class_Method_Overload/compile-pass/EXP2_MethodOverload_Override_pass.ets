@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_02_005_PASS_OVERRIDE
+ * @id EXP2_MethodOverload_Override_pass
  * @expect compile-pass
  * @section 17.9.2
  * @design 子类覆盖父类 overload，必须列出所有父类方法

@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_000_001_PASS_BASIC_OVERLOAD_FUNC
+ * @id EXP2_Overload_BasicFunc_pass
  * @expect compile-pass
  * @section 17.9
  * @design 基本 overload 函数声明 — 编译时多态

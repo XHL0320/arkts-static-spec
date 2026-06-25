@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_03_009_FAIL_NOT_IMPLEMENT_ALL
+ * @id EXP2_InterfaceOverload_NotImplementAll_fail
  * @expect compile-fail
  * @section 17.9.3
  * @design 实现接口 overload 但未实现该方法 — 编译错误

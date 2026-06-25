@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_03_002_PASS_IMPLEMENTS
+ * @id EXP2_InterfaceOverload_Implements_pass
  * @expect compile-pass
  * @section 17.9.3
  * @design 实现类 override 接口 overload，包含所有方法

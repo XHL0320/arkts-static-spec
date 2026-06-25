@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_02_012_FAIL_ACCESS_MISMATCH
+ * @id EXP2_MethodOverload_AccessMismatch_fail
  * @expect compile-fail
  * @section 17.9.2
  * @design protected overload 不能包含 private 方法 — 编译错误

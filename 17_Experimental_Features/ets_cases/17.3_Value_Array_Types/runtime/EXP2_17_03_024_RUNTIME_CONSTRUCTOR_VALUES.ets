@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_03_024_RUNTIME_VALUEARRAY_CONSTRUCTOR_VALUES
+ * @id EXP2_17_03_024_RUNTIME_CONSTRUCTOR_VALUES
  * @expect runtime
  * @section 17.3
  * @design 运行时验证构造函数创建的 ValueArray 元素值和 length 正确

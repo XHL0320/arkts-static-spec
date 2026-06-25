@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_01_008_FAIL_NO_ACCESSIBLE_FUNC
+ * @id EXP2_FuncOverload_NoAccessibleFunc_fail
  * @expect compile-fail
  * @section 17.9.1
  * @design overload identifier 引用不存在的函数 — 编译错误

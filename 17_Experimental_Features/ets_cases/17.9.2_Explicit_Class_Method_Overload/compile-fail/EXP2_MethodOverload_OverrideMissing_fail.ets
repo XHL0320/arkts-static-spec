@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_02_013_FAIL_OVERRIDE_MISSING
+ * @id EXP2_MethodOverload_OverrideMissing_fail
  * @expect compile-fail
  * @section 17.9.2
  * @design 子类覆盖 overload 但缺少父类方法 — 编译错误

@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_05_008_FAIL_TWO_DECLARATIONS
+ * @id EXP2_CtorOverload_TwoDeclarations_fail
  * @expect compile-fail
  * @section 17.9.5
  * @design 每个类只能有一个显式 constructor overload — 编译错误

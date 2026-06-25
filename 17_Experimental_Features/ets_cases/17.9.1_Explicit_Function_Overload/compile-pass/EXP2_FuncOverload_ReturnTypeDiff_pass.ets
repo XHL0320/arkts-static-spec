@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_01_007_PASS_RETURN_TYPE_DIFF
+ * @id EXP2_FuncOverload_ReturnTypeDiff_pass
  * @expect compile-pass
  * @section 17.9.1
  * @design overload 函数可以有不同返回类型

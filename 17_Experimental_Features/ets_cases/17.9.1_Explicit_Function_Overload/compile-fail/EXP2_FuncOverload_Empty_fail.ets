@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_01_013_FAIL_EMPTY_OVERLOAD
+ * @id EXP2_FuncOverload_Empty_fail
  * @expect compile-fail
  * @section 17.9.1
  * @design overload 声明的函数列表不能为空

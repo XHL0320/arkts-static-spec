@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_04_002_PASS_CROSS_INHERITANCE
+ * @id EXP2_NameConflict_CrossInheritance_pass
  * @expect compile-pass
  * @section 17.9.4
  * @design overload 名与父类方法同名，跨继承层次工作

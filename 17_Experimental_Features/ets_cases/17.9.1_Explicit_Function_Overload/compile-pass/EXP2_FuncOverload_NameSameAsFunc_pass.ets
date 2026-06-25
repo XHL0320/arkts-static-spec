@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_01_003_PASS_NAME_SAME_AS_FUNC
+ * @id EXP2_FuncOverload_NameSameAsFunc_pass
  * @expect compile-pass
  * @section 17.9.1
  * @design overload 名与某个重载函数同名（该函数在列表中）

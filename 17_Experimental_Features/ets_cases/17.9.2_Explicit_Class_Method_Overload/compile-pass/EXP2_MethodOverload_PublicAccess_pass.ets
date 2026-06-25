@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_02_004_PASS_PUBLIC_ACCESS
+ * @id EXP2_MethodOverload_PublicAccess_pass
  * @expect compile-pass
  * @section 17.9.2
  * @design public overload → 所有方法必须 public

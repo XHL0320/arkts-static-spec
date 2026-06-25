@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_03_023_RUNTIME_VALUEARRAY_OUT_OF_BOUNDS
+ * @id EXP2_17_03_023_RUNTIME_OUT_OF_BOUNDS
  * @expect runtime
  * @section 17.3
  * @design 运行时验证 ValueArray 越界索引访问的行为（应抛出异常或返回 undefined）

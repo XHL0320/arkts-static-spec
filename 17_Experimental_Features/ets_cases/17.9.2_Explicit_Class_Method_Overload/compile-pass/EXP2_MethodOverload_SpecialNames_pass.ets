@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_02_007_PASS_SPECIAL_NAMES
+ * @id EXP2_MethodOverload_SpecialNames_pass
  * @expect compile-pass
  * @section 17.9.2
  * @design overload 可包含 $_get, $_set 等特殊名称方法

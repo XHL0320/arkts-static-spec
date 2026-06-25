@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_000_004_PASS_EXPLICIT_IMPLICIT
+ * @id EXP2_Overload_ExplicitImplicit_pass
  * @expect compile-pass
  * @section 17.9
  * @design 可结合显式和隐式重载

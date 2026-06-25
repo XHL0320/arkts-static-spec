@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_03_007_FAIL_OVERRIDE_MISSING
+ * @id EXP2_InterfaceOverload_OverrideMissing_fail
  * @expect compile-fail
  * @section 17.9.3
  * @design 实现类 override 接口 overload 但缺少方法 — 编译错误

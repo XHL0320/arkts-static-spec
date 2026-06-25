@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_000_007_FAIL_SYNTAX_ERROR
+ * @id EXP2_Overload_SyntaxError_fail
  * @expect compile-fail
  * @section 17.9
  * @design overload 声明语法错误

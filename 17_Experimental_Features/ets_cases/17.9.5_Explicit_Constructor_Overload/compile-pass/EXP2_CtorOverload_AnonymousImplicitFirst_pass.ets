@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_05_005_PASS_ANONYMOUS_IMPLICIT_FIRST
+ * @id EXP2_CtorOverload_AnonymousImplicitFirst_pass
  * @expect compile-pass
  * @section 17.9.5
  * @design 匿名构造函数隐式放在列表首位

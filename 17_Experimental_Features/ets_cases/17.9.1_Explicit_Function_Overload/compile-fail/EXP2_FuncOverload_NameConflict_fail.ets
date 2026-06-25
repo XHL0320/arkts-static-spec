@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_01_014_FAIL_OVERLOAD_NAME_CONFLICT
+ * @id EXP2_FuncOverload_NameConflict_fail
  * @expect compile-fail
  * @section 17.9.1
  * @design overload 名与函数名相同但函数不在列表中 — 编译错误（另一变体）

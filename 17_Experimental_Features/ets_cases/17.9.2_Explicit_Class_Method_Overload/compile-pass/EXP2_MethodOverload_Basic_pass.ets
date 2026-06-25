@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_02_001_PASS_BASIC
+ * @id EXP2_MethodOverload_Basic_pass
  * @expect compile-pass
  * @section 17.9.2
  * @design 类方法 overload 基本声明和调用

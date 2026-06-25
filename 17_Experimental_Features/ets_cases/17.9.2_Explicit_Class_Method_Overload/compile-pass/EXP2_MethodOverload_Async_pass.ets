@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_02_003_PASS_ASYNC
+ * @id EXP2_MethodOverload_Async_pass
  * @expect compile-pass
  * @section 17.9.2
  * @design async overload 包含 async 方法

@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_05_003_PASS_DIFFERENT_PARAM_TYPES
+ * @id EXP2_CtorOverload_DifferentParamTypes_pass
  * @expect compile-pass
  * @section 17.9.5
  * @design 多个构造函数按参数类型区分

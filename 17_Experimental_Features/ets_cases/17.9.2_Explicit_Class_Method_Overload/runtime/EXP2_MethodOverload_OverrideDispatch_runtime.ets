@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_02_018_RUNTIME_OVERRIDE_DISPATCH
+ * @id EXP2_MethodOverload_OverrideDispatch_runtime
  * @expect runtime
  * @section 17.9.2
  * @design 子类覆盖 overload 后运行时调用子类方法

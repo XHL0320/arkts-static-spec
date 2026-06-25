@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_01_011_FAIL_WRONG_PARAM_TYPE
+ * @id EXP2_FuncOverload_WrongParamType_fail
  * @expect compile-fail
  * @section 17.9.1
  * @design 调用 overload 但参数类型不匹配任何重载 — 编译错误

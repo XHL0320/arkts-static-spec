@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_03_006_PASS_ABSTRACT_CLASS
+ * @id EXP2_InterfaceOverload_AbstractClass_pass
  * @expect compile-pass
  * @section 17.9.3
  * @design 抽象类实现接口但声明为 abstract，不实现方法

@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_01_002_PASS_DIFFERENT_PARAM_COUNT
+ * @id EXP2_FuncOverload_DifferentParamCount_pass
  * @expect compile-pass
  * @section 17.9.1
  * @design overload 函数重载：不同参数数量(0/1/2/3 参数)

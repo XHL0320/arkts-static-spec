@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_05_011_RUNTIME_RESOLUTION
+ * @id EXP2_CtorOverload_Resolution_runtime
  * @expect runtime
  * @section 17.9.5
  * @design constructor overload 运行时解析到正确构造函数

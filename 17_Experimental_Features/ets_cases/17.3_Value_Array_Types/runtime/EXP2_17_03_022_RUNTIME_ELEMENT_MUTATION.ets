@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_03_022_RUNTIME_VALUEARRAY_ELEMENT_MUTATION
+ * @id EXP2_17_03_022_RUNTIME_ELEMENT_MUTATION
  * @expect runtime
  * @section 17.3
  * @design 运行时验证 ValueArray 元素可通过索引修改，且修改后值正确持久化

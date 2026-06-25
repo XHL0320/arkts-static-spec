@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_01_010_FAIL_EXPORT_NOT_ALL
+ * @id EXP2_FuncOverload_ExportNotAll_fail
  * @expect compile-fail
  * @section 17.9.1
  * @design 导出 overload 但某个重载函数未导出 — 编译错误

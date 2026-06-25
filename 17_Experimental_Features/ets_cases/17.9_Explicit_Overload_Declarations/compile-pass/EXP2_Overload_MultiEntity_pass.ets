@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_000_002_PASS_MULTI_ENTITY
+ * @id EXP2_Overload_MultiEntity_pass
  * @expect compile-pass
  * @section 17.9
  * @design 一个实体可出现在多个 overload 声明中

@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_03_020_RUNTIME_VALUEARRAY_ELEMENT_VALUES
+ * @id EXP2_17_03_020_RUNTIME_ELEMENT_VALUES
  * @expect runtime
  * @section 17.3
  * @design 运行时验证 ValueArray<int> 字面量创建后元素值正确

@@ -1,5 +1,5 @@
 /**
- * @id EXP2_17_09_04_001_PASS_NAME_SAME_AS_METHOD
+ * @id EXP2_NameConflict_OverloadNameSameAsMethod_pass
  * @expect compile-pass
  * @section 17.9.4
  * @design overload 名与某个方法名相同（该方法在列表中）
