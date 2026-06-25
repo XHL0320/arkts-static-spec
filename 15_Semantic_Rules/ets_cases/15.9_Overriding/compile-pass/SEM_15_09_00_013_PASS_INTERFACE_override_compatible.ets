@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_09_00_013_PASS_INTERFACE_override_compatible
  * @expect compile-pass
- * @section 15.9.3
+ * @section 15.9
  * @design 规范 15.9.3：接口方法重写的签名兼容性检查
  * @note 测试接口方法重写的兼容签名
  */

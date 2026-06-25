@@ -1,7 +1,7 @@
 /**
  * @id GEN_05_01_03_006_PASS_INTERLEAVE
  * @expect compile-pass
- * @section 5.2
+ * @section 5.1.3
  * @design 变体交错-in-out函数类型
  * @note 正向用例：验证 in/out 在函数类型中的交错
  */

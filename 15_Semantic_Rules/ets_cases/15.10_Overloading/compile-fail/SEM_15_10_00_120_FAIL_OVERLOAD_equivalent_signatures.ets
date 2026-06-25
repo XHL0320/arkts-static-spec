@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_10_00_120_FAIL_OVERLOAD_equivalent_signatures
  * @expect compile-fail
- * @section 15.10.4
+ * @section 15.10
  * @design 规范 15.10.4：如果两个隐式重载函数的签名是重载等价的，则发生编译时错误
  * @note 测试重载等价签名（应该编译失败）
  */

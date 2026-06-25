@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_14_00_012_PASS_SHORT_CIRCUIT
  * @expect compile-pass
- * @section 15.14.1
+ * @section 15.14
  * @design 规范 15.14.1：逻辑 AND/OR 的短路行为
  * @note 测试逻辑 AND/OR 的短路行为
  */

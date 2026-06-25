@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_13_00_203_RUNTIME_CONCURRENT_init
  * @expect runtime
- * @section 15.13.1
+ * @section 15.13
  * @design 规范 15.13.1：并发静态初始化安全性
  * @note 测试并发静态初始化安全性
  */

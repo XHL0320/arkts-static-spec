@@ -1,7 +1,7 @@
 /**
  * @id GEN_05_01_02_200_RUNTIME_DEFAULT_TYPE_ARG
  * @expect runtime
- * @section 5.1
+ * @section 5.1.2
  * @design 默认类型参数运行时
  * @note 运行时用例：验证默认类型参数省略时正确使用
  */

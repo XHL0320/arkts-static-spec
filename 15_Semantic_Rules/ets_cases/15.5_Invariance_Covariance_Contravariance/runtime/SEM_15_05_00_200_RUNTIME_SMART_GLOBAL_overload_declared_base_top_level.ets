@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_05_00_200_RUNTIME_SMART_GLOBAL_overload_declared_base_top_level
  * @expect runtime
- * @section 15
+ * @section 15.5
  * @design 顶层/全局 Base receiver 保存 Derived 对象后调用 overload，应按 Base 声明类型解析。
  * @note Cross-cutting smart type scope case: global/top-level and function-scope behavior must be checked for every section.
  */

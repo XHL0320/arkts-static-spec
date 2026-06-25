@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_14_00_022_PASS_COMPREHENSIVE
  * @expect compile-pass
- * @section 15.14.1
+ * @section 15.14
  * @design 规范 15.14.1：综合测试扩展条件表达式
  * @note 综合测试扩展条件表达式的各种情况
  */

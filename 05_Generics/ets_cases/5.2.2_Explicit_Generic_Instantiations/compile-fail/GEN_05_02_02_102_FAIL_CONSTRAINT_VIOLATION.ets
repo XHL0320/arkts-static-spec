@@ -1,7 +1,7 @@
 /**
  * @id GEN_05_02_02_102_FAIL_CONSTRAINT_VIOLATION
  * @expect compile-fail
- * @section 5.3
+ * @section 5.2.2
  * @design 类型参数不满足约束
  * @note 反向用例：验证类型参数不满足约束的实例化
  */

@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_02_00_118_FAIL_CLASS_assign_superclass_to_subclass
  * @expect compile-fail
- * @section 15.2.1
+ * @section 15.2
  * @design 规范 15.2.1：子类型关系是单向的，超类型不能赋值给子类型
  * @note 测试将超类实例赋值给子类型变量（应该编译失败）
  */

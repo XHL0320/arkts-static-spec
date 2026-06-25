@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_02_00_011_PASS_GEN_variance_contravariant
  * @expect compile-pass
- * @section 15.2.2
+ * @section 15.2
  * @design 规范 15.2.2：泛型类 G<in T>，若 T <: S，则 G<S> <: G<T>（逆变）
  * @note 测试泛型逆变：使用 in 类型参数
  */

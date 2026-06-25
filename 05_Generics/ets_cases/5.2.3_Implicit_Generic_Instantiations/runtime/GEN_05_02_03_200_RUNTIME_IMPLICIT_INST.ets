@@ -1,7 +1,7 @@
 /**
  * @id GEN_05_02_03_200_RUNTIME_IMPLICIT_INST
  * @expect runtime
- * @section 5.3
+ * @section 5.2.3
  * @design 隐式实例化运行时
  * @note 运行时用例：验证隐式实例化运行时正确
  */

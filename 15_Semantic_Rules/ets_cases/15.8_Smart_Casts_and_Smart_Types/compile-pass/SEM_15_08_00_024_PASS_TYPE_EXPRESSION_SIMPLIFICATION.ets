@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_08_00_024_PASS_TYPE_EXPRESSION_SIMPLIFICATION
  * @expect compile-pass
- * @section 15.8.6
+ * @section 15.8
  * @design 规范 15.8.6：类型表达式简化规则
  * @note 测试类型表达式的简化
  */

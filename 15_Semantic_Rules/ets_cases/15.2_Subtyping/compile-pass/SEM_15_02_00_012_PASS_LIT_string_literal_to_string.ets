@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_02_00_012_PASS_LIT_string_literal_to_string
  * @expect compile-pass
- * @section 15.2.3
+ * @section 15.2
  * @design 规范 15.2.3：任何字符串字面量类型是 string 的子类型
  * @note 测试字符串字面量类型的子类型关系
  */

@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_14_00_010_PASS_SWITCH_statement
  * @expect compile-pass
- * @section 15.14.1
+ * @section 15.14
  * @design 规范 15.14.1：switch 语句的扩展语义（真值检查）
  * @note 测试 switch 语句的扩展语义
  */

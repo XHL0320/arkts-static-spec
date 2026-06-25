@@ -1,7 +1,7 @@
 /**
  * @id GEN_05_01_04_104_FAIL_NEVER
  * @expect compile-fail
- * @section 5.2
+ * @section 5.1.4
  * @design out-variant 通配符 X<C> 不是 X<never> 子类型
  * @note 反向用例：验证 out-variant T 实例化为约束类型，不可赋值给 X<never>（spec 5.1.4 行 525）
  */

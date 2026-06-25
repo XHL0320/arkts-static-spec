@@ -1,7 +1,7 @@
 /**
  * @id ITF_10_04_02_200_RUNTIME_OPTIONAL_PROPERTY
  * @expect runtime
- * @section 10.4
+ * @section 10.4.2
  * @design 可选属性运行时行为
  * @note 运行时用例：验证接口可选属性运行时返回 undefined
  */

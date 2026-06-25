@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_09_00_003_PASS_CLASS_method_parameter_contravariance
  * @expect compile-pass
- * @section 15.9.3
+ * @section 15.9
  * @design 规范 15.9.3：重写方法的每个参数类型必须是被重写方法对应参数类型的超类型（逆变）
  * @note 测试类方法重写的参数类型逆变
  */

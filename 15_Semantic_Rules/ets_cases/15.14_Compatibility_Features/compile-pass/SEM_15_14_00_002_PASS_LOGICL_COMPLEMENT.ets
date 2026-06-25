@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_14_00_002_PASS_LOGICL_COMPLEMENT
  * @expect compile-pass
- * @section 15.14.1
+ * @section 15.14
  * @design 规范 15.14.1：逻辑补码的扩展语义
  * @note 测试逻辑补码
  */

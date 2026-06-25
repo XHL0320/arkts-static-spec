@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_08_00_019_PASS_BACKEDGE_loop_variable
  * @expect compile-pass
- * @section 15.8.4
+ * @section 15.8
  * @design 规范 15.8.4：反向边节点（循环）更新时，循环变量重置为声明类型
  * @note 测试循环变量在循环后的类型重置
  */

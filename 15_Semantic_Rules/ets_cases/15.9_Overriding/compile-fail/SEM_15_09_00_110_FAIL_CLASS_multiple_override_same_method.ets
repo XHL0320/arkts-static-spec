@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_09_00_110_FAIL_CLASS_multiple_override_same_method
  * @expect compile-fail
- * @section 15.9.1
+ * @section 15.9
  * @design 规范 15.9.1：如果子类的多个方法重写超类中的同一方法，则发生编译时错误
  * @note 测试多个方法重写同一方法（应该编译失败）
  */

@@ -1,7 +1,7 @@
 /**
  * @id GEN_05_01_02_003_PASS_FUNC_DEFAULT
  * @expect compile-pass
- * @section 5.1
+ * @section 5.1.2
  * @design 泛型函数默认类型参数
  * @note 正向用例：验证泛型函数有默认类型参数
  */

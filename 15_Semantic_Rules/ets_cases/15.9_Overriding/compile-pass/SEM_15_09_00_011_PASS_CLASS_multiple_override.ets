@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_09_00_011_PASS_CLASS_multiple_override
  * @expect compile-pass
- * @section 15.9.1
+ * @section 15.9
  * @design 规范 15.9.1：子类的一个方法可以重写超类中的多个方法
  * @note 测试多个方法重写同一方法
  */

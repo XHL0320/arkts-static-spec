@@ -1,7 +1,7 @@
 /**
  * @id GEN_05_01_04_101_FAIL_CONSTRAINT
  * @expect compile-fail
- * @section 5.2
+ * @section 5.1.4
  * @design X<*> 不是 X<C> 或 X<never> 的子类型
  * @note 反向用例：验证有约束的 invariant T 通配符不可赋值（spec 5.1.4 行 479-482）
  */

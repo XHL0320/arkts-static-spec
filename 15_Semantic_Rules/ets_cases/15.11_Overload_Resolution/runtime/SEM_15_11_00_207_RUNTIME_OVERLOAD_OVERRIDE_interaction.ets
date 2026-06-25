@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_11_00_207_RUNTIME_OVERLOAD_OVERRIDE_interaction
  * @expect runtime
- * @section 15.11.9
+ * @section 15.11
  * @design 规范 15.11.9：重载解析选择编译时类型的方法，但运行时可能调用重写的方法
  * @note 测试重载和重写的相互作用
  */

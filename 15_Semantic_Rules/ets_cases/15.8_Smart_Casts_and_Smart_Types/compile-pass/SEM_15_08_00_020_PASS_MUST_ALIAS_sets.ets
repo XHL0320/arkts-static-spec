@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_08_00_020_PASS_MUST_ALIAS_sets
  * @expect compile-pass
- * @section 15.8.4
+ * @section 15.8
  * @design 规范 15.8.4：must-alias 集计算用于智能类型转换
  * @note 测试 must-alias 集的计算
  */

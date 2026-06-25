@@ -1,7 +1,7 @@
 /**
  * @id GEN_05_02_02_200_RUNTIME_EXPLICIT_INST
  * @expect runtime
- * @section 5.3
+ * @section 5.2.2
  * @design 明确实例化运行时
  * @note 运行时用例：验证明确实例化运行时正确
  */

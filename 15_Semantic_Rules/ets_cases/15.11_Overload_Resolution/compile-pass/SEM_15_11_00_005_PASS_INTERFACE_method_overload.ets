@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_11_00_005_PASS_INTERFACE_method_overload
  * @expect compile-pass
- * @section 15.11.3
+ * @section 15.11
  * @design 规范 15.11.3：接口方法的重载集包含接口定义的方法和继承的方法
  * @note 测试接口方法重载解析
  */

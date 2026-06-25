@@ -1,7 +1,7 @@
 /**
  * @id GEN_05_02_03_101_FAIL_INFER_NO_CONTEXT
  * @expect compile-fail
- * @section 5.3
+ * @section 5.2.3
  * @design 无推断上下文
  * @note 反向用例：验证无推断上下文时编译错误
  */

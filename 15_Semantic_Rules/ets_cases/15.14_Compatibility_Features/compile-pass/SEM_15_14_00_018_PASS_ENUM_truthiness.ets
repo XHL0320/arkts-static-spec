@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_14_00_018_PASS_ENUM_truthiness
  * @expect compile-pass
- * @section 15.14.1
+ * @section 15.14
  * @design 规范 15.14.1：枚举类型的真值检查
  * @note 测试枚举类型的真值检查
  */

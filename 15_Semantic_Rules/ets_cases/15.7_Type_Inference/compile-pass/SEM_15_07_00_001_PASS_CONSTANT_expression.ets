@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_07_00_001_PASS_CONSTANT_expression
  * @expect compile-pass
- * @section 15.7.1
+ * @section 15.7
  * @design 规范 15.7.1：常量表达式的类型推断
  * @note 测试常量表达式的类型推断
  */

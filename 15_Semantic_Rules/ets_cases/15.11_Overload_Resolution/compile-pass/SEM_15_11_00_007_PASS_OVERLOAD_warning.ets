@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_11_00_007_PASS_OVERLOAD_warning
  * @expect compile-pass
- * @section 15.11.7
+ * @section 15.11
  * @design 规范 15.11.7：如果重载集中的某个重载实体永远不会被调用，则发出编译时警告
  * @note 测试重载集警告：模糊调用
  */

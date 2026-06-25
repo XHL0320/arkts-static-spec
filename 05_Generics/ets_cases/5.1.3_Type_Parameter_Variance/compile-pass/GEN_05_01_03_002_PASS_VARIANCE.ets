@@ -1,7 +1,7 @@
 /**
  * @id GEN_05_01_03_002_PASS_VARIANCE
  * @expect compile-pass
- * @section 5.2
+ * @section 5.1.3
  * @design 类型别名上的 out/in 修饰被接受【设计问题：语义不明确】
  * @note out/in 在类型别名上无实际约束效果，编译器静默接受。Swift 不允许对 typealias 使用 variance。
  */

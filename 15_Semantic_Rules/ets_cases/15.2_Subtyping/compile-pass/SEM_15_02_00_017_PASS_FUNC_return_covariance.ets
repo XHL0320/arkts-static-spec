@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_02_00_017_PASS_FUNC_return_covariance
  * @expect compile-pass
- * @section 15.2.6
+ * @section 15.2
  * @design 规范 15.2.6：函数类型 F 是函数类型 S 的子类型，如果 F 的返回类型是 S 的返回类型的子类型（协变）
  * @note 测试函数类型的返回类型协变
  */

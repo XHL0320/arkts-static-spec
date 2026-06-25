@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_14_00_007_PASS_FOR_loop
  * @expect compile-pass
- * @section 15.14.1
+ * @section 15.14
  * @design 规范 15.14.1：for 循环的扩展语义（真值检查）
  * @note 测试 for 循环的扩展语义
  */

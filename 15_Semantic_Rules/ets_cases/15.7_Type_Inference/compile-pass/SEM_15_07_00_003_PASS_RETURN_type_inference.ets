@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_07_00_003_PASS_RETURN_type_inference
  * @expect compile-pass
- * @section 15.7.2
+ * @section 15.7
  * @design 规范 15.7.2：返回类型可以从函数体中的返回语句推断
  * @note 测试返回类型推断
  */

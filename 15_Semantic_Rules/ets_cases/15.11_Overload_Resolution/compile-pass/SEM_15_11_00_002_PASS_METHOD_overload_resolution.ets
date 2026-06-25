@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_11_00_002_PASS_METHOD_overload_resolution
  * @expect compile-pass
- * @section 15.11.5
+ * @section 15.11
  * @design 规范 15.11.5：类实例方法的重载集包含类定义的方法和继承的方法
  * @note 测试类实例方法重载解析
  */

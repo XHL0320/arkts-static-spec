@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_14_00_005_PASS_TERNARY_conditional
  * @expect compile-pass
- * @section 15.14.1
+ * @section 15.14
  * @design 规范 15.14.1：三元条件表达式的扩展语义
  * @note 测试三元条件表达式
  */

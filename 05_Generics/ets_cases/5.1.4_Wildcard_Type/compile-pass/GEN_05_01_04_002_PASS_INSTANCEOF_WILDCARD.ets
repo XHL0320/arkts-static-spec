@@ -1,7 +1,7 @@
 /**
  * @id GEN_05_01_04_002_PASS_INSTANCEOF_WILDCARD
  * @expect compile-pass
- * @section 5.2
+ * @section 5.1.4
  * @design instanceof产生通配符类型编译验证
  * @note 编译验证，运行时入口问题暂不可执行
  */

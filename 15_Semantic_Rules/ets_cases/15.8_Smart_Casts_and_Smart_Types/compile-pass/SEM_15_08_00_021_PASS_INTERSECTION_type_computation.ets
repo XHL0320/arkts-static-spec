@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_08_00_021_PASS_INTERSECTION_type_computation
  * @expect compile-pass
- * @section 15.8.2
+ * @section 15.8
  * @design 规范 15.8.2：智能类型转换中交集类型的计算
  * @note 测试智能类型转换中的交集类型计算
  */

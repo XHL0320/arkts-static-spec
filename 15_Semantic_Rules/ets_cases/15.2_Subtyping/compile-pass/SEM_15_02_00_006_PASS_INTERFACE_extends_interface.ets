@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_02_00_006_PASS_INTERFACE_extends_interface
  * @expect compile-pass
- * @section 15.2.1
+ * @section 15.2
  * @design 规范 15.2.1：接口 S 扩展接口 T，则 S <: T（S 是 T 的子类型）
  * @note 测试接口继承的子类型关系
  */

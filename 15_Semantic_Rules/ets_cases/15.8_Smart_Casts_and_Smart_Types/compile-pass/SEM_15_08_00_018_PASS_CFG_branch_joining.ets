@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_08_00_018_PASS_CFG_branch_joining
  * @expect compile-pass
- * @section 15.8.4
+ * @section 15.8
  * @design 规范 15.8.4：控制流图分支合并时，智能类型是各分支智能类型的联合
  * @note 测试 CFG 分支合并时的类型收窄
  */

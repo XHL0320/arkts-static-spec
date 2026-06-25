@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_02_00_018_PASS_FUNC_parameter_contravariance
  * @expect compile-pass
- * @section 15.2.6
+ * @section 15.2
  * @design 规范 15.2.6：函数类型 F 是函数类型 S 的子类型，如果 F 的每个参数类型是 S 对应参数类型的超类型（逆变）
  * @note 测试函数类型的参数类型逆变
  */

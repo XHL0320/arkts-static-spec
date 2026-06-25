@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_11_00_004_PASS_EXPLICIT_overload
  * @expect compile-pass
- * @section 15.11.1
+ * @section 15.11
  * @design 规范 15.11.1：显式重载声明允许开发者显式指定重载实体集
  * @note 测试显式重载声明
  */

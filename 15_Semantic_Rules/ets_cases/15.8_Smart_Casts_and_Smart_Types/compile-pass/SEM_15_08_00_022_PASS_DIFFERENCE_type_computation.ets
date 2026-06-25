@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_08_00_022_PASS_DIFFERENCE_type_computation
  * @expect compile-pass
- * @section 15.8.3
+ * @section 15.8
  * @design 规范 15.8.3：智能类型转换中差集类型的计算
  * @note 测试智能类型转换中的差集类型计算
  */

@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_11_00_231_RUNTIME_SMART_FUNC_overload_declared_base_function
  * @expect runtime
- * @section 15
+ * @section 15.11
  * @design 函数体内 Base receiver 保存 Derived 对象后调用 overload，应按 Base 声明类型解析。
  * @note Cross-cutting smart type scope case: global/top-level and function-scope behavior must be checked for every section.
  */

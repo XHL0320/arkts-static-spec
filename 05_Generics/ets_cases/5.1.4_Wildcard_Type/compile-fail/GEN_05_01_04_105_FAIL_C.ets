@@ -1,7 +1,7 @@
 /**
  * @id GEN_05_01_04_105_FAIL_C
  * @expect compile-fail
- * @section 5.2
+ * @section 5.1.4
  * @design in-variant 通配符 X<never> 不是 X<C> 子类型
  * @note 反向用例：验证 in-variant T 实例化为 never，不可赋值给 X<C>（spec 5.1.4 行 549）
  */

@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_14_00_013_PASS_TYPEOF_truthiness
  * @expect compile-pass
- * @section 15.14.1
+ * @section 15.14
  * @design 规范 15.14.1：typeof 表达式的真值检查
  * @note 测试 typeof 表达式的真值检查
  */

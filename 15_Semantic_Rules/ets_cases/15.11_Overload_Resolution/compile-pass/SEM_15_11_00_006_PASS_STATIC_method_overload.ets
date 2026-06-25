@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_11_00_006_PASS_STATIC_method_overload
  * @expect compile-pass
- * @section 15.11.4
+ * @section 15.11
  * @design 规范 15.11.4：类静态方法的重载集包含类中定义的静态方法
  * @note 测试类静态方法重载解析
  */

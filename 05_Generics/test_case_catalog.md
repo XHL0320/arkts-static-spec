@@ -57,21 +57,22 @@
 | GEN_05_01_03_005_PASS_POS | Invariant — any position | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_005_PASS_POS.ets` |
 | GEN_05_01_03_006_PASS_INTERLEAVE | Variance interleave | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_006_PASS_INTERLEAVE.ets` |
 | GEN_05_01_03_007_PASS_CONSTRUCTOR | out in constructor | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_007_PASS_CONSTRUCTOR.ets` |
-| GEN_05_02_014_FAIL_FUNC_PARAM_VARIANCE | Callback variance gap | FAIL ⚠️ GAP | `5.1.3_Type_Parameter_Variance/compile-fail/GEN_05_01_03_105_FAIL_CALLBACK_VARIANCE_GAP.ets` |
-| GEN_05_02_025_FAIL_IN_CALLBACK_RETURN | Callback return gap | FAIL ⚠️ GAP | `5.1.3_Type_Parameter_Variance/compile-fail/GEN_05_01_03_107_FAIL_CALLBACK_RETURN_GAP.ets` |
+| GEN_05_01_03_008_PASS_COVARIANT_OUT | Covariant out runtime | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_008_PASS_COVARIANT_OUT.ets` |
+| GEN_05_01_03_009_PASS_CALLBACK_PARAM_INTERLEAVING | Callback param interleaving | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_009_PASS_CALLBACK_PARAM_INTERLEAVING.ets` |
+| GEN_05_01_03_010_PASS_CALLBACK_RETURN_INTERLEAVING | Callback return interleaving | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_010_PASS_CALLBACK_RETURN_INTERLEAVING.ets` |
 | GEN_05_01_03_100_FAIL_VARIANCE | Generic method variance | FAIL | `5.1.3_Type_Parameter_Variance/compile-fail/GEN_05_01_03_100_FAIL_VARIANCE.ets` |
 | GEN_05_01_03_101_FAIL_POSITION | out in in-position | FAIL | `5.1.3_Type_Parameter_Variance/compile-fail/GEN_05_01_03_101_FAIL_POSITION.ets` |
 | GEN_05_01_03_102_FAIL_FIELD | out in field | FAIL | `5.1.3_Type_Parameter_Variance/compile-fail/GEN_05_01_03_102_FAIL_FIELD.ets` |
 | GEN_05_01_03_103_FAIL_RETURN | in in out-position return | FAIL | `5.1.3_Type_Parameter_Variance/compile-fail/GEN_05_01_03_103_FAIL_RETURN.ets` |
 | GEN_05_01_03_104_FAIL_FIELD | in in invariant field | FAIL | `5.1.3_Type_Parameter_Variance/compile-fail/GEN_05_01_03_104_FAIL_FIELD.ets` |
 | GEN_05_01_03_106_FAIL_PARAM | out in method param return | FAIL | `5.1.3_Type_Parameter_Variance/compile-fail/GEN_05_01_03_106_FAIL_PARAM.ets` |
-| GEN_05_01_03_200_RUNTIME_COVARIANT_OUT | Covariant out runtime | RUNTIME | `5.1.3_Type_Parameter_Variance/runtime/GEN_05_01_03_200_RUNTIME_COVARIANT_OUT.ets` |
 
 ## 5.1.4 Wildcard Type (10 cases)
 
 | ID | 子主题 | 类型 | 文件 |
 |---|--------|:--:|------|
 | GEN_05_01_04_001_PASS_WILDCARD_DECL | Wildcard declaration | PASS | `5.1.4_Wildcard_Type/compile-pass/GEN_05_01_04_001_PASS_WILDCARD_DECL.ets` |
+| GEN_05_01_04_002_PASS_INSTANCEOF_WILDCARD | instanceof wildcard | PASS | `5.1.4_Wildcard_Type/compile-pass/GEN_05_01_04_002_PASS_INSTANCEOF_WILDCARD.ets` |
 | GEN_05_01_04_100_FAIL_ANY | Wildcard not subtype any | FAIL | `5.1.4_Wildcard_Type/compile-fail/GEN_05_01_04_100_FAIL_ANY.ets` |
 | GEN_05_01_04_101_FAIL_CONSTRAINT | Wildcard not subtype constraint | FAIL | `5.1.4_Wildcard_Type/compile-fail/GEN_05_01_04_101_FAIL_CONSTRAINT.ets` |
 | GEN_05_01_04_102_FAIL_POS | Wildcard write in-pos | FAIL | `5.1.4_Wildcard_Type/compile-fail/GEN_05_01_04_102_FAIL_POS.ets` |
@@ -80,7 +81,6 @@
 | GEN_05_01_04_105_FAIL_C | in wildcard not subtype C | FAIL | `5.1.4_Wildcard_Type/compile-fail/GEN_05_01_04_105_FAIL_C.ets` |
 | GEN_05_01_04_106_FAIL_WRITE | in wildcard write | FAIL | `5.1.4_Wildcard_Type/compile-fail/GEN_05_01_04_106_FAIL_WRITE.ets` |
 | GEN_05_01_04_107_FAIL_ASSIGN | Wildcard invariant assign | FAIL | `5.1.4_Wildcard_Type/compile-fail/GEN_05_01_04_107_FAIL_ASSIGN.ets` |
-| GEN_05_01_04_200_RUNTIME_INSTANCEOF_WILDCARD | instanceof wildcard | RUNTIME | `5.1.4_Wildcard_Type/runtime/GEN_05_01_04_200_RUNTIME_INSTANCEOF_WILDCARD.ets` |
 
 ## 5.2.1 Type Arguments (7 cases)
 

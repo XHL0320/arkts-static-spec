@@ -63,12 +63,9 @@ mindmap
       In-Position Violations
         in in out-position return
         in in invariant field
-        in in callback return
-      GAP (compiler accepts)
-        Callback variance gap
-        Callback return gap
-      Runtime
-        Covariant out runtime
+      Variance Interleaving (positive)
+        Callback param interleaving
+        Callback return interleaving
     5.1.4_Wildcard_Type
       Wildcard Subtyping
         Wildcard not subtype any

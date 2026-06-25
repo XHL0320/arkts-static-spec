@@ -1,7 +1,7 @@
 /**
  * @id GEN_05_01_01_104_FAIL_DEPENDENT_NOT_SATISFIED
  * @expect compile-fail
- * @section 5.1
+ * @section 5.1.1
  * @design 依赖约束不满足
  * @note 反向用例：验证依赖前参数的约束不满足
  */

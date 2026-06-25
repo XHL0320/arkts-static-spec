@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_09_00_005_PASS_CLASS_override_access_modifier
  * @expect compile-pass
- * @section 15.9.1
+ * @section 15.9
  * @design 规范 15.9.1：重写方法的访问修饰符可以与父类方法相同，或将 protected 改为 public
  * @note 测试类方法重写的访问修饰符规则
  */

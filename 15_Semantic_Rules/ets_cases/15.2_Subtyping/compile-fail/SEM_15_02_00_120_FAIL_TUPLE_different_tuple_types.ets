@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_02_00_120_FAIL_TUPLE_different_tuple_types
  * @expect compile-fail
- * @section 15.2.4
+ * @section 15.2
  * @design 规范 15.2.4：元组类型 T(P1,...,Pn) 和 S(P1,...,Pm) 之间，如果 n != m 或任何对应元素类型不相同，则它们不是子类型
  * @note 测试元组类型不匹配（编译失败）
  */

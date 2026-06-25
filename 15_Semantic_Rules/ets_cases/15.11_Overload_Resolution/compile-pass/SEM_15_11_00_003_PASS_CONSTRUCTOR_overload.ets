@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_11_00_003_PASS_CONSTRUCTOR_overload
  * @expect compile-pass
- * @section 15.11.6
+ * @section 15.11
  * @design 规范 15.11.6：类的构造函数重载集包含隐式重载的构造函数
  * @note 测试构造函数重载解析
  */

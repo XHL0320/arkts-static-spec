@@ -1,7 +1,7 @@
 /**
  * @id GEN_05_01_04_103_FAIL_INVARIANT
  * @expect compile-fail
- * @section 5.2
+ * @section 5.1.4
  * @design 通配符写入 invariant-position（propread）
  * @note 反向用例：验证 invariant T 通配符属性写入编译错误（spec 5.1.4 行 489）
  */

@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_02_00_001_PASS_CLASS_extends_class
  * @expect compile-pass
- * @section 15.2.1
+ * @section 15.2
  * @design 规范 15.2.1：类 S 扩展类 T，则 S <: T（S 是 T 的子类型）
  * @note 测试类继承关系的子类型：Derived extends Base，Derived 可赋给 Base
  */

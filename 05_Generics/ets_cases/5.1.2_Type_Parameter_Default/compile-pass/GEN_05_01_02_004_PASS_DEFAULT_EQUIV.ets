@@ -1,7 +1,7 @@
 /**
  * @id GEN_05_01_02_004_PASS_DEFAULT_EQUIV
  * @expect compile-pass
- * @section 5.1
+ * @section 5.1.2
  * @design 默认值的语义等价
  * @note 正向用例：验证省略默认参数与显式指定等价
  */

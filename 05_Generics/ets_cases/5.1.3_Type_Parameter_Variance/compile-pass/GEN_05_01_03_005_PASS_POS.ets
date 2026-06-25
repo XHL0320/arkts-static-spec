@@ -1,7 +1,7 @@
 /**
  * @id GEN_05_01_03_005_PASS_POS
  * @expect compile-pass
- * @section 5.2
+ * @section 5.1.3
  * @design 不变体任意位置
  * @note 正向用例：验证无变体修饰符可在任何位置
  */

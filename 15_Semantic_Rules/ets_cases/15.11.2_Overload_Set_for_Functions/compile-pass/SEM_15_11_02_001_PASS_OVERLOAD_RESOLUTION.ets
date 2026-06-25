@@ -1,7 +1,7 @@
 /**
  * @id SEM_15_11_02_001_PASS_OVERLOAD_RESOLUTION
  * @expect compile-pass
- * @section 15.11
+ * @section 15.11.2
  * @design 验证重载解析：按参数类型选择最匹配的重载
  * @note 正向用例：range(int) 和 range(int, int) 根据参数数量解析
  */

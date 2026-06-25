@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_14_00_027_PASS_COMPREHENSIVE_narrowing_method
  * @expect compile-pass
- * @section 15.14.1
+ * @section 15.14
  * @design 合并综合测试：联合类型缩窄 + 方法调用
  */
 

@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_02_00_119_FAIL_GEN_invariant_assignment
  * @expect compile-fail
- * @section 15.2.2
+ * @section 15.2
  * @design 规范 15.2.2：泛型类 C<T> 对于不同的类型参数 T1 和 T2，C<T1> 和 C<T2> 之间没有子类型关系（不变性）
  * @note 测试泛型不变性：不能将 C<Derived> 赋值给 C<Base>
  */

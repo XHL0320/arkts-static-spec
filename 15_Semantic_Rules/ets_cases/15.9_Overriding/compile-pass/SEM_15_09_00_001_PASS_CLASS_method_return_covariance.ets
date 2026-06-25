@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_09_00_001_PASS_CLASS_method_return_covariance
  * @expect compile-pass
- * @section 15.9.3
+ * @section 15.9
  * @design 规范 15.9.3：重写方法的返回类型必须是被重写方法返回类型的子类型（协变）
  * @note 测试类方法重写的返回类型协变
  */

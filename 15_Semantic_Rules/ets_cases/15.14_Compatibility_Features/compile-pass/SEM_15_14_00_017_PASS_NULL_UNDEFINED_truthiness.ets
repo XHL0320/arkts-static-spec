@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_14_00_017_PASS_NULL_UNDEFINED_truthiness
  * @expect compile-pass
- * @section 15.14.1
+ * @section 15.14
  * @design 规范 15.14.1：null 和 undefined 的真值检查
  * @note 测试 null 和 undefined 的真值检查
  */

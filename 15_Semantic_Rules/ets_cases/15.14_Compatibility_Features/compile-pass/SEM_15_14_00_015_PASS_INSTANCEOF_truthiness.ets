@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_14_00_015_PASS_INSTANCEOF_truthiness
  * @expect compile-pass
- * @section 15.14.1
+ * @section 15.14
  * @design 规范 15.14.1：instanceof 表达式的真值检查
  * @note 测试 instanceof 表达式的真值检查
  */

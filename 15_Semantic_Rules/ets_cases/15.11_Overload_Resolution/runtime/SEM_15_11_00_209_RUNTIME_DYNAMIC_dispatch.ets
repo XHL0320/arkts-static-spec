@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_11_00_209_RUNTIME_DYNAMIC_dispatch
  * @expect runtime
- * @section 15.11.10
+ * @section 15.11
  * @design 规范 15.11.10：实例方法调用的实际方法在运行时根据对象的实际类型确定
  * @note 测试动态方法分派
  */

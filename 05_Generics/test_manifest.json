@@ -26,16 +26,16 @@
     },
     {
       "name": "5.1.3_Type_Parameter_Variance",
-      "pass": 7,
-      "fail": 8,
-      "runtime": 1,
+      "pass": 10,
+      "fail": 6,
+      "runtime": 0,
       "total": 16
     },
     {
       "name": "5.1.4_Wildcard_Type",
-      "pass": 1,
+      "pass": 2,
       "fail": 8,
-      "runtime": 1,
+      "runtime": 0,
       "total": 10
     },
     {

@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_09_00_007_PASS_CLASS_override_keyword
  * @expect compile-pass
- * @section 15.9.1
+ * @section 15.9
  * @design 规范 15.9.1：重写方法必须使用 override 关键字
  * @note 测试 override 关键字的使用
  */

@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_14_00_003_PASS_CONDITIONAL_AND
  * @expect compile-pass
- * @section 15.14.1
+ * @section 15.14
  * @design 规范 15.14.1：条件与表达式的扩展语义
  * @note 测试条件与表达式
  */

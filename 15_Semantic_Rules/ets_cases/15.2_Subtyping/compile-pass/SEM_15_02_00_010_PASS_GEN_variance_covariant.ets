@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_02_00_010_PASS_GEN_variance_covariant
  * @expect compile-pass
- * @section 15.2.2
+ * @section 15.2
  * @design 规范 15.2.2：泛型类 G<out T>，若 S <: T，则 G<S> <: G<T>（协变）
  * @note 测试泛型协变：使用 out 类型参数
  */

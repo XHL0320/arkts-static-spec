@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_09_00_009_PASS_INTERFACE_default_method_override
  * @expect compile-pass
- * @section 15.9.2
+ * @section 15.9
  * @design 规范 15.9.2：接口中的默认方法可以被子接口或实现类重写
  * @note 测试接口默认方法的重写
  */

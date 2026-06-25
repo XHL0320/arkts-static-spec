@@ -1,7 +1,7 @@
 /*
  * @id SEM_15_14_00_011_PASS_TRUTHINESS_table
  * @expect compile-pass
- * @section 15.14.1
+ * @section 15.14
  * @design 规范 15.14.1：真值表（truthiness table）
  * @note 测试真值表的扩展语义
  */
