@@ -1,5 +1,5 @@
 /**
- * @id STM_08_05_031_FAIL_IF_DANGLING_ELSE_AMBIGUITY
+ * @id STM_08_05_031_PASS_IF_DANGLING
  * @expect compile-pass
  * @section 8.5
  * @design else 匹配最近 if — 验证歧义消除

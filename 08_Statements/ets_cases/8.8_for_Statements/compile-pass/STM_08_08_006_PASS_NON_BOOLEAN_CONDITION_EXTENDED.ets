@@ -1,5 +1,5 @@
 /**
- * @id STM_08_08_006_FAIL_NON_BOOLEAN_CONDITION
+ * @id STM_08_08_006_PASS_NON_BOOLEAN_CONDITION_EXTENDED
  * @expect compile-pass
  * @section 8.8
  * @design forContinue 表达式类型为非 boolean（int 类型），当前版本因 Extended Conditional Expressions 允许编译通过（spec标注未来版本将废弃此特性）

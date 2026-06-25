@@ -1,5 +1,5 @@
 /**
- * @id STM_08_15_2_027_FAIL_FINALLY_RETURN_OVERRIDE
+ * @id STM_08_15_2_027_PASS_FINALLY_RETURN
  * @expect compile-pass
  * @section 8.15.2
  * @design finally 中 return 会覆盖 try 中的 return

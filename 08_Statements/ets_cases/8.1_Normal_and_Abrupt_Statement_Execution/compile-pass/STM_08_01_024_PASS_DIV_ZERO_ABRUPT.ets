@@ -1,5 +1,5 @@
 /**
- * @id STM_08_01_024_FAIL_DIV_BY_ZERO_ABRUPT
+ * @id STM_08_01_024_PASS_DIV_ZERO_ABRUPT
  * @expect compile-pass
  * @section 8.1
  * @design 除零导致异常完成

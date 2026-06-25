@@ -1,9 +1,9 @@
 /**
- * @id STM_08_08_026_FAIL_FOR_NULL_COND
+ * @id STM_08_08_026_PASS_FOR_NULL
  * @expect compile-pass
  * @section 8.8
- * @design null 作为 for 条件应产生编译错误
- * @note 正向用例：验证该场景受 Extended Conditional Expressions 影响编译通过（STM-D1）。
+ * @design null 作为 for 条件，受 Extended Conditional Expressions 支持，当前编译通过
+ * @note spec §15.14.1 truthiness：null/undefined 恒为 false（循环体不执行）
  */
 function testForNullCondFail(): void {
   for (let i: int = 0; null; i++) { console.log("bad") }

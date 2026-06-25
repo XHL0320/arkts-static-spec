@@ -1,5 +1,5 @@
 /**
- * @id STM_08_01_023_FAIL_ABRUPT_THROW
+ * @id STM_08_01_023_PASS_THROW_IN_FUNC
  * @expect compile-pass
  * @section 8.1
  * @design throw 语句导致异常完成

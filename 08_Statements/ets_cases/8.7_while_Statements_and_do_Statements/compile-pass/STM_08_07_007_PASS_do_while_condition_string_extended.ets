@@ -1,5 +1,5 @@
 /**
- * @id STM_08_07_007_FAIL_do_while_condition_string
+ * @id STM_08_07_007_PASS_do_while_condition_string_extended
  * @expect compile-pass
  * @section 8.7
  * @design do-while 条件使用字符串字面量(非 boolean)，期望编译报错

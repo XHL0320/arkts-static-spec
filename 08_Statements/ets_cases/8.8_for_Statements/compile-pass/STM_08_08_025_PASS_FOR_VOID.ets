@@ -1,9 +1,9 @@
 /**
- * @id STM_08_08_025_FAIL_FOR_VOID_COND
+ * @id STM_08_08_025_PASS_FOR_VOID
  * @expect compile-pass
  * @section 8.8
- * @design void 函数作为 for 条件应产生编译错误
- * @note 正向用例：验证该场景受 Extended Conditional Expressions 影响编译通过（STM-D1）。
+ * @design void(≡undefined)作为 for 条件，受 Extended Conditional Expressions 支持，当前编译通过
+ * @note spec §15.14.1 truthiness：null/undefined 恒为 false
  */
 function voidFunc(): void {}
 function testForVoidCondFail(): void {

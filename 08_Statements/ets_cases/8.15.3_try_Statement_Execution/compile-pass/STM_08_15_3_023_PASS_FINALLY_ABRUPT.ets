@@ -1,5 +1,5 @@
 /**
- * @id STM_08_15_3_023_FAIL_FINALLY_ABRUPT_CAUSES_TRY_ABRUPT
+ * @id STM_08_15_3_023_PASS_FINALLY_ABRUPT
  * @expect compile-pass
  * @section 8.15.3
  * @design finally 异常完成导致 try 语句异常完成

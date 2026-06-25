@@ -1,5 +1,5 @@
 /**
- * @id STM_08_15_1_024_FAIL_CATCH_RETURN_UNREACHABLE
+ * @id STM_08_15_1_024_PASS_CATCH_RETURN
  * @expect compile-pass
  * @section 8.15.1
  * @design catch 块外 unreachable 语句

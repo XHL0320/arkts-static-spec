@@ -1,9 +1,9 @@
 /**
- * @id STM_08_06_015_PASS_LabeledDoWhileAndForOf
+ * @id STM_08_06_015_FAIL_LabeledDoWhileAndForOf_compiler_bug
  * @expect compile-fail
  * @section 8.6
- * @design 标签可用于全部四种循环类型：除已覆盖的 for 和 while 外，验证 do-while 和 for-of 的标签用法
- * @note loopStatement 语法中 (identifier ':')? 前缀适用于 whileStatement | doStatement | forStatement | forOfStatement 全部形式
+ * @design spec §8.6 允许 labeled do-while / for-of（(identifier ':')? 前缀适用于 while|do|for|forOf 全部循环），本用例验证该正向语义
+ * @note ⚠️ 编译器崩溃 C-8.06-02：es2panda 编译 labeled do-while/for-of 时 SIGABRT (exit 134, core dump)，属编译器 bug；本用例按崩溃结果标 compile-fail，差异见 issue_report C-8.06-02
  */
 function testLabeledDoWhileBreak(): void {
   let i: int = 0;

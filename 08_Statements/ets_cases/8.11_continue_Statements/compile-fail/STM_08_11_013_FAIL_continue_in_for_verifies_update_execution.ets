@@ -1,5 +1,5 @@
 /**
- * @id STM_08_11_013_RUNTIME_continue_in_for_verifies_update_execution
+ * @id STM_08_11_013_FAIL_continue_in_for_verifies_update_execution
  * @expect compile-fail
  * @section 8.11
  * @design 验证for循环中continue语句触发后，forUpdate表达式在条件重新评估前被执行

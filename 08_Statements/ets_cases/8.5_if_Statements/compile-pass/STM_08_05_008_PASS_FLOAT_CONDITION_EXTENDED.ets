@@ -1,5 +1,5 @@
 /**
- * @id STM_08_05_008_FAIL_FLOAT_CONDITION
+ * @id STM_08_05_008_PASS_FLOAT_CONDITION_EXTENDED
  * @expect compile-pass
  * @section 8.5
  * @design if 条件表达式为 number（浮点）类型时当前版本因 Extended Conditional Expressions 允许编译通过（spec标注未来版本将废弃此特性）

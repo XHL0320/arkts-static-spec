@@ -1,5 +1,5 @@
 /**
- * @id STM_08_02_017_RUNTIME_comma_expression
+ * @id STM_08_02_017_FAIL_comma_expression_outside_for
  * @expect compile-fail
  * @section 8.2
  * @design 运行时验证逗号表达式作为语句时从左到右求值，最终结果被丢弃

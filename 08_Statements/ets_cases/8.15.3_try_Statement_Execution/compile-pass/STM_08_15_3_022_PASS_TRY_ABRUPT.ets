@@ -1,5 +1,5 @@
 /**
- * @id STM_08_15_3_022_FAIL_TRY_ABRUPT_NO_HANDLER
+ * @id STM_08_15_3_022_PASS_TRY_ABRUPT
  * @expect compile-pass
  * @section 8.15.3
  * @design try 块异常无 handler 传播

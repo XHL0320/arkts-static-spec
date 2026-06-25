@@ -1,5 +1,5 @@
 /**
- * @id STM_08_03_004_PASS_block_variable_shadowing
+ * @id STM_08_03_004_PASS_block_type_declarations
  * @expect compile-pass
  * @section 8.3
  * @design 块内变量遮蔽（shadowing）— 内层块声明与外层同名的 let 变量，块结束后外层变量恢复可见

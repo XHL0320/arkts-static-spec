@@ -1,5 +1,5 @@
 /**
- * @id STM_08_05_029_FAIL_IF_UNREACHABLE_ELSE
+ * @id STM_08_05_029_PASS_IF_UNREACHABLE
  * @expect compile-pass
  * @section 8.5
  * @design 恒真条件后的 unreachable else 分支

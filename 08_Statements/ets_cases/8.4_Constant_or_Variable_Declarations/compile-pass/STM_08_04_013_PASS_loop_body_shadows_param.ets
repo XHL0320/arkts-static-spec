@@ -1,5 +1,5 @@
 /**
- * @id STM_08_04_013_FAIL_loop_body_shadows_param
+ * @id STM_08_04_013_PASS_loop_body_shadows_param
  * @expect compile-pass
  * @section 8.4
  * @design 测试for循环体内let声明与函数参数同名编译错误：参数和局部变量在同一作用域导致重复

@@ -1,5 +1,5 @@
 /**
- * @id STM_08_15_2_023_FAIL_FINALLY_THROW_NOT_CAUGHT
+ * @id STM_08_15_2_023_PASS_FINALLY_THROW
  * @expect compile-pass
  * @section 8.15.2
  * @design finally 中 throw 未捕获时传播

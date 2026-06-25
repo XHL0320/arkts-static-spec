@@ -1,9 +1,9 @@
 /**
- * @id STM_08_02_020_FAIL_EXPR_STMT_NO_SEMI
+ * @id STM_08_02_020_PASS_AUTO_SEMI
  * @expect compile-pass
  * @section 8.2
- * @design 缺少分号的表达式语句应产生编译错误
- * @note 正向用例：验证该场景受 Extended Conditional Expressions 影响编译通过（STM-D1）。
+ * @design 表达式语句缺少分号时由编译器自动补全，编译通过
+ * @note spec §8.2：A missing semicolon is added automatically to an expression used as a statement（与 Extended Conditional 无关）
  */
 function testNoSemiFail(): void {
   let x: int = 5

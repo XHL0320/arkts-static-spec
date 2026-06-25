@@ -1,5 +1,5 @@
 /**
- * @id STM_08_07_008_FAIL_while_condition_non_bool_var
+ * @id STM_08_07_008_PASS_while_condition_non_bool_extended
  * @expect compile-pass
  * @section 8.7
  * @design while 条件使用 number 类型变量(非 boolean)，期望编译报错

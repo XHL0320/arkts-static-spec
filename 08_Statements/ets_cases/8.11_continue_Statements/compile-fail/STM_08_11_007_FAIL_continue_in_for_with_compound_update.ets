@@ -1,5 +1,5 @@
 /**
- * @id STM_08_11_007_PASS_continue_in_for_with_compound_update
+ * @id STM_08_11_007_FAIL_continue_in_for_with_compound_update
  * @expect compile-fail
  * @section 8.11
  * @design 验证for循环中continue语句与复合（逗号分隔）forUpdate表达式一起正确编译
