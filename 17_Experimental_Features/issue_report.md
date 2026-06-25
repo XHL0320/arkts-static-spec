@@ -20,9 +20,9 @@
 | D-17.2.1-01 | EXP2_17_02_01_012_FAIL_WRONG_ARG_COUNT | ValueArray 创建参数数量错误未检查 | compile-fail | 编译通过 (EXIT=0) | 待确认 |
 | D-17.4-03 | EXP2_17_04_012_FAIL_TYPE_PARAMETER_ELEMENT_TYPE | 类型参数元素类型未检查 | compile-fail | 编译通过 (EXIT=0) | 待确认 |
 | D-17.16-01 | EXP2_17_16_012_FAIL_INSTANCEOF_MISMATCH | instanceof 不兼容类型仅 W1001506 警告 | compile-fail | 编译通过 (仅Warning) | D类-Spec不一致 |
-| C-17.9.1-01 | EXP2_FuncOverload_Empty_fail | 空 overload `{}` 编译通过 | compile-time error | 编译通过 (EXIT=0) | C类-编译器未实现 |
-| C-17.9.5-01 | EXP2_CtorOverload_EmptyList_fail | 空 constructor overload 列表编译通过 | compile-time error | 编译通过 (EXIT=0) | C类-编译器未实现 |
-| C-17.9.5-02 | EXP2_CtorOverload_Multi_fail | 多个 `overload constructor` 声明编译通过 | compile-time error | 编译通过 (EXIT=0) | C类-编译器未实现 |
+| C-17.9.1-01 | EXP2_17_09_1_009_FAIL_FUNCOVERLOAD_EMPTY | 空 overload `{}` 编译通过 | compile-time error | 编译通过 (EXIT=0) | C类-编译器未实现 |
+| C-17.9.5-01 | EXP2_17_09_5_008_FAIL_CTOROVERLOAD_EMPTYLIST | 空 constructor overload 列表编译通过 | compile-time error | 编译通过 (EXIT=0) | C类-编译器未实现 |
+| C-17.9.5-02 | EXP2_17_09_5_010_FAIL_CTOROVERLOAD_TWODECLARATIONS | 多个 `overload constructor` 声明编译通过 | compile-time error | 编译通过 (EXIT=0) | C类-编译器未实现 |
 | C-17.16.1-01 | EXP2 嵌套解构系列 | 嵌套解构 `let [[a,b],[c,d]] = arr` 导致 es2panda segfault | compile-pass/fail | 编译器崩溃 (core dumped) | C类-编译器Bug |
 | C-17.16.1-02 | EXP2 解构类型检查系列 | 解构 RHS 与 LHS 标注类型不匹配未检测 | compile-fail | 编译通过 | C类-编译器未实现 |
 | D-17.5-01 | EXP2_17_05 系列 | Indexable `$_get/$_set` 索引参数 spec 说 string/number，实现要求 int | string 或 number | 仅接受 int (ESE0046) | D类-Spec不一致 |

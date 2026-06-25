@@ -2,8 +2,8 @@
 
 **最后编译验证：** 2026-06-25（es2panda `--extension=ets`，Linux native）
 **总用例数：** 533（238P + 161F + 134R）
-**编译实测：** compile-pass 237/238 通过（1 异常失败）；compile-fail 151/161 按预期失败（10 异常通过）；runtime 129/134 编译通过（5 编译失败）。异常合计 16 项，详见 [issue_report.md](issue_report.md)。
-**覆盖子章节：** 40 个
+**命名规范：** 遵守 03_Types 规范 `EXP2_17_<节>_<子节>_<序号>_<分类>_<描述>`（规则23）
+**编译实测：** 异常 16 项，详见 [issue_report.md](issue_report.md)。
 ---
 
 ## 子章节用例分布
@@ -689,109 +689,105 @@
 
 | 用例 ID | 分类 | 测试内容 |
 |---------|------|---------|
-| EXP2_FuncOverload_BasicTypes_pass | compile-pass | overload 函数重载：不同参数类型(int/string/boolean/double) |
-| EXP2_FuncOverload_DifferentParamCount_pass | compile-pass | overload 函数重载：不同参数数量(0/1/2/3 参数) |
-| EXP2_FuncOverload_Export_pass | compile-pass | 导出 overload：所有重载函数必须导出 |
-| EXP2_FuncOverload_Generic_pass | compile-pass | overload 中包含泛型函数 |
-| EXP2_FuncOverload_MultiOverload_pass | compile-pass | 一个函数可以出现在多个 overload 声明中 |
-| EXP2_FuncOverload_NameSameAsFunc_pass | compile-pass | overload 名与某个重载函数同名（该函数在列表中） |
-| EXP2_FuncOverload_ReturnTypeDiff_pass | compile-pass | overload 函数可以有不同返回类型 |
-| EXP2_FuncOverload_AsFuncRef_fail | compile-fail | overload 名不在 Function Reference 中考虑 |
-| EXP2_FuncOverload_Empty_fail | compile-fail | overload 声明的函数列表不能为空 |
-| EXP2_FuncOverload_ExportNotAll_fail | compile-fail | 导出 overload 但某个重载函数未导出 — 编译错误 |
-| EXP2_FuncOverload_NameConflict_fail | compile-fail | overload 名与函数名相同但函数不在列表中 — 编译错误（另一变体） |
-| EXP2_FuncOverload_NameSameNotInList_fail | compile-fail | overload 名与函数名相同但该函数不在列表中 — 编译错误 |
-| EXP2_FuncOverload_NoAccessibleFunc_fail | compile-fail | overload identifier 引用不存在的函数 — 编译错误 |
-| EXP2_FuncOverload_WrongParamType_fail | compile-fail | 调用 overload 但参数类型不匹配任何重载 — 编译错误 |
-| EXP2_FuncOverload_DiffParamCount_runtime | runtime | overload 按参数数量区分 |
-| EXP2_FuncOverload_OrderDispatch_runtime | runtime | overload 按声明顺序匹配，第一个匹配签名的候选胜出 |
-| EXP2_FuncOverload_ReturnValue_runtime | runtime | overload 调用返回正确值 |
+| EXP2_17_09_1_001_PASS_FUNCOVERLOAD_BASICTYPES | compile-pass | overload 函数重载：不同参数类型(int/string/boolean/double) |
+| EXP2_17_09_1_002_PASS_FUNCOVERLOAD_DIFFERENTPARAMCOUNT | compile-pass | overload 函数重载：不同参数数量(0/1/2/3 参数) |
+| EXP2_17_09_1_003_PASS_FUNCOVERLOAD_EXPORT | compile-pass | 导出 overload：所有重载函数必须导出 |
+| EXP2_17_09_1_004_PASS_FUNCOVERLOAD_GENERIC | compile-pass | overload 中包含泛型函数 |
+| EXP2_17_09_1_005_PASS_FUNCOVERLOAD_MULTIOVERLOAD | compile-pass | 一个函数可以出现在多个 overload 声明中 |
+| EXP2_17_09_1_006_PASS_FUNCOVERLOAD_NAMESAMEASFUNC | compile-pass | overload 名与某个重载函数同名（该函数在列表中） |
+| EXP2_17_09_1_007_PASS_FUNCOVERLOAD_RETURNTYPEDIFF | compile-pass | overload 函数可以有不同返回类型 |
+| EXP2_17_09_1_008_FAIL_FUNCOVERLOAD_ASFUNCREF | compile-fail | overload 名不在 Function Reference 中考虑 |
+| EXP2_17_09_1_009_FAIL_FUNCOVERLOAD_EMPTY | compile-fail | overload 声明的函数列表不能为空 |
+| EXP2_17_09_1_010_FAIL_FUNCOVERLOAD_EXPORTNOTALL | compile-fail | 导出 overload 但某个重载函数未导出 — 编译错误 |
+| EXP2_17_09_1_011_FAIL_FUNCOVERLOAD_NAMECONFLICT | compile-fail | overload 名与函数名相同但函数不在列表中 — 编译错误（另一变体） |
+| EXP2_17_09_1_012_FAIL_FUNCOVERLOAD_NAMESAMENOTINLIST | compile-fail | overload 名与函数名相同但该函数不在列表中 — 编译错误 |
+| EXP2_17_09_1_013_FAIL_FUNCOVERLOAD_NOACCESSIBLEFUNC | compile-fail | overload identifier 引用不存在的函数 — 编译错误 |
+| EXP2_17_09_1_014_FAIL_FUNCOVERLOAD_WRONGPARAMTYPE | compile-fail | 调用 overload 但参数类型不匹配任何重载 — 编译错误 |
+| EXP2_17_09_1_015_RUNTIME_FUNCOVERLOAD_DIFFPARAMCOUNT | runtime | overload 按参数数量区分 |
+| EXP2_17_09_1_016_RUNTIME_FUNCOVERLOAD_ORDERDISPATCH | runtime | overload 按声明顺序匹配，第一个匹配签名的候选胜出 |
+| EXP2_17_09_1_017_RUNTIME_FUNCOVERLOAD_RETURNVALUE | runtime | overload 调用返回正确值 |
 
 ### §17.9.2 Explicit_Class_Method_Overload（8P + 7F + 3R）
 
 | 用例 ID | 分类 | 测试内容 |
 |---------|------|---------|
-| EXP2_MethodOverload_Async_pass | compile-pass | async overload 包含 async 方法 |
-| EXP2_MethodOverload_Basic_pass | compile-pass | 类方法 overload 基本声明和调用 |
-| EXP2_MethodOverload_MultiOverload_pass | compile-pass | 同一个类中可以有多个 overload 声明 |
-| EXP2_MethodOverload_OverrideAdd_pass | compile-pass | 子类覆盖 overload 时可添加新方法 |
-| EXP2_MethodOverload_Override_pass | compile-pass | 子类覆盖父类 overload，必须列出所有父类方法 |
-| EXP2_MethodOverload_PublicAccess_pass | compile-pass | public overload → 所有方法必须 public |
-| EXP2_MethodOverload_SpecialNames_pass | compile-pass | overload 可包含 $_get, $_set 等特殊名称方法 |
-| EXP2_MethodOverload_Static_pass | compile-pass | static overload 包含 static 方法 |
-| EXP2_MethodOverload_AccessMismatch_fail | compile-fail | protected overload 不能包含 private 方法 — 编译错误 |
-| EXP2_MethodOverload_AsyncMismatch_fail | compile-fail | async overload 不能包含非 async 方法 — 编译错误 |
-| EXP2_MethodOverload_InstanceMismatch_fail | compile-fail | 实例 overload 不能包含 static 方法 — 编译错误 |
-| EXP2_MethodOverload_NameConflict_fail | compile-fail | overload 名与方法同名但方法不在列表中 — 编译错误 |
-| EXP2_MethodOverload_OverrideMissing_fail | compile-fail | 子类覆盖 overload 但缺少父类方法 — 编译错误 |
-| EXP2_MethodOverload_StaticMismatch_fail | compile-fail | static overload 不能包含非 static 方法 — 编译错误 |
-| EXP2_MethodOverload_SyncAsyncMismatch_fail | compile-fail | 非 async overload 不能包含 async 方法 |
-| EXP2_MethodOverload_InstanceDispatch_runtime | runtime | 类实例方法 overload 运行时调度 |
-| EXP2_MethodOverload_OverrideDispatch_runtime | runtime | 子类覆盖 overload 后运行时调用子类方法 |
-| EXP2_MethodOverload_StaticDispatch_runtime | runtime | static overload 运行时调度 |
+| EXP2_17_09_2_001_PASS_METHODOVERLOAD_ASYNC | compile-pass | async overload 包含 async 方法 |
+| EXP2_17_09_2_002_PASS_METHODOVERLOAD_BASIC | compile-pass | 类方法 overload 基本声明和调用 |
+| EXP2_17_09_2_003_PASS_METHODOVERLOAD_MULTIOVERLOAD | compile-pass | 同一个类中可以有多个 overload 声明 |
+| EXP2_17_09_2_004_PASS_METHODOVERLOAD_OVERRIDEADD | compile-pass | 子类覆盖 overload 时可添加新方法 |
+| EXP2_17_09_2_005_PASS_METHODOVERLOAD_OVERRIDE | compile-pass | 子类覆盖父类 overload，必须列出所有父类方法 |
+| EXP2_17_09_2_006_PASS_METHODOVERLOAD_PUBLICACCESS | compile-pass | public overload → 所有方法必须 public |
+| EXP2_17_09_2_007_PASS_METHODOVERLOAD_SPECIALNAMES | compile-pass | overload 可包含 $_get, $_set 等特殊名称方法 |
+| EXP2_17_09_2_008_PASS_METHODOVERLOAD_STATIC | compile-pass | static overload 包含 static 方法 |
+| EXP2_17_09_2_009_FAIL_METHODOVERLOAD_ACCESSMISMATCH | compile-fail | protected overload 不能包含 private 方法 — 编译错误 |
+| EXP2_17_09_2_010_FAIL_METHODOVERLOAD_ASYNCMISMATCH | compile-fail | async overload 不能包含非 async 方法 — 编译错误 |
+| EXP2_17_09_2_011_FAIL_METHODOVERLOAD_INSTANCEMISMATCH | compile-fail | 实例 overload 不能包含 static 方法 — 编译错误 |
+| EXP2_17_09_2_012_FAIL_METHODOVERLOAD_NAMECONFLICT | compile-fail | overload 名与方法同名但方法不在列表中 — 编译错误 |
+| EXP2_17_09_2_013_FAIL_METHODOVERLOAD_OVERRIDEMISSING | compile-fail | 子类覆盖 overload 但缺少父类方法 — 编译错误 |
+| EXP2_17_09_2_014_FAIL_METHODOVERLOAD_STATICMISMATCH | compile-fail | static overload 不能包含非 static 方法 — 编译错误 |
+| EXP2_17_09_2_015_FAIL_METHODOVERLOAD_SYNCASYNCMISMATCH | compile-fail | 非 async overload 不能包含 async 方法 |
+| EXP2_17_09_2_016_RUNTIME_METHODOVERLOAD_INSTANCEDISPATCH | runtime | 类实例方法 overload 运行时调度 |
+| EXP2_17_09_2_017_RUNTIME_METHODOVERLOAD_OVERRIDEDISPATCH | runtime | 子类覆盖 overload 后运行时调用子类方法 |
+| EXP2_17_09_2_018_RUNTIME_METHODOVERLOAD_STATICDISPATCH | runtime | static overload 运行时调度 |
 
 ### §17.9.3 Explicit_Interface_Method_Overload（6P + 3F + 1R）
 
 | 用例 ID | 分类 | 测试内容 |
 |---------|------|---------|
-| EXP2_InterfaceOverload_AbstractClass_pass | compile-pass | 抽象类实现接口但声明为 abstract，不实现方法 |
-| EXP2_InterfaceOverload_AddMethod_pass | compile-pass | override 接口 overload 时可添加新方法 |
-| EXP2_InterfaceOverload_Basic_pass | compile-pass | 接口中 overload 声明 |
-| EXP2_InterfaceOverload_Implements_pass | compile-pass | 实现类 override 接口 overload，包含所有方法 |
-| EXP2_InterfaceOverload_Inherit_pass | compile-pass | 实现类不 override，继承接口 overload |
-| EXP2_InterfaceOverload_MultipleInterfaces_pass | compile-pass | 实现多个接口，各有不同的 overload |
-| EXP2_InterfaceOverload_DuplicateOverload_fail | compile-fail | 多接口继承同名 overload 但实现类未 override — 编译错误 |
-| EXP2_InterfaceOverload_NotImplementAll_fail | compile-fail | 实现接口 overload 但未实现该方法 — 编译错误 |
-| EXP2_InterfaceOverload_OverrideMissing_fail | compile-fail | 实现类 override 接口 overload 但缺少方法 — 编译错误 |
-| EXP2_InterfaceOverload_Dispatch_runtime | runtime | 通过接口类型调用 overload |
+| EXP2_17_09_3_001_PASS_INTERFACEOVERLOAD_ABSTRACTCLASS | compile-pass | 抽象类实现接口但声明为 abstract，不实现方法 |
+| EXP2_17_09_3_002_PASS_INTERFACEOVERLOAD_ADDMETHOD | compile-pass | override 接口 overload 时可添加新方法 |
+| EXP2_17_09_3_003_PASS_INTERFACEOVERLOAD_BASIC | compile-pass | 接口中 overload 声明 |
+| EXP2_17_09_3_004_PASS_INTERFACEOVERLOAD_IMPLEMENTS | compile-pass | 实现类 override 接口 overload，包含所有方法 |
+| EXP2_17_09_3_005_PASS_INTERFACEOVERLOAD_INHERIT | compile-pass | 实现类不 override，继承接口 overload |
+| EXP2_17_09_3_006_PASS_INTERFACEOVERLOAD_MULTIPLEINTERFACES | compile-pass | 实现多个接口，各有不同的 overload |
+| EXP2_17_09_3_007_FAIL_INTERFACEOVERLOAD_DUPLICATEOVERLOAD | compile-fail | 多接口继承同名 overload 但实现类未 override — 编译错误 |
+| EXP2_17_09_3_008_FAIL_INTERFACEOVERLOAD_NOTIMPLEMENTALL | compile-fail | 实现接口 overload 但未实现该方法 — 编译错误 |
+| EXP2_17_09_3_009_FAIL_INTERFACEOVERLOAD_OVERRIDEMISSING | compile-fail | 实现类 override 接口 overload 但缺少方法 — 编译错误 |
+| EXP2_17_09_3_010_RUNTIME_INTERFACEOVERLOAD_DISPATCH | runtime | 通过接口类型调用 overload |
 
 ### §17.9.4 Explicit_Overload_Name_Same_As_Method_Name（5P + 2F + 1R）
 
 | 用例 ID | 分类 | 测试内容 |
 |---------|------|---------|
-| EXP2_NameConflict_CrossInheritance_pass | compile-pass | overload 名与父类方法同名，跨继承层次工作 |
-| EXP2_NameConflict_MethodRef_pass | compile-pass | overload 名与实际方法名共存，可分别使用 |
-| EXP2_NameConflict_NoAmbiguity_pass | compile-pass | overload 名不在 overriding 中考虑，不产生歧义 |
-| EXP2_NameConflict_OverloadNameSameAsMethod_pass | compile-pass | overload 名与某个方法名相同（该方法在列表中） |
-| EXP2_NameConflict_SameNameInterface_pass | compile-pass | 接口中 overload 名与接口方法同名 |
-| EXP2_NameConflict_CrossInheritanceFail_fail | compile-fail | 跨继承层次，父类方法不在子类 overload 列表中 — 编译错误 |
-| EXP2_NameConflict_MethodNotInList_fail | compile-fail | 同名方法存在但不在 overload 列表中 — 编译错误 |
-| EXP2_NameConflict_Dispatch_runtime | runtime | overload 名与方法同名时不产生歧义，运行时正确分发 |
+| EXP2_17_09_4_001_PASS_NAMECONFLICT_CROSSINHERITANCE | compile-pass | overload 名与父类方法同名，跨继承层次工作 |
+| EXP2_17_09_4_002_PASS_NAMECONFLICT_METHODREF | compile-pass | overload 名与实际方法名共存，可分别使用 |
+| EXP2_17_09_4_003_PASS_NAMECONFLICT_NOAMBIGUITY | compile-pass | overload 名不在 overriding 中考虑，不产生歧义 |
+| EXP2_17_09_4_004_PASS_NAMECONFLICT_OVERLOADNAMESAMEASMETHOD | compile-pass | overload 名与某个方法名相同（该方法在列表中） |
+| EXP2_17_09_4_005_PASS_NAMECONFLICT_SAMENAMEINTERFACE | compile-pass | 接口中 overload 名与接口方法同名 |
+| EXP2_17_09_4_006_FAIL_NAMECONFLICT_CROSSINHERITANCEFAIL | compile-fail | 跨继承层次，父类方法不在子类 overload 列表中 — 编译错误 |
+| EXP2_17_09_4_007_FAIL_NAMECONFLICT_METHODNOTINLIST | compile-fail | 同名方法存在但不在 overload 列表中 — 编译错误 |
+| EXP2_17_09_4_008_RUNTIME_NAMECONFLICT_DISPATCH | runtime | overload 名与方法同名时不产生歧义，运行时正确分发 |
 
 ### §17.9.5 Explicit_Constructor_Overload（7P + 3F + 2R）
 
 | 用例 ID | 分类 | 测试内容 |
 |---------|------|---------|
-| EXP2_CtorOverload_AnonymousImplicitFirst_pass | compile-pass | 匿名构造函数隐式放在列表首位 |
-| EXP2_CtorOverload_Basic_pass | compile-pass | 构造函数 overload 基本声明（命名构造函数在列表中，匿名构造函数隐式优先） |
-| EXP2_CtorOverload_DifferentParamCount_pass | compile-pass | 多个构造函数按参数数量区分 |
-| EXP2_CtorOverload_DifferentParamTypes_pass | compile-pass | 多个构造函数按参数类型区分 |
-| EXP2_CtorOverload_GenericClass_pass | compile-pass | 泛型类中的 overload constructor |
-| EXP2_CtorOverload_Inheritance_pass | compile-pass | 子类继承父类，子类自身有 overload constructor |
-| EXP2_CtorOverload_NamedConstructors_pass | compile-pass | overload constructor 包含命名构造函数 |
-| EXP2_CtorOverload_EmptyList_fail | compile-fail | overload constructor 列表不能为空 |
-| EXP2_CtorOverload_NoMatchingCtor_fail | compile-fail | 调用 constructor overload 但无匹配签名 — 编译错误 |
-| EXP2_CtorOverload_TwoDeclarations_fail | compile-fail | 每个类只能有一个显式 constructor overload — 编译错误 |
-| EXP2_CtorOverload_OrderPriority_runtime | runtime | 匿名构造函数隐式放在列表首位，声明顺序决定匹配优先级 |
-| EXP2_CtorOverload_Resolution_runtime | runtime | constructor overload 运行时解析到正确构造函数 |
+| EXP2_17_09_5_001_PASS_CTOROVERLOAD_ANONYMOUSIMPLICITFIRST | compile-pass | 匿名构造函数隐式放在列表首位 |
+| EXP2_17_09_5_002_PASS_CTOROVERLOAD_BASIC | compile-pass | 构造函数 overload 基本声明（命名构造函数在列表中，匿名构造函数隐式优先） |
+| EXP2_17_09_5_003_PASS_CTOROVERLOAD_DIFFERENTPARAMCOUNT | compile-pass | 多个构造函数按参数数量区分 |
+| EXP2_17_09_5_004_PASS_CTOROVERLOAD_DIFFERENTPARAMTYPES | compile-pass | 多个构造函数按参数类型区分 |
+| EXP2_17_09_5_005_PASS_CTOROVERLOAD_GENERICCLASS | compile-pass | 泛型类中的 overload constructor |
+| EXP2_17_09_5_006_PASS_CTOROVERLOAD_INHERITANCE | compile-pass | 子类继承父类，子类自身有 overload constructor |
+| EXP2_17_09_5_007_PASS_CTOROVERLOAD_NAMEDCONSTRUCTORS | compile-pass | overload constructor 包含命名构造函数 |
+| EXP2_17_09_5_008_FAIL_CTOROVERLOAD_EMPTYLIST | compile-fail | overload constructor 列表不能为空 |
+| EXP2_17_09_5_009_FAIL_CTOROVERLOAD_NOMATCHINGCTOR | compile-fail | 调用 constructor overload 但无匹配签名 — 编译错误 |
+| EXP2_17_09_5_010_FAIL_CTOROVERLOAD_TWODECLARATIONS | compile-fail | 每个类只能有一个显式 constructor overload — 编译错误 |
+| EXP2_17_09_5_011_RUNTIME_CTOROVERLOAD_ORDERPRIORITY | runtime | 匿名构造函数隐式放在列表首位，声明顺序决定匹配优先级 |
+| EXP2_17_09_5_012_RUNTIME_CTOROVERLOAD_RESOLUTION | runtime | constructor overload 运行时解析到正确构造函数 |
 
 ### §17.9 Explicit_Overload_Declarations（5P + 2F + 1R）
 
 | 用例 ID | 分类 | 测试内容 |
 |---------|------|---------|
-| EXP2_Overload_BasicFunc_pass | compile-pass | 基本 overload 函数声明 — 编译时多态 |
-| EXP2_Overload_ExplicitImplicit_pass | compile-pass | 可结合显式和隐式重载 |
-| EXP2_Overload_Generic_pass | compile-pass | overload 可使用泛型实体，显式类型参数可缩小候选范围 |
-| EXP2_Overload_MultiEntity_pass | compile-pass | 一个实体可出现在多个 overload 声明中 |
-| EXP2_Overload_Ordered_pass | compile-pass | overload 按声明顺序检查匹配 |
-| EXP2_Overload_NoMatchingSignature_fail | compile-fail | 调用 overload 但无匹配签名 — 编译时错误 |
-| EXP2_Overload_SyntaxError_fail | compile-fail | overload 声明语法错误 |
-| EXP2_Overload_OrderResolution_runtime | runtime | overload 在运行时按声明顺序解析 |
-
----
-## 已知编译异常（16 项）
-详见 [issue_report.md](issue_report.md)。含 1 项 compile-pass 异常失败、10 项 compile-fail 异常通过、5 项 runtime 编译失败。
+| EXP2_17_09_001_PASS_OVERLOAD_BASICFUNC | compile-pass | 基本 overload 函数声明 — 编译时多态 |
+| EXP2_17_09_002_PASS_OVERLOAD_EXPLICITIMPLICIT | compile-pass | 可结合显式和隐式重载 |
+| EXP2_17_09_003_PASS_OVERLOAD_GENERIC | compile-pass | overload 可使用泛型实体，显式类型参数可缩小候选范围 |
+| EXP2_17_09_004_PASS_OVERLOAD_MULTIENTITY | compile-pass | 一个实体可出现在多个 overload 声明中 |
+| EXP2_17_09_005_PASS_OVERLOAD_ORDERED | compile-pass | overload 按声明顺序检查匹配 |
+| EXP2_17_09_006_FAIL_OVERLOAD_NOMATCHINGSIGNATURE | compile-fail | 调用 overload 但无匹配签名 — 编译时错误 |
+| EXP2_17_09_007_FAIL_OVERLOAD_SYNTAXERROR | compile-fail | overload 声明语法错误 |
+| EXP2_17_09_008_RUNTIME_OVERLOAD_ORDERRESOLUTION | runtime | overload 在运行时按声明顺序解析 |
 
 ---
 ## 命名规范
-前缀 `EXP2_`；子章节内连续编号或语义命名；分类 PASS/FAIL/RUNTIME；目录 `<子章节>/compile-pass|compile-fail|runtime/`。
+前缀 `EXP2_`；格式 `EXP2_17_<节>_<子节>_<序号>_<PASS|FAIL|RUNTIME>_<描述>`；子章节内连续编号（pass 001起 → fail 接续 → runtime 接续）。

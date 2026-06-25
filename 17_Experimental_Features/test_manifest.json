@@ -142,7 +142,7 @@
       "id": "EXP2_17_01_01_015_RUNTIME_BOUNDARY_VALUE_VERIFY",
       "section": "17.1.1",
       "category": "runtime",
-      "description": "边界值字面量验证：验证 c'\\x00' (U+0000) == 0, c'￿' (U+FFFF) == 65535"
+      "description": "边界值字面量验证：验证 c'' (U+0000) == 0, c'￿' (U+FFFF) == 65535"
     },
     {
       "id": "EXP2_17_01_02_001_PASS_CHAR_EQUALITY",
@@ -232,7 +232,7 @@
       "id": "EXP2_17_01_02_015_RUNTIME_UNSIGNED_COMPARE",
       "section": "17.1.2",
       "category": "runtime",
-      "description": "验证 char 无符号 16 位整数比较语义：c'￿' (U+FFFF=65535) > c'\\x00' (U+0000=0)"
+      "description": "验证 char 无符号 16 位整数比较语义：c'￿' (U+FFFF=65535) > c'' (U+0000=0)"
     },
     {
       "id": "EXP2_17_01_02_016_RUNTIME_STRICT_EQ_VERIFY",
@@ -2815,439 +2815,439 @@
       "description": "验证 switch 语句和条件分支的运行时行为"
     },
     {
-      "id": "EXP2_FuncOverload_BasicTypes_pass",
+      "id": "EXP2_17_09_1_001_PASS_FUNCOVERLOAD_BASICTYPES",
       "section": "17.9.1",
       "category": "compile-pass",
       "description": "overload 函数重载：不同参数类型(int/string/boolean/double)"
     },
     {
-      "id": "EXP2_FuncOverload_DifferentParamCount_pass",
+      "id": "EXP2_17_09_1_002_PASS_FUNCOVERLOAD_DIFFERENTPARAMCOUNT",
       "section": "17.9.1",
       "category": "compile-pass",
       "description": "overload 函数重载：不同参数数量(0/1/2/3 参数)"
     },
     {
-      "id": "EXP2_FuncOverload_Export_pass",
+      "id": "EXP2_17_09_1_003_PASS_FUNCOVERLOAD_EXPORT",
       "section": "17.9.1",
       "category": "compile-pass",
       "description": "导出 overload：所有重载函数必须导出"
     },
     {
-      "id": "EXP2_FuncOverload_Generic_pass",
+      "id": "EXP2_17_09_1_004_PASS_FUNCOVERLOAD_GENERIC",
       "section": "17.9.1",
       "category": "compile-pass",
       "description": "overload 中包含泛型函数"
     },
     {
-      "id": "EXP2_FuncOverload_MultiOverload_pass",
+      "id": "EXP2_17_09_1_005_PASS_FUNCOVERLOAD_MULTIOVERLOAD",
       "section": "17.9.1",
       "category": "compile-pass",
       "description": "一个函数可以出现在多个 overload 声明中"
     },
     {
-      "id": "EXP2_FuncOverload_NameSameAsFunc_pass",
+      "id": "EXP2_17_09_1_006_PASS_FUNCOVERLOAD_NAMESAMEASFUNC",
       "section": "17.9.1",
       "category": "compile-pass",
       "description": "overload 名与某个重载函数同名（该函数在列表中）"
     },
     {
-      "id": "EXP2_FuncOverload_ReturnTypeDiff_pass",
+      "id": "EXP2_17_09_1_007_PASS_FUNCOVERLOAD_RETURNTYPEDIFF",
       "section": "17.9.1",
       "category": "compile-pass",
       "description": "overload 函数可以有不同返回类型"
     },
     {
-      "id": "EXP2_FuncOverload_AsFuncRef_fail",
+      "id": "EXP2_17_09_1_008_FAIL_FUNCOVERLOAD_ASFUNCREF",
       "section": "17.9.1",
       "category": "compile-fail",
       "description": "overload 名不在 Function Reference 中考虑"
     },
     {
-      "id": "EXP2_FuncOverload_Empty_fail",
+      "id": "EXP2_17_09_1_009_FAIL_FUNCOVERLOAD_EMPTY",
       "section": "17.9.1",
       "category": "compile-fail",
       "description": "overload 声明的函数列表不能为空"
     },
     {
-      "id": "EXP2_FuncOverload_ExportNotAll_fail",
+      "id": "EXP2_17_09_1_010_FAIL_FUNCOVERLOAD_EXPORTNOTALL",
       "section": "17.9.1",
       "category": "compile-fail",
       "description": "导出 overload 但某个重载函数未导出 — 编译错误"
     },
     {
-      "id": "EXP2_FuncOverload_NameConflict_fail",
+      "id": "EXP2_17_09_1_011_FAIL_FUNCOVERLOAD_NAMECONFLICT",
       "section": "17.9.1",
       "category": "compile-fail",
       "description": "overload 名与函数名相同但函数不在列表中 — 编译错误（另一变体）"
     },
     {
-      "id": "EXP2_FuncOverload_NameSameNotInList_fail",
+      "id": "EXP2_17_09_1_012_FAIL_FUNCOVERLOAD_NAMESAMENOTINLIST",
       "section": "17.9.1",
       "category": "compile-fail",
       "description": "overload 名与函数名相同但该函数不在列表中 — 编译错误"
     },
     {
-      "id": "EXP2_FuncOverload_NoAccessibleFunc_fail",
+      "id": "EXP2_17_09_1_013_FAIL_FUNCOVERLOAD_NOACCESSIBLEFUNC",
       "section": "17.9.1",
       "category": "compile-fail",
       "description": "overload identifier 引用不存在的函数 — 编译错误"
     },
     {
-      "id": "EXP2_FuncOverload_WrongParamType_fail",
+      "id": "EXP2_17_09_1_014_FAIL_FUNCOVERLOAD_WRONGPARAMTYPE",
       "section": "17.9.1",
       "category": "compile-fail",
       "description": "调用 overload 但参数类型不匹配任何重载 — 编译错误"
     },
     {
-      "id": "EXP2_FuncOverload_DiffParamCount_runtime",
+      "id": "EXP2_17_09_1_015_RUNTIME_FUNCOVERLOAD_DIFFPARAMCOUNT",
       "section": "17.9.1",
       "category": "runtime",
       "description": "overload 按参数数量区分"
     },
     {
-      "id": "EXP2_FuncOverload_OrderDispatch_runtime",
+      "id": "EXP2_17_09_1_016_RUNTIME_FUNCOVERLOAD_ORDERDISPATCH",
       "section": "17.9.1",
       "category": "runtime",
       "description": "overload 按声明顺序匹配，第一个匹配签名的候选胜出"
     },
     {
-      "id": "EXP2_FuncOverload_ReturnValue_runtime",
+      "id": "EXP2_17_09_1_017_RUNTIME_FUNCOVERLOAD_RETURNVALUE",
       "section": "17.9.1",
       "category": "runtime",
       "description": "overload 调用返回正确值"
     },
     {
-      "id": "EXP2_MethodOverload_Async_pass",
+      "id": "EXP2_17_09_2_001_PASS_METHODOVERLOAD_ASYNC",
       "section": "17.9.2",
       "category": "compile-pass",
       "description": "async overload 包含 async 方法"
     },
     {
-      "id": "EXP2_MethodOverload_Basic_pass",
+      "id": "EXP2_17_09_2_002_PASS_METHODOVERLOAD_BASIC",
       "section": "17.9.2",
       "category": "compile-pass",
       "description": "类方法 overload 基本声明和调用"
     },
     {
-      "id": "EXP2_MethodOverload_MultiOverload_pass",
+      "id": "EXP2_17_09_2_003_PASS_METHODOVERLOAD_MULTIOVERLOAD",
       "section": "17.9.2",
       "category": "compile-pass",
       "description": "同一个类中可以有多个 overload 声明"
     },
     {
-      "id": "EXP2_MethodOverload_OverrideAdd_pass",
+      "id": "EXP2_17_09_2_004_PASS_METHODOVERLOAD_OVERRIDEADD",
       "section": "17.9.2",
       "category": "compile-pass",
       "description": "子类覆盖 overload 时可添加新方法"
     },
     {
-      "id": "EXP2_MethodOverload_Override_pass",
+      "id": "EXP2_17_09_2_005_PASS_METHODOVERLOAD_OVERRIDE",
       "section": "17.9.2",
       "category": "compile-pass",
       "description": "子类覆盖父类 overload，必须列出所有父类方法"
     },
     {
-      "id": "EXP2_MethodOverload_PublicAccess_pass",
+      "id": "EXP2_17_09_2_006_PASS_METHODOVERLOAD_PUBLICACCESS",
       "section": "17.9.2",
       "category": "compile-pass",
       "description": "public overload → 所有方法必须 public"
     },
     {
-      "id": "EXP2_MethodOverload_SpecialNames_pass",
+      "id": "EXP2_17_09_2_007_PASS_METHODOVERLOAD_SPECIALNAMES",
       "section": "17.9.2",
       "category": "compile-pass",
       "description": "overload 可包含 $_get, $_set 等特殊名称方法"
     },
     {
-      "id": "EXP2_MethodOverload_Static_pass",
+      "id": "EXP2_17_09_2_008_PASS_METHODOVERLOAD_STATIC",
       "section": "17.9.2",
       "category": "compile-pass",
       "description": "static overload 包含 static 方法"
     },
     {
-      "id": "EXP2_MethodOverload_AccessMismatch_fail",
+      "id": "EXP2_17_09_2_009_FAIL_METHODOVERLOAD_ACCESSMISMATCH",
       "section": "17.9.2",
       "category": "compile-fail",
       "description": "protected overload 不能包含 private 方法 — 编译错误"
     },
     {
-      "id": "EXP2_MethodOverload_AsyncMismatch_fail",
+      "id": "EXP2_17_09_2_010_FAIL_METHODOVERLOAD_ASYNCMISMATCH",
       "section": "17.9.2",
       "category": "compile-fail",
       "description": "async overload 不能包含非 async 方法 — 编译错误"
     },
     {
-      "id": "EXP2_MethodOverload_InstanceMismatch_fail",
+      "id": "EXP2_17_09_2_011_FAIL_METHODOVERLOAD_INSTANCEMISMATCH",
       "section": "17.9.2",
       "category": "compile-fail",
       "description": "实例 overload 不能包含 static 方法 — 编译错误"
     },
     {
-      "id": "EXP2_MethodOverload_NameConflict_fail",
+      "id": "EXP2_17_09_2_012_FAIL_METHODOVERLOAD_NAMECONFLICT",
       "section": "17.9.2",
       "category": "compile-fail",
       "description": "overload 名与方法同名但方法不在列表中 — 编译错误"
     },
     {
-      "id": "EXP2_MethodOverload_OverrideMissing_fail",
+      "id": "EXP2_17_09_2_013_FAIL_METHODOVERLOAD_OVERRIDEMISSING",
       "section": "17.9.2",
       "category": "compile-fail",
       "description": "子类覆盖 overload 但缺少父类方法 — 编译错误"
     },
     {
-      "id": "EXP2_MethodOverload_StaticMismatch_fail",
+      "id": "EXP2_17_09_2_014_FAIL_METHODOVERLOAD_STATICMISMATCH",
       "section": "17.9.2",
       "category": "compile-fail",
       "description": "static overload 不能包含非 static 方法 — 编译错误"
     },
     {
-      "id": "EXP2_MethodOverload_SyncAsyncMismatch_fail",
+      "id": "EXP2_17_09_2_015_FAIL_METHODOVERLOAD_SYNCASYNCMISMATCH",
       "section": "17.9.2",
       "category": "compile-fail",
       "description": "非 async overload 不能包含 async 方法"
     },
     {
-      "id": "EXP2_MethodOverload_InstanceDispatch_runtime",
+      "id": "EXP2_17_09_2_016_RUNTIME_METHODOVERLOAD_INSTANCEDISPATCH",
       "section": "17.9.2",
       "category": "runtime",
       "description": "类实例方法 overload 运行时调度"
     },
     {
-      "id": "EXP2_MethodOverload_OverrideDispatch_runtime",
+      "id": "EXP2_17_09_2_017_RUNTIME_METHODOVERLOAD_OVERRIDEDISPATCH",
       "section": "17.9.2",
       "category": "runtime",
       "description": "子类覆盖 overload 后运行时调用子类方法"
     },
     {
-      "id": "EXP2_MethodOverload_StaticDispatch_runtime",
+      "id": "EXP2_17_09_2_018_RUNTIME_METHODOVERLOAD_STATICDISPATCH",
       "section": "17.9.2",
       "category": "runtime",
       "description": "static overload 运行时调度"
     },
     {
-      "id": "EXP2_InterfaceOverload_AbstractClass_pass",
+      "id": "EXP2_17_09_3_001_PASS_INTERFACEOVERLOAD_ABSTRACTCLASS",
       "section": "17.9.3",
       "category": "compile-pass",
       "description": "抽象类实现接口但声明为 abstract，不实现方法"
     },
     {
-      "id": "EXP2_InterfaceOverload_AddMethod_pass",
+      "id": "EXP2_17_09_3_002_PASS_INTERFACEOVERLOAD_ADDMETHOD",
       "section": "17.9.3",
       "category": "compile-pass",
       "description": "override 接口 overload 时可添加新方法"
     },
     {
-      "id": "EXP2_InterfaceOverload_Basic_pass",
+      "id": "EXP2_17_09_3_003_PASS_INTERFACEOVERLOAD_BASIC",
       "section": "17.9.3",
       "category": "compile-pass",
       "description": "接口中 overload 声明"
     },
     {
-      "id": "EXP2_InterfaceOverload_Implements_pass",
+      "id": "EXP2_17_09_3_004_PASS_INTERFACEOVERLOAD_IMPLEMENTS",
       "section": "17.9.3",
       "category": "compile-pass",
       "description": "实现类 override 接口 overload，包含所有方法"
     },
     {
-      "id": "EXP2_InterfaceOverload_Inherit_pass",
+      "id": "EXP2_17_09_3_005_PASS_INTERFACEOVERLOAD_INHERIT",
       "section": "17.9.3",
       "category": "compile-pass",
       "description": "实现类不 override，继承接口 overload"
     },
     {
-      "id": "EXP2_InterfaceOverload_MultipleInterfaces_pass",
+      "id": "EXP2_17_09_3_006_PASS_INTERFACEOVERLOAD_MULTIPLEINTERFACES",
       "section": "17.9.3",
       "category": "compile-pass",
       "description": "实现多个接口，各有不同的 overload"
     },
     {
-      "id": "EXP2_InterfaceOverload_DuplicateOverload_fail",
+      "id": "EXP2_17_09_3_007_FAIL_INTERFACEOVERLOAD_DUPLICATEOVERLOAD",
       "section": "17.9.3",
       "category": "compile-fail",
       "description": "多接口继承同名 overload 但实现类未 override — 编译错误"
     },
     {
-      "id": "EXP2_InterfaceOverload_NotImplementAll_fail",
+      "id": "EXP2_17_09_3_008_FAIL_INTERFACEOVERLOAD_NOTIMPLEMENTALL",
       "section": "17.9.3",
       "category": "compile-fail",
       "description": "实现接口 overload 但未实现该方法 — 编译错误"
     },
     {
-      "id": "EXP2_InterfaceOverload_OverrideMissing_fail",
+      "id": "EXP2_17_09_3_009_FAIL_INTERFACEOVERLOAD_OVERRIDEMISSING",
       "section": "17.9.3",
       "category": "compile-fail",
       "description": "实现类 override 接口 overload 但缺少方法 — 编译错误"
     },
     {
-      "id": "EXP2_InterfaceOverload_Dispatch_runtime",
+      "id": "EXP2_17_09_3_010_RUNTIME_INTERFACEOVERLOAD_DISPATCH",
       "section": "17.9.3",
       "category": "runtime",
       "description": "通过接口类型调用 overload"
     },
     {
-      "id": "EXP2_NameConflict_CrossInheritance_pass",
+      "id": "EXP2_17_09_4_001_PASS_NAMECONFLICT_CROSSINHERITANCE",
       "section": "17.9.4",
       "category": "compile-pass",
       "description": "overload 名与父类方法同名，跨继承层次工作"
     },
     {
-      "id": "EXP2_NameConflict_MethodRef_pass",
+      "id": "EXP2_17_09_4_002_PASS_NAMECONFLICT_METHODREF",
       "section": "17.9.4",
       "category": "compile-pass",
       "description": "overload 名与实际方法名共存，可分别使用"
     },
     {
-      "id": "EXP2_NameConflict_NoAmbiguity_pass",
+      "id": "EXP2_17_09_4_003_PASS_NAMECONFLICT_NOAMBIGUITY",
       "section": "17.9.4",
       "category": "compile-pass",
       "description": "overload 名不在 overriding 中考虑，不产生歧义"
     },
     {
-      "id": "EXP2_NameConflict_OverloadNameSameAsMethod_pass",
+      "id": "EXP2_17_09_4_004_PASS_NAMECONFLICT_OVERLOADNAMESAMEASMETHOD",
       "section": "17.9.4",
       "category": "compile-pass",
       "description": "overload 名与某个方法名相同（该方法在列表中）"
     },
     {
-      "id": "EXP2_NameConflict_SameNameInterface_pass",
+      "id": "EXP2_17_09_4_005_PASS_NAMECONFLICT_SAMENAMEINTERFACE",
       "section": "17.9.4",
       "category": "compile-pass",
       "description": "接口中 overload 名与接口方法同名"
     },
     {
-      "id": "EXP2_NameConflict_CrossInheritanceFail_fail",
+      "id": "EXP2_17_09_4_006_FAIL_NAMECONFLICT_CROSSINHERITANCEFAIL",
       "section": "17.9.4",
       "category": "compile-fail",
       "description": "跨继承层次，父类方法不在子类 overload 列表中 — 编译错误"
     },
     {
-      "id": "EXP2_NameConflict_MethodNotInList_fail",
+      "id": "EXP2_17_09_4_007_FAIL_NAMECONFLICT_METHODNOTINLIST",
       "section": "17.9.4",
       "category": "compile-fail",
       "description": "同名方法存在但不在 overload 列表中 — 编译错误"
     },
     {
-      "id": "EXP2_NameConflict_Dispatch_runtime",
+      "id": "EXP2_17_09_4_008_RUNTIME_NAMECONFLICT_DISPATCH",
       "section": "17.9.4",
       "category": "runtime",
       "description": "overload 名与方法同名时不产生歧义，运行时正确分发"
     },
     {
-      "id": "EXP2_CtorOverload_AnonymousImplicitFirst_pass",
+      "id": "EXP2_17_09_5_001_PASS_CTOROVERLOAD_ANONYMOUSIMPLICITFIRST",
       "section": "17.9.5",
       "category": "compile-pass",
       "description": "匿名构造函数隐式放在列表首位"
     },
     {
-      "id": "EXP2_CtorOverload_Basic_pass",
+      "id": "EXP2_17_09_5_002_PASS_CTOROVERLOAD_BASIC",
       "section": "17.9.5",
       "category": "compile-pass",
       "description": "构造函数 overload 基本声明（命名构造函数在列表中，匿名构造函数隐式优先）"
     },
     {
-      "id": "EXP2_CtorOverload_DifferentParamCount_pass",
+      "id": "EXP2_17_09_5_003_PASS_CTOROVERLOAD_DIFFERENTPARAMCOUNT",
       "section": "17.9.5",
       "category": "compile-pass",
       "description": "多个构造函数按参数数量区分"
     },
     {
-      "id": "EXP2_CtorOverload_DifferentParamTypes_pass",
+      "id": "EXP2_17_09_5_004_PASS_CTOROVERLOAD_DIFFERENTPARAMTYPES",
       "section": "17.9.5",
       "category": "compile-pass",
       "description": "多个构造函数按参数类型区分"
     },
     {
-      "id": "EXP2_CtorOverload_GenericClass_pass",
+      "id": "EXP2_17_09_5_005_PASS_CTOROVERLOAD_GENERICCLASS",
       "section": "17.9.5",
       "category": "compile-pass",
       "description": "泛型类中的 overload constructor"
     },
     {
-      "id": "EXP2_CtorOverload_Inheritance_pass",
+      "id": "EXP2_17_09_5_006_PASS_CTOROVERLOAD_INHERITANCE",
       "section": "17.9.5",
       "category": "compile-pass",
       "description": "子类继承父类，子类自身有 overload constructor"
     },
     {
-      "id": "EXP2_CtorOverload_NamedConstructors_pass",
+      "id": "EXP2_17_09_5_007_PASS_CTOROVERLOAD_NAMEDCONSTRUCTORS",
       "section": "17.9.5",
       "category": "compile-pass",
       "description": "overload constructor 包含命名构造函数"
     },
     {
-      "id": "EXP2_CtorOverload_EmptyList_fail",
+      "id": "EXP2_17_09_5_008_FAIL_CTOROVERLOAD_EMPTYLIST",
       "section": "17.9.5",
       "category": "compile-fail",
       "description": "overload constructor 列表不能为空"
     },
     {
-      "id": "EXP2_CtorOverload_NoMatchingCtor_fail",
+      "id": "EXP2_17_09_5_009_FAIL_CTOROVERLOAD_NOMATCHINGCTOR",
       "section": "17.9.5",
       "category": "compile-fail",
       "description": "调用 constructor overload 但无匹配签名 — 编译错误"
     },
     {
-      "id": "EXP2_CtorOverload_TwoDeclarations_fail",
+      "id": "EXP2_17_09_5_010_FAIL_CTOROVERLOAD_TWODECLARATIONS",
       "section": "17.9.5",
       "category": "compile-fail",
       "description": "每个类只能有一个显式 constructor overload — 编译错误"
     },
     {
-      "id": "EXP2_CtorOverload_OrderPriority_runtime",
+      "id": "EXP2_17_09_5_011_RUNTIME_CTOROVERLOAD_ORDERPRIORITY",
       "section": "17.9.5",
       "category": "runtime",
       "description": "匿名构造函数隐式放在列表首位，声明顺序决定匹配优先级"
     },
     {
-      "id": "EXP2_CtorOverload_Resolution_runtime",
+      "id": "EXP2_17_09_5_012_RUNTIME_CTOROVERLOAD_RESOLUTION",
       "section": "17.9.5",
       "category": "runtime",
       "description": "constructor overload 运行时解析到正确构造函数"
     },
     {
-      "id": "EXP2_Overload_BasicFunc_pass",
+      "id": "EXP2_17_09_001_PASS_OVERLOAD_BASICFUNC",
       "section": "17.9",
       "category": "compile-pass",
       "description": "基本 overload 函数声明 — 编译时多态"
     },
     {
-      "id": "EXP2_Overload_ExplicitImplicit_pass",
+      "id": "EXP2_17_09_002_PASS_OVERLOAD_EXPLICITIMPLICIT",
       "section": "17.9",
       "category": "compile-pass",
       "description": "可结合显式和隐式重载"
     },
     {
-      "id": "EXP2_Overload_Generic_pass",
+      "id": "EXP2_17_09_003_PASS_OVERLOAD_GENERIC",
       "section": "17.9",
       "category": "compile-pass",
       "description": "overload 可使用泛型实体，显式类型参数可缩小候选范围"
     },
     {
-      "id": "EXP2_Overload_MultiEntity_pass",
+      "id": "EXP2_17_09_004_PASS_OVERLOAD_MULTIENTITY",
       "section": "17.9",
       "category": "compile-pass",
       "description": "一个实体可出现在多个 overload 声明中"
     },
     {
-      "id": "EXP2_Overload_Ordered_pass",
+      "id": "EXP2_17_09_005_PASS_OVERLOAD_ORDERED",
       "section": "17.9",
       "category": "compile-pass",
       "description": "overload 按声明顺序检查匹配"
     },
     {
-      "id": "EXP2_Overload_NoMatchingSignature_fail",
+      "id": "EXP2_17_09_006_FAIL_OVERLOAD_NOMATCHINGSIGNATURE",
       "section": "17.9",
       "category": "compile-fail",
       "description": "调用 overload 但无匹配签名 — 编译时错误"
     },
     {
-      "id": "EXP2_Overload_SyntaxError_fail",
+      "id": "EXP2_17_09_007_FAIL_OVERLOAD_SYNTAXERROR",
       "section": "17.9",
       "category": "compile-fail",
       "description": "overload 声明语法错误"
     },
     {
-      "id": "EXP2_Overload_OrderResolution_runtime",
+      "id": "EXP2_17_09_008_RUNTIME_OVERLOAD_ORDERRESOLUTION",
       "section": "17.9",
       "category": "runtime",
       "description": "overload 在运行时按声明顺序解析"
