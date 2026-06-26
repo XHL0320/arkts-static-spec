@@ -1,5 +1,5 @@
 /**
- * @id CLS_09_10_016_RUNTIME_PROTECTED_ACCESS
+ * @id CLS_09_10_034_RUNTIME_PROTECTED_ACCESS
  * @expect runtime
  * @section 9.10
  * @design protected成员在子类中可访问

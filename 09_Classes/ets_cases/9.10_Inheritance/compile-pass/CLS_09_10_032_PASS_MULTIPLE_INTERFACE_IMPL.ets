@@ -1,5 +1,5 @@
 /**
- * @id CLS_09_10_014_PASS_MULTIPLE_INTERFACE_IMPL
+ * @id CLS_09_10_032_PASS_MULTIPLE_INTERFACE_IMPL
  * @expect compile-pass
  * @section 9.10
  * @design 一个类可以同时实现多个接口，必须实现所有接口中声明的抽象方法和required属性

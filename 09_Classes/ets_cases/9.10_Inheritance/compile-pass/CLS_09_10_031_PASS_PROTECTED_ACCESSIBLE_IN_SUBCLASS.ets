@@ -1,5 +1,5 @@
 /**
- * @id CLS_09_10_013_PASS_PROTECTED_ACCESSIBLE_IN_SUBCLASS
+ * @id CLS_09_10_031_PASS_PROTECTED_ACCESSIBLE_IN_SUBCLASS
  * @expect compile-pass
  * @section 9.10
  * @design 父类声明的protected成员被派生类继承且可在派生类方法中访问

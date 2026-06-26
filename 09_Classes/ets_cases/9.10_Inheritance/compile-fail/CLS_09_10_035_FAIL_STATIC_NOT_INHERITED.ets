@@ -1,5 +1,5 @@
 /**
- * @id CLS_09_10_017_FAIL_STATIC_NOT_INHERITED
+ * @id CLS_09_10_035_FAIL_STATIC_NOT_INHERITED
  * @expect compile-fail
  * @section 9.10
  * @design static方法不被继承 — 子类无法通过实例访问父类static方法

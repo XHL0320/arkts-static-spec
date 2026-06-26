@@ -1,5 +1,5 @@
 /**
- * @id CLS_09_10_020_FAIL_OVERRIDE_FIELD_NOT_IN_BASE
+ * @id CLS_09_10_038_FAIL_OVERRIDE_FIELD_NOT_IN_BASE
  * @expect compile-fail
  * @section 9.10
  * @design 使用override修饰符标记的字段必须在基类中存在被重写的同名字段，否则编译失败

@@ -1,5 +1,5 @@
 /**
- * @id CLS_09_10_018_RUNTIME_INSTANCEOF_CHAIN
+ * @id CLS_09_10_036_RUNTIME_INSTANCEOF_CHAIN
  * @expect runtime
  * @section 9.10
  * @design instanceof检查继承链

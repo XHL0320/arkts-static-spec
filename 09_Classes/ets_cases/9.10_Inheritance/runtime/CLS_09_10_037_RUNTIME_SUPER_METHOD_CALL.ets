@@ -1,5 +1,5 @@
 /**
- * @id CLS_09_10_019_RUNTIME_SUPER_METHOD_CALL
+ * @id CLS_09_10_037_RUNTIME_SUPER_METHOD_CALL
  * @expect runtime
  * @section 9.10
  * @design super.method()调用父类被重写的方法

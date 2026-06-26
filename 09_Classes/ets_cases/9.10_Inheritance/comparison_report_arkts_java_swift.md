@@ -76,7 +76,7 @@
 - ⭐ **ArkTS override 必须显式**: 与 Swift 一致，比 Java 更严格。所有重写方法/字段必须使用 `override` 关键字，防止意外重写。
 - ⭐ **ArkTS 字段 override 类型要求最严格**: 派生类同名字段类型必须与基类字段**完全相同**（CLS_09_10_017_FAIL_FIELD_OVERRIDE_TYPE_MISMATCH）。Java 使用字段隐藏（允许不同类型），Swift 要求属性类型兼容但不一定完全相同。ArkTS 在此维度安全性最高。
 - ⭐ **ArkTS 访问修饰符不得改变**: 重写字段的访问修饰符必须与基类被重写字段**完全相同**（CLS_09_10_019_FAIL_FIELD_OVERRIDE_ACCESS_MODIFIER_MISMATCH）。Java 允许子类放宽访问权限（不能收窄），ArkTS 选择最保守策略。
-- ⭐ **ArkTS static 方法不通过实例继承**: 父类 static 方法只能通过父类名显式限定调用（CLS_09_10_017_FAIL_STATIC_NOT_INHERITED）。Java 允许通过子类名引用和实例引用（有警告），Swift 允许通过子类名访问。ArkTS 在此维度最严格，消除了 static 方法"伪继承"混淆。
+- ⭐ **ArkTS static 方法不通过实例继承**: 父类 static 方法只能通过父类名显式限定调用（CLS_09_10_035_FAIL_STATIC_NOT_INHERITED）。Java 允许通过子类名引用和实例引用（有警告），Swift 允许通过子类名访问。ArkTS 在此维度最严格，消除了 static 方法"伪继承"混淆。
 - ⭐ **ArkTS 参数逆变 + 返回协变**: 重写签名同时要求参数类型逆变（CLS_09_10_004）和返回类型协变（CLS_09_10_003），与 Java/Swift 一致。
 - ⭐ **Java 没有 type alias**: 与命名类型对比；继承层面无直接影响。
 - ⭐ **Swift 协议 v.s. ArkTS 接口**: Swift 协议支持值类型和类类型遵循，ArkTS 接口仅限类类型实现，但继承语义等效。
@@ -379,7 +379,7 @@ function main(): void {
   Parent.greet()  // ✅
   // Child.greet()  ❌ 子类也不能通过类名访问
 }
-// ❌ CLS_09_10_017_FAIL_STATIC_NOT_INHERITED: 编译失败
+// ❌ CLS_09_10_035_FAIL_STATIC_NOT_INHERITED: 编译失败
 ```
 
 **Java（允许，有警告）：**

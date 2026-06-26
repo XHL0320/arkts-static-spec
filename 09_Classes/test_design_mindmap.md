@@ -1,8 +1,9 @@
 # 09 类 - 测试设计思维导图（章节级）
 
-**生成日期：** 2026-06-22
+**生成日期：** 2026-06-22（2026-06-26 更新：9.7–9.10 自审修复）
 **本章目标：** 覆盖 ArkTS §9.1-§9.10 全部规范约束
-**当前覆盖：** §9.1-§9.10（368 用例：128P+104F+136R）
+**当前覆盖：** §9.1-§9.10（387 用例：130P+155F+102R）
+**最后编译验证：** 2026-06-26，es2panda `--extension=ets`（Linux native）；9.7–9.10 四节 90 用例全量实测
 
 ---
 
@@ -233,7 +234,7 @@
 - ❌ override 方法未返回 this → 编译错误
 - ✅ builder 链式调用运行时、this 返回 + override 兼容
 
-### §9.8 Class Accessor Declarations（31 用例：11P+14F+6R）⚠️CLS-G1
+### §9.8 Class Accessor Declarations（31 用例：10P+15F+6R）⚠️CLS-G1
 - ✅ getter/setter 基本语法
 - ❌ getter/setter 修饰符不匹配 → ⚠️SPEC不一致（es2panda 未检查）
 - ✅ getter/setter + override 协变/逆变
@@ -331,7 +332,7 @@
 | 9.6.4 Field Initialization | 2 | 2 | 2 | 6 | CLS-G5 ⭐⭐ | 2026-06-22 |
 | 9.6.5 Fields with Late Initialization | 2 | 5 | 2 | 9 | CLS-G6 ⭐⭐ | 2026-06-22 |
 | 9.6.6 Override Fields | 4 | 6 | 2 | 12 | — | 2026-06-22 |
-| 9.7 Method Declarations | 3 | 3 | 2 | 8 | — | 2026-06-19 |
+| 9.7 Method Declarations | 3 | 3 | 2 | 8 | — | 2026-06-26 |
 | 9.7.1 Static Methods | 3 | 10 | 5 | 18 | CLS-G3 | 2026-06-19 |
 | 9.7.2 Instance Methods | 7 | 2 | 3 | 12 | — | 2026-06-19 |
 | 9.7.3 Abstract Methods | 4 | 8 | 5 | 17 | — | 2026-06-19 |
@@ -340,13 +341,13 @@
 | 9.7.6 Native Methods | 2 | 1 | 0 | 3 | — | 2026-06-19 |
 | 9.7.7 Method Body | 4 | 7 | 2 | 13 | — | 2026-06-19 |
 | 9.7.8 Methods Returning this | 2 | 3 | 3 | 8 | — | 2026-06-19 |
-| 9.8 Class Accessor Declarations | 11 | 14 | 6 | 31 | CLS-G1 | 2026-06-19 |
-| 9.9 Constructor Declaration | 4 | 3 | 3 | 10 | — | 2026-06-19 |
+| 9.8 Class Accessor Declarations | 10 | 15 | 6 | 31 | CLS-G1 | 2026-06-26 |
+| 9.9 Constructor Declaration | 4 | 3 | 3 | 10 | — | 2026-06-26 |
 | 9.9.1 Constructor Body | 3 | 9 | 6 | 18 | — | 2026-06-19 |
 | 9.9.2 Explicit Constructor Call | 2 | 6 | 1 | 9 | CLS-D1 | 2026-06-19 |
 | 9.9.3 Default Constructor | 3 | 3 | 3 | 9 | — | 2026-06-19 |
-| 9.10 Inheritance | 12 | 14 | 15 | 41 | — | 2026-06-19 |
-| **总计** | **128** | **104** | **66** | **368** | **7项** | — |
+| 9.10 Inheritance | 12 | 14 | 15 | 41 | — | 2026-06-26 |
+| **总计** | **130** | **155** | **102** | **387** | **7项** | — |
 
 *3 个 D 类 SPEC 不一致项（CLS-G4/G5/G6），用例保留并标注 ⚠️ SPEC 不一致
 *3 个编译器待完善项（CLS-G1/G2/G3），1 个实验特性差异点（CLS-D1）

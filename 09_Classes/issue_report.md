@@ -3,6 +3,8 @@
 只记录**当前未解决的执行异常**。一旦异常通过修改用例或编译器更新而消除，立即从此文件移除。
 
 > 最后编译验证：2026-06-23，es2panda (`--extension=ets`)，154 compile-fail + 131 compile-pass = 285 例全部实测。
+>
+> 2026-06-26 补充复核：对 9.7–9.10 四节 90 用例（含 runtime 编译）全量实测，es2panda `--extension=ets`（Linux native）。其中 C-9.08-01 用例已从 compile-pass 归位 compile-fail 作负向看护；其余 issue（9.1–9.6、9.7.x、9.9.x 子节）不在本次复核范围，保留 2026-06-23 结论。
 
 | ID | Case | Symptom | Expected | Actual | Status |
 |---|------|--------|---------|--------|--------|
@@ -21,7 +23,8 @@
 
 - Spec §9.8 要求同名 getter 和 setter 同时存在时，accessor modifiers 必须一致，否则 compile-time error。
 - 实际：getter 为 `static`，setter 为非 static，编译通过 (EXIT=0)。
-- 用例路径：`ets_cases/9.8_Class_Accessor_Declarations/compile-pass/CLS_09_08_008_PASS_GETTER_SETTER_MODIFIER_MISMATCH.ets`
+- 用例路径：`ets_cases/9.8_Class_Accessor_Declarations/compile-fail/CLS_09_08_008_FAIL_GETTER_SETTER_MODIFIER_MISMATCH.ets`
+- 2026-06-26 归位：该用例原误置于 compile-pass（@id/@design 标 FAIL 却放 pass 目录，违反 tips 三节），现按 spec §9.8 + CLS-G1 移入 compile-fail 作负向看护——运行表现为 unexpected pass（编译器未实现检查），与本条 issue 一致，待编译器补全后转为预期失败。
 - Swift 对属性访问器修饰符一致性要求更严格；Java 无直接 accessor 语法。
 - 建议：es2panda 增加 getter/setter modifier consistency 检查。
 - 分类：C 类（编译器未实现 Spec 检查）

@@ -1,5 +1,5 @@
 /**
- * @id CLS_09_10_021_RUNTIME_SUPER_METHOD_CALL
+ * @id CLS_09_10_039_RUNTIME_SUPER_METHOD_CALL
  * @expect runtime
  * @section 9.10
  * @design 运行时验证重写方法中通过super.method()调用父类原始实现

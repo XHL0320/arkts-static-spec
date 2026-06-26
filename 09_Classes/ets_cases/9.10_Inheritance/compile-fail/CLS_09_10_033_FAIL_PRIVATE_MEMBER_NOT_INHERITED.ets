@@ -1,5 +1,5 @@
 /**
- * @id CLS_09_10_015_FAIL_PRIVATE_MEMBER_NOT_INHERITED
+ * @id CLS_09_10_033_FAIL_PRIVATE_MEMBER_NOT_INHERITED
  * @expect compile-fail
  * @section 9.10
  * @design private成员不被子类继承 — 子类无法访问父类private成员

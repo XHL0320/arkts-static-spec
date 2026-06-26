@@ -1,5 +1,5 @@
 /**
- * @id CLS_09_10_022_RUNTIME_MULTI_LEVEL
+ * @id CLS_09_10_040_RUNTIME_MULTI_LEVEL
  * @expect runtime
  * @section 9.10
  * @design 三级继承链方法调用
