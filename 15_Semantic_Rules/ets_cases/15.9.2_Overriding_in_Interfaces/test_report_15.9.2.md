@@ -1,32 +1,12 @@
 # 15.9.2 Overriding in Interfaces - 测试报告
 
-## 1. 测试概述
-- **测试目的**：验证接口覆写相关语义规则
-- **测试范围**：接口方法实现、缺少实现拒绝、运行时多态
-- **测试环境**：ArkTS 编译器
+## 测试结果统计
+| 类型 | 总数 | 通过 | 失败 |
+|------|------|------|------|
+| compile-pass | 5 | 5 | 0 |
+| compile-fail | 4 | 3 | 1（GAP: effective_signature_conflict 编译器未拒绝）|
+| runtime | 1 | 1 | 0 |
+| **总计** | **10** | **9** | **1** |
 
-## 2. 测试用例清单
-| 编号 | 用例文件 | 类型 | 测试点 | 预期结果 | 实际结果 |
-|------|---------|------|--------|---------|---------|
-| SEM_15_09_003 | SEM_15_09_02_001_PASS_INTERFACE_IMPL.ets | compile-pass | 接口方法实现 | ✅ compile-pass | ✅ |
-| SEM_15_09_004 | SEM_15_09_02_100_FAIL_MISSING_IMPL.ets | compile-fail | 缺少接口方法实现 | ✅ compile-fail | ✅ |
-| SEM_15_09_009 | SEM_15_09_02_200_RUNTIME_INTERFACE_OVERRIDE.ets | runtime | 接口覆写运行时 | ✅ runtime | ✅ |
-
-## 3. 测试结果统计
-| 类型 | 总数 | 通过 | 失败 | 覆盖率 |
-|------|------|------|------|--------|
-| compile-pass | 1 | 1 | 0 | 100% |
-| compile-fail | 1 | 1 | 0 | 100% |
-| runtime | 1 | 1 | 0 | 100% |
-| **总计** | **3** | **3** | **0** | **100%** |
-
-## 4. 问题列表
-无
-
-## 5. 结论与建议
-- 所有测试用例通过，接口覆写相关语义规则实现正确
-- 建议增加更多边界场景测试用例
-
-## 测试环境
-- **编译器**：ArkTS static_core (es2panda)
-- **测试日期**：2026-06-23
+## 问题
+- SEM_15_09_02_102_FAIL_effective_signature_conflict: 编译器未拒绝（见 issue_report SEM-GAP-OVR）
