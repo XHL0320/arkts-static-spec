@@ -14,5 +14,6 @@ function main(): void {
     if (p == undefined) {
         throw new Error("assertion failed");
     }
+    worker.quit();
     console.log("verified");
 }

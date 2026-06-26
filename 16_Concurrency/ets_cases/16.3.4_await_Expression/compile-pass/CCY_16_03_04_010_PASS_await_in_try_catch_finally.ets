@@ -7,9 +7,9 @@
  */
 async function safeFinally(): Promise<number> {
     try {
-        let v: number = await Promise.resolve(42);
+        let v: number = await Promise.resolve<number>(42);
         return v;
-    } catch (e: Error) {
+    } catch (e) {
         return 0;
     } finally {
         console.log("done");

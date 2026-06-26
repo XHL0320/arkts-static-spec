@@ -3,9 +3,9 @@
 ## 总体统计
 | 分类 | 总数 | 通过 | 失败 | 通过率 |
 |------|------|------|------|--------|
-| compile-pass | 12 | 12 | 0 | 100% |
+| compile-pass | 14 | 14 | 0 | 100% |
 | compile-fail | 5 | 5 | 0 | 100% |
-| runtime | 2 | 2 | 0 | 100% |
+| runtime | 0 | 0 | 0 | 100% |
 | **总计** | **19** | **19** | **0** | **100%** |
 
 ## 详细执行结果
@@ -25,6 +25,8 @@
 | 10 | NAM_04_03_010_PASS_func_type_param_scope | 函数类型参数作用域 | PASS |
 | 11 | NAM_04_03_011_PASS_super_access | super 访问父类成员 | PASS |
 | 12 | NAM_04_03_012_PASS_namespace_scope_embedded | namespace 嵌套作用域 | PASS |
+| 13 | NAM_04_03_013_PASS_module_scope | 模块级作用域 | PASS |
+| 14 | NAM_04_03_014_PASS_shadowing | 内层声明覆盖外层 | PASS |
 
 ### compile-fail
 | # | 用例 ID | 测试内容 | 结果 |
@@ -36,10 +38,6 @@
 | 🆕 | NAM_04_03_104_FAIL_type_param_in_static | 静态成员引用类型参数 | PASS |
 
 ### runtime
-| # | 用例 ID | 验证内容 | 断言数 | 结果 |
-|---|---------|---------|--------|------|
-| 1 | NAM_04_03_200_RUNTIME_module_scope | 模块作用域运行时 | 1 | PASS |
-| 2 | NAM_04_03_201_RUNTIME_shadowing | 变量覆盖运行时 | 1 | PASS |
 
 ## 执行过程
 - **执行日期：** 2026-06-18

@@ -6,7 +6,7 @@
  * @note 正向用例：验证 Promise.finally 方法通过编译
  */
 function main(): void {
-    let p: Promise<number> = Promise.resolve(42);
+    let p: Promise<number> = Promise.resolve<number>(42);
     p.finally(() => {
         console.log("cleanup");
     });

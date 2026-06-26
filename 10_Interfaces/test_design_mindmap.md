@@ -90,6 +90,8 @@ mindmap
       compile-fail
         Inherited Getter Only Write
         Inherited Setter Only Read
+        Multi Inherit Setter Only Read
+        Multi Inherit Getter Only Write
       runtime
         Inheritance Chain Runtime
 ```

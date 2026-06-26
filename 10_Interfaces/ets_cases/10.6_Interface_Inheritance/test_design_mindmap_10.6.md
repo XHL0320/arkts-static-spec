@@ -15,3 +15,12 @@ Interface inherits all members from direct superinterfaces. Multiple inheritance
 
 ### 4. Combined interface-class hierarchy
 - 正向编译: 类实现接口 + 类继承
+
+### 5. compile-fail
+- 反向编译: 继承 getter-only 写拒绝
+- 反向编译: 继承 setter-only 读拒绝
+- 反向编译: 多继承 setter-only 读拒绝
+- 反向编译: 多继承 getter-only 写拒绝
+
+### 6. runtime
+- 运行时: 继承链方法解析

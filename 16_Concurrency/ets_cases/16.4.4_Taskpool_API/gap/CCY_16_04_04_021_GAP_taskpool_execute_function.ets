@@ -1,9 +1,10 @@
 /**
- * @id CCY_16_04_04_021_RUNTIME_taskpool_execute_function
- * @expect runtime
+ * @id CCY_16_04_04_021_GAP_taskpool_execute_function
+ * @expect gap
  * @section 16.4.4
  * @design Taskpool 直接执行函数
- * @note 运行时用例：验证 taskpool.execute 直接执行函数返回 Promise
+ * @note GAP: 编译通过但 taskpool.execute 创建真实线程不终止，运行时 hang。
+ *       Spec §16.4.4 — taskpool 标准库线程模型未完整实现。
  */
 function main(): void {
     let p: Promise<Any> = taskpool.execute((x: number): number => {

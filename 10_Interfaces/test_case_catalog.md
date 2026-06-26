@@ -177,14 +177,14 @@
 
 | 子节 | PASS | FAIL | RT | 合计 | 状态 |
 |------|:--:|:--:|:--:|:--:|:--:|
-| 10.1 Interface Declarations | 5 | 1 | 1 | 7 | 1 | 1 | 7 | ✅ |
-| 10.2 Superinterfaces Subinterfaces | 3 | 4 | 1 | 8 | 4 | 1 | 8 | ✅ |
-| 10.3 Interface Members | 3 | 2 | 1 | 6 | 2 | 1 | 6 | ⚠️ 1 GAP |
-| 10.4 Interface Properties | 1 | 2 | 1 | 4 | 2 | 1 | 4 | ✅ |
-| 10.4 Interface Properties | 1 | 2 | 1 | 4 | 1 | 1 | 8 | ✅ |
-| 10.4 Interface Properties | 1 | 2 | 1 | 4 | 1 | 2 | 6 | ✅ |
-| 10.5 Interface Method Declarations | 6 | 2 | 2 | 10 | 2 | 2 | 10 | ✅ |
-| 10.6 Interface Inheritance | 5 | 4 | 1 | 10 | 4 | 1 | 10 | ✅ |
+| 10.1 Interface Declarations | 5 | 1 | 1 | 7 | ✅ |
+| 10.2 Superinterfaces Subinterfaces | 3 | 4 | 1 | 8 | ✅ |
+| 10.3 Interface Members | 3 | 2 | 1 | 6 | ⚠️ 1 GAP |
+| 10.4 Interface Properties | 1 | 2 | 1 | 4 | ✅ |
+| 10.4.1 Required Interface Properties | 6 | 1 | 1 | 8 | ✅ |
+| 10.4.2 Optional Interface Properties | 3 | 1 | 2 | 6 | ✅ |
+| 10.5 Interface Method Declarations | 6 | 2 | 2 | 10 | ✅ |
+| 10.6 Interface Inheritance | 5 | 4 | 1 | 10 | ✅ |
 | **总计** | **32** | **17** | **10** | **59** | ⚠️ 1 GAP |
 
 ## 命名规范

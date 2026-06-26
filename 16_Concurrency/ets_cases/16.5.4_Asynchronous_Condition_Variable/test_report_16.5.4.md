@@ -5,8 +5,8 @@
 |--------|-------|
 | compile-pass | 3 |
 | compile-fail | 1 |
-| runtime | 2 |
-| **Total** | **6** |
+| runtime | 1 |
+| **Total** | **5** |
 | Pass Rate | 100% |
 
 ## Detailed Results
@@ -27,4 +27,3 @@
 | # | File | Description |
 |---|------|-------------|
 | 020 | CCY_16_05_04_020_RUNTIME_condvar_notify_wait | notifyOne + wait 执行 |
-| 021 | CCY_16_05_04_021_RUNTIME_condvar_wait_loop | while 循环等待执行 |

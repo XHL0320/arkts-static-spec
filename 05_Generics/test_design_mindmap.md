@@ -66,7 +66,9 @@ mindmap
       Variance Interleaving (positive)
         Callback param interleaving
         Callback return interleaving
-    5.1.4_Wildcard_Type
+      Runtime
+        Covariant out runtime
+     5.1.4_Wildcard_Type
       Wildcard Subtyping
         Wildcard not subtype any
         Wildcard not subtype constraint
@@ -79,8 +81,9 @@ mindmap
         Wildcard invariant assign
       PASS
         Wildcard declaration
-      Runtime
         instanceof wildcard
+      Runtime
+        Wildcard runtime behavior
     5.2_Generics_Instantiations/5.2.1_Type_Arguments
       Type Arguments
         Number type arg

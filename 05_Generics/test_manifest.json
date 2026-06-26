@@ -1,14 +1,14 @@
 {
   "chapter": "05_Generics",
   "prefix": "SEM_",
-  "total_cases": 80,
+  "total_cases": 82,
   "sections": [
     {
       "name": "5.1_Type_Parameters",
       "pass": 5,
       "fail": 4,
-      "runtime": 3,
-      "total": 46
+      "runtime": 2,
+      "total": 11
     },
     {
       "name": "5.1.1_Type_Parameter_Constraint",

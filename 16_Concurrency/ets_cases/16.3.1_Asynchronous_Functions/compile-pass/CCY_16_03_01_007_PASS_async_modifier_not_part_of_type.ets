@@ -8,5 +8,5 @@
  *       with the same return type and arguments are no different"
  */
 type FnType = () => Promise<number>;
-let f1: FnType = async () => { return 42; };
-let f2: FnType = () => { return Promise.resolve(42); };
+let f1: FnType = async () => { return 42 as number; };
+let f2: FnType = () => { return Promise.resolve<number>(42); };

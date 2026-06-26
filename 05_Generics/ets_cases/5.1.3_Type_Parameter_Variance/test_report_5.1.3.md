@@ -2,8 +2,8 @@
 
 ## Overview
 - **Section:** 5.1.3
-- **Total Cases:** 16
-- **Pass:** 16
+- **Total Cases:** 17
+- **Pass:** 17
 - **Fail:** 0
 
 ## Results
@@ -17,4 +17,3 @@
 
 ## Notes
 - All cases pass. GEN_05_01_03_009 and GEN_05_01_03_010 were reclassified from compile-fail to compile-pass per ArkTS spec variance interleaving rules.
-- No runtime cases in this section.

@@ -46,7 +46,7 @@
 | GEN_05_01_02_200_RUNTIME_DEFAULT_TYPE_ARG | Default type arg | RUNTIME | `5.1.2_Type_Parameter_Default/runtime/GEN_05_01_02_200_RUNTIME_DEFAULT_TYPE_ARG.ets` |
 | GEN_05_01_02_201_RUNTIME_FUNC_EXPLICIT_DEFAULT | Func explicit default | RUNTIME | `5.1.2_Type_Parameter_Default/runtime/GEN_05_01_02_201_RUNTIME_FUNC_EXPLICIT_DEFAULT.ets` |
 
-## 5.1.3 Type Parameter Variance (16 cases)
+## 5.1.3 Type Parameter Variance (17 cases)
 
 | ID | 子主题 | 类型 | 文件 |
 |---|--------|:--:|------|
@@ -66,8 +66,9 @@
 | GEN_05_01_03_103_FAIL_RETURN | in in out-position return | FAIL | `5.1.3_Type_Parameter_Variance/compile-fail/GEN_05_01_03_103_FAIL_RETURN.ets` |
 | GEN_05_01_03_104_FAIL_FIELD | in in invariant field | FAIL | `5.1.3_Type_Parameter_Variance/compile-fail/GEN_05_01_03_104_FAIL_FIELD.ets` |
 | GEN_05_01_03_106_FAIL_PARAM | out in method param return | FAIL | `5.1.3_Type_Parameter_Variance/compile-fail/GEN_05_01_03_106_FAIL_PARAM.ets` |
+| GEN_05_01_03_200_RUNTIME_COVARIANT_OUT | Covariant out runtime | RUNTIME | `5.1.3_Type_Parameter_Variance/runtime/GEN_05_01_03_200_RUNTIME_COVARIANT_OUT.ets` |
 
-## 5.1.4 Wildcard Type (10 cases)
+## 5.1.4 Wildcard Type (11 cases)
 
 | ID | 子主题 | 类型 | 文件 |
 |---|--------|:--:|------|
@@ -81,6 +82,7 @@
 | GEN_05_01_04_105_FAIL_C | in wildcard not subtype C | FAIL | `5.1.4_Wildcard_Type/compile-fail/GEN_05_01_04_105_FAIL_C.ets` |
 | GEN_05_01_04_106_FAIL_WRITE | in wildcard write | FAIL | `5.1.4_Wildcard_Type/compile-fail/GEN_05_01_04_106_FAIL_WRITE.ets` |
 | GEN_05_01_04_107_FAIL_ASSIGN | Wildcard invariant assign | FAIL | `5.1.4_Wildcard_Type/compile-fail/GEN_05_01_04_107_FAIL_ASSIGN.ets` |
+| GEN_05_01_04_200_RUNTIME_WILDCARD | Wildcard runtime | RUNTIME | `5.1.4_Wildcard_Type/runtime/GEN_05_01_04_200_RUNTIME_WILDCARD.ets` |
 
 ## 5.2.1 Type Arguments (7 cases)
 

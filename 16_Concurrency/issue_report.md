@@ -3,8 +3,14 @@
 只记录**当前未解决的执行异常**。一旦异常通过修改用例或编译器更新而消除，立即从此文件移除。
 
 | ID | Case | Symptom | Expected | Actual | Status |
-|---|------|--------|---------|--------|--------|
+|:---|------|--------|---------|--------|--------|
 | CONC-U | CCY_16_04_02_003/004 | `launch<T>(async () => { await ...; return ...; })` 编译器崩溃 | compile-pass | es2panda CRASH（段错误） | C类-编译器崩溃 |
+| CONC-G2 | CCY_16_04_04_020~023_GAP | `taskpool.execute()` 创建线程不退出 | runtime | 编译通过✅但运行时 hang（exit 124） | C类-运行时线程未终止 |
+| CONC-A4 | 16.5.5 Atomic（4） | `AtomicInt`/`AtomicBoolean`/`AtomicReference` 使用 `native` 方法，运行时未链接 | compile-pass/runtime | `type does not exist` | C类-标准库native未链接 |
+| CONC-A5 | 16.5.6 Concurrent（2） | `ConcurrentMap` 不存在（最近为 `std.containers.ConcurrentHashMap`） | compile-pass/runtime | `Cannot find type` | C类-标准库不存在 |
+| CONC-B1 | 16.6.3~16.6.5 部分用例 | `Promise<T>` 泛型参数无法推断 | compile-pass | 编译失败 | C类-泛型推导 |
+| CONC-B2 | 16.6.1_001 | `launch(() => Promise<Double>)` 签名不匹配（Spec §16.4.2 支持异步lambda） | compile-pass | 编译失败 | C类-类型推导 |
+| CONC-C1 | 16.7.1_001 | `setTimeout`/`Promise` 回调签名与当前编译器版本不一致 | compile-pass | 编译失败 | C类-API签名变更 |
 
 ---
 
@@ -40,6 +46,157 @@ CONC-U OK: 42
 - Java: `CompletableFuture.supplyAsync(() -> { return 42; })` 编译通过，运行正常
 - Swift: `Task { () -> Int in await g(); return 42 }` 编译通过，运行正常
 - **ArkTS 编译器：SPEC 要求编译通过，实际触发段错误（C 类编译器 CRASH）**
+
+---
+
+### CONC-G2 — Taskpool 运行时线程不终止（编译通过，运行时 hang）⭐⭐⭐ HIGH
+
+**涉及文件：** `gap/CCY_16_04_04_020~023_GAP_taskpool_*`
+
+**问题描述：**
+`taskpool.execute()` 创建真实 worker 线程执行任务。即使 `main()` 函数执行完毕，这些线程仍然存活，导致 ark 进程不退出。
+
+**Spec 依据：** §16.4.4 Taskpool API — taskpool 应提供线程生命周期管理机制。
+
+**当前状态：**
+- 编译：✅ 通过（已添加 `taskpool.` 命名空间前缀）
+- 运行时：❌ 输出 "verified" 后进程不退出（exit 124 timeout）
+
+**修复路径：** 需编译器团队在 taskpool 标准库中添加全局终止机制，或在测试中添加显式 `cancel()` 调用。
+
+---
+
+### CONC-A4 — Atomic 类型（AtomicInteger/AtomicBoolean/AtomicReference）未定义（§16.5.5）⭐⭐⭐ HIGH
+
+**涉及文件（4 个）：** `16.5.5_Atomic_Operations/` 下全部 compile-pass（1）和 runtime（3）用例
+
+**Spec 依据：** §16.5.5 Atomic operations（spec_original.md:1041-1045）
+> "ArkTS standard library provides a set of classes that support atomic operations. The intended use cases for them are lock free data structures and algorithms: from simple compare-and-swap and spinlocks to complex containers."
+
+**实测结果：**
+```typescript
+let atomicInt: AtomicInteger = new AtomicInteger(0);
+// ^ Semantic error ESE0371: Cannot find type 'AtomicInteger'
+
+let atomicBool: AtomicBoolean = new AtomicBoolean(false);
+// ^ Semantic error ESE0371: Cannot find type 'AtomicBoolean'
+
+atomicInt.increment();
+// ^ Semantic error ESE0087: Property 'increment' does not exist on type 'AtomicBoolean'
+// （AtomicBoolean 也不存在，编译器 fallback 为 unknown 类型）
+```
+
+**跨语言对比：**
+| 维度 | ArkTS Spec | ArkTS 编译器 | Java | Swift |
+|------|:----------:|:-----------:|:----:|:-----:|
+| 原子整型 | `AtomicInt` / `AtomicInteger` | ❌ **不存在** | `java.util.concurrent.atomic.AtomicInteger` | `SwiftAtomics.AtomicInt` |
+| 原子布尔 | `AtomicBoolean` | ❌ **不存在** | `AtomicBoolean` | `ManagedAtomic<Bool>` |
+| 原子引用 | `AtomicReference` | ❌ **不存在** | `AtomicReference<V>` | `ManagedAtomic<UnsafeMutablePointer>` |
+| CAS 操作 | `compareAndSet(expected, new)` | ❌ | ✅ `compareAndSet` | ✅ `compareExchange` |
+| increment | `increment()` | ❌ | ✅ `incrementAndGet()` | ✅ `wrappingIncrement()` |
+
+**影响：** 无锁数据结构（lock-free）和无等待算法（wait-free）的验证完全阻塞。
+
+---
+
+### CONC-A5 — `ConcurrentMap` / `ConcurrentSet` 标准库类型未定义（§16.5.6）⭐⭐⭐ HIGH
+
+**涉及文件（2 个）：** `16.5.6_Additional_Entities/` 下 compile-pass（1）和 runtime（1）用例
+
+**Spec 依据：** §16.5.6 Additional entities（spec_original.md:1057-1067）
+> "The ArkTS standard library provides various additional classes and APIs that help developers to build safe and efficient concurrent programs. Such classes include: **thread safe concurrent containers**, APIs that operate on worker thread-local data, other helpers."
+
+**实测结果：**
+```typescript
+let map: ConcurrentMap<string, number> = new ConcurrentMap<string, number>();
+// ^ Semantic error ESE0371: Cannot find type 'ConcurrentMap'
+```
+
+**跨语言对比：**
+| 维度 | ArkTS Spec | ArkTS 编译器 | Java | Swift |
+|------|:----------:|:-----------:|:----:|:-----:|
+| 并发 Map | `ConcurrentMap<K,V>` | ❌ **不存在** | `ConcurrentHashMap<K,V>` | `OS_dispatch_queue` + `Dictionary` |
+| set/get | `map.set(key, val)` / `map.get(key)` | ❌ | `map.put(k, v)` / `map.get(k)` | `dict[key] = val` / `dict[key]` |
+| 线程安全 | 是 | ❌ | ✅ | ✅ |
+
+---
+
+---
+
+### CONC-B1 — `Promise<T>` 泛型参数缺失 ⭐⭐ MEDIUM
+
+**涉及文件：** `CCY_16_06_03_001/002/003`, `CCY_16_06_04_001`, `CCY_16_06_05_001`
+
+**问题描述：**
+部分 Promise 相关用例在调用 `Promise` 构造函数时未提供类型实参，如 `new Promise((resolve, reject) => { ... })`。当前编译器要求显式指定泛型参数 `Promise<T>`，不符合 spec 的类型推断要求。
+
+**Spec 依据：** §16.3.5 定义 Promise 为泛型类，其类型参数应能从构造函数参数中推断：
+> "Promise<T> is a generic class..." — 泛型类的类型参数在提供构造参数时应可推断。
+
+**实测结果：**
+```typescript
+let p = new Promise((resolve: (v: number) => void) => { resolve(42); });
+// ^ Semantic error ESE0170: Type 'Promise<T>' is generic but type argument were not provided.
+```
+
+**跨语言对比：**
+
+| 行为 | ArkTS 规范 | ArkTS 编译器 | Java | Swift |
+|------|:---------:|:-----------:|:----:|:-----:|
+| 构造 Promise 不指定类型参数 | 应推断 | ❌ **拒绝** | ✅ `new CompletableFuture<>()` 可推断 | ✅ `Task { 42 }` 可推断 |
+
+**建议：** 补充 `new Promise<number>(...)` 显式类型参数即可绕过，或等待编译器实现类型推断。
+
+---
+
+### CONC-B2 — `launch` API 闭包类型签名不匹配 ⭐⭐ MEDIUM
+
+**涉及文件：** `CCY_16_06_01_001_PASS_launch_details`
+
+**问题描述：**
+用例传递一个 `async` lambda 给 `launch`，但编译器拒绝接受异步闭包作为 launch 的参数。
+
+**Spec 依据：** §16.4.2 明确支持 launch 接受同步和异步 lambda（spec_original.md:345）：
+> "The launch API is the primary parallel execution API. It launches the provided lambda (synchronous or asynchronous) as a new job."
+> "full explicit form: launch<T>(async () => { ... })"
+
+**实测结果：**
+```typescript
+let p: Promise<number> = launch<number>(async () => { return 42; });
+// ^ Semantic error ESE0127: No matching call signature for launch((() => Promise<Double>))
+// ^ Type '(() => Promise<Double>)' is not compatible with type '(() => Double)' at index 1
+```
+
+**跨语言对比：**
+
+| 行为 | ArkTS 规范 | ArkTS 编译器 | Java | Swift |
+|------|:---------:|:-----------:|:----:|:-----:|
+| launch 异步 lambda | ✅ `launch(async () => val)` | ❌ **签名不匹配** | ✅ `supplyAsync(() -> val)` | ✅ `Task { await ... }` |
+| launch 同步 lambda | ✅ `launch(() => val)` | ✅ | ✅ | ✅ |
+
+**建议：** 确认 launch 的 API 签名是否支持 async 闭包的重载版本，可能需要编译器团队修正 launch 重载决议。
+
+---
+
+### CONC-C1 — `setTimeout` / `Promise` 构造回调类型签名不匹配 🟡 LOW
+
+**涉及文件：** `CCY_16_07_001_PASS_placeholder`
+
+**问题描述：**
+`setTimeout` 和 `Promise` 构造函数的回调参数类型签名与当前编译器版本的实际定义不一致，导致 type mismatch。
+
+**Spec 依据：** §16.7 运行时实现细节 — setTimeout 的回调应为 `() => void` 类型。
+
+**实测结果：**
+```typescript
+new Promise<string>((resolve: (s: string) => void) => {
+    setTimeout(resolve, 1000);
+});
+// ^ Semantic error ESE0127: No matching construct signature for Promise(...)
+// ^ Type '((p1: PromiseLike<undefined>|undefined) => undefined)' is not compatible with type 'String'
+```
+
+**建议：** 确认当前编译器中 `setTimeout` 和 `Promise` 构造函数的实际签名，修正用例中的回调类型以匹配。
 
 ---
 

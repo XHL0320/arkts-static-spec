@@ -37,9 +37,10 @@ run_runtime() {
     if echo "$output" | grep -qE "Syntax error|Semantic error|Fatal error"; then
         echo "  FAIL: $id - compile failed"; return 1
     fi
-    output=$($ARK --load-runtimes=ets --boot-panda-files="$BOOT_PANDA:$BOOT_ETS" /tmp/test.abc "$entry_point" 2>&1)
-    if [ $? -eq 0 ]; then echo "  PASS: $id - runtime OK"; return 0
-    else echo "  FAIL: $id - runtime exit code $?"; return 1; fi
+    $ARK --load-runtimes=ets --boot-panda-files="$BOOT_PANDA:$BOOT_ETS" /tmp/test.abc "$entry_point" > /tmp/runtime_out.txt 2>&1
+    local rc=$?
+    if [ $rc -eq 0 ]; then echo "  PASS: $id - runtime OK"; return 0
+    else echo "  FAIL: $id - runtime exit code $rc"; cat /tmp/runtime_out.txt; return 1; fi
 }
 
 process_section() {

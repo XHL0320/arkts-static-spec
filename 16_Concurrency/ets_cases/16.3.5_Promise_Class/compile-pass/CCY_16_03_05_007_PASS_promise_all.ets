@@ -6,7 +6,7 @@
  * @note 正向用例：验证 Promise.all 通过编译
  */
 function main(): void {
-    let p1: Promise<number> = Promise.resolve(1);
-    let p2: Promise<number> = Promise.resolve(2);
+    let p1: Promise<number> = Promise.resolve<number>(1);
+    let p2: Promise<number> = Promise.resolve<number>(2);
     let all: Promise<number[]> = Promise.all([p1, p2]);
 }

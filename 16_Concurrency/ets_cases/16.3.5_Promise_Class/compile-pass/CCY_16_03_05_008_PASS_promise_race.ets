@@ -7,6 +7,6 @@
  */
 function main(): void {
     let p1: Promise<number> = new Promise<number>((resolve: (v: number) => void) => {});
-    let p2: Promise<number> = Promise.resolve(2);
+    let p2: Promise<number> = Promise.resolve<number>(2);
     let race: Promise<number> = Promise.race([p1, p2]);
 }

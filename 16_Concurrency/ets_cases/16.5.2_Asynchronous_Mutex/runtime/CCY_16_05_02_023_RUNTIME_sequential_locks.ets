@@ -6,7 +6,7 @@
  * @note 运行时用例：验证同一线程多次 lock/unlock 的正确性
  */
 async function test(): Promise<void> {
-    let mutex: AsyncMutex = new AsyncMutex();
+    let mutex: concurrency.stackless.AsyncMutex = new concurrency.stackless.AsyncMutex();
     await mutex.lock();
     mutex.unlock();
     await mutex.lock();

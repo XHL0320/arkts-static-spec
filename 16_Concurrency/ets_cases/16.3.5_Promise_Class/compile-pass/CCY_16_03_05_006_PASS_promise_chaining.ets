@@ -6,7 +6,7 @@
  * @note 正向用例：验证 Promise.then 链式返回新 Promise 通过编译
  */
 function main(): void {
-    let p: Promise<number> = Promise.resolve(1);
+    let p: Promise<number> = Promise.resolve<number>(1);
     p.then((v: number) => {
         return v + 1;
     }).then((v: number) => {

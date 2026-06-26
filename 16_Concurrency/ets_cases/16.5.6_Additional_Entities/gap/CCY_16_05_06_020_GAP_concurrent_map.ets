@@ -1,6 +1,6 @@
 /**
- * @id CCY_16_05_06_020_RUNTIME_concurrent_map
- * @expect runtime
+ * @id CCY_16_05_06_020_GAP_concurrent_map
+ * @expect gap
  * @section 16.5.6
  * @design ConcurrentMap 运行时操作
  * @note 运行时用例：验证 ConcurrentMap 的 set/get 操作正常执行

@@ -3,13 +3,14 @@
  * @expect runtime
  * @section 16.5.3
  * @design AsyncRWLock 写锁执行
- * @note 运行时用例：验证 AsyncRWLock lockWrite/unlock 正常执行
+ * @note 运行时用例：验证 AsyncRWLock writeLock/lock/unlock 正常执行
  */
 async function test(): Promise<void> {
-    let rw: AsyncRWLock = new AsyncRWLock();
-    await rw.lockWrite();
+    let rw: concurrency.stackless.AsyncReadWriteLock = new concurrency.stackless.AsyncReadWriteLock();
+    let w = rw.writeLock();
+    await w.lock();
     console.log("writing");
-    rw.unlock();
+    w.unlock();
 }
 function main(): void {
     let p: Promise<void> = test();

@@ -6,7 +6,7 @@
  * @note 运行时用例：验证 Promise.resolve 创建已 resolve 的 Promise
  */
 async function test(): Promise<number> {
-    let p: Promise<number> = Promise.resolve(42);
+    let p: Promise<number> = Promise.resolve<number>(42);
     let v: number = await p;
     return v;
 }

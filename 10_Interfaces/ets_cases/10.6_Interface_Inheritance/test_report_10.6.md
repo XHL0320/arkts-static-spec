@@ -2,8 +2,8 @@
 
 ## Overview
 - **Section:** 10.6
-- **Total Cases:** 7
-- **Pass:** 7
+- **Total Cases:** 10
+- **Pass:** 10
 - **Fail:** 0
 
 ## Results
@@ -13,4 +13,4 @@
 | compile-pass | 5 | ✅ |
 | compile-fail | 4 | ✅ |
 | runtime | 1 | ✅ |
-| **Total** | **7** | ✅ |
+| **Total** | **10** | ✅ |

@@ -63,13 +63,13 @@
 | @NAM_04_03_010_PASS_FUNC_TYPE_PARAM_SCOPE | Func type param scope | PASS | `4.3_Scopes/compile-pass/NAM_04_03_010_PASS_FUNC_TYPE_PARAM_SCOPE.ets` |
 | @NAM_04_03_011_PASS_SUPER_ACCESS | Super access | PASS | `4.3_Scopes/compile-pass/NAM_04_03_011_PASS_SUPER_ACCESS.ets` |
 | @NAM_04_03_012_PASS_NAMESPACE_SCOPE_EMBEDDED | Namespace scope embedded | PASS | `4.3_Scopes/compile-pass/NAM_04_03_012_PASS_NAMESPACE_SCOPE_EMBEDDED.ets` |
+| @NAM_04_03_013_PASS_MODULE_SCOPE | Module scope | PASS | `4.3_Scopes/compile-pass/NAM_04_03_013_PASS_MODULE_SCOPE.ets` |
+| @NAM_04_03_014_PASS_SHADOWING | Shadowing | PASS | `4.3_Scopes/compile-pass/NAM_04_03_014_PASS_SHADOWING.ets` |
 | @NAM_04_03_100_FAIL_BEFORE_DECLARATION | Before declaration | FAIL | `4.3_Scopes/compile-fail/NAM_04_03_100_FAIL_BEFORE_DECLARATION.ets` |
 | @NAM_04_03_101_FAIL_BLOCK_OUT_OF_SCOPE | Block out of scope | FAIL | `4.3_Scopes/compile-fail/NAM_04_03_101_FAIL_BLOCK_OUT_OF_SCOPE.ets` |
 | @NAM_04_03_102_FAIL_INSTANCE_AS_STATIC | Instance as static | FAIL | `4.3_Scopes/compile-fail/NAM_04_03_102_FAIL_INSTANCE_AS_STATIC.ets` |
 | @NAM_04_03_103_FAIL_AMBIGUOUS_SCOPE | Ambiguous scope | FAIL | `4.3_Scopes/compile-fail/NAM_04_03_103_FAIL_AMBIGUOUS_SCOPE.ets` |
 | @NAM_04_03_104_FAIL_TYPE_PARAM_IN_STATIC | Type param in static | FAIL | `4.3_Scopes/compile-fail/NAM_04_03_104_FAIL_TYPE_PARAM_IN_STATIC.ets` |
-| @NAM_04_03_200_RUNTIME_module_scope | Module scope runtime | RUNTIME | `4.3_Scopes/runtime/NAM_04_03_200_RUNTIME_module_scope.ets` |
-| @NAM_04_03_201_RUNTIME_shadowing | Shadowing runtime | RUNTIME | `4.3_Scopes/runtime/NAM_04_03_201_RUNTIME_shadowing.ets` |
 
 ## 4.4 Accessible (16 cases)
 
@@ -132,9 +132,9 @@
 | @NAM_04_05_01_005_PASS_GENERIC_FUNC_ALIAS | Generic func alias | PASS | `4.5.1_Type_Alias_Declaration/compile-pass/NAM_04_05_01_005_PASS_GENERIC_FUNC_ALIAS.ets` |
 | @NAM_04_05_01_006_PASS_UNION_RECURSIVE | Union recursive | PASS | `4.5.1_Type_Alias_Declaration/compile-pass/NAM_04_05_01_006_PASS_UNION_RECURSIVE.ets` |
 | @NAM_04_05_01_007_PASS_RECURSIVE_NESTED | Recursive nested | PASS | `4.5.1_Type_Alias_Declaration/compile-pass/NAM_04_05_01_007_PASS_RECURSIVE_NESTED.ets` |
+| @NAM_04_05_01_008_PASS_ALIAS_FUNC_TYPE | Alias func type | PASS | `4.5.1_Type_Alias_Declaration/compile-pass/NAM_04_05_01_008_PASS_ALIAS_FUNC_TYPE.ets` |
 | @NAM_04_05_01_100_FAIL_EMPTY_ALIAS | Empty alias | FAIL | `4.5.1_Type_Alias_Declaration/compile-fail/NAM_04_05_01_100_FAIL_EMPTY_ALIAS.ets` |
 | @NAM_04_05_01_200_RUNTIME_TYPE_ALIAS_USE | Type alias use | RUNTIME | `4.5.1_Type_Alias_Declaration/runtime/NAM_04_05_01_200_RUNTIME_TYPE_ALIAS_USE.ets` |
-| @NAM_04_05_01_201_RUNTIME_alias_func_type | Alias func type | RUNTIME | `4.5.1_Type_Alias_Declaration/runtime/NAM_04_05_01_201_RUNTIME_alias_func_type.ets` |
 | @NAM_04_05_01_202_RUNTIME_VECTOR_EXAMPLE | Vector example | RUNTIME | `4.5.1_Type_Alias_Declaration/runtime/NAM_04_05_01_202_RUNTIME_VECTOR_EXAMPLE.ets` |
 
 ## 4.6.1 Variable Declarations (9 cases)
@@ -250,6 +250,7 @@
 | @NAM_04_07_05_002_PASS_REST_TUPLE | Rest tuple | PASS | `4.7.5_Rest_Parameter/compile-pass/NAM_04_07_05_002_PASS_REST_TUPLE.ets` |
 | @NAM_04_07_05_003_PASS_REST_GENERIC | Rest generic | PASS | `4.7.5_Rest_Parameter/compile-pass/NAM_04_07_05_003_PASS_REST_GENERIC.ets` |
 | @NAM_04_07_05_004_PASS_OPT_TUPLE_REST_OK | Opt tuple rest ok | PASS | `4.7.5_Rest_Parameter/compile-pass/NAM_04_07_05_004_PASS_OPT_TUPLE_REST_OK.ets` |
+| @NAM_04_07_05_005_PASS_TUPLE_REST_OK | Tuple rest ok | PASS | `4.7.5_Rest_Parameter/compile-pass/NAM_04_07_05_005_PASS_TUPLE_REST_OK.ets` |
 | @NAM_04_07_05_100_FAIL_REST_FOLLOWED_BY_PARAM | Rest followed by param | FAIL | `4.7.5_Rest_Parameter/compile-fail/NAM_04_07_05_100_FAIL_REST_FOLLOWED_BY_PARAM.ets` |
 | @NAM_04_07_05_101_FAIL_REST_NOT_ARRAY | Rest not array | FAIL | `4.7.5_Rest_Parameter/compile-fail/NAM_04_07_05_101_FAIL_REST_NOT_ARRAY.ets` |
 | @NAM_04_07_05_102_FAIL_REST_TUPLE_WRONG_COUNT | Rest tuple wrong count | FAIL | `4.7.5_Rest_Parameter/compile-fail/NAM_04_07_05_102_FAIL_REST_TUPLE_WRONG_COUNT.ets` |
@@ -259,7 +260,6 @@
 | @NAM_04_07_05_200_RUNTIME_SPREAD_CALL | Spread call runtime | RUNTIME | `4.7.5_Rest_Parameter/runtime/NAM_04_07_05_200_RUNTIME_SPREAD_CALL.ets` |
 | @NAM_04_07_05_201_RUNTIME_REST_ARRAY | Rest array runtime | RUNTIME | `4.7.5_Rest_Parameter/runtime/NAM_04_07_05_201_RUNTIME_REST_ARRAY.ets` |
 | @NAM_04_07_05_202_RUNTIME_REST_NEW_ARRAY | Rest new array runtime | RUNTIME | `4.7.5_Rest_Parameter/runtime/NAM_04_07_05_202_RUNTIME_REST_NEW_ARRAY.ets` |
-| @NAM_04_07_05_203_RUNTIME_tuple_rest_ok | Tuple rest ok runtime | RUNTIME | `4.7.5_Rest_Parameter/runtime/NAM_04_07_05_203_RUNTIME_tuple_rest_ok.ets` |
 | @NAM_04_07_05_204_RUNTIME_SPREAD_TUPLE | Spread tuple runtime | RUNTIME | `4.7.5_Rest_Parameter/runtime/NAM_04_07_05_204_RUNTIME_SPREAD_TUPLE.ets` |
 
 ## 4.7.6 Shadowing by Parameter (5 cases)

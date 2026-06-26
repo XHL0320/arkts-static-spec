@@ -3,16 +3,19 @@
  * @expect compile-pass
  * @section 16.5.3
  * @design AsyncRWLock 声明
- * @note 正向用例：验证 AsyncRWLock 创建和读写锁声明编译通过
+ * @note 正向用例：验证 AsyncRWLock 创建和读写锁声明编译通过。
+ *       用 readLock()/writeLock() guard + lock()/unlock() 匹配 stdlib API。
  */
-let rwlock: AsyncRWLock = new AsyncRWLock();
+let rwlock: concurrency.stackless.AsyncReadWriteLock = new concurrency.stackless.AsyncReadWriteLock();
 async function reader(): Promise<void> {
-    await rwlock.lockRead();
+    let r = rwlock.readLock();
+    await r.lock();
     console.log("reading");
-    rwlock.unlock();
+    r.unlock();
 }
 async function writer(): Promise<void> {
-    await rwlock.lockWrite();
+    let w = rwlock.writeLock();
+    await w.lock();
     console.log("writing");
-    rwlock.unlock();
+    w.unlock();
 }

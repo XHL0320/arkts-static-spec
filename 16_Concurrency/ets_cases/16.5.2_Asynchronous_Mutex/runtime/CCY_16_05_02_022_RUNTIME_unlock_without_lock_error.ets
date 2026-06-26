@@ -6,11 +6,11 @@
  * @note 运行时用例：验证 unlock 未加锁时抛出运行时异常
  */
 function main(): void {
-    let mutex: AsyncMutex = new AsyncMutex();
+    let mutex: concurrency.stackless.AsyncMutex = new concurrency.stackless.AsyncMutex();
     try {
         mutex.unlock();
         throw new Error("assertion failed: expected IllegalLockStateError");
-    } catch (e: Error) {
+    } catch (e) {
         console.log("verified");
     }
 }

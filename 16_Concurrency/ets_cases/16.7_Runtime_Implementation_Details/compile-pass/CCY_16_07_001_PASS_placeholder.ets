@@ -1,5 +1,5 @@
 /**
- * @id CCY_16_07_001_PASS_runtime_details
+ * @id CCY_16_07_001_PASS_placeholder
  * @expect compile-pass
  * @section 16.7
  * @design 运行时实现细节：async main 支持多 await

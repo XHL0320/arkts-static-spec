@@ -3,8 +3,8 @@
 ## Summary
 | Metric | Value |
 |--------|-------|
-| compile-pass | 12 |
-| compile-fail | 3 |
+| compile-pass | 13 |
+| compile-fail | 2 |
 | runtime | 8 |
 | **Total** | **23** |
 | Pass Rate | 100% |
