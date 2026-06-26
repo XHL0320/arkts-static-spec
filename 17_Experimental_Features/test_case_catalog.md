@@ -1,9 +1,9 @@
 # 17 实验特性 - 测试用例目录
 
-**最后编译验证：** 2026-06-25（es2panda `--extension=ets`，Linux native）
-**总用例数：** 533（238P + 161F + 134R）
+**最后编译验证：** 2026-06-26（es2panda `--extension=ets`，Linux native）
+**总用例数：** 556（249P + 167F + 140R）
 **命名规范：** 遵守 03_Types 规范 `EXP2_17_<节>_<子节>_<序号>_<分类>_<描述>`（规则23）
-**编译实测：** 异常 16 项，详见 [issue_report.md](issue_report.md)。
+**编译实测：** 异常 17 项，详见 [issue_report.md](issue_report.md)。
 ---
 
 ## 子章节用例分布
@@ -15,11 +15,11 @@
 | §17.10.1 | 5 | 5 | 3 | 13 |
 | §17.10.2 | 8 | 5 | 3 | 16 |
 | §17.10.3 | 5 | 5 | 3 | 13 |
-| §17.10 | 0 | 0 | 0 | 0 |
+| §17.10 | 6 | 3 | 3 | 12 |
 | §17.11.1 | 5 | 5 | 3 | 13 |
 | §17.11.2 | 5 | 5 | 4 | 14 |
 | §17.11.3 | 5 | 5 | 5 | 15 |
-| §17.11 | 0 | 0 | 0 | 0 |
+| §17.11 | 5 | 3 | 3 | 11 |
 | §17.12 | 5 | 5 | 4 | 14 |
 | §17.13.1 | 7 | 4 | 4 | 15 |
 | §17.13.2 | 6 | 5 | 3 | 14 |
@@ -50,7 +50,7 @@
 | §17.9.4 | 5 | 2 | 1 | 8 |
 | §17.9.5 | 7 | 3 | 2 | 12 |
 | §17.9 | 5 | 2 | 1 | 8 |
-| **合计** | **238** | **161** | **134** | **533** |
+| **合计** | **249** | **167** | **140** | **556** |
 ---
 
 ## 完整用例清单
@@ -95,6 +95,23 @@
 | EXP2_17_01_02_014_RUNTIME_CHAR_GT_DOUBLE_VERIFY | runtime | 验证 char > double 比较：c'a' > 3.14 为 true（spec 示例） |
 | EXP2_17_01_02_015_RUNTIME_UNSIGNED_COMPARE | runtime | 验证 char 无符号 16 位整数比较语义：c'￿' (U+FFFF=65535) > c'' (U+0000=0) |
 | EXP2_17_01_02_016_RUNTIME_STRICT_EQ_VERIFY | runtime | 验证 char === char 严格相等：相同值返回 true，不同值返回 false |
+
+### §17.10 Native_Functions_and_Methods（6P + 3F + 3R）
+
+| 用例 ID | 分类 | 测试内容 |
+|---------|------|---------|
+| EXP2_17_10_001_COMPILE_PASS_NATIVE_FUNC_DECL | compile-pass | 验证 native 函数声明（无 body）编译通过 |
+| EXP2_17_10_002_COMPILE_PASS_NATIVE_METHOD_DECL | compile-pass | 验证 native 方法声明（无 body）编译通过 |
+| EXP2_17_10_003_COMPILE_PASS_NATIVE_CTOR_EMPTY | compile-pass | 验证 native 构造器声明（无 body）编译通过 |
+| EXP2_17_10_004_COMPILE_PASS_NATIVE_FUNC_PARAMS | compile-pass | 验证带参数的 native 函数声明编译通过 |
+| EXP2_17_10_005_COMPILE_PASS_NATIVE_METHOD_RETURN | compile-pass | 验证 native 方法带返回类型编译通过 |
+| EXP2_17_10_006_COMPILE_PASS_NATIVE_MULTI_DECL | compile-pass | 验证多个 native 声明编译通过 |
+| EXP2_17_10_011_COMPILE_FAIL_NATIVE_FUNC_BODY | compile-fail | 验证 native 函数不能有 body——应报编译错误 |
+| EXP2_17_10_012_COMPILE_FAIL_NATIVE_ABSTRACT | compile-fail | 验证 native + abstract 方法组合——应报编译错误 |
+| EXP2_17_10_013_COMPILE_FAIL_NATIVE_CTOR_BODY | compile-fail | 验证 native 构造器不能有非空 body——应报编译错误 |
+| EXP2_17_10_021_RUNTIME_NATIVE_FUNC_CALL | runtime | 运行时验证 native 函数调用行为 |
+| EXP2_17_10_022_RUNTIME_NATIVE_METHOD_CALL | runtime | 运行时验证 native 方法调用行为 |
+| EXP2_17_10_023_RUNTIME_NATIVE_CTOR_CALL | runtime | 运行时验证 native 构造器调用行为 |
 
 ### §17.10.1 Native_Functions（5P + 5F + 3R）
 
@@ -157,6 +174,22 @@
 
 | 用例 ID | 分类 | 测试内容 |
 |---------|------|---------|
+
+### §17.11 Classes_Experimental（5P + 3F + 3R）
+
+| 用例 ID | 分类 | 测试内容 |
+|---------|------|---------|
+| EXP2_17_11_001_COMPILE_PASS_FINAL_CLASS_DECL | compile-pass | 验证 final 类声明编译通过 |
+| EXP2_17_11_002_COMPILE_PASS_FINAL_CLASS_INST | compile-pass | 验证 final 类实例化编译通过 |
+| EXP2_17_11_003_COMPILE_PASS_FINAL_METHOD_DECL | compile-pass | 验证 non-final 类中的 final 方法编译通过 |
+| EXP2_17_11_004_COMPILE_PASS_FINAL_AS_TYPE | compile-pass | 验证 final 类作为类型注解编译通过 |
+| EXP2_17_11_005_COMPILE_PASS_FINAL_HIERARCHY | compile-pass | 验证多个 final 类独立声明编译通过 |
+| EXP2_17_11_011_COMPILE_FAIL_EXTENDS_FINAL | compile-fail | 验证 extends final 类——应报编译错误 |
+| EXP2_17_11_012_COMPILE_FAIL_FINAL_ABSTRACT | compile-fail | 验证 final + abstract 方法组合——应报编译错误 |
+| EXP2_17_11_013_COMPILE_FAIL_OVERRIDE_FINAL | compile-fail | 验证重写 final 方法——应报编译错误 |
+| EXP2_17_11_021_RUNTIME_FINAL_INSTANCEOF | runtime | 运行时验证 final 类 instanceof 检查 |
+| EXP2_17_11_022_RUNTIME_FINAL_METHOD_DISPATCH | runtime | 运行时验证 final 方法调用 |
+| EXP2_17_11_023_RUNTIME_FINAL_CLASS_CAST | runtime | 运行时验证 final 类对象类型转换 |
 
 ### §17.11.1 Final_Classes（5P + 5F + 3R）
 

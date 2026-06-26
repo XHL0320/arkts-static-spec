@@ -38,70 +38,8 @@
 | 7.32.1-002 | EXP_07_32_01_009_FAIL_READONLY_TUPLE | readonly tuple = non-readonly tuple 编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
 | 7.32.2-001 | EXP_07_32_02_005/008/011 | ??= 空值合并赋值编译器报 Syntax error ESY0227 | 应编译通过或语义检查 | compile-fail（语法错误）| D 类: Spec 与实现不一致 |
 | 7.35.2-001 | EXP_07_35_02_009_FAIL_UNINIT_LOCAL_CAPTURE | 未初始化局部变量在 lambda 中捕获编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
-
-## 7.23.1 Multiplication — 完成状态
-
-| 类别 | 数量 | 通过 | 通过率 |
-|:----:|:----:|:----:|:------:|
-| compile-pass | 8 | 8 | 100% |
-| compile-fail | 6 | 6 | 100% |
-| runtime | 9 | 9 | 100% |
-| **合计** | **23** | **23** | **100%** |
-
-**0 D 类异常。** 所有 23 个测试按预期通过，无 Spec 与实现不一致。
-- 类型组合：byte/short→int 提升、int/long/float/double 混合类型
-- IEEE 754：NaN、Infinity、符号规则、溢出
-- 结合律/交换律：int/bigint 满足结合律，float 不满足
-- 整数溢出：低 32/64 位截断，符号可能变化
-- 溢出/下溢/精度丢失均不抛异常
-
-## 7.23.2 Division — 完成状态
-
-| 类别 | 数量 | 通过 | 通过率 |
-|:----:|:----:|:----:|:------:|
-| compile-pass | 6 | 6 | 100% |
-| compile-fail | 8 | 7 | 87.5% |
-| runtime | 10 | 10 | 100% |
-| **合计** | **24** | **23** | **95.8%** |
-
-**1 个 D 类异常：** EXP_07_23_02_027_FAIL_DIVISION_BY_ZERO_LITERAL（int 字面量除零编译器未检测，bigint 0n 正常检测）。
-- 类型组合：byte/short→int 提升完整覆盖
-- 整数除法向零取整：7/3=2, -7/3=-2，与 Java/Swift 一致
-- INT_MIN/-1 溢出：-2147483648/(-1)=-2147483648，与 Java 一致
-- IEEE 754：NaN/Infinity/有符号零完全符合标准
-- Java 23/23 ✅，Swift 18/18 ✅
-
-## 7.23.3 Remainder — 完成状态
-
-| 类别 | 数量 | 通过 | 通过率 |
-|:----:|:----:|:----:|:------:|
-| compile-pass | 6 | 6 | 100% |
-| compile-fail | 8 | 6 | 75% |
-| runtime | 9 | 9 | 100% |
-| **合计** | **23** | **21** | **91.3%** |
-
-**2 个 D 类异常：**
-- int % 0 字面量编译器未检测（与除法一致）
-- bigint % 0n 字面量编译器未检测（**与除法不同**，除法 `a / 0n` 被检测）
-- 整数取余符号规则 + 恒等式验证通过
-- 浮点取余特殊值验证通过（NaN/Infinity/zero/fmod 公式）
-- Java 20/20 ✅，Swift 15/15 ✅
-
-## 7.24 Exponentiation Expression — 完成状态
-
-| 类别 | 数量 | 通过 | 通过率 |
-|:----:|:----:|:----:|:------:|
-| compile-pass | 6 | 6 | 100% |
-| compile-fail | 7 | 7 | 100% |
-| runtime | 12 | 12 | 100% |
-| **合计** | **25** | **25** | **100%** |
-
-**2 个 D 类异常：**
-- (-5.0)**0.0 返回 NaN（Spec 说 x**+/-0=1 for all x，含 NaN）
-- (-2.0)**3.0 返回 NaN（Spec 说整数指数应返回有效值，Java/Swift 返回 -8.0）
-- 负数基底 ** double 指数均返回 NaN，不区指数是否为整数值
-- +/-1 在 Inf/NaN 指数时的行为与 Java/Swift 不同（ArkTS 规范刻意设计偏离 IEEE 754）
-- Java 46/46 ✅，Swift 46/46 ✅
+| 7.19-001 | EXP_07_19_021_FAIL_VOID_EXPRESSION | void 表达式应用 ! 运算符编译通过（预期 compile-fail） | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
+| 7.19-002 | EXP_07_19_022_FAIL_ALWAYS_NULLISH_ASSIGN | undefined! 赋值给 int 类型编译通过（预期 compile-fail） | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
 
 ### 异常详情
 
@@ -378,70 +316,34 @@
 
 ---
 
-> **7.2.1 Type of Expression**: 2026-06-22 验证完成，25/25 用例 100% 通过，无新增异常。
-> **7.2.2 Normal and Abrupt Completion**: 2026-06-22 验证完成，22/22 用例 100% 通过。新增 1 个 D 类 SPEC 不一致（负数组索引编译时错误）。
-> **7.2.3 Order of Expression Evaluation**: 2026-06-22 验证完成，25/25 用例 100% 通过。无新增异常。
-> **7.2.4 Evaluation of Arguments**: 2026-06-22 验证完成，9/9 用例 100% 通过。无新增异常。
-> **7.2.5 Evaluation of Other Expressions**: 2026-06-22 验证完成，12/12 用例 100% 通过。无新增异常。
-> **7.3 Literal**: 2026-06-22 验证完成，11/11 用例 100% 通过。无新增异常。
-> **7.4.1 Function Reference**: 2026-06-22 验证完成，10/10 用例 100% 通过。无新增异常。
-> **7.4.2 Method Reference**: 2026-06-22 验证完成，11/11 用例 100% 通过。无新增异常。
-> **7.5.1 Array Literal Type Inference from Context**: 2026-06-22 验证完成，28/28 用例 100% 通过。无新增异常。
-> **7.5.2 Array Type Inference from Types of Elements**: 2026-06-22 验证完成，15/15 用例 100% 通过。无新增异常。
-> **7.6.1 Object Literal of Class Type**: 2026-06-22 验证完成，21/21 用例 100% 通过。无新增异常。
-> **7.6.2 Object Literal of Interface Type**: 2026-06-22 验证完成，26/26 用例 100% 通过。无新增异常。
-> **7.6.3 Object Literal of Record Type**: 2026-06-22 验证完成，17/17 用例 100% 通过。无新增异常。
-> **7.6.4 Object Literal Evaluation**: 2026-06-22 验证完成，11/11 用例 100% 通过。无新增异常。
-> **7.7 Spread Expression**: 2026-06-22 验证完成，22/22 用例 100% 通过。无新增异常。
-> **7.8 Parenthesized Expression**: 2026-06-22 验证完成，10/10 用例 100% 通过。无新增异常。
-> **7.9 this Expression**: 2026-06-22 验证完成，11/11 用例 100% 通过。无新增异常。
-> **7.10.1 Accessing Static Fields**: 2026-06-22 验证完成，11/11 用例 100% 通过。无新增异常。
-> **7.10.2 Accessing Current Object Fields**: 2026-06-22 验证完成，12/12 用例 100% 通过。无新增异常。发现字段覆写(Override) vs 字段隐藏(Hide)跨语言设计差异。
-> **7.10.3 Accessing SuperClass Accessors**: 2026-06-22 验证完成，8/8 用例 100% 通过。无新增异常。发现 super.field 跨语言设计差异。
-> **7.11.1 Selection of Type to Use**: 2026-06-22 验证完成，12/12 用例 100% 通过。无新增异常。发现接口 typeReference 和 null 安全检查设计差异。
-> **7.11.2 Selection of Entity to Call**: 2026-06-22 验证完成，12/12 用例 100% 通过。无新增异常。发现 union 类型公共方法的 ArkTS 特有设计差异。
-> **7.11.3 Checking Modifiers**: 2026-06-22 验证完成，12/12 用例 100% 通过。无新增异常。修饰符检查三语言完全一致（0 差异）。
-> **7.11.4 Type of Method Call Expression**: 2026-06-22 验证完成，12/12 用例 100% 通过。新增 2 个 D 类 SPEC 不一致（void 方法赋值给变量实际编译通过）。
-> **7.12.1 Call Arguments**: 2026-06-22 验证完成，14/14 用例 100% 通过。无新增异常。发现尾部逗号(trailing comma)三语言设计差异。
-> **7.13.1 Array Indexing Expression**: 2026-06-22 验证完成，17/17 用例 100% 通过。无新增异常。索引类型检查三语言完全一致，越界异常类型不同（ArkTS RangeError vs Java AIOOBE vs Swift fatal error）。
-> **7.13.2 String Indexing Expression**: 2026-06-22 验证完成，17/17 用例 100% 通过。无新增异常。三语言索引类型检查完全一致，ArkTS 返回 string 类型（非 char），统一 `s[i]` 语法优于 Java charAt() 和 Swift String.Index。
-> **7.13.3 Record Indexing Expression**: 2026-06-22 验证完成，14/16 用例正常通过，2 个 D 类 Spec 不一致（字段访问符号和变量索引）。Case 1 编译时字面量检查是 ArkTS 独有优势。
-> **7.14 Chaining Operator**: 2026-06-22 验证完成，18/18 用例 100% 通过。0 D 类 Spec 不一致。ArkTS ≈ Swift 高度一致。ArkTS 独有限制：静态方法 ?. 编译错误。
-> **7.15 New Expressions**: 2026-06-22 验证完成，16/16 用例 100% 通过。0 D 类 Spec 不一致。ArkTS ≈ Java 高度一致（相似的 new 语法）。ArkTS 独有：无括号 new A 语法、FixedArray 类型参数限制。
-> **7.16 instanceof Expression**: 2026-06-22 验证完成，14/14 用例 100% 通过。0 D 类 Spec 不一致。编译器正确发出始终 true/false 警告（W1001506）。泛型类型参数错误（ESY18871、ESE38251）正确报出。
-> **7.17.1 Type Inference in Cast Expression**: 2026-06-22 验证完成，15/15 用例 100% 通过。0 D 类 Spec 不一致。数值溢出（ESE1050320）、类型不匹配（ESE0326/ESE0227/ESE0057）编译时检测正确。
-> **7.17.2 Runtime Checking in Cast Expression**: 2026-06-22 验证完成，11/11 用例 100% 通过。0 D 类 Spec 不一致。运行时类型检查正确；编译时 always-succeeds/always-throws 警告正确发出；ClassCastError 正确抛出；instanceof + as 耦合语义正确实现。
-> **7.18 typeof Expression**: 2026-06-22 验证完成，15/15 用例 100% 通过。0 D 类 Spec 不一致。typeof string/boolean/numeric/enum/function/Object/union/类型参数均正确返回值。char 类型因缺乏字面量创建语法（ESE0326）未测试。
-> **7.20 Nullish-Coalescing Expression**: 2026-06-22 验证完成，19/19 用例 100% 通过。0 D 类 Spec 不一致。`??` 语法正确实现，包括短路求值、null/undefined nullish 语义、false/0/"" 非 nullish、链式合并、`??` 与 `||`/`&&` 混用错误检查。literal ?? literal 报 ESE0346（错误）而非 spec 规定的 warning，编译器更严格。
-> **7.21.1 Postfix Increment**: 2026-06-22 验证完成，20/20 用例 100% 通过。0 D 类 Spec 不一致。byte/short/int/long/float/double/bigint 全部支持 ++。byte/short 类型保持（不提升 int）。int 最大值溢出包装为最小值。非数值类型/非 LHS 编译检查正确。
-> **7.21.2 Postfix Decrement**: 2026-06-22 验证完成，20/20 用例 100% 通过。0 D 类 Spec 不一致。与 7.21.1 对称，byte/short/int/long/float/double/bigint 全部支持 --。int 最小值递减溢出包装为最大值。
-> **7.21.3 Prefix Increment**: 2026-06-22 验证完成，20/20 用例 100% 通过。0 D 类 Spec 不一致。++x 正确返回自增后新值（区别于 x++ 返回旧值）。byte/short 类型保持。int 最大值溢出包装。非数值/非 LHS 检查正确。
-> **7.21.4 Prefix Decrement**: 2026-06-22 验证完成，20/20 用例 100% 通过。0 D 类 Spec 不一致。与 7.21.3 对称，--x 正确返回自减后新值。byte/short 类型保持。int 最小值下溢包装。至此 7.21 四个自增/减子章节全部完成（80 用例，100% 通过）。
-> **7.21.5 Unary Plus**: 2026-06-22 验证完成，17/17 用例 100% 通过。0 D 类 Spec 不一致。+byte/+short 正确拓宽为 int（与 Java 一致）。long/float/double/bigint 保持原类型。string/boolean/Object/null 正确拒绝编译。
-> **7.21.6 Unary Minus**: 2026-06-22 验证完成，20/20 用例 100% 通过。0 D 类 Spec 不一致。byte/short→int 拓宽、-int.MIN 静默包装正确。浮点特殊值验证通过：-(-0.0)=0.0, -inf=inf, -NaN=NaN。非数值类型正确拒绝。
-> **7.21.7 Bitwise Complement**: 2026-06-22 验证完成，20/21 用例通过。1 个 D 类 Spec 不一致（~enum 编译器允许通过）。float/double 截断求反是 ArkTS 独有特性。~x = (-x)-1 恒等式正确。Java 7/7 ✅，Swift 5/5 ✅。
-> **7.21.8 Logical Complement**: 2026-06-22 验证完成，11/16 用例通过。5 个 D 类 Spec 不一致：!int/!string/!Object/!null/!enum 实际编译通过（spec 要求非 boolean 类型报编译时错误，但实现通过 Extended Conditional 允许所有类型）。运行时 truthy/falsy 语义正确（JS 风格：null/undefined/0/"" 为 falsy）。Java 7/7 ✅，Swift 8/8 ✅。
-> **7.22 Binary Expressions**: 2026-06-23 验证完成，27/27 用例 100% 通过。0 D 类 Spec 不一致。类型组合表规则全部验证通过（byte→int 提升、long+int→long、float+int→float、double+any→double、bigint）。Note 1/2/5 验证通过。compile-fail 7 个非法组合均被正确拒绝。Java 22/22 ✅，Swift 20/20 ✅（需显式类型转换）。
-> **7.23.2 Division**: 2026-06-23 验证完成，23/24 用例通过。**1 个 D 类异常**（字面量整数除零编译器未检测）。整数除法向零取整 + 浮点 IEEE 754 行为正确。Java 23/23 ✅，Swift 18/18 ✅。
-> **7.25.1 String Concatenation**: 2026-06-23 验证完成，19/19 用例 100% 通过。0 D 类异常。所有 10 种 string 转换类型（string+string/int/double/boolean/bigint/null/undefined/reference）验证通过。左结合性 `1+2+"!"="3!"` 确认。Java 12/12 ✅，Swift 11/11 ✅（需显式转换）。
-> **7.25.2 Additive Operators for Numeric Types**: 2026-06-23 验证完成，26/26 用例 100% 通过。0 D 类异常。类型提升链 byte→short→int→long→float→double 完整验证。IEEE 754 NaN/Infinity/零规则/非结合性正确。int 溢出截断正确。永不抛异常确认。float→double 需 `Double.toFloat()` 提升。Java 34/34 ✅，Swift 31/31 ✅（需 `&+` 溢出运算符）。
-> **7.23.3 Remainder**: 2026-06-23 验证完成，21/23 用例通过。**2 个 D 类异常**（int%0 和 bigint%0n 字面量均未检测）。bigint 取余 0n 不检测与除法 0n 检测策略不一致。Java 20/20 ✅，Swift 15/15 ✅。
-> **7.24 Exponentiation Expression**: 2026-06-23 验证完成，25/25 用例 100% 通过。**2 个 D 类异常**（负数基底零指数和负数基底整数指数均返回 NaN 而非 IEEE 754 规定值）。所有类型组合、bigint 幂运算、12 组 IEEE 754 特殊规则验证通过（零指数、+/-0、+/-1、Infinity、NaN、范围规则）。Java 46/46 ✅，Swift 46/46 ✅。
-> **7.25.1 String Concatenation**: 2026-06-23 验证完成，19/19 用例 100% 通过。**0 D 类异常**。所有 string 拼接组合验证通过：string+string、string+int/double/boolean/bigint/null/undefined/reference types。编译时检查：void 表达式被正确拒绝（021），int+boolean 无数值转换被拒绝（022）。运行时：7 组断言全部正确（拼接值、左结合性、多拼接链）。Java 12/12 ✅，Swift 11/11 ✅。关键发现：ArkTS 和 Java 一样提供完整的隐式字符串转换（数值→字符串），Swift 需显式 String()；bigint→string 隐式转换是 ArkTS 独特能力。
-> **7.26 Shift Expressions**: 2026-06-23 验证完成，22/22 用例 100% 通过。**0 D 类异常**。三个移位运算符（<<, >>, >>>）在 int/long/byte/short/float/double/bigint 上正确实现。int 距离掩码 0x1f、long 距离掩码 0x3f 正确。>>> 公式验证通过。left-to-right 结合性确认。ArkTS 不支持 L 后缀，需变量声明（`let v: long = 8`）。Java 29/29 ✅，Swift 23/23 ✅（Swift 无 >>>，需 UInt 自定义实现）。
-> **7.27.1 Numeric Relational Operators**: 2026-06-23 验证完成，19/19 用例 100% 通过。**0 D 类异常**。int/long/float/double/byte/short 六种数值类型在 <, <=, >, >= 四个运算符上全部正确。IEEE 754 规则完全实现（NaN false、-Inf < all、+Inf > all、+0.0 = -0.0）。非数值类型（string/boolean/Object/null/undefined）编译时错误正确。Java 48/48 ✅，Swift 41/41 ✅（需显式类型转换）。关键发现：float 字面量必须用 `f` 后缀（`1.5f`），否则为 Double；float→double 提升有精度问题（`3.14f <= 3.14` 可能 false）。跨语言差异：隐式数值提升、Int 位数、NaN 编译时警告。
-> **7.27.2 Bigint Relational Operators**: 2026-06-23 验证完成，19/19 用例 100% 通过。**0 D 类异常**。bigint vs bigint 四运算符（<, <=, >, >=）全部正确。bigint+int/long/byte/short 隐式 int→bigint 转换后比较正确。bigint+double 隐式 bigint→double 转换后浮点比较正确。bigint+float 两者隐式→double 后比较正确。非 bigint/数值类型（string/boolean/Object/null/undefined）编译时错误正确。Spec 内部一致性：types.md 的"禁止混合"一般规则已被 7.27.2 特例覆盖（编译器实际遵循 7.27.2 详细规则）。Java 44/44 ✅（BigInteger.compareTo 替代运算符），Swift 47/47 ✅（Int64 模拟，限 64 位范围）。关键发现：ArkTS 是唯一内建 bigint 类型并支持隐式混合类型比较的语言；Swift 无任意精度整数。
-> **7.27.3 String Relational Operators**: 2026-06-23 验证完成，20/20 用例 100% 通过。**0 D 类异常**。string 四运算符（<, <=, >, >=）基于词典序逐字符比较全部正确。空字符串、前缀规则、大小写敏感、ASCII 字符顺序、相同字符串、词典序细节、长字符串、变量比较全部运行时验证通过。非 string 类型（int/boolean/bigint/double/float/Object）编译时错误正确。运行时合计 91 断言。Java 80/80 ✅（String.compareTo 替代），Swift 76/76 ✅（原生运算符，ASCII 范围三语言一致）。关键发现：ArkTS ≈ Swift 语法（运算符直接使用），Java 需 compareTo() 方法；三语言 ASCII 字符串行为完全一致。
-> **7.27.4 Boolean Relational Operators**: 2026-06-23 验证完成，15/15 用例 100% 通过。**0 D 类异常**。boolean 真值表 4 运算符 × 4 组合 = 16 个结果全部运行时验证正确。let/const 变量、逻辑表达式（&& || !）、函数返回值、三元表达式作为操作数均验证通过。非 boolean 类型（int/string/bigint/double/Object/float）编译时错误正确。运行时合计 44 断言。Java 24/24 ✅（Boolean.compare 替代），Swift 24/24 ✅（自定义 lt/le/gt/ge 辅助函数）。关键发现：**ArkTS 是唯一原生支持 boolean 关系运算符的语言**（Swift 的 Bool 不遵循 Comparable 协议，无法使用 <, <=, >, >=）。ArkTS 在此特性上明显优于 Java 和 Swift。
-> **7.27.5 char Relational Operators**: 2026-06-23 验证完成，12/12 用例 100% 通过。**0 D 类异常**。char vs char 字符序 4 运算符 × 4 组合全部运行时验证正确。char + 数值类型（int/long/double）隐式转换比较正确。边界值（``=0, `￿`=65535）验证通过。非 char/非数值类型（string/boolean/bigint）编译时错误正确。运行时合计 40 断言。Java 32/32 ✅（原生 char 运算符，同 ArkTS 语义），Swift 24/24 ✅（Character 遵循 Comparable 协议，但不支持 char + 数值类型比较）。关键发现：**ArkTS char = Java char**（同为 16-bit unsigned，行为完全一致）；**Swift Character 差异显著**（Unicode scalar 模型，不支持 char + 数值类型比较）。ArkTS/Java 均优于 Swift（char + 数值类型兼容性）。
-> **7.27.6 Enumeration Relational Operators**: 2026-06-23 验证完成，13/13 用例，**2 D 类异常**。compile-pass 5/5 ✅，compile-fail 预期 2/4 ✅（011 不同枚举类型、014 不同枚举同基类型正确报错），⚠️ 意外通过 2/4（012 枚举 vs 数值、013 枚举 vs 字符串 — **实现允许 enum 隐式转换为其基类型后比较**，Spec 要求编译时错误）。runtime 4/4 ✅（48 断言全部通过）。Java 18/18 ✅（compareTo 替代关系运算符），Swift 36/36 ✅（需自定义 Comparable）。关键发现：**ArkTS 是唯一原生支持枚举关系运算符的语言**（Java compareTo、Swift Comparable 协议）；**2 个 D 类**说明实现比 Spec 更宽松，建议更新 Spec 允许 enum 与基类型值比较（类似 C#）。
-> **7.28.1 Numeric Equality Operators**: 2026-06-23 验证完成，18/21 用例通过。**3 个 D 类异常**（Object/枚举/null/undefined 与数值通过 == 比较编译通过）。compile-pass 12/12 ✅，compile-fail 预期 2/5 ✅（boolean/string 正确报错），⚠️ 意外通过 3/5（Object/enum/null/undefined — **实现比 Spec 宽松**），runtime 4/4 ✅（85 断言全部通过）。IEEE 754 NaN/Infinity/零规则正确。bigint vs numeric 结果为 false 符合 spec。Java 39/39 ✅（更严格：Object/enum/null 与数值比较编译时错误），Swift 33/33 ✅（NaN 编译时警告）。关键发现：**ArkTS 是唯一支持 bigint 等值比较的语言**；=== 对数值类型与 == 语义相同（Java/Swift 无此运算符）；ArkTS 不支持 long 字面量 `L` 后缀。
-> **7.28.2 Function Type Equality Operators**: 2026-06-23 验证完成，16/16 用例 100% 通过。**0 D 类异常**。compile-pass 9/9 ✅（同一函数对象、不同函数对象、不同签名、实例方法、静态方法、不同实例、不同方法名、===/!==、spec 示例），compile-fail 3/3 ✅（函数 vs 数值/字符串/布尔值全部正确报错），runtime 4/4 ✅（36 断言全部通过）。全部 spec 示例运行验证通过。跨语言差异：Java 通过引用相等间接支持方法引用比较（6/6 ✅）；**Swift 不支持函数类型的引用恒等比较**（"cannot check reference equality of functions" 编译时错误），这是 Swift 语言设计层面的本质差异。关键发现：ArkTS 函数类型比较与 spec 完全一致，是三种语言中唯一原生支持完整函数类型等值比较的语言。
-> **7.28.3 Extended Equality with null or undefined**: 2026-06-23 验证完成，12/12 用例 100% 通过。**0 D 类异常**。compile-pass 8/8 ✅（null == undefined、null == null、undefined == undefined、null != undefined、可空类型参数、null 变量、undefined 变量、spec 示例），compile-fail 0（扩展等值允许所有 null/undefined 比较），runtime 4/4 ✅（31 断言全部通过）。全部 spec 示例运行验证通过。跨语言差异：Java 仅支持 null（无 undefined），Swift 仅支持 nil（Optional.none），null/undefined 双类型系统是 ArkTS/TypeScript 独有特性。关键发现：ArkTS 扩展等值 `null == undefined → true`、`null === undefined → false` 与 spec 完全一致。
-> **7.29.1 Integer Bitwise Operators**: 2026-06-23 验证完成，13/13 用例 100% 通过。**0 D 类异常**。compile-pass 7/7 ✅（int/long/byte-short提升/混合类型/float-double截断/bigint/链式优先级），compile-fail 2/2 ✅（bigint+int、bigint+float 正确报错），runtime 4/4 ✅（54 断言全部通过：int 16 + long 14 + bigint 14 + float/double 10）。跨语言差异：float/double 截断位运算是 ArkTS 独有特性；bigint 位运算符仅 ArkTS 原生支持；byte/short→int 隐式提升 ArkTS ≈ Java，Swift 无隐式提升。关键发现：ArkTS 实现特点包括 1️⃣ 不支持 `L` 后缀 2️⃣ 不支持 hex bigint 字面量 3️⃣ double 位运算结果类型为 long。0 D 类异常，规范与实现完全一致。
-> **7.29.2 Boolean Logical Operators**: 2026-06-23 验证完成，6/6 用例 100% 通过。**0 D 类异常**。compile-pass 3/3 ✅（boolean &/^/| 真值表编译 + 链式运算），compile-fail 2/2 ✅（boolean 与 int/float/long/string/bigint 混合编译时报错），runtime 1/1 ✅（24 断言全部通过：& 真值表 4 + ^ 真值表 4 + | 真值表 4 + 变量运算 6 + 自身运算 6）。跨语言差异：ArkTS == Java 完全等价（非短路 boolean &/^/|）；Swift 缺少非短路 boolean 逻辑运算符，仅提供短路 &&/||。Java 24/24 ✅，Swift 24/24 ✅（&&/||/!= 模拟）。0 D 类异常，规范与实现完全一致。
-> **7.30 Conditional-And Expression**: 2026-06-23 验证完成，6/6 用例 100% 通过。**0 D 类异常**。compile-pass 3/3 ✅（boolean && 真值表编译 + 短路行为 + 链式运算/结合律），compile-fail 2/2 ✅（boolean 与 int/float/long/string/bigint 混合 + 反向 + 全非 boolean 编译时报错），runtime 1/1 ✅（24 断言全部通过：&& 真值表 4 + 短路行为 4 + 链式 4 + 结合律 4 + 变量 4 + 与 & 一致性 4）。跨语言差异：ArkTS == Java == Swift 三语言 && 短路 AND 语义完全一致；Swift & 对 Bool 不可用，无法验证 `&&` 与 `&` 的一致性。Java 24/24 ✅，Swift 20/20 ✅。0 D 类异常，规范与实现完全一致。
-> **7.31 Conditional-Or Expression**: 2026-06-23 验证完成，6/6 用例 100% 通过。**0 D 类异常**。compile-pass 3/3 ✅（boolean || 真值表编译 + 短路行为 + 链式运算/结合律），compile-fail 2/2 ✅（boolean 与 int/float/long/string/bigint 混合 + 反向 + 全非 boolean 编译时报错），runtime 1/1 ✅（24 断言全部通过：|| 真值表 4 + 短路行为 4 + 链式 4 + 结合律 4 + 变量 4 + 与 | 一致性 4）。跨语言差异：ArkTS == Java == Swift 三语言 || 短路 OR 语义完全一致；Swift | 对 Bool 不可用，无法验证 || 与 | 的一致性。Java 24/24 ✅，Swift 20/20 ✅。0 D 类异常，规范与实现完全一致。
-> **7.32.1 Simple Assignment Operator**: 2026-06-23 验证完成，10/12 用例通过。**2 个 D 类异常**（readonly array/tuple 保护未实现 — 编译器允许非只读→只读赋值）。compile-pass 6/6 ✅（变量赋值 + 字段访问 + 数组索引 + 记录索引 + 隐式扩宽 + 规范示例），compile-fail 预期 1/3 ✅（类型不匹配正确报错），⚠️ 意外通过 2/3（readonly array、readonly tuple — **实现比 Spec 宽松**），runtime 3/3 ✅（17 断言 + 2 RangeError 全部通过）。跨语言差异：链式赋值 `a=b=c` ArkTS≈Java 支持，Swift 不支持（= 返回 Void）；越界异常不同（ArkTS RangeError vs Java AIOOBE vs Swift fatalError）。Java 24/24 ✅，Swift 18/18 ✅。
-> **7.32.2 Compound Assignment Operators**: 2026-06-23 验证完成，12/12 用例通过。**1 个 D 类异常**（`??=` 空值合并赋值编译器报 Syntax error ESY0227 — Spec 定义但编译器不支持）。compile-pass 5/5 ✅（算术复合 + 移位/位运算复合 + string+= + 字段/数组/记录复合 + 规范示例），compile-fail 4/4 ✅（类型不匹配全面覆盖 + ⚠️ ??= 语法错误 3 文件），runtime 3/3 ✅（20+ 断言 + 2 RangeError 全部通过）。跨语言差异：`>>>=` Java/ArkTS 支持但 Swift 不支持；Bool `&=`/`|=`/`^=` ArkTS≈Java 支持但 Swift 需 `&&=`/`||=`；`??=` 三语言均不支持。Java 27/27 ✅，Swift 25/25 ✅。
-> **7.35.2 Lambda Body**: 2026-06-23 验证完成，11/12 用例通过。**1 个 D 类异常**（未初始化局部变量在 lambda 中捕获应报错但编译通过）。compile-pass 8/8 ✅（表达式体/块体return/多语句/捕获局部/捕获this/void调用体/void空块/无参块体），compile-fail 预期 2/3 ✅（空块无return、void语句无return），⚠️ 意外通过 1/3（未初始化捕获 — **实现比 Spec 宽松**），runtime 1/1 ✅（7 断言全部通过）。跨语言差异：块体无 return 检测（ArkTS≈Java，Swift 隐式返回），未初始化捕获（ArkTS ⚠️ D类，Java error，Swift 无限制）。Java 11/11 ✅，Swift 13/13 ✅。
+**7.19-001** ⭐ — void 表达式上应用 `!` 运算符编译通过（Spec 不一致）
+
+- **问题描述：** ArkTS spec 规定 ensure-not-nullish 表达式检查"空值类型"（nullish types）。`void` 在 ArkTS 中 ≡ `undefined`，属于 nullish type。理论上 `void` 函数调用不产生值，应用 `!` 应报编译时错误，但当前编译器允许 `noop()!` 编译通过。
+- **复现用例 ID：** EXP_07_19_021_FAIL_VOID_EXPRESSION
+- **跨语言对比：**
+
+| 语言 | void 表达式 + ! |
+|------|----------------|
+| ArkTS | ❌ 预期 compile-time error，实际编译器允许通过 |
+| Java | N/A（void 方法不返回值） |
+| Swift | N/A（void 函数不返回值） |
+
+- **建议：** 实现 spec 中 void 表达式禁止应用 `!` 运算符的编译时检测。
+
+---
+
+**7.19-002** ⭐ — `undefined!` 赋值给非空类型编译通过（Spec 不一致）
+
+- **问题描述：** `undefined` 是 nullish type，`undefined!` 的类型应推导为非空类型变体（理论上为 never/uninhabited）。`let x: int = undefined!` 预期是 compile-time error，但当前编译器允许通过。
+- **复现用例 ID：** EXP_07_19_022_FAIL_ALWAYS_NULLISH_ASSIGN
+- **跨语言对比：**
+
+| 语言 | `undefined!` 类型 |
+|------|------------------|
+| ArkTS | ❌ 预期 compile-time error，实际编译器允许通过 |
+| Java | N/A（无 undefined） |
+| Swift | N/A（nil! 编译通过但运行崩溃） |
+
+- **建议：** 对始终 nullish 的表达式应用 `!` 后，其类型应当正确推导为非空不可达类型，当赋值给非空具体类型时产生编译时错误。
+
+---
