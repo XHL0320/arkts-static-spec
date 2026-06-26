@@ -26,23 +26,42 @@
 **SC-01~14** MEDIUM — Smart Cast 流敏感收窄未实现（14 场景）
 
 - Spec 15.8: `The compiler uses data-flow analysis based on Control-flow Graph to compute smart types`
-- Spec 要求：`typeof v === "string"` 等式、CFG 分支、联合类型、嵌套 if、三元、逻辑运算、switch/for/while、backedge、must-alias 等场景应触发流敏感类型收窄
-- 实际：编译器拒绝合法 pattern，如 `typeof value === "string"` 后访问 `value.length` 仍报错
-- 编译器错误：
+- Spec 要求的所有 14 场景均被编译器拒绝，每个场景均有明确 Spec 依据：
+
+| # | 场景 | Spec 依据 | 编译器 |
+|---|------|----------|:------:|
+| 1 | typeof 收窄 | §15.8:1369 `typeof v === "string"` 等式收窄 | ❌ |
+| 2 | 控制流收窄 | §15.8:1357 CFG data-flow analysis 计算智能类型 | ❌ |
+| 3 | 联合类型收窄 | §15.8 联合类型应能通过 typeof/instanceof 收窄 | ❌ |
+| 4 | 嵌套 if 收窄 | §15.8.4 CFG 分支合并 | ❌ |
+| 5 | 三元收窄 | §15.8:1365 条件表达式包括 ternary | ❌ |
+| 6 | 逻辑 AND/OR 收窄 | §15.8:1365 Conditional-And / Conditional-Or | ❌ |
+| 7 | CFG 分支合并 | §15.8.4 分支合并时智能类型为各分支联合 | ❌ |
+| 8 | 循环 backedge | §15.8.4 反向边: 循环变量重置为声明类型 | ❌ |
+| 9 | Must-alias 集 | §15.8.4 must-alias 集计算用于智能类型 | ❌ |
+| 10 | 差集类型计算 | §15.8.3 else 分支使用差集类型 | ❌ |
+| 11 | 类型表达式简化 | §15.8.6 类型表达式简化规则 | ❌ |
+| 12 | switch 收窄 | §15.8:1365 条件语句包括 switch | ❌ |
+| 13 | for 循环收窄 | §15.8:1365 循环中应保持智能类型 | ❌ |
+| 14 | while 循环收窄 | §15.8:1365 同上 | ❌ |
+
+- 编译器错误示例：
   ```
   SEM_15_08_00_004: Property 'length' does not exist on type 'Object'
+  → typeof value === "string" 后 value.length 未收窄
   SEM_15_08_00_005: Unions are not allowed in binary expressions
-  SEM_15_08_00_008: Unions are not allowed in binary expressions
+  → typeof value === "string" 后 value*2 仍为联合类型
   ```
 - 跨语言对比：
 
 | 场景 | ArkTS 编译器 | TypeScript | Java | Swift |
 |------|:----------:|:----------:|:----:|:-----:|
-| typeof 收窄 | ❌ 未实现 | ✅ | N/A | N/A |
+| typeof 收窄 | ❌ | ✅ | N/A | N/A |
 | instanceof 收窄 | ✅ | ✅ | ✅ | ✅ |
 | null/undefined 收窄 | ✅ | ✅ | ❌ | ✅ |
-| CFG 分支合并 | ❌ 未实现 | ✅ | ✅ | ✅ |
+| CFG 分支合并 | ❌ | ✅ | ✅ | ✅ |
 
+- 14 个场景全部为 **Spec §15.8 明确要求的核心功能**，编译器未实现严重影响开发者体验
 - 分类：C 类（编译器未实现），涉及章节：15.8
 
 ---
