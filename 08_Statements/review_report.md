@@ -3,65 +3,73 @@
 ## 审查范围
 
 - **章节**：08_Statements（ArkTS 静态语言规范 §08 Statements）
-- **用例目录**：`08_Statements/ets_cases/`（18 个子章节）
+- **用例目录**：`08_Statements/ets_cases/`（18 个小节目录）
 - **用例总数**：**557**（compile-pass 222 / compile-fail 155 / runtime 180）
-- **覆盖章节**：§8.1–§8.15.3（18 节）
+- **覆盖小节**：§8.1–§8.15.3
 - **审查日期**：2026-06-26
-- **审查工具**：`es2panda --extension=ets`（ArkCompiler Linux native，`/home/nnd/projects/arkts/arkcompiler/runtime_core/static_core/out/bin/es2panda`）
+- **审查依据**：`arkts-spec-chapter-review` skill 流程；spec 取自 `arkts-static-spec` skill（`spec/statements.md`、`spec/semantics.md`）
+- **跑测工具**：`es2panda --extension=ets`（ArkCompiler，Linux native）
 
 ## 执行结果
 
-| 分类 | 总数 | OK（符合预期） | 异常 | 崩溃 |
-|------|------|---------------|------|------|
-| compile-pass | 222 | 222 | 0（unexpected-fail） | 0 |
+实测统计（es2panda `--extension=ets`，逐用例编译，信号崩溃按 rc<0 或 rc≥128 判定）：
+
+| 分类 | 总数 | OK（符合预期） | unexpected | 崩溃 |
+|------|------|---------------|-----------|------|
+| compile-pass | 222 | 222 | 0 | 0 |
 | compile-fail | 155 | 153 | 1（unexpected-pass） | 1（SIGABRT） |
 | runtime（编译阶段） | 180 | 180 | 0 | 0 |
 | **合计** | **557** | **555** | **1** | **1** |
 
-- **runner**：章节自带 `run_statements_cases_wsl.sh`，默认 SECTIONS 覆盖全部子目录（非窄范围）。脚本名含 `_wsl`、工具链走 `ARK_HOME` 环境变量——与本地 Linux native 路径不一致属**本地审查环境差异**（已用绝对路径直跑 es2panda 完成实测），不计为交付问题。
-- 两个异常均经逐条直接复跑确认当前仍存在，并已记录于 `issue_report.md`：
-  - **C-8.06-01**：`STM_08_06_012_FAIL_label_declared_not_used`（未使用 loop label），spec §8.6 要求 compile-time error，es2panda 编译通过（rc=0）。→ **仍异常通过**。
-  - **C-8.06-02**：`STM_08_06_015_FAIL_LabeledDoWhileAndForOf_compiler_bug`（labeled do-while/for-of），spec §8.6 允许应正常编译，es2panda 触发 SIGABRT 崩溃（rc=-6，core dump）。→ **仍崩溃**。
+- **runner**：章节自带 `run_statements_cases_wsl.sh`，默认遍历全部小节目录（SECTIONS 未设时取所有子目录）。脚本工具链走 `ARK_HOME` 环境变量、文件名含 `_wsl`，与本地 Linux native 路径不一致——属**本地审查环境差异**，已直接用 es2panda 绝对路径完成实测，不计为交付问题。
+- 两处异常均经逐条直接复跑确认当前仍存在：
+  - `STM_08_06_012_FAIL_label_declared_not_used`（compile-fail）：rc=0，unexpected-pass。
+  - `STM_08_06_015_FAIL_LabeledDoWhileAndForOf_compiler_bug`（compile-fail）：rc=-6（SIGABRT，core dump），编译器崩溃。
 
 ## 总体结论
 
-**可验收。** 用例可执行、设计覆盖 spec §08 全部小节、交付文档可消费、元数据零不一致。主要风险是 1 个**编译器侧崩溃**（C-8.06-02，非交付缺陷，待 es2panda 修复）和 manifest 结构未对齐 03_Types 惯例（可消费性 OK，统一性可改进）。无阻塞验收的交付问题。
+**可验收。** 用例可执行、spec §08 全覆盖、交付文档可消费、元数据零不一致，且 spec–实现差异已正确归类（非包装成普通 PASS）。主要风险为 1 个**编译器侧崩溃**（C-8.06-02，非交付缺陷）；无阻塞验收的交付件问题。
 
 ## 问题清单
 
-### 1. C-8.06-02 编译器崩溃仍未修复（编译器侧 bug，非交付缺陷）
+> 按 skill 判断准则：阻塞验收问题在前，覆盖/文档同步问题在后。
 
-- **现象**：`STM_08_06_015_FAIL_LabeledDoWhileAndForOf_compiler_bug.ets` 编译时 es2panda SIGABRT（rc=-6，core dump），崩溃点 `VariableHasScope`。
-- **影响**：该用例无法正常完成编译；属 es2panda 已知缺陷，用例本身（标 `_compiler_bug`）已正确记录。
-- **证据**：2026-06-26 直跑 exit=-6（core dump）；`issue_report.md` C-8.06-02。
-- **建议**：保留 issue 跟踪；待 es2panda 修复 labeled statement 作用域处理后复查移除。**不阻塞本章验收**。
+### 1. C-8.06-02 编译器崩溃（编译器侧缺陷，非交付问题）
 
-### 2. C-8.06-01 loop label 未使用检查未实现（编译器侧，用例正确记录）
+- **现象**：`8.6_Loop_Statements/compile-fail/STM_08_06_015_FAIL_LabeledDoWhileAndForOf_compiler_bug.ets` 编译触发 es2panda SIGABRT（rc=-6，core dump）。
+- **spec 依据**：spec §8.6（Loop Statements）允许 labeled statement，应正常编译；实现崩溃。
+- **影响**：该用例无法完成编译；属 es2panda 缺陷。用例命名含 `_compiler_bug`，已正确标识并记于 issue_report。
+- **证据**：2026-06-26 直跑 rc=-6；issue_report C-8.06-02。
+- **建议**：保留跟踪；待 es2panda 修复 labeled statement 作用域处理后复查。**不阻塞本章验收**。
 
-- **现象**：`STM_08_06_012_FAIL_label_declared_not_used` spec §8.6 要求未使用的 label 产生 compile-time error，es2panda 放过（rc=0）。
-- **影响**：用例置于 compile-fail 作负向看护，运行表现为 unexpected-pass；与 issue C-8.06-01 一致。
-- **证据**：2026-06-26 直跑 exit=0。
+### 2. C-8.06-01 loop label 未使用检查未实现（编译器侧，归类正确）
+
+- **现象**：`STM_08_06_012_FAIL_label_declared_not_used` spec 要求 compile-time error，es2panda 编译通过（rc=0）。
+- **spec 依据**：spec `statements.md` 行 278 明确——"A compile-time error occurs if the label identifier is not used"。属"spec 明确要求但实现未检查"。
+- **影响**：用例置于 compile-fail 作负向看护，运行表现为 unexpected-pass；未包装成 PASS，归类正确。
+- **证据**：2026-06-26 直跑 rc=0；issue_report C-8.06-01。
 - **建议**：保留；待编译器补全 label 使用检查后转预期失败。
 
-### 3. manifest 结构未对齐 03_Types 惯例（统一性，非阻塞）
+### 3. D-8.03-01 Block 内 type declaration——spec 待澄清
 
-- **现象**：`test_manifest.json` 合法且 `cases` 数组含 557 条（== 实际 .ets 数，对齐 ✓），但采用旧式结构：`subtopics` + `cases` 数组，**缺** 03_Types/07/09 章节通用的 `prefix`、`total_cases`、`stats`（按节 P/F/R）字段，且无 UTF-8 BOM。
-- **影响**：JSON 可解析、覆盖完整，满足"合法 + 覆盖 .ets"的硬性要求；但与项目其他章节的 manifest 惯例不一致，跨章聚合统计时需特殊处理。
-- **证据**：`top keys: chapter/topic/directory/spec_source/subtopics/case_roots/categories/cases`；无 `prefix/total_cases/stats`。
-- **建议**：如需跨章统一，可后续重构为 count-based（`total_cases` + 按节 `stats`）并加 BOM。**本次不阻塞验收**。
+- **现象**：`STM_08_03_008_FAIL_local_type_alias_in_block` es2panda 以 ESY0040 拒绝 block 内 interface/type alias。
+- **spec 依据**：spec §8.3（Block）措辞暗示合法（"all block statements, except type declarations…"），但与实现拒绝行为不一致——属 spec 歧义。
+- **归类**：D 类 spec 待澄清（skill 准则：spec 歧义标"待澄清"，不强行推断）。✓
+- **建议**：推动 spec 明确 block 内 type declaration 是否允许；spec 定论后用例分类随之确定。
 
-### 4. issue_report 中 D 类两条属"spec 待澄清/设计说明"，边界可商榷
+### 4. D-8.05-01 非 boolean 条件——spec 标注 future-deprecated（归类正确）
 
-- **现象**：`D-8.03-01`（block 内 type alias，es2panda ESY0040 拒绝，spec 措辞模糊）与 `D-8.05-01`（Extended Conditional 允许非 boolean 条件，spec 标注未来废弃）。
-- **影响**：两者用例均按当前分类正常执行（D-8.03-01 的 compile-fail 用例 rc=1 按预期失败；D-8.05-01 的 compile-pass 用例 rc=0 按预期通过），**非执行异常**。严格按规则 21（issue_report 只记当前未解决执行异常）边界存疑；但本审查 skill 允许"spec 歧义 → 标 spec 待澄清"，故保留合理。
-- **建议**：可在 issue_report 中明确区分"执行异常（C-8.06-01/02）"与"spec 待澄清/设计说明（D-8.03-01/8.05-01）"两区，提升可读性。非阻塞。
+- **现象**：`STM_08_05_006/007/008`、`STM_08_07_006/007/008`、`STM_08_08_006` 等 int/string/float/Object/array/null 等非 boolean 条件编译通过（compile-pass）。
+- **spec 依据**：spec `semantics.md` 行 2512「Extended Conditional Expressions」定义该扩展语义；**行 2535 明确**："The extended semantics is to be deprecated in one of the future versions"。即当前允许、未来废弃。
+- **归类**：D 类 spec 待废弃特性（deprecated/兼容行为）。✓ 非"实现差异"，亦非普通 PASS 误判——spec 当前允许故通过，但标注将废弃，记为差异项合理。
+- **建议**：保留；跟踪 spec 废弃进度，废弃生效后这些用例应转为 compile-fail。
 
 ## 覆盖评价
 
-spec §08（`statements.md`）含 15 个顶层小节，08_Statements 测试**全覆盖**并细化：
+spec §08（`statements.md`）含 15 个顶层小节，08_Statements **全覆盖**：
 
-| spec 小节 | 测试节 | 覆盖 |
-|-----------|--------|------|
+| spec 小节 | 测试目录 | 覆盖 |
+|-----------|---------|------|
 | §8.1 Normal and Abrupt Statement Execution | 8.1 | ✅ |
 | §8.2 Expression Statements | 8.2 | ✅ |
 | §8.3 Block | 8.3 | ✅ |
@@ -76,33 +84,32 @@ spec §08（`statements.md`）含 15 个顶层小节，08_Statements 测试**全
 | §8.12 return Statements | 8.12 | ✅ |
 | §8.13 switch Statements | 8.13 | ✅ |
 | §8.14 throw Statements | 8.14 | ✅ |
-| §8.15 try Statements | 8.15 + 8.15.1/2/3 | ✅（try 细分为 catch/finally/execution，粒度更细） |
+| §8.15 try Statements | 8.15（+ 8.15.1/2/3） | ✅（catch/finally/execution 细化覆盖） |
 
-- 每节均含 compile-pass / compile-fail / runtime 三类，正向 + 反向 + 运行时验证齐全。
-- spec 覆盖**无遗漏小节**；8.15 try 拆出 8.15.1–8.15.3 属合理细化覆盖。
+- 每小节均含 compile-pass / compile-fail / runtime 三类，正向 + 反向 + 运行时验证齐全。
+- spec §08 **无遗漏小节**；8.15 try 拆分为 8.15.1–8.15.3 属更细粒度覆盖，不属缺失。
 
 ## 交付件质量核验
 
-| 项 | 结果 |
+| 项（skill 准则） | 结果 |
 |----|------|
-| `.ets` 元数据 `@id`==文件名 | **0 不一致**（557/557） |
-| `@expect`==所在目录 | **0 不一致** |
-| `@section`==父小节 | **0 不一致** |
-| 缺 5-tag 头 / 缺字段 | **0** |
-| manifest JSON 合法 | ✅ |
-| manifest 覆盖 .ets | ✅（557 == 557） |
-| catalog 总数对齐 | ✅（222P+155F+180R=557） |
-| mindmap 总数对齐 | ✅（557） |
-| issue 差异项归类 | ✅（C 类编译器 / D 类 spec，均经实测复核） |
-| null byte（md / .ets） | 无 |
+| `test_manifest.json` 合法 JSON | ✅ |
+| manifest 覆盖实际 `.ets`（id 数 == .ets 数） | ✅（557 == 557，双向无差） |
+| `@id` == 文件名 | ✅ **0 不一致**（557/557） |
+| `@expect` == 所在目录 | ✅ **0 不一致** |
+| `@section` == 父小节 | ✅ **0 不一致** |
+| 缺 5-tag 头 | 0 |
+| catalog 数量/描述与目录一致 | ✅（222P+155F+180R=557） |
+| mindmap 数量与目录一致 | ✅（557） |
+| issue_report 差异项清晰归类 | ✅（C 类编译器 / D 类 spec，均经 spec 原文核实） |
 
 ## 整改建议（短清单）
 
-1. **（编译器侧）** 修复 es2panda labeled statement 作用域处理（消除 C-8.06-02 崩溃），并补全 loop label 使用检查（消除 C-8.06-01）。
-2. **（可选统一）** 将 `test_manifest.json` 重构为 03_Types 惯例（`prefix` + `total_cases` + 按节 `stats` + UTF-8 BOM），便于跨章聚合。
-3. **（可选）** `issue_report.md` 内分区区分"执行异常"与"spec 待澄清/设计说明"，提升可读性。
-4. **（复查机制）** 复测脚本崩溃判定须覆盖**负 returncode**（Linux 信号终止 rc<0，如 SIGABRT=-6），否则会漏报崩溃（本次审查初版批量脚本即因此漏报 C-8.06-02，后修正）。
+1. **（编译器侧）** 修复 es2panda labeled statement 处理以消除 C-8.06-02 崩溃；补全 loop label 使用检查以消除 C-8.06-01。
+2. **（spec 侧）** 明确 §8.3 Block 内 type declaration 是否允许，消除 D-8.03-01 歧义。
+3. **（跟踪）** D-8.05-01 Extended Conditional 废弃生效后，将相关 compile-pass 用例转 compile-fail。
+4. **（复测稳健性）** 复测脚本崩溃判定须覆盖**负 returncode**（Linux 信号终止 rc<0，如 SIGABRT=-6）；仅判正值 134/139 会漏报崩溃。
 
 ---
 
-> 本报告基于 2026-06-26 全量实测编译（es2panda `--extension=ets`，Linux native）。runtime 用例仅做编译阶段验证（180/180 编译通过），未跑 ark VM 实际执行。
+> 本报告依 `arkts-spec-chapter-review` skill 流程独立完成，基于 2026-06-26 全量实测编译（es2panda `--extension=ets`，Linux native）与 `arkts-static-spec` spec 原文核实。runtime 用例仅做编译阶段验证（180/180 编译通过），未跑 ark VM 实际执行。
