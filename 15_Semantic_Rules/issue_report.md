@@ -4,172 +4,176 @@
 
 | ID | Case | Symptom | Expected | Actual | Status |
 |:---|------|--------|---------|--------|--------|
-| SEM-U-01 | SEM_15_08_01_100_FAIL_TYPEOF_GAP | typeof smart cast 未实现 | compile-time error | compile-error ✅ | C类-未实现 |
-| SEM-SC-01~14 | 15.8 十四场景 | Smart Cast 流敏感收窄未实现 | compile-pass | 编译失败 | C类-未实现 |
-| SEM-VAR-01~06 | 15.2/15.5 | 子类型/变体注解编译器拒绝 | compile-pass | 编译失败 | C类-未实现 |
-| SEM-OVR-01~03 | 15.9 | Override 参数逆变/默认方法覆写 | compile-pass | 编译失败 | C类-未实现 |
-| SEM-TINF-01~02 | 15.7 | 常量表达式/返回类型推断 | compile-pass | 编译失败 | C类-未实现 |
-| SEM-CALL-01~02 | 15.6 | spread/rest 参数兼容性 | compile-pass | 编译失败 | C类-未实现 |
-| SEM-ASG-01 | 15.4 | 隐式转换可赋值性 | compile-pass | 编译失败 | C类-未实现 |
-| SEM-ERAS-01 | 15.12 | effective type mapping | compile-pass | 编译失败 | C类-未实现 |
-| SEM-INT-01 | 15.2.8 | Intersection PLACEHOLDER | compile-pass | 编译失败 | C类-未实现 |
-| SEM-OW-01 | SEM_15_11_07_001 | 重载警告 W2323 未实现 | compile-pass | 编译失败 | C类-未实现 |
-| C-15.11-02~07 | SEM_15_11_00_218/220/222/224/226/231 | Overload 按实际类型而非声明类型派发 | runtime 按声明类型 | runtime 按实际类型 | C类-运行时偏差 |
-| SEM-GAP-SC | 15.8 六场景 | instanceof 无效访问/作用域收窄边界未拒绝 | compile-fail | 编译通过 | C类-未实现 |
-| SEM-GAP-SUB | 15.2 五场景 | tuple/union/fixed-array 子类型方向未拒绝 | compile-fail | 编译通过 | C类-未实现 |
-| SEM-GAP-OVR | 15.9 四场景 | Override 参数协变/返回逆变未拒绝 | compile-fail | 编译通过 | C类-未实现 |
-| SEM-GAP-INF | 15.7.2 | unexpressible smart return 未拒绝 | compile-fail | 编译通过 | C类-未实现 |
-| SEM-GAP-OL | 15.11 | 静态方法不继承用于重载未拒绝 | compile-fail | 编译通过 | C类-未实现 |
-| COM-15.14-01~07 | 15.14 | Extended Conditional（即将废弃，Spec 不推荐使用） | compile-pass/runtime | 编译失败 | D类-即将废弃 |
+| SC-01~14 | SEM_15_08_00_004/005/008/014/016/017/018/019/020/022/024/025/027/028 | Smart Cast 流敏感收窄未实现 | compile-pass | 编译失败 | C类-编译器未实现 |
+| VAR-01~06 | SEM_15_02_00_010/012/015/018, SEM_15_05_00_001/003 | Subtyping/Variance 编译器误拒 | compile-pass | 编译失败 | C类-编译器未实现 |
+| OVR-01~03 | SEM_15_09_00_003/009/013 | Override 编译器误拒 | compile-pass | 编译失败 | C类-编译器未实现 |
+| TINF-01~02 | SEM_15_07_00_001/003 | Type Inference 编译器误拒 | compile-pass | 编译失败 | C类-编译器未实现 |
+| CALL-01~02 | SEM_15_06_00_002/004 | Call Arguments 编译器误拒 | compile-pass | 编译失败 | C类-编译器未实现 |
+| ASG-01 | SEM_15_04_00_004 | Assignability 编译器误拒 | compile-pass | 编译失败 | C类-编译器未实现 |
+| ERAS-01 | SEM_15_12_00_004 | Type Erasure 编译器误拒 | compile-pass | 编译失败 | C类-编译器未实现 |
+| INT-01 | SEM_15_02_08_001 | Intersection PLACEHOLDER 编译失败 | compile-pass | 编译失败 | C类-编译器未实现 |
+| OW-01 | SEM_15_11_07_001 | Overload warning W2323 未实现 | compile-pass | 编译失败 | C类-编译器未实现 |
+| C-15.11-02~07 | SEM_15_11_00_218/220/222/224/226/231 | Overload Resolution 运行时按实际类型派发 | runtime 按声明类型 | runtime 按实际类型 | C类-运行时偏差 |
+| GAP-SC | SEM_15_08_00_109/110/111/114/116/118 | Smart Cast 边界未拒绝 | compile-fail | 编译通过 | C类-编译器未实现 |
+| GAP-SUB | SEM_15_02_04_101, SEM_15_02_05_101/103/106, SEM_15_02_07_101 | Subtyping 边界未拒绝 | compile-fail | 编译通过 | C类-编译器未实现 |
+| GAP-OVR | SEM_15_09_01_103, SEM_15_09_02_102, SEM_15_09_00_108/109 | Override 边界未拒绝 | compile-fail | 编译通过 | C类-编译器未实现 |
+| GAP-INF | SEM_15_07_02_102 | Smart return 边界未拒绝 | compile-fail | 编译通过 | C类-编译器未实现 |
+| GAP-OL | SEM_15_11_00_113 | Overload 边界未拒绝 | compile-fail | 编译通过 | C类-编译器未实现 |
+| COM-15.14-01~07 | SEM_15_14_00_003/013/015/024/026/027/204 | Extended Conditional 未实现（Spec 即将废弃） | compile-pass/runtime | 编译失败 | D类-即将废弃 |
 
 ### 异常详情
 
-**SEM-U-01** MEDIUM — typeof smart cast 未实现
+**SC-01~14** MEDIUM — Smart Cast 流敏感收窄未实现（14 场景）
 
-`typeof x === "boolean"` 收窄后编译器未将 x 从 `int|boolean` 收窄为 `boolean`。编译器明确拒绝此模式（ESE0318）。等待编译器支持 typeof 类型收窄后改 compile-pass。
+- Spec 15.8: `The compiler uses data-flow analysis based on Control-flow Graph to compute smart types`
+- Spec 要求：`typeof v === "string"` 等式、CFG 分支、联合类型、嵌套 if、三元、逻辑运算、switch/for/while、backedge、must-alias 等场景应触发流敏感类型收窄
+- 实际：编译器拒绝合法 pattern，如 `typeof value === "string"` 后访问 `value.length` 仍报错
+- 编译器错误：
+  ```
+  SEM_15_08_00_004: Property 'length' does not exist on type 'Object'
+  SEM_15_08_00_005: Unions are not allowed in binary expressions
+  SEM_15_08_00_008: Unions are not allowed in binary expressions
+  ```
 - 跨语言对比：
-
-| 语言 | typeof 等效 | Smart Cast |
-|------|------------|-----------|
-| ArkTS | `typeof x === "boolean"` | ❌ 未实现 |
-| Java | `x instanceof String` | ✅ 编译期收窄 |
-| Swift | `x is String` | ✅ 编译期收窄 |
-| TypeScript | `typeof x === "boolean"` | ✅ 编译期收窄 |
-
-- 分类：C 类（编译器功能缺失）
-- 涉及章节：15.8.1
-
----
-
-**SEM-SC-01~14** MEDIUM — Smart Cast 流敏感收窄未完全实现（14 场景）
-
-Spec 明确要求编译器在以下条件下进行流敏感类型收窄（§15.8:1357-1371）：
-
-> "The compiler uses data-flow analysis based on Control-flow Graph to compute smart types."
-> "Conditional statements and conditional expressions that include:
->   – Equality Expressions of typeof v and a string literal;
->   – Equality Expressions of a variable with null/undefined;
->   – Extended Conditional Expressions."
-
-当前编译器对 typeof 收窄、CFG 分支合并、联合类型收窄、嵌套 if 收窄、三元收窄、逻辑运算收窄、switch/for/while 循环中的收窄、backedge 收窄、must-alias、intersection/difference 类型计算、type-expr-simplify 等 14 个场景均未实现。
-
-实测错误举例：
-```typescript
-function test(value: Object): void {
-    if (typeof value === "string") {
-        let len = value.length;
-        // ^ ESE0087: Property 'length' does not exist on type 'Object'
-        // 编译器未将 value 从 Object 收窄为 string
-    }
-}
-```
-
-跨语言对比：
 
 | 场景 | ArkTS 编译器 | TypeScript | Java | Swift |
 |------|:----------:|:----------:|:----:|:-----:|
-| typeof 收窄 | ❌ 未实现 | ✅ `typeof x === "string"` | N/A | N/A |
-| instanceof 收窄 | ✅ 已实现 | ✅ | ✅ | ✅ |
-| null/undefined 收窄 | ✅ 已实现 | ✅ | ❌ | ✅ |
+| typeof 收窄 | ❌ 未实现 | ✅ | N/A | N/A |
+| instanceof 收窄 | ✅ | ✅ | ✅ | ✅ |
+| null/undefined 收窄 | ✅ | ✅ | ❌ | ✅ |
 | CFG 分支合并 | ❌ 未实现 | ✅ | ✅ | ✅ |
-| 三元/逻辑收窄 | ❌ 未实现 | ✅ | N/A | N/A |
-| 循环中收窄 | ❌ 未实现 | ✅ | N/A | N/A |
 
-- 分类：C 类（编译器功能缺失）
-- 涉及章节：15.8
+- 分类：C 类（编译器未实现），涉及章节：15.8
 
 ---
 
-**SEM-VAR-01~06** LOW — 子类型/变体编译器拒绝（6 场景）
+**VAR-01~06** LOW — Subtyping/Variance 编译器误拒（6 场景）
 
-variance covariant/contravariant、string literal to string、union member to union、func parameter contravariance 等场景编译器拒绝。
-- 分类：C 类（编译器功能缺失）
-- 涉及章节：15.2/15.5
-
----
-
-**SEM-OVR-01~03** LOW — Override 编译器拒绝（3 场景）
-
-class method parameter contravariance、interface default method override、interface override compatible 编译器拒绝。
-- 分类：C 类（编译器功能缺失）
-- 涉及章节：15.9
+- Spec 15.2/15.5 要求：协变/逆变兼容的子类型关系应通过编译
+- 实际：编译器拒绝合法 pattern，如 variance covariant、string literal to string、union member to union、func parameter contravariance
+- 涉及用例：
+  ```
+  SEM_15_02_00_010/012/015/018, SEM_15_05_00_001/003
+  ```
+- 分类：C 类（编译器未实现），涉及章节：15.2/15.5
 
 ---
 
-**SEM-TINF-01~02** LOW — 类型推断编译器拒绝（2 场景）
+**OVR-01~03** LOW — Override 编译器误拒（3 场景）
 
-constant expression、return type inference 编译器拒绝。
-- 分类：C 类（编译器功能缺失）
-- 涉及章节：15.7
-
----
-
-**SEM-CALL-01~02** LOW — 调用参数编译器拒绝（2 场景）
-
-spread expression、rest parameter 编译器拒绝。
-- 分类：C 类（编译器功能缺失）
-- 涉及章节：15.6
+- Spec 15.9 要求：override-compatible signature 应通过编译
+- 实际：编译器拒绝 class method parameter contravariance、interface default method override、interface override compatible
+- 涉及用例：
+  ```
+  SEM_15_09_00_003/009/013
+  ```
+- 分类：C 类（编译器未实现），涉及章节：15.9
 
 ---
 
-**SEM-ASG-01** LOW — 隐式转换可赋值性编译器拒绝
-**SEM-ERAS-01** LOW — effective type mapping 编译器拒绝
-**SEM-INT-01** LOW — Intersection PLACEHOLDER 编译失败
-**SEM-OW-01** LOW — Overload warning W2323 未实现
-- 分类：C 类（编译器功能缺失）
+**TINF-01~02** LOW — Type Inference 编译器误拒（2 场景）
+
+- 涉及用例：`SEM_15_07_00_001_PASS_CONSTANT_expression`, `SEM_15_07_00_003_PASS_RETURN_type_inference`
+- 分类：C 类（编译器未实现），涉及章节：15.7
 
 ---
 
-**COM-15.14-01~07** LOW — Extended Conditional Expressions（Spec §15.14 即将废弃）
+**CALL-01~02** LOW — Call Arguments 编译器误拒（2 场景）
 
-编译器拒绝 truthiness 扩展语义（`&&`/`||` 返回操作数、非 boolean 三元条件、typeof/instanceof 真值检查、NaN 真值判断等）。Spec 明确声明：
+- 涉及用例：`SEM_15_06_00_002_PASS_SPREAD_expression`, `SEM_15_06_00_004_PASS_REST_parameter`
+- 分类：C 类（编译器未实现），涉及章节：15.6
 
-> §15.14: "not recommended in most cases" / §15.14.1: "**to be deprecated in one of the future versions**"
+---
 
-编译器未实现此特性是**预期行为**。用例保留作兼容性参考，不计入缺陷。
-- 分类：D 类（即将废弃）
-- 涉及章节：15.14
+**ASG-01 / ERAS-01 / INT-01 / OW-01** LOW — 单场景编译器误拒
+
+| ID | 用例 | 问题 |
+|----|------|------|
+| ASG-01 | SEM_15_04_00_004 | 隐式转换可赋值性编译器误拒 |
+| ERAS-01 | SEM_15_12_00_004 | effective type mapping 编译器误拒 |
+| INT-01 | SEM_15_02_08_001 | Intersection PLACEHOLDER 编译失败 |
+| OW-01 | SEM_15_11_07_001 | Overload warning W2323 未实现（编译器应产生警告） |
+
+- 分类：C 类（编译器未实现），涉及章节：15.4/15.12/15.2.8/15.11
 
 ---
 
 **C-15.11-02~07** MEDIUM — Overload Resolution 运行时按实际类型派发
 
-`let b: Base = new Derived(); b.pick(9)` — 运行时按实际类型 `Derived` 选择 `pickInt` 而非声明类型 `Base` 的 `pickNumber`。
-- `assertEQ` 失败：`'derived-int' === 'base-number'`
-- 涉及用例：218/220/222/224/226/231
-- 分类：C 类（运行时偏差）
-- 涉及章节：15.11
+- Spec 15.11 要求：`let b: Base = new Derived(); b.pick(9)` 应按声明类型 `Base` 选择 `pickNumber`
+- 实际：运行时按实际类型 `Derived` 选择 `pickInt`
+- `assertEQ` 错误：`'derived-int' === 'base-number'`
+- 涉及用例：
+  ```
+  SEM_15_11_00_218_RUNTIME_receiver_declared_base_function_scope
+  SEM_15_11_00_220_RUNTIME_receiver_declared_base_direct_new_function
+  SEM_15_11_00_222_RUNTIME_receiver_declared_base_from_return_function
+  SEM_15_11_00_224_RUNTIME_receiver_declared_base_local_copy_global
+  SEM_15_11_00_226_RUNTIME_receiver_declared_base_after_side_effect_call
+  SEM_15_11_00_231_RUNTIME_SMART_FUNC_overload_declared_base_function
+  ```
+- 分类：C 类（运行时偏差），涉及章节：15.11
 
 ---
 
-**SEM-GAP-SC** LOW — Smart Cast 边界编译器未拒绝（6 场景）
+**GAP-SC** LOW — Smart Cast 边界编译器未拒绝（6 场景）
 
-function_declared_base_init_derived_member/assign、function_declared_base_from_derived_var/after_call、SMART_FUNC_function_base_member_without_narrow、INSTANCEOF_invalid_access。编译器应拒绝 smart cast 访问派生类成员但未拒绝。
-- 分类：C 类（编译器边界）
-- 涉及章节：15.8
-
----
-
-**SEM-GAP-SUB** LOW — 子类型边界编译器未拒绝（5 场景）
-
-tuple_shorter_to_longer、two_union_subtype_gap、union_int_to_number、union_larger_to_smaller、fixed_array_wrong_direction。
-- 分类：C 类（编译器边界）
-- 涉及章节：15.2
+- Spec 要求：instanceof 无效访问、全局/函数作用域收窄边界应产生 compile-time error
+- 实际：编译器未拒绝，通过编译
+- 涉及用例：
+  ```
+  SEM_15_08_00_109/110/111/114/116/118
+  ```
+- 分类：C 类（编译器为未实现），涉及章节：15.8
 
 ---
 
-**SEM-GAP-OVR** LOW — Override 边界编译器未拒绝（4 场景）
+**GAP-SUB** LOW — Subtyping 边界编译器未拒绝（5 场景）
 
-multiple_override_same、effective_signature_conflict、CLASS_parameter_covariance、CLASS_return_contravariance。
-- 分类：C 类（编译器边界）
-- 涉及章节：15.9
+- Spec 要求：tuple/union/fixed-array 错误子类型方向应产生 compile-time error
+- 实际：编译器未拒绝，通过编译
+- 涉及用例：
+  ```
+  SEM_15_02_04_101, SEM_15_02_05_101/103/106, SEM_15_02_07_101
+  ```
+- 分类：C 类（编译器未实现），涉及章节：15.2
 
 ---
 
-**SEM-GAP-INF** LOW — unexpressible smart return 编译器未拒绝
-**SEM-GAP-OL** LOW — 静态方法不继承用于重载编译器未拒绝
-- 分类：C 类（编译器边界）
-- 涉及章节：15.7.2 / 15.11
+**GAP-OVR** LOW — Override 边界编译器未拒绝（4 场景）
+
+- Spec 要求：override 参数协变/返回逆变/有效签名冲突应产生 compile-time error
+- 实际：编译器未拒绝，通过编译
+- 涉及用例：
+  ```
+  SEM_15_09_01_103, SEM_15_09_02_102, SEM_15_09_00_108/109
+  ```
+- 分类：C 类（编译器未实现），涉及章节：15.9
+
+---
+
+**GAP-INF / GAP-OL** LOW — 单场景编译器未拒绝
+
+| ID | 用例 | 问题 |
+|----|------|------|
+| GAP-INF | SEM_15_07_02_102 | unexpressible smart return 编译器未拒绝 |
+| GAP-OL | SEM_15_11_00_113 | 静态方法不继承用于重载，编译器未拒绝 |
+
+- 分类：C 类（编译器未实现），涉及章节：15.7.2/15.11
+
+---
+
+**COM-15.14-01~07** LOW — Extended Conditional Expressions（Spec 即将废弃）
+
+- 编译器拒绝 truthiness 扩展语义（`&&`/`||` 返回操作数、非 boolean 三元条件、typeof/instanceof 真值检查、NaN 真值判断等）
+- Spec 15.14: `Using these features is not recommended in most cases`
+- Spec 15.14.1: `The extended semantics is to be deprecated in one of the future versions`
+- 编译器未实现是**预期行为**。用例保留作兼容性参考，不计入缺陷
+- 涉及用例：
+  ```
+  SEM_15_14_00_003/013/015/024/026/027/204
+  ```
+- 分类：D 类（即将废弃），涉及章节：15.14
 
 ### 历史已解决异常
 
