@@ -1,54 +1,39 @@
 # 03 Types - Spec Extract
 
-Source: ArkTS static language specification, chapter 03 Types.
+Source: ArkTS static language specification, chapter 03 Types (types.md).
 
-## Scope
+## 类型体系
 
-This file is reserved for translated or extracted normative text for this topic.
+ArkTS 类型系统分为**值类型**和**引用类型**：
 
-## Subtopics
+### 值类型（Value Types）
+- **整数类型**：`byte`（8位）、`short`（16位）、`int`（32位）、`long`（64位）
+- **浮点类型**：`float`（32位 IEEE 754）、`double`（64位 IEEE 754）
+- **`boolean`**：`true` / `false`
+- **`char`**：16位 Unicode 编码单元（实验特性，见 §17）
 
-- 3.1_Predefined_Types
-- 3.2_User_Defined_Types
-- 3.3_Using_Types
-- 3.4_Named_Types
-- 3.5_Type_References
-- 3.6_Value_Types
-- 3.6.1_Numeric_Types
-- 3.6.2_Integer_Types_and_Operations
-- 3.6.3_Floating_Point_Types_and_Operations
-- 3.6.4_Type_boolean
-- 3.7_Reference_Types
-- 3.8_Type_Any
-- 3.9_Type_Object
-- 3.10_Type_never
-- 3.11_Type_void_or_undefined
-- 3.12_Type_null
-- 3.13_Type_string
-- 3.14_Type_bigint
-- 3.15_Literal_Types
-- 3.15.1_String_Literal_Types
-- 3.16_Array_Types
-- 3.16.1_Resizable_Array_Types
-- 3.16.2_Readonly_Array_Types
-- 3.17_Tuple_Types
-- 3.17.1_Readonly_Tuple_Types
-- 3.17.2_Type_Tuple
-- 3.18_Function_Types
-- 3.18.1_Type_Function
-- 3.19_Union_Types
-- 3.19.1_Union_Types_Normalization
-- 3.19.2_Access_to_Common_Union_Members
-- 3.19.3_Keyof_Types
-- 3.20_Nullish_Types
-- 3.21_Utility_Types
-- 3.21.1_Awaited_Utility_Type
-- 3.21.2_NonNullable_Utility_Type
-- 3.21.3_Partial_Utility_Type
-- 3.21.4_Required_Utility_Type
-- 3.21.5_Readonly_Utility_Type
-- 3.21.6_Record_Utility_Type
-- 3.21.7_ReturnType_Utility_Type
-- 3.21.8_Utility_Type_Private_Fields
-- 3.21.9_Nesting_Utility_Types
-- 3.22_Default_Values_for_Types
+### 引用类型（Reference Types）
+- **`string`**：不可变字符串
+- **`bigint`**：任意精度整数
+- **`Object`**：所有引用类型的超类型
+- **`Array<T>`** / **`readonly T[]`** / **`FixedArray<T>`** / **`ValueArray<T>`**
+- **`Tuple`**：定长异构数组
+- **函数类型**：`(p: T) => R`
+- **联合类型**：`T | U`
+- **`null`** / **`undefined`** / **`void`** / **`never`**
+
+### 特殊类型
+- **`Any`**：所有类型的超类型，无方法无字段
+- **`never`**：无值类型，底部类型
+- **字面量类型**：`42`（int字面量类型）、`"hello"`（string字面量类型）
+- **Utility 类型**：`Awaited<T>`、`NonNullable<T>`、`Partial<T>`、`Required<T>`、`Readonly<T>`、`Record<K,V>`、`ReturnType<T>`
+
+## 关键约束
+
+- `Any` 类型无方法无字段，访问字段/方法 → compile-time error
+- 值类型有默认值（int=0, float=0.0, boolean=false）
+- 引用类型默认值为 `undefined`（nullish）
+- 联合类型归一化：去除重复、吸收子类型、readonly 版本优先
+- Utility 类型仅适用于 class/interface 类型参数
+- `never` 是所有类型的子类型
+- `keyof T` 仅适用于 class/interface 类型

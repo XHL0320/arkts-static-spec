@@ -1,5 +1,5 @@
 /**
- * @id TYP_03_19_030_RUNTIME_UNION_NORMALIZATION
+ * @id TYP_03_19_030_RUNTIME_NORMALIZATION
  * @expect runtime
  * @section 3.19.1
  * @design 联合类型归一化运行时验证
