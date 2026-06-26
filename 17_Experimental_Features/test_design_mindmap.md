@@ -1,7 +1,7 @@
 # 17 实验特性 - 测试设计思维导图（章节级）
 
 **前缀：** `EXP2_`
-**覆盖汇总：** 533 cases（238P + 161F + 134R），最后编译验证 2026-06-26（es2panda `--extension=ets`，Linux native），异常 17 项见 [issue_report.md](issue_report.md)
+**覆盖汇总：** 556 cases（249P + 167F + 140R），最后编译验证 2026-06-26（es2panda `--extension=ets`，Linux native），异常 17 项见 [issue_report.md](issue_report.md)
 
 ## 测试分类
 - compile-pass: 正向编译用例
@@ -94,6 +94,10 @@
   - normal: 命名构造器overload
   - error: 多个overload constructor
 
+- 17.10_Native_Functions_and_Methods
+  - normal: native函数/方法/构造器声明（无body）
+  - error: native+body, native+abstract, native构造器非空body
+
 - 17.10.1_Native_Functions
   - normal: native函数声明, 无body
   - error: native+body
@@ -103,6 +107,10 @@
 
 - 17.10.3_Native_Constructors
   - error: native构造器+body
+
+- 17.11_Classes_Experimental
+  - normal: final类/方法声明, final类实例化与类型使用
+  - error: extends final, final+abstract, override final
 
 - 17.11.1_Final_Classes
   - normal: final class

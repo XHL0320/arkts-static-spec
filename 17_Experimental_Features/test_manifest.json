@@ -3,7 +3,7 @@
   "topic": "Experimental Features",
   "directory": "17_Experimental_Features",
   "prefix": "EXP2_",
-  "total_cases": 533,
+  "total_cases": 556,
   "sections": [
     "17.1_Type_char",
     "17.1.1_char_Literals",
@@ -182,10 +182,10 @@
       "total": 12
     },
     "17.10_Native_Functions_and_Methods": {
-      "compile-pass": 0,
-      "compile-fail": 0,
-      "runtime": 0,
-      "total": 0
+      "compile-pass": 6,
+      "compile-fail": 3,
+      "runtime": 3,
+      "total": 12
     },
     "17.10.1_Native_Functions": {
       "compile-pass": 5,
@@ -206,10 +206,10 @@
       "total": 13
     },
     "17.11_Classes_Experimental": {
-      "compile-pass": 0,
-      "compile-fail": 0,
-      "runtime": 0,
-      "total": 0
+      "compile-pass": 5,
+      "compile-fail": 3,
+      "runtime": 3,
+      "total": 11
     },
     "17.11.1_Final_Classes": {
       "compile-pass": 5,
