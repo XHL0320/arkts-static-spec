@@ -1,6 +1,6 @@
 # 14 Ambient Declarations Test Case Catalog
 
-**总用例数：** 147（78P + 57F + 12R）
+**总用例数：** 147（82P + 52F + 13R）
 
 | Section | compile-pass | compile-fail | runtime | Total |
 |---------|:-----------:|:-----------:|:-------:|:-----:|
@@ -14,6 +14,6 @@
 | 14.5_Ambient_Interface_Declarations | 8 | 3 | 1 | 12 |
 | 14.6_Ambient_Enumeration_Declarations | 4 | 3 | 1 | 8 |
 | 14.7_Ambient_Namespace_Declarations | 9 | 2 | 1 | 12 |
-| 14.7.1_Implementing_Ambient_Namespace_Declaration | 0 | 7 | 0 | 7 |
+| 14.7.1_Implementing_Ambient_Namespace_Declaration | 4 | 2 | 1 | 7 |
 | 14.8_Ambient_Accessor_Declarations | 4 | 2 | 1 | 7 |
-| **Total** | **78** | **57** | **12** | **147** |
+| **Total** | **82** | **52** | **13** | **147** |

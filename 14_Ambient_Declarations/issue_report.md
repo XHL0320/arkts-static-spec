@@ -49,7 +49,7 @@
 - **问题描述：** ArkTS spec 允许用同名非 declare namespace 实现 ambient namespace，但编译器报 "Unable to merge namespaces, because their modifiers are different"
 - **复现用例 ID：** AMB_14_07_01_001_FAIL_IMPLEMENT_SAME_NAME 至 AMB_14_07_01_007_FAIL_RUNTIME_IMPLEMENTED_NS
 - **跨语言对比：** Java 静态内部类和 Swift 嵌套 enum 均支持类似模式
-- **影响：** 5 个用例无法按 spec 预期通过（4 compile-pass 应为通过但被编译器拒绝，1 runtime 同样被拒）
+- **影响：** 按 spec 应分布在 compile-pass（4 个）/ compile-fail（2 个）/ runtime（1 个），但编译器当前拒绝所有含有 declare namespace + namespace 合并的用例，导致 4 个 compile-pass 和 1 个 runtime 无法按预期通过
 - **严重性：** MEDIUM
 - **分类：** D 类（Spec 与实现不一致）
 

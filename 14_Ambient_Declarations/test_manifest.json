@@ -88,9 +88,9 @@
             "total": 12
         },
         "14.7.1_Implementing_Ambient_Namespace_Declaration": {
-            "compile-pass": 0,
-            "compile-fail": 7,
-            "runtime": 0,
+            "compile-pass": 4,
+            "compile-fail": 2,
+            "runtime": 1,
             "total": 7
         },
         "14.8_Ambient_Accessor_Declarations": {

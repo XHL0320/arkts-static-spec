@@ -128,9 +128,11 @@ Ambient Declarations 使用 `declare` 关键字声明在别处定义的实体类
 
 | 分类 | 用例 | 数量 |
 |------|------|:----:|
-| compile-fail | 同名实现（D 类）/嵌套同名实现（D 类）/实现函数（D 类）/实现变量（D 类）/嵌套名不匹配/签名不匹配/实现+main（D 类） | 7 |
+| compile-pass | 同名实现（D 类）/嵌套同名实现（D 类）/实现函数（D 类）/实现变量（D 类） | 4 |
+| compile-fail | 嵌套名不匹配/签名不匹配 | 2 |
+| runtime | 实现+main（D 类） | 1 |
 
-> ⚠️ 本节全部用例为 D 类：编译器拒绝 `declare namespace` 与 `namespace` 合并（modifier 不同）
+> ⚠️ 4 个 compile-pass 和 1 个 runtime 为 D 类：编译器拒绝 `declare namespace` 与 `namespace` 合并（modifier 不同）
 
 ### 14.8 Ambient Accessor Declarations
 
@@ -147,9 +149,9 @@ Ambient Declarations 使用 `declare` 关键字声明在别处定义的实体类
 | 指标 | 数值 |
 |------|:----:|
 | 总用例数 | 147 |
-| compile-pass | 78 |
-| compile-fail | 57 |
-| runtime | 12 |
+| compile-pass | 82 |
+| compile-fail | 52 |
+| runtime | 13 |
 | 子章节数 | 12 |
 | 跨语言验证 | ArkTS + Java + Swift |
 
