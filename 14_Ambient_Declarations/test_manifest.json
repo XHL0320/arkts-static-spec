@@ -2,6 +2,7 @@
     "chapter":  "14",
     "topic":  "Ambient Declarations",
     "directory":  "14_Ambient_Declarations",
+    "prefix": "AMB_",
     "spec_source":  "ArkTS static language specification",
     "subtopics":  [
                       "14.1_Ambient_Constant_or_Variable_Declarations",
@@ -25,7 +26,79 @@
                        "compile-fail",
                        "runtime"
                    ],
-    "cases":  [
-
-              ]
+    "stats": {
+        "14.1_Ambient_Constant_or_Variable_Declarations": {
+            "compile-pass": 14,
+            "compile-fail": 10,
+            "runtime": 2,
+            "total": 26
+        },
+        "14.2_Ambient_Function_Declarations": {
+            "compile-pass": 8,
+            "compile-fail": 7,
+            "runtime": 1,
+            "total": 16
+        },
+        "14.3_Ambient_Overload_Function_Declarations": {
+            "compile-pass": 6,
+            "compile-fail": 5,
+            "runtime": 1,
+            "total": 12
+        },
+        "14.4_Ambient_Class_Declarations": {
+            "compile-pass": 11,
+            "compile-fail": 9,
+            "runtime": 1,
+            "total": 21
+        },
+        "14.4.1_Ambient_Indexer": {
+            "compile-pass": 6,
+            "compile-fail": 3,
+            "runtime": 1,
+            "total": 10
+        },
+        "14.4.2_Ambient_Call_Signature": {
+            "compile-pass": 5,
+            "compile-fail": 3,
+            "runtime": 1,
+            "total": 9
+        },
+        "14.4.3_Ambient_Iterable": {
+            "compile-pass": 3,
+            "compile-fail": 3,
+            "runtime": 1,
+            "total": 7
+        },
+        "14.5_Ambient_Interface_Declarations": {
+            "compile-pass": 8,
+            "compile-fail": 3,
+            "runtime": 1,
+            "total": 12
+        },
+        "14.6_Ambient_Enumeration_Declarations": {
+            "compile-pass": 4,
+            "compile-fail": 3,
+            "runtime": 1,
+            "total": 8
+        },
+        "14.7_Ambient_Namespace_Declarations": {
+            "compile-pass": 9,
+            "compile-fail": 2,
+            "runtime": 1,
+            "total": 12
+        },
+        "14.7.1_Implementing_Ambient_Namespace_Declaration": {
+            "compile-pass": 0,
+            "compile-fail": 7,
+            "runtime": 0,
+            "total": 7
+        },
+        "14.8_Ambient_Accessor_Declarations": {
+            "compile-pass": 4,
+            "compile-fail": 2,
+            "runtime": 1,
+            "total": 7
+        }
+    },
+    "total_cases": 147
 }
