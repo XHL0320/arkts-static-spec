@@ -1,5 +1,5 @@
 /**
- * @id LEX_02_01_019_FAIL_CHAR_COMPARE_NUMBER
+ * @id LEX_02_01_019_PASS_CHAR_COMPARE_NUMBER
  * @expect compile-pass
  * @section 2.1
  * @design char 与 number 比较符合 spec/experimental.md 规定，编译器支持

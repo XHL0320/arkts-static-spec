@@ -1,5 +1,5 @@
 /**
- * @id LEX_02_01_018_FAIL_CHAR_RELATIONAL_OP
+ * @id LEX_02_01_018_PASS_CHAR_RELATIONAL_OP
  * @expect compile-pass
  * @section 2.1
  * @design char 关系运算符符合 spec/experimental.md 规定，编译器支持

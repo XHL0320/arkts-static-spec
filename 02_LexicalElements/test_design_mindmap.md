@@ -1,92 +1,121 @@
 # 02 Lexical Elements Test Design Mindmap
 
-- Lexical Elements
-  - compile-pass (285 cases)
-  - compile-fail (111 cases)
-  - runtime (161 cases)
-  - boundary
-  - negative diagnostics
-  - interoperability with related chapters
+## 覆盖汇总
+
+- 总用例数：662（348P + 118F + 196R）
+- 覆盖章节：2.1 ~ 2.11 全部词法元素规则
+- 测试类别：compile-pass / compile-fail / runtime
 
 ## Subtopics
 
-- 2.1_Use_of_Unicode_Characters
-  - normal cases: BMP char, supplementary char, Unicode escape in identifier, char with \uHHHH/\u{H}/escape sequences, $/_/Unicode letter identifier start, ZWJ/ZWNJ in ident
-  - edge cases: char range boundaries U+0000/U+FFFF/U+10FFFF, char relational ops and char-number comparison (per spec experimental.md), surrogate handling
-  - error cases: isolated surrogates (ISSUE-002/003/004), out-of-range \u{FFFFF}, digit-start ident, keyword as ident
-- 2.2_Lexical_Input_Elements
-  - normal cases: basic token sequences, whitespace-separated tokens, comment-separated tokens
-  - edge cases: BOM at file start, longest match rule, @ decorator token
-  - error cases: invalid Unicode/null char in source
-- 2.3_White_Spaces
-  - normal cases: TAB/SP/NBSP/ZWNBSP all valid separators, mixed whitespace, Ogham Space Mark (U+1680), U+2000–U+200A range spaces
-  - edge cases: ZWNBSP as BOM vs mid-file separator, NBSP visually identical to SP
-- 2.4_Line_Separators
-  - normal cases: LF/CR/CRLF/LS/PS all valid line terminators, CRLF as single separator
-  - edge cases: multiple sequence of separators, char literal with real LF (ISSUE-007), line separator before semicolon inference
-  - error cases: unterminated single-line comment
-- 2.5_Tokens
-  - normal cases: ident token, keyword token, literal token, operator token, punctuator token
-  - edge cases: longest match (>>=, >>>), token adjacency without whitespace
-  - error cases: invalid token chars, stray @
-- 2.6_Identifiers
-  - normal cases: ASCII ident, _-prefix, $-prefix, Unicode letter (Greek/Cyrillic/CJK), digits in ident, ZWJ/ZWNJ
-  - edge cases: Nl letter number start, Mn/Mc combining marks, Unicode escape in ident, long ident, case sensitivity
-  - error cases: digit prefix, keyword as ident, lone surrogate, invalid Unicode escape
-- 2.7_Keywords
-  - normal cases: all hard keywords used syntactically, type keywords, soft keywords contextually, case-insensitive keywords
-  - edge cases: catch in both hard+soft tables, var future reserved, type alias (int/Int/Integer)
-  - error cases: hard keyword used as ident, type keyword as ident in type context
-- 2.8_Operators_and_Punctuators
-  - normal cases: arithmetic/relational/equality/logical/bitwise/shift/assignment/ternary/optional chain/spread/instanceof/typeof operators and punctuators
-  - edge cases: &&= / ||= / ??= (spec listed, not yet implemented), >>>, operator precedence, arrow function
-  - error cases: ??= compile error (ISSUE-009), missing operand, const reassign, literal increment
-- 2.9_Literals
-  - normal cases: all literal types
-  - edge cases: type inference per literal value
-  - error cases: malformed literals
-- 2.9.1_Numeric_Literals
-  - normal cases: decimal/hex/octal/binary, underscore separators, float suffix (f/F), bigint suffix (n), scientific notation, negative literals, zero values
-  - edge cases: int/long/float/double/bigint type inference, INT_MAX/MIN, LONG_MAX/MIN, overflow to long
-  - error cases: leading zero (octal ambiguity), hex/binary/octal invalid digits, bigint+int mix
-- 2.9.2_Integer_Literals
-  - normal cases: decimal/binary/octal/hex integer, underscore, type inference int/long, MAX/MIN values, zero/negative bases
-  - edge cases: underscore at start/end (compile-fail), INT overflow to long, LONG overflow
-  - error cases: value too large, hex too large, int overflow, negative too large
-- 2.9.3_Floating_Point_Literals
-  - normal cases: standard float, no-leading-zero, underscore, scientific notation, f/F suffix, type inference double/float, negative/zero/variants, hex float (0x1.Fp10), NaN/Infinity literal
-  - edge cases: NaN/Infinity detection (runtime + compile-pass), precision loss, float/double mix, special value ops
-  - error cases: float too large, double too large, invalid suffix
-- 2.9.4_Bigint_Literals
-  - normal cases: basic bigint, underscore, negative, large value, type inference, zero, div/mod
-  - edge cases: asIntN/asUintN, boundary, bigint-long conversion, string conversion, bitwise ops
-  - error cases: hex/octal/binary bigint (compile-fail per spec TODO), float suffix, scientific notation, underscore before n
-- 2.9.5_Boolean_Literals
-  - normal cases: true/false literals, type inference, logical &&/||/!, comparison, array, default, loop, function param
-  - edge cases: short-circuit, conditional, operator precedence, type guard
-  - error cases: invalid boolean (True/FALSE), boolean-int mix
-- 2.9.6_String_Literals
-  - normal cases: double/single quote, quote escape, control escape, hex/unicode escape, type inference, null escape, interpolation, methods, conditional, array
-  - edge cases: empty string, surrogate pairs, hex/unicode escape boundaries
-  - error cases: unescaped newline, invalid escape (\1-\9), unterminated, invalid hex/unicode escape
-- 2.9.7_Multiline_String_Literal
-  - normal cases: basic multiline, embedded newline, escape sequences, line continuation, leading spaces, interpolation, function, special chars
-  - edge cases: leading/trailing newline, multiline length, comparison
-  - error cases: unescaped backtick
-- 2.9.8_Undefined_Literal
-  - normal cases: basic, type usage, comparison, default param, union type, optional param, array init, switch case, logical op
-  - edge cases: typeof, optional chain, nullish coalescing, string concat, template string, func arg, object property
-  - error cases: undefined as identifier
-- 2.9.9_Null_Literal
-  - normal cases: basic, type usage, comparison, default param, union type, optional param, array init, switch case, logical op
-  - edge cases: typeof null, optional chain, nullish coalescing, string concat, template string, func arg, object property
-  - error cases: null as identifier
-  - runtime: typeof null returns "object"
-- 2.10_Comments
-  - normal cases: single-line, empty line, after code, multiline basic, empty multiline, span, special chars, code snippet, Unicode, EOF variants, multiple comments
-  - edge cases: // inside /* */, /* */ inside //, comment as token separator
-  - error cases: nested comment (compile-fail)
-- 2.11_Semicolons
-  - normal cases: explicit semicolon, inferred at line break, ASI before }, ASI after restricted productions
-  - edge cases: multiple statements per line, expression ambiguity without semicolon
-  - error cases: missing semicolon causing parse error
+### 2.1 Use of Unicode Characters（46）
+- BMP/SMP/代理对/孤立代理/组合/转义
+- char 字面量与字符操作
+- Unicode 转义标识符
+
+### 2.2 Lexical Input Elements（34）
+- 空白符/行终止符/Token/注释 4 种元素
+- 最长匹配原则
+- Token 序列化与空白分隔
+
+### 2.3 White Spaces（47）
+- 6 种空白符：SP/HT/VT/FF/NBSP/ZWNBSP
+- Ogham 空格、空白区间
+- 空白作为 token 分隔
+
+### 2.4 Line Separators（41）
+- 4 种行终止符：LF/CR/LS/PS
+- CRLF 序列 / 行终止符的位置
+- 结构化的行终止符使用
+
+### 2.5 Tokens（48）
+- 4 类 Token 声明与使用
+- 最长 token 匹配
+- 非法 token 形式
+
+### 2.6 Identifiers（49）
+- Unicode 类别（ID_Start/ID_Continue）
+- 下划线/美元/数字开头
+- ZWJ/ZWNJ 在标识符中
+- 转义标识符
+- 大小写敏感性
+
+### 2.7 Keywords（94）
+- 硬关键字 30+ 全部覆盖
+- 类型关键字及别名（int/long/float/double/byte…）
+- 软关键字（catch/namespace/get/set/type/declare…）
+- 未来保留字（var/yield/struct…）
+- 关键字作为标识符应失败
+
+### 2.8 Operators and Punctuators（39）
+- 算术/关系/逻辑/位运算符
+- 复合赋值（+= /= %= …, ??= 当前未实现）
+- 三元/箭头/展开/可选链
+- 运算符作为 token 分隔
+
+### 2.9 Literals（container）
+- 父容器节，无直接用例
+
+### 2.9.1 Numeric Literals（40）
+- 整数/浮点/bigint/boolean/string/null/undefined 字面量
+- 进制前缀、下划线分隔
+- 类型推断规则
+
+### 2.9.2 Integer Literals（30）
+- decimal/hex/octal/binary 整数字面量
+- int/long 类型推断边界
+- 下划线位置合法性
+
+### 2.9.3 Floating Point Literals（29）
+- decimal/hex/exponent/suffix float/double
+- NaN/Infinity 字面量
+- hex float、下划线
+
+### 2.9.4 Bigint Literals（24）
+- bigint 字面量 n 后缀
+- 进制 bigint、下划线
+- 运行时大整数操作
+
+### 2.9.5 Boolean Literals（23）
+- true/false 字面量
+- boolean 上下文中的使用
+
+### 2.9.6 String Literals（31）
+- 单引号/双引号字符串
+- 转义序列（\\n \\t \\x \\u \\u{}）
+- 字符串中的行终止符
+
+### 2.9.7 Multiline String Literal（16）
+- 反引号多行字符串
+- 转义反引号、换行保留
+- 行续接
+
+### 2.9.8 Undefined Literal（20）
+- undefined 字面量
+- void/undefined 相关操作
+- 类型上下文中的 undefined
+
+### 2.9.9 Null Literal（21）
+- null 字面量
+- null 相关的比较与赋值
+- 类型上下文中的 null
+
+### 2.10 Comments（19）
+- // 行注释 / /* */ 多行注释
+- 注释嵌套失败
+- 注释混合使用
+
+### 2.11 Semicolons（11）
+- 显式分号 / 分号分隔
+- 隐含分号（ASI）
+- 行终止符与分号交互
+
+## 当前未解决问题
+
+详见 `issue_report.md`，主要包括：
+- Unicode 转义标识符编译失败（ISSUE-001）
+- 孤立代理/代理组合未报错（ISSUE-002/003/004）
+- char 字面量内含真实 LF（ISSUE-007）
+- CRLF spec 未显式定义（ISSUE-008）
+- `??=` 空值合并赋值未实现（ISSUE-009）
+- 6 项 spec 待澄清项（CONFIRM-002/004/009/010/011/025）
