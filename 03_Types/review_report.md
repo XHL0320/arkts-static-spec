@@ -8,44 +8,36 @@
 
 ## 执行结果
 - **测试执行：未执行**。本地为 Windows，runner `run_types_cases_wsl.sh` 为 WSL bash 脚本。此差异属于本地环境差异，不作为交付问题。
-- **静态审计**：通过 `audit_chapter.ps1` 完成。
-- **交付件质量**：manifest 合法，44 小节全覆盖，issue_report 详细。
+- **静态审计**：通过 `audit_chapter.ps1` 完成。最终 METADATA_BAD_COUNT=0。
+- **交付件质量**：manifest 合法，44 小节全覆盖，issue_report 详细，元数据完全一致。
 
 ## 总体结论
-**条件性可验收，主要风险为 8 处元数据不一致和 12 项已知 spec 差异。** 728 用例覆盖 44 个小节，是已审查章节中用例最多的。需修复 5 处 `@section` 归属错误和 1 处 `@id` 不匹配。spec_original.md 和 Types_Examples.md 为占位符。issue_report 中 2 项 S 类 spec 文档冲突（bigint）需 spec 团队澄清。
+**可验收。** 728 用例覆盖 44 个小节，是已审查章节中用例最多的。交付侧已无阻塞问题：8 处元数据不一致已全部修复，spec_original.md 和 Types_Examples.md 已填充。12 项已知 spec 差异均为编译器/spec 侧问题，非交付侧缺陷。
+
+## 整改完成情况
+
+| 问题 | 状态 | 说明 |
+|------|:----:|------|
+| 1. 8 处元数据不一致 | ✅ | 7 处 `@section` 归属 + 1 处 `@id` 已全部修正 |
+| 2. spec_original.md 占位符 | ✅ | 已填充类型体系摘要及关键约束 |
+| 3. Types_Examples.md 占位符 | ✅ | 已填充 8 段最小可编译示例 |
+| 4. AI_REVIEW_REPORT_20260625.md | ⚠️ 待确认 | 非标准交付件，需确认是否保留 |
+| 5. catalog/mindmap 偏简略 | 🔶 建议优化 | 非阻塞问题，建议后续补充 |
 
 ## 问题清单
 
-### 1. [阻塞] 8 处元数据不一致
-**现象**：
-- **@section 归属错误（7 处）**：
-  - 3 个 `3.18_Function_Types` 下的用例 `@section=3.18.1`，应改为 `3.18`
-  - 4 个 `3.19_Union_Types` 下的用例 `@section=3.19.2`，应改为 `3.19`
-- **@id 不匹配（1 处）**：
-  - `TYP_03_19_030_RUNTIME_NORMALIZATION.ets` 的 `@id` 为 `TYP_03_19_030_RUNTIME_UNION_NORMALIZATION`
-**影响**：影响自动化工具正确归类用例到 spec 小节。
-**建议**：逐一修正上述 8 处的 `@section` 和 `@id`。
+### 1. [信息] 12 项已知 spec 差异已清晰归类
+issue_report.md 记录 12 项差异，其中：
+- 10 项 D 类（Spec 与实现不一致）：函数类型括号/调用、Any 字段访问、union 同名字段、keyof、readonly union 归一化、Partial/Required/Readonly 非 class 应用
+- 2 项 S 类（Spec 文档冲突）：bigint 关系运算在 types.md 和 expressions.md 中表述矛盾——唯一一个跨章节 spec 自相矛盾的案例，已标注为 spec 文档冲突而非实现 bug
+**建议**：跟踪 spec 团队对 bigint 关系运算的澄清结果；其余 D 类等待编译器版本更新后验证。
 
-### 2. [重要] 12 项已知 spec 差异已清晰归类
-**现象**：issue_report.md 记录 12 项差异，其中：
-- 8 项 D 类（Spec 与实现不一致）：函数类型括号/调用、Any 字段访问、union 同名字段、keyof、readonly union 归一化、Partial/Required/Readonly 非 class 应用
-- 2 项 S 类（Spec 文档冲突）：bigint 关系运算在 types.md 和 expressions.md 中表述矛盾
-- 2 项 D 类（Spec 与实现不一致）：union normalization 写入、Partial/Required/Readonly 非 class
-**评价**：S 类条目（S-3.14-01/02）是唯一一个跨章节 spec 自相矛盾的案例，处理方式正确——不强行归类为实现 bug，而是标注为 spec 文档冲突。
-**建议**：跟踪 spec 团队对 bigint 关系运算的澄清结果。
-
-### 3. [中等] spec_original.md 和 Types_Examples.md 为占位符
-**现象**：spec_original.md 仅列子节标题无规范文本；Types_Examples.md 仅一句保留说明。
-**影响**：新 reviewer 需外部查阅 spec。
-**建议**：填充 spec_original.md 的核心类型规则摘要，补充 Examples.md 的最小示例。
-
-### 4. [信息] 有 1 个未归类文件 AI_REVIEW_REPORT_20260625.md
-**现象**：章节根目录存在 `AI_REVIEW_REPORT_20260625.md`，不属于标准交付件清单。
+### 2. [信息] 有 1 个未归类文件 AI_REVIEW_REPORT_20260625.md
 **建议**：确认是否需要保留或归档到合适位置。
 
-### 5. [改进] test_design_mindmap.md 和 test_case_catalog.md 偏简略
-**现象**：mindmap 仅 55 行、catalog 仅 58 行，对于 728 用例的章节而言偏简略。catalog 仅有汇总表和小节补充说明，无完整用例清单。
-**建议**：补充完整用例清单（参照 08_Statements 或 17_Experimental_Features 的 catalog 格式）。
+### 3. [改进] test_design_mindmap.md 和 test_case_catalog.md 偏简略
+mindmap 仅 55 行、catalog 仅 58 行，对于 728 用例的章节而言偏简略。catalog 仅有汇总表和小节补充说明，无完整用例清单。
+**建议**：后续可补充完整用例明细清单。
 
 ## 覆盖评价
 
@@ -105,7 +97,7 @@
 - S-3.14-01/02 正确标注为 spec 文档冲突（而非包装为 PASS 或 FAIL）
 - 12 项 issue 均有 spec 原文引用和跨语言对比
 
-**已知编译器限制**（issue_report 已记录）：
+**已知编译器限制**（issue_report 已记录，非交付侧问题）：
 - 联合类型中函数类型括号检查缺失（D-3.18-01）
 - Function 类型直接调用（D-3.18-02/03）
 - Any 字段访问检查缺失（D-3.08-01）
@@ -117,8 +109,6 @@
 
 ## 整改建议
 
-1. **必须修复**：修正 8 处元数据不一致（5 处 @section 归属 + 1 处 @id + 2 处补充确认）
-2. **建议补充**：填充 `spec_original.md` 为核心类型规则摘要，`Types_Examples.md` 为最小示例
-3. **建议增强**：`test_case_catalog.md` 补充完整用例明细清单，`test_design_mindmap.md` 补充设计思路
-4. **持续跟踪**：2 项 S 类 spec 冲突（bigint 关系运算）待 spec 团队澄清后更新用例分类
-5. **清理建议**：确认 `AI_REVIEW_REPORT_20260625.md` 是否保留
+1. **已修复**：8 处元数据不一致、spec_original.md、Types_Examples.md
+2. **持续跟踪**：2 项 S 类 spec 冲突待 spec 团队澄清，10 项 D 类待编译器版本更新后验证
+3. **可选优化**：补充 catalog 完整用例清单，增强 mindmap 设计思路；确认 AI_REVIEW_REPORT_20260625.md 是否保留
