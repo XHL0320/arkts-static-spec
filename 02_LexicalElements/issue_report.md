@@ -10,8 +10,8 @@
 | ISSUE-002 | 2.1 | LEX_02_01_012_FAIL_LONE_HIGH_SURROGATE.ets | 孤立高代理编译通过 | compile-fail | compile-pass | ⚠️ SPEC 不一致 |
 | ISSUE-003 | 2.1 | LEX_02_01_013_FAIL_LONE_LOW_SURROGATE.ets | 孤立低代理编译通过 | compile-fail | compile-pass | ⚠️ SPEC 不一致 |
 | ISSUE-004 | 2.1 | LEX_02_01_014_FAIL_HIGH_SURROGATE_NO_LOW.ets | 高代理后跟 BMP 字符编译通过 | compile-fail | compile-pass | ⚠️ SPEC 不一致 |
-| ISSUE-005 | 2.1 | LEX_02_01_018_FAIL_CHAR_RELATIONAL_OP.ets | char 关系运算符编译通过 | compile-fail | compile-pass | ⚠️ SPEC 不一致 |
-| ISSUE-006 | 2.1 | LEX_02_01_019_FAIL_CHAR_COMPARE_NUMBER.ets | char 与 number 比较编译通过 | compile-fail | compile-pass | ⚠️ SPEC 不一致 |
+| ISSUE-005 | 2.1 | LEX_02_01_018_FAIL_CHAR_RELATIONAL_OP.ets | char 关系运算符编译通过 | compile-fail | compile-pass | ⚠️ cookbook/spec 冲突 |
+| ISSUE-006 | 2.1 | LEX_02_01_019_FAIL_CHAR_COMPARE_NUMBER.ets | char 与 number 比较编译通过 | compile-fail | compile-pass | ⚠️ cookbook/spec 冲突 |
 | ISSUE-007 | 2.4 | LEX_02_04_022_PASS_LF_IN_CHAR_LITERAL.ets | char 字面量内允许真实 LF | compile-fail | compile-pass | ⚠️ SPEC 不一致 |
 | ISSUE-008 | 2.4 | LEX_02_04_005_PASS_CRLF_SEPARATOR.ets | CRLF 在 spec 中未单独定义为序列 | 显式定义 | 隐含支持 | ⚠️ SPEC 不一致 |
 | ISSUE-009 | 2.8 | LEX_02_08_031_RUNTIME_NULLISH_UNION_FIELD_FACTOR.ets | Syntax error ESY0227: Unexpected token '??=' | runtime | compile-fail | 🔴 未解决 |
@@ -141,7 +141,7 @@
 
 ---
 
-### ISSUE-005: char 关系运算符编译通过 ⚠️ SPEC 不一致
+### ISSUE-005: char 关系运算符编译通过 ⚠️ cookbook/spec 冲突
 
 **所属章节：** 2.1 Use of Unicode Characters
 **用例文件：** `2.1_Use_of_Unicode_Characters/compile-fail/LEX_02_01_018_FAIL_CHAR_RELATIONAL_OP.ets`
@@ -149,24 +149,25 @@
 **错误信息：** 无（编译通过）
 
 **预期行为：** cookbook/compatibility.md 明确禁止 char 关系运算符，应编译失败
-**实际行为：** 编译器允许 char 关系运算符
+**实际行为：** 编译器允许 char 关系运算符（与 spec 一致）
 
 **规范依据：**
+- spec/experimental.md 第122-128行: Equality operators and relational operators can be used if both operands are of char type or one operand is of char type and other is of a numeric type.
 - cookbook/compatibility.md: ❌ 禁止 char 关系运算符
-- spec/experimental.md: 未明确定义 char 运算符
+- **结论：spec 权威高于 cookbook，编译器行为与 spec 一致**
 
 **跨语言对比：**
 | 语言 | 代码 | 行为 |
 |------|------|------|
-| ArkTS | `let r: boolean = c'A' < c'B'` | ⚠️ 编译通过 |
+| ArkTS | `let r: boolean = c'A' < c'B'` | ✅ 编译通过（符合 spec） |
 | Java | `boolean r = 'A' < 'B';` | ✅ 编译通过 |
 | Swift | `let r = Character("A") < Character("B")` | ❌ 编译错误 |
 
-**状态：** ⚠️ D 类异常（Spec 与实现不一致）
+**状态：** ⚠️ cookbook/spec 冲突（编译器行为符合 spec，用例 @expect 应修正为 compile-pass）
 
 ---
 
-### ISSUE-006: char 与 number 比较编译通过 ⚠️ SPEC 不一致
+### ISSUE-006: char 与 number 比较编译通过 ⚠️ cookbook/spec 冲突
 
 **所属章节：** 2.1 Use of Unicode Characters
 **用例文件：** `2.1_Use_of_Unicode_Characters/compile-fail/LEX_02_01_019_FAIL_CHAR_COMPARE_NUMBER.ets`
@@ -174,20 +175,21 @@
 **错误信息：** 无（编译通过）
 
 **预期行为：** cookbook/compatibility.md 明确禁止 char→number widening，应编译失败
-**实际行为：** 编译器允许 char 与 number 比较
+**实际行为：** 编译器允许 char 与 number 比较（与 spec 一致）
 
 **规范依据：**
+- spec/experimental.md 第122-128行: Equality operators and relational operators can be used if one operand is of char type and other is of a numeric type.
 - cookbook/compatibility.md: ❌ 禁止 char→number widening
-- spec/experimental.md: 未明确定义 char 与 number 关系
+- **结论：spec 权威高于 cookbook，编译器行为与 spec 一致**
 
 **跨语言对比：**
 | 语言 | 代码 | 行为 |
 |------|------|------|
-| ArkTS | `let r: boolean = c'A' == 65` | ⚠️ 编译通过 |
+| ArkTS | `let r: boolean = c'A' == 65` | ✅ 编译通过（符合 spec） |
 | Java | `boolean r = 'A' == 65;` | ✅ 编译通过 |
 | Swift | `let r = Character("A") == 65` | ❌ 编译错误 |
 
-**状态：** ⚠️ D 类异常（Spec 与实现不一致）
+**状态：** ⚠️ cookbook/spec 冲突（编译器行为符合 spec，用例 @expect 应修正为 compile-pass）
 
 ---
 
@@ -267,7 +269,8 @@
 | 状态 | 数量 |
 |------|------|
 | 🔴 未解决 | 2 |
-| ⚠️ SPEC 不一致 | 7 |
+| ⚠️ SPEC 不一致 | 5 |
+| ⚠️ cookbook/spec 冲突 | 2 |
 | ⚠️ 待确认（Spec 未明确） | 6 |
 
 | 🔁 转执行异常/Spec不一致跟踪 | 3 |

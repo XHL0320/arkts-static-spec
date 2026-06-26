@@ -1,9 +1,9 @@
 # 02 Lexical Elements Test Design Mindmap
 
 - Lexical Elements
-  - compile-pass
-  - compile-fail
-  - runtime
+  - compile-pass (285 cases)
+  - compile-fail (111 cases)
+  - runtime (161 cases)
   - boundary
   - negative diagnostics
   - interoperability with related chapters
@@ -11,82 +11,82 @@
 ## Subtopics
 
 - 2.1_Use_of_Unicode_Characters
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: BMP char, supplementary char, Unicode escape in identifier, char with \uHHHH/\u{H}/escape sequences, $/_/Unicode letter identifier start, ZWJ/ZWNJ in ident
+  - edge cases: char range boundaries U+0000/U+FFFF/U+10FFFF, char relational ops and char-number comparison (per spec experimental.md), surrogate handling
+  - error cases: isolated surrogates (ISSUE-002/003/004), char relational ops per cookbook (ISSUE-005), char-number per cookbook (ISSUE-006), out-of-range \u{FFFFF}, digit-start ident, keyword as ident
 - 2.2_Lexical_Input_Elements
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: basic token sequences, whitespace-separated tokens, comment-separated tokens
+  - edge cases: BOM at file start, longest match rule, @ decorator token
+  - error cases: invalid Unicode/null char in source
 - 2.3_White_Spaces
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: TAB/SP/NBSP/ZWNBSP all valid separators, mixed whitespace
+  - edge cases: ZWNBSP as BOM vs mid-file separator, NBSP visually identical to SP
+  - error cases: other Unicode control chars as whitespace
 - 2.4_Line_Separators
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: LF/CR/CRLF/LS/PS all valid line terminators, CRLF as single separator
+  - edge cases: multiple sequence of separators, char literal with real LF (ISSUE-007), line separator before semicolon inference
+  - error cases: unterminated single-line comment
 - 2.5_Tokens
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: ident token, keyword token, literal token, operator token, punctuator token
+  - edge cases: longest match (>>=, >>>), token adjacency without whitespace
+  - error cases: invalid token chars, stray @
 - 2.6_Identifiers
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: ASCII ident, _-prefix, $-prefix, Unicode letter (Greek/Cyrillic/CJK), digits in ident, ZWJ/ZWNJ
+  - edge cases: Nl letter number start, Mn/Mc combining marks, Unicode escape in ident, long ident, case sensitivity
+  - error cases: digit prefix, keyword as ident, lone surrogate, invalid Unicode escape
 - 2.7_Keywords
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: all hard keywords used syntactically, type keywords, soft keywords contextually, case-insensitive keywords
+  - edge cases: catch in both hard+soft tables, var future reserved, type alias (int/Int/Integer)
+  - error cases: hard keyword used as ident, type keyword as ident in type context
 - 2.8_Operators_and_Punctuators
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: arithmetic/relational/equality/logical/bitwise/shift/assignment/ternary/optional chain/spread/instanceof/typeof operators and punctuators
+  - edge cases: &&= / ||= / ??= (spec listed, not yet implemented), >>>, operator precedence, arrow function
+  - error cases: ??= compile error (ISSUE-009), missing operand, const reassign, literal increment
 - 2.9_Literals
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: all literal types
+  - edge cases: type inference per literal value
+  - error cases: malformed literals
 - 2.9.1_Numeric_Literals
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: decimal/hex/octal/binary, underscore separators, float suffix (f/F), bigint suffix (n), scientific notation, negative literals, zero values
+  - edge cases: int/long/float/double/bigint type inference, INT_MAX/MIN, LONG_MAX/MIN, overflow to long
+  - error cases: leading zero (octal ambiguity), hex/binary/octal invalid digits, bigint+int mix
 - 2.9.2_Integer_Literals
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: decimal/binary/octal/hex integer, underscore, type inference int/long, MAX/MIN values, zero/negative bases
+  - edge cases: underscore at start/end (compile-fail), INT overflow to long, LONG overflow
+  - error cases: value too large, hex too large, int overflow, negative too large
 - 2.9.3_Floating_Point_Literals
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: standard float, no-leading-zero, underscore, scientific notation, f/F suffix, type inference double/float, negative/zero/variants
+  - edge cases: NaN/Infinity detection, precision loss, float/double mix, special value ops
+  - error cases: float too large, double too large, invalid suffix
 - 2.9.4_Bigint_Literals
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: basic bigint, underscore, negative, large value, type inference, zero, div/mod
+  - edge cases: asIntN/asUintN, boundary, bigint-long conversion, string conversion, bitwise ops
+  - error cases: hex/octal/binary bigint (compile-fail per spec TODO), float suffix, scientific notation, underscore before n
 - 2.9.5_Boolean_Literals
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: true/false literals, type inference, logical &&/||/!, comparison, array, default, loop, function param
+  - edge cases: short-circuit, conditional, operator precedence, type guard
+  - error cases: invalid boolean (True/FALSE), boolean-int mix
 - 2.9.6_String_Literals
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: double/single quote, quote escape, control escape, hex/unicode escape, type inference, null escape, interpolation, methods, conditional, array
+  - edge cases: empty string, surrogate pairs, hex/unicode escape boundaries
+  - error cases: unescaped newline, invalid escape (\1-\9), unterminated, invalid hex/unicode escape
 - 2.9.7_Multiline_String_Literal
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: basic multiline, embedded newline, escape sequences, line continuation, leading spaces, interpolation, function, special chars
+  - edge cases: leading/trailing newline, multiline length, comparison
+  - error cases: unescaped backtick
 - 2.9.8_Undefined_Literal
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: basic, type usage, comparison, default param, union type, optional param, array init, switch case, logical op
+  - edge cases: typeof, optional chain, nullish coalescing, string concat, template string, func arg, object property
+  - error cases: undefined as identifier
 - 2.9.9_Null_Literal
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: basic, type usage, comparison, default param, union type, optional param, array init, switch case, logical op
+  - edge cases: typeof null, optional chain, nullish coalescing, string concat, template string, func arg, object property
+  - error cases: null as identifier
 - 2.10_Comments
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: single-line, empty line, after code, multiline basic, empty multiline, span, special chars, code snippet, Unicode, EOF variants, multiple comments
+  - edge cases: // inside /* */, /* */ inside //, comment as token separator
+  - error cases: nested comment (compile-fail)
 - 2.11_Semicolons
-  - normal cases
-  - edge cases
-  - error cases
+  - normal cases: explicit semicolon, inferred at line break, ASI before }, ASI after restricted productions
+  - edge cases: multiple statements per line, expression ambiguity without semicolon
+  - error cases: missing semicolon causing parse error

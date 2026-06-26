@@ -1,5 +1,5 @@
 /**
- * @id LEX_02_01_008_PASS_CHAR_BMP_EXTENDED_ESCAPE
+ * @id LEX_02_01_008_PASS_CHAR_SUPPLEMENTARY
  * @expect compile-pass
  * @section 2.1
  * @design char支持\uHHHH转义的BMP范围值，char为32位类型 * @note 正向用例：验证该特性编译通过的正确用法

@@ -1,5 +1,5 @@
 /**
- * @id LEX_02_09_04_012_PASS_BIGINT_HEX
+ * @id LEX_02_09_04_012_FAIL_HEX_BIGINT_NOT_SUPPORTED
  * @expect compile-fail
  * @section 2.9.4
  * @design 十六进制 bigint 不支持
