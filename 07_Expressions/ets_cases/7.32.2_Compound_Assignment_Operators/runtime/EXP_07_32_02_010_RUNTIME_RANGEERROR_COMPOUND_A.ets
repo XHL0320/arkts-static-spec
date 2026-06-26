@@ -1,5 +1,5 @@
 /**
- * @id EXP_07_32_02_010_RUNTIME_RANGEERROR_COMPOUND
+ * @id EXP_07_32_02_010_RUNTIME_RANGEERROR_COMPOUND_A
  * @expect runtime
  * @section 7.32.2
  * @design 验证数组复合赋值在越界时的 RangeError：负索引（通过函数返回 -1）和索引 >= length 时应抛出 RangeError
