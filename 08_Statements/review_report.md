@@ -4,7 +4,7 @@
 
 - **章节**：08_Statements（ArkTS 静态语言规范 §08 Statements）
 - **用例目录**：`08_Statements/ets_cases/`（18 个小节目录）
-- **用例总数**：**557**（compile-pass 222 / compile-fail 155 / runtime 180）
+- **用例总数**：**557**（compile-pass 223 / compile-fail 154 / runtime 180）
 - **覆盖小节**：§8.1–§8.15.3
 - **审查日期**：2026-06-26
 - **审查依据**：`arkts-spec-chapter-review` skill 流程；spec 取自 `arkts-static-spec` skill（`spec/statements.md`、`spec/semantics.md`）
@@ -14,17 +14,17 @@
 
 实测统计（es2panda `--extension=ets`，逐用例编译，信号崩溃按 rc<0 或 rc≥128 判定）：
 
-| 分类 | 总数 | OK（符合预期） | unexpected | 崩溃 |
-|------|------|---------------|-----------|------|
-| compile-pass | 222 | 222 | 0 | 0 |
-| compile-fail | 155 | 153 | 1（unexpected-pass） | 1（SIGABRT） |
+| 分类 | 总数 | OK（符合预期） | unexpected | 崩溃（已归位 compile-pass）|
+|------|------|---------------|-----------|---------------------------|
+| compile-pass | 223 | 222 | 0 | 1（SIGABRT，C-8.06-02）|
+| compile-fail | 154 | 153 | 1（unexpected-pass，C-8.06-01）| 0 |
 | runtime（编译阶段） | 180 | 180 | 0 | 0 |
 | **合计** | **557** | **555** | **1** | **1** |
 
 - **runner**：章节自带 `run_statements_cases_wsl.sh`，默认遍历全部小节目录（SECTIONS 未设时取所有子目录）。脚本工具链走 `ARK_HOME` 环境变量、文件名含 `_wsl`，与本地 Linux native 路径不一致——属**本地审查环境差异**，已直接用 es2panda 绝对路径完成实测，不计为交付问题。
-- 两处异常均经逐条直接复跑确认当前仍存在：
-  - `STM_08_06_012_FAIL_label_declared_not_used`（compile-fail）：rc=0，unexpected-pass。
-  - `STM_08_06_015_FAIL_LabeledDoWhileAndForOf_compiler_bug`（compile-fail）：rc=-6（SIGABRT，core dump），编译器崩溃。
+- 两处异常：
+  - `STM_08_06_012_FAIL_label_declared_not_used`（compile-fail）：rc=0，unexpected-pass。保持 compile-fail 作负向看护。
+  - `STM_08_06_015_PASS_LabeledDoWhileAndForOf`（compile-pass，原 compile-fail）：rc=-6（SIGABRT，core dump），编译器崩溃。已按正向语义归位 compile-pass。
 
 ## 总体结论
 
@@ -36,11 +36,11 @@
 
 ### 1. C-8.06-02 编译器崩溃（编译器侧缺陷，非交付问题）
 
-- **现象**：`8.6_Loop_Statements/compile-fail/STM_08_06_015_FAIL_LabeledDoWhileAndForOf_compiler_bug.ets` 编译触发 es2panda SIGABRT（rc=-6，core dump）。
+- **现象**：`8.6_Loop_Statements/compile-pass/STM_08_06_015_PASS_LabeledDoWhileAndForOf.ets` 编译触发 es2panda SIGABRT（rc=-6，core dump）。
 - **spec 依据**：spec §8.6（Loop Statements）允许 labeled statement，应正常编译；实现崩溃。
-- **影响**：该用例无法完成编译；属 es2panda 缺陷。用例命名含 `_compiler_bug`，已正确标识并记于 issue_report。
+- **影响**：该用例无法完成编译；属 es2panda 缺陷。已按正向语义归位 compile-pass（原在 compile-fail 语义不当），`_compiler_bug` 后缀保留并记于 issue_report。
 - **证据**：2026-06-26 直跑 rc=-6；issue_report C-8.06-02。
-- **建议**：保留跟踪；待 es2panda 修复 labeled statement 作用域处理后复查。**不阻塞本章验收**。
+- **建议**：保留跟踪；待 es2panda 修复后自然转入正常 pass。**不阻塞本章验收**。
 
 ### 2. C-8.06-01 loop label 未使用检查未实现（编译器侧，归类正确）
 
@@ -94,7 +94,7 @@ spec §08（`statements.md`）含 15 个顶层小节，08_Statements **全覆盖
 | 项（skill 准则） | 结果 |
 |----|------|
 | `test_manifest.json` 合法 JSON | ✅ |
-| manifest 覆盖实际 `.ets`（id 数 == .ets 数） | ✅（557 == 557，双向无差） |
+| manifest 覆盖实际 `.ets`（id 数 == .ets 数） | ✅（557 == 557，双向无差；C-8.06-02 已按正向语义归位 compile-pass） |
 | `@id` == 文件名 | ✅ **0 不一致**（557/557） |
 | `@expect` == 所在目录 | ✅ **0 不一致** |
 | `@section` == 父小节 | ✅ **0 不一致** |

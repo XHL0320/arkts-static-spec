@@ -183,7 +183,7 @@
 
 | ID | 问题 | 严重性 | 章节 | 当前状态 |
 |----|------|--------|------|---------|
-| C-8.06-02 | labeled do-while / for-of 触发 es2panda 崩溃（SIGABRT, core dump）— spec §8.6 允许该语法 | HIGH | 8.6 | 编译器崩溃，待修复（复现：STM_08_06_015） |
+| C-8.06-02 | labeled do-while / for-of 触发 es2panda 崩溃（SIGABRT, core dump）— spec §8.6 允许该语法，已按正向语义归位 compile-pass | HIGH | 8.6 | 编译器崩溃，待修复（复现：STM_08_06_015） |
 | C-8.06-01 | Loop label 未被使用 — spec §8.6 明确要求 compile-time error，es2panda 未检查此约束（仅检查了 "label in lambda" 的约束） | MEDIUM | 8.6 | 编译器遗漏 spec 检查项（复现：STM_08_06_012） |
 | D-8.03-01 | Block 内 type declaration — spec 措辞（"except type declarations, are executed"）暗示允许，但 es2panda 拒绝 block 内 interface/type alias 声明（ESY0040）。Java/Swift/TypeScript 均允许。 | MEDIUM | 8.3 | 待澄清 spec 措辞或编译器行为 |
 | D-8.05-01 | Extended Conditional Expressions（§15.14.1）允许非 boolean 条件（int/string/Object/array/null 等）— spec 标注未来版本废弃 | LOW | 8.5/8.7/8.8 | Spec 待废弃特性，当前用例按实际行为标注 |

@@ -66,7 +66,7 @@
 | STM_08_06_006 | FAIL_LabelInLambdaContinue | 规范示例：for 标签循环体内 lambda 中使用 `continue label` → compile-time error |
 | STM_08_06_007 | FAIL_LabelInLambdaBreak | while 标签循环体内 lambda 中使用 `break outer` → compile-time error |
 | STM_08_06_008 | FAIL_BreakToUndeclaredLabel | for 循环中 `break` 引用从未声明的标签 `nonExistentLabel` → compile-time error |
-| STM_08_06_015 | FAIL_LabeledDoWhileAndForOf_compiler_bug | **编译器缺陷复现**：标签用于 do-while（break/continue）和 for-of（break/continue），包括嵌套 for-of 标签 → 当前编译器错误拒绝，实为合法代码 |
+| STM_08_06_015 | PASS_LabeledDoWhileAndForOf | **编译器缺陷复现**：标签用于 do-while（break/continue）和 for-of（break/continue），包括嵌套 for-of 标签 → 当前编译器崩溃（SIGABRT），已按正向语义归位 compile-pass |
 | STM_08_06_016 | FAIL_LabelInLambdaDoWhile | do-while 标签循环体内 lambda 中使用 break label 和 continue label → compile-time error |
 | STM_08_06_017 | FAIL_LabelInLambdaForOf | for-of 标签循环体内 lambda 中使用 break label（int 数组）和 continue label（string 数组）→ compile-time error |
 | STM_08_06_018 | FAIL_BreakToSiblingLabel | 标签作用域违规：兄弟循环引用对方标签（break labelA 在 sibling for）；do-while 中 continue 到兄弟 while 的标签；循环引用其后声明的标签 labelC → compile-time error |
@@ -128,7 +128,7 @@
 - **STM_08_06_012**: 规范 STATEMENTS.md 要求 "A compile-time error occurs if the label identifier is not used within loopStatement"，但 es2panda 当前未强制执行此规则，编译可通过。该文件以 compile-pass 收录，标记为已知差异。
 
 ### 5.2 编译器缺陷
-- **STM_08_06_015**: 当前编译器对 do-while 和 for-of 循环使用标签存在缺陷——合法的标签 break/continue 用法被错误拒绝。该文件作为 compile-fail 收录，记录为 compiler bug 待修复。内容覆盖：labeled do-while break、labeled do-while continue、labeled for-of break、labeled for-of continue、嵌套 labeled for-of。
+- **STM_08_06_015**: 当前编译器对 do-while 和 for-of 循环使用标签存在缺陷——合法的标签 break/continue 用法导致编译器崩溃（SIGABRT）。该文件已按 spec 正向语义归位 compile-pass，记录为 compiler bug 待修复。内容覆盖：labeled do-while break、labeled do-while continue、labeled for-of break、labeled for-of continue、嵌套 labeled for-of。
 
 ## 六、文件命名规范 (File Naming)
 - 格式: `STM_08_06_XXX_CATEGORY_DESCRIPTION.ets`

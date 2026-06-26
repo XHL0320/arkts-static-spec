@@ -2679,10 +2679,10 @@
       "description": "spec §8.6 要求：loop label 声明后若未在 loopStatement 中被 break/continue 使用，应产生 compile-time error"
     },
     {
-      "id": "STM_08_06_015_FAIL_LabeledDoWhileAndForOf_compiler_bug",
+      "id": "STM_08_06_015_PASS_LabeledDoWhileAndForOf",
       "section": "8.6",
-      "category": "compile-fail",
-      "description": "标签可用于全部四种循环类型：除已覆盖的 for 和 while 外，验证 do-while 和 for-of 的标签用法"
+      "category": "compile-pass",
+      "description": "标签可用于全部四种循环类型：除已覆盖的 for 和 while 外，验证 do-while 和 for-of 的标签用法（当前编译器崩溃 C-8.06-02）"
     },
     {
       "id": "STM_08_06_016_FAIL_LabelInLambdaDoWhile",

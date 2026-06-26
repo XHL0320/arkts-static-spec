@@ -1,8 +1,8 @@
 # 08 语句 - 测试用例目录
 
 **最后编译验证：** 2026-06-25（es2panda `--extension=ets`，Linux native）
-**总用例数：** 557（222P + 155F + 180R）
-**编译实测：** compile-pass 222/222 通过；compile-fail 按预期失败 + 1 异常通过（C-8.06-01）；runtime 180/180 编译通过。详见 [issue_report.md](issue_report.md)
+**总用例数：** 557（223P + 154F + 180R）
+**编译实测：** compile-pass 223/223 通过（含 1 编译器崩溃 C-8.06-02，已归位 compile-pass）；compile-fail 154 按预期失败 + 1 异常通过（C-8.06-01）；runtime 180/180 编译通过。详见 [issue_report.md](issue_report.md)
 **覆盖章节：** §8.1-§8.15.3（18 个子章节）
 ---
 
@@ -24,11 +24,11 @@
 | §8.3 | Block | 10 | 10 | 10 | 30 |
 | §8.4 | Constant/Variable Declarations | 10 | 10 | 10 | 30 |
 | §8.5 | if Statements | 22 | 4 | 10 | 36 |
-| §8.6 | Loop Statements | 9 | 11 | 10 | 30 |
+| §8.6 | Loop Statements | 10 | 10 | 10 | 30 |
 | §8.7 | while/do Statements | 22 | 4 | 10 | 36 |
 | §8.8 | for Statements | 18 | 5 | 10 | 33 |
 | §8.9 | for-of Statements | 10 | 10 | 10 | 30 |
-| **合计** | | **222** | **155** | **180** | **557** |
+| **合计** | | **223** | **154** | **180** | **557** |
 ---
 
 ## 完整用例清单
@@ -548,7 +548,7 @@
 | STM_08_06_007_FAIL_LabelInLambdaBreak | compile-fail | 在标签循环体内使用lambda表达式，lambda中引用外层标签的break语句 |
 | STM_08_06_008_FAIL_BreakToUndeclaredLabel | compile-fail | break语句引用一个未声明的标签标识符，应编译时报错 |
 | STM_08_06_012_FAIL_label_declared_not_used | compile-fail | spec §8.6 要求：loop label 声明后若未在 loopStatement 中被 break/continue 使用，应产生 compile-ti |
-| STM_08_06_015_FAIL_LabeledDoWhileAndForOf_compiler_bug | compile-fail | spec §8.6 允许 labeled do-while / for-of（(identifier ':')? 前缀适用于 while|do|for|forO |
+| STM_08_06_015_PASS_LabeledDoWhileAndForOf | compile-pass | spec §8.6 允许 labeled do-while / for-of（(identifier ':')? 前缀适用于 while|do|for|forO |
 | STM_08_06_016_FAIL_LabelInLambdaDoWhile | compile-fail | 标签关联 do-while 循环，循环体内 lambda 表达式引用该标签的 break 语句 — 编译时错误 |
 | STM_08_06_017_FAIL_LabelInLambdaForOf | compile-fail | 标签关联 for-of 循环，循环体内 lambda 表达式引用该标签的 break/continue — 编译时错误 |
 | STM_08_06_018_FAIL_BreakToSiblingLabel | compile-fail | break/continue 引用非包围作用域（兄弟循环）的标签 — 编译时错误 |

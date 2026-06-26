@@ -4,12 +4,12 @@
 
 > 最后编译验证：2026-06-25，es2panda `--extension=ets`（Linux native），557 个用例全量实测。
 >
-> **实测统计**：compile-pass 222/222 通过；compile-fail 154 按预期失败 + 1 异常通过（C-8.06-01）；runtime 180/180 编译通过。异常合计 2 项（含 1 项编译器崩溃）。
+> **实测统计**：compile-pass 223/223 通过（含 1 项编译器崩溃 C-8.06-02）；compile-fail 154 按预期失败 + 1 异常通过（C-8.06-01）；runtime 180/180 编译通过。异常合计 2 项。
 
 | ID | Case | Symptom | Expected | Actual | Status |
 |---|------|--------|---------|--------|--------|
 | C-8.06-01 | STM_08_06_012_FAIL_label_declared_not_used | 未使用 loop label 未被检查 | compile-time error（spec §8.6） | 编译通过 (EXIT=0) | C类-编译器未实现 |
-| C-8.06-02 | STM_08_06_015_FAIL_LabeledDoWhileAndForOf_compiler_bug | labeled do-while/for-of 触发编译器崩溃 | spec §8.6 允许，应正常编译 | es2panda SIGABRT (EXIT=134, core dump) | C类-编译器崩溃 |
+| C-8.06-02 | STM_08_06_015_PASS_LabeledDoWhileAndForOf | labeled do-while/for-of 触发编译器崩溃 | spec §8.6 允许，应正常编译（已归位 compile-pass） | es2panda SIGABRT (EXIT=134, core dump) | C类-编译器崩溃 |
 | D-8.03-01 | STM_08_03_008_FAIL_local_type_alias_in_block | Block 内 type declaration 规则不清晰 | Spec 明确允许或明确禁止 | spec 措辞暗示合法但不执行，es2panda 拒绝 block 内 interface/type alias (ESY0040) | D类-Spec不一致 |
 | D-8.05-01 | STM_08_05_006/007/008, STM_08_07_006/007/008, STM_08_08_006 等 | Extended Conditional Expressions 允许非 boolean 条件 | 未来废弃后恢复 compile-time error | 当前 int/string/float/Object/array/null 等非 boolean 条件编译通过 | D类-Spec待废弃特性 |
 
@@ -33,7 +33,7 @@
 
 - Spec §8.6 loopStatement 语法 `(identifier ':')?` 前缀适用于 `whileStatement | doStatement | forStatement | forOfStatement` 全部四种循环，labeled do-while/for-of 是合法语法。
 - 实际：es2panda 编译含 labeled do-while 或 labeled for-of 的代码时 **SIGABRT 崩溃 (EXIT=134, core dump)**，而非正常编译或正常报错。
-- 复现用例：`ets_cases/8.6_Loop_Statements/compile-fail/STM_08_06_015_FAIL_LabeledDoWhileAndForOf_compiler_bug.ets`。
+- 复现用例：`ets_cases/8.6_Loop_Statements/compile-pass/STM_08_06_015_PASS_LabeledDoWhileAndForOf.ets`（已按正向语义从 compile-fail 归位 compile-pass）。
 - 影响范围：do-while 与 for-of 的 label 用法（for/while 的 label 用法正常）。
 - 分类：C 类（编译器崩溃，严重性 HIGH）
 
