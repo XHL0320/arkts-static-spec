@@ -13,9 +13,9 @@
 | 指标 | 数值 |
 |------|------:|
 | .ets 总数 | 59 |
-| 执行通过 | **57** |
-| 执行失败 | **2** |
-| 通过率 | 96.6% |
+| 执行通过 | **58** |
+| 执行失败 | **1** |
+| 通过率 | 98.3% |
 | manifest JSON | ✅ 合法（section_stats 格式）|
 | 元数据不一致 | **0** |
 | spec_original.md | 420 行 |
@@ -24,13 +24,14 @@
 | test_design_mindmap.md | 97 行 |
 
 ## 总体结论
-**可验收（含 2 个已知异常）。** 59 用例全覆盖 8 个小节，57 通过、2 失败（1 运行时 + 1 编译期已知差异）。元数据完全一致（METADATA_BAD_COUNT=0）。spec、examples、catalog、mindmap 均已填充。issue_report 已记录 1 个 C 类问题和 1 个 D 类问题。
+**可验收（含 1 个已知编译器差异）。** 59 用例全覆盖 8 个小节，58 通过、1 失败（C-10.03-01 编译期已知差异）。元数据完全一致（METADATA_BAD_COUNT=0）。spec、examples、catalog、mindmap 均已填充。issue_report 已记录 1 个 C 类问题和 1 个 D 类问题。
 
 ## 问题清单
-### 1. ITF_10_01_200_RUNTIME_INTERFACE_POLYMORPHISM — 运行时找不到类入口
-- **现象**：`ark` 执行时报 `Cannot find class 'ITF_10_01_200_RUNTIME_INTERFACE_POLYMORPHISM/ETSGLOBAL'`
-- **影响**：运行时用例无法执行
-- **建议**：检查用例是否包含有效 `ETSGLOBAL::main` 入口函数，或确认编译器版本兼容性
+### 1. ~~ITF_10_01_200_RUNTIME_INTERFACE_POLYMORPHISM 运行时失败~~ ✅ runner 文件竞争
+- **首次全量跑测**：`Cannot find class 'ITF_10_01_200_RUNTIME_INTERFACE_POLYMORPHISM/ETSGLOBAL'`
+- **二次验证**：单独跑 10.1 子节全部通过（7/7），全量从头跑测也通过
+- **根因**：runner 共用 `/tmp/test.abc`，前序 compile-fail 用例遗留无效产物
+- **状态**：非用例问题，已关闭
 
 ### 2. C-10.03-01（HIGH）— Object 方法名冲突检测未实现
 - **现象**：`ITF_10_03_101_FAIL_object_method_clash_return_gap` 期望 compile error，但编译通过
@@ -56,5 +57,5 @@
 | **Total** | **32** | **17** | **10** | **59** | 8 节全覆盖 |
 
 ## 整改建议
-1. **跟踪运行时异常**：ITF_10_01_200 入口问题待排查修复
-2. **持续跟踪**：C-10.03-01（Object 方法冲突检测）待编译器实现后回归验证
+1. **持续跟踪**：C-10.03-01（Object 方法冲突检测）待编译器实现后回归验证
+2. **runner 改进**：建议使用 `mktemp` 避免 `/tmp/test.abc` 文件竞争
