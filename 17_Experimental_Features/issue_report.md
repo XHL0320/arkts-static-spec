@@ -2,9 +2,9 @@
 
 只记录**当前未解决的执行异常**。一旦异常通过修改用例或编译器更新而消除，立即从此文件移除。
 
-> 最后编译验证：2026-06-26，es2panda `--extension=ets`（Linux native），533 个用例全量实测（审查报告复测）。
+> 最后编译验证：2026-06-26，es2panda `--extension=ets`（Linux native），**570** 个用例全量实测（审查报告复测）。
 >
-> **实测统计**（2026-06-26 复测，es2panda `--extension=ets`，Linux native）：compile-pass 237/238（1 异常的 C-17.4-02）；compile-fail 151/161 按预期失败（10 unexpected-pass，均为编译器未实现 spec 检查）；runtime 129/134 编译通过（5 编译期拒绝 D-17.2-01/D-17.2-02）+ 1 新增 native 异常未抛出（NEW-17.10.1-01）。**异常合计 17 项**。
+> **实测统计**（2026-06-26 复测）：compile-pass 253/254（1 异常 C-17.4-02）；compile-fail 162/173 按预期失败（**11** unexpected-pass，含 🆕 NEW-17.13-01）；runtime 137/143 编译通过（5 编译期拒绝 D-17.2-01/D-17.2-02）+ 1 native 异常未抛出（NEW-17.10.1-01）。**异常合计 18 项**。
 >
 > 注：§17 为实验特性章节，部分"编译器不支持"属实验特性未实现（语言差异点），非编译器 bug。下表区分 **C 类**（编译器未实现 spec 检查 / 崩溃）与 **D 类**（spec 与实现不一致）。无法立即定性的标 **待确认**（不强写结论）。
 
@@ -15,6 +15,7 @@
 | D-17.2-02 | EXP2_17_02_024_RUNTIME_FIXED_ARRAY_LENGTH_IMMUTABLE | length 赋值编译期即拒绝 | runtime immutable | compile-time error ESE0024 (EXIT=1) | D类-Spec不一致 |
 | D-17.1.1-01 | EXP2_17_01_01_009_FAIL_INVALID_ESCAPE | `c'\q'` 非法转义序列编译通过 | compile-fail | 编译通过 (EXIT=0) | D类-Spec不一致 |
 | D-17.13.2-01 | EXP2_17_13_2_007_FAIL_PRIMITIVE_INT_RECEIVER / EXP2_17_13_2_008 | int/string 作为 receiver type 编译通过 | compile-fail | 编译通过 (EXIT=0) | D类-Spec不一致 |
+| NEW-17.13-01 | EXP2_17_13_011_COMPILE_FAIL_RECEIVER_PRIMITIVE | 🆕 primitive receiver (int) 未检查——17.13 父节新增用例 | compile-fail | 编译通过 (EXIT=0) | D类-Spec不一致 |
 | D-17.13.3-01 | EXP2_17_13_3_009_FAIL_WRONG_PARAM_COUNT | receiver 函数参数数量错误未检查 | compile-fail | 编译通过 (EXIT=0) | 待确认 |
 | D-17.13.4-02 | EXP2_17_13_4_007_FAIL_LAMBDA_PRIMITIVE_RECEIVER | primitive type receiver lambda 未检查 | compile-fail | 编译通过 (EXIT=0) | 待确认 |
 | D-17.2.1-01 | EXP2_17_02_01_012_FAIL_WRONG_ARG_COUNT | ValueArray 创建参数数量错误未检查 | compile-fail | 编译通过 (EXIT=0) | 待确认 |

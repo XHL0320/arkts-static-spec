@@ -3,7 +3,7 @@
   "topic": "Experimental Features",
   "directory": "17_Experimental_Features",
   "prefix": "EXP2_",
-  "total_cases": 556,
+  "total_cases": 570,
   "sections": [
     "17.1_Type_char",
     "17.1.1_char_Literals",
@@ -146,10 +146,10 @@
       "total": 13
     },
     "17.9_Explicit_Overload_Declarations": {
-      "compile-pass": 5,
-      "compile-fail": 2,
-      "runtime": 1,
-      "total": 8
+      "compile-pass": 7,
+      "compile-fail": 4,
+      "runtime": 2,
+      "total": 13
     },
     "17.9.1_Explicit_Function_Overload": {
       "compile-pass": 7,
@@ -170,10 +170,10 @@
       "total": 10
     },
     "17.9.4_Explicit_Overload_Name_Same_As_Method_Name": {
-      "compile-pass": 5,
-      "compile-fail": 2,
-      "runtime": 1,
-      "total": 8
+      "compile-pass": 6,
+      "compile-fail": 4,
+      "runtime": 2,
+      "total": 12
     },
     "17.9.5_Explicit_Constructor_Overload": {
       "compile-pass": 7,
@@ -236,10 +236,10 @@
       "total": 14
     },
     "17.13_Adding_Functionality_to_Existing_Types": {
-      "compile-pass": 4,
-      "compile-fail": 2,
-      "runtime": 2,
-      "total": 8
+      "compile-pass": 6,
+      "compile-fail": 4,
+      "runtime": 3,
+      "total": 13
     },
     "17.13.1_Functions_with_Receiver": {
       "compile-pass": 7,

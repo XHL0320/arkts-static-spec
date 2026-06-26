@@ -1,7 +1,7 @@
 # 17 实验特性 - 测试设计思维导图（章节级）
 
 **前缀：** `EXP2_`
-**覆盖汇总：** 556 cases（249P + 167F + 140R），最后编译验证 2026-06-26（es2panda `--extension=ets`，Linux native），异常 17 项见 [issue_report.md](issue_report.md)
+**覆盖汇总：** 570 cases（254P + 173F + 143R），最后编译验证 2026-06-26（es2panda `--extension=ets`，Linux native），异常 17 项见 [issue_report.md](issue_report.md)
 
 ## 测试分类
 - compile-pass: 正向编译用例
