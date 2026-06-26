@@ -58,10 +58,24 @@ Source: ArkTS static language specification, Chapter 17. Experimental Features (
 - First param `this: Type`, two call syntaxes
 
 ### 17.14 Trailing Lambdas
-- Last function-type param as trailing block
+- *Trailing lambda*: special notation when the last parameter of a function/method is of function type, and the argument is passed as a lambda using Block notation
+- Syntax: `trailingLambda: 'async'? block`
+- The modifier `async` marks async lambdas
+- A compile-time error occurs if the last parameter is not of function type or if there are multiple trailing lambda arguments
 
 ### 17.15 Accessor Declarations
-- Top-level getter/setter
+- Accessor: a top-level or namespace-level getter/setter declaration with predefined signatures
+- Syntax: `native? ('get' identifier '(' ')' returnType? block? | 'set' identifier '(' requiredParameter ')' block?)`
+- A non-native accessor must have a body; a native accessor must NOT have a body (compile-time error otherwise)
+- Accessor name conflict with another entity in scope → compile-time error
+- Accessors valid at all places where top-level declarations are allowed
 
 ### 17.16 Pattern Matching
-- Destructuring assignment: `[a, , b] = arrayOrTuple`
+- *Pattern Matching* checks a value against a pattern and executes a matching action; a successful match can deconstruct a value into constituent parts
+- ArkTS currently supports only *destructuring assignment*; other features to be added in future spec revisions
+
+### 17.16.1 Destructuring Assignment
+- Extracts values from arrays or tuples into distinct variables
+- Syntax: `destructuringAssignment: '[' lhsExpression? (',' lhsExpression?)* ']' '=' rhsExpression`
+- `rhsExpression` must be of array type or tuple type; otherwise compile-time error
+- Equivalent to a compact form of sequential assignments by element index

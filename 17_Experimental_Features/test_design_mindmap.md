@@ -1,7 +1,7 @@
 # 17 实验特性 - 测试设计思维导图（章节级）
 
 **前缀：** `EXP2_`
-**覆盖汇总：** 533 cases（238P + 161F + 134R），最后编译验证 2026-06-25（es2panda `--extension=ets`，Linux native），异常 16 项见 [issue_report.md](issue_report.md)
+**覆盖汇总：** 533 cases（238P + 161F + 134R），最后编译验证 2026-06-26（es2panda `--extension=ets`，Linux native），异常 17 项见 [issue_report.md](issue_report.md)
 
 ## 测试分类
 - compile-pass: 正向编译用例
@@ -60,9 +60,19 @@
   - normal: factory参数, 额外参数
   - error: 非factory第一参数
 
+- 17.8_Statements
+  - normal: 所有语句类型与实验特性的交互
+  - edge: 控制流与实验类型组合
+  - error: 实验特性在受限语句上下文
+
 - 17.8.1_For_of_Explicit_Type_Annotation
   - normal: for(let x:Type of iterable)
   - error: 类型不兼容
+
+- 17.9_Explicit_Overload_Declarations
+  - normal: 声明式 overload 检查可见性/递进逻辑
+  - edge: 同名符号与 overload 交互
+  - error: 重载逻辑边界
 
 - 17.9.1_Explicit_Function_Overload
   - normal: overload函数集, 有序解析
@@ -109,6 +119,11 @@
 - 17.12_Default_Interface_Method_Declarations
   - normal: 接口默认方法, private默认方法
 
+- 17.13_Adding_Functionality_to_Existing_Types
+  - normal: Receiver 机制为现有类型增加扩展能力
+  - edge: Receiver 与 overload/继承的组合
+  - error: Receiver 类型约束边界
+
 - 17.13.1_Functions_with_Receiver
   - normal: this:Type参数, 两种调用语法
   - edge: 实例方法优先
@@ -134,6 +149,11 @@
 - 17.15_Accessor_Declarations
   - normal: getter/setter声明使用
   - error: getter作左值, setter取值
+
+- 17.16_Pattern_Matching
+  - normal: 模式匹配的基础形式（解构赋值）
+  - edge: 数组/元组元素的模式绑定
+  - error: rhsExpression 类型约束（须为数组或元组）
 
 - 17.16.1_Destructuring_Assignment
   - normal: [a,,b]=arr解构
