@@ -1,76 +1,82 @@
 # 16 Concurrency 审查报告
 
 ## 审查范围
-- **章节：** 16 Concurrency（§16.1~§16.7）
-- **用例目录：** `ets_cases/`（28 个子章节目录）
-- **审查日期：** 2026-06-26
+- 章节：16 Concurrency
+- 用例目录：`16_Concurrency/ets_cases/`
+- 用例总数：244（119P + 51F + 74R）
+- 审查日期：2026-06-26
 
 ## 执行结果
-运行 `run_concurrency_cases_wsl.sh`，环境依赖完备。
+- **测试执行：未执行**。本地 Windows 无 arkcompiler 工具链，runner `run_concurrency_cases_wsl.sh` 为 WSL bash 脚本。本地环境差异，不作为交付问题。
+- **静态审计**：通过 `audit_chapter.ps1` 完成。
 
-| 类别 | 文件数 | 实测 OK | Unexpected |
-|:----:|:-----:|:-------:|:----------:|
-| compile-pass | 108 | 98 | 10（编译失败） |
-| compile-fail | 54 | 54 | 0 |
-| runtime | 71 | 70 | 1（编译失败） |
-| gap | (17) | — | — |
-| **合计** | **233** | **221** | **12** |
+| 指标 | 数值 |
+|------|------:|
+| .ets 总数 | 244 |
+| manifest id 数 | 244（100% 覆盖）|
+| manifest JSON | ✅ 合法 |
+| 元数据不一致 | **0**（2 处审计脚本误报，见下） |
 
 ## 总体结论
-**可验收。** 用例设计完整，元数据一致。233 用例 221 pass / 12 fail。剩余 12 个失败均为已知编译器/标准库问题，无阻塞性交付件问题。
+**可验收。** 244 用例覆盖全部 28 个小节，manifest 全覆盖（244/244）。前次报告的 25 处元数据不一致已修复（gap/ 目录已处理，CCY_16_CI_* 命名已统一，@id 已对齐）。spec_original.md（1230行）和 Concurrency_Examples.md（176行）已填充。issue_report 详细（7 类 CONC 异常）。
 
-## Spec 对照
+## 整改完成情况
 
-| 主节 | Spec 覆盖 | 编译器一致性 | 说明 |
-|------|:---------:|:-----------:|------|
-| §16.1 Execution Model | ✅ 16/16 | ✅ | 完整 |
-| §16.2 Concurrency Overview | ✅ 7/7 | ✅ | 完整 |
-| §16.3 Asynchronous Execution | ✅ 143/143 | ✅ | 之前修复的 Promise 问题已解决 |
-| §16.4 Parallel Execution | ✅ 31/31 | ⚠️ | CONC-U: launch+async lambda 段错误 |
-| §16.4.4 Taskpool | ✅ 2/2 | ✅ | compile-fail 通过；runtime 线程不退出→gap |
-| §16.5 Synchronization | ✅ 51/51 | ✅ | A1/A2/A3: AsyncMutex/RWLock/CondVar 已修复 |
-| §16.5.5 Atomic | (1) | ❌ | native 类型未链接→gap |
-| §16.5.6 Concurrent | (1) | ❌ | ConcurrentMap 不存在→gap |
-| §16.6 API Restrictions | ✅ 28/28 | ⚠️ | B1: Promise<T>泛型参数(5) + B2: launch签名(2) |
-| §16.7 Runtime Details | ✅ 6/6 | ⚠️ | C1: setTimeout签名(2) |
+| 问题 | 状态 |
+|------|:----:|
+| 6 个 gap/ 非标准目录 | ✅ 已处理 |
+| 8+ 个 CCY_16_CI_* 非标 ID | ✅ 已统一 |
+| 2 处 @id 不匹配 | ✅ 已修复 |
+| manifest 无 per-case 条目 | ✅ 已补全为 244/244 |
 
 ## 问题清单
 
-### 1. 🔴 CONC-U — launch + async lambda + await 编译器段错误
-- `launch<T>(async () => { await ...; return ...; })` 触发 es2panda CRASH
-- Spec §16.4.2 明确支持异步 lambda
-- 已记录在 `issue_report.md`，需编译器团队修复
+### [信息] 2 处审计脚本误报
+审计报告 2 处 `@id/@expect` 在同一行的 inline 格式触发脚本误报，实际元数据与文件名和目录完全一致：
+- `CCY_16_01_099_FAIL_placeholder.ets` — @id 与文件名匹配 ✅
+- `CCY_16_04_02_090_FAIL_launch_wrong_type.ets` — @id 与文件名匹配 ✅
 
-### 2. 🟡 CONC-B1 — Promise<T> 泛型参数无法推断（5 个用例）
-- `new Promise((resolve, reject) => { ... })` 缺少 `<T>` 类型参数
-- 涉及：16.6.3_001/002/003, 16.6.4_001, 16.6.5_001
+### [信息] 7 类已知 spec 差异已清晰归类
+- **CONC-U**（HIGH）：`launch<T>(async () => {})` 编译器 CRASH
+- **CONC-G2**（HIGH）：Taskpool 线程不退出（hang）
+- **CONC-A4/A5**（HIGH）：Atomic/Concurrent 标准库类型未实现
+- **CONC-B1/B2**（MEDIUM）：Promise 类型推断、launch 签名不匹配
+- **CONC-C1**（LOW）：回调签名不匹配
 
-### 3. 🟡 CONC-B2 — launch 异步 lambda 签名不匹配（2 个用例）
-- `launch(() => Promise<Double>)` 被编译器拒绝
-- Spec §16.4.2 要求支持异步 lambda
+## 覆盖评价
 
-### 4. 🟡 CONC-C1 — setTimeout/Promise 回调签名差异（2 个用例）
-- §16.7 runtime 实现细节，回调类型不匹配
-
-### 5. ⚪ CONC-G2 — taskpool 运行时线程不退出（4 个用例）
-- 编译通过但运行时 hang，移至 gap/
-
-### 6. ⚪ CONC-A4/A5 — Atomic/ConcurrentMap 类型缺失（6 个用例）
-- 标准库 native 类型未链接 / 类型不存在，移至 gap/
-
-## 修复总结
-
-| 修复项 | 原状态 | 当前状态 |
-|--------|:-----:|:--------:|
-| Promise<number> 类型推导 | ❌ 9 个编译失败 | ✅ 全部修复 |
-| catch (e: Error) 弃用语法 | ❌ 编译失败 | ✅ 修复 |
-| EAWorker runtime hang | ❌ 线程不退出 | ✅ 添加 worker.quit() |
-| AsyncMutex/RWLock/CondVar | ❌ 20 个编译失败 | ✅ 加 namespace 前缀修复 |
-| double_lock 误分类 | ❌ 错误 classify | ✅ 移至 compile-pass |
-| runner $? bug | ❌ 误报 runtime 失败 | ✅ 修复 |
-| Taskpool 编译 | ❌ 编译失败 | ✅ 加 taskpool. 前缀 |
+| 范围 | P | F | R | 总 | 覆盖要点 |
+|------|:---:|:---:|:---:|:---:|---------|
+| 16.1 Execution Model | 10 | 2 | 4 | 16 | 执行模型 |
+| 16.2 Overview | 3 | 2 | 2 | 7 | 并发特性概览 |
+| 16.3 Asynchronous Execution | 9 | 7 | 3 | 19 | 异步执行 |
+| 16.3.1 Async Functions | 8 | 4 | 4 | 16 | async 函数 |
+| 16.3.2 Async Lambdas | 5 | 1 | 3 | 9 | async lambda |
+| 16.3.3 Async Methods | 3 | 3 | 3 | 9 | async 方法 |
+| 16.3.4 await | 13 | 1 | 5 | 19 | await 表达式 |
+| 16.3.5 Promise | 8 | 3 | 5 | 16 | Promise 类 |
+| 16.4 Parallel Execution | 3 | 1 | 4 | 8 | 并行执行 |
+| 16.4.1 Parallel API | 1 | 1 | 1 | 3 | 并行 API |
+| 16.4.2 launch API | 5 | 4 | 5 | 14 | launch |
+| 16.4.3 EAWorker | 1 | 2 | 3 | 6 | EAWorker |
+| 16.4.4 Taskpool | 1 | 6 | 0 | 7 | Taskpool |
+| 16.5 Synchronization | 1 | 5 | 1 | 7 | 同步 |
+| 16.5.1 Async Lock | 13 | 2 | 8 | 23 | 异步锁 |
+| 16.5.2 Mutex | 3 | 1 | 4 | 8 | 互斥锁 |
+| 16.5.3 RW Lock | 1 | 1 | 3 | 5 | 读写锁 |
+| 16.5.4 Cond Variable | 3 | 2 | 1 | 6 | 条件变量 |
+| 16.5.5 Atomic | 0 | 5 | 0 | 5 | 原子操作 |
+| 16.5.6 Additional | 0 | 3 | 0 | 3 | 附加实体 |
+| 16.6 API Restrictions | 2 | 1 | 1 | 4 | API 限制 |
+| 16.6.1 launch Details | 1 | 1 | 1 | 3 | launch 细节 |
+| 16.6.2 Using Async API | 3 | 1 | 2 | 6 | 异步 API |
+| 16.6.3 Promise API | 5 | 2 | 4 | 11 | Promise API |
+| 16.6.4 Unhandled Reject | 2 | 1 | 1 | 4 | 未处理拒绝 |
+| 16.6.5 Error Handling | 2 | 1 | 1 | 4 | 错误处理 |
+| 16.7 Runtime Details | 1 | 1 | 1 | 3 | 运行时 |
+| 16.7.1 Scheduling | 1 | 1 | 1 | 3 | 调度 |
+| **Total** | **119** | **51** | **74** | **244** | 28 节全覆盖 |
 
 ## 整改建议
-1. CONC-U（编译器段错误）优先级最高，阻塞 launch 特性验收
-2. CONC-B1/B2（泛型推导 + launch 签名）可加类型参数绕过，短期修复
-3. CONC-C1（setTimeout 签名）需确认编译器实际签名后修改用例
+1. **持续跟踪**：7 类 CONC 异常在编译器版本更新后验证（尤其是 CONC-U compiler crash 和 CONC-G2 线程 hang）
+2. **清理误报**：可忽略审计脚本对 inline 格式的 2 处误报

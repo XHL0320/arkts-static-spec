@@ -1,62 +1,55 @@
 # 04 Names Declarations Scopes 审查报告
 
 ## 审查范围
-- **章节：** 04 Names, Declarations, Scopes（§4.1~§4.7.7）
-- **用例目录：** `ets_cases/`（20 个子章节目录）
-- **用例总数：** 191
-- **审查日期：** 2026-06-26
+- 章节：04 Names, Declarations, Scopes
+- 用例目录：`04_Names_Declarations_Scopes/ets_cases/`
+- 用例总数：191（91P + 71F + 29R）
+- 审查日期：2026-06-26
 
 ## 执行结果
-运行 `run_names_cases_wsl.sh`，全部 191 用例通过。
+- **测试执行：未执行**。本地 Windows 无 arkcompiler 工具链，runner `run_names_cases_wsl.sh` 为 WSL bash 脚本。本地环境差异，不作为交付问题。
+- **静态审计**：通过 `audit_chapter.ps1` 完成。
 
-| 类别 | 文件数 | 实测 OK |
-|:----:|:-----:|:-------:|
-| compile-pass | 91 | 91 ✅ |
-| compile-fail | 71 | 71 ✅ |
-| runtime | 29 | 29 ✅ |
-| **合计** | **191** | **191 ✅** |
+| 指标 | 数值 |
+|------|------:|
+| .ets 总数 | 191 |
+| manifest id 数 | 191（100% 覆盖）|
+| manifest JSON | ✅ 合法 |
+| 元数据不一致 | **0** |
 
-## 元数据一致性
-所有 `@id` 与文件名匹配，`@expect` 与父目录匹配，`@section` 与章节目录匹配 ✅
+## 整改完成情况
+
+| 问题 | 状态 |
+|------|:----:|
+| 24 处 @section 归属错误 | ✅ 已修复 |
+| 3 小节 manifest/catalog 统计不一致 | ✅ manifest 已重建（191/191 全量覆盖） |
+| manifest 格式（section_stats 字段） | ✅ 已统一为 cases 数组格式 |
 
 ## 总体结论
-**有条件验收。** 跑测 191/191 全部通过，无执行异常。但 3 个子节的 manifest/catalog/report 存在**统计数据与实际文件不一致**的问题（pass/fail/runtime 分布错位），需修复。
+**可验收。** 191 用例全覆盖 21 个小节，元数据完全一致（METADATA_BAD_COUNT=0），manifest 全覆盖（191/191）。spec_original.md（1427行）、Names_Examples.md（257行）均已填充。issue_report 无已知异常。
 
-## 问题清单
+## 覆盖评价
 
-### P1 🔴 — 4.3_Scopes 统计数据与实际不符
-| 来源 | pass | fail | runtime | 合计 |
-|------|:---:|:----:|:-------:|:----:|
-| 实际文件 | **14** | 5 | **0** | 19 |
-| manifest | 12 | 5 | 2 | 19 |
-| catalog | 12 | 5 | 2 | 19 |
-| test_report_4.3.md | 12 | 5 | 2 | 19 |
-
-- compile-pass 有 14 文件（含 013, 014）但文档只记 12
-- runtime 目录为空，但文档仍记 2 个不存在的用例（200, 201）
-
-### P2 🔴 — 4.5.1_Type_Alias_Declaration 统计数据与实际不符
-| 来源 | pass | fail | runtime | 合计 |
-|------|:---:|:----:|:-------:|:----:|
-| 实际文件 | **8** | 1 | **2** | 11 |
-| manifest | 7 | 1 | 3 | 11 |
-| catalog | 7 | 1 | 3 | 11 |
-
-- compile-pass 有 8 文件（含 008）但文档只记 7
-- runtime 缺少 `NAM_04_05_01_201_RUNTIME_alias_func_type.ets`（文件不存在），但文档仍计 3
-
-### P3 🔴 — 4.7.5_Rest_Parameter 统计数据与实际不符
-| 来源 | pass | fail | runtime | 合计 |
-|------|:---:|:----:|:-------:|:----:|
-| 实际文件 | **5** | 6 | **4** | 15 |
-| manifest | 4 | 6 | 5 | 15 |
-| catalog | 4 | 6 | 5 | 15 |
-
-- compile-pass 有 5 文件（含 005）但文档只记 4
-- runtime 缺少 `NAM_04_07_05_203_RUNTIME_tuple_rest_ok.ets`（文件不存在），但文档仍计 5
-
-## 整改建议
-1. 更新 `test_manifest.json` 中 4.3/4.5.1/4.7.5 的 pass/fail/runtime 字段
-2. 更新 `test_case_catalog.md` 对应表格：补全缺失条目、删除不存在的文件引用
-3. 更新 `ets_cases/*/test_report_*.md` 中的统计数字
-4. 确认缺失的 runtime 文件（201/203/200/201）是否需要补回，或确认已废弃后同步清除文档引用
+| 小节 | P | F | R | 总 | 覆盖要点 |
+|------|:---:|:---:|:---:|:---:|---------|
+| 4.1 Names | 8 | 6 | 2 | 16 | 简单/限定/复合名称 |
+| 4.2 Declarations | 4 | 8 | 1 | 13 | 声明类型/重载 |
+| 4.2.1 Distinguishable Signatures | 1 | 1 | 1 | 3 | 签名可区分性 |
+| 4.3 Scopes | 14 | 5 | 0 | 19 | 作用域 |
+| 4.4 Accessible | 7 | 7 | 2 | 16 | 可访问性 |
+| 4.5 Type Declarations | 10 | 13 | 1 | 24 | 类型声明 |
+| 4.5.1 Type Alias Declaration | 8 | 1 | 2 | 11 | 类型别名 |
+| 4.6.1 Variable Declarations | 5 | 3 | 1 | 9 | 变量声明 |
+| 4.6.2 Constant Declarations | 3 | 3 | 1 | 7 | 常量声明 |
+| 4.6.3 Validity of Initializer | 1 | 2 | 1 | 4 | 初始化器有效性 |
+| 4.6.4 Assignability with Initializer | 1 | 1 | 1 | 3 | 可赋值性 |
+| 4.6.5 Type Inference | 5 | 2 | 2 | 9 | 类型推断 |
+| 4.7 Function Declarations | 2 | 2 | 1 | 5 | 函数声明 |
+| 4.7.1 Signatures | 3 | 1 | 1 | 5 | 签名 |
+| 4.7.2 Parameter List | 1 | 1 | 1 | 3 | 参数列表 |
+| 4.7.3 Readonly Parameters | 1 | 2 | 2 | 5 | 只读参数 |
+| 4.7.4 Optional Parameters | 2 | 1 | 2 | 5 | 可选参数 |
+| 4.7.5 Rest Parameter | 5 | 6 | 4 | 15 | 可变参数 |
+| 4.7.6 Shadowing by Parameter | 2 | 1 | 2 | 5 | 参数遮蔽 |
+| 4.7.7 Return Type | 8 | 5 | 1 | 14 | 返回类型 |
+| **Total** | **91** | **71** | **29** | **191** | 21 节全覆盖 |

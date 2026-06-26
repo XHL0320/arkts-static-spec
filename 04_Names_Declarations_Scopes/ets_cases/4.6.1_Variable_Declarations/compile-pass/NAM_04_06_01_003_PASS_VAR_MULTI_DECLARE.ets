@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_06_01_003_PASS_VAR_MULTI_DECLARE
  * @expect compile-pass
  * @section 4.6.1

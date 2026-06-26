@@ -1,7 +1,7 @@
-/**
+﻿/**
  * @id NAM_04_02_200_RUNTIME_OVERLOAD_DISPATCH
  * @expect runtime
- * @section 4.2.1
+ * @section 4.2
  * @design 重载函数运行时正确分派
  * @note 运行时用例：验证重载函数根据参数类型分派
  */

@@ -1,5 +1,5 @@
-/**
- * @id CCY_16_06_03_004
+﻿/**
+ * @id CCY_16_CI_005_PASS_promise_chain_cross_module
  * @expect compile-pass
  * @section 16.6.3
  * @design Promise.then() 链式调用

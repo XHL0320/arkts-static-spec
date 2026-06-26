@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_07_01_200_RUNTIME_FUNC_SIGNATURE
  * @expect runtime
  * @section 4.7.1

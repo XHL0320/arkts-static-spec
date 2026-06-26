@@ -1,5 +1,5 @@
-/**
- * @id CCY_16_05_01_006
+﻿/**
+ * @id CCY_16_CI_003_PASS_launch_with_lock
  * @expect compile-pass
  * @section 16.5.1
  * @design launch 执行的 job 内使用 AsyncLock

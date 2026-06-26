@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_02_001_PASS_DIFF_NAMES
  * @expect compile-pass
  * @section 4.2

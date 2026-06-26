@@ -1,5 +1,5 @@
-/**
- * @id CCY_16_06_02_003
+﻿/**
+ * @id CCY_16_CI_004_PASS_async_main_multiple_jobs
  * @expect compile-pass
  * @section 16.6.2
  * @design async main 启动多个并发 job

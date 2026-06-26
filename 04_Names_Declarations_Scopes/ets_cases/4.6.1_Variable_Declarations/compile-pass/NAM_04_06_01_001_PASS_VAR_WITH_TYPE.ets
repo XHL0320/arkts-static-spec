@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_06_01_001_PASS_VAR_WITH_TYPE
  * @expect compile-pass
  * @section 4.6.1

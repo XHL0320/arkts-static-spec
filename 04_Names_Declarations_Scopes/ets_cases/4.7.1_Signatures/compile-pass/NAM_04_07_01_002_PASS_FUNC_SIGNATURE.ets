@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_07_01_002_PASS_FUNC_SIGNATURE
  * @expect compile-pass
  * @section 4.7.1

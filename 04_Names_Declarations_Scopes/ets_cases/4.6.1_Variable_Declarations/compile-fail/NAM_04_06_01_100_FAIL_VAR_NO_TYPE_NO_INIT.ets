@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_06_01_100_FAIL_VAR_NO_TYPE_NO_INIT
  * @expect compile-fail
  * @section 4.6.1

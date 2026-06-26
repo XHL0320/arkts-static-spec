@@ -1,7 +1,7 @@
-/**
+﻿/**
  * @id NAM_04_05_104_FAIL_PARAM_CIRCULAR_DEPEND
  * @expect compile-fail
- * @section 4.5.1
+ * @section 4.5
  * @design 类型参数循环依赖
  * @note 反向用例：验证类型参数相互循环依赖
  */

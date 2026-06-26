@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_02_100_FAIL_SAME_NAME_CONST_FUNC
  * @expect compile-fail
  * @section 4.2

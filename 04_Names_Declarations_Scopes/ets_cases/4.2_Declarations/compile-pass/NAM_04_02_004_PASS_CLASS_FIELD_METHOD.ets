@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_02_004_PASS_CLASS_FIELD_METHOD
  * @expect compile-pass
  * @section 4.2

@@ -1,5 +1,5 @@
-/**
- * @id CCY_16_05_01_005
+﻿/**
+ * @id CCY_16_CI_002_PASS_async_sync_lock
  * @expect compile-pass
  * @section 16.5.1
  * @design async 函数内使用 AsyncLock 同步

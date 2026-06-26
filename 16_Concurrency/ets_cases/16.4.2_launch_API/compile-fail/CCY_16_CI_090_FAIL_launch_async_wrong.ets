@@ -1,5 +1,5 @@
-/**
- * @id CCY_16_04_02_092
+﻿/**
+ * @id CCY_16_CI_090_FAIL_launch_async_wrong
  * @expect compile-fail
  * @section 16.4.2
  * @design 交叉集成错误：launch 类型不匹配

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_07_01_001_PASS_GENERIC_FUNC
  * @expect compile-pass
  * @section 4.7.1

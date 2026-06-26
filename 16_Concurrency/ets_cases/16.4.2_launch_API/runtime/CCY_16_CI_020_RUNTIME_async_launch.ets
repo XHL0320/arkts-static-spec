@@ -1,5 +1,5 @@
-/**
- * @id CCY_16_04_02_024
+﻿/**
+ * @id CCY_16_CI_020_RUNTIME_async_launch
  * @expect runtime
  * @section 16.4.2
  * @design async + launch 交叉集成运行时

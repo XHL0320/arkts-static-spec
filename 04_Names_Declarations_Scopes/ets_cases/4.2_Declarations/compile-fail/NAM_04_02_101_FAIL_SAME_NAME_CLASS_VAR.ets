@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_02_101_FAIL_SAME_NAME_CLASS_VAR
  * @expect compile-fail
  * @section 4.2

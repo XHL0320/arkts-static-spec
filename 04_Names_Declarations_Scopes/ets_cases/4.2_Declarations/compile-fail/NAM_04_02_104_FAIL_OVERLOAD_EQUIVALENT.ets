@@ -1,7 +1,7 @@
-/**
+﻿/**
  * @id NAM_04_02_104_FAIL_OVERLOAD_EQUIVALENT
  * @expect compile-fail
- * @section 4.2.1
+ * @section 4.2
  * @design 重载等价签名
  * @note 反向用例：验证重载等价签名编译错误（参数名不同但类型相同）
  */

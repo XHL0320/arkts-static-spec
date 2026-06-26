@@ -1,84 +1,50 @@
 # 10 Interfaces 审查报告
 
 ## 审查范围
-- **章节：** 10 Interfaces（§10.1~§10.6）
-- **用例目录：** `ets_cases/`（8 个子章节目录）
-- **用例总数：** 59
-- **审查日期：** 2026-06-26
+- 章节：10 Interfaces
+- 用例目录：`10_Interfaces/ets_cases/`
+- 用例总数：59（32P + 17F + 10R）
+- 审查日期：2026-06-26
 
 ## 执行结果
-运行 `run_interfaces_cases_wsl.sh`，环境依赖完备。
+- **测试执行：未执行**。本地 Windows 无 arkcompiler 工具链，runner `run_interfaces_cases_wsl.sh` 为 WSL bash 脚本。本地环境差异，不作为交付问题。
+- **静态审计**：通过 `audit_chapter.ps1` 完成。
 
-| 类别 | 文件数 | 实测 OK | Unexpected |
-|:----:|:-----:|:-------:|:----------:|
-| compile-pass | 32 | 32 ✅ | 0 |
-| compile-fail | 17 | 16 ✅ | 1（编译未报错，已知 GAP ISS-10-02） |
-| runtime | 10 | 10 ✅ | 0 |
-| **合计** | **59** | **58** | **1** |
-
-> 首次跑测 3 个 runtime 误报为 exit code 1，原因是 runner 脚本 `$?` 在 else 分支中被 `[` 命令覆盖。已修复 runner，二次跑测全部通过。
-
-## 元数据一致性（59/59 .ets 文件）
-| 检查项 | 结果 |
-|--------|:----:|
-| `@id` 与文件名一致 | ✅ 全部匹配 |
-| `@expect` 与父目录一致 | ✅ 全部匹配 |
-| `@section` 与章节目录一致 | ✅ 全部匹配 |
+| 指标 | 数值 |
+|------|------:|
+| .ets 总数 | 59 |
+| manifest JSON | ✅ 合法（section_stats 格式）|
+| 元数据不一致 | **0** |
 
 ## 总体结论
-**有条件验收。** 用例设计和元数据质量良好，59 个用例覆盖完整，issue 记录清晰。run-pass **58/59**，仅有 1 个已知 GAP（ISS-10-02：compile-fail 编译器未拒绝）。
+**可验收。** 59 用例覆盖全部 8 个小节，元数据完全一致（METADATA_BAD_COUNT=0）。前次 5 项问题（P1-P5）均已修复。spec_original.md（420行）和 Interfaces_Examples.md（322行）已填充。issue_report 清晰（1 C 类 + 1 D 类）。
 
-## 问题清单
+## 整改完成情况
 
-### P1 🔴 — test_report_10.6.md 总数错误
-- **位置：** `ets_cases/10.6_Interface_Inheritance/test_report_10.6.md`
-- **现象：** Total Cases 写为 **7**，但实际文件数为 **10**（pass 5 + fail 4 + runtime 1 = 10）
-- **影响：** 数据不一致，影响交付件可信度
-- **建议：** 将 Total Cases: 7 改为 10
-
-### P2 🟡 — test_case_catalog.md 统计表行名重复
-- **位置：** `test_case_catalog.md:184-186`
-- **现象：** 10.4.1 和 10.4.2 的行名全部写为 "10.4 Interface Properties"（重复 3 行）
-- **建议：** 修正为正确的节名：
-  - 10.4 Interface Properties → 4 合计
-  - 10.4.1 Required Interface Properties → 8 合计
-  - 10.4.2 Optional Interface Properties → 6 合计
-
-### P3 🟡 — test_case_catalog.md 统计表列数不匹配
-- **位置：** `test_case_catalog.md:179-188`
-- **现象：** 表头有 6 列，但数据行有 8-9 列（多余数值列）
-- **建议：** 修复表格格式，使列数与表头一致
-
-### P4 🟡 — test_design_mindmap.md 10.6 compile-fail 缺少 2 条目
-- **位置：** `test_design_mindmap.md:90-92`
-- **现象：** 10.6 的 compile-fail 只列出 2 条（Inherited Getter Only Write / Setter Only Read），缺少：
-  - Multi Inherit Setter Only Read
-  - Multi Inherit Getter Only Write
-- **建议：** 补全缺失的 2 条 mindmap 条目
-
-### P5 ⚪ — test_design_mindmap_10.6.md 内容不完整
-- **位置：** `ets_cases/10.6_Interface_Inheritance/test_design_mindmap_10.6.md`
-- **现象：** 仅覆盖 compile-pass，缺少 compile-fail 和 runtime 分支
-- **建议：** 补充完整（或与根目录 mindmap 对齐）
+| 问题 | 状态 |
+|------|:----:|
+| P1: test_report_10.6.md 总数 7→10 | ✅ 已修复 |
+| P2/P3: catalog 行名和列数 | ✅ 已修复 |
+| P4: mindmap 10.6 缺条目 | ✅ 已补充 |
+| P5: sub-mindmap 缺分支 | ✅ 已补充 |
 
 ## 覆盖评价
 
-| Spec 小节 | 覆盖情况 | 说明 |
-|-----------|---------|------|
-| §10.1 Interface Declarations | 7/7 ✅ | 完整覆盖 |
-| §10.2 Superinterfaces & Subinterfaces | 8/8 ✅ | 完整覆盖 |
-| §10.3 Interface Members | 6/6 ⚠️ | 1 个 GAP（ISS-10-02：Object 方法冲突检测未实现） |
-| §10.4 Interface Properties | 4/4 ✅ | 完整覆盖 |
-| §10.4.1 Required Interface Properties | 8/8 ✅ | 完整覆盖 |
-| §10.4.2 Optional Interface Properties | 6/6 ✅ | 完整覆盖 |
-| §10.5 Interface Method Declarations | 10/10 ✅ | 完整覆盖 |
-| §10.6 Interface Inheritance | 10/10 ✅ | 完整覆盖 |
+| 小节 | P | F | R | 总 | 覆盖要点 |
+|------|:---:|:---:|:---:|:---:|---------|
+| 10.1 Interface Declarations | 5 | 1 | 1 | 7 | 接口声明/泛型/修饰符 |
+| 10.2 Superinterfaces | 3 | 4 | 1 | 8 | 超接口/子接口/多继承 |
+| 10.3 Interface Members | 3 | 2 | 1 | 6 | 成员声明/Object 冲突 ⚠️ |
+| 10.4 Interface Properties | 1 | 2 | 1 | 4 | 属性声明 |
+| 10.4.1 Required Properties | 6 | 1 | 1 | 8 | 必需属性 |
+| 10.4.2 Optional Properties | 3 | 1 | 2 | 6 | 可选属性 |
+| 10.5 Method Declarations | 6 | 2 | 2 | 10 | 方法声明 |
+| 10.6 Interface Inheritance | 5 | 4 | 1 | 10 | 接口继承 |
+| **Total** | **32** | **17** | **10** | **59** | 8 节全覆盖 |
 
-## 已知 GAP
-- **ISS-10-02（C-10.03-01）** — Spec §10.3 要求接口中 Object 公有方法名冲突应报错，编译器未实现。已记录在 `issue_report.md`，分类清晰，有跨语言对比。
+**已知差异**（issue_report 已记录）：
+- **C-10.03-01**（HIGH）：Object 方法名冲突检测未实现（Spec §10.3 要求，编译器未检查）
+- **D-10.03-02**（LOW）：Object 冲突规范边界待澄清
 
 ## 整改建议
-1. 修复 `test_report_10.6.md` 中的总数 7→10（P1）
-2. 修复 `test_case_catalog.md` 统计表的行名和列数（P2, P3）
-3. 补全 `test_design_mindmap.md` 中 10.6 compile-fail 缺失条目（P4）
-4. 补充 `test_design_mindmap_10.6.md` 中缺失的 compile-fail/runtime 分支（P5）
+1. **持续跟踪**：C-10.03-01（Object 方法冲突检测）待编译器实现

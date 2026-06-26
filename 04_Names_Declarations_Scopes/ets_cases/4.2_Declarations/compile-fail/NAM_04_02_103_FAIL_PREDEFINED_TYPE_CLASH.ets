@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_02_103_FAIL_PREDEFINED_TYPE_CLASH
  * @expect compile-fail
  * @section 4.2

@@ -1,5 +1,5 @@
-/**
- * @id CCY_16_06_03_091
+﻿/**
+ * @id CCY_16_CI_091_FAIL_promise_resolve_type
  * @expect compile-fail
  * @section 16.6.3
  * @design 交叉集成错误：Promise.resolve 类型不匹配

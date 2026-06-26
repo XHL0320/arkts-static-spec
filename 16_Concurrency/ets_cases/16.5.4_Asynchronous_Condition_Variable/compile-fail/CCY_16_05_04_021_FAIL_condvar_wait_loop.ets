@@ -1,6 +1,6 @@
-/**
- * @id CCY_16_05_04_021_GAP_condvar_wait_loop
- * @expect gap
+﻿/**
+ * @id CCY_16_05_04_021_FAIL_condvar_wait_loop
+ * @expect compile-fail
  * @section 16.5.4
  * @design concurrency.stackless.AsyncCondVar while 循环等待
  * @note 运行时用例：验证 while(condition) { await cv.wait(m) } 执行

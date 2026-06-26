@@ -1,5 +1,5 @@
-/**
- * @id CCY_16_04_02_005
+﻿/**
+ * @id CCY_16_CI_001_PASS_async_launch
  * @expect compile-pass
  * @section 16.4.2
  * @design async 上下文中通过 launch API 启动异步任务执行

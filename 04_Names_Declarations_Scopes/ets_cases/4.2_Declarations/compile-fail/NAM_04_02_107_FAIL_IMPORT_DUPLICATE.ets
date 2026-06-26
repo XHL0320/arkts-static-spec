@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_02_107_FAIL_IMPORT_DUPLICATE
  * @expect compile-fail
  * @section 4.2

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_06_01_101_FAIL_AMBIGUOUS_VAR_WITH_INIT
  * @expect compile-fail
  * @section 4.6.1

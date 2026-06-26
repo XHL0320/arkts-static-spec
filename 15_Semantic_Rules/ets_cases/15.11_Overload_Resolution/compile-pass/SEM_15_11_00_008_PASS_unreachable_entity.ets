@@ -1,6 +1,6 @@
-/*
+﻿/*
  * @id SEM_15_11_00_008_PASS_unreachable_entity
- * @expect compile-warn
+ * @expect compile-pass
  * @section 15.11
  * @design 后面的重载永远不可达。
  * @note Generated one-to-one from test_design. Replace scaffold body with rule-specific code when promoting to conformance suite.

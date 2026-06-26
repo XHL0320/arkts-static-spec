@@ -1,6 +1,6 @@
-/**
- * @id CCY_16_04_04_020_GAP_taskpool_execute_task
- * @expect gap
+﻿/**
+ * @id CCY_16_04_04_020_FAIL_taskpool_execute_task
+ * @expect compile-fail
  * @section 16.4.4
  * @design Taskpool 创建 taskpool.Task 并执行
  * @note GAP: taskpool.Task/taskpool.TaskGroup/taskpool 类型在当前编译器版本中未定义或线程不终止。

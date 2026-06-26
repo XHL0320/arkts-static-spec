@@ -1,6 +1,6 @@
-/**
- * @id CCY_16_05_05_021_GAP_atomic_boolean
- * @expect gap
+﻿/**
+ * @id CCY_16_05_05_021_FAIL_atomic_boolean
+ * @expect compile-fail
  * @section 16.5.5
  * @design AtomicBoolean 原子操作运行时
  * @note 运行时用例：验证 AtomicBoolean 的 set/get 操作正常执行

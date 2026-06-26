@@ -1,6 +1,6 @@
-/**
- * @id CCY_16_04_04_022_GAP_taskpool_group
- * @expect gap
+﻿/**
+ * @id CCY_16_04_04_022_FAIL_taskpool_group
+ * @expect compile-fail
  * @section 16.4.4
  * @design Taskpool taskpool.TaskGroup 分组执行
  * @note 运行时用例：验证 taskpool.TaskGroup 添加任务并执行

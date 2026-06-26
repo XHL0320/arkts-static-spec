@@ -1,5 +1,5 @@
-/**
- * @id CCY_16_06_03_005
+﻿/**
+ * @id CCY_16_CI_006_PASS_promise_catch_error_propagation
  * @expect compile-pass
  * @section 16.6.3
  * @design Promise rejection 通过 .catch 捕获

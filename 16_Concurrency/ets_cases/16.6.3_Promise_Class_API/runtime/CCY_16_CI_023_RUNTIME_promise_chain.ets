@@ -1,5 +1,5 @@
-/**
- * @id CCY_16_06_03_023
+﻿/**
+ * @id CCY_16_CI_023_RUNTIME_promise_chain
  * @expect runtime
  * @section 16.6.3
  * @design Promise 链式调用运行时

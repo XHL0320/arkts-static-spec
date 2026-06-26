@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_07_01_100_FAIL_RETURN_TYPE_MISMATCH
  * @expect compile-fail
  * @section 4.7.1

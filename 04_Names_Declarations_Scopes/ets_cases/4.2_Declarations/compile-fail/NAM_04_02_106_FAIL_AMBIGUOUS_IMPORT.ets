@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_02_106_FAIL_AMBIGUOUS_IMPORT
  * @expect compile-fail
  * @section 4.2

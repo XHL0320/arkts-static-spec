@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_02_102_FAIL_CLASS_FIELD_METHOD_SAME
  * @expect compile-fail
  * @section 4.2

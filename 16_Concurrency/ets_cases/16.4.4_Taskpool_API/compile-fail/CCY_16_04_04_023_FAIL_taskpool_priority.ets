@@ -1,6 +1,6 @@
-/**
- * @id CCY_16_04_04_023_GAP_taskpool_priority
- * @expect gap
+﻿/**
+ * @id CCY_16_04_04_023_FAIL_taskpool_priority
+ * @expect compile-fail
  * @section 16.4.4
  * @design Taskpool 优先级配置执行
  * @note 运行时用例：验证 taskpool.execute 配置优先级执行

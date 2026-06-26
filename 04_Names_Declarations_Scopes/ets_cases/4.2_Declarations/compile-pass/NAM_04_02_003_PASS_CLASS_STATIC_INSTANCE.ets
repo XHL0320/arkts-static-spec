@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @id NAM_04_02_003_PASS_CLASS_STATIC_INSTANCE
  * @expect compile-pass
  * @section 4.2
