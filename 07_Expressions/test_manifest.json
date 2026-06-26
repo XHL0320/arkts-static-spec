@@ -1,114 +1,691 @@
-{
-    "chapter":  "07",
-    "topic":  "Expressions",
-    "directory":  "07_Expressions",
-    "spec_source":  "ArkTS static language specification",
-    "subtopics":  [
-                      "7.1_Operators",
-                      "7.1.1_Operator_Precedence",
-                      "7.2_Evaluation_of_Expressions",
-                      "7.2.1_Type_of_Expression",
-                      "7.2.2_Normal_and_Abrupt_Completion_of_Expression_Evaluation",
-                      "7.2.3_Order_of_Expression_Evaluation",
-                      "7.2.4_Evaluation_of_Arguments",
-                      "7.2.5_Evaluation_of_Other_Expressions",
-                      "7.3_Literal",
-                      "7.4_Named_Reference",
-                      "7.4.1_Function_Reference",
-                      "7.4.2_Method_Reference",
-                      "7.5_Array_Literal",
-                      "7.5.1_Array_Literal_Type_Inference_from_Context",
-                      "7.5.2_Array_Type_Inference_from_Types_of_Elements",
-                      "7.6_Object_Literal",
-                      "7.6.1_Object_Literal_of_Class_Type",
-                      "7.6.2_Object_Literal_of_Interface_Type",
-                      "7.6.3_Object_Literal_of_Record_Type",
-                      "7.6.4_Object_Literal_Evaluation",
-                      "7.7_Spread_Expression",
-                      "7.8_Parenthesized_Expression",
-                      "7.9_this_Expression",
-                      "7.10_Field_Access_Expression",
-                      "7.10.1_Accessing_Static_Fields",
-                      "7.10.2_Accessing_Current_Object_Fields",
-                      "7.10.3_Accessing_Super_Class_Accessors",
-                      "7.11_Method_Call_Expression",
-                      "7.11.1_Selection_of_Type_to_Use",
-                      "7.11.2_Selection_of_Entity_to_Call",
-                      "7.11.3_Checking_Modifiers",
-                      "7.11.4_Type_of_Method_Call_Expression",
-                      "7.12_Function_Call_Expression",
-                      "7.12.1_Call_Arguments",
-                      "7.13_Indexing_Expressions",
-                      "7.13.1_Array_Indexing_Expression",
-                      "7.13.2_String_Indexing_Expression",
-                      "7.13.3_Record_Indexing_Expression",
-                      "7.14_Chaining_Operator",
-                      "7.15_New_Expressions",
-                      "7.16_instanceof_Expression",
-                      "7.17_Cast_Expression",
-                      "7.17.1_Type_Inference_in_Cast_Expression",
-                      "7.17.2_Runtime_Checking_in_Cast_Expression",
-                      "7.18_typeof_Expression",
-                      "7.19_Ensure_Not_Nullish_Expression",
-                      "7.20_Nullish_Coalescing_Expression",
-                      "7.21_Unary_Expressions",
-                      "7.21.1_Postfix_Increment",
-                      "7.21.2_Postfix_Decrement",
-                      "7.21.3_Prefix_Increment",
-                      "7.21.4_Prefix_Decrement",
-                      "7.21.5_Unary_Plus",
-                      "7.21.6_Unary_Minus",
-                      "7.21.7_Bitwise_Complement",
-                      "7.21.8_Logical_Complement",
-                      "7.22_Binary_Expressions",
-                      "7.23_Multiplicative_Expressions",
-                      "7.23.1_Multiplication",
-                      "7.23.2_Division",
-                      "7.23.3_Remainder",
-                      "7.24_Exponentiation_Expression",
-                      "7.25_Additive_Expressions",
-                      "7.25.1_String_Concatenation",
-                      "7.25.2_Additive_Operators_for_Numeric_Types",
-                      "7.26_Shift_Expressions",
-                      "7.27_Relational_Expressions",
-                      "7.27.1_Numeric_Relational_Operators",
-                      "7.27.2_Bigint_Relational_Operators",
-                      "7.27.3_String_Relational_Operators",
-                      "7.27.4_Boolean_Relational_Operators",
-                      "7.27.5_char_Relational_Operators",
-                      "7.27.6_Enumeration_Relational_Operators",
-                      "7.28_Equality_Expressions",
-                      "7.28.1_Numeric_Equality_Operators",
-                      "7.28.2_Function_Type_Equality_Operators",
-                      "7.28.3_Extended_Equality_with_null_or_undefined",
-                      "7.29_Bitwise_and_Logical_Expressions",
-                      "7.29.1_Integer_Bitwise_Operators",
-                      "7.29.2_Boolean_Logical_Operators",
-                      "7.30_Conditional_And_Expression",
-                      "7.31_Conditional_Or_Expression",
-                      "7.32_Assignment",
-                      "7.32.1_Simple_Assignment_Operator",
-                      "7.32.2_Compound_Assignment_Operators",
-                      "7.32.3_Left_Hand_Side_Expressions",
-                      "7.33_Ternary_Conditional_Expressions",
-                      "7.34_String_Interpolation_Expressions",
-                      "7.35_Lambda_Expressions",
-                      "7.35.1_Lambda_Signature",
-                      "7.35.2_Lambda_Body",
-                      "7.35.3_Lambda_Expression_Type",
-                      "7.35.4_Runtime_Evaluation_of_Lambda_Expressions",
-                      "7.36_Constant_Expressions",
-                      "7.36.1_Specifics_of_Constant_Expressions_Evaluation"
-                  ],
-    "case_roots":  [
-                       "ets_cases"
-                   ],
-    "categories":  [
-                       "compile-pass",
-                       "compile-fail",
-                       "runtime"
-                   ],
-    "cases":  [
-
-              ]
+﻿{
+  "chapter": "07",
+  "topic": "Expressions",
+  "directory": "07_Expressions",
+  "prefix": "EXP_",
+  "total_cases": 2110,
+  "sections": [
+    "7.1_Operators",
+    "7.1.1_Operator_Precedence",
+    "7.2_Evaluation_of_Expressions",
+    "7.2.1_Type_of_Expression",
+    "7.2.2_Normal_and_Abrupt_Completion_of_Expression_Evaluation",
+    "7.2.2_Normal_and_Abrupt_Completion",
+    "7.2.3_Order_of_Expression_Evaluation",
+    "7.2.4_Evaluation_of_Arguments",
+    "7.2.5_Evaluation_of_Other_Expressions",
+    "7.3_Literal",
+    "7.4_Named_Reference",
+    "7.4.1_Function_Reference",
+    "7.4.2_Method_Reference",
+    "7.5_Array_Literal",
+    "7.5.1_Array_Literal_Type_Inference_from_Context",
+    "7.5.2_Array_Type_Inference_from_Types_of_Elements",
+    "7.6_Object_Literal",
+    "7.6.1_Object_Literal_of_Class_Type",
+    "7.6.2_Object_Literal_of_Interface_Type",
+    "7.6.3_Object_Literal_of_Record_Type",
+    "7.6.4_Object_Literal_Evaluation",
+    "7.7_Spread_Expression",
+    "7.8_Parenthesized_Expression",
+    "7.9_this_Expression",
+    "7.10_Field_Access_Expression",
+    "7.10.1_Accessing_Static_Fields",
+    "7.10.2_Accessing_Current_Object_Fields",
+    "7.10.3_Accessing_Super_Class_Accessors",
+    "7.11_Method_Call_Expression",
+    "7.11.1_Selection_of_Type_to_Use",
+    "7.11.2_Selection_of_Entity_to_Call",
+    "7.11.3_Checking_Modifiers",
+    "7.11.4_Type_of_Method_Call_Expression",
+    "7.12_Function_Call_Expression",
+    "7.12.1_Call_Arguments",
+    "7.13_Indexing_Expressions",
+    "7.13.1_Array_Indexing_Expression",
+    "7.13.2_String_Indexing_Expression",
+    "7.13.3_Record_Indexing_Expression",
+    "7.14_Chaining_Operator",
+    "7.15_New_Expressions",
+    "7.16_instanceof_Expression",
+    "7.17_Cast_Expression",
+    "7.17.1_Type_Inference_in_Cast_Expression",
+    "7.17.2_Runtime_Checking_in_Cast_Expression",
+    "7.18_typeof_Expression",
+    "7.19_Ensure_Not_Nullish_Expression",
+    "7.20_Nullish_Coalescing_Expression",
+    "7.21_Unary_Expressions",
+    "7.21.1_Postfix_Increment",
+    "7.21.2_Postfix_Decrement",
+    "7.21.3_Prefix_Increment",
+    "7.21.4_Prefix_Decrement",
+    "7.21.5_Unary_Plus",
+    "7.21.6_Unary_Minus",
+    "7.21.7_Bitwise_Complement",
+    "7.21.8_Logical_Complement",
+    "7.22_Binary_Expressions",
+    "7.23_Multiplicative_Expressions",
+    "7.23.1_Multiplication",
+    "7.23.2_Division",
+    "7.23.3_Remainder",
+    "7.24_Exponentiation_Expression",
+    "7.25_Additive_Expressions",
+    "7.25.1_String_Concatenation",
+    "7.25.2_Additive_Operators_for_Numeric_Types",
+    "7.26_Shift_Expressions",
+    "7.27_Relational_Expressions",
+    "7.27.1_Numeric_Relational_Operators",
+    "7.27.2_Bigint_Relational_Operators",
+    "7.27.3_String_Relational_Operators",
+    "7.27.4_Boolean_Relational_Operators",
+    "7.27.5_char_Relational_Operators",
+    "7.27.6_Enumeration_Relational_Operators",
+    "7.28_Equality_Expressions",
+    "7.28.1_Numeric_Equality_Operators",
+    "7.28.2_Function_Type_Equality_Operators",
+    "7.28.3_Extended_Equality_with_null_or_undefined",
+    "7.29_Bitwise_and_Logical_Expressions",
+    "7.29.1_Integer_Bitwise_Operators",
+    "7.29.2_Boolean_Logical_Operators",
+    "7.30_Conditional_And_Expression",
+    "7.31_Conditional_Or_Expression",
+    "7.32_Assignment",
+    "7.32.1_Simple_Assignment_Operator",
+    "7.32.2_Compound_Assignment_Operators",
+    "7.32.3_Left_Hand_Side_Expressions",
+    "7.33_Ternary_Conditional_Expressions",
+    "7.34_String_Interpolation_Expressions",
+    "7.35_Lambda_Expressions",
+    "7.35.1_Lambda_Signature",
+    "7.35.2_Lambda_Body",
+    "7.35.3_Lambda_Expression_Type",
+    "7.35.4_Runtime_Evaluation_of_Lambda_Expressions",
+    "7.36_Constant_Expressions",
+    "7.36.1_Specifics_of_Constant_Expressions_Evaluation"
+  ],
+  "case_roots": [
+    "ets_cases"
+  ],
+  "categories": [
+    "compile-pass",
+    "compile-fail",
+    "runtime"
+  ],
+  "stats": {
+    "7.1_Operators": {
+      "compile-pass": 0,
+      "compile-fail": 0,
+      "runtime": 0,
+      "total": 0
+    },
+    "7.1.1_Operator_Precedence": {
+      "compile-pass": 20,
+      "compile-fail": 4,
+      "runtime": 11,
+      "total": 35
+    },
+    "7.2_Evaluation_of_Expressions": {
+      "compile-pass": 0,
+      "compile-fail": 0,
+      "runtime": 0,
+      "total": 0
+    },
+    "7.2.1_Type_of_Expression": {
+      "compile-pass": 15,
+      "compile-fail": 5,
+      "runtime": 5,
+      "total": 25
+    },
+    "7.2.2_Normal_and_Abrupt_Completion_of_Expression_Evaluation": {
+      "compile-pass": 0,
+      "compile-fail": 0,
+      "runtime": 0,
+      "total": 0
+    },
+    "7.2.2_Normal_and_Abrupt_Completion": {
+      "compile-pass": 12,
+      "compile-fail": 3,
+      "runtime": 7,
+      "total": 22
+    },
+    "7.2.3_Order_of_Expression_Evaluation": {
+      "compile-pass": 12,
+      "compile-fail": 2,
+      "runtime": 11,
+      "total": 25
+    },
+    "7.2.4_Evaluation_of_Arguments": {
+      "compile-pass": 4,
+      "compile-fail": 0,
+      "runtime": 5,
+      "total": 9
+    },
+    "7.2.5_Evaluation_of_Other_Expressions": {
+      "compile-pass": 6,
+      "compile-fail": 0,
+      "runtime": 6,
+      "total": 12
+    },
+    "7.3_Literal": {
+      "compile-pass": 5,
+      "compile-fail": 2,
+      "runtime": 4,
+      "total": 11
+    },
+    "7.4_Named_Reference": {
+      "compile-pass": 0,
+      "compile-fail": 0,
+      "runtime": 0,
+      "total": 0
+    },
+    "7.4.1_Function_Reference": {
+      "compile-pass": 5,
+      "compile-fail": 3,
+      "runtime": 2,
+      "total": 10
+    },
+    "7.4.2_Method_Reference": {
+      "compile-pass": 5,
+      "compile-fail": 3,
+      "runtime": 3,
+      "total": 11
+    },
+    "7.5_Array_Literal": {
+      "compile-pass": 0,
+      "compile-fail": 0,
+      "runtime": 0,
+      "total": 0
+    },
+    "7.5.1_Array_Literal_Type_Inference_from_Context": {
+      "compile-pass": 18,
+      "compile-fail": 6,
+      "runtime": 4,
+      "total": 28
+    },
+    "7.5.2_Array_Type_Inference_from_Types_of_Elements": {
+      "compile-pass": 11,
+      "compile-fail": 1,
+      "runtime": 3,
+      "total": 15
+    },
+    "7.6_Object_Literal": {
+      "compile-pass": 0,
+      "compile-fail": 0,
+      "runtime": 0,
+      "total": 0
+    },
+    "7.6.1_Object_Literal_of_Class_Type": {
+      "compile-pass": 10,
+      "compile-fail": 8,
+      "runtime": 3,
+      "total": 21
+    },
+    "7.6.2_Object_Literal_of_Interface_Type": {
+      "compile-pass": 13,
+      "compile-fail": 8,
+      "runtime": 5,
+      "total": 26
+    },
+    "7.6.3_Object_Literal_of_Record_Type": {
+      "compile-pass": 10,
+      "compile-fail": 4,
+      "runtime": 3,
+      "total": 17
+    },
+    "7.6.4_Object_Literal_Evaluation": {
+      "compile-pass": 5,
+      "compile-fail": 0,
+      "runtime": 6,
+      "total": 11
+    },
+    "7.7_Spread_Expression": {
+      "compile-pass": 12,
+      "compile-fail": 4,
+      "runtime": 6,
+      "total": 22
+    },
+    "7.8_Parenthesized_Expression": {
+      "compile-pass": 6,
+      "compile-fail": 1,
+      "runtime": 3,
+      "total": 10
+    },
+    "7.9_this_Expression": {
+      "compile-pass": 6,
+      "compile-fail": 2,
+      "runtime": 3,
+      "total": 11
+    },
+    "7.10_Field_Access_Expression": {
+      "compile-pass": 0,
+      "compile-fail": 0,
+      "runtime": 0,
+      "total": 0
+    },
+    "7.10.1_Accessing_Static_Fields": {
+      "compile-pass": 6,
+      "compile-fail": 2,
+      "runtime": 3,
+      "total": 11
+    },
+    "7.10.2_Accessing_Current_Object_Fields": {
+      "compile-pass": 7,
+      "compile-fail": 2,
+      "runtime": 3,
+      "total": 12
+    },
+    "7.10.3_Accessing_Super_Class_Accessors": {
+      "compile-pass": 3,
+      "compile-fail": 2,
+      "runtime": 3,
+      "total": 8
+    },
+    "7.11_Method_Call_Expression": {
+      "compile-pass": 0,
+      "compile-fail": 0,
+      "runtime": 0,
+      "total": 0
+    },
+    "7.11.1_Selection_of_Type_to_Use": {
+      "compile-pass": 6,
+      "compile-fail": 2,
+      "runtime": 4,
+      "total": 12
+    },
+    "7.11.2_Selection_of_Entity_to_Call": {
+      "compile-pass": 6,
+      "compile-fail": 2,
+      "runtime": 4,
+      "total": 12
+    },
+    "7.11.3_Checking_Modifiers": {
+      "compile-pass": 5,
+      "compile-fail": 4,
+      "runtime": 3,
+      "total": 12
+    },
+    "7.11.4_Type_of_Method_Call_Expression": {
+      "compile-pass": 6,
+      "compile-fail": 2,
+      "runtime": 4,
+      "total": 12
+    },
+    "7.12_Function_Call_Expression": {
+      "compile-pass": 0,
+      "compile-fail": 0,
+      "runtime": 0,
+      "total": 0
+    },
+    "7.12.1_Call_Arguments": {
+      "compile-pass": 7,
+      "compile-fail": 3,
+      "runtime": 4,
+      "total": 14
+    },
+    "7.13_Indexing_Expressions": {
+      "compile-pass": 0,
+      "compile-fail": 0,
+      "runtime": 0,
+      "total": 0
+    },
+    "7.13.1_Array_Indexing_Expression": {
+      "compile-pass": 7,
+      "compile-fail": 6,
+      "runtime": 4,
+      "total": 17
+    },
+    "7.13.2_String_Indexing_Expression": {
+      "compile-pass": 7,
+      "compile-fail": 6,
+      "runtime": 4,
+      "total": 17
+    },
+    "7.13.3_Record_Indexing_Expression": {
+      "compile-pass": 7,
+      "compile-fail": 5,
+      "runtime": 4,
+      "total": 16
+    },
+    "7.14_Chaining_Operator": {
+      "compile-pass": 8,
+      "compile-fail": 6,
+      "runtime": 4,
+      "total": 18
+    },
+    "7.15_New_Expressions": {
+      "compile-pass": 7,
+      "compile-fail": 5,
+      "runtime": 4,
+      "total": 16
+    },
+    "7.16_instanceof_Expression": {
+      "compile-pass": 8,
+      "compile-fail": 2,
+      "runtime": 4,
+      "total": 14
+    },
+    "7.17_Cast_Expression": {
+      "compile-pass": 0,
+      "compile-fail": 0,
+      "runtime": 0,
+      "total": 0
+    },
+    "7.17.1_Type_Inference_in_Cast_Expression": {
+      "compile-pass": 6,
+      "compile-fail": 5,
+      "runtime": 4,
+      "total": 15
+    },
+    "7.17.2_Runtime_Checking_in_Cast_Expression": {
+      "compile-pass": 6,
+      "compile-fail": 0,
+      "runtime": 5,
+      "total": 11
+    },
+    "7.18_typeof_Expression": {
+      "compile-pass": 7,
+      "compile-fail": 1,
+      "runtime": 7,
+      "total": 15
+    },
+    "7.19_Ensure_Not_Nullish_Expression": {
+      "compile-pass": 0,
+      "compile-fail": 0,
+      "runtime": 0,
+      "total": 0
+    },
+    "7.20_Nullish_Coalescing_Expression": {
+      "compile-pass": 8,
+      "compile-fail": 3,
+      "runtime": 8,
+      "total": 19
+    },
+    "7.21_Unary_Expressions": {
+      "compile-pass": 0,
+      "compile-fail": 0,
+      "runtime": 0,
+      "total": 0
+    },
+    "7.21.1_Postfix_Increment": {
+      "compile-pass": 7,
+      "compile-fail": 5,
+      "runtime": 8,
+      "total": 20
+    },
+    "7.21.2_Postfix_Decrement": {
+      "compile-pass": 7,
+      "compile-fail": 5,
+      "runtime": 8,
+      "total": 20
+    },
+    "7.21.3_Prefix_Increment": {
+      "compile-pass": 7,
+      "compile-fail": 5,
+      "runtime": 8,
+      "total": 20
+    },
+    "7.21.4_Prefix_Decrement": {
+      "compile-pass": 7,
+      "compile-fail": 5,
+      "runtime": 8,
+      "total": 20
+    },
+    "7.21.5_Unary_Plus": {
+      "compile-pass": 7,
+      "compile-fail": 4,
+      "runtime": 6,
+      "total": 17
+    },
+    "7.21.6_Unary_Minus": {
+      "compile-pass": 8,
+      "compile-fail": 4,
+      "runtime": 8,
+      "total": 20
+    },
+    "7.21.7_Bitwise_Complement": {
+      "compile-pass": 8,
+      "compile-fail": 5,
+      "runtime": 8,
+      "total": 21
+    },
+    "7.21.8_Logical_Complement": {
+      "compile-pass": 3,
+      "compile-fail": 5,
+      "runtime": 8,
+      "total": 16
+    },
+    "7.22_Binary_Expressions": {
+      "compile-pass": 15,
+      "compile-fail": 7,
+      "runtime": 5,
+      "total": 27
+    },
+    "7.23_Multiplicative_Expressions": {
+      "compile-pass": 0,
+      "compile-fail": 0,
+      "runtime": 0,
+      "total": 0
+    },
+    "7.23.1_Multiplication": {
+      "compile-pass": 8,
+      "compile-fail": 6,
+      "runtime": 9,
+      "total": 23
+    },
+    "7.23.2_Division": {
+      "compile-pass": 6,
+      "compile-fail": 8,
+      "runtime": 10,
+      "total": 24
+    },
+    "7.23.3_Remainder": {
+      "compile-pass": 6,
+      "compile-fail": 8,
+      "runtime": 9,
+      "total": 23
+    },
+    "7.24_Exponentiation_Expression": {
+      "compile-pass": 6,
+      "compile-fail": 7,
+      "runtime": 12,
+      "total": 25
+    },
+    "7.25_Additive_Expressions": {
+      "compile-pass": 0,
+      "compile-fail": 0,
+      "runtime": 0,
+      "total": 0
+    },
+    "7.25.1_String_Concatenation": {
+      "compile-pass": 10,
+      "compile-fail": 2,
+      "runtime": 7,
+      "total": 19
+    },
+    "7.25.2_Additive_Operators_for_Numeric_Types": {
+      "compile-pass": 8,
+      "compile-fail": 6,
+      "runtime": 12,
+      "total": 26
+    },
+    "7.26_Shift_Expressions": {
+      "compile-pass": 11,
+      "compile-fail": 16,
+      "runtime": 20,
+      "total": 47
+    },
+    "7.27_Relational_Expressions": {
+      "compile-pass": 10,
+      "compile-fail": 10,
+      "runtime": 10,
+      "total": 30
+    },
+    "7.27.1_Numeric_Relational_Operators": {
+      "compile-pass": 16,
+      "compile-fail": 15,
+      "runtime": 18,
+      "total": 49
+    },
+    "7.27.2_Bigint_Relational_Operators": {
+      "compile-pass": 16,
+      "compile-fail": 15,
+      "runtime": 18,
+      "total": 49
+    },
+    "7.27.3_String_Relational_Operators": {
+      "compile-pass": 16,
+      "compile-fail": 16,
+      "runtime": 18,
+      "total": 50
+    },
+    "7.27.4_Boolean_Relational_Operators": {
+      "compile-pass": 15,
+      "compile-fail": 16,
+      "runtime": 14,
+      "total": 45
+    },
+    "7.27.5_char_Relational_Operators": {
+      "compile-pass": 15,
+      "compile-fail": 13,
+      "runtime": 14,
+      "total": 42
+    },
+    "7.27.6_Enumeration_Relational_Operators": {
+      "compile-pass": 15,
+      "compile-fail": 14,
+      "runtime": 14,
+      "total": 43
+    },
+    "7.28_Equality_Expressions": {
+      "compile-pass": 10,
+      "compile-fail": 10,
+      "runtime": 10,
+      "total": 30
+    },
+    "7.28.1_Numeric_Equality_Operators": {
+      "compile-pass": 22,
+      "compile-fail": 15,
+      "runtime": 14,
+      "total": 51
+    },
+    "7.28.2_Function_Type_Equality_Operators": {
+      "compile-pass": 19,
+      "compile-fail": 13,
+      "runtime": 14,
+      "total": 46
+    },
+    "7.28.3_Extended_Equality_with_null_or_undefined": {
+      "compile-pass": 18,
+      "compile-fail": 10,
+      "runtime": 14,
+      "total": 42
+    },
+    "7.29_Bitwise_and_Logical_Expressions": {
+      "compile-pass": 10,
+      "compile-fail": 10,
+      "runtime": 10,
+      "total": 30
+    },
+    "7.29.1_Integer_Bitwise_Operators": {
+      "compile-pass": 17,
+      "compile-fail": 12,
+      "runtime": 14,
+      "total": 43
+    },
+    "7.29.2_Boolean_Logical_Operators": {
+      "compile-pass": 13,
+      "compile-fail": 12,
+      "runtime": 11,
+      "total": 36
+    },
+    "7.30_Conditional_And_Expression": {
+      "compile-pass": 13,
+      "compile-fail": 12,
+      "runtime": 11,
+      "total": 36
+    },
+    "7.31_Conditional_Or_Expression": {
+      "compile-pass": 13,
+      "compile-fail": 12,
+      "runtime": 11,
+      "total": 36
+    },
+    "7.32_Assignment": {
+      "compile-pass": 10,
+      "compile-fail": 10,
+      "runtime": 10,
+      "total": 30
+    },
+    "7.32.1_Simple_Assignment_Operator": {
+      "compile-pass": 16,
+      "compile-fail": 13,
+      "runtime": 13,
+      "total": 42
+    },
+    "7.32.2_Compound_Assignment_Operators": {
+      "compile-pass": 15,
+      "compile-fail": 14,
+      "runtime": 13,
+      "total": 42
+    },
+    "7.32.3_Left_Hand_Side_Expressions": {
+      "compile-pass": 17,
+      "compile-fail": 24,
+      "runtime": 11,
+      "total": 52
+    },
+    "7.33_Ternary_Conditional_Expressions": {
+      "compile-pass": 20,
+      "compile-fail": 11,
+      "runtime": 15,
+      "total": 46
+    },
+    "7.34_String_Interpolation_Expressions": {
+      "compile-pass": 20,
+      "compile-fail": 12,
+      "runtime": 11,
+      "total": 43
+    },
+    "7.35_Lambda_Expressions": {
+      "compile-pass": 10,
+      "compile-fail": 10,
+      "runtime": 10,
+      "total": 30
+    },
+    "7.35.1_Lambda_Signature": {
+      "compile-pass": 17,
+      "compile-fail": 14,
+      "runtime": 11,
+      "total": 42
+    },
+    "7.35.2_Lambda_Body": {
+      "compile-pass": 18,
+      "compile-fail": 13,
+      "runtime": 11,
+      "total": 42
+    },
+    "7.35.3_Lambda_Expression_Type": {
+      "compile-pass": 17,
+      "compile-fail": 13,
+      "runtime": 11,
+      "total": 41
+    },
+    "7.35.4_Runtime_Evaluation_of_Lambda_Expressions": {
+      "compile-pass": 12,
+      "compile-fail": 10,
+      "runtime": 14,
+      "total": 36
+    },
+    "7.36_Constant_Expressions": {
+      "compile-pass": 10,
+      "compile-fail": 10,
+      "runtime": 10,
+      "total": 30
+    },
+    "7.36.1_Specifics_of_Constant_Expressions_Evaluation": {
+      "compile-pass": 13,
+      "compile-fail": 10,
+      "runtime": 13,
+      "total": 36
+    }
+  }
 }
