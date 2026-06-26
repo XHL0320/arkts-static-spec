@@ -1,5 +1,5 @@
 /**
- * @id LEX_02_09_03_022_PASS_HEX_FLOAT
+ * @id LEX_02_09_03_028_PASS_HEX_FLOAT
  * @expect compile-pass
  * @section 2.9.3
  * @design 十六进制浮点字面量（hex float）

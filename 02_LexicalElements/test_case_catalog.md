@@ -661,5 +661,6 @@
 | LEX_02_09_09_020_RT_NULL_NULLISH_COAL | 2.9.9 | runtime | LEX_02_09_09_020_RT_NULL_NULLISH_COAL.ets | null 在空值合并中 | runtime |
 | LEX_02_03_046_PASS_OGHAM_SPACE_MARK | 2.3 | compile-pass | LEX_02_03_046_PASS_OGHAM_SPACE_MARK.ets | Ogham Space Mark (U+1680) 作为词法分隔符 | compile-pass |
 | LEX_02_03_047_PASS_UNICODE_SPACE_RANGE | 2.3 | compile-pass | LEX_02_03_047_PASS_UNICODE_SPACE_RANGE.ets | U+2000–U+200A 区段空白字符作为词法分隔符 | compile-pass |
-| LEX_02_09_03_022_PASS_HEX_FLOAT | 2.9.3 | compile-pass | LEX_02_09_03_022_PASS_HEX_FLOAT.ets | 十六进制浮点字面量（hex float） | compile-pass |
+| LEX_02_09_03_028_PASS_HEX_FLOAT | 2.9.3 | compile-pass | LEX_02_09_03_028_PASS_HEX_FLOAT.ets | 十六进制浮点字面量（hex float） | compile-pass |
 | LEX_02_09_09_021_RT_NULL_TYPEOF | 2.9.9 | runtime | LEX_02_09_09_021_RT_NULL_TYPEOF.ets | typeof null 运行时返回值验证 | runtime |
+| LEX_02_09_03_029_PASS_NAN_INF_LITERAL | 2.9.3 | compile-pass | LEX_02_09_03_029_PASS_NAN_INF_LITERAL.ets | NaN 和 Infinity 字面量编译通过验证 | compile-pass |

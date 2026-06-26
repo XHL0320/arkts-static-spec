@@ -275,8 +275,8 @@
                         "section":  "2.3"
                     },
                     {
-                        "id":  "LEX_02_09_03_022_PASS_HEX_FLOAT",
-                        "file":  "2.9.3_Floating_Point_Literals\\compile-pass\\LEX_02_09_03_022_PASS_HEX_FLOAT.ets",
+                        "id":  "LEX_02_09_03_028_PASS_HEX_FLOAT",
+                        "file":  "2.9.3_Floating_Point_Literals\\compile-pass\\LEX_02_09_03_028_PASS_HEX_FLOAT.ets",
                         "expect":  "compile-pass",
                         "section":  "2.9.3"
                     },
@@ -285,6 +285,12 @@
                         "file":  "2.9.9_Null_Literal\\runtime\\LEX_02_09_09_021_RT_NULL_TYPEOF.ets",
                         "expect":  "runtime",
                         "section":  "2.9.9"
+                    },
+                    {
+                        "id":  "LEX_02_09_03_029_PASS_NAN_INF_LITERAL",
+                        "file":  "2.9.3_Floating_Point_Literals\\compile-pass\\LEX_02_09_03_029_PASS_NAN_INF_LITERAL.ets",
+                        "expect":  "compile-pass",
+                        "section":  "2.9.3"
                     }
                ]
 }

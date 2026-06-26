@@ -54,8 +54,8 @@
   - edge cases: underscore at start/end (compile-fail), INT overflow to long, LONG overflow
   - error cases: value too large, hex too large, int overflow, negative too large
 - 2.9.3_Floating_Point_Literals
-  - normal cases: standard float, no-leading-zero, underscore, scientific notation, f/F suffix, type inference double/float, negative/zero/variants, hex float (0x1.Fp10)
-  - edge cases: NaN/Infinity detection, precision loss, float/double mix, special value ops
+  - normal cases: standard float, no-leading-zero, underscore, scientific notation, f/F suffix, type inference double/float, negative/zero/variants, hex float (0x1.Fp10), NaN/Infinity literal
+  - edge cases: NaN/Infinity detection (runtime + compile-pass), precision loss, float/double mix, special value ops
   - error cases: float too large, double too large, invalid suffix
 - 2.9.4_Bigint_Literals
   - normal cases: basic bigint, underscore, negative, large value, type inference, zero, div/mod
