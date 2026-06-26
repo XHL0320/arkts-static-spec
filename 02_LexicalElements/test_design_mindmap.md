@@ -13,15 +13,14 @@
 - 2.1_Use_of_Unicode_Characters
   - normal cases: BMP char, supplementary char, Unicode escape in identifier, char with \uHHHH/\u{H}/escape sequences, $/_/Unicode letter identifier start, ZWJ/ZWNJ in ident
   - edge cases: char range boundaries U+0000/U+FFFF/U+10FFFF, char relational ops and char-number comparison (per spec experimental.md), surrogate handling
-  - error cases: isolated surrogates (ISSUE-002/003/004), char relational ops per cookbook (ISSUE-005), char-number per cookbook (ISSUE-006), out-of-range \u{FFFFF}, digit-start ident, keyword as ident
+  - error cases: isolated surrogates (ISSUE-002/003/004), out-of-range \u{FFFFF}, digit-start ident, keyword as ident
 - 2.2_Lexical_Input_Elements
   - normal cases: basic token sequences, whitespace-separated tokens, comment-separated tokens
   - edge cases: BOM at file start, longest match rule, @ decorator token
   - error cases: invalid Unicode/null char in source
 - 2.3_White_Spaces
-  - normal cases: TAB/SP/NBSP/ZWNBSP all valid separators, mixed whitespace
+  - normal cases: TAB/SP/NBSP/ZWNBSP all valid separators, mixed whitespace, Ogham Space Mark (U+1680), U+2000–U+200A range spaces
   - edge cases: ZWNBSP as BOM vs mid-file separator, NBSP visually identical to SP
-  - error cases: other Unicode control chars as whitespace
 - 2.4_Line_Separators
   - normal cases: LF/CR/CRLF/LS/PS all valid line terminators, CRLF as single separator
   - edge cases: multiple sequence of separators, char literal with real LF (ISSUE-007), line separator before semicolon inference
@@ -55,7 +54,7 @@
   - edge cases: underscore at start/end (compile-fail), INT overflow to long, LONG overflow
   - error cases: value too large, hex too large, int overflow, negative too large
 - 2.9.3_Floating_Point_Literals
-  - normal cases: standard float, no-leading-zero, underscore, scientific notation, f/F suffix, type inference double/float, negative/zero/variants
+  - normal cases: standard float, no-leading-zero, underscore, scientific notation, f/F suffix, type inference double/float, negative/zero/variants, hex float (0x1.Fp10)
   - edge cases: NaN/Infinity detection, precision loss, float/double mix, special value ops
   - error cases: float too large, double too large, invalid suffix
 - 2.9.4_Bigint_Literals
@@ -82,6 +81,7 @@
   - normal cases: basic, type usage, comparison, default param, union type, optional param, array init, switch case, logical op
   - edge cases: typeof null, optional chain, nullish coalescing, string concat, template string, func arg, object property
   - error cases: null as identifier
+  - runtime: typeof null returns "object"
 - 2.10_Comments
   - normal cases: single-line, empty line, after code, multiline basic, empty multiline, span, special chars, code snippet, Unicode, EOF variants, multiple comments
   - edge cases: // inside /* */, /* */ inside //, comment as token separator

@@ -8,8 +8,8 @@
 | LEX_02_01_015_FAIL_INVALID_UNICODE_ESCAPE | 2.1 | compile-fail | LEX_02_01_015_FAIL_INVALID_UNICODE_ESCAPE.ets | \u后跟非十六进制字符或位数不足，应编译失败 | compile-fail |
 | LEX_02_01_016_FAIL_INVALID_EXTENDED_ESCAPE | 2.1 | compile-fail | LEX_02_01_016_FAIL_INVALID_EXTENDED_ESCAPE.ets | \u{}中包含无效十六进制、空内容、或超出U+10FFFF范围，应编译失败 | compile-fail |
 | LEX_02_01_017_FAIL_CHAR_REGULAR_STRING | 2.1 | compile-fail | LEX_02_01_017_FAIL_CHAR_REGULAR_STRING.ets | char类型使用普通字符串字面量'A'而非c'A'，应编译失败 | compile-fail |
-| LEX_02_01_018_FAIL_CHAR_RELATIONAL_OP | 2.1 | compile-fail | LEX_02_01_018_FAIL_CHAR_RELATIONAL_OP.ets | 反向用例：spec/cookbook规定char不支持关系运算符 < > <= >=，但编译器实际允许 | compile-fail |
-| LEX_02_01_019_FAIL_CHAR_COMPARE_NUMBER | 2.1 | compile-fail | LEX_02_01_019_FAIL_CHAR_COMPARE_NUMBER.ets | 反向用例：spec/cookbook规定char不能与number直接比较，但编译器实际允许 | compile-fail |
+| LEX_02_01_018_PASS_CHAR_RELATIONAL_OP | 2.1 | compile-pass | LEX_02_01_018_FAIL_CHAR_RELATIONAL_OP.ets | char 关系运算符符合 spec/experimental.md 规定，编译器支持 | compile-pass |
+| LEX_02_01_019_PASS_CHAR_COMPARE_NUMBER | 2.1 | compile-pass | LEX_02_01_019_FAIL_CHAR_COMPARE_NUMBER.ets | char 与 number 比较符合 spec/experimental.md 规定，编译器支持 | compile-pass |
 | LEX_02_01_020_FAIL_DIGIT_START_IDENTIFIER | 2.1 | compile-fail | LEX_02_01_020_FAIL_DIGIT_START_IDENTIFIER.ets | 标识符不能以数字开头，应编译失败 | compile-fail |
 | LEX_02_01_021_FAIL_KEYWORD_AS_IDENTIFIER | 2.1 | compile-fail | LEX_02_01_021_FAIL_KEYWORD_AS_IDENTIFIER.ets | ArkTS硬关键字不能作为标识符，应编译失败 | compile-fail |
 | LEX_02_01_022_FAIL_SURROGATE_IN_IDENTIFIER | 2.1 | compile-fail | LEX_02_01_022_FAIL_SURROGATE_IN_IDENTIFIER.ets | 标识符Unicode转义为孤立代理，应编译失败 | compile-fail |
@@ -659,3 +659,7 @@
 | LEX_02_09_09_018_RT_NULL_OBJ_PROPERTY | 2.9.9 | runtime | LEX_02_09_09_018_RT_NULL_OBJ_PROPERTY.ets | null 在对象属性访问中 | runtime |
 | LEX_02_09_09_019_RT_NULL_OPTIONAL_CHAIN | 2.9.9 | runtime | LEX_02_09_09_019_RT_NULL_OPTIONAL_CHAIN.ets | null 在可选链中 | runtime |
 | LEX_02_09_09_020_RT_NULL_NULLISH_COAL | 2.9.9 | runtime | LEX_02_09_09_020_RT_NULL_NULLISH_COAL.ets | null 在空值合并中 | runtime |
+| LEX_02_03_046_PASS_OGHAM_SPACE_MARK | 2.3 | compile-pass | LEX_02_03_046_PASS_OGHAM_SPACE_MARK.ets | Ogham Space Mark (U+1680) 作为词法分隔符 | compile-pass |
+| LEX_02_03_047_PASS_UNICODE_SPACE_RANGE | 2.3 | compile-pass | LEX_02_03_047_PASS_UNICODE_SPACE_RANGE.ets | U+2000–U+200A 区段空白字符作为词法分隔符 | compile-pass |
+| LEX_02_09_03_022_PASS_HEX_FLOAT | 2.9.3 | compile-pass | LEX_02_09_03_022_PASS_HEX_FLOAT.ets | 十六进制浮点字面量（hex float） | compile-pass |
+| LEX_02_09_09_021_RT_NULL_TYPEOF | 2.9.9 | runtime | LEX_02_09_09_021_RT_NULL_TYPEOF.ets | typeof null 运行时返回值验证 | runtime |

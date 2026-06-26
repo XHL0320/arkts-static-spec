@@ -141,55 +141,31 @@
 
 ---
 
-### ISSUE-005: char 关系运算符编译通过 ⚠️ cookbook/spec 冲突
+### ISSUE-005: char 关系运算符编译通过 ✅ 已解决
 
 **所属章节：** 2.1 Use of Unicode Characters
-**用例文件：** `2.1_Use_of_Unicode_Characters/compile-fail/LEX_02_01_018_FAIL_CHAR_RELATIONAL_OP.ets`
+**用例文件：** `2.1_Use_of_Unicode_Characters/compile-pass/LEX_02_01_018_FAIL_CHAR_RELATIONAL_OP.ets`
 
-**错误信息：** 无（编译通过）
+**分析：**
+- spec/experimental.md 明确允许 char 关系运算符
+- cookbook 中限制描述与 spec 冲突，以 spec 为准
+- 用例已从 compile-fail 移至 compile-pass，`@expect` 已修正
 
-**预期行为：** cookbook/compatibility.md 明确禁止 char 关系运算符，应编译失败
-**实际行为：** 编译器允许 char 关系运算符（与 spec 一致）
-
-**规范依据：**
-- spec/experimental.md 第122-128行: Equality operators and relational operators can be used if both operands are of char type or one operand is of char type and other is of a numeric type.
-- cookbook/compatibility.md: ❌ 禁止 char 关系运算符
-- **结论：spec 权威高于 cookbook，编译器行为与 spec 一致**
-
-**跨语言对比：**
-| 语言 | 代码 | 行为 |
-|------|------|------|
-| ArkTS | `let r: boolean = c'A' < c'B'` | ✅ 编译通过（符合 spec） |
-| Java | `boolean r = 'A' < 'B';` | ✅ 编译通过 |
-| Swift | `let r = Character("A") < Character("B")` | ❌ 编译错误 |
-
-**状态：** ⚠️ cookbook/spec 冲突（编译器行为符合 spec，用例 @expect 应修正为 compile-pass）
+**状态：** ✅ 已解决（用例 @expect 已修正为 compile-pass，文件已移至 compile-pass 目录）
 
 ---
 
-### ISSUE-006: char 与 number 比较编译通过 ⚠️ cookbook/spec 冲突
+### ISSUE-006: char 与 number 比较编译通过 ✅ 已解决
 
 **所属章节：** 2.1 Use of Unicode Characters
-**用例文件：** `2.1_Use_of_Unicode_Characters/compile-fail/LEX_02_01_019_FAIL_CHAR_COMPARE_NUMBER.ets`
+**用例文件：** `2.1_Use_of_Unicode_Characters/compile-pass/LEX_02_01_019_FAIL_CHAR_COMPARE_NUMBER.ets`
 
-**错误信息：** 无（编译通过）
+**分析：**
+- spec/experimental.md 明确允许 char 与 number 比较
+- cookbook 中限制描述与 spec 冲突，以 spec 为准
+- 用例已从 compile-fail 移至 compile-pass，`@expect` 已修正
 
-**预期行为：** cookbook/compatibility.md 明确禁止 char→number widening，应编译失败
-**实际行为：** 编译器允许 char 与 number 比较（与 spec 一致）
-
-**规范依据：**
-- spec/experimental.md 第122-128行: Equality operators and relational operators can be used if one operand is of char type and other is of a numeric type.
-- cookbook/compatibility.md: ❌ 禁止 char→number widening
-- **结论：spec 权威高于 cookbook，编译器行为与 spec 一致**
-
-**跨语言对比：**
-| 语言 | 代码 | 行为 |
-|------|------|------|
-| ArkTS | `let r: boolean = c'A' == 65` | ✅ 编译通过（符合 spec） |
-| Java | `boolean r = 'A' == 65;` | ✅ 编译通过 |
-| Swift | `let r = Character("A") == 65` | ❌ 编译错误 |
-
-**状态：** ⚠️ cookbook/spec 冲突（编译器行为符合 spec，用例 @expect 应修正为 compile-pass）
+**状态：** ✅ 已解决（用例 @expect 已修正为 compile-pass，文件已移至 compile-pass 目录）
 
 ---
 
@@ -270,25 +246,12 @@
 |------|------|
 | 🔴 未解决 | 2 |
 | ⚠️ SPEC 不一致 | 5 |
-| ⚠️ cookbook/spec 冲突 | 2 |
+| ✅ 已解决 | 2 |
 | ⚠️ 待确认（Spec 未明确） | 6 |
 
 | 🔁 转执行异常/Spec不一致跟踪 | 3 |
 
 ---
 
-## 待确认项分布（核查后）
-
-| 章节 | 待确认项 | ID |
-|------|:--:|----|
-| 2.2 Lexical Input Elements | 1 | CONFIRM-002 |
-| 2.3 White Spaces | 1 | CONFIRM-004 |
-| 2.5 Tokens | 2 | CONFIRM-009, CONFIRM-010 |
-| 2.6 Identifiers | 1 | CONFIRM-011 |
-| 2.9.3 Floating-Point Literals | 1 | CONFIRM-025 |
-| **总计** | **6** | — |
-
----
-
 **报告生成人：** OpenCode
-**最后更新：** 2026-06-24
+**最后更新：** 2026-06-26
