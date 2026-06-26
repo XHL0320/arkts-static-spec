@@ -2,7 +2,7 @@
 
 **最后编译验证：** 2026-06-25（es2panda `--extension=ets`，Linux native）
 **总用例数：** 557（223P + 154F + 180R）
-**编译实测：** compile-pass 223/223 通过（含 1 编译器崩溃 C-8.06-02，已归位 compile-pass）；compile-fail 154 按预期失败 + 1 异常通过（C-8.06-01）；runtime 180/180 编译通过。详见 [issue_report.md](issue_report.md)
+**编译实测：** compile-pass 222/223 通过（含 1 编译器崩溃 C-8.06-02，已归位 compile-pass）；compile-fail 154 按预期失败 + 1 异常通过（C-8.06-01）；runtime 180/180 编译通过。详见 [issue_report.md](issue_report.md)
 **覆盖章节：** §8.1-§8.15.3（18 个子章节）
 ---
 
@@ -531,7 +531,7 @@
 | STM_08_05_035_RUNTIME_IF_ELSE_CHAIN | runtime | if-else if-else 链式判断 |
 | STM_08_05_036_RUNTIME_IF_NESTED | runtime | 嵌套 if 语句执行顺序 |
 
-### §8.6 Loop Statements（9P + 11F + 10R）
+### §8.6 Loop Statements（10P + 10F + 10R）
 
 | 用例 ID | 分类 | 测试内容 |
 |---------|------|---------|

@@ -6,7 +6,7 @@
 
 **前缀：** `STM_`
 **主章节号：** 08
-**覆盖汇总：** 557 cases (222P + 155F + 180R)，最后编译验证 2026-06-25（异常见 issue_report.md）
+**覆盖汇总：** 557 cases (223P + 154F + 180R)，最后编译验证 2026-06-25（异常见 issue_report.md）
 
 ---
 
@@ -49,7 +49,7 @@
   - FAIL (2): 当前版本因 Extended Conditional Expressions 覆盖几乎所有类型使 compile-fail 用例极少；预期未来废弃该特性后恢复非 boolean 条件的 compile-fail 检查
   - RUNTIME (8): boolean 条件分支执行、int 条件 truthiness（非0为true）、string 条件 truthiness（非空为true）、float 条件 truthiness、null 条件 falsy、undefined 条件 falsy、嵌套 if-else 正确分支、dangling else 匹配最近 if
 
-### 8.6 Loop Statements `[30: 9P+11F+10R]`
+### 8.6 Loop Statements `[30: 10P+10F+10R]`
 - **定义：** 循环语句的公共规则（标签、label 作用域）
 - **已知问题：** C-8.06-01 — Loop label 未被使用，spec 要求 compile-time error 但 es2panda 未检查此约束。label 在 lambda 内使用的检查正常，但"label 完全未使用"不报错。**当前状态：编译器遗漏 spec 检查项。**
 - 测试点：
