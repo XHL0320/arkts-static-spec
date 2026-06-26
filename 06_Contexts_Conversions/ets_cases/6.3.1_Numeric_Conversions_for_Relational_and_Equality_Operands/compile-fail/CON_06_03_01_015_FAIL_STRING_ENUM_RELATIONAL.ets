@@ -1,5 +1,5 @@
-/**
- * @id CON_06_03_01_015_FAIL_BOOL_LONG_RELATIONAL
+﻿/**
+ * @id CON_06_03_01_015_FAIL_STRING_ENUM_RELATIONAL
  * @expect compile-fail
  * @section 6.3.1
  * @design 关系运算符: boolean <= long, boolean 非数值类型，应编译失败

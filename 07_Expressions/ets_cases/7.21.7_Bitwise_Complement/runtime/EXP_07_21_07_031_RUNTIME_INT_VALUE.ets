@@ -1,5 +1,5 @@
-/**
- * @id EXP_07_21_07_031_RUNTIME_INT
+﻿/**
+ * @id EXP_07_21_07_031_RUNTIME_INT_VALUE
  * @expect runtime
  * @section 7.21.7
  * @design 验证 ~int 运行时值正确：~2=-3, ~(-3)=2, ~0=-1

@@ -1,5 +1,5 @@
-/**
- * @id CON_06_03_01_009_PASS_INT_DOUBLE_LE_GE
+﻿/**
+ * @id CON_06_03_01_009_PASS_INT_FLOAT_RELATIONAL
  * @expect compile-pass
  * @section 6.3.1
  * @design 关系运算符: int <= double / int >= double, int widening 为 double

@@ -1,5 +1,5 @@
-/**
- * @id CON_06_03_01_006_PASS_LONG_DOUBLE_RELATIONAL
+﻿/**
+ * @id CON_06_03_01_006_PASS_FLOAT_DOUBLE_RELATIONAL
  * @expect compile-pass
  * @section 6.3.1
  * @design 关系运算符: long < double, long widening 为 double

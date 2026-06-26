@@ -1,5 +1,5 @@
-/**
- * @id CLS_09_09_009_PASS_SUPER_NAMED_CALL
+﻿/**
+ * @id CLS_09_09_009_FAIL_SUPER_NAMED_CALL
  * @expect compile-fail
  * @section 9.9.2
  * @design 显式super.name()命名构造器调用 — 调用父类命名构造器

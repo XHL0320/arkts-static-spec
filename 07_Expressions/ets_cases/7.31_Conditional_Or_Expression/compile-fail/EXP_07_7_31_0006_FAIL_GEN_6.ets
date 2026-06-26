@@ -1,7 +1,7 @@
-/**
+﻿/**
  * @id EXP_07_7_31_0006_FAIL_GEN_6
  * @expect compile-fail
- * @section 7.7_31
+ * @section 7.31
  * @design 补充用例6
  * @note 反向用例：验证该场景应产生编译时错误。
  */

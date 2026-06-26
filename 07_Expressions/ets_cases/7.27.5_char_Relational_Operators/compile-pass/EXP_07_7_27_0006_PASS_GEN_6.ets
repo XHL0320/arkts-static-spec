@@ -1,7 +1,7 @@
-/**
+﻿/**
  * @id EXP_07_7_27_0006_PASS_GEN_6
  * @expect compile-pass
- * @section 7.7_27
+ * @section 7.27.5
  * @design 补充用例6
  * @note 正向用例：验证该特性编译通过的正确用法。
  */

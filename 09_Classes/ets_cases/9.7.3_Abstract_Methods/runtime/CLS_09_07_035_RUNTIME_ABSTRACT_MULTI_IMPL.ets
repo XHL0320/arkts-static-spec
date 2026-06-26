@@ -1,3 +1,11 @@
+﻿
+/**
+ * @id CLS_09_07_035_RUNTIME_ABSTRACT_MULTI_IMPL
+ * @expect runtime
+ * @section 9.7.3
+ * @design Auto-added metadata
+ * @note Auto-fixed missing metadata
+ */
 abstract class Shape { abstract area(): int }
 class Square extends Shape { override area(): int { return 4 } }
 class Rect extends Shape { override area(): int { return 6 } }

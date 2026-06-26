@@ -1,5 +1,5 @@
-/**
- * @id CON_06_04_03_013_FAIL_INT_ENUM_TO_FLOAT
+﻿/**
+ * @id CON_06_04_03_013_FAIL_INT_ENUM_TO_SHORT
  * @expect compile-fail
  * @section 6.4.3
  * @design int 基类型枚举→short (更小类型), 应编译失败

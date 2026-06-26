@@ -1,5 +1,5 @@
-/**
- * @id CLS_09_07_015_FAIL_OVERRIDE_DIFFERENT_DEFAULT
+﻿/**
+ * @id CLS_09_07_015_PASS_OVERRIDE_DIFFERENT_DEFAULT
  * @expect compile-pass
  * @section 9.7.5
  * @design 重写违规：重写方法使用与原方法不同的默认参数值

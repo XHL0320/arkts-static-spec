@@ -1,5 +1,5 @@
-/**
- * @id CON_06_02_012_FAIL_UNDEFINED_UNDEFINED_PLUS
+﻿/**
+ * @id CON_06_02_012_FAIL_BOOL_BOOL_PLUS
  * @expect compile-fail
  * @section 6.2
  * @design '+' 运算符两侧均为 undefined 且无 string 操作数，不触发 string context，应编译失败

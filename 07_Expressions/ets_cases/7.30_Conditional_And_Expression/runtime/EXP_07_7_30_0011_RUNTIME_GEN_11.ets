@@ -1,7 +1,7 @@
-/**
+﻿/**
  * @id EXP_07_7_30_0011_RUNTIME_GEN_11
  * @expect runtime
- * @section 7.7_30
+ * @section 7.30
  * @design 补充用例11
  * @note 运行时用例：实际执行验证补充用例11
  */

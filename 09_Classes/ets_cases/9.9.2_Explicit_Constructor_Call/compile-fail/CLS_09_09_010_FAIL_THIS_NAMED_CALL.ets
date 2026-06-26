@@ -1,5 +1,5 @@
-/**
- * @id CLS_09_09_010_PASS_THIS_NAMED_CALL
+﻿/**
+ * @id CLS_09_09_010_FAIL_THIS_NAMED_CALL
  * @expect compile-fail
  * @section 9.9.2
  * @design 显式this.name()命名构造器调用 — 同类命名构造器委托
