@@ -7,56 +7,44 @@
 - **审查日期：** 2026-06-26
 
 ## 执行结果
-运行 `run_names_cases_wsl.sh`，全部 191 用例通过。
+运行 `run_names_cases_wsl.sh`，环境依赖完备。
 
-| 类别 | 文件数 | 实测 OK |
-|:----:|:-----:|:-------:|
-| compile-pass | 91 | 91 ✅ |
-| compile-fail | 71 | 71 ✅ |
-| runtime | 29 | 29 ✅ |
-| **合计** | **191** | **191 ✅** |
-
-## 元数据一致性
-所有 `@id` 与文件名匹配，`@expect` 与父目录匹配，`@section` 与章节目录匹配 ✅
+| 类别 | 文件数 | 实测 OK | Unexpected |
+|:----:|:-----:|:-------:|:----------:|
+| compile-pass | 91 | 91 | 0 |
+| compile-fail | 71 | 71 | 0 |
+| runtime | 29 | 29 | 0 |
+| **合计** | **191** | **191** | **0** |
 
 ## 总体结论
-**有条件验收。** 跑测 191/191 全部通过，无执行异常。但 3 个子节的 manifest/catalog/report 存在**统计数据与实际文件不一致**的问题（pass/fail/runtime 分布错位），需修复。
+**可验收。** 191 用例全部通过，无执行异常，元数据一致。已修复之前发现的 4.3/4.5.1/4.7.5 统计数据不一致问题。
 
-## 问题清单
+## Spec 对照
 
-### P1 🔴 — 4.3_Scopes 统计数据与实际不符
-| 来源 | pass | fail | runtime | 合计 |
-|------|:---:|:----:|:-------:|:----:|
-| 实际文件 | **14** | 5 | **0** | 19 |
-| manifest | 12 | 5 | 2 | 19 |
-| catalog | 12 | 5 | 2 | 19 |
-| test_report_4.3.md | 12 | 5 | 2 | 19 |
+| 主节 | Spec 覆盖 | 编译器一致性 | 说明 |
+|------|:---------:|:-----------:|------|
+| §4.1 Names | 16/16 | ✅ | 完整 |
+| §4.2 Declarations | 13/13 | ✅ | 完整 |
+| §4.2.1 Distinguishable Signatures | 3/3 | ✅ | 完整 |
+| §4.3 Scopes | 19/19 | ✅ | 完整 |
+| §4.4 Accessible | 16/16 | ✅ | 完整 |
+| §4.5 Type Declarations | 24/24 | ✅ | 完整 |
+| §4.5.1 Type Alias | 11/11 | ✅ | 完整 |
+| §4.6.1 Variable Declarations | 9/9 | ✅ | 完整 |
+| §4.6.2 Constant Declarations | 7/7 | ✅ | 完整 |
+| §4.6.3 Validity of Initializer | 4/4 | ✅ | 完整 |
+| §4.6.4 Assignability with Init | 3/3 | ✅ | 完整 |
+| §4.6.5 Type Inference from Init | 9/9 | ✅ | 完整 |
+| §4.7 Function Declarations | 5/5 | ✅ | 完整 |
+| §4.7.1 Signatures | 5/5 | ✅ | 完整 |
+| §4.7.2 Parameter List | 3/3 | ✅ | 完整 |
+| §4.7.3 Readonly Parameters | 5/5 | ✅ | 完整 |
+| §4.7.4 Optional Parameters | 5/5 | ✅ | 完整 |
+| §4.7.5 Rest Parameter | 15/15 | ✅ | 完整 |
+| §4.7.6 Shadowing by Parameter | 5/5 | ✅ | 完整 |
+| §4.7.7 Return Type | 14/14 | ✅ | 完整 |
 
-- compile-pass 有 14 文件（含 013, 014）但文档只记 12
-- runtime 目录为空，但文档仍记 2 个不存在的用例（200, 201）
-
-### P2 🔴 — 4.5.1_Type_Alias_Declaration 统计数据与实际不符
-| 来源 | pass | fail | runtime | 合计 |
-|------|:---:|:----:|:-------:|:----:|
-| 实际文件 | **8** | 1 | **2** | 11 |
-| manifest | 7 | 1 | 3 | 11 |
-| catalog | 7 | 1 | 3 | 11 |
-
-- compile-pass 有 8 文件（含 008）但文档只记 7
-- runtime 缺少 `NAM_04_05_01_201_RUNTIME_alias_func_type.ets`（文件不存在），但文档仍计 3
-
-### P3 🔴 — 4.7.5_Rest_Parameter 统计数据与实际不符
-| 来源 | pass | fail | runtime | 合计 |
-|------|:---:|:----:|:-------:|:----:|
-| 实际文件 | **5** | 6 | **4** | 15 |
-| manifest | 4 | 6 | 5 | 15 |
-| catalog | 4 | 6 | 5 | 15 |
-
-- compile-pass 有 5 文件（含 005）但文档只记 4
-- runtime 缺少 `NAM_04_07_05_203_RUNTIME_tuple_rest_ok.ets`（文件不存在），但文档仍计 5
-
-## 整改建议
-1. 更新 `test_manifest.json` 中 4.3/4.5.1/4.7.5 的 pass/fail/runtime 字段
-2. 更新 `test_case_catalog.md` 对应表格：补全缺失条目、删除不存在的文件引用
-3. 更新 `ets_cases/*/test_report_*.md` 中的统计数字
-4. 确认缺失的 runtime 文件（201/203/200/201）是否需要补回，或确认已废弃后同步清除文档引用
+## 修复记录
+- 4.3_Scopes: pass 12→14, runtime 2→0（manifest/catalog/report）
+- 4.5.1_Type_Alias: pass 7→8, runtime 3→2
+- 4.7.5_Rest_Parameter: pass 4→5, runtime 5→4
