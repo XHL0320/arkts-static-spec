@@ -54,15 +54,79 @@ CONC-U OK: 42
 **涉及文件：** `gap/CCY_16_04_04_020~023_GAP_taskpool_*`
 
 **问题描述：**
-`taskpool.execute()` 创建真实 worker 线程执行任务。即使 `main()` 函数执行完毕，这些线程仍然存活，导致 ark 进程不退出。
+`taskpool.execute()` 创建真实 worker 线程执行任务，当前 4 个 runtime 用例均在输出 "verified" 后进程不退出（exit 124 timeout）。
 
-**Spec 依据：** §16.4.4 Taskpool API — taskpool 应提供线程生命周期管理机制。
+**Spec 依据：** §16.4.4 Taskpool API — 定义 `taskpool.execute()`、`Task`、`TaskGroup` 等并行执行 API。
 
-**当前状态：**
-- 编译：✅ 通过（已添加 `taskpool.` 命名空间前缀）
-- 运行时：❌ 输出 "verified" 后进程不退出（exit 124 timeout）
+**源码分析：** 标准库源码位于 `demo/stdlib/std/concurrency/taskpool.ets`
 
-**修复路径：** 需编译器团队在 taskpool 标准库中添加全局终止机制，或在测试中添加显式 `cancel()` 调用。
+**1. Worker 线程模型**
+`GlobalQueueWorker` 继承自 `EAWorker`（真实 OS 线程），其主体循环在 `workerBody()` 中：
+```typescript
+// taskpool.ets:326
+private workerBody() {
+    while (this.isWorkerActive()) {   // ← 只要 active 就一直运行
+        // 等待新任务、执行任务
+    }
+}
+```
+
+**2. 线程保持活跃的机制**
+```typescript
+// taskpool.ets:442-449
+ConcurrencyHelpers.lockGuard(workersMutex, () => {
+    let readyWorkersNum: int = 0;
+    for (let w: GlobalQueueWorker of workers) {
+        if (w.isReadyForTask()) {
+            readyWorkersNum++;
+        }
+    }
+    // 至少保留 WORKERS_MINIMUM 个线程
+    canRetire = workers.size - readyWorkersNum > WORKERS_MINIMUM;
+});
+```
+线程池保持至少 `WORKERS_MINIMUM` 个活跃线程，即使没有待执行任务。
+
+**3. 缺少全局终止 API**
+```typescript
+// taskpool.ets:380
+closeWorker(): void {
+    this.setWorkerActive(false);      // 单个 worker 终止
+}
+
+// taskpool.ets:787
+stopManagerWorker(): void {
+    // 仅内部调用，非公开 API
+}
+
+// taskpool.ets:2898
+export function terminateTask(longTask: LongTask): void {}  // 空实现！
+```
+存在 `stopManagerWorker()` 和 `closeWorker()`，但均**不是公开 API**。`terminateTask()` 是空函数。**没有任何方式可以从外部关闭整个线程池。**
+
+**4. 运行时行为验证**
+```bash
+$ timeout 10 ark ... CCY_16_04_04_020_GAP_taskpool_execute_task/ETSGLOBAL::main
+verified
+Exit: 124   # 输出 "verified" 后进程不退出，被 timeout 杀死
+```
+
+**跨语言对比：**
+
+| 维度 | ArkTS 标准库 | Java | Swift |
+|------|:----------:|:----:|:-----:|
+| 线程池类型 | `taskpool` (GlobalQueueWorker) | `ForkJoinPool` / `ExecutorService` | `TaskPool` (Swift Concurrency) |
+| 默认线程数 | 至少 WORKERS_MINIMUM 常驻 | 根据 CPU 核数自动调整 | 由全局调度器管理 |
+| 程序退出行为 | **❌ 线程阻止进程退出** | ✅ `ExecutorService` 非守护线程 | ✅ 全局调度器自动管理 |
+| 终止 API | ❌ 无公开 shutdown API | ✅ `executor.shutdown()` | ✅ 超出作用域自动取消 |
+| terminateTask | ❌ 空函数 | ✅ `Future.cancel()` | ✅ `Task.cancel()` |
+
+**根因：** `taskpool` 的 worker 线程不是守护线程（daemon），在 `main()` 结束后仍存活。Java 的 `ForkJoinPool` 和 Swift 的全局调度器都有机制在程序出口自动终止或允许进程退出，但 ArkTS taskpool 缺少这一机制。
+
+**修复建议：**
+1. 编译器团队在 taskpool 标准库中添加全局 shutdown API（如 `taskpool.shutdown()`）
+2. 或将 worker 线程改为守护线程，允许进程在 main 结束后退出
+3. 短期：在测试 main() 末尾添加显式的 task 清理或线程终止调用（当前无可用 API，不可行）
 
 ---
 
