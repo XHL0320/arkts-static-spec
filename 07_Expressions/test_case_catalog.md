@@ -1,6 +1,6 @@
 # 07 Expressions Test Case Catalog
 
-> 全量用例目录（共 2110 例，覆盖 7.1–7.36.1 全部 96 节）。
+> 全量用例目录（共 2126 例，覆盖 7.1–7.36.1 全部 96 节）。
 > 数据源：实际 `.ets` 文件路径（SubTopic/Type/CaseFile）+ 头部 `@design`（Purpose）/ `@expect`（Expected）。
 > 最后编译验证：2026-06-26，es2panda `--extension=ets`，Linux native（7.26–7.36.1 全量实测；7.1–7.25 沿用既有分类）。
 > ⚠️ 标注 = 该用例存在 spec 与实现不一致，详见 `issue_report.md`。
@@ -2117,3 +2117,19 @@
 | 2108 | 7.36.1 | runtime | EXP_07_7_36_0011_RUNTIME_GEN_11.ets | 补充用例11 | runtime |
 | 2109 | 7.36.1 | runtime | EXP_07_7_36_0012_RUNTIME_GEN_12.ets | 补充用例12 | runtime |
 | 2110 | 7.36.1 | runtime | EXP_07_7_36_0013_RUNTIME_GEN_13.ets | 补充用例13 | runtime |
+| 2111 | 7.19 | compile-pass | EXP_07_19_001_PASS_BASIC_NON_NULLISH.ets | 非空值基本用法 int/string/Object 应用 ! 编译通过 | compile-pass |
+| 2112 | 7.19 | compile-pass | EXP_07_19_002_PASS_NULLISH_VAR_NON_NULL_VALUE.ets | 空值类型变量持有非空值时 ! 类型窄化编译通过 | compile-pass |
+| 2113 | 7.19 | compile-pass | EXP_07_19_003_PASS_FIELD_ACCESS.ets | obj!.field 字段访问编译通过 | compile-pass |
+| 2114 | 7.19 | compile-pass | EXP_07_19_004_PASS_METHOD_CALL.ets | obj!.method() 方法调用编译通过 | compile-pass |
+| 2115 | 7.19 | compile-pass | EXP_07_19_005_PASS_CHAINED_DOUBLE_BANG.ets | 链式 !! / !!! 编译通过 | compile-pass |
+| 2116 | 7.19 | compile-pass | EXP_07_19_006_PASS_TYPE_NARROWING.ets | ! 将 T\|undefined 窄化为 T 编译通过 | compile-pass |
+| 2117 | 7.19 | compile-pass | EXP_07_19_007_PASS_IN_EXPRESSION.ets | ! 在复合表达式（赋值/算术/条件/三元中）编译通过 | compile-pass |
+| 2118 | 7.19 | compile-pass | EXP_07_19_008_PASS_FUNCTION_ARG.ets | ! 表达式作为函数参数编译通过 | compile-pass |
+| 2119 | 7.19 | compile-fail | EXP_07_19_021_FAIL_VOID_EXPRESSION.ets | void 表达式应用 ! 预期编译时错误 ⚠️ | compile-fail |
+| 2120 | 7.19 | compile-fail | EXP_07_19_022_FAIL_ALWAYS_NULLISH_ASSIGN.ets | undefined! 赋值给非空类型预期编译时错误 ⚠️ | compile-fail |
+| 2121 | 7.19 | runtime | EXP_07_19_031_RUNTIME_NON_NULL_VALUE.ets | 运行时非空值返回原值（int=42, string=hello） | runtime |
+| 2122 | 7.19 | runtime | EXP_07_19_032_RUNTIME_UNDEFINED_THROWS.ets | undefined! 运行时抛出 NullPointerError | runtime |
+| 2123 | 7.19 | runtime | EXP_07_19_033_RUNTIME_NULL_THROWS.ets | null! 运行时抛出 NullPointerError | runtime |
+| 2124 | 7.19 | runtime | EXP_07_19_034_RUNTIME_FIELD_ACCESS.ets | obj!.field 运行时返回字段值 99 | runtime |
+| 2125 | 7.19 | runtime | EXP_07_19_035_RUNTIME_METHOD_CALL.ets | obj!.method() 运行时返回值 30 | runtime |
+| 2126 | 7.19 | runtime | EXP_07_19_036_RUNTIME_CHAINED_ASSERT.ets | ! 在算术表达式中运行时正确计算 sum=10, y=11 | runtime |
