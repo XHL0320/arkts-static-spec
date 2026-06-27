@@ -5,7 +5,7 @@
 | ID | Case | Symptom | Expected | Actual | Status |
 |:---|------|--------|---------|--------|--------|
 | CONC-U | CCY_16_04_02_003/004 | `launch<T>(async () => { await ...; return ...; })` 编译器崩溃 | compile-pass | es2panda CRASH（段错误） | C类-编译器崩溃 |
-| CONC-G2 | CCY_16_04_04_020~023_GAP | `taskpool.execute()` 创建线程不退出 | runtime | 编译通过✅但运行时 hang（exit 124） | C类-运行时线程未终止 |
+| CONC-G2 | CCY_16_04_04_020~023_FAIL_taskpool_* | `taskpool.execute()` 参数合法性未被编译器拒绝 | compile-fail | 编译通过（应报错） | C类-边界未拒绝 |
 | CONC-A4 | 16.5.5 Atomic（4） | `AtomicInt`/`AtomicBoolean`/`AtomicReference` 使用 `native` 方法，运行时未链接 | compile-pass/runtime | `type does not exist` | C类-标准库native未链接 |
 | CONC-A5 | 16.5.6 Concurrent（2） | `ConcurrentMap` 不存在（最近为 `std.containers.ConcurrentHashMap`） | compile-pass/runtime | `Cannot find type` | C类-标准库不存在 |
 | CONC-B1 | 16.6.3~16.6.5 部分用例 | `Promise<T>` 泛型参数无法推断 | compile-pass | 编译失败 | C类-泛型推导 |
@@ -51,7 +51,7 @@ CONC-U OK: 42
 
 ### CONC-G2 — Taskpool 运行时线程不终止（编译通过，运行时 hang）⭐⭐⭐ HIGH
 
-**涉及文件：** `gap/CCY_16_04_04_020~023_GAP_taskpool_*`
+**涉及文件：** `CCY_16_04_04_020~023_FAIL_taskpool_*`
 
 **问题描述：**
 `taskpool.execute()` 创建真实 worker 线程执行任务，当前 4 个 runtime 用例均在输出 "verified" 后进程不退出（exit 124 timeout）。
@@ -106,7 +106,7 @@ export function terminateTask(longTask: LongTask): void {}  // 空实现！
 
 **4. 运行时行为验证**
 ```bash
-$ timeout 10 ark ... CCY_16_04_04_020_GAP_taskpool_execute_task/ETSGLOBAL::main
+$ timeout 10 ark ... CCY_16_04_04_020_FAIL_taskpool_execute_task/ETSGLOBAL::main
 verified
 Exit: 124   # 输出 "verified" 后进程不退出，被 timeout 杀死
 ```
@@ -129,7 +129,6 @@ Exit: 124   # 输出 "verified" 后进程不退出，被 timeout 杀死
 3. 短期：在测试 main() 末尾添加显式的 task 清理或线程终止调用（当前无可用 API，不可行）
 
 ---
-
 ### CONC-A4 — Atomic 类型（AtomicInteger/AtomicBoolean/AtomicReference）未定义（§16.5.5）⭐⭐⭐ HIGH
 
 **涉及文件（4 个）：** `16.5.5_Atomic_Operations/` 下全部 compile-pass（1）和 runtime（3）用例

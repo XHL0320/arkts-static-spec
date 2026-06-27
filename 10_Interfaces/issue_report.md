@@ -4,7 +4,7 @@
 
 | ID | Case | Symptom | Expected | Actual | Status |
 |---|------|--------|---------|--------|--------|
-| C-10.03-01 | ITF_10_03_101_FAIL_object_method_clash_return_gap | 接口中 `toString(): string` 返回值冲突未被拒绝 | compile-time error | 编译通过 | C类-编译器未实现 |
+| C-10.03-01 | ITF_10_03_101_FAIL_OBJECT_METHOD_CLASH_RETURN_GAP | 接口中 `toString(): string` 返回值冲突未被拒绝 | compile-time error | 编译通过 | C类-编译器未实现 |
 
 ### 用例规模与覆盖分布
 
@@ -28,7 +28,7 @@
 
 - **问题描述：** Spec §10.3 规定接口中与 Object 公有方法同名的声明应报编译错误。编译器未拒绝返回值冲突的声明 `toString(): string`（Spec 示例明确标注为 compile-time error）。
 - **Spec 依据：** §10.3 Interface Members - "A compile-time error occurs if the method explicitly declared by the interface has the same name as the Object's public method"
-- **复现用例 ID：** ITF_10_03_101_FAIL_object_method_clash_return_gap
+- **复现用例 ID：** ITF_10_03_101_FAIL_OBJECT_METHOD_CLASH_RETURN_GAP
 - **实测结果：**
   ```typescript
   interface I {
@@ -58,8 +58,8 @@
 
 - **问题描述：** Spec §10.3 要求接口中与 Object 公有方法同名的声明应报编译错误，但未明确说明参数不同、返回值不同等边界情况的处理。
 - **涉及案例：**
-  - `ITF_10_03_003_PASS_object_method_clash.ets`：参数不同的同名方法，编译器未拒绝
-  - `ITF_10_03_101_FAIL_object_method_clash_return_gap.ets`：返回值冲突，编译器未拒绝（C-10.03-01）
+  - `ITF_10_03_003_PASS_OBJECT_METHOD_CLASH.ets`：参数不同的同名方法，编译器未拒绝
+  - `ITF_10_03_101_FAIL_OBJECT_METHOD_CLASH_RETURN_GAP.ets`：返回值冲突，编译器未拒绝（C-10.03-01）
 - **跨语言对比：**
 
 | 语言 | Object 方法冲突规则 | 边界情况处理 |
