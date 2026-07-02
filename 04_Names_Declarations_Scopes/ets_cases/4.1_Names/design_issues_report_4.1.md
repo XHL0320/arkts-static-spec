@@ -19,29 +19,15 @@
 
 ## 一、行为差异与规范一致性概览
 
-### 问题 A-4.1：保留名清单不完整 ⭐⭐ MEDIUM
+### 说明 D-4.1：保留名清单可读性建议
 
 **用例：** NAM_04_01_105_FAIL_type_keyword
 
-**实际行为：**
-```typescript
-let int: number = 1;  // ❌ Semantic error: 'int' is a reserved name
-let string: string = "hello";  // ❌ Semantic error
-```
-
-**Spec 依据：** §4.2 行 179-191 仅列出 `number`、`String`、`Record`、`Object`、`Array` 作为预定义类型名冲突的示例，未完整列举所有保留名。
-
-**对比：**
-| 语言 | 保留名管理 |
-|------|-----------|
-| ArkTS | 编译器保留 `int`、`string`、`Box` 等，但 Spec 未完整列举 |
-| Java | JLS 明确定义所有关键字和保留名 |
-| Swift | 关键字可用反引号转义，保留名管理灵活 |
-| TypeScript | 部分关键字可作变量名 |
-
-**影响：** 用户不知道哪些名称不能使用，只能依赖编译器报错。
-
-**建议：** Spec 应完整列举所有保留名，或引用独立的保留名清单文档。
+**说明：**
+- Spec §4.2 以示例形式列出 `number`、`String` 等作为预定义类型名冲突，§2.7 关键词表已完整列出所有硬关键字、类型关键字、软关键字。
+- 当前用例按预期编译失败（正确检测到关键字冲突），说明实现行为与规范一致。
+- `int`、`string`、`Box` 等保留名的完整映射在 §2.7 Keywords 的 predefined type 表中已有定义。
+- 此问题属于规范可读性建议（是否在 §4.2 增加保留名清单的交叉引用），不属于 Spec/实现不一致或实现缺陷。
 
 ---
 
@@ -104,7 +90,7 @@ let string: string = "hello";  // ❌ Semantic error
 | 严重性 | 数量 | 问题列表 |
 |-------|------|---------|
 | ⭐⭐⭐ HIGH | 0 | 无 |
-| ⭐⭐ MEDIUM | 1 | 问题 A-4.1 保留名清单不完整 |
+| ⭐⭐ MEDIUM | 0 | 无 |
 | ⭐ LOW | 0 | 无 |
 
 ---

@@ -19,29 +19,9 @@
 
 ## 一、行为差异与规范一致性概览
 
-### 问题 A-4.6：`int` 作为隐式推断类型未正式定义 ⭐⭐ MEDIUM
+### 说明 D-4.6：`int`/`double` 推断 — 规范一致行为
 
-**用例：** NAM_04_06_05_101_FAIL_const_object_literal_infer
-
-**实际行为：**
-```typescript
-let x = 42;  // 推断为 int（Spec 未定义 int 类型）
-const y = 42;  // const 保留字面量类型
-```
-
-**Spec 依据：** §4.6.5 在示例注释中广泛使用 `int` 作为类型名，但 Spec 正文从未正式定义 `int` 为关键字或基本类型。
-
-**对比：**
-| 语言 | 数值类型推断 |
-|------|-------------|
-| ArkTS | 推断为 `int`/`double`（实现），但 Spec 未定义 |
-| Java | 推断为 `int`/`double`（JLS 明确定义） |
-| Swift | 推断为 `Int`/`Double`（标准库类型） |
-| TypeScript | 推断为 `number` |
-
-**影响：** Spec 与实现不一致，用户困惑。
-
-**建议：** Spec 应明确定义 `int`、`double` 等基础类型。
+**根据 ArkTS 规范第 4 章（Names §4.6.5）及 types.md 定义，`int`、`double`、`byte`、`short`、`long`、`float`、`char`、`boolean` 等均为预设基本类型的正式名称，字面量推断规则（let 推断为 int、三元推断为 int|double）已在 §4.6.5 Type Inference from Initializer 中通过示例给出。因此该行为符合规范，不属于设计缺陷或 Spec/实现不一致。**
 
 ---
 
@@ -85,7 +65,7 @@ const y = 42;  // const 保留字面量类型
 | 严重性 | 数量 | 问题列表 |
 |-------|------|---------|
 | ⭐⭐⭐ HIGH | 0 | 无 |
-| ⭐⭐ MEDIUM | 1 | 问题 A-4.6 `int` 作为隐式推断类型未正式定义 |
+| ⭐⭐ MEDIUM | 0 | 无 |
 | ⭐ LOW | 0 | 无 |
 
 ---

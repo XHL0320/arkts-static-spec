@@ -19,28 +19,9 @@
 
 ## 一、行为差异与规范一致性概览
 
-### 问题 A-4.6.5：`int` 类型推断未正式定义 ⭐⭐ MEDIUM
+### 说明 A-4.6.5：`int`/`double` 推断 — 规范一致行为
 
-**用例：** NAM_04_06_05_101_FAIL_const_object_literal_infer
-
-**实际行为：**
-```typescript
-let x = 42;  // 推断为 int（Spec 未定义 int 类型）
-```
-
-**Spec 依据：** §4.6.5 在示例注释中广泛使用 `int` 作为类型名，但 Spec 正文从未正式定义 `int` 为关键字或基本类型。
-
-**对比：**
-| 语言 | 数值字面量类型推断 |
-|------|-------------------|
-| ArkTS | 推断为 `int`/`double`（实现） |
-| Java | 推断为 `int`/`double`（JLS 定义） |
-| Swift | 推断为 `Int`/`Double`（标准库） |
-| TypeScript | 推断为 `number` |
-
-**影响：** Spec 与实现不一致，用户困惑。
-
-**建议：** Spec 应明确定义 `int`、`double` 等基础类型及其推断规则。
+**根据 ArkTS 规范 §4.6.5 Type Inference from Initializer，`int`、`double` 等是预设基本类型的正式名称。字面量推断规则（let 推断为 int、三元推断为 int|double）已在 §4.6.5 中通过示例给出。该行为符合规范，不属于设计缺陷或 Spec/实现不一致。**
 
 ---
 
