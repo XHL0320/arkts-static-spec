@@ -1,7 +1,7 @@
 # 5.1 Type Parameters - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
 **报告日期：** 2026-06-22
-**测试用例数：** 30+（compile-pass + compile-fail + runtime）
+**测试用例数：** 11（5 compile-pass + 4 compile-fail + 2 runtime）
 **目的：** 通过用例执行（编译期 + 真实运行时）+ 跨语言对比，识别 ArkTS 泛型类型参数的设计问题
 
 ---

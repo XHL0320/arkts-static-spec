@@ -21,6 +21,8 @@ ArkTS behavior in this section is consistent with Java/Swift norms.
 **实测日期：** 2026-06-24
 **实测环境：** ArkTS (es2panda + ark) / Java (javac + java SE 21) / Swift (5.10, /opt/swift/usr/bin/swift)
 
+**验证用例：** GEN_05_02_02_001~005 (PASS), GEN_05_02_02_100~102 (FAIL), GEN_05_02_02_200 (RUNTIME)
+
 | 语言 | 编译 | 运行 | 验证结论 |
 |------|------|------|---------|
 | ArkTS | ✅ es2panda 编译通过 | ✅ ark 运行通过 | 行为符合预期 |

@@ -2,8 +2,8 @@
 
 ## Overview
 - **Section:** 5.1.1
-- **Total Cases:** 12
-- **Pass:** 12
+- **Total Cases:** 13
+- **Pass:** 13
 - **Fail:** 0
 
 ## Results
@@ -11,9 +11,9 @@
 | Category | Count | Status |
 |----------|:-----:|:------:|
 | compile-pass | 6 | ✅ |
-| compile-fail | 5 | ✅ |
+| compile-fail | 6 | ✅ |
 | runtime | 1 | ✅ |
-| **Total** | **12** | ✅ |
+| **Total** | **13** | ✅ |
 
 ## Notes
 - All cases pass

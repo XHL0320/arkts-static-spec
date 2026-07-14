@@ -1,7 +1,7 @@
 # 5.1.1 Type Parameter Constraint - ArkTS 与 Java/Swift/TS 行为差异及规范一致性报告
 
 **报告日期：** 2026-06-22
-**测试用例数：** 20+（compile-pass + compile-fail）
+**测试用例数：** 13（6 compile-pass + 6 compile-fail + 1 runtime）
 **目的：** 通过用例执行（编译期）+ 跨语言对比，识别 ArkTS 类型参数约束的设计问题
 
 ---
@@ -41,13 +41,14 @@
 
 | 行为 | 用例 | 状态 |
 |------|------|------|
-| 类约束 `T extends MyClass` | GEN_05_01_101 | ✅ |
-| 联合约束 `T extends A \| B` | GEN_05_01_102 | ✅ |
-| 字面量联合约束 `T extends "a" \| "b"` | GEN_05_01_103 | ✅ |
-| keyof 约束 `T extends keyof U` | GEN_05_01_104 | ✅ |
-| 依赖约束 `T extends U, V extends T` | GEN_05_01_105 | ✅ |
-| 派生约束 `T extends Parent<U>` | GEN_05_01_106 | ✅ |
-| 约束不满足编译拒绝 | GEN_05_01_107 | ✅ |
+| 类约束 `T extends MyClass` | GEN_05_01_01_001 | ✅ |
+| 联合约束 `T extends A \| B` | GEN_05_01_01_002 | ✅ |
+| 字面量联合约束 `T extends "a" \| "b"` | GEN_05_01_01_003 | ✅ |
+| keyof 约束 `T extends keyof U` | GEN_05_01_01_004 | ✅ |
+| 依赖约束 `T extends U, V extends T` | GEN_05_01_01_005 | ✅ |
+| 派生约束 `T extends Parent<U>` | GEN_05_01_01_006 | ✅ |
+| 约束不满足编译拒绝 | GEN_05_01_01_100 | ✅ |
+| 无约束T不兼容Object | GEN_05_01_01_105 | ✅ |
 
 ---
 
