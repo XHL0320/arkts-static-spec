@@ -1,5 +1,5 @@
 /**
- * @id GEN_05_02_02_103_FAIL_PROVABLY_DISTINCT
+ * @id GEN_05_02_02_106_FAIL_PROVABLY_DISTINCT
  * @expect compile-fail
  * @section 5.2.2
  * @design provably distinct泛型实例化不兼容

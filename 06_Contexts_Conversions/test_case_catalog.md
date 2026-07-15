@@ -1,6 +1,6 @@
-# 06 Contexts and Conversions Test Case Catalog
+﻿# 06 Contexts and Conversions Test Case Catalog
 
-**总用例数：** 263（111P + 60F + 92R）
+**总用例数：** 264（111P + 60F + 93R）
 
 | Section | compile-pass | compile-fail | runtime | Total |
 |---|---:|---:|---:|---:|
@@ -15,7 +15,7 @@
 | 6.4.3 Enumeration to Numeric | 9 | 4 | 4 | 17 |
 | 6.4.4 Enumeration to string | 5 | 3 | 2 | 10 |
 | 6.5 Numeric Casting Conversions | 8 | 2 | 12 | 22 |
-| **Total** | **111** | **60** | **92** | **263** |
+| **Total** | **111** | **60** | **92** | **264** |
 
 ## 覆盖摘要
 

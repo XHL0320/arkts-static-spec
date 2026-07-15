@@ -9,7 +9,7 @@ ets_cases/
 ├── 5.1.2_Type_Parameter_Default/           # §5.1.2 类型参数默认值
 ├── 5.1.3_Type_Parameter_Variance/          # §5.1.3 类型参数变体
 ├── 5.1.4_Wildcard_Type/                    # §5.1.4 通配符类型
-├── 5.2_Generics_Instantiations/5.2.1_Type_Arguments/                   # §5.2.1 类型实参
+├── 5.2.1_Type_Arguments/                   # §5.2.1 类型实参
 ├── 5.2.2_Explicit_Generic_Instantiations/  # §5.2.2 显式泛型实例化
 └── 5.2.3_Implicit_Generic_Instantiations/  # §5.2.3 隐式泛型实例化
 ```

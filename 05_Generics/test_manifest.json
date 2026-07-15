@@ -3,7 +3,7 @@
     "topic":  "Generics",
     "directory":  "05_Generics",
     "prefix":  "GEN_",
-    "total_cases":  106,
+    "total_cases":  111,
     "case_roots":  [
                        "ets_cases"
                    ],
@@ -13,45 +13,45 @@
                        "runtime"
                    ],
     "stats":  {
-                  "5.2.2_Explicit_Generic_Instantiations":  {
-                                                                "runtime":  2,
-                                                                "compile-pass":  10,
-                                                                "compile-fail":  4
-                                                            },
-                  "5.1.4_Wildcard_Type":  {
-                                              "runtime":  1,
-                                              "compile-pass":  3,
-                                              "compile-fail":  8
-                                          },
-                  "5.1_Type_Parameters":  {
-                                              "runtime":  2,
-                                              "compile-pass":  5,
-                                              "compile-fail":  4
-                                          },
-                  "5.1.1_Type_Parameter_Constraint":  {
-                                                          "runtime":  1,
-                                                          "compile-pass":  9,
-                                                          "compile-fail":  11
-                                                      },
-                  "5.1.3_Type_Parameter_Variance":  {
-                                                        "runtime":  2,
-                                                        "compile-pass":  12,
-                                                        "compile-fail":  6
-                                                    },
-                  "5.2.1_Type_Arguments":  {
-                                               "runtime":  1,
-                                               "compile-pass":  5,
-                                               "compile-fail":  1
+                   "5.1_Type_Parameters":  {
+                                               "runtime":  2,
+                                               "compile-pass":  6,
+                                               "compile-fail":  4
                                            },
-                  "5.1.2_Type_Parameter_Default":  {
-                                                       "runtime":  3,
-                                                       "compile-pass":  4,
-                                                       "compile-fail":  2
-                                                   },
-                  "5.2.3_Implicit_Generic_Instantiations":  {
-                                                                "runtime":  3,
-                                                                "compile-pass":  3,
-                                                                "compile-fail":  4
-                                                            }
-              }
+                   "5.1.1_Type_Parameter_Constraint":  {
+                                                           "runtime":  1,
+                                                           "compile-pass":  9,
+                                                           "compile-fail":  11
+                                                       },
+                   "5.1.2_Type_Parameter_Default":  {
+                                                        "runtime":  3,
+                                                        "compile-pass":  5,
+                                                        "compile-fail":  2
+                                                    },
+                   "5.1.3_Type_Parameter_Variance":  {
+                                                         "runtime":  3,
+                                                         "compile-pass":  11,
+                                                         "compile-fail":  8
+                                                     },
+                   "5.1.4_Wildcard_Type":  {
+                                               "runtime":  1,
+                                               "compile-pass":  3,
+                                               "compile-fail":  9
+                                           },
+                   "5.2.1_Type_Arguments":  {
+                                                "runtime":  1,
+                                                "compile-pass":  5,
+                                                "compile-fail":  1
+                                            },
+                   "5.2.2_Explicit_Generic_Instantiations":  {
+                                                                 "runtime":  2,
+                                                                 "compile-pass":  10,
+                                                                 "compile-fail":  4
+                                                             },
+                   "5.2.3_Implicit_Generic_Instantiations":  {
+                                                                 "runtime":  3,
+                                                                 "compile-pass":  3,
+                                                                 "compile-fail":  4
+                                                             }
+               }
 }

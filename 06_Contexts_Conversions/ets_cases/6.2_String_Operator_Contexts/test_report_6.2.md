@@ -5,9 +5,11 @@
 | 分类 | 总数 | 通过 | 失败 | 通过率 |
 |------|------|------|------|--------|
 | compile-pass | 11 | 11 | 0 | 100% |
-| compile-fail | 5 | 5 | 0 | 100% |
+| compile-fail | 6 | 5 | 1* | 83%* |
 | runtime（真实执行） | 11 | 11 | 0 | 100% |
-| **总计** | **27** | **27** | **0** | **100%** |
+| **总计** | **28** | **27** | **1** | **96%** |
+
+> *1 个 FAIL 用例是 spec 要求报错但编译器接受的 D 类异常（Spec 与实现不一致），保留在 compile-fail 目录并标注 ⚠️ SPEC 不一致。
 
 ## 详细执行结果
 
@@ -34,6 +36,7 @@
 | 13 | CON_06_02_013_FAIL_ENUM_ENUM_PLUS | enum + enum 应失败 | PASS |
 | 14 | CON_06_02_014_FAIL_NULL_NULL_PLUS | null + null 应失败 | PASS |
 | 15 | CON_06_02_015_FAIL_OBJECT_OBJECT_PLUS | object + object 应失败 | PASS |
+| 16 | CON_06_02_016_FAIL_VOID_STRING_CONCAT | void + string ⚠️ SPEC 不一致：编译器接受 | ❌ |
 
 ### runtime
 | # | 用例 ID | 验证内容 | 断言数 | 结果 |

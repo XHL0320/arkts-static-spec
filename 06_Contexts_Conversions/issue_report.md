@@ -4,6 +4,7 @@
 
 | ID | Case | Symptom | Expected | Actual | Status |
 |---|------|--------|---------|--------|--------|
+| D-6.02-01 | CON_06_02_016_FAIL_VOID_STRING_CONCAT | void + string 应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
 | D-6.02-02 | CON_06_02_017_RUNTIME_FLOAT_STRING_CONVERSION | 浮点零字符串化丢失 `.0` | `0.0` 转 string 保留无信息丢失表示 | `0.0 + "..."` 得到 `"0..."` | D类-Spec不一致 |
 | D-6.02-03 | stdlib 类名冲突 | 用户类名 `Box` 与 stdlib 冲突 | 用户可定义普通类名或文档明确保留名 | `class Box` 报已定义 | D类-Spec不一致 |
 | D-6.03-01 | CON_06_03_01_015 原 string enum `<` | string enum 支持关系比较 | string enum 不应进入 numeric relational context，或 spec 明确允许 | 编译器允许 string enum `<` 比较 | D类-Spec不一致 |
@@ -13,6 +14,15 @@
 | D-6.04-03 | CON_06_04_02_* | subtyping match 被计入 union widening 候选 | 仅“更大 numeric type”参与唯一性判断 | `int→byte|int|long` 因相等成员+更大成员被拒绝 | D类-Spec不一致 |
 
 ### 异常详情
+
+**D-6.02-01** ⭐⭐ MEDIUM — `void + string` 编译通过
+
+- Spec §6.2 列出 integer、floating、boolean、enum(nullish)、string、reference toString() 的 string conversion 规则，未列出 `void`。
+- 实际：`"result: " + voidFunction()` 编译通过，void 返回值被当作可转换值处理。
+- 原用例被 AI 不当替换为 `true + false`，已恢复为 `CON_06_02_016_FAIL_VOID_STRING_CONCAT`。
+- Java/Swift 均拒绝 void/Void 直接参与字符串拼接。
+- 建议：明确 void 是否可转 string；若不可，应产生 compile-time error。
+- 分类：D 类（Spec 与实现不一致）
 
 **D-6.02-02** ⭐ LOW — 浮点零字符串化丢失 `.0`
 
@@ -76,6 +86,7 @@
 | compile-pass | 111 |
 | compile-fail | 60 |
 | runtime | 92 |
-| 当前未解决 issue | 6 |
+| 当前未解决 issue | 7 |
 
-> 注：D-6.01-01（float 字面量）、D-6.01-02（`as` cast）、D-6.02-01（`void+string`，无用例对应）已移除。
+> 注：D-6.01-01（float 字面量）、D-6.01-02（`as` cast）已移除——编译器行为符合 spec。
+> D-6.02-01 已恢复：原用例被不当隐藏，已重新创建 `CON_06_02_016_FAIL_VOID_STRING_CONCAT` 跟踪。
