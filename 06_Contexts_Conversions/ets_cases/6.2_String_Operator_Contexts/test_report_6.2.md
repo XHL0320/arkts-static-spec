@@ -4,10 +4,10 @@
 
 | 分类 | 总数 | 通过 | 失败 | 通过率 |
 |------|------|------|------|--------|
-| compile-pass | 10 | 10 | 0 | 100% |
+| compile-pass | 11 | 11 | 0 | 100% |
 | compile-fail | 5 | 5 | 0 | 100% |
-| runtime（真实执行） | 10 | 10 | 0 | 100% |
-| **总计** | **25** | **25** | **0** | **100%** |
+| runtime（真实执行） | 11 | 11 | 0 | 100% |
+| **总计** | **27** | **27** | **0** | **100%** |
 
 ## 详细执行结果
 
@@ -24,11 +24,12 @@
 | 8 | CON_06_02_008_PASS_REFERENCE_STRING_CONCAT | class 引用类型 + string (toString()) | PASS |
 | 9 | CON_06_02_009_PASS_MULTI_CONCAT | 多重混合类型 '+' 级联 | PASS |
 | 10 | CON_06_02_010_PASS_UNION_NULLISH_STRING_CONCAT | string\|null\|undefined + string 拼接 | PASS |
+| 11 | CON_06_02_026_PASS_BIGINT_STRING_CONCAT | bigint + string 拼接（spec 示例） | PASS |
 
 ### compile-fail
 | # | 用例 ID | 测试内容 | 结果 |
 |---|---------|---------|------|
-| 11 | CON_06_02_011_FAIL_NO_STRING_OPERAND | 无 string 操作数的 '+' 应失败 | PASS |
+| 11 | CON_06_02_011_FAIL_BOOL_BOOL_PLUS | boolean + boolean 应失败（无 string 操作数） | PASS |
 | 12 | CON_06_02_012_FAIL_UNDEFINED_UNDEFINED_PLUS | undefined + undefined 应失败 | PASS |
 | 13 | CON_06_02_013_FAIL_ENUM_ENUM_PLUS | enum + enum 应失败 | PASS |
 | 14 | CON_06_02_014_FAIL_NULL_NULL_PLUS | null + null 应失败 | PASS |
@@ -47,6 +48,7 @@
 | 23 | CON_06_02_023_RUNTIME_CLASS_TOSTRING_CONVERSION | class 实例 → toString() | 1 | PASS |
 | 24 | CON_06_02_024_RUNTIME_UNION_NULLISH_STRING | string\|null\|undefined 各分支转换 | 3 | PASS |
 | 25 | CON_06_02_025_RUNTIME_MULTI_TYPE_CONCAT | 多类型混合拼接综合验证 | 4 | PASS |
+| 26 | CON_06_02_027_RUNTIME_BIGINT_STRING_CONCAT | bigint + string 运行时行为 | 1 | PASS |
 
 ## 执行过程异常修复记录
 

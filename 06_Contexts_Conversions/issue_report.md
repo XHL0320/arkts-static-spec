@@ -4,11 +4,8 @@
 
 | ID | Case | Symptom | Expected | Actual | Status |
 |---|------|--------|---------|--------|--------|
-| D-6.01-01 | CON_06_01 / CON_06_04_01 | float 字面量类型歧义 | `float` 可直接接收 float 字面量或有明确后缀 | `let f: float = 3.14` 编译失败，需间接赋值或 `.toFloat()` | D类-Spec不一致 |
-| D-6.01-02 | CON_06_01 / CON_06_04_01 / CON_06_05 | 数值类型 `as` cast 被废弃 | 明确 `as` 与 `.toXxx()` 的分工，或不废弃可用语法 | `b as int` 报 deprecated，强制使用 `.toInt()` | D类-Spec不一致 |
-| D-6.02-01 | CON_06_02_011 原 void 版本 | `void + string` 编译通过 | compile-time error | 编译通过，void 被用于 string concatenation | D类-Spec不一致 |
 | D-6.02-02 | CON_06_02_017_RUNTIME_FLOAT_STRING_CONVERSION | 浮点零字符串化丢失 `.0` | `0.0` 转 string 保留无信息丢失表示 | `0.0 + "..."` 得到 `"0..."` | D类-Spec不一致 |
-| D-6.02-03 | CON_06_02_023 原 Box 版本 | 用户类名 `Box` 与 stdlib 冲突 | 用户可定义普通类名或文档明确保留名 | `class Box` 报已定义 | D类-Spec不一致 |
+| D-6.02-03 | stdlib 类名冲突 | 用户类名 `Box` 与 stdlib 冲突 | 用户可定义普通类名或文档明确保留名 | `class Box` 报已定义 | D类-Spec不一致 |
 | D-6.03-01 | CON_06_03_01_015 原 string enum `<` | string enum 支持关系比较 | string enum 不应进入 numeric relational context，或 spec 明确允许 | 编译器允许 string enum `<` 比较 | D类-Spec不一致 |
 | D-6.03-02 | CON_06_03_02_* | char 无符号范围未在 spec 说明 | spec 明确 char 范围/无符号语义 | 实现表现为 0~65535 无符号 char | D类-Spec不一致 |
 | D-6.04-01 | CON_06_04_02_* | widening numeric to union “恰好一个更大成员”规则过严 | 可选择最近更大类型，或 spec 明确严格唯一规则 | `byte→short|int` 因多个更大成员被拒绝 | D类-Spec不一致 |
@@ -16,28 +13,6 @@
 | D-6.04-03 | CON_06_04_02_* | subtyping match 被计入 union widening 候选 | 仅“更大 numeric type”参与唯一性判断 | `int→byte|int|long` 因相等成员+更大成员被拒绝 | D类-Spec不一致 |
 
 ### 异常详情
-
-**D-6.01-01** ⭐⭐ MEDIUM — float 字面量类型歧义
-
-- Spec 表中允许 `int→float`、`long→float` 等 widening，但 `3.14` 字面量按 double 处理，`let f: float = 3.14` 编译失败。
-- Java 支持 `3.14f`；Swift 可由上下文推断 `Float`；ArkTS 当前缺少 float 字面量后缀。
-- 建议：支持 `3.14f` / `3.14F`，或在 spec 中明确 double 字面量不可直接初始化 float。
-- 分类：D 类（Spec 与实现/文档不一致）
-
-**D-6.01-02** ⭐⭐ MEDIUM — 数值类型 `as` cast 被废弃
-
-- `b as int` 等数值 cast 被标记 deprecated，但 6.5 又规定 numeric casting conversion。
-- Java 使用 `(int)b`，Swift 使用 `Int(b)`；ArkTS 当前要求 `.toInt()`，但 spec 对 `as` 与 `.toXxx()` 的边界不够清晰。
-- 建议：明确数值 cast 只能使用 `.toXxx()`，或恢复 `as` 的正式语义。
-- 分类：D 类（Spec 与实现/文档不一致）
-
-**D-6.02-01** ⭐⭐ MEDIUM — `void + string` 编译通过
-
-- Spec §6.2 列出 integer、floating、boolean、enum、nullish、reference 等 string conversion，未列出 `void`。
-- 实际：`"result: " + voidFunction()` 编译通过。
-- Java/Swift 均拒绝 void/Void 直接参与字符串拼接。
-- 建议：明确 void 是否可转 string；若不可，应产生 compile-time error。
-- 分类：D 类（Spec 与实现不一致）
 
 **D-6.02-02** ⭐ LOW — 浮点零字符串化丢失 `.0`
 
@@ -49,7 +24,8 @@
 
 **D-6.02-03** ⭐ LOW — 用户类名 `Box` 与 stdlib 冲突
 
-- 用户定义 `class Box` 与 stdlib `Box` 冲突，报 `Class 'Box' is already defined`。
+- 用户定义 `class Box` 与标准库 `Box` 冲突，报 `Class 'Box' is already defined`。
+- 原用例已重命名为 `Container` 规避，但底层冲突问题仍在。
 - Java/Swift 通常通过 package/module 隔离同名类型。
 - 建议：在文档中列出 stdlib 保留类名，或提供明确命名空间隔离规则。
 - 分类：D 类（Spec/stdlib 文档不完整）
@@ -87,3 +63,19 @@
 - 例：`int→byte|int|long` 因 `int` 成员 + `long` 更大成员形成多个候选而拒绝。
 - 建议：澄清 subtyping 与 widening-to-union 的优先级。
 - 分类：D 类（Spec 与实现不一致）
+
+---
+
+## 覆盖统计（更新于 2026-07-02）
+
+新增 spec 覆盖遗漏补充用例 10 个（§6.2 bigint+string、§6.5 NaN/Inf 特殊值转换、int→short/long→byte 位截断、double→byte/short 两步、NaN→float/Inf→float），不影响上述 issue 列表。
+
+| 项目 | 数值 |
+|------|:---:|
+| 总用例 | 263 |
+| compile-pass | 111 |
+| compile-fail | 60 |
+| runtime | 92 |
+| 当前未解决 issue | 6 |
+
+> 注：D-6.01-01（float 字面量）、D-6.01-02（`as` cast）、D-6.02-01（`void+string`，无用例对应）已移除。
