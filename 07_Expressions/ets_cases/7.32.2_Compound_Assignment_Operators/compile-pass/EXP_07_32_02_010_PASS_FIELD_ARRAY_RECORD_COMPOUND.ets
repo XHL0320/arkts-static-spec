@@ -1,5 +1,5 @@
 /**
- * @id EXP_07_32_02_004_PASS_FIELD_ARRAY_RECORD_COMPOUND
+ * @id EXP_07_32_02_010_PASS_FIELD_ARRAY_RECORD_COMPOUND
  * @expect compile-pass
  * @section 7.32.2
  * @design 验证三种 lhsExpression 形式的复合赋值编译通过：字段访问 (obj.field +=)、数组索引 (arr[idx] +=)、记录索引 (rec[key] +=)

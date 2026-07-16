@@ -1,5 +1,5 @@
 /**
- * @id EXP_07_32_02_009_RUNTIME_SEMANTICS
+ * @id EXP_07_32_02_001_RUNTIME_SEMANTICS
  * @expect runtime
  * @section 7.32.2
  * @design 验证复合赋值运算符的运行时语义：算术复合（+=-=*=/=%=）值正确、移位复合值正确、位运算复合值正确、字符串拼接正确、字段/数组/记录复合值正确

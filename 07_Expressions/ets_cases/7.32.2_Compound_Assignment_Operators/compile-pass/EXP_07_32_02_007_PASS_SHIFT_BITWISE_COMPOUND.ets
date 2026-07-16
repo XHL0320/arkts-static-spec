@@ -1,5 +1,5 @@
 /**
- * @id EXP_07_32_02_002_PASS_SHIFT_BITWISE_COMPOUND
+ * @id EXP_07_32_02_007_PASS_SHIFT_BITWISE_COMPOUND
  * @expect compile-pass
  * @section 7.32.2
  * @design 验证移位和位运算复合赋值运算符的编译通过：<<=、>>=、>>>=、&=、|=、^= 在 int/long 类型上的使用，以及 boolean 位运算

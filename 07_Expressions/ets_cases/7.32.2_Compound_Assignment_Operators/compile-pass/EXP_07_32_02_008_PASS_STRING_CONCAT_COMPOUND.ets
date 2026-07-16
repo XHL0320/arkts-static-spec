@@ -1,5 +1,5 @@
 /**
- * @id EXP_07_32_02_003_PASS_STRING_CONCAT_COMPOUND
+ * @id EXP_07_32_02_008_PASS_STRING_CONCAT_COMPOUND
  * @expect compile-pass
  * @section 7.32.2
  * @design 验证字符串拼接复合赋值 += 的编译通过：string += string、string += int、string += 其他类型

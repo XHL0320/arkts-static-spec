@@ -1,5 +1,5 @@
 /**
- * @id EXP_07_32_02_001_PASS_COMPOUND_ARITH
+ * @id EXP_07_32_02_005_PASS_COMPOUND_ARITH
  * @expect compile-pass
  * @section 7.32.2
  * @design 复合赋值算术运算（+= -= *= /= %=）

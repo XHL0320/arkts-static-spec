@@ -1,5 +1,5 @@
 /**
- * @id EXP_07_32_02_007_FAIL_TYPE_MISMATCH_COMPOUND
+ * @id EXP_07_32_02_001_FAIL_TYPE_MISMATCH_COMPOUND
  * @expect compile-fail
  * @section 7.32.2
  * @design 验证复合赋值运算符在类型不匹配时的编译错误：string 不支持 -= *= /= %= 等非拼接运算符；boolean 不支持算术复合；不同类别类型间的复合
