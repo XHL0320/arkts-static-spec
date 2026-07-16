@@ -241,10 +241,10 @@
 | 2 | NSM_13_06_013 | §13.6 | export type alias引用未导出类型 | Spec: exported type alias uses unexported type → error |
 | 3 | NSM_13_06_015 | §13.6 | export overload含未导出实体 | Spec: exported overload contains unexported entities → error |
 | 4 | NSM_13_06_016 | §13.6 | export class public field未导出类型 | Spec: public field uses unexported entity as type → error |
-| 5 | NSM_13_07_1_004 | §13.7.1 | export {bar as foo}别名与已导出同名冲突 | Spec: selective export alias clashes with exported name → error |
-| 6 | NSM_13_07_2_005 | §13.7.2 | export {A as default}语法 | Spec语法形式未被覆盖 |
-| 7 | NSM_13_07_2_006 | §13.7.2 | export default expression | Spec: export default new A语法形式 |
-| 8 | NSM_13_07_2_007 | §13.7.2 | export default new A(A未导出) | D类: Spec认为合法但编译器要求A导出 |
+| 5 | NSM_13_07_1_004_FAIL_SELECTIVE_EXPORT_ALIAS_CLASH | §13.7.1 | export {bar as foo}别名与已导出同名冲突 | Spec: selective export alias clashes with exported name → error |
+| 6 | NSM_13_07_2_005_PASS_EXPORT_AS_DEFAULT | §13.7.2 | export {A as default}语法 | Spec语法形式未被覆盖 |
+| 7 | NSM_13_07_2_006_PASS_EXPORT_DEFAULT_EXPRESSION | §13.7.2 | export default expression | Spec: export default new A语法形式 |
+| 8 | NSM_13_07_2_007_FAIL_EXPORT_DEFAULT_EXPR_UNEXPORTED_TYPE | §13.7.2 | export default new A(A未导出) | D类: Spec认为合法但编译器要求A导出 |
 | 9 | NSM_13_08_006 | §13.8 | main()在top-level之后执行 | Spec: main函数在top-level statements之后执行 |
 | 10 | NSM_13_11_005 | §13.11 | main(FixedArray\<string\>) | Spec: 入口函数可有FixedArray\<string\>参数 |
 | 11 | NSM_13_11_006 | §13.11 | main不可overload | Spec: 入口函数不可overload → error |
@@ -259,9 +259,9 @@
 | 1 | NSM_13_10_002 | 标准库名重定义 → compile-time error | 编译通过 | §13.10 |
 | 2 | NSM_13_03_011 | 合并namespace多初始化器 → compile-time error | 编译通过 | §13.3 |
 | 3 | NSM_13_08_004 | 变量使用在声明前 → compile-time error | 编译通过 | §13.8 |
-| 4 | NSM_13_07_3_002 | export type引用非type → compile-time error | 编译通过 | §13.7.3 |
+| 4 | NSM_13_07_3_002_FAIL_EXPORT_TYPE_NON_TYPE | export type引用非type → compile-time error | 编译通过 | §13.7.3 |
 | 5 | NSM_13_01_004 | ambient与非ambient混合 → compile-time error | 编译通过 | §13.1 |
-| 6 | NSM_13_07_2_007 | export default new A(A未导出) → Spec合法 | 编译器要求A导出 | §13.7.2 |
+| 6 | NSM_13_07_2_007_FAIL_EXPORT_DEFAULT_EXPR_UNEXPORTED_TYPE | export default new A(A未导出) → Spec合法 | 编译器要求A导出 | §13.7.2 |
 
 ---
 

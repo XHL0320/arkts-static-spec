@@ -5,7 +5,7 @@
 | ID | Case | Symptom | Expected | Actual | Status |
 |---|------|--------|---------|--------|--------|
 | D-6.02-01 | CON_06_02_016_FAIL_VOID_STRING_CONCAT | void + string 应报错 | compile-time error | 编译通过 | D类-Spec不一致 |
-| D-6.02-02 | CON_06_02_017_RUNTIME_FLOAT_STRING_CONVERSION | 浮点零字符串化丢失 `.0` | `0.0` 转 string 保留无信息丢失表示 | `0.0 + "..."` 得到 `"0..."` | D类-Spec不一致 |
+| D-6.02-02 | CON_06_02_028_FAIL_FLOAT_ZERO_STRING_LOSS | 浮点零字符串化丢失 `.0` | `0.0` 转 string 保留无信息丢失表示 | `0.0 + "..."` 得到 `"0..."` | D类-Spec不一致 |
 | D-6.02-03 | stdlib 类名冲突 | 用户类名 `Box` 与 stdlib 冲突 | 用户可定义普通类名或文档明确保留名 | `class Box` 报已定义 | D类-Spec不一致 |
 | D-6.03-01 | CON_06_03_01_015 原 string enum `<` | string enum 支持关系比较 | string enum 不应进入 numeric relational context，或 spec 明确允许 | 编译器允许 string enum `<` 比较 | D类-Spec不一致 |
 | D-6.03-02 | CON_06_03_02_* | char 无符号范围未在 spec 说明 | spec 明确 char 范围/无符号语义 | 实现表现为 0~65535 无符号 char | D类-Spec不一致 |

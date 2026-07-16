@@ -3,7 +3,7 @@
     "topic":  "Contexts and Conversions",
     "directory":  "06_Contexts_Conversions",
     "prefix":  "CON_",
-    "total_cases":  264,
+    "total_cases":  269,
     "case_roots":  [
                        "ets_cases"
                    ],
@@ -14,7 +14,7 @@
                    ],
     "stats":  {
                   "6.5_Numeric_Casting_Conversions":  {
-                                                          "runtime":  14,
+                                                          "runtime":  16,
                                                           "compile-pass":  8,
                                                           "compile-fail":  2
                                                       },
@@ -28,11 +28,11 @@
                                                                                          "compile-pass":  12,
                                                                                          "compile-fail":  6
                                                                                      },
-                   "6.2_String_Operator_Contexts":  {
-                                                        "runtime":  11,
-                                                        "compile-pass":  11,
-                                                        "compile-fail":  6
-                                                    },
+                  "6.2_String_Operator_Contexts":  {
+                                                       "runtime":  11,
+                                                       "compile-pass":  11,
+                                                       "compile-fail":  7
+                                                   },
                   "6.4.4_Enumeration_to_string_Type_Conversion":  {
                                                                       "runtime":  2,
                                                                       "compile-pass":  5,
@@ -61,10 +61,10 @@
                   "6.4.2_Widening_Numeric_to_a_Union_Type":  {
                                                                  "runtime":  4,
                                                                  "compile-pass":  8,
-                                                                 "compile-fail":  4
+                                                                 "compile-fail":  5
                                                              },
                   "6.4.1_Widening_Numeric_Conversions":  {
-                                                             "runtime":  8,
+                                                             "runtime":  9,
                                                              "compile-pass":  10,
                                                              "compile-fail":  5
                                                          }
