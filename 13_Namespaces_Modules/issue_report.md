@@ -40,13 +40,7 @@
 | C21 | NSM_13_07_4_002_PASS_RE_EXPORT_SELECTIVE | PASS 用例编译失败 | 编译通过 | Fatal error F0014 | C类 |
 | C22 | NSM_13_09_001_PASS_MULTIFILE_SAME_HEADER | PASS 用例编译失败 | 编译通过 | Syntax error ESY0279 | C类 |
 
-## A 类：已修复用例
-
-| ID | Case | Symptom | Expected | Actual | Status |
-|---|------|--------|---------|--------|--------|
-| A1 | NSM_13_07_1_002_FAIL_SELECTIVE_EXPORT_ALIAS_ORIGINAL → 改为 PASS | 用例设计有误 | — | 已修复为 PASS | 已解决 |
-
----
+## A 类：已修复用例（无）
 
 ### 异常详情
 
