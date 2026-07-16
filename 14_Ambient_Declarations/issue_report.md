@@ -1,4 +1,4 @@
-# 14 Ambient Declarations Issue Report
+﻿# 14 Ambient Declarations Issue Report
 
 只记录**当前未解决的执行异常**。一旦异常通过修改用例或编译器更新而消除，立即从此文件移除。
 
@@ -47,7 +47,7 @@
 **D-14.7.1-01** MEDIUM — declare namespace 与 namespace 无法合并
 
 - **问题描述：** ArkTS spec 允许用同名非 declare namespace 实现 ambient namespace，但编译器报 "Unable to merge namespaces, because their modifiers are different"
-- **复现用例 ID：** AMB_14_07_01_001_FAIL_IMPLEMENT_SAME_NAME 至 AMB_14_07_01_007_FAIL_RUNTIME_IMPLEMENTED_NS
+- **复现用例 ID：** AMB_14_07_01_001_PASS_IMPLEMENT_SAME_NAME 至 AMB_14_07_01_007_RUNTIME_IMPLEMENTED_NS
 - **跨语言对比：** Java 静态内部类和 Swift 嵌套 enum 均支持类似模式
 - **影响：** 按 spec 应分布在 compile-pass（4 个）/ compile-fail（2 个）/ runtime（1 个），但编译器当前拒绝所有含有 declare namespace + namespace 合并的用例，导致 4 个 compile-pass 和 1 个 runtime 无法按预期通过
 - **严重性：** MEDIUM
