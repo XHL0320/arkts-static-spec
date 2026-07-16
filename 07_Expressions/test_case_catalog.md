@@ -1,6 +1,6 @@
-# 07 Expressions Test Case Catalog
+﻿# 07 Expressions Test Case Catalog
 
-> 全量用例目录（共 2126 例，覆盖 7.1–7.36.1 全部 96 节）。
+> 全量用例目录（共 2129 例，覆盖 7.1–7.36.1 全部 96 节）。
 > 数据源：实际 `.ets` 文件路径（SubTopic/Type/CaseFile）+ 头部 `@design`（Purpose）/ `@expect`（Expected）。
 > 最后编译验证：2026-06-26，es2panda `--extension=ets`，Linux native（7.26–7.36.1 全量实测；7.1–7.25 沿用既有分类）。
 > ⚠️ 标注 = 该用例存在 spec 与实现不一致，详见 `issue_report.md`。
