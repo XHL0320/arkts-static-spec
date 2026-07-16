@@ -3,7 +3,7 @@
     "topic":  "Contexts and Conversions",
     "directory":  "06_Contexts_Conversions",
     "prefix":  "CON_",
-    "total_cases":  263,
+    "total_cases":  264,
     "case_roots":  [
                        "ets_cases"
                    ],
@@ -28,11 +28,11 @@
                                                                                          "compile-pass":  12,
                                                                                          "compile-fail":  6
                                                                                      },
-                  "6.2_String_Operator_Contexts":  {
-                                                       "runtime":  11,
-                                                       "compile-pass":  11,
-                                                       "compile-fail":  5
-                                                   },
+                   "6.2_String_Operator_Contexts":  {
+                                                        "runtime":  11,
+                                                        "compile-pass":  11,
+                                                        "compile-fail":  6
+                                                    },
                   "6.4.4_Enumeration_to_string_Type_Conversion":  {
                                                                       "runtime":  2,
                                                                       "compile-pass":  5,

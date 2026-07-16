@@ -1,11 +1,11 @@
 ﻿# 06 Contexts and Conversions Test Case Catalog
 
-**总用例数：** 264（111P + 60F + 93R）
+**总用例数：** 264（112P + 61F + 91R）
 
 | Section | compile-pass | compile-fail | runtime | Total |
 |---|---:|---:|---:|---:|
 | 6.1 Assignment-like Contexts | 15 | 15 | 12 | 42 |
-| 6.2 String Operator Contexts | 11 | 5 | 11 | 27 |
+| 6.2 String Operator Contexts | 11 | 6 | 11 | 28 |
 | 6.3 Numeric Operator Contexts | 12 | 6 | 9 | 27 |
 | 6.3.1 Numeric Relational/Equality Conversions | 12 | 6 | 10 | 28 |
 | 6.3.2 char Relational/Equality Conversions | 12 | 5 | 9 | 26 |
