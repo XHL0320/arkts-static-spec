@@ -1,10 +1,9 @@
 # 05 Generics - Test Case Catalog
 
-**自动生成，基于实际文件系统扫描。** 共 **111** 个用例（PASS 52 + FAIL 43 + RUNTIME 16）
-
+**自动生成，基于实际文件系统扫描�?* �?**111** 个用例（PASS 52 + FAIL 43 + RUNTIME 16�?
 ## 5.1 Type Parameters (12 cases)
 
-| ID | 子主题 | 类型 | 文件 |
+| ID | 子主�?| 类型 | 文件 |
 |---|--------|:--:|------|
 | GEN_05_01_001_PASS_BASIC_GENERIC_CLASS | Basic generic class | PASS | `5.1_Type_Parameters/compile-pass/GEN_05_01_001_PASS_BASIC_GENERIC_CLASS.ets` |
 | GEN_05_01_002_PASS_GENERIC_INTERFACE | Generic interface | PASS | `5.1_Type_Parameters/compile-pass/GEN_05_01_002_PASS_GENERIC_INTERFACE.ets` |
@@ -21,17 +20,17 @@
 
 ## 5.1.1 Type Parameter Constraint (21 cases)
 
-| ID | 子主题 | 类型 | 文件 |
+| ID | 子主�?| 类型 | 文件 |
 |---|--------|:--:|------|
-| GEN_05_01_01_001_PASS_CONSTRAINT_CLASS | Constraint — class | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_001_PASS_CONSTRAINT_CLASS.ets` |
-| GEN_05_01_01_002_PASS_CONSTRAINT_UNION | Constraint — union | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_002_PASS_CONSTRAINT_UNION.ets` |
-| GEN_05_01_01_003_PASS_CONSTRAINT_LITERAL_UNION | Constraint — literal union | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_003_PASS_CONSTRAINT_LITERAL_UNION.ets` |
-| GEN_05_01_01_004_PASS_CONSTRAINT_KEYOF | Constraint — keyof | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_004_PASS_CONSTRAINT_KEYOF.ets` |
+| GEN_05_01_01_001_PASS_CONSTRAINT_CLASS | Constraint �?class | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_001_PASS_CONSTRAINT_CLASS.ets` |
+| GEN_05_01_01_002_PASS_CONSTRAINT_UNION | Constraint �?union | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_002_PASS_CONSTRAINT_UNION.ets` |
+| GEN_05_01_01_003_PASS_CONSTRAINT_LITERAL_UNION | Constraint �?literal union | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_003_PASS_CONSTRAINT_LITERAL_UNION.ets` |
+| GEN_05_01_01_004_PASS_CONSTRAINT_KEYOF | Constraint �?keyof | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_004_PASS_CONSTRAINT_KEYOF.ets` |
 | GEN_05_01_01_005_PASS_DEPENDENT_PARAM | Dependent type param | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_005_PASS_DEPENDENT_PARAM.ets` |
-| GEN_05_01_01_006_PASS_CONSTRAINT_DERIVED | Constraint — derived | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_006_PASS_CONSTRAINT_DERIVED.ets` |
-| GEN_05_01_01_007_PASS_CONSTRAINT_FUNC_TYPE | Constraint — function type | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_007_PASS_CONSTRAINT_FUNC_TYPE.ets` |
-| GEN_05_01_01_008_PASS_CONSTRAINT_ARRAY_TYPE | Constraint — array type | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_008_PASS_CONSTRAINT_ARRAY_TYPE.ets` |
-| GEN_05_01_01_009_PASS_CONSTRAINT_TUPLE_TYPE | Constraint — tuple type | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_009_PASS_CONSTRAINT_TUPLE_TYPE.ets` |
+| GEN_05_01_01_006_PASS_CONSTRAINT_DERIVED | Constraint �?derived | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_006_PASS_CONSTRAINT_DERIVED.ets` |
+| GEN_05_01_01_007_PASS_CONSTRAINT_FUNC_TYPE | Constraint �?function type | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_007_PASS_CONSTRAINT_FUNC_TYPE.ets` |
+| GEN_05_01_01_008_PASS_CONSTRAINT_ARRAY_TYPE | Constraint �?array type | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_008_PASS_CONSTRAINT_ARRAY_TYPE.ets` |
+| GEN_05_01_01_009_PASS_CONSTRAINT_TUPLE_TYPE | Constraint �?tuple type | PASS | `5.1.1_Type_Parameter_Constraint/compile-pass/GEN_05_01_01_009_PASS_CONSTRAINT_TUPLE_TYPE.ets` |
 | GEN_05_01_01_100_FAIL_CONSTRAINT_NOT_SATISFIED | Constraint not satisfied | FAIL | `5.1.1_Type_Parameter_Constraint/compile-fail/GEN_05_01_01_100_FAIL_CONSTRAINT_NOT_SATISFIED.ets` |
 | GEN_05_01_01_101_FAIL_CONSTRAINT_UNION_NOT_SATISFIED | Constraint union not satisfied | FAIL | `5.1.1_Type_Parameter_Constraint/compile-fail/GEN_05_01_01_101_FAIL_CONSTRAINT_UNION_NOT_SATISFIED.ets` |
 | GEN_05_01_01_102_FAIL_LITERAL_CONSTRAINT | Literal constraint violation | FAIL | `5.1.1_Type_Parameter_Constraint/compile-fail/GEN_05_01_01_102_FAIL_LITERAL_CONSTRAINT.ets` |
@@ -47,7 +46,7 @@
 
 ## 5.1.2 Type Parameter Default (10 cases)
 
-| ID | 子主题 | 类型 | 文件 |
+| ID | 子主�?| 类型 | 文件 |
 |---|--------|:--:|------|
 | GEN_05_01_02_001_PASS_TYPE_PARAM_DEFAULT | Type param default | PASS | `5.1.2_Type_Parameter_Default/compile-pass/GEN_05_01_02_001_PASS_TYPE_PARAM_DEFAULT.ets` |
 | GEN_05_01_02_002_PASS_MULTI_DEFAULT | Multi default | PASS | `5.1.2_Type_Parameter_Default/compile-pass/GEN_05_01_02_002_PASS_MULTI_DEFAULT.ets` |
@@ -62,13 +61,13 @@
 
 ## 5.1.3 Type Parameter Variance (22 cases)
 
-| ID | 子主题 | 类型 | 文件 |
+| ID | 子主�?| 类型 | 文件 |
 |---|--------|:--:|------|
-| GEN_05_01_03_001_PASS_RETURN | Covariant out — return | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_001_PASS_RETURN.ets` |
+| GEN_05_01_03_001_PASS_RETURN | Covariant out �?return | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_001_PASS_RETURN.ets` |
 | GEN_05_01_03_002_PASS_VARIANCE | Type alias variance | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_002_PASS_VARIANCE.ets` |
-| GEN_05_01_03_003_PASS_READONLY | Covariant out — readonly | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_003_PASS_READONLY.ets` |
-| GEN_05_01_03_004_PASS_PARAM | Contravariant in — param | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_004_PASS_PARAM.ets` |
-| GEN_05_01_03_005_PASS_POS | Invariant — any position | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_005_PASS_POS.ets` |
+| GEN_05_01_03_003_PASS_READONLY | Covariant out �?readonly | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_003_PASS_READONLY.ets` |
+| GEN_05_01_03_004_PASS_PARAM | Contravariant in �?param | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_004_PASS_PARAM.ets` |
+| GEN_05_01_03_005_PASS_POS | Invariant �?any position | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_005_PASS_POS.ets` |
 | GEN_05_01_03_006_PASS_INTERLEAVE | Variance interleave (1-layer) | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_006_PASS_INTERLEAVE.ets` |
 | GEN_05_01_03_007_PASS_CONSTRUCTOR | out in constructor | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_007_PASS_CONSTRUCTOR.ets` |
 | GEN_05_01_03_009_PASS_CALLBACK_PARAM_INTERLEAVING | Callback param interleaving (2-layer) | PASS | `5.1.3_Type_Parameter_Variance/compile-pass/GEN_05_01_03_009_PASS_CALLBACK_PARAM_INTERLEAVING.ets` |
@@ -89,7 +88,7 @@
 
 ## 5.1.4 Wildcard Type (13 cases)
 
-| ID | 子主题 | 类型 | 文件 |
+| ID | 子主�?| 类型 | 文件 |
 |---|--------|:--:|------|
 | GEN_05_01_04_001_PASS_WILDCARD_DECL | Wildcard declaration (instanceof) | PASS | `5.1.4_Wildcard_Type/compile-pass/GEN_05_01_04_001_PASS_WILDCARD_DECL.ets` |
 | GEN_05_01_04_002_PASS_INSTANCEOF_WILDCARD | instanceof wildcard | PASS | `5.1.4_Wildcard_Type/compile-pass/GEN_05_01_04_002_PASS_INSTANCEOF_WILDCARD.ets` |
@@ -105,42 +104,43 @@
 | GEN_05_01_04_109_FAIL_WILDCARD_SYNTAX_UNREPRESENTABLE | Wildcard syntax not representable | FAIL | `5.1.4_Wildcard_Type/compile-fail/GEN_05_01_04_109_FAIL_WILDCARD_SYNTAX_UNREPRESENTABLE.ets` |
 | GEN_05_01_04_200_RUNTIME_WILDCARD | Wildcard runtime | RUNTIME | `5.1.4_Wildcard_Type/runtime/GEN_05_01_04_200_RUNTIME_WILDCARD.ets` |
 
-## 5.2.1 Type Arguments (7 cases)
+## 5.2.1 Type Arguments (8 cases)
 
-| ID | 子主题 | 类型 | 文件 |
+| ID | 子主�?| 类型 | 文件 |
 |---|--------|:--:|------|
-| GEN_05_02_01_001_PASS_TYPE_ARG_NUMBER | Type arg — number | PASS | `5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_001_PASS_TYPE_ARG_NUMBER.ets` |
-| GEN_05_02_01_002_PASS_TYPE_ARG_UNION | Type arg — union | PASS | `5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_002_PASS_TYPE_ARG_UNION.ets` |
-| GEN_05_02_01_003_PASS_TYPE_ARG_ARRAY | Type arg — array | PASS | `5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_003_PASS_TYPE_ARG_ARRAY.ets` |
-| GEN_05_02_01_004_PASS_TYPE_ARG_TUPLE | Type arg — tuple | PASS | `5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_004_PASS_TYPE_ARG_TUPLE.ets` |
-| GEN_05_02_01_005_PASS_TYPE_ARG_FUNC_TYPE | Type arg — func type | PASS | `5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_005_PASS_TYPE_ARG_FUNC_TYPE.ets` |
+| GEN_05_02_01_001_PASS_TYPE_ARG_NUMBER | Type arg �?number | PASS | `5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_001_PASS_TYPE_ARG_NUMBER.ets` |
+| GEN_05_02_01_002_PASS_TYPE_ARG_UNION | Type arg �?union | PASS | `5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_002_PASS_TYPE_ARG_UNION.ets` |
+| GEN_05_02_01_003_PASS_TYPE_ARG_ARRAY | Type arg �?array | PASS | `5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_003_PASS_TYPE_ARG_ARRAY.ets` |
+| GEN_05_02_01_004_PASS_TYPE_ARG_TUPLE | Type arg �?tuple | PASS | `5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_004_PASS_TYPE_ARG_TUPLE.ets` |
+| GEN_05_02_01_005_PASS_TYPE_ARG_FUNC_TYPE | Type arg �?func type | PASS | `5.2.1_Type_Arguments/compile-pass/GEN_05_02_01_005_PASS_TYPE_ARG_FUNC_TYPE.ets` |
 | GEN_05_02_01_100_FAIL_INVALID_TYPE_ARG | Invalid type arg | FAIL | `5.2.1_Type_Arguments/compile-fail/GEN_05_02_01_100_FAIL_INVALID_TYPE_ARG.ets` |
+| GEN_05_02_01_101_FAIL_EMPTY_TYPE_ARG | Empty type arg | FAIL | `5.2.1_Type_Arguments/compile-fail/GEN_05_02_01_101_FAIL_EMPTY_TYPE_ARG.ets` |
 | GEN_05_02_01_200_RUNTIME_TYPE_ARG | Type arg runtime | RUNTIME | `5.2.1_Type_Arguments/runtime/GEN_05_02_01_200_RUNTIME_TYPE_ARG.ets` |
 
 ## 5.2.2 Explicit Generic Instantiations (16 cases)
 
-| ID | 子主题 | 类型 | 文件 |
+| ID | 子主�?| 类型 | 文件 |
 |---|--------|:--:|------|
 | GEN_05_02_02_001_PASS_EXPLICIT_CLASS_INST | Explicit class instantiation | PASS | `5.2.2_Explicit_Generic_Instantiations/compile-pass/GEN_05_02_02_001_PASS_EXPLICIT_CLASS_INST.ets` |
 | GEN_05_02_02_002_PASS_EXPLICIT_METHOD_INST | Explicit method instantiation | PASS | `5.2.2_Explicit_Generic_Instantiations/compile-pass/GEN_05_02_02_002_PASS_EXPLICIT_METHOD_INST.ets` |
 | GEN_05_02_02_003_PASS_EXPLICIT_FUNC_INST | Explicit func instantiation | PASS | `5.2.2_Explicit_Generic_Instantiations/compile-pass/GEN_05_02_02_003_PASS_EXPLICIT_FUNC_INST.ets` |
 | GEN_05_02_02_004_PASS_EXPLICIT_TYPE_ALIAS | Explicit type alias | PASS | `5.2.2_Explicit_Generic_Instantiations/compile-pass/GEN_05_02_02_004_PASS_EXPLICIT_TYPE_ALIAS.ets` |
 | GEN_05_02_02_005_PASS_PARTIAL_INST_GENERIC | Partial instantiation | PASS | `5.2.2_Explicit_Generic_Instantiations/compile-pass/GEN_05_02_02_005_PASS_PARTIAL_INST_GENERIC.ets` |
-| GEN_05_02_02_006_PASS_PARTIAL_INST_INHERITANCE | Partial inst — inheritance chain | PASS | `5.2.2_Explicit_Generic_Instantiations/compile-pass/GEN_05_02_02_006_PASS_PARTIAL_INST_INHERITANCE.ets` |
-| GEN_05_02_02_007_PASS_PARTIAL_INST_FIELD | Partial inst — field type | PASS | `5.2.2_Explicit_Generic_Instantiations/compile-pass/GEN_05_02_02_007_PASS_PARTIAL_INST_FIELD.ets` |
-| GEN_05_02_02_008_PASS_PARTIAL_INST_CONSTRUCTOR | Partial inst — constructor new | PASS | `5.2.2_Explicit_Generic_Instantiations/compile-pass/GEN_05_02_02_008_PASS_PARTIAL_INST_CONSTRUCTOR.ets` |
-| GEN_05_02_02_103_PASS_PROVABLY_DISTINCT_DIFF_DECL | Provably distinct — diff decl | PASS | `5.2.2_Explicit_Generic_Instantiations/compile-pass/GEN_05_02_02_103_PASS_PROVABLY_DISTINCT_DIFF_DECL.ets` |
-| GEN_05_02_02_104_PASS_PROVABLY_DISTINCT_DIFF_ARG | Provably distinct — diff arg | PASS | `5.2.2_Explicit_Generic_Instantiations/compile-pass/GEN_05_02_02_104_PASS_PROVABLY_DISTINCT_DIFF_ARG.ets` |
+| GEN_05_02_02_006_PASS_PARTIAL_INST_INHERITANCE | Partial inst �?inheritance chain | PASS | `5.2.2_Explicit_Generic_Instantiations/compile-pass/GEN_05_02_02_006_PASS_PARTIAL_INST_INHERITANCE.ets` |
+| GEN_05_02_02_007_PASS_PARTIAL_INST_FIELD | Partial inst �?field type | PASS | `5.2.2_Explicit_Generic_Instantiations/compile-pass/GEN_05_02_02_007_PASS_PARTIAL_INST_FIELD.ets` |
+| GEN_05_02_02_008_PASS_PARTIAL_INST_CONSTRUCTOR | Partial inst �?constructor new | PASS | `5.2.2_Explicit_Generic_Instantiations/compile-pass/GEN_05_02_02_008_PASS_PARTIAL_INST_CONSTRUCTOR.ets` |
+| GEN_05_02_02_103_PASS_PROVABLY_DISTINCT_DIFF_DECL | Provably distinct �?diff decl | PASS | `5.2.2_Explicit_Generic_Instantiations/compile-pass/GEN_05_02_02_103_PASS_PROVABLY_DISTINCT_DIFF_DECL.ets` |
+| GEN_05_02_02_104_PASS_PROVABLY_DISTINCT_DIFF_ARG | Provably distinct �?diff arg | PASS | `5.2.2_Explicit_Generic_Instantiations/compile-pass/GEN_05_02_02_104_PASS_PROVABLY_DISTINCT_DIFF_ARG.ets` |
 | GEN_05_02_02_100_FAIL_NON_GENERIC_WITH_ARGS | Non-generic with args | FAIL | `5.2.2_Explicit_Generic_Instantiations/compile-fail/GEN_05_02_02_100_FAIL_NON_GENERIC_WITH_ARGS.ets` |
 | GEN_05_02_02_101_FAIL_ARG_COUNT_MISMATCH | Arg count mismatch | FAIL | `5.2.2_Explicit_Generic_Instantiations/compile-fail/GEN_05_02_02_101_FAIL_ARG_COUNT_MISMATCH.ets` |
 | GEN_05_02_02_102_FAIL_CONSTRAINT_VIOLATION | Constraint violation | FAIL | `5.2.2_Explicit_Generic_Instantiations/compile-fail/GEN_05_02_02_102_FAIL_CONSTRAINT_VIOLATION.ets` |
-| GEN_05_02_02_106_FAIL_PROVABLY_DISTINCT | Provably distinct — diff args not assignable | FAIL | `5.2.2_Explicit_Generic_Instantiations/compile-fail/GEN_05_02_02_106_FAIL_PROVABLY_DISTINCT.ets` |
+| GEN_05_02_02_106_FAIL_PROVABLY_DISTINCT | Provably distinct �?diff args not assignable | FAIL | `5.2.2_Explicit_Generic_Instantiations/compile-fail/GEN_05_02_02_106_FAIL_PROVABLY_DISTINCT.ets` |
 | GEN_05_02_02_105_RUNTIME_PROVABLY_DISTINCT | Provably distinct runtime | RUNTIME | `5.2.2_Explicit_Generic_Instantiations/runtime/GEN_05_02_02_105_RUNTIME_PROVABLY_DISTINCT.ets` |
 | GEN_05_02_02_107_RUNTIME_EXPLICIT_INST | Explicit instantiation runtime | RUNTIME | `5.2.2_Explicit_Generic_Instantiations/runtime/GEN_05_02_02_107_RUNTIME_EXPLICIT_INST.ets` |
 
 ## 5.2.3 Implicit Generic Instantiations (10 cases)
 
-| ID | 子主题 | 类型 | 文件 |
+| ID | 子主�?| 类型 | 文件 |
 |---|--------|:--:|------|
 | GEN_05_02_03_001_PASS_IMPLICIT_FUNC_INFER | Implicit func infer | PASS | `5.2.3_Implicit_Generic_Instantiations/compile-pass/GEN_05_02_03_001_PASS_IMPLICIT_FUNC_INFER.ets` |
 | GEN_05_02_03_002_PASS_IMPLICIT_MULTI_INFER | Implicit multi infer | PASS | `5.2.3_Implicit_Generic_Instantiations/compile-pass/GEN_05_02_03_002_PASS_IMPLICIT_MULTI_INFER.ets` |
