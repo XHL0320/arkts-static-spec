@@ -7,7 +7,6 @@
 | D-14.3-01   | AMB_14_03_008        | Overload 重载等价签名检查缺失                | compile-time error | 编译通过           | D类-Spec不一致 |
 | D-14.3-02   | AMB_14_03_009        | Overload 空重载集检查缺失                  | compile-time error | 编译通过           | D类-Spec不一致 |
 | D-14.3-03   | AMB_14_03_011        | Overload 引用非 declare 函数检查缺失        | compile-time error | 编译通过           | D类-Spec不一致 |
-| D-14.6-01   | AMB_14_06_006~007    | Ambient enum 成员初始化器检查缺失            | compile-time error | 编译通过           | D类-Spec不一致 |
 | D-14.7.1-01 | AMB_14_07_01_001~007 | declare namespace 与 namespace 无法合并 | compile-time error | 编译通过（merge 拒绝） | D类-Spec不一致 |
 
 ### 异常详情
@@ -35,15 +34,6 @@
 - **严重性：** MEDIUM
 - **分类：** D 类（Spec 与实现不一致）
 
-**D-14.6-01** MEDIUM — Ambient enum 成员初始化器检查缺失
-
-- **问题描述：** ArkTS spec 要求 ambient enum 成员不能有初始化器（否则 compile-time error），但当前编译器允许带初始化器的 enum 成员编译通过
-- **复现用例 ID：** AMB_14_06_006_FAIL_MEMBER_INITIALIZER, AMB_14_06_007_FAIL_MIXED_INITIALIZER
-- **跨语言对比：** Java/Swift 均允许枚举成员带初始化器/原始值
-- **影响：** 2 个 compile-fail 用例无法通过
-- **严重性：** MEDIUM
-- **分类：** D 类（Spec 与实现不一致）
-
 **D-14.7.1-01** MEDIUM — declare namespace 与 namespace 无法合并
 
 - **问题描述：** ArkTS spec 允许用同名非 declare namespace 实现 ambient namespace，但编译器报 "Unable to merge namespaces, because their modifiers are different"
@@ -64,17 +54,7 @@
 
 > Java 和 Swift 均对重载等价签名报错，建议对齐。
 
-### 2. Enum 成员初始化器校验（D-14.6-01）
-
-编译器应增加对 ambient enum 成员的校验：
-- **禁止初始化器**：`declare enum E { A = 5 }` → compile-time error
-- 纯标识符列表（`{Red, Green, Blue}`）已正确编译通过
-
-> 与 D-14.1-01 同属"ambient 无初始化器"规则体系，建议一并修复。
-
-> 注：D-14.1-01/02（顶层 ambient 初始化器检查和类型注解检查）已于编译器更新后修复，当前版本已正确校验。
-
-### 3. Namespace 合并支持（D-14.7.1-01）
+### 2. Namespace 合并支持（D-14.7.1-01）
 
 编译器应支持 `declare namespace` 与非 `declare namespace` 的合并：
 - 当前报 `"Unable to merge namespaces, because their modifiers are different"` 错误
