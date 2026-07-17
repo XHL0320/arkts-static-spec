@@ -1,8 +1,8 @@
-# 02 Lexical Elements Test Design Mindmap
+﻿# 02 Lexical Elements Test Design Mindmap
 
 ## 覆盖汇总
 
-- 总用例数：662（348P + 118F + 196R）
+- 总用例数：720（348P + 118F + 196R）
 - 覆盖章节：2.1 ~ 2.11 全部词法元素规则
 - 测试类别：compile-pass / compile-fail / runtime
 

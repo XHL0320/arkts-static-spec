@@ -20,6 +20,8 @@
 | GAP-INF | SEM_15_07_02_102 | Smart return 边界未拒绝 | compile-fail | 编译通过 | C类-编译器未实现 |
 | GAP-OL | SEM_15_11_00_113 | Overload 边界未拒绝 | compile-fail | 编译通过 | C类-编译器未实现 |
 | COM-15.14-01~07 | SEM_15_14_00_003/013/015/024/026/027/204 | Extended Conditional 未实现（Spec 即将废弃） | compile-pass/runtime | 编译失败 | D类-即将废弃 |
+| **SEM-TYPE-01~08** | §15.12 | **Utility type 擦除映射规则(Awaited/NonNullable/Partial/Required/Readonly/Record/ReturnType/never签名) | compile-pass | 占位符(无实质验证) | C类-编译器未实现 |
+| **SEM-THIS-01** | §15.9.3 | **`this` 返回类型覆盖兼容性规则** | compile-pass | 无测试 | C类-编译器未实现 |
 
 ### 异常详情
 

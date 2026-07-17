@@ -10,8 +10,8 @@
 | ISSUE-002 | 2.1 | LEX_02_01_012_FAIL_LONE_HIGH_SURROGATE.ets | 孤立高代理编译通过 | compile-fail | compile-pass | ⚠️ SPEC 不一致 |
 | ISSUE-003 | 2.1 | LEX_02_01_013_FAIL_LONE_LOW_SURROGATE.ets | 孤立低代理编译通过 | compile-fail | compile-pass | ⚠️ SPEC 不一致 |
 | ISSUE-004 | 2.1 | LEX_02_01_014_FAIL_HIGH_SURROGATE_NO_LOW.ets | 高代理后跟 BMP 字符编译通过 | compile-fail | compile-pass | ⚠️ SPEC 不一致 |
-| ISSUE-005 | 2.1 | LEX_02_01_018_FAIL_CHAR_RELATIONAL_OP.ets | char 关系运算符编译通过（符合 spec） | compile-fail | compile-pass | ✅ 已解决 |
-| ISSUE-006 | 2.1 | LEX_02_01_019_FAIL_CHAR_COMPARE_NUMBER.ets | char 与 number 比较编译通过（符合 spec） | compile-fail | compile-pass | ✅ 已解决 |
+| ISSUE-005 | 2.1 | LEX_02_01_018_PASS_CHAR_RELATIONAL_OP.ets | char 关系运算符编译通过（符合 spec） | compile-fail | compile-pass | ✅ 已解决 |
+| ISSUE-006 | 2.1 | LEX_02_01_019_PASS_CHAR_COMPARE_NUMBER.ets | char 与 number 比较编译通过（符合 spec） | compile-fail | compile-pass | ✅ 已解决 |
 | ISSUE-007 | 2.4 | LEX_02_04_022_PASS_LF_IN_CHAR_LITERAL.ets | char 字面量内允许真实 LF | compile-fail | compile-pass | ⚠️ SPEC 不一致 |
 | ISSUE-008 | 2.4 | LEX_02_04_005_PASS_CRLF_SEPARATOR.ets | CRLF 在 spec 中未单独定义为序列 | 显式定义 | 隐含支持 | ⚠️ SPEC 不一致 |
 | ISSUE-009 | 2.8 | LEX_02_08_031_RUNTIME_NULLISH_UNION_FIELD_FACTOR.ets | Syntax error ESY0227: Unexpected token '??=' | runtime | compile-fail | 🔴 未解决 |
@@ -144,7 +144,7 @@
 ### ISSUE-005: char 关系运算符编译通过 ✅ 已解决
 
 **所属章节：** 2.1 Use of Unicode Characters
-**用例文件：** `2.1_Use_of_Unicode_Characters/compile-pass/LEX_02_01_018_FAIL_CHAR_RELATIONAL_OP.ets`
+**用例文件：** `2.1_Use_of_Unicode_Characters/compile-pass/LEX_02_01_018_PASS_CHAR_RELATIONAL_OP.ets`
 
 **分析：**
 - spec/experimental.md 明确允许 char 关系运算符
@@ -158,7 +158,7 @@
 ### ISSUE-006: char 与 number 比较编译通过 ✅ 已解决
 
 **所属章节：** 2.1 Use of Unicode Characters
-**用例文件：** `2.1_Use_of_Unicode_Characters/compile-pass/LEX_02_01_019_FAIL_CHAR_COMPARE_NUMBER.ets`
+**用例文件：** `2.1_Use_of_Unicode_Characters/compile-pass/LEX_02_01_019_PASS_CHAR_COMPARE_NUMBER.ets`
 
 **分析：**
 - spec/experimental.md 明确允许 char 与 number 比较

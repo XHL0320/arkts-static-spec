@@ -1,9 +1,9 @@
-﻿{
+{
     "chapter":  "03",
     "topic":  "Types",
     "directory":  "03_Types",
     "prefix":  "TYP_",
-    "total_cases":  728,
+    "total_cases": 735,
     "sections":  [
                      "3.1_Predefined_Types",
                      "3.10_Type_never",
@@ -311,3 +311,4 @@
                                    }
               }
 }
+

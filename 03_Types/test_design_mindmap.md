@@ -1,8 +1,8 @@
-# 03 Types Test Design Mindmap
+﻿# 03 Types Test Design Mindmap
 
 ## 覆盖汇总
 
-- 总用例数：728（324P + 195F + 209R）
+- 总用例数：735（324P + 195F + 209R）
 - 覆盖章节：3.1 ~ 3.22 全部类型系统子章节
 - 测试类别：compile-pass / compile-fail / runtime
 

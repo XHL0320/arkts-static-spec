@@ -1,9 +1,9 @@
-﻿{
+{
     "chapter":  "02",
     "topic":  "Lexical Elements",
     "directory":  "02_LexicalElements",
     "prefix":  "LEX_",
-    "total_cases":  668,
+    "total_cases": 720,
     "case_roots":  [
                        "ets_cases"
                    ],
@@ -4143,8 +4143,7 @@
                                                  "compile-pass":  21,
                                                  "compile-fail":  5
                                              },
-                  "2.7_Keywords":  {
-                                       "total":  94,
+                  "2.7_Keywords: { "compile-pass": 49, "compile-fail": 85, "runtime": 9, "total": 143,
                                        "runtime":  9,
                                        "fail":  0,
                                        "pass":  94,
@@ -4177,3 +4176,4 @@
                                                     }
               }
 }
+

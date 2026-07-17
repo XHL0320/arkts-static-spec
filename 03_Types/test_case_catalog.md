@@ -1,6 +1,6 @@
 ﻿# 03 Types Test Case Catalog
 
-**总用例数：** 728（324P + 195F + 209R）
+**总用例数：** 735（324P + 195F + 209R）
 
 | Section | compile-pass | compile-fail | runtime | Total |
 |---|---:|---:|---:|---:|
@@ -46,7 +46,7 @@
 | 3.7_Reference_Types | 8 | 2 | 3 | 13 |
 | 3.8_Type_Any | 5 | 3 | 3 | 11 |
 | 3.9_Type_Object | 5 | 2 | 3 | 10 |
-| **Total** | **324** | **195** | **209** | **728** |
+| **Total** | **324** | **195** | **209** | **735** |
 
 ## 本次补充覆盖
 

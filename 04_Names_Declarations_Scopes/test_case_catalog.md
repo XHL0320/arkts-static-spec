@@ -1,4 +1,4 @@
-# 04 Names Declarations Scopes - Test Case Catalog
+﻿# 04 Names Declarations Scopes - Test Case Catalog
 
 ## 4.1 Names (16 cases)
 

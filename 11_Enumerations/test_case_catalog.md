@@ -1,6 +1,6 @@
 # 11 Enumerations Test Case Catalog
 
-**总用例数：** 44（21P + 14F + 9R）
+**总用例数：** 44（20P + 14F + 10R）
 
 | Section | compile-pass | compile-fail | runtime | Total |
 |---|:---:|:---:|:---:|:---:|

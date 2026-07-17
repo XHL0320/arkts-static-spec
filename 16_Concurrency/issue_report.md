@@ -4,48 +4,15 @@
 
 | ID | Case | Symptom | Expected | Actual | Status |
 |:---|------|--------|---------|--------|--------|
-| CONC-U | CCY_16_04_02_003/004 | `launch<T>(async () => { await ...; return ...; })` 编译器崩溃 | compile-pass | es2panda CRASH（段错误） | C类-编译器崩溃 |
 | CONC-G2 | CCY_16_04_04_020~023_FAIL_taskpool_* | `taskpool.execute()` 参数合法性未被编译器拒绝 | compile-fail | 编译通过（应报错） | C类-边界未拒绝 |
 | CONC-A4 | 16.5.5 Atomic（4） | `AtomicInt`/`AtomicBoolean`/`AtomicReference` 使用 `native` 方法，运行时未链接 | compile-pass/runtime | `type does not exist` | C类-标准库native未链接 |
 | CONC-A5 | 16.5.6 Concurrent（2） | `ConcurrentMap` 不存在（最近为 `std.containers.ConcurrentHashMap`） | compile-pass/runtime | `Cannot find type` | C类-标准库不存在 |
-| CONC-B1 | 16.6.3~16.6.5 部分用例 | `Promise<T>` 泛型参数无法推断 | compile-pass | 编译失败 | C类-泛型推导 |
+| CONC-B1 | 16.6.3~16.6.5 部分用例 | `Promise<T>` 泛型参数无法推断 | compile-pass | 编译失败（2026-07复测部分用例已通过） | C类-泛型推导 |
 | CONC-B2 | 16.6.1_001 | `launch(() => Promise<Double>)` 签名不匹配（Spec §16.4.2 支持异步lambda） | compile-pass | 编译失败 | C类-类型推导 |
 | CONC-C1 | 16.7.1_001 | `setTimeout`/`Promise` 回调签名与当前编译器版本不一致 | compile-pass | 编译失败 | C类-API签名变更 |
-
----
-
-### CONC-U — launch + async lambda + await 编译器段错误
-
-**文件：** `Java_CONCU.java` / `Swift_CONCU.swift`
-
-**编译验证命令：**
-```bash
-# Java
-javac Java_CONCU.java && java Java_CONCU
-# Swift
-swiftc -parse-as-library Swift_CONCU.swift -o /tmp/sw_concu && /tmp/sw_concu
-```
-
-**编译验证输出：**
-```text
-# Java
-CONC-U OK: 42
-# Swift
-CONC-U OK: 42
-```
-
-**🔴 跨语言对比：**
-
-| 行为 | ArkTS 规范 | ArkTS 编译器 | Java | Swift |
-|------|:---------:|:-----------:|:----:|:-----:|
-| launch + async + await | `compile-pass` | 💥 **CRASH（段错误）** | ✅ `CompletableFuture.supplyAsync` | ✅ `Task { await g() }` |
-| 同步 lambda | `compile-pass` | ✅ `launch(() => val)` | ✅ `supplyAsync(() -> val)` | ✅ `Task { val }` |
-| async lambda 无 await | `compile-pass` | ✅ `launch(async () => val)` | ✅ `supplyAsync(() -> val)` | ✅ `Task { val }` |
-
-**对比结论：**
-- Java: `CompletableFuture.supplyAsync(() -> { return 42; })` 编译通过，运行正常
-- Swift: `Task { () -> Int in await g(); return 42 }` 编译通过，运行正常
-- **ArkTS 编译器：SPEC 要求编译通过，实际触发段错误（C 类编译器 CRASH）**
+| CONC-SCHED-01 | §16.7.1 | 调度优先级(协程>其他)和FIFO顺序未验证 | runtime | 无测试 | C类-运行时环境未就绪 |
+| CONC-PROM-01 | §16.6.3 | Promise回调跨工作线程执行顺序 | runtime | 无测试 | C类-运行时环境未就绪 |
+| CONC-UNHANDLED-01 | §16.6.4 | 未处理拒绝跨工作线程语义 | runtime | 无测试 | C类-运行时环境未就绪 |
 
 ---
 

@@ -76,7 +76,7 @@
 
 - Spec 3.19.3：`A compile-time error occurs if typeReference is neither a class nor an interface type`
 - 实际：`keyof number` 编译通过（Spec 要求 compile-time error）
-- 复现用例 ID：TYP_03_19_03_002_FAIL_KEYOF_NON_CLASS
+- 复现用例 ID：TYP_03_19_03_007_FAIL_KEYOF_NON_CLASS
 - 严重性：LOW，分类：D 类（Spec 与实现不一致）
 
 **D-3.19.1-01** MEDIUM — readonly union 归一化后仍允许写入
