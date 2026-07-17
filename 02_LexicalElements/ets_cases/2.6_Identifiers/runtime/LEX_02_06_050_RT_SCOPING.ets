@@ -27,7 +27,7 @@ function main(): void {
   let result = testScope()
   if (result !== 600) { throw new Error("testScope failed, got " + result) }
 
-  // 验证局部变量不影响全局
-  let globalVar = 999
-  if (globalVar !== 999) { throw new Error("local globalVar failed, got " + globalVar) }
+  // 验证局部变量不影响全局（使用不同名避免TDZ）
+  let localVar2 = 999
+  if (localVar2 !== 999) { throw new Error("local localVar2 failed, got " + localVar2) }
 }

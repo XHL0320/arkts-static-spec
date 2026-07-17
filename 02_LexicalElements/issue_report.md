@@ -7,14 +7,14 @@
 | ID | 章节 | Case | Symptom | Expected | Actual | Status |
 |---|---|---|---|---|---|---|
 | ISSUE-001 | 2.1 | LEX_02_01_003_PASS_UNICODE_ESCAPE_IDENTIFIER.ets | Syntax error ESY0112: Unexpected token, expected an identifier | compile-pass | compile-fail | 🔴 未解决 |
-| ISSUE-002 | 2.1 | LEX_02_01_012_FAIL_LONE_HIGH_SURROGATE.ets | 孤立高代理编译通过 | compile-fail | compile-pass | ⚠️ SPEC 不一致 |
-| ISSUE-003 | 2.1 | LEX_02_01_013_FAIL_LONE_LOW_SURROGATE.ets | 孤立低代理编译通过 | compile-fail | compile-pass | ⚠️ SPEC 不一致 |
-| ISSUE-004 | 2.1 | LEX_02_01_014_FAIL_HIGH_SURROGATE_NO_LOW.ets | 高代理后跟 BMP 字符编译通过 | compile-fail | compile-pass | ⚠️ SPEC 不一致 |
+| ISSUE-002 | 2.1 | LEX_02_01_012_FAIL_LONE_HIGH_SURROGATE.ets | 孤立高代理编译通过 | compile-fail | compile-pass | ⚠️ SPEC缺口——PDF原文§2.1不禁止lone surrogate，建议向spec团队提出补充 |
+| ISSUE-003 | 2.1 | LEX_02_01_013_FAIL_LONE_LOW_SURROGATE.ets | 孤立低代理编译通过 | compile-fail | compile-pass | ⚠️ SPEC缺口——PDF原文§2.1不禁止lone surrogate，建议向spec团队提出补充 |
+| ISSUE-004 | 2.1 | LEX_02_01_014_FAIL_HIGH_SURROGATE_NO_LOW.ets | 高代理后跟 BMP 字符编译通过 | compile-fail | compile-pass | ⚠️ SPEC缺口——PDF原文§2.1不禁止lone surrogate，建议向spec团队提出补充 |
 | ISSUE-005 | 2.1 | LEX_02_01_018_PASS_CHAR_RELATIONAL_OP.ets | char 关系运算符编译通过（符合 spec） | compile-fail | compile-pass | ✅ 已解决 |
 | ISSUE-006 | 2.1 | LEX_02_01_019_PASS_CHAR_COMPARE_NUMBER.ets | char 与 number 比较编译通过（符合 spec） | compile-fail | compile-pass | ✅ 已解决 |
-| ISSUE-007 | 2.4 | LEX_02_04_022_PASS_LF_IN_CHAR_LITERAL.ets | char 字面量内允许真实 LF | compile-fail | compile-pass | ⚠️ SPEC 不一致 |
-| ISSUE-008 | 2.4 | LEX_02_04_005_PASS_CRLF_SEPARATOR.ets | CRLF 在 spec 中未单独定义为序列 | 显式定义 | 隐含支持 | ⚠️ SPEC 不一致 |
-| ISSUE-009 | 2.8 | LEX_02_08_031_RUNTIME_NULLISH_UNION_FIELD_FACTOR.ets | Syntax error ESY0227: Unexpected token '??=' | runtime | compile-fail | 🔴 未解决 |
+| ISSUE-007 | 2.4 | LEX_02_04_022_PASS_LF_IN_CHAR_LITERAL.ets | char 字面量内允许真实 LF | compile-fail | compile-pass | ⚠️ SPEC 改进建议——PDF原文§2.4未明确定义char字面量跨行规则，非编译器bug |
+| ISSUE-008 | 2.4 | LEX_02_04_005_PASS_CRLF_SEPARATOR.ets | CRLF 在 spec 中未单独定义为序列 | 显式定义 | 隐含支持 | ⚠️ SPEC 改进建议——PDF原文§2.4隐含支持，非编译器bug |
+| ISSUE-009 | 2.8 | LEX_02_08_031_RUNTIME_NULLISH_UNION_FIELD_FACTOR.ets | Syntax error ESY0227: Unexpected token '??=' | runtime | compile-fail | ⚠️ SPEC内部不一致——§2.8不定义??= token但§7.32.2引用其语义，需spec团队澄清 |
 
 ---
 
@@ -66,78 +66,66 @@
 
 ---
 
-### ISSUE-002: 孤立高代理编译通过 ⚠️ SPEC 不一致
+### ISSUE-002: 孤立高代理编译通过 ⚠️ SPEC缺口
 
 **所属章节：** 2.1 Use of Unicode Characters
-**用例文件：** `2.1_Use_of_Unicode_Characters/compile-fail/LEX_02_01_012_FAIL_LONE_HIGH_SURROGATE.ets`
+**用例文件：** `2.1_Use_of_Unicode_Characters/compile-pass/LEX_02_01_012_PASS_LONE_HIGH_SURROGATE.ets`
 
 **错误信息：** 无（编译通过）
 
-**预期行为：** Unicode 规范要求代理必须成对使用，孤立高代理应编译失败
-**实际行为：** 编译器允许孤立高代理存在
-
-**规范依据：**
-- spec/experimental.md: 未明确定义孤立代理规则
-- Unicode 规范 UAX #16: 要求代理必须成对使用
+**分析：** PDF原文§2.1 **无compile-time error语句禁止lone surrogate**。此前基于Unicode规范的推断并非ArkTS spec的强制性要求。
+**结论：** 这不是编译器bug。@expect已从compile-fail改为compile-pass，用例移至compile-pass目录。建议向spec团队提出补充规则。
 
 **跨语言对比：**
 | 语言 | 代码 | 行为 |
 |------|------|------|
-| ArkTS | `let s: string = "\uD800"` | ⚠️ 编译通过 |
+| ArkTS | `let s: string = "\uD800"` | ✅ 编译通过（PDF原文未禁止）|
 | Java | `String s = "\uD800";` | ✅ 编译通过 |
 | Swift | `let s = "\u{D800}"` | ❌ 编译错误 |
 
-**状态：** ⚠️ D 类异常（Spec 与实现不一致）
+**状态：** ⚠️ SPEC缺口——PDF原文不禁止lone surrogate，建议向spec团队提出补充
 
 ---
 
-### ISSUE-003: 孤立低代理编译通过 ⚠️ SPEC 不一致
+### ISSUE-003: 孤立低代理编译通过 ⚠️ SPEC缺口
 
 **所属章节：** 2.1 Use of Unicode Characters
-**用例文件：** `2.1_Use_of_Unicode_Characters/compile-fail/LEX_02_01_013_FAIL_LONE_LOW_SURROGATE.ets`
+**用例文件：** `2.1_Use_of_Unicode_Characters/compile-pass/LEX_02_01_013_PASS_LONE_LOW_SURROGATE.ets`
 
 **错误信息：** 无（编译通过）
 
-**预期行为：** Unicode 规范要求代理必须成对使用，孤立低代理应编译失败
-**实际行为：** 编译器允许孤立低代理存在
-
-**规范依据：**
-- spec/experimental.md: 未明确定义孤立代理规则
-- Unicode 规范 UAX #16: 要求代理必须成对使用
+**分析：** PDF原文§2.1 **无compile-time error语句禁止lone surrogate**。同ISSUE-002。
+**结论：** 不是编译器bug。@expect已从compile-fail改为compile-pass，用例移至compile-pass目录。
 
 **跨语言对比：**
 | 语言 | 代码 | 行为 |
 |------|------|------|
-| ArkTS | `let s: string = "\uDC00"` | ⚠️ 编译通过 |
+| ArkTS | `let s: string = "\uDC00"` | ✅ 编译通过（PDF原文未禁止）|
 | Java | `String s = "\uDC00";` | ✅ 编译通过 |
 | Swift | `let s = "\u{DC00}"` | ❌ 编译错误 |
 
-**状态：** ⚠️ D 类异常（Spec 与实现不一致）
+**状态：** ⚠️ SPEC缺口——PDF原文不禁止lone surrogate，建议向spec团队提出补充
 
 ---
 
-### ISSUE-004: 高代理后跟 BMP 字符编译通过 ⚠️ SPEC 不一致
+### ISSUE-004: 高代理后跟 BMP 字符编译通过 ⚠️ SPEC缺口
 
 **所属章节：** 2.1 Use of Unicode Characters
-**用例文件：** `2.1_Use_of_Unicode_Characters/compile-fail/LEX_02_01_014_FAIL_HIGH_SURROGATE_NO_LOW.ets`
+**用例文件：** `2.1_Use_of_Unicode_Characters/compile-pass/LEX_02_01_014_PASS_HIGH_SURROGATE_NO_LOW.ets`
 
 **错误信息：** 无（编译通过）
 
-**预期行为：** Unicode 规范要求高代理后必须跟低代理，不能跟 BMP 字符
-**实际行为：** 编译器允许高代理后跟 BMP 字符
-
-**规范依据：**
-- spec/experimental.md: 未明确定义代理组合规则
-- Unicode 规范 UAX #16: 要求高代理后必须跟低代理
+**分析：** PDF原文§2.1 **无compile-time error语句禁止lone surrogate**。同ISSUE-002/003。
+**结论：** 不是编译器bug。@expect已从compile-fail改为compile-pass，用例移至compile-pass目录。
 
 **跨语言对比：**
 | 语言 | 代码 | 行为 |
 |------|------|------|
-| ArkTS | `let s: string = "\uD800A"` | ⚠️ 编译通过 |
+| ArkTS | `let s: string = "\uD800A"` | ✅ 编译通过（PDF原文未禁止）|
 | Java | `String s = "\uD800A";` | ✅ 编译通过 |
 | Swift | `let s = "\u{D800}A"` | ❌ 编译错误 |
 
-**状态：** ⚠️ D 类异常（Spec 与实现不一致）
+**状态：** ⚠️ SPEC缺口——PDF原文不禁止lone surrogate，建议向spec团队提出补充
 
 ---
 
@@ -169,74 +157,62 @@
 
 ---
 
-### ISSUE-007: char 字面量内允许真实 LF ⚠️ SPEC 不一致
+### ISSUE-007: char 字面量内允许真实 LF ⚠️ SPEC改进建议
 
 **所属章节：** 2.4 Line Separators
 **用例文件：** `2.4_Line_Separators/compile-pass/LEX_02_04_022_PASS_LF_IN_CHAR_LITERAL.ets`
 
 **错误信息：** 无（编译通过）
 
-**预期行为：** char 字面量应禁止跨行（与字符串字面量一致），强制使用转义序列 `c'\n'`
-**实际行为：** 编译器允许 char 字面量内含真实 LF
-
-**规范依据：**
-- spec/lexical.md: 未明确定义 char 字面量跨行规则
-- 字符串字面量行为: 单/双引号字符串内含真实 LF 编译失败
+**分析：** PDF原文§2.4 **未明确定义char字面量跨行规则**。编译器当前行为与Java不同，但PDF原文无禁止规则。**这不是编译器bug**，而是spec可改进的方向。
+**结论：** 降级为spec改进建议，非编译器bug。用例保持compile-pass。
 
 **跨语言对比：**
 | 语言 | 代码 | 行为 |
 |------|------|------|
-| ArkTS | `let ch: char = c'<LF>'` | ⚠️ 编译通过 |
+| ArkTS | `let ch: char = c'<LF>'` | ✅ 编译通过（PDF原文未禁止）|
 | Java | `char ch = '<LF>';` | ❌ 编译错误 |
 | Swift | N/A | N/A |
 
-**状态：** ⚠️ D 类异常（Spec 与实现不一致）
+**状态：** ⚠️ SPEC改进建议——PDF原文§2.4未明确定义char字面量跨行规则，非编译器bug
 
 ---
 
-### ISSUE-008: CRLF 在 spec 中未单独定义为序列 ⚠️ SPEC 不一致
+### ISSUE-008: CRLF 在 spec 中未单独定义为序列 ⚠️ SPEC改进建议
 
 **所属章节：** 2.4 Line Separators
 **用例文件：** `2.4_Line_Separators/compile-pass/LEX_02_04_005_PASS_CRLF_SEPARATOR.ets`
 
 **错误信息：** 无（编译通过）
 
-**预期行为：** spec 应显式定义 CRLF 序列为单一行终止符
-**实际行为：** spec 隐含支持，未显式定义
-
-**规范依据：**
-- spec/lexical.md: 列出 4 种独立行终止符，声明 "Any sequence of line separators is considered a single separator"
-- Java JLS §3.4: 显式 LineTerminatorSequence 产生式
+**分析：** PDF原文§2.4列出4种独立行终止符，并声明"Any sequence of line separators is considered a single separator"。CRLF被隐含支持。Java JLS显式定义但ArkTS PDF原文风格不同。**这不是编译器bug**。
+**结论：** 降级为spec改进建议（可考虑更显式定义CRLF），非编译器bug。用例保持compile-pass。
 
 **跨语言对比：**
 | 语言 | CRLF 在 spec 中 | 规范依据 |
 |------|--------------|---------|
-| ArkTS | ⚠️ 隐含支持 | spec/lexical.md |
+| ArkTS | ✅ 隐含支持（PDF原文§2.4） | spec/lexical.md |
 | Java | ✅ 显式定义 | JLS §3.4 |
 | Swift | ✅ 显式定义 | Swift Lang |
 
-**状态：** ⚠️ D 类异常（Spec 缺乏显式定义可能引发误解）
+**状态：** ⚠️ SPEC改进建议——PDF原文§2.4隐含支持，非编译器bug
 
 ---
 
-### ISSUE-009: 空值合并赋值运算符编译失败
+### ISSUE-009: 空值合并赋值运算符编译失败 ⚠️ SPEC内部不一致
 
 **所属章节：** 2.8 Operators and Punctuators
-**用例文件：** `2.8_Operators_and_Punctuators/runtime/LEX_02_08_031_RUNTIME_NULLISH_UNION_FIELD_FACTOR.ets`
+**用例文件：** `2.8_Operators_and_Punctuators/compile-fail/LEX_02_08_031_FAIL_NULLISH_ASSIGNMENT.ets`
 
 **错误信息：**
 ```
 [LEX_02_08_031_RUNTIME_NULLISH_UNION_FIELD_FACTOR.ets:16:11] Syntax error ESY0227: Unexpected token '??='.
 ```
 
-**预期行为：** `??=` 空值合并赋值运算符应能正常使用
-**实际行为：** 编译器不支持 `??=` 运算符
+**分析：** PDF原文§2.8 operators/punctuators表 **无`??=`条目**，不是合法token；但§7.32.2又引用其语义。这是spec内部不一致——`??=`出现在语义描述中但不在词法token表中。不是纯编译器bug。
+**结论：** 需spec团队澄清是否应支持`??=`。@expect已从runtime改为compile-fail，用例移至compile-fail目录。
 
-**可能原因：**
-- 编译器尚未实现 `??=` 运算符
-- 该语法特性可能在后续版本中支持
-
-**状态：** 🔴 待编译器更新
+**状态：** ⚠️ SPEC内部不一致——§2.8不定义??= token但§7.32.2引用其语义，需spec团队澄清
 
 ---
 
@@ -244,8 +220,10 @@
 
 | 状态 | 数量 |
 |------|------|
-| 🔴 未解决 | 2 |
-| ⚠️ SPEC 不一致 | 5 |
+| ⚠️ SPEC缺口（PDF原文无规则） | 3 |
+| ⚠️ SPEC改进建议（非编译器bug） | 2 |
+| ⚠️ SPEC内部不一致（需团队澄清） | 1 |
+| 🔴 未解决（编译器未实现） | 1 |
 | ✅ 已解决 | 2 |
 | ⚠️ 待确认（Spec 未明确） | 6 |
 

@@ -2,8 +2,10 @@
  * @id CLS_09_07_015_PASS_OVERRIDE_DIFFERENT_DEFAULT
  * @expect compile-pass
  * @section 9.7.5
- * @design 重写违规：重写方法使用与原方法不同的默认参数值
- * @note 反向用例：override方法必须保持与超类方法相同的默认参数值
+ * @design override方法不同默认参数值
+ * @note PDF原文§9.7.5说"aligned with OverrideCompatible Signatures"，
+ *       不是"same default parameter values"且无"compile-time error occurs"语句。
+ *       编译器接受不同默认参数值是符合PDF原文的行为。
  */
 class Printer015 {
   print(text: string = "Hello"): string {

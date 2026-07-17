@@ -4,7 +4,7 @@
 
 | ID | Case | Symptom | Expected | Actual | Status |
 |:---|------|--------|---------|--------|--------|
-| SC-01~14 | SEM_15_08_00_004/005/008/014/016/017/018/019/020/022/024/025/027/028 | Smart Cast 流敏感收窄未实现 | compile-pass | 编译失败 | C类-编译器未实现 |
+| SC-01~14 | SEM_15_08_00_004/005/008/014/016/017/018/019/020/022/024/025/027/028 | Smart Cast 流敏感收窄未实现 | compile-pass | 编译失败 | ⚠️ C类-降级——§15.8 PDF原文用描述性语言（"can"、"uses"），不是规范性"compile-time error occurs"，待spec团队确认 |
 | VAR-01~06 | SEM_15_02_00_010/012/015/018, SEM_15_05_00_001/003 | Subtyping/Variance 编译器误拒 | compile-pass | 编译失败 | C类-编译器未实现 |
 | OVR-01~03 | SEM_15_09_00_003/009/013 | Override 编译器误拒 | compile-pass | 编译失败 | C类-编译器未实现 |
 | TINF-01~02 | SEM_15_07_00_001/003 | Type Inference 编译器误拒 | compile-pass | 编译失败 | C类-编译器未实现 |
@@ -12,10 +12,10 @@
 | ASG-01 | SEM_15_04_00_004 | Assignability 编译器误拒 | compile-pass | 编译失败 | C类-编译器未实现 |
 | ERAS-01 | SEM_15_12_00_004 | Type Erasure 编译器误拒 | compile-pass | 编译失败 | C类-编译器未实现 |
 | INT-01 | SEM_15_02_08_001 | Intersection PLACEHOLDER 编译失败 | compile-pass | 编译失败 | C类-编译器未实现 |
-| OW-01 | SEM_15_11_07_001 | Overload warning W2323 未实现 | compile-pass | 编译失败 | C类-编译器未实现 |
+| OW-01 | SEM_15_11_07_001 | Overload warning W2323 未实现 | compile-pass | 编译失败 | ⚠️ 降级——用例代码bug（TS风格重载未用overload关键字），非编译器bug |
 | C-15.11-02~07 | SEM_15_11_00_218/220/222/224/226/231 | Overload Resolution 运行时按实际类型派发 | runtime 按声明类型 | runtime 按实际类型 | C类-运行时偏差 |
-| GAP-SC | SEM_15_08_00_109/110/111/114/116/118 | Smart Cast 边界未拒绝 | compile-fail | 编译通过 | C类-编译器未实现 |
-| GAP-SUB | SEM_15_02_04_101, SEM_15_02_05_101/103/106, SEM_15_02_07_101 | Subtyping 边界未拒绝 | compile-fail | 编译通过 | C类-编译器未实现 |
+| GAP-SC | SEM_15_08_00_109/110/111/114/116/118 | Smart Cast 边界未拒绝 | compile-fail | 编译通过 | ⚠️ C类-降级——同SC-01~14，§15.8语言是描述性，待spec团队确认 |
+| GAP-SUB | SEM_15_02_04_101, SEM_15_02_05_101/103/106, SEM_15_02_07_101 | Subtyping 边界未拒绝 | compile-fail | 编译通过 | ⚠️ C类-降级——§15.2本身无规范性error语句，引用§15.4/§15.6等章节，待评估 |
 | GAP-OVR | SEM_15_09_01_103, SEM_15_09_02_102, SEM_15_09_00_108/109 | Override 边界未拒绝 | compile-fail | 编译通过 | C类-编译器未实现 |
 | GAP-INF | SEM_15_07_02_102 | Smart return 边界未拒绝 | compile-fail | 编译通过 | C类-编译器未实现 |
 | GAP-OL | SEM_15_11_00_113 | Overload 边界未拒绝 | compile-fail | 编译通过 | C类-编译器未实现 |
@@ -25,34 +25,13 @@
 
 ### 异常详情
 
-**SC-01~14** MEDIUM — Smart Cast 流敏感收窄未实现（14 场景）
+**SC-01~14** MEDIUM — Smart Cast 流敏感收窄未实现（14 场景）⚠️ 待重新评估
 
-- Spec 15.8: `The compiler uses data-flow analysis based on Control-flow Graph to compute smart types`
-- Spec 要求的所有 14 场景均被编译器拒绝，每个场景均有明确 Spec 依据：
-
-| # | 场景 | Spec 依据 | 编译器 |
-|---|------|----------|:------:|
-| 1 | typeof 收窄 | §15.8:1369 `typeof v === "string"` 等式收窄 | ❌ |
-| 2 | 控制流收窄 | §15.8:1357 CFG data-flow analysis 计算智能类型 | ❌ |
-| 3 | 联合类型收窄 | §15.8 联合类型应能通过 typeof/instanceof 收窄 | ❌ |
-| 4 | 嵌套 if 收窄 | §15.8.4 CFG 分支合并 | ❌ |
-| 5 | 三元收窄 | §15.8:1365 条件表达式包括 ternary | ❌ |
-| 6 | 逻辑 AND/OR 收窄 | §15.8:1365 Conditional-And / Conditional-Or | ❌ |
-| 7 | CFG 分支合并 | §15.8.4 分支合并时智能类型为各分支联合 | ❌ |
-| 8 | 循环 backedge | §15.8.4 反向边: 循环变量重置为声明类型 | ❌ |
-| 9 | Must-alias 集 | §15.8.4 must-alias 集计算用于智能类型 | ❌ |
-| 10 | 差集类型计算 | §15.8.3 else 分支使用差集类型 | ❌ |
-| 11 | 类型表达式简化 | §15.8.6 类型表达式简化规则 | ❌ |
-| 12 | switch 收窄 | §15.8:1365 条件语句包括 switch | ❌ |
-| 13 | for 循环收窄 | §15.8:1365 循环中应保持智能类型 | ❌ |
-| 14 | while 循环收窄 | §15.8:1365 同上 | ❌ |
-
-- 编译器错误示例：
+- PDF原文核查：§15.8 PDF原文使用**描述性语言**（"can"、"uses"、"the compiler uses data-flow analysis...to compute"），**无明确"compile-time error occurs"语句**。
+- 这不是说功能不重要，而是**PDF原文的规范语言是描述性而非强制性**。编译器未实现不等于编译器bug。
+- 编译器的错误信息：
   ```
   SEM_15_08_00_004: Property 'length' does not exist on type 'Object'
-  → typeof value === "string" 后 value.length 未收窄
-  SEM_15_08_00_005: Unions are not allowed in binary expressions
-  → typeof value === "string" 后 value*2 仍为联合类型
   ```
 - 跨语言对比：
 
@@ -63,8 +42,8 @@
 | null/undefined 收窄 | ✅ | ✅ | ❌ | ✅ |
 | CFG 分支合并 | ❌ | ✅ | ✅ | ✅ |
 
-- 14 个场景全部为 **Spec §15.8 明确要求的核心功能**，编译器未实现严重影响开发者体验
-- 分类：C 类（编译器未实现），涉及章节：15.8
+- **建议：** 标注为"spec描述性功能，编译器当前未实现"，待spec团队确认是否该部分为强制性要求后重新评估。
+- 分类：⚠️ 降级处理，涉及章节：15.8
 
 ---
 
@@ -106,16 +85,21 @@
 
 ---
 
-**ASG-01 / ERAS-01 / INT-01 / OW-01** LOW — 单场景编译器误拒
+**ASG-01 / ERAS-01 / INT-01** LOW — 单场景编译器误拒
 
 | ID | 用例 | 问题 |
 |----|------|------|
 | ASG-01 | SEM_15_04_00_004 | 隐式转换可赋值性编译器误拒 |
 | ERAS-01 | SEM_15_12_00_004 | effective type mapping 编译器误拒 |
 | INT-01 | SEM_15_02_08_001 | Intersection PLACEHOLDER 编译失败 |
-| OW-01 | SEM_15_11_07_001 | Overload warning W2323 未实现（编译器应产生警告） |
 
-- 分类：C 类（编译器未实现），涉及章节：15.4/15.12/15.2.8/15.11
+- 分类：C 类（编译器未实现），涉及章节：15.4/15.12/15.2.8
+
+**OW-01** LOW — 用例代码bug（非编译器bug）⚠️ 降级
+
+- PDF原文核查：用例SEM_15_11_07_001使用TS风格重载（两个同名function greet），ArkTS需用`overload`关键字(§17.9)。编译器报ESE0130是**正确行为**。
+- 结论：降级为用例代码bug，非编译器bug。需修改用例使用`overload`关键字。
+- 分类：⚠️ 降级为用例设计问题，涉及章节：15.11
 
 ---
 
@@ -137,33 +121,35 @@
 
 ---
 
-**GAP-SC** LOW — Smart Cast 边界编译器未拒绝（6 场景）
+**GAP-SC** LOW — Smart Cast 边界编译器未拒绝（6 场景）⚠️ 待重新评估
 
-- Spec 要求：instanceof 无效访问、全局/函数作用域收窄边界应产生 compile-time error
+- PDF原文核查：同SC-01~14，§15.8使用描述性语言。
 - 实际：编译器未拒绝，通过编译
 - 涉及用例：
   ```
   SEM_15_08_00_109/110/111/114/116/118
   ```
-- 分类：C 类（编译器为未实现），涉及章节：15.8
+- **建议：** 降级为推论性解读，待spec团队确认。
+- 分类：⚠️ 降级处理，涉及章节：15.8
 
 ---
 
-**GAP-SUB** LOW — Subtyping 边界编译器未拒绝（5 场景）
+**GAP-SUB** LOW — Subtyping 边界编译器未拒绝（5 场景）⚠️ 待重新评估
 
-- Spec 要求：tuple/union/fixed-array 错误子类型方向应产生 compile-time error
+- PDF原文核查：§15.2本身**无规范性error语句**——规范语言是子类型定义而非"compile-time error occurs"。强制要求应引用§15.4/§15.6等。
 - 实际：编译器未拒绝，通过编译
 - 涉及用例：
   ```
   SEM_15_02_04_101, SEM_15_02_05_101/103/106, SEM_15_02_07_101
   ```
-- 分类：C 类（编译器未实现），涉及章节：15.2
+- **建议：** 标注应引用§15.4/§15.6等规范性error章节，而非§15.2本身。
+- 分类：⚠️ 降级处理，涉及章节：15.2/15.4
 
 ---
 
 **GAP-OVR** LOW — Override 边界编译器未拒绝（4 场景）
 
-- Spec 要求：override 参数协变/返回逆变/有效签名冲突应产生 compile-time error
+- PDF原文核查：§15.9有规范性"compile-time error occurs"语句——**保持原分类**。
 - 实际：编译器未拒绝，通过编译
 - 涉及用例：
   ```

@@ -11,6 +11,6 @@ function throwError(): void {
   throw new Error("test error")
 }
 
-function throwException(): void {
-  throw new Exception("test exception")
+function throwErrorMsg(): void {
+  throw new Error("test error message")
 }

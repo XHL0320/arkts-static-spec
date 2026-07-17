@@ -6,27 +6,27 @@
  * @note 测试 instanceof 表达式的真值检查
  */
 
+class Animal015 {
+  name: string = "animal"
+}
+
+class Dog015 extends Animal015 {
+  bark(): void {
+    console.log("Woof!")
+  }
+}
+
 // 测试 instanceof 表达式的真值检查
 function test_instanceof_truthiness(): void {
-  class Animal {
-    name: string = "animal"
-  }
-  
-  class Dog extends Animal {
-    bark(): void {
-      console.log("Woof!")
-    }
-  }
-  
-  let animal: Animal = new Dog()
+  let animal: Animal015 = new Dog015()
   
   // instanceof 的真值检查
-  if (animal instanceof Dog) {
+  if (animal instanceof Dog015) {
     console.log("animal is Dog")
     animal.bark()
   }
   
-  if (!(animal instanceof Animal)) {
+  if (!(animal instanceof Animal015)) {
     console.log("This won't execute")
   } else {
     console.log("animal is Animal")

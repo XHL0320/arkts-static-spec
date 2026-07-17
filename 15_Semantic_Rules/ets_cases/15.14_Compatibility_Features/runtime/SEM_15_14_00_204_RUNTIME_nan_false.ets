@@ -6,7 +6,7 @@
  */
 
 function main(): void {
-  let nan: number = 0 / 0
+  let nan: number = 0.0 / 0.0
   let x = nan ? "truthy" : "falsy"
   arktest.assertEQ(x, "falsy")
 }

@@ -8,7 +8,7 @@
 
 // 测试 typeof 表达式的真值检查
 function test_typeof_truthiness(): void {
-  let x: any = "hello"
+  let x: string | number | boolean | undefined | Object = "hello"
   
   // typeof 返回字符串字面量类型的真值检查
   if (typeof x === "string") {

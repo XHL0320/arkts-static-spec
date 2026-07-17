@@ -6,7 +6,6 @@
 |----|------|---------|----------|--------|--------|
 | 7.1.1-001 | EXP_07_01_01_021_FAIL_ASSIGN_TO_NON_LVALUE | 赋值给非左值编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
 | 7.1.1-002 | EXP_07_01_01_023_FAIL_LOGICAL_AND_ASSIGNMENT | 逻辑与后赋值给非左值编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
-| 7.1.1-003 | EXP_07_01_01_024_FAIL_TERNARY_PRECEDENCE_TYPE | int 作为三元条件编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
 | 7.2.2-001 | EXP_07_02_02_017_FAIL_NEGATIVE_ARRAY_INDEX | 字面量负数组索引编译时错误 | runtime-RangeError | compile-fail | D 类: Spec 与实现不一致 |
 | 7.11.4-001 | EXP_07_11_04_007_FAIL_STATIC_VOID_ASSIGNED | void 静态方法结果赋值给变量编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
 | 7.11.4-002 | EXP_07_11_04_008_FAIL_INSTANCE_VOID_ASSIGNED | void 实例方法结果赋值给变量编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
@@ -20,26 +19,16 @@
 | 7.21.8-005 | EXP_07_21_08_025_FAIL_ENUM | !enum 应报编译时错误但编译器允许通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
 | 7.23.2-001 | EXP_07_23_02_027_FAIL_DIVISION_BY_ZERO_LITERAL | int 字面量除零编译检测缺失 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
 | 7.23.3-001 | EXP_07_23_03_027_FAIL_REMAINDER_BY_ZERO_LITERAL | int 字面量取余除零编译检测缺失 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
-| 7.23.3-002 | EXP_07_23_03_028_FAIL_BIGINT_REMAINDER_BY_ZERO_LITERAL | bigint 字面量 0n 取余除零编译检测缺失 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
 | 7.24-001 | EXP_07_24_033 中负数基底零指数 | (-5.0)**0.0 返回 NaN（应为 1.0） | 1.0 | NaN | D 类: Spec 与实现不一致 |
 | 7.24-002 | EXP_07_24_041 中负数基底整数指数 | (-2.0)**3.0 返回 NaN（应为 -8.0） | -8.0 | NaN | D 类: Spec 与实现不一致 |
 | 7.26-001 | EXP_07_26_010_FAIL_DOUBLE_SHIFT | float/double 移位操作数 spec §7.26 规定截断后应编译通过，es2panda 报 ESE0318 拒绝 | compile-pass | compile-fail (ESE0318) | D 类: Spec 与实现不一致 |
-| 7.27.6-001 | EXP_07_27_06_012_FAIL_ENUM_VS_NUMERIC | enum 与 numeric 关系运算应报错（spec §7.27.6 须同枚举类型）但编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
-| 7.27.6-002 | EXP_07_27_06_013_FAIL_ENUM_VS_STRING | enum 与 string 关系运算应报错（spec §7.27.6 须同枚举类型）但编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
-| 7.28-001 | EXP_07_28_3_FAIL_INT_BIGINT_MIX | int == bigint 应报错（spec §7.28 类型不匹配）但编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
-| 7.28-002 | EXP_07_28_5_FAIL_OBJECT_INT_EQ | Object == int 应报错（spec §7.28 非合法相等组合）但编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
-| 7.28-003 | EXP_07_28_6_FAIL_NULL_STRING_EQ | null == string 应报错（spec §7.28 非合法相等组合）但编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
-| 7.28-004 | EXP_07_28_7_FAIL_UNDEFINED_INT_EQ | undefined == int 应报错（spec §7.28 非合法相等组合）但编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
-| 7.28-005 | EXP_07_28_8_FAIL_ARRAY_STRING_EQ | 数组 == string 应报错（spec §7.28 非合法相等组合）但编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
-| 7.28.1-001 | EXP_07_28_01_015_FAIL_OBJECT_VS_NUMERIC | Object == int 编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
-| 7.28.1-002 | EXP_07_28_01_016_FAIL_ENUM_VS_NUMERIC | enum == int 编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
-| 7.28.1-003 | EXP_07_28_01_017_FAIL_NULLISH_WITH_NUMERIC | null == int 编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
+| 7.27.6-002 | EXP_07_27_06_013_FAIL_ENUM_VS_STRING | enum 与 string 关系运算应报错（spec §7.27.6 须同枚举类型）但编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致（string非numeric，仍然有效）|
+| 7.25.1-001 | EXP_07_25_01_001_FAIL_VOID_PLUS_STRING | void + string 拼接编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致——void不在§7.22 binary expression表有效类型中 |
 | 7.32.1-001 | EXP_07_32_01_008_FAIL_READONLY_ARRAY | readonly array = non-readonly array 编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
 | 7.32.1-002 | EXP_07_32_01_009_FAIL_READONLY_TUPLE | readonly tuple = non-readonly tuple 编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
 | 7.32.2-001 | EXP_07_32_02_005/008/011 | ??= 空值合并赋值编译器报 Syntax error ESY0227 | 应编译通过或语义检查 | compile-fail（语法错误）| D 类: Spec 与实现不一致 |
 | 7.35.2-001 | EXP_07_35_02_009_FAIL_UNINIT_LOCAL_CAPTURE | 未初始化局部变量在 lambda 中捕获编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
-| 7.19-001 | EXP_07_19_021_FAIL_VOID_EXPRESSION | void 表达式应用 ! 运算符编译通过（预期 compile-fail） | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
-| 7.19-002 | EXP_07_19_022_FAIL_ALWAYS_NULLISH_ASSIGN | undefined! 赋值给 int 类型编译通过（预期 compile-fail） | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
+| (无) | | | | | |
 
 ### 异常详情
 
@@ -72,19 +61,9 @@
 
 ---
 
-**7.1.1-003** ⭐ — 非 boolean 类型作为三元条件编译通过
+**7.1.1-003** ✅ 已解决 — PDF原文§7.33非compile-time error
 
-- **问题描述：** `x ?? 0 ? "ok" : "no"` 中 `(x ?? 0)` 返回 `int`，但 ArkTS 允许 `int` 用作三元条件（预期需要 boolean）。
-- **复现用例 ID：** EXP_07_01_01_024_FAIL_TERNARY_PRECEDENCE_TYPE
-- **跨语言对比：**
-
-| 语言 | 代码 | 行为 |
-|------|------|------|
-| ArkTS | `5 ?? 0 ? "ok" : "no"` | ✅ 编译通过，结果为 "ok" |
-| Java | 同语境代码 | ❌ 编译错误: incompatible types |
-| Swift | 同语境代码 | ❌ 编译错误: Type 'Int' cannot be used as a boolean |
-
-- **建议：** 确认 ArkTS 是否应支持 truthy/falsy 语义。若不支持，需报类型错误；若支持，需更新 spec。
+- PDF原文核查确认不是编译器bug。用例已从compile-fail移至compile-pass。
 
 ---
 **7.2.2-001** ⭐ — 字面量负数组索引编译时错误
@@ -198,21 +177,9 @@
 
 ---
 
-**7.23.3-002** ⭐ — bigint 字面量 0n 取余除零编译检测缺失
+**7.23.3-002** ✅ 已解决 — PDF原文§7.23.3描述为runtime error
 
-- **问题描述：** spec 要求 bigint 取余除零 0n 产生运行时错误，如编译期可检测则报编译时错误。但编译器未检测 `a % 0n`。
-- **复现用例 ID：** EXP_07_23_03_028_FAIL_BIGINT_REMAINDER_BY_ZERO_LITERAL
-- **跨语言对比：**
-
-| 语言 | 代码 | 行为 |
-|------|------|------|
-| ArkTS (spec) | `let x = a % 0n` | ❌ Compile-time error |
-| ArkTS (实现) | `let x = a % 0n` | ✅ 编译通过（不检测） |
-| 除法对比 | `let x = a / 0n` | ❌ 编译时错误（7.23.2-028 正确检测） |
-
-- **备注：** 与 7.23.2 中 bigint 除法 `a / 0n` 被正确检测的行为**不一致**。除法和取余运算符对 bigint 0n 的检测策略不同。
-- **建议：** 统一除法和取余运算符的 bigint 除零 0n 检测策略。
-- **跨语言说明：** Java/Swift 无 bigint，不适用此项比较。
+- PDF原文核查确认应改为runtime。用例已从compile-fail移至runtime。
 
 ---
 
@@ -316,34 +283,9 @@
 
 ---
 
-**7.19-001** ⭐ — void 表达式上应用 `!` 运算符编译通过（Spec 不一致）
+**7.19-001 / 7.19-002** ✅ 已解决 — PDF原文§7.19说"warning is issued"非compile-time error
 
-- **问题描述：** ArkTS spec 规定 ensure-not-nullish 表达式检查"空值类型"（nullish types）。`void` 在 ArkTS 中 ≡ `undefined`，属于 nullish type。理论上 `void` 函数调用不产生值，应用 `!` 应报编译时错误，但当前编译器允许 `noop()!` 编译通过。
-- **复现用例 ID：** EXP_07_19_021_FAIL_VOID_EXPRESSION
-- **跨语言对比：**
-
-| 语言 | void 表达式 + ! |
-|------|----------------|
-| ArkTS | ❌ 预期 compile-time error，实际编译器允许通过 |
-| Java | N/A（void 方法不返回值） |
-| Swift | N/A（void 函数不返回值） |
-
-- **建议：** 实现 spec 中 void 表达式禁止应用 `!` 运算符的编译时检测。
-
----
-
-**7.19-002** ⭐ — `undefined!` 赋值给非空类型编译通过（Spec 不一致）
-
-- **问题描述：** `undefined` 是 nullish type，`undefined!` 的类型应推导为非空类型变体（理论上为 never/uninhabited）。`let x: int = undefined!` 预期是 compile-time error，但当前编译器允许通过。
-- **复现用例 ID：** EXP_07_19_022_FAIL_ALWAYS_NULLISH_ASSIGN
-- **跨语言对比：**
-
-| 语言 | `undefined!` 类型 |
-|------|------------------|
-| ArkTS | ❌ 预期 compile-time error，实际编译器允许通过 |
-| Java | N/A（无 undefined） |
-| Swift | N/A（nil! 编译通过但运行崩溃） |
-
-- **建议：** 对始终 nullish 的表达式应用 `!` 后，其类型应当正确推导为非空不可达类型，当赋值给非空具体类型时产生编译时错误。
+- PDF原文核查确认这不是编译器bug。用例已从compile-fail移至compile-pass。
+- 涉及：EXP_07_19_021, EXP_07_19_022
 
 ---

@@ -10,20 +10,20 @@
 function test_conditional_and(): void {
   // 数字的条件与
   let num: number = 10
-  let result1: number | boolean = num && "truthy"
+  let result1: number | string = num && "truthy"
   console.log("Conditional AND (number): " + result1)  // 输出: "truthy"
   
   let zero: number = 0
-  let result2: number | boolean = zero && "truthy"
+  let result2: number | string = zero && "truthy"
   console.log("Conditional AND (zero): " + result2)  // 输出: 0
   
   // 字符串的条件与
   let str: string = "hello"
-  let result3: string | boolean = str && "truthy"
+  let result3: string = str && "truthy"
   console.log("Conditional AND (string): " + result3)  // 输出: "truthy"
   
   let empty: string = ""
-  let result4: string | boolean = empty && "truthy"
+  let result4: string = empty && "truthy"
   console.log("Conditional AND (empty): " + result4)  // 输出: ""
   
   console.log("Conditional AND test passed")
