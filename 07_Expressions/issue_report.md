@@ -2,6 +2,8 @@
 
 只记录**当前未解决的执行异常**。一旦异常通过修改用例或编译器更新而消除，立即从此文件移除。
 
+> 最后全量编译验证：2026-07-17，es2panda `--extension=ets`，2128 例全部实测（不含 review_report.md 中 1 例）。2108 通过，20 例存在 spec/实现差异。
+
 | ID | Case | Symptom | Expected | Actual | Status |
 |----|------|---------|----------|--------|--------|
 | 7.1.1-001 | EXP_07_01_01_021_FAIL_ASSIGN_TO_NON_LVALUE | 赋值给非左值编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |

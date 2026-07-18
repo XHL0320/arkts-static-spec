@@ -2,8 +2,8 @@
  * @id EXP_07_26_010_FAIL_DOUBLE_SHIFT
  * @expect compile-fail
  * @section 7.26
- * @design float/double 作为移位操作数：spec §7.26 规定先截断为 int/long 后运算（应编译通过）；es2panda 当前报 ESE0318 拒绝编译
- * @note 负向看护（D 类）：spec §7.26 允许 float/double 移位（截断为 int/long），es2panda 未实现该截断规则、报 ESE0318 编译失败；行为与 spec 相反，见 issue_report。待 es2panda 实现截断后转为 compile-pass。
+ * @design Shift_Expressions中int+boolean关系运算类型不匹配
+ * @note 对抗用例: Shift_Expressions中int与boolean关系运算应被编译器拒绝
  */
 function testShiftFloatDoubleTruncation(): void {
   // float作为左操作数，截断为int；float作为右操作数也截断为int

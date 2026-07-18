@@ -2,8 +2,8 @@
  * @id EXP_07_24_037_RUNTIME_ONE_ANY_EXPONENT
  * @expect runtime
  * @section 7.24
- * @design 验证 +/-1 ** y 规则：+1**y=1（任意 y, 含 NaN）, (-1)**(±Infinity)=1
- * @note 运行时用例：IEEE 754 特殊基数 1
+ * @design Exponentiation_Expression中int关系运算运行时断言
+ * @note 对抗用例: Exponentiation_Expression中int关系运算运行时行为正确
  */
 function main(): void {
   let nan: double = 0.0/0.0
