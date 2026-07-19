@@ -2,7 +2,7 @@
 
 只记录**当前未解决的执行异常**。一旦异常通过修改用例或编译器更新而消除，立即从此文件移除。
 
-> 最后全量编译验证：2026-07-17，es2panda `--extension=ets`，2128 例全部实测（不含 review_report.md 中 1 例）。2108 通过，20 例存在 spec/实现差异。
+> 最后全量编译验证：2026-07-17，es2panda `--extension=ets`，2129 例全部实测。2107 通过，22 例存在 spec/实现差异。
 
 | ID | Case | Symptom | Expected | Actual | Status |
 |----|------|---------|----------|--------|--------|
@@ -25,7 +25,9 @@
 | 7.24-002 | EXP_07_24_041 中负数基底整数指数 | (-2.0)**3.0 返回 NaN（应为 -8.0） | -8.0 | NaN | D 类: Spec 与实现不一致 |
 | 7.26-001 | EXP_07_26_010_FAIL_DOUBLE_SHIFT | float/double 移位操作数 spec §7.26 规定截断后应编译通过，es2panda 报 ESE0318 拒绝 | compile-pass | compile-fail (ESE0318) | D 类: Spec 与实现不一致 |
 | 7.27.6-002 | EXP_07_27_06_013_FAIL_ENUM_VS_STRING | enum 与 string 关系运算应报错（spec §7.27.6 须同枚举类型）但编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致（string非numeric，仍然有效）|
-| 7.25.1-001 | EXP_07_25_01_001_FAIL_VOID_PLUS_STRING | void + string 拼接编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致——void不在§7.22 binary expression表有效类型中 |
+| 7.17.1-001 | EXP_07_17_01_101_FAIL_CAST_TO_NEVER | Cast表达式中目标类型为never未报错 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
+| 7.25.1-001 | EXP_07_25_01_021_FAIL_VOID_EXPRESSION | void + string 拼接编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致——void不在§7.22 binary expression表有效类型中 |
+| 7.26-002 | EXP_07_26_041_FAIL_INT_BOOL_REL_ERR | int < boolean 关系运算类型不匹配未报错 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
 | 7.32.1-001 | EXP_07_32_01_008_FAIL_READONLY_ARRAY | readonly array = non-readonly array 编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
 | 7.32.1-002 | EXP_07_32_01_009_FAIL_READONLY_TUPLE | readonly tuple = non-readonly tuple 编译通过 | compile-fail | compile-pass | D 类: Spec 与实现不一致 |
 | 7.32.2-001 | EXP_07_32_02_005/008/011 | ??= 空值合并赋值编译器报 Syntax error ESY0227 | 应编译通过或语义检查 | compile-fail（语法错误）| D 类: Spec 与实现不一致 |
@@ -158,6 +160,30 @@
 
 - **备注：** bigint 字面量除零 `a / 0n`（EXP_07_23_02_028）却被正确检测为编译时错误。编译器对 int 和 bigint 的字面量除零检测策略不一致。
 - **建议：** 实现 spec 中字面量整数除零的编译时检测，或统一 int 与 bigint 检测策略。
+
+---
+
+**7.17.1-001** ⭐ — Cast表达式中目标类型为never未报错
+
+- **问题描述：** `let x: int = 1 as never` 中的 `never` 作为目标类型应产生 compile-time error，但编译器允许通过。
+- **复现用例 ID：** EXP_07_17_01_101_FAIL_CAST_TO_NEVER
+- **建议：** 编译器应检查 cast 表达式中目标类型为 never 的情况。
+
+---
+
+**7.25.1-001** ⭐ — void + string 拼接编译通过
+
+- **问题描述：** void 表达式与字符串拼接 `console.log("a") + "b"` 编译通过，但 void 不在 §7.22 binary expression 表有效类型中。
+- **复现用例 ID：** EXP_07_25_01_021_FAIL_VOID_EXPRESSION
+- **建议：** 编译器应检查 void 表达式参与二元运算的情况。
+
+---
+
+**7.26-002** ⭐ — int < boolean 关系运算类型不匹配未报错
+
+- **问题描述：** `a < b` 其中 a 为 int、b 为 boolean 应产生 compile-time error，但编译器允许通过。
+- **复现用例 ID：** EXP_07_26_041_FAIL_INT_BOOL_REL_ERR（对抗生成用例）
+- **建议：** 编译器应检查关系运算操作数类型一致性。
 
 ---
 
