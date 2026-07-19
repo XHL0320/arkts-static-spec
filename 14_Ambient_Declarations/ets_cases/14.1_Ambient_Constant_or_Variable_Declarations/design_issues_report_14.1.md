@@ -72,4 +72,6 @@ ArkTS 14.1 Ambient Constant or Variable Declarations 的核心规范：
 > - `declare let v = 1` → Semantic error ESE125125: "Initializers are not allowed in ambient contexts"
 > - `declare let v` → Semantic error ESE1111: "Missing type annotation for the 'v'"
 > 
-> 保留本条历史记录作为档案，标记为已修复。
+> **2026-07-17 复测确认：** 两个约束仍被正确强制执行，修复有效。✅
+
+保留本条历史记录作为档案，标记为已修复。

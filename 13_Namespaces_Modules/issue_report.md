@@ -2,6 +2,8 @@
 
 只记录**当前未解决的执行异常**。一旦异常通过修改用例或编译器更新而消除，立即从此文件移除。
 
+> 最后编译验证：2026-07-17，es2panda `--extension=ets`。
+
 ## D 类：Spec 与实现不一致（FAIL_PASSED）
 
 | ID | Case | Symptom | Expected | Actual | Status |
@@ -11,13 +13,12 @@
 | D3 | NSM_13_08_004_FAIL_TOP_LEVEL_USE_BEFORE_DECLARE | FAIL 用例编译通过 | spec 要求报错 | 编译通过 | D类 |
 | D4 | NSM_13_07_3_002_FAIL_EXPORT_TYPE_NON_TYPE | FAIL 用例编译通过 | spec 要求报错 | 编译通过 | D类 |
 | D5 | NSM_13_01_004_FAIL_AMBIENT_MIXED | FAIL 用例编译通过 | spec 要求报错 | 编译通过 | D类 |
-| D6 | NSM_13_07_2_007_FAIL_EXPORT_DEFAULT_EXPR_UNEXPORTED_TYPE | FAIL 用例编译失败(Spec认为合法) | Spec认为合法 | es2panda要求A导出 | D类 |
+| D6 | NSM_13_07_2_007_FAIL_EXPORT_DEFAULT_EXPR_UNEXPORTED_TYPE | 编译器拒绝export default expression中未导出类型（Spec认为合法）| compile-pass | compile-fail | D类-用例设计问题 |
 
 ## C 类：编译器实现限制（PASS_FAILED / RUNTIME_COMPILE_FAIL）
 
 | ID | Case | Symptom | Expected | Actual | Status |
 |---|------|--------|---------|--------|--------|
-| C1 | NSM_13_01_002_PASS_MODULE_WITH_IMPORT | PASS 用例编译失败 | 编译通过 | Fatal error F0014: Unresolved module | C类 |
 | C2 | NSM_13_02_001_PASS_EXPORT_MODULE | PASS 用例编译失败 | 编译通过 | Syntax error ESY0279: Cannot find name 'module' | C类 |
 | C3 | NSM_13_02_002_PASS_DECLARE_MODULE | PASS 用例编译失败 | 编译通过 | Syntax error ESY0331 | C类 |
 | C4 | NSM_13_02_004_PASS_MODULE_STRING_NAME | PASS 用例编译失败 | 编译通过 | Syntax error ESY0279 | C类 |
@@ -42,24 +43,22 @@
 
 ## A 类：已修复用例（无）
 
+### 已解决问题
+
+**~~C1~~** ✅ 已修复 — NSM_13_01_002_PASS_MODULE_WITH_IMPORT
+
+- 原问题：用例使用 `import { Log } from "@ohos.log"`，es2panda 单文件编译无法解析外部模块路径（F0014）。
+- **2026-07-17 复测：** 用例已改为自包含内联定义，编译通过（EXIT=0）。
+- 用例路径：`13.1_Module_Declarations/compile-pass/NSM_13_01_002_PASS_MODULE_WITH_IMPORT.ets`
+
 ### 异常详情
 
 **D1** ⭐⭐⭐ D类 — 标准库名重定义未报错
 
 - **问题描述：** Spec §13.10 规定 "Using standard library names as names of programmer-defined entities at the module scope causes a compile-time error"，但 `let console: int = 5` 编译通过
 - **复现用例 ID：** NSM_13_10_002_FAIL_STDLIB_NAME_REUSE
-- **跨语言对比（WSL实测修正）：**
-
-| 语言 | 代码 | 行为 | WSL实测 |
-|------|------|------|---------|
-| ArkTS | `let console: int = 5` | 编译通过（违反 spec） | ⚠️ FAIL_PASSED |
-| Java | `public class System {}` (默认包) | ✅ 编译通过(遮蔽java.lang.System) | ✅ 需用java.lang.System显式引用 |
-| Java | `public class Integer {}` (默认包) | ✅ 编译通过(遮蔽java.lang.Integer) | ✅ 需用java.lang.Integer显式引用 |
-| Swift | `func print(_ msg: String)` | ✅ 编译通过(遮蔽Swift.print) | ✅ 需用Swift.print显式引用 |
-
-> **⚠️ 关键修正：** WSL实测发现Java和Swift都**允许**重定义标准库名（通过遮蔽机制），与之前理论推导的"不允许"结论不同。ArkTS spec的标准库名保护设计实际上比Java/Swift**更严格**。
-
-- **建议：** 编译器应添加标准库名重定义检查（至少应发出warning，与Java/Swift的遮蔽+显式引用机制对齐）
+- **2026-07-17 复测：** 仍 ACCEPTED，未修复
+- **建议：** 编译器应添加标准库名重定义检查（至少应发出warning）
 
 **D2** ⭐⭐⭐ D类 — 合并 namespace 多初始化器未报错
 

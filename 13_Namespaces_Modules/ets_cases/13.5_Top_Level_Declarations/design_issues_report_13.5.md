@@ -1,4 +1,4 @@
-# 13.5 Top-Level Declarations - ArkTS与Java/Swift/TS行为差异及规范一致性报告
+﻿# 13.5 Top-Level Declarations - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
 **报告日期：** 2026-06-27
 **测试用例数：** 4（compile-pass: 3, runtime: 1）
@@ -56,3 +56,4 @@
 | NSM_13_05_002 | compile-pass | 顶层function声明 | ✅ 通过 |
 | NSM_13_05_003 | compile-pass | 顶层变量声明 | ✅ 通过 |
 | NSM_13_05_004 | runtime | 顶层声明执行顺序 | ✅ 通过 |
+

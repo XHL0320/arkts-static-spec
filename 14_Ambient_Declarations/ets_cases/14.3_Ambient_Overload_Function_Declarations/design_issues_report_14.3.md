@@ -58,10 +58,22 @@ ArkTS 14.3 Ambient Overload Function Declarations 的核心规则（自 semantic
 **严重性**：MEDIUM
 **分类**：D 类（Spec 与实现不一致）
 
+## 2026-07-17 编译验证结果
+
+| 用例 | @expect | 实际 | 结论 |
+|------|---------|------|------|
+| AMB_14_03_007_FAIL_OVERLOAD_UNDEFINED_REF | compile-fail | ❌ REJECTED | ✅ 正确 |
+| AMB_14_03_008_FAIL_OVERLOAD_DUPLICATE_SIG | compile-fail | ✅ ACCEPTED | ❌ 仍存在 |
+| AMB_14_03_009_FAIL_OVERLOAD_EMPTY_SET | compile-fail | ✅ ACCEPTED | ❌ 仍存在 |
+| AMB_14_03_010_FAIL_OVERLOAD_NO_FUNCS | compile-fail | ❌ REJECTED | ✅ 正确 |
+| AMB_14_03_011_FAIL_OVERLOAD_REF_NON_AMBIENT | compile-fail | ✅ ACCEPTED | ❌ 仍存在 |
+
+D-14.3-01/02/03 三个问题仍未被编译器检测，保持活跃状态。
+
 ## 总结
 
-| ID | 问题 | 严重性 | 分类 |
-|----|------|--------|------|
-| D-14.3-01 | 重载等价签名检查缺失 | MEDIUM | D 类 |
-| D-14.3-02 | 空重载集检查缺失 | LOW | D 类 |
-| D-14.3-03 | 非 declare 函数引用检查缺失 | MEDIUM | D 类 |
+| ID | 问题 | 严重性 | 分类 | 状态 |
+|----|------|--------|------|------|
+| D-14.3-01 | 重载等价签名检查缺失 | MEDIUM | D 类 | 🔴 未修复 |
+| D-14.3-02 | 空重载集检查缺失 | LOW | D 类 | 🔴 未修复 |
+| D-14.3-03 | 非 declare 函数引用检查缺失 | MEDIUM | D 类 | 🔴 未修复 |

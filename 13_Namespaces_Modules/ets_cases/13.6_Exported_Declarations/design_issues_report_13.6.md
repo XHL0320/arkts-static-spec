@@ -1,4 +1,4 @@
-# 13.6 Exported Declarations - ArkTS与Java/Swift/TS行为差异及规范一致性报告
+﻿# 13.6 Exported Declarations - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
 **报告日期：** 2026-06-27
 **测试用例数：** 15（compile-pass: 4, compile-fail: 10, runtime: 1）
@@ -79,3 +79,4 @@
 | NSM_13_06_013 | compile-fail | export type alias引用未导出类型 | ✅ 通过 |
 | NSM_13_06_015 | compile-fail | export overload含未导出实体 | ✅ 通过 |
 | NSM_13_06_016 | compile-fail | public field使用未导出类型 | ✅ 通过 |
+

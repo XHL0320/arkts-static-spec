@@ -29,8 +29,18 @@ ArkTS 14.6 Ambient Enumeration Declarations 的规范规则：
 **严重性**：MEDIUM
 **分类**：D 类（Spec 与实现不一致）
 
+## 2026-07-17 编译验证结果
+
+| 用例 | @expect | 实际 | 结论 |
+|------|---------|------|------|
+| AMB_14_06_005_FAIL_CONST_ENUM | compile-fail | ❌ REJECTED | ✅ 正确 |
+| AMB_14_06_006_FAIL_MEMBER_INITIALIZER | compile-fail | ✅ ACCEPTED | ❌ 仍存在 |
+| AMB_14_06_007_FAIL_MIXED_INITIALIZER | compile-fail | ✅ ACCEPTED | ❌ 仍存在 |
+
+D-14.6-01 问题仍未被编译器检测，保持活跃状态。
+
 ## 总结
 
-| ID | 问题 | 严重性 | 分类 |
-|----|------|--------|------|
-| D-14.6-01 | 枚举成员初始化器检查缺失 | MEDIUM | D 类 |
+| ID | 问题 | 严重性 | 分类 | 状态 |
+|----|------|--------|------|------|
+| D-14.6-01 | 枚举成员初始化器检查缺失 | MEDIUM | D 类 | 🔴 未修复 |

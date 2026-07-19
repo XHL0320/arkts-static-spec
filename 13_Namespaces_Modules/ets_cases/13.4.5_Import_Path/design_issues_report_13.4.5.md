@@ -1,48 +1,10 @@
-# 13.4.5 Import Path - ArkTS与Java/Swift/TS行为差异及规范一致性报告
+﻿# 13.4.5 Import_Path -- Cross-language behavior difference report
 
-**报告日期：** 2026-06-27
-**测试用例数：** 3（compile-pass: 1, compile-fail: 1, runtime: 1）
-**可验证：** 1 个
+## 2026-07-17 Compilation verification
 
----
+| ID | Issue | Case | @expect | Actual | Status |
+|----|-------|------|---------|--------|--------|
+| C17 | import relative path | NSM_13_04_5_001_PASS_IMPORT_RELATIVE_PATH | compile-pass | F0014 | unresolved |
+| C18 | import path runtime | NSM_13_04_5_003_RUNTIME_IMPORT_PATH | runtime | F0014 | unresolved |
 
-## 一、与业界静态语言的差异点
-
-**无设计问题发现。** 唯一可验证用例与 spec 一致。
-
----
-
-## 二、严重性等级总览
-
-| 严重性 | 数量 | 问题列表 |
-|-------|------|---------|
-| 编译器待完善 | 0 | - |
-| 编译器实现限制 | 2 | C类 |
-
----
-
-## 三、跨语言对比
-
-| 维度 | ArkTS | Java | Swift |
-|------|-------|------|-------|
-| **导入路径** | ✅ StringLiteral路径 | ✅ 包名路径(点分) | ✅ 模块名 |
-| **相对路径** | ✅ `./xxx` 或 `../xxx` | ❌ (Java使用包名而非文件路径) | ❌ (Swift使用模块名) |
-| **编译器无法定位** | ✅ 检查 | ✅ (Java编译器检查类路径) | ✅ (Swift编译器检查模块) |
-
-**结论：** ArkTS 的相对路径导入是 JS/TS 风格，Java/Swift 使用包/模块名而非文件路径。
-
----
-
-## 四、改善建议
-
-1. 等待构建系统支持后验证C类用例
-
----
-
-## 四、附录：完整用例索引
-
-| 用例 ID | 分类 | 测试内容 | 结果 |
-|---------|------|---------|------|
-| NSM_13_04_5_001 | compile-pass | 相对路径导入 | ⚠️ C类 |
-| NSM_13_04_5_002 | compile-fail | 编译器无法定位模块 | ✅ 通过 |
-| NSM_13_04_5_003 | runtime | 导入路径运行时 | ⚠️ C类 |
+Root cause: es2panda single-file compilation cannot resolve external module paths (F0014). Requires build system support.
