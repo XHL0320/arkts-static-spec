@@ -38,10 +38,10 @@ ArkTS 14.7.1 的规范规则：
 | AMB_14_07_01_005_FAIL_NESTED_NAME_MISMATCH | compile-fail | ❌ REJECTED | ✅ 正确 |
 | AMB_14_07_01_006_FAIL_FUNCTION_SIG_MISMATCH | compile-fail | ❌ REJECTED | ✅ 正确 |
 
-D-14.7.1-01 问题已被编译器修复：`declare namespace A {}` + `namespace A {}` 现在正确编译通过。
+D-14.7.1-01 问题仍未被编译器修复：`declare namespace A {}` + `namespace A {}` 编译仍失败（ESY0006）。此前误判为已修复。
 
 ## 总结
 
 | ID | 问题 | 严重性 | 分类 | 状态 |
 |----|------|--------|------|------|
-| D-14.7.1-01 | declare namespace 与 namespace 无法合并 | MEDIUM | D 类 | ✅ 已修复 |
+| D-14.7.1-01 | declare namespace 与 namespace 无法合并 | MEDIUM | D 类 | 🔴 未修复 |

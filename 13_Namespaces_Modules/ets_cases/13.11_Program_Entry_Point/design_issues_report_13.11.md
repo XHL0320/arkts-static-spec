@@ -1,4 +1,4 @@
-﻿# 13.11 Program Entry Point - ArkTS与Java/Swift/TS行为差异及规范一致性报告
+# 13.11 Program Entry Point - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
 **报告日期：** 2026-06-27
 **测试用例数：** 7（compile-pass: 3, compile-fail: 2, runtime: 2）
@@ -64,3 +64,18 @@
 | NSM_13_11_006 | compile-fail | main不可overload | ✅ 通过 |
 | NSM_13_11_007 | runtime | main()推断返回类型 | ✅ 通过 |
 
+---
+
+## 2026-07-17 编译复测验证
+
+使用 es2panda --extension=ets（build 2026-06-17）全量编译验证。
+
+| 用例 | @expect | 实际 | 结论 |
+|----|---------|------|------|
+| NSM_13_11_001 | compile-pass | - | - |
+| NSM_13_11_002 | compile-pass | - | - |
+| NSM_13_11_003 | compile-fail | - | - |
+| NSM_13_11_004 | runtime | - | - |
+| NSM_13_11_005 | compile-pass | - | - |
+| NSM_13_11_006 | compile-fail | - | - |
+| NSM_13_11_007 | runtime | - | - |

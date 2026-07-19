@@ -1,4 +1,4 @@
-﻿# 13.7.1 Selective Export Directive - ArkTS与Java/Swift/TS行为差异及规范一致性报告
+# 13.7.1 Selective Export Directive - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
 **报告日期：** 2026-06-27
 **测试用例数：** 4（compile-pass: 2, compile-fail: 1, runtime: 1）
@@ -51,3 +51,15 @@
 | NSM_13_07_1_003 | runtime | 选择性导出运行时 | ✅ 通过 |
 | NSM_13_07_1_004 | compile-fail | export {bar as foo}与已导出同名 | ✅ 通过 |
 
+---
+
+## 2026-07-17 编译复测验证
+
+使用 es2panda --extension=ets（build 2026-06-17）全量编译验证。
+
+| 用例 | @expect | 实际 | 结论 |
+|----|---------|------|------|
+| NSM_13_07_1_001 | compile-pass | - | - |
+| NSM_13_07_1_002 | compile-pass | - | - |
+| NSM_13_07_1_003 | runtime | - | - |
+| NSM_13_07_1_004 | compile-fail | - | - |

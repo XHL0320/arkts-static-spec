@@ -47,11 +47,11 @@
 
 ### 已解决问题
 
-**~~D-14.7.1-01~~** ✅ 已修复 — declare namespace 与 namespace 合并
+**~~D-14.7.1-01~~** ❌ 未修复 — declare namespace 与 namespace 合并
 
 - 原问题：编译器拒绝 `declare namespace A {}` + `namespace A {}`，报 "Unable to merge namespaces"
-- **2026-07-17 复测：** 编译器现在正确接受合并。用例 `AMB_14_07_01_001_PASS_IMPLEMENT_SAME_NAME` 位于 compile-pass 目录，编译通过（EXIT=0）。
-- 修复后 4 个 compile-pass 和 1 个 runtime 用例不再受此问题影响。
+- **2026-07-17 复测：** 编译器仍拒绝合并，报 ESY0006。用例 `AMB_14_07_01_001_PASS_IMPLEMENT_SAME_NAME` 在 compile-pass 目录，但编译失败（ESY0006）。
+- 此前误判为已修复（文件在 compile-pass 目录但实际编译未通过）。实际仍为 D 类未修复。
 
 **~~D-14.1-01/02~~** ✅ 已修复 — Ambient 声明初始化器和类型注解检查
 

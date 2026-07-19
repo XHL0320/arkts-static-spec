@@ -1,4 +1,4 @@
-﻿# 13.7 Export Directives - ArkTS与Java/Swift/TS行为差异及规范一致性报告
+# 13.7 Export Directives - ArkTS与Java/Swift/TS行为差异及规范一致性报告
 
 **报告日期：** 2026-06-27
 **测试用例数：** 3（compile-pass: 2, runtime: 1）
@@ -49,3 +49,14 @@
 | NSM_13_07_002 | compile-pass | export指令单名导出 | ✅ 通过 |
 | NSM_13_07_003 | runtime | export指令运行时 | ✅ 通过 |
 
+---
+
+## 2026-07-17 编译复测验证
+
+使用 es2panda --extension=ets（build 2026-06-17）全量编译验证。
+
+| 用例 | @expect | 实际 | 结论 |
+|----|---------|------|------|
+| NSM_13_07_001 | compile-pass | - | - |
+| NSM_13_07_002 | compile-pass | - | - |
+| NSM_13_07_003 | runtime | - | - |
